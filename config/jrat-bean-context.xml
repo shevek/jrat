@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+  <alias name="compositeMethodHandlerFactory" alias="methodHandlerFactory"/>
+
+  <bean id="compositeMethodHandlerFactory" class="org.shiftone.jrat.provider.config.CompositeMethodHandlerFactory">
+
+    <property name="methodHandlerFactories">
+        <list>
+
+            <ref bean="treeMethodHandlerFactory"/>
+
+            <ref bean="traceMethodHandlerFactory"/>
+
+            <bean class="org.shiftone.jrat.provider.config.GlobMethodHandlerFactory">
+
+                <property name="classNamePattern" value="com.xyz.*Bean" />
+                <!-- <property name="methodNamePattern" value="get*,set*" /> -->
+                <property name="methodNamePattern" value="onMessage" />
+                <property name="signaturePattern" value="*"/>
+                <property name="methodHandlerFactory" ref="logfileMethodHandlerFactory"/>
+
+            </bean>
+
+        </list>
+    </property>
+
+  </bean>
+
+  <bean id="treeMethodHandlerFactory" class="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
+
+  </bean>
+
+  <bean id="traceMethodHandlerFactory" class="org.shiftone.jrat.provider.trace.TraceMethodHandlerFactory">
+      <property name="callsThreshold" value="2000"/>
+  </bean>
+
+  <bean id="logfileMethodHandlerFactory" class="org.shiftone.jrat.provider.log.Log4jMethodHandlerFactory">
+    <property name="level" value="debug"/>
+  </bean>
+
+
+</beans>
