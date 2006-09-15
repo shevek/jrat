@@ -1,0 +1,179 @@
+package org.shiftone.jrat.provider.tree.ui.stack;
+
+
+
+import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.util.Percent;
+import org.shiftone.jrat.util.time.TimeUnit;
+import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+
+import javax.swing.table.AbstractTableModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * Class StackTableModel
+ *
+ * @author $Author: jeffdrost $
+ * @version $Revision: 1.4 $
+ */
+public class StackTableModel extends AbstractTableModel {
+
+    private static final Logger LOG   = Logger.getLogger(StackTableModel.class);
+    private List                stack = new ArrayList();
+    private long                rootTotalDuration;
+    private String[]            COLUMN_NAMES =
+    {
+        "Class", "Method", "Signature",              //
+        "Enters", "Exits", "Errors",                 //
+        "Threads", "Total ms",                       //
+        "Avg ms", "Std Dev",                         //
+        "Min ms", "Max ms",                          //
+        "%Parent", "%Root"
+    };
+    private Class[]             COLUMN_TYPES =
+    {
+        String.class, String.class, String.class,    //
+        Long.class, Long.class, Long.class,          //
+        Integer.class, Long.class,                   //
+        Float.class, Double.class,                   //
+        Long.class, Long.class,                      //
+        Percent.class, Percent.class
+    };
+
+    public synchronized void setStackTreeNode(StackTreeNode root, StackTreeNode node) {
+
+        List          newStack = new ArrayList();
+        StackTreeNode currNode = node;
+
+        while (currNode.getParent() != null)
+        {
+            newStack.add(currNode);
+
+            if (currNode == root)
+            {
+                break;
+            }
+
+            currNode = (StackTreeNode) currNode.getParentNode();
+        }
+
+        // -------------------------------------
+        // I'm calcing the %of root on the fly - which allows any node to be
+        // set as the root node of the view. To do that, I need to know the
+        // total
+        // duration of the effective root. aka the last node on the stack.
+        // this is different from "root" because the that object may be the
+        // fake base node.
+        if (newStack.isEmpty())
+        {
+            rootTotalDuration = 0;
+        }
+        else
+        {
+            StackTreeNode viewRoot = (StackTreeNode) newStack.get(newStack.size() - 1);
+
+            rootTotalDuration = viewRoot.getTotalDurationNanos();
+        }
+
+        stack = newStack;
+
+        fireTableDataChanged();
+    }
+
+
+    public int getRowCount() {
+        return stack.size();
+    }
+
+
+    public int getColumnCount() {
+        return COLUMN_NAMES.length;
+    }
+
+
+    public String getColumnName(int columnIndex) {
+        return COLUMN_NAMES[columnIndex];
+    }
+
+
+    public Class getColumnClass(int columnIndex) {
+        return COLUMN_TYPES[columnIndex];
+    }
+
+
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return false;
+    }
+
+
+    public Object getValueAt(int rowIndex, int columnIndex) {
+
+        StackTreeNode node      = (StackTreeNode) stack.get(rowIndex);
+        MethodKey     methodKey = node.getMethodKey();
+
+        if (methodKey == null)
+        {
+            return "?";
+        }
+
+        switch (columnIndex)
+        {
+
+        case 0 :
+            return methodKey.getClassName();
+
+        case 1 :
+            return methodKey.getMethodName();
+
+        case 2 :
+            return methodKey.getPrettySignature();
+
+        case 3 :
+            return new Long(node.getTotalEnters());
+
+        case 4 :
+            return new Long(node.getTotalExits());
+
+        case 5 :
+            return new Long(node.getTotalErrors());
+
+        case 6 :
+            return new Integer(node.getMaxConcurrentThreads());
+
+        case 7 :
+            return new Long(node.getTotalDuration(TimeUnit.MS));
+
+        case 8 :
+            return node.getAverageDuration(TimeUnit.MS);
+
+        case 9 :
+            return node.getStdDeviation();
+
+        case 10 :
+            return node.getMinDuration(TimeUnit.MS);
+
+        case 11 :
+            return node.getMaxDuration(TimeUnit.MS);
+
+        case 12 :
+            return new Percent(node.getPctOfAvgParentDuration());
+
+        case 13 :
+            return new Percent(getPctOfAvgRootDuration(node));
+        }
+
+        return null;
+    }
+
+
+    public double getPctOfAvgRootDuration(StackTreeNode node) {
+
+        return (rootTotalDuration > 0)
+               ? ((100.0 * node.getTotalDurationNanos()) / rootTotalDuration)
+               : 0;
+    }
+}

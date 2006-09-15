@@ -1,0 +1,21 @@
+package org.shiftone.jrat.util.time;
+
+
+
+/**
+ * @author $Author: jeffdrost $
+ * @version $Revision: 1.9 $
+ */
+public class SystemCurrentTimeMillisMovement implements Movement {
+
+    public long currentTimeNanos() {
+        return 1000000 * System.currentTimeMillis();
+    }
+
+    public void pauseTime() {}
+    public void resumeTime() {}
+
+    public String toString() {
+        return "(1,000,000 * System.currentTimeMillis())";
+    }
+}

@@ -1,0 +1,13 @@
+<body>
+The Silent provider doesn't do anything with events.  It is used 
+when no handler is configured for a method.  This happens in two cases.
+<ol>
+<li>If JRat is not configured at all.  This handler will be used for all
+events</li>
+<li>If JRat is configured, it is using the ChainMethodHandlerFactory, 
+which makes the final determination what handlers to be used.  It can
+assign zero, one, or many handlers to a single method.  In the case where
+the chain handler determins that zero handlers are configured for a method,
+a silent handler will be used.</li>
+</ol>
+</body>

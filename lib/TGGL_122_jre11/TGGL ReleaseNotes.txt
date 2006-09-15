@@ -1,0 +1,84 @@
+                         *****************************
+                         *                           *
+                         *   TouchGraph GraphLayout  *	
+                         *       V 1.22-jre11        *
+                         *      (c) 2001-2002        *
+                         *     Alexander Shapiro,    *
+                         *       TouchGraph LLC      *
+                         *                           *
+                         *****************************
+
+
+Release Notes:
+
+V 1.22 (11/04/02): Reverted the code back to a jre1.1 compatible version
+-jre11             Lutz Dornbusch of www.clicktivities.net performed the
+                   reversion when customizing the applet for
+                   www.planet-wissen.de
+
+                   Enhaced locality stwitching at radius 1.  Now at radius 1
+                   fresh nodes get added before those marked for removal get
+                   taken away.  This allows more connections to be seen during
+                   the transition.
+
+                   Modified layout to improve fade out of freshly added nodes  
+                   and nodes that are about to be removed.
+
+                   Improved node scrolling to center.
+
+                   Reactivated hyperbolic lens.
+
+V 1.21 (04/04/02): Fixed copyright date from 2002 to 2001-2002
+
+                   Added a collapseNode method, which has the opposite effect of 
+	           expandNode.  Fixed the hide node method so that hiding is  
+                   independent of selection.
+
+                   Simplified getting and setting the zoom, rotation, and
+                   horizontal + vertical scrollbar values so that these can be  
+                   saved/retrieved more easily.
+
+                   Added new parameters to the set locality method to support 
+                   the extension of the GraphLayout code by the TGWikiBrowser. 
+                   Now one can prevent nodes with high edge degrees from being 
+                   shown or expanded, or chose to follow only outgoing edges.
+
+V 1.20 (01/02/02): Changed License to TouchGraph LLC. Apache-Style Software 
+                   License.  
+                   
+                   Began code cleanup + addition of javadoc hooks to comply with 
+                   Sun's coding standards.  
+                   
+                   Changes to suport the extension of the GraphLayout code by 
+                   the TGLinkBrowser:
+                   Nodes are now given unique node id's. 
+                   Nodes can be rectangular, rounded-rectangles, or eliptical.  
+
+V 1.07 (10/28/01): Switched to Swing.  Added locality navigation tools.  
+                   Implemented edge Selection.  Began toolbar improvements.
+
+V 1.06 (9/30/01):  Implemented locality.  
+
+V 1.05 (9/09/01):  Made interfaces (such as moving nodes by dragging) plugable. 
+
+V 1.04 (8/19/01):  Fixed Horiz + Vert Scrollbars.  
+
+V 1.03 (8/04/01):  Made design more modular.  Implemented a hyperbolic lens.
+
+V 1.02 (7/22/01):  Added comments
+
+================================================================================
+
+Contributors
+
+  Clicktivities & Lutz Dornbusch: www.clicktivities.net 
+                                  Lutz.Dornbusch@clicktivities.net    
+
+  Murray Altheim:  http://www.altheim.com/murray/
+
+
+This software includes code from:
+
+  Sun's graph layout applet:
+  java.sun.com/applets/jdk/1.2/demo/applets/GraphLayout/example1.html
+
