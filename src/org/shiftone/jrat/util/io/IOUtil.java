@@ -23,9 +23,9 @@ import java.net.Socket;
 /**
  * Class IOUtil
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
- * @todo - make sure streams get closed
+ * @author $Author:  $
+ * @version $Revision:  $
+ * todo - make sure streams get closed
  */
 public class IOUtil {
 
