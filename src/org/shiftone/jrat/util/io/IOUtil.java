@@ -23,8 +23,12 @@ import java.net.Socket;
 /**
  * Class IOUtil
  *
- * @author $Author:  $
- * @version $Revision:  $
+ * $astChangedBy$
+ * $LastChangedDate$
+ * $LastChangedRevision$
+ * $HeadURL$
+ * $Id$
+ *
  * todo - make sure streams get closed
  */
 public class IOUtil {

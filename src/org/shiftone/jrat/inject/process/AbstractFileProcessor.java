@@ -18,7 +18,7 @@ import java.io.OutputStream;
 /**
  * @author $Author: jeffdrost $
  * @version $Revision: 1.11 $
- * @todo this logic should all go in the Injector.
+ * todo - this logic should all go in the Injector.
  */
 public abstract class AbstractFileProcessor implements FileProcessor {
 

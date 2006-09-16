@@ -4,7 +4,7 @@
     <property file="build.properties"/>
 
     <property name="src.dir"	     value="src"/>
-    <property name="resources.dir"	 value="resources"/>
+
     <property name="lib.dir"	     value="lib"/>
     <property name="xdoc.dir"	     value="xdoc"/>
     <property name="config.dir"	     value="config"/>
@@ -15,7 +15,6 @@
     <property name="temp.dir"	     value="${target.dir}/temp"/>
 
     <property name="release.dir"     value="${target.dir}/release"/>
-    <property name="dist.dir"	     value="${release.dir}"/>
     <property name="doc.dir"	     value="${release.dir}/docs"/>
     <property name="api.dir"	     value="${release.dir}/api"/>
 
@@ -116,43 +115,28 @@
 
             <classpath>
                 <fileset dir="${lib.dir}">
-                    <include name="*"/>
+                    <include name="**/*.jar"/>
                 </fileset>
             </classpath>
 
-
+            <!--
             <link href="http://java.sun.com/j2se/1.3/docs/api/"/>
             <link href="http://java.sun.com/j2ee/sdk_1.3/techdocs/api/"/>
+            -->
 
+            <!--
             <bottom><![CDATA[<a href="http://sourceforge.net"><img alt="SourceForge.net Logo" border="0" height="37" width="125" src="http://sourceforge.net/sflogo.php?group_id=41841&type=3"></a>]]></bottom>
+            -->
         </javadoc>
 
     </target>
 
-    <!-- ======================================================================= -->
 
-    <target name="style">
-
-        <taskdef resource="checkstyletask.properties"/>
-
-        <mkdir dir="${doc.dir}"/>
-
-        <checkstyle config="stylerules.xml" failOnViolation="false">
-            <fileset dir="${src.dir}" includes="**/*.java"/>
-            <property key="basedir" file="${src.dir}"/>
-            <formatter type="xml" toFile="${doc.dir}/checkstyle_result.xml"/>
-        </checkstyle>
-
-        <xslt	in="${doc.dir}/checkstyle_result.xml"
-            out="${doc.dir}/checkstyle_result.html"
-            style="${xdoc.dir}/style/checkstyle.xsl"/>
-
-    </target>
 
     <!-- ======================================================================= -->
 
     <target name="xdoc">
-
+        <!--
         <echo message="xdoc to ${doc.dir}"/>
 
         <mkdir dir="${doc.dir}"/>
@@ -177,20 +161,20 @@
             <param name="p_date"		expression="${doced.time}"/>
 
         </style>
-
+        -->
     </target>
 
     <!-- ======================================================================= -->
 
     <target name="jar" depends="compile">
 
-        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${release.dir}"/>
 
         <taskdef name="jarjar"
             classname="com.tonicsystems.jarjar.JarJarTask"
             classpath="lib/jarjar-0.7/jarjar-0.7.jar"/>
 
-        <jarjar jarfile="${dist.dir}/${jar.file}" index="yes">
+        <jarjar jarfile="${release.dir}/${jar.file}">
 
             <fileset dir="${classes.dir}">
                 <exclude name="org/shiftone/jrat/integration/**/*"/>
@@ -232,7 +216,7 @@
             </manifest>
         </jarjar>
 
-        <jar jarfile="${dist.dir}/${integration-jar.file}" index="yes">
+        <jar jarfile="${release.dir}/${integration-jar.file}" index="yes">
             <fileset dir="${classes.dir}">
                 <include name="org/shiftone/jrat/integration/**/*"/>
             </fileset>
@@ -293,17 +277,6 @@
     </target>
 
     <!-- ======================================================================= -->
-
-    <target name="jboss-aop" depends="dist">
-        <java classname="org.shiftone.jrat.test.JbossAopTestCase" fork="true">
-            <sysproperty key="java.system.class.loader"
-                value="org.jboss.aop.StandaloneClassLoader"/>
-            <classpath>
-                <fileset dir="${lib.dir}"/>
-                <fileset dir="${config.dir}"/>
-            </classpath>
-        </java>
-    </target>
 
     <!-- ======================================================================= -->
 
