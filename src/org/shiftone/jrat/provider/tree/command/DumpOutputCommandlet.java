@@ -18,8 +18,7 @@ public class DumpOutputCommandlet implements Commandlet {
 
     public void execute(OutputStream output) {
         PrintWriter out = new PrintWriter(output);
-        treeMethodHandlerFactory.getRootNode().printXML(out);
-        out.flush();
+        treeMethodHandlerFactory.getRootNode().printXML(out);        
     }
 
     public String getContentType() {

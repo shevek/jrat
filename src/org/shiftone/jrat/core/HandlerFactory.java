@@ -32,7 +32,16 @@ public class HandlerFactory {
     }
 
 
-    /**
+	/**
+	 * Force initialization.  This should really only be called from test cases to
+	 * initialize a particular configuration.
+	 *
+	 */
+	public static void initialize() {
+		getInternalHandler();
+	}
+
+	/**
      * A main runtime entry point.
      */
     public static synchronized MethodHandler getMethodHandler(MethodKey methodKey) {

@@ -26,7 +26,8 @@ public class Settings {
     private static final String DEFAULT_LOG_LEVEL          = "info";
     private static final int    DEFAULT_OUTPUT_BUFFER_SIZE = 1024 * 8;
     private static final int    DEFAULT_RMI_REGISTRY_PORT  = 2121;
-    private static final String DEFAULT_BASE_DIRECTORY     = "JRatOutput";
+	private static final int    DEFAULT_HTTP_PORT  		   = 8888;
+	private static final String DEFAULT_BASE_DIRECTORY     = "JRatOutput";
     public static final String  CONFIGURATION_FILE         = "jrat.config.file";
     public static final String  SPRING_CONFIG_FILE         = "jrat.spring.file";
     public static final String  SPRING_BEAN_NAME           = "jrat.spring.bean";
@@ -37,7 +38,9 @@ public class Settings {
     public static final String INJECTOR_DEFAULT_EXCLUDES_ENABLED = "jrat.injector.default.excludes.enabled";
     public static final String APPLICATION                       = "jrat.app";
     public static final String BASE_DIRECTORY                    = "jrat.base.dir";    // billjdap
-    public static final String JMX_ENABLED                       = "jrat.jmx.enabled";
+	public static final String HTTP_ENABLED                      = "jrat.http.enabled";
+	public static final String HTTP_PORT                         = "jrat.http.port";
+	public static final String JMX_ENABLED                       = "jrat.jmx.enabled";
     public static final String JMX_MBEAN_SERVER_CREATE           = "jrat.jmx.create";
     public static final String JMX_MBEAN_SERVER_SERVICE_URL      = "jrat.jmx.service.url";
     public static final String JMX_MBEAN_SERVER_AGENT_ID         = "jrat.jmx.agent.id";
@@ -111,8 +114,15 @@ public class Settings {
         return getBoolean(JMX_ENABLED, true);
     }
 
+	public static int isHttpPort() {
+        return getInteger(HTTP_PORT, DEFAULT_HTTP_PORT);
+    }
 
-    public static boolean isMBeanServerCreationEnabled() {
+	public static boolean isHttpServerEnabled() {
+        return getBoolean(HTTP_ENABLED, true);
+    }
+
+	public static boolean isMBeanServerCreationEnabled() {
         return getBoolean(JMX_MBEAN_SERVER_CREATE, false);
     }
 

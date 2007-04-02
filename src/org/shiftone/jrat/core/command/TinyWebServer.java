@@ -1,20 +1,19 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.VersionUtil;
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.core.spi.Commandlet;
+import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.log.Logger;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
-import java.io.LineNumberReader;
-import java.io.OutputStreamWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Writer;
 
 /**
  * @author Jeff Drost
@@ -22,7 +21,7 @@ import java.io.Writer;
 public class TinyWebServer extends Thread {
 
     private static final Logger   LOG          = Logger.getLogger(TinyWebServer.class);
-    private static final int      LISTEN_PORT  = 2121;
+
     private ServerSocket          serverSocket = null;
     private int                   flushNumber;
     private final CommandletRegistry registry;
@@ -31,8 +30,9 @@ public class TinyWebServer extends Thread {
 
         this.registry = registry;
         setDaemon(true);
+		setName("HTTP");
 
-    }
+	}
 
 
     private Commandlet readRequest(Socket socket) throws IOException {
@@ -48,7 +48,7 @@ public class TinyWebServer extends Thread {
 
         line      = reader.readLine();
 
-        String commandletKey = "list";
+        String commandletKey = null;
         int a = line.indexOf(' ');
         int b = line.lastIndexOf(' ');
         String uri = line.substring(a+1,b);
@@ -64,24 +64,38 @@ public class TinyWebServer extends Thread {
             line = reader.readLine();
         }
 
-        return (Commandlet)registry.getCommandlets().get(commandletKey);
-    }
+		// the following code is kinda crapy
+		
+		Commandlet commandlet = null;
+
+		if (commandletKey != null) {
+			commandlet = (Commandlet)registry.getCommandlets().get(commandletKey);
+		}
+
+		if (commandlet == null) {
+			LOG.warn("line(" + line + ") using default key");
+			commandlet = registry.getDefaultCommandlet();
+		}
+
+		return commandlet;
+	}
 
 
     public void run() {
 
-        Socket           socket       = null;
+		int              port         = Settings.isHttpPort();
+		Socket           socket       = null;
         OutputStream     outputStream = null;
         Writer           writer       = null;
-        LineNumberReader reader       = null;
-        boolean          refresh;
+        //LineNumberReader reader       = null;
+        //boolean          refresh;
         long             start;
 
         try
         {
-            LOG.info("starting on port " + LISTEN_PORT + "...");
+            LOG.info("starting on port " + port + "...");
 
-            serverSocket = new ServerSocket(LISTEN_PORT);
+            serverSocket = new ServerSocket(port);
 
             while (true)
             {
@@ -105,7 +119,7 @@ public class TinyWebServer extends Thread {
                     writer.write("Cache-Control: post-check=0, pre-check=0");                // IE
                     writer.write("Pragma: no-cache\n");                                      // good luck
                     writer.write("Expires: Sat, 6 May 1995 12:00:00 GMT\n");                 // more lock
-                    writer.write("\n\n");
+                    writer.write("\n");
                     writer.flush();
 
                     commandlet.execute(outputStream);
@@ -126,7 +140,7 @@ public class TinyWebServer extends Thread {
         }
         catch (Exception e)
         {
-            LOG.error("unable to listen on port : " + LISTEN_PORT);
+            LOG.error("unable to listen on port : " + port, e);
         }
     }
 

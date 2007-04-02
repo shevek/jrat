@@ -13,7 +13,7 @@ public interface Commandlet {
         public static final String PLAIN = "text/plain";         
     }
 
-    public void execute(OutputStream output);
+    public void execute(OutputStream output) throws Exception ;
     public String getContentType();
     public String getTitle();
 

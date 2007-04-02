@@ -31,24 +31,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/blaze-5.1/AdvisorSvr.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/blaze-5.1/Advisor.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/jarjar-0.7/jarjar-0.7.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -59,15 +41,6 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/spring-framework-1.2.8/spring-core.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/blaze-5.1/InnovatorRT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -149,15 +122,6 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/jboss-aop1.5.0.GA/concurrent.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/blaze-5.1/AdvCommon.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -319,7 +283,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/dynaop-1.0-beta/cglib-asm-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/apache-ant-1.6.5/ant.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -328,7 +292,52 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/apache-ant-1.6.5/ant.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../carnaval/hwse/trunk/libraries/blaze-license/blaze-license.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../carnaval/hwse/trunk/libraries/blaze-6.1.5/Advisor.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../carnaval/hwse/trunk/libraries/blaze-6.1.5/AdvisorSvr.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../carnaval/hwse/trunk/libraries/blaze-6.1.5/AdvCommon.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../carnaval/hwse/trunk/libraries/blaze-6.1.5/InnovatorRT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/config" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

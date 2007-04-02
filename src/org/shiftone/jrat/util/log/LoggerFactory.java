@@ -81,25 +81,32 @@ public class LoggerFactory implements Constants {
 
 
     public static void disableLogging() {
-        PROXY_LOG_TARGET.setLogTarget(NULL_LOG_TARGET);
+        setLogTarget(NULL_LOG_TARGET);
     }
 
 
     public static void enableThreadBasedLogging() {
-        PROXY_LOG_TARGET.setLogTarget(THREAD_TARGET);
+        setLogTarget(THREAD_TARGET);
     }
 
 
     public static void enableSystemOutLogging() {
-        PROXY_LOG_TARGET.setLogTarget(SYSTEM_OUT_TARGET);
+        setLogTarget(SYSTEM_OUT_TARGET);
     }
 
+	public static synchronized void setLogTarget(LogTarget logTarget) {
+        PROXY_LOG_TARGET.setLogTarget(logTarget);
+    }
 
-    public static void redirectLogging(PrintWriter printWriter) {
+	public static synchronized LogTarget getLogTarget() {
+        return PROXY_LOG_TARGET.getLogTarget();
+    }
+
+	public static void redirectLogging(PrintWriter printWriter) {
 
         TandemTarget tandemTarget = new TandemTarget(SYSTEM_OUT_TARGET, new WriterLogTarget(printWriter));
 
-        PROXY_LOG_TARGET.setLogTarget(tandemTarget);
+        setLogTarget(tandemTarget);
     }
 
 

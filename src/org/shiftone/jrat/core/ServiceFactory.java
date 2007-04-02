@@ -11,6 +11,7 @@ import org.shiftone.jrat.core.jmx.JmxRegistry;
 import org.shiftone.jrat.core.jmx.JmxRegistryFactory;
 import org.shiftone.jrat.core.jmx.info.JRatInfo;
 import org.shiftone.jrat.core.command.CommandletRegistry;
+import org.shiftone.jrat.core.command.CommandletRegistryFactory;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggingManager;
 
@@ -40,9 +41,12 @@ public class ServiceFactory {
     }
 
 
-    private CommandletRegistry commandletRegistry = new CommandletRegistry();
-    public synchronized CommandletRegistry getCommandletRegistry() {
-        // perhaps you were expecting something more magical..
+    private CommandletRegistry commandletRegistry;
+
+	public synchronized CommandletRegistry getCommandletRegistry() {
+        if (commandletRegistry == null) {
+			commandletRegistry = CommandletRegistryFactory.createCommandletRegistry();
+		}
         return commandletRegistry;
     }
 

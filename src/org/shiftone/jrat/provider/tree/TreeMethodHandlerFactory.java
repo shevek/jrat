@@ -11,6 +11,7 @@ import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
 import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
+import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
 
 import java.io.PrintWriter;
 
@@ -33,7 +34,8 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         context.registerMBean(this);
         context.register(new ResetCommandlet(this));
         context.register(new WriteOutputCommandlet(this));
-    }
+		context.register(new DumpOutputCommandlet(this));
+	}
 
 
     public final MethodHandler createMethodHandler(MethodKey methodKey) {
