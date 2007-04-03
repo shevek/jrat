@@ -1,6 +1,5 @@
 package org.shiftone.jrat.util.log;
-
-import org.apache.log4j.Logger;
+ 
 import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.util.log.target.LogTarget;
 import org.shiftone.jrat.util.log.target.TandemTarget;

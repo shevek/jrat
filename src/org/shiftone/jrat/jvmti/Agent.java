@@ -2,8 +2,9 @@ package org.shiftone.jrat.jvmti;
 
 
 
+import org.shiftone.jrat.core.config.Configuration;
+import org.shiftone.jrat.core.config.ConfigurationLoader;
 import org.shiftone.jrat.inject.InjectorOptions;
-import org.shiftone.jrat.core.criteria.MethodCriteria;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -32,19 +33,18 @@ public class Agent {
         LOG.info("Installing JRat " + VersionUtil.getVersion() + " ClassFileTransformer...");
         LOG.info("agentArgs = " + agentArgs);
 
-        CriteriaBuilder criteriaBuilder = new CriteriaBuilder();
-        MethodCriteria  methodCriteria  = criteriaBuilder.build(agentArgs);
-        InjectorOptions injectorOptions = new InjectorOptions();
 
-        injectorOptions.setCriteria(methodCriteria);
-        LOG.info("criteria = " + methodCriteria);
+		Configuration configuration = ConfigurationLoader.getConfiguration();
+
+		InjectorOptions injectorOptions = new InjectorOptions();
+        injectorOptions.setCriteria(configuration);
 
         try
         {
             ClassFileTransformer transformer;
 
             transformer = new InjectClassFileTransformer(injectorOptions);
-            transformer = new FilterClassFileTransformer(methodCriteria, transformer);
+            transformer = new FilterClassFileTransformer(configuration, transformer);
 
             instrumentation.addTransformer(transformer);
             LOG.info("Installed " + transformer + ".");

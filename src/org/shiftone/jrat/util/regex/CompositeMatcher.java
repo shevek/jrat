@@ -22,7 +22,7 @@ public class CompositeMatcher implements Matcher {
     private final Matcher[]     matchers;
 
     public static Matcher buildCompositeGlobMatcher(String pattenString) {
-        return buildCompositeGlobMatcher(pattenString, true);
+		return (pattenString == null) ? Matcher.ALL : buildCompositeGlobMatcher(pattenString, true);
     }
 
 

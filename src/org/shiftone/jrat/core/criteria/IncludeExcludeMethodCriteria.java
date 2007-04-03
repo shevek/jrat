@@ -3,6 +3,9 @@ package org.shiftone.jrat.core.criteria;
 
 
 /**
+ * Used by ant task.
+ * (p1 or p2 or p3 or p4) and not(n1 or n2 or n3).
+ *
  * @author Jeff Drost
  */
 public class IncludeExcludeMethodCriteria implements MethodCriteria {

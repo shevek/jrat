@@ -22,7 +22,8 @@ public class ListRegistryCommandlet implements Commandlet {
     }
 
     public void execute(OutputStream output) {
-        LOG.info("execute");
+
+		LOG.info("execute");
         PrintWriter out = new PrintWriter(output);
         Map commandlets = registry.getCommandlets();
         Iterator keys = commandlets.keySet().iterator();

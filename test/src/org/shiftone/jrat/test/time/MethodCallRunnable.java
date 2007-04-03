@@ -1,6 +1,7 @@
 package org.shiftone.jrat.test.time;
 
-import org.apache.log4j.Logger;
+import org.shiftone.jrat.util.log.Logger;
+
 
 /**
  * @author Jeff Drost

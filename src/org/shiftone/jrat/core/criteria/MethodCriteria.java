@@ -17,11 +17,11 @@ public interface MethodCriteria {
     /**
      * should a class with these attributes be matched?
      */
-    boolean isMatch(String className, long modifier);
+    boolean isMatch(String className, long modifiers);
 
 
     /**
      * should a method with these attributes be matched?
      */
-    boolean isMatch(String className, String methodName, String signature, long modifier);
+    boolean isMatch(String className, String methodName, String signature, long modifiers);
 }

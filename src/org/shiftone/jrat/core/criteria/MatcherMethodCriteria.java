@@ -7,6 +7,7 @@ import org.shiftone.jrat.util.regex.Matcher;
 
 
 /**
+ * Used by ant task.
  * @author $Author: jeffdrost $
  * @version $Revision: 1.2 $
  */

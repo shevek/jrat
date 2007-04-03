@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core.command;
-
-import org.apache.log4j.Logger;
+ 
 import org.shiftone.jrat.core.spi.Commandlet;
+import org.shiftone.jrat.util.log.Logger;
 
 import java.io.OutputStream;
 

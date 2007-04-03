@@ -42,7 +42,8 @@
             debug="yes"
             destdir="${classes.dir}"
             deprecation="false"
-            source="1.2" target="1.2">
+			excludes="**/blaze/**"
+			source="1.2" target="1.2">
 
             <classpath>
 
@@ -74,7 +75,7 @@
 
         <javac
             srcdir="${src.dir}"
-            debug="yes"
+			debug="yes"
             destdir="${target.dir}/oldschool"
             deprecation="false"
             source="1.1" target="1.1">

@@ -1,0 +1,25 @@
+<jrat>
+
+  <handler>
+
+	<include className="*Servlet" methodName="do*"/>
+    <include className="*Servlet" methodName="service"/>
+	<include className="Foo*"/>
+
+	<factory class="org.shiftone.jrat.provider.stats.StatMethodHandlerFactory">
+
+       <property name="CompressOutput" value="false"/>
+       <property name="RecordUnused"   value="false"/>
+       <property name="OutputFile"     value="MyStatOuputFile"/>
+
+    </factory>
+
+	<factory class="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
+
+       <property name="CompressOutput" value="false"/>
+
+    </factory>
+
+  </handler>
+
+</jrat>
