@@ -136,7 +136,7 @@
       <file leaf-file-name="Agent.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="25" selection-start="993" selection-end="993" vertical-scroll-proportion="0.92975205">
+            <state line="35" column="25" selection-start="993" selection-end="993" vertical-scroll-proportion="0.62413317">
               <folding />
             </state>
           </provider>
@@ -145,7 +145,7 @@
       <file leaf-file-name="BlazeSessionState.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/integration/blaze/BlazeSessionState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="33" selection-start="233" selection-end="233" vertical-scroll-proportion="0.25373134">
+            <state line="7" column="33" selection-start="233" selection-end="233" vertical-scroll-proportion="0.16504854">
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1159199021595" expanded="true" signature="259:288" placeholder="/**...*/" />
@@ -165,7 +165,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="263" column="14" selection-start="8864" selection-end="8864" vertical-scroll-proportion="9.018018">
+            <state line="263" column="14" selection-start="8864" selection-end="8864" vertical-scroll-proportion="-0.7586207">
               <folding />
             </state>
           </provider>
@@ -174,7 +174,7 @@
       <file leaf-file-name="FilterClassFileTransformer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/FilterClassFileTransformer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.2750533">
+            <state line="15" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.17891817">
               <folding />
             </state>
           </provider>
@@ -183,7 +183,7 @@
       <file leaf-file-name="InjectClassFileTransformer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/InjectClassFileTransformer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="390" selection-end="390" vertical-scroll-proportion="0.25373134">
+            <state line="15" column="13" selection-start="390" selection-end="390" vertical-scroll-proportion="0.16504854">
               <folding />
             </state>
           </provider>
@@ -192,7 +192,7 @@
       <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="13" selection-start="902" selection-end="902" vertical-scroll-proportion="0.86993605">
+            <state line="24" column="13" selection-start="902" selection-end="902" vertical-scroll-proportion="0.5658807">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -203,7 +203,7 @@
       <file leaf-file-name="ConfigurationLoader.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="43" selection-start="731" selection-end="731" vertical-scroll-proportion="1.1599147">
+            <state line="32" column="43" selection-start="731" selection-end="731" vertical-scroll-proportion="0.7545076">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -214,7 +214,7 @@
       <file leaf-file-name="Handler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Handler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="13" selection-start="365" selection-end="365" vertical-scroll-proportion="0.5074627">
+            <state line="14" column="13" selection-start="365" selection-end="365" vertical-scroll-proportion="0.33009708">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,7 +225,7 @@
       <file leaf-file-name="Factory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Factory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.35123968">
+            <state line="10" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.23097827">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -236,7 +236,7 @@
       <file leaf-file-name="ConfigurationParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="13" selection-start="433" selection-end="433" vertical-scroll-proportion="0.5206612">
+            <state line="17" column="13" selection-start="433" selection-end="433" vertical-scroll-proportion="0.34951457">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -836,16 +836,16 @@
     <layout>
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.11273317" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.22627737" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.2843016" order="1" />
       <window_info id="BeanShell Box" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="1" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.3275649" order="8" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.3275649" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="6" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.24979724" order="1" />
+      <window_info id="Ant Build" active="true" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.24979724" order="1" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.31273177" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
@@ -998,21 +998,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/InjectClassFileTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="390" selection-end="390" vertical-scroll-proportion="0.25373134">
+        <state line="15" column="13" selection-start="390" selection-end="390" vertical-scroll-proportion="0.16504854">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/FilterClassFileTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.2750533">
+        <state line="15" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.17891817">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Handler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="365" selection-end="365" vertical-scroll-proportion="0.5074627">
+        <state line="14" column="13" selection-start="365" selection-end="365" vertical-scroll-proportion="0.33009708">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1021,7 +1021,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Factory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.35123968">
+        <state line="10" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.23097827">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1030,7 +1030,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="433" selection-end="433" vertical-scroll-proportion="0.5206612">
+        <state line="17" column="13" selection-start="433" selection-end="433" vertical-scroll-proportion="0.34951457">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1039,7 +1039,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="13" selection-start="902" selection-end="902" vertical-scroll-proportion="0.86993605">
+        <state line="24" column="13" selection-start="902" selection-end="902" vertical-scroll-proportion="0.5658807">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1048,7 +1048,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="43" selection-start="731" selection-end="731" vertical-scroll-proportion="1.1599147">
+        <state line="32" column="43" selection-start="731" selection-end="731" vertical-scroll-proportion="0.7545076">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1057,14 +1057,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="25" selection-start="993" selection-end="993" vertical-scroll-proportion="0.92975205">
+        <state line="35" column="25" selection-start="993" selection-end="993" vertical-scroll-proportion="0.62413317">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/integration/blaze/BlazeSessionState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="33" selection-start="233" selection-end="233" vertical-scroll-proportion="0.25373134">
+        <state line="7" column="33" selection-start="233" selection-end="233" vertical-scroll-proportion="0.16504854">
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1159199021595" expanded="true" signature="259:288" placeholder="/**...*/" />
@@ -1082,7 +1082,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="14" selection-start="8864" selection-end="8864" vertical-scroll-proportion="9.018018">
+        <state line="263" column="14" selection-start="8864" selection-end="8864" vertical-scroll-proportion="-0.7586207">
           <folding />
         </state>
       </provider>
