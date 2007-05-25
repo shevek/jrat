@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.io;
 
 
-
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -22,34 +21,30 @@ import java.net.Socket;
 
 /**
  * Class IOUtil
- *
+ * <p/>
  * $astChangedBy$
  * $LastChangedDate$
  * $LastChangedRevision$
  * $HeadURL$
  * $Id$
- *
+ * <p/>
  * todo - make sure streams get closed
  */
 public class IOUtil {
 
-    private static final Logger LOG                       = Logger.getLogger(IOUtil.class);
-    public static final int     DEFAULT_BUFFER_SIZE       = 1024 * 4;
-    public static final int     MAX_HEURISTIC_BUFFER_SIZE = 1024 * 16;
+    private static final Logger LOG = Logger.getLogger(IOUtil.class);
+    public static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
+    public static final int MAX_HEURISTIC_BUFFER_SIZE = 1024 * 16;
 
     public static void delete(File file) throws InputOutputException {
 
         Assert.assertNotNull("file", file);
         LOG.debug("delete(" + file + ")");
 
-        if (!file.delete())
-        {
-            if (file.exists())
-            {
+        if (!file.delete()) {
+            if (file.exists()) {
                 throw new InputOutputException("unable to delete file : " + file.getAbsolutePath());
-            }
-            else
-            {
+            } else {
                 throw new InputOutputException("unable to delete non-existant file : " + file.getAbsolutePath());
             }
         }
@@ -60,8 +55,7 @@ public class IOUtil {
 
         Assert.assertNotNull("file", file);
 
-        if (file.exists())
-        {
+        if (file.exists()) {
             delete(file);
         }
     }
@@ -72,20 +66,15 @@ public class IOUtil {
         Assert.assertNotNull("dir", dir);
         LOG.info("mkdir(" + dir.getAbsolutePath() + ")");
 
-        if (dir.exists())
-        {
-            if (dir.isDirectory())
-            {
+        if (dir.exists()) {
+            if (dir.isDirectory()) {
                 return;
-            }
-            else
-            {
+            } else {
                 throw new InputOutputException("unable to create directory because file with same name exists " + dir);
             }
         }
 
-        if (!dir.mkdirs())
-        {
+        if (!dir.mkdirs()) {
             throw new InputOutputException("unable to create directory : " + dir);
         }
     }
@@ -96,27 +85,23 @@ public class IOUtil {
         Assert.assertNotNull("source", source);
         Assert.assertNotNull("target", target);
 
-        if (!source.exists())
-        {
+        if (!source.exists()) {
             throw new InputOutputException("source file does not exist : " + source);
         }
 
-        if ((target.exists()) && (replace == true))
-        {
+        if ((target.exists()) && (replace == true)) {
             LOG.debug("rename.delete(" + target + ")");
 
-            if (!target.delete())
-            {
+            if (!target.delete()) {
                 throw new InputOutputException("unable to delete file : " + target.getAbsolutePath());
             }
         }
 
         LOG.debug("rename(" + source + " , " + target + ")");
 
-        if (!source.renameTo(target))
-        {
+        if (!source.renameTo(target)) {
             throw new InputOutputException("unable to rename " + source.getAbsolutePath() + " to "
-                                           + target.getAbsolutePath());
+                    + target.getAbsolutePath());
         }
     }
 
@@ -125,23 +110,19 @@ public class IOUtil {
             throws InputOutputException {
 
         byte[] buffer = new byte[bufferSize];
-        int    b      = 0;
+        int b = 0;
 
         Assert.assertNotNull("sourceStream", sourceStream);
         Assert.assertNotNull("targetStream", targetStream);
 
-        try
-        {
-            for (b = 0; b >= 0; b = sourceStream.read(buffer))
-            {
-                if (b != 0)
-                {
+        try {
+            for (b = 0; b >= 0; b = sourceStream.read(buffer)) {
+                if (b != 0) {
                     targetStream.write(buffer, 0, b);
                 }
             }
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new InputOutputException("error copying streams", e);
         }
     }
@@ -151,12 +132,10 @@ public class IOUtil {
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream(DEFAULT_BUFFER_SIZE);
 
-        try
-        {
+        try {
             copy(inputStream, outputStream);
         }
-        finally
-        {
+        finally {
             close(inputStream);
         }
 
@@ -175,27 +154,22 @@ public class IOUtil {
         Assert.assertNotNull("target", target);
         LOG.debug("copy(" + source.getAbsolutePath() + " , " + target.getAbsolutePath() + ")");
 
-        if (source.equals(target))
-        {
+        if (source.equals(target)) {
             LOG.debug("copy doing nothing, source and target are same");
 
             return false;
-        }
-        else
-        {
-            int          bufferSize   = (int) Math.min(MAX_HEURISTIC_BUFFER_SIZE, source.length());
-            InputStream  inputStream  = null;
+        } else {
+            int bufferSize = (int) Math.min(MAX_HEURISTIC_BUFFER_SIZE, source.length());
+            InputStream inputStream = null;
             OutputStream outputStream = null;
 
-            try
-            {
-                inputStream  = openInputStream(source, bufferSize);
+            try {
+                inputStream = openInputStream(source, bufferSize);
                 outputStream = openOutputStream(target, bufferSize);
 
                 copy(inputStream, outputStream, bufferSize);
             }
-            finally
-            {
+            finally {
                 close(outputStream);
                 close(inputStream);
             }
@@ -204,24 +178,24 @@ public class IOUtil {
         }
     }
 
+    public static InputStream openInputStream(File file) {
+        return openInputStream(file, DEFAULT_BUFFER_SIZE);
+    }
 
     public static InputStream openInputStream(File file, int bufferSize) {
 
         LOG.debug("openInputStream " + file.getAbsolutePath());
 
-        try
-        {
+        try {
             InputStream inputStream = new FileInputStream(file);
 
-            if (bufferSize > 0)
-            {
+            if (bufferSize > 0) {
                 inputStream = new BufferedInputStream(inputStream, bufferSize);
             }
 
             return inputStream;
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new InputOutputException("unable to open file for read " + file.getAbsolutePath());
         }
     }
@@ -231,19 +205,16 @@ public class IOUtil {
 
         LOG.debug("openOutputStream " + file.getAbsolutePath());
 
-        try
-        {
+        try {
             OutputStream outputStream = new FileOutputStream(file);
 
-            if (bufferSize > 0)
-            {
+            if (bufferSize > 0) {
                 outputStream = new BufferedOutputStream(outputStream, bufferSize);
             }
 
             return outputStream;
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new InputOutputException("unable to open file for read " + file.getAbsolutePath());
         }
     }
@@ -251,15 +222,12 @@ public class IOUtil {
 
     public static void close(Reader reader) {
 
-        try
-        {
-            if (reader != null)
-            {
+        try {
+            if (reader != null) {
                 reader.close();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("close Reader failes", e);
         }
     }
@@ -267,16 +235,13 @@ public class IOUtil {
 
     public static void close(Writer writer) {
 
-        try
-        {
-            if (writer != null)
-            {
+        try {
+            if (writer != null) {
                 LOG.debug("close " + writer);
                 writer.close();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("close Writer failes", e);
         }
     }
@@ -284,15 +249,12 @@ public class IOUtil {
 
     public static void close(Socket socket) {
 
-        try
-        {
-            if (socket != null)
-            {
+        try {
+            if (socket != null) {
                 socket.close();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("close Socket failes", e);
         }
     }
@@ -300,15 +262,12 @@ public class IOUtil {
 
     public static void close(InputStream inputStream) {
 
-        try
-        {
-            if (inputStream != null)
-            {
+        try {
+            if (inputStream != null) {
                 inputStream.close();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("close InputStream failes", e);
         }
     }
@@ -316,15 +275,12 @@ public class IOUtil {
 
     public static void close(OutputStream outputStream) {
 
-        try
-        {
-            if (outputStream != null)
-            {
+        try {
+            if (outputStream != null) {
                 outputStream.close();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("close OutputStream failes", e);
         }
     }
@@ -332,15 +288,12 @@ public class IOUtil {
 
     public static void flush(OutputStream outputStream) {
 
-        try
-        {
-            if (outputStream != null)
-            {
+        try {
+            if (outputStream != null) {
                 outputStream.flush();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("flush OutputStream failes", e);
         }
     }
@@ -353,8 +306,8 @@ public class IOUtil {
         int lastDot = fileName.lastIndexOf('.');
 
         return (lastDot == -1)
-               ? null
-               : fileName.substring(lastDot + 1);
+                ? null
+                : fileName.substring(lastDot + 1);
     }
 
 
@@ -372,8 +325,7 @@ public class IOUtil {
 
         File p = file.getParentFile();
 
-        while ((p != null) && (p.exists() == false))
-        {
+        while ((p != null) && (p.exists() == false)) {
             p = p.getParentFile();
         }
 

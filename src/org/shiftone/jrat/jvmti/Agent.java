@@ -2,8 +2,8 @@ package org.shiftone.jrat.jvmti;
 
 
 
-import org.shiftone.jrat.core.config.Configuration;
-import org.shiftone.jrat.core.config.ConfigurationLoader;
+import org.shiftone.jrat.core.boot.config.Configuration;
+import org.shiftone.jrat.core.boot.JRatRuntime;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -34,7 +34,7 @@ public class Agent {
         LOG.info("agentArgs = " + agentArgs);
 
 
-		Configuration configuration = ConfigurationLoader.getConfiguration();
+		Configuration configuration = JRatRuntime.INSTANCE.getConfiguration();
 
 		InjectorOptions injectorOptions = new InjectorOptions();
         injectorOptions.setCriteria(configuration);

@@ -7,6 +7,8 @@ import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import org.shiftone.jrat.util.io.Dir;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
+import org.shiftone.jrat.core.boot.JRatRuntime;
+import org.shiftone.jrat.core.boot.config.Configuration;
 
 import java.io.File;
 
@@ -19,40 +21,23 @@ import java.io.File;
  *
  * @author $Author: jeffdrost $
  * @version $Revision: 1.19 $
+ * @deprecated
  */
 public class Settings {
 
     private static final Logger LOG                        = Logger.getLogger(Settings.class);
-    private static final String DEFAULT_LOG_LEVEL          = "info";
-    private static final int    DEFAULT_OUTPUT_BUFFER_SIZE = 1024 * 8;
-    private static final int    DEFAULT_RMI_REGISTRY_PORT  = 2121;
-	private static final int    DEFAULT_HTTP_PORT  		   = 8888;
-	private static final String DEFAULT_BASE_DIRECTORY     = "JRatOutput";
+
     public static final String  CONFIGURATION_FILE         = "jrat.config.file";
     public static final String  SPRING_CONFIG_FILE         = "jrat.spring.file";
     public static final String  SPRING_BEAN_NAME           = "jrat.spring.bean";
     public static final String  HANDLER_CLASS              = "jrat.factory";
 
-    // public static final String HANDLER_NAME = "jrat.handler";
-    public static final String INJECTOR_STRATEGY                 = "jrat.injector.strategy";
-    public static final String INJECTOR_DEFAULT_EXCLUDES_ENABLED = "jrat.injector.default.excludes.enabled";
-    public static final String APPLICATION                       = "jrat.app";
-    public static final String BASE_DIRECTORY                    = "jrat.base.dir";    // billjdap
-	public static final String HTTP_ENABLED                      = "jrat.http.enabled";
-	public static final String HTTP_PORT                         = "jrat.http.port";
-	public static final String JMX_ENABLED                       = "jrat.jmx.enabled";
-    public static final String JMX_MBEAN_SERVER_CREATE           = "jrat.jmx.create";
-    public static final String JMX_MBEAN_SERVER_SERVICE_URL      = "jrat.jmx.service.url";
-    public static final String JMX_MBEAN_SERVER_AGENT_ID         = "jrat.jmx.agent.id";
-    public static final String RMI_REGISTRY_PORT                 = "jrat.rmi.jmx.port";
-    public static final String RMI_REGISTRY_CREATE               = "jrat.rmi.jmx.create";
-    public static final String OUTPUT_BUFFER_SIZE                = "jrat.output.buffers.size";
-    public static final String OUTPUT_COMPRESSION                = "jrat.output.compress";
-    public static final String NANOSECOND_TIMING_ENABLED         = "jrat.timing.nanoseconds";
-    public static final String LOG_LEVEL                         = "jrat.log.level";
+
     public static final String USER_NAME                         = "user.name";
     public static final String USER_HOME                         = "user.home";
     public static final String USER_CWD                          = "user.dir";
+    
+    private static org.shiftone.jrat.core.boot.config.Settings settings = JRatRuntime.INSTANCE.getSettings();
 
     static
     {
@@ -76,22 +61,22 @@ public class Settings {
 
 
     public static boolean isOutputCompressionEnabled() {
-        return getBoolean(OUTPUT_COMPRESSION, false);
+        return settings.isOutputCompressionEnabled();
     }
 
 
     public static boolean isNanoSecondTimingEnabled() {
-        return getBoolean(NANOSECOND_TIMING_ENABLED, false);
+        return settings.isNanoSecondTimingEnabled();
     }
 
 
     public static String getLogLevel() {
-        return getString(LOG_LEVEL, DEFAULT_LOG_LEVEL);
+        return settings.getLogLevel();
     }
 
 
     public static int getOutputBufferSize() {
-        return getInteger(OUTPUT_BUFFER_SIZE, DEFAULT_OUTPUT_BUFFER_SIZE);
+        return settings.getOutputBufferSize();
     }
 
 
@@ -111,50 +96,49 @@ public class Settings {
 
 
     public static boolean isJmxEnabled() {
-        return getBoolean(JMX_ENABLED, true);
+        return settings.isJmxEnabled();
     }
 
 	public static int isHttpPort() {
-        return getInteger(HTTP_PORT, DEFAULT_HTTP_PORT);
+        return settings.getHttpPort();
     }
 
 	public static boolean isHttpServerEnabled() {
-        return getBoolean(HTTP_ENABLED, true);
+        return settings.isHttpServerEnabled();
     }
 
 	public static boolean isMBeanServerCreationEnabled() {
-        return getBoolean(JMX_MBEAN_SERVER_CREATE, false);
+        return settings.isMBeanServerCreationEnabled();
     }
 
 
     public static String getMBeanServerServerUrl() {
-        return getString(JMX_MBEAN_SERVER_SERVICE_URL,
-                         "service:jmx:rmi:///jndi/rmi://localhost:" + getRmiRegistryPort() + "/jrat");
+        return settings.getMBeanServerServerUrl();
     }
 
 
     public static String getMBeanServerAgentId() {
-        return getString(JMX_MBEAN_SERVER_AGENT_ID, null);
+        return settings.getMBeanServerAgentId();
     }
 
 
     public static boolean isRmiRegistryCreationEnabled() {
-        return getBoolean(RMI_REGISTRY_CREATE, true);
+        return settings.isRmiRegistryCreationEnabled();
     }
 
 
     public static int getRmiRegistryPort() {
-        return getInteger(RMI_REGISTRY_PORT, DEFAULT_RMI_REGISTRY_PORT);
+        return settings.getRmiRegistryPort();
     }
 
 
     public static Dir getBaseDirectory() {
-        return new Dir(getString(BASE_DIRECTORY, DEFAULT_BASE_DIRECTORY));
+        return settings.getBaseDirectory();
     }
 
 
     public static String getApplicationName() {
-        return getString(APPLICATION, null);
+        return settings.getApplicationName();
     }
 
 
@@ -174,27 +158,15 @@ public class Settings {
 
 
     public static String getInjectorStrategyClassName() {
-        return getString(INJECTOR_STRATEGY, AsmInjectorStrategy.class.getName());
+        return settings.getInjectorStrategyClassName();
     }
 
 
     public static boolean isInjectorDefaultExcludesEnabled() {
-        return getBoolean(INJECTOR_DEFAULT_EXCLUDES_ENABLED, true);
+        return settings.isInjectorDefaultExcludesEnabled();
     }
 
 
-    // ------------------------------------------------------------------------
-    private static int getInteger(String key, int defaultValue) {
-
-        String valueText = System.getProperty(key);
-        int    value     = (valueText == null)
-                           ? defaultValue
-                           : Integer.parseInt(valueText);
-
-        LOG.info("integer '" + key + "' = '" + value + "'");
-
-        return value;
-    }
 
 
     private static String getString(String key, String defaultValue) {
@@ -214,28 +186,4 @@ public class Settings {
     }
 
 
-    private static boolean getBoolean(String key, boolean defaultValue) {
-
-        boolean result = defaultValue;
-        String  value  = System.getProperty(key);
-
-        if (value != null)
-        {
-            value = value.toLowerCase();
-
-            if (("true".equals(value)) || ("yes".equals(value)) || ("t".equals(value)) || ("y".equals(value))
-                    || ("on".equals(value)))
-            {
-                result = true;
-            }
-            else
-            {
-                result = false;
-            }
-        }
-
-        LOG.info("boolean '" + key + "' = '" + result + "'");
-
-        return result;
-    }
 }
