@@ -1,25 +1,31 @@
-<jrat>
+<jrat-configuration>
 
-  <handler>
+    <settings>
+        <property name="x" value="y"/>
+    </settings>
 
-	<include className="*Servlet" methodName="do*"/>
-    <include className="*Servlet" methodName="service"/>
-	<include className="Foo*"/>
+    <profile>
 
-	<factory class="org.shiftone.jrat.provider.stats.StatMethodHandlerFactory">
+        <criteria>
+            <include className="*Servlet" methodName="do*"/>
+            <include className="*Servlet" methodName="service"/>
+            <include className="Foo*"/>
+        </criteria>
 
-       <property name="CompressOutput" value="false"/>
-       <property name="RecordUnused"   value="false"/>
-       <property name="OutputFile"     value="MyStatOuputFile"/>
+        <handlers>
 
-    </factory>
+            <handler factory="org.shiftone.jrat.provider.stats.StatMethodHandlerFactory">
+                <property name="CompressOutput" value="false"/>
+                <property name="RecordUnused" value="false"/>
+                <property name="OutputFile" value="MyStatOuputFile"/>
+            </handler>
 
-	<factory class="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
+            <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
+                <property name="CompressOutput" value="false"/>
+            </handler>
 
-       <property name="CompressOutput" value="false"/>
+        </handlers>
 
-    </factory>
+    </profile>
 
-  </handler>
-
-</jrat>
+</jrat-configuration>
