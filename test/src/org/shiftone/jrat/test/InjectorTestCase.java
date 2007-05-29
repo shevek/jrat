@@ -47,7 +47,7 @@ public class InjectorTestCase extends TestCase {
 		//System.setProperty(Settings.HANDLER_CLASS, TraceMethodHandlerFactory.class.getName()) ;
 		//System.setProperty(Settings.HANDLER_CLASS, StatMethodHandlerFactory.class.getName());
 		//System.setProperty(Settings.HANDLER_CLASS, TreeMethodHandlerFactory.class.getName());
-        System.setProperty(Settings.HANDLER_CLASS, SpringMethodHandlerFactory.class.getName());
+       // System.setProperty(Settings.HANDLER_CLASS, SpringMethodHandlerFactory.class.getName());
 
 
 		Transformer transformer = new Transformer();

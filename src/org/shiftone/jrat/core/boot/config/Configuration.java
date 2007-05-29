@@ -68,6 +68,10 @@ public class Configuration implements MethodCriteria {
     }
 
 
+    public List getProfiles() {
+        return profiles;
+    }
+
     public Settings getSettings() {
         return settings;
     }
