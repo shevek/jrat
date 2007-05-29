@@ -1,0 +1,29 @@
+<jrat>
+
+    <!-- ********************************************************************
+    **  Java Runtime Analysis Toolkit                                      **
+    **  sample, default configuration file - modify as need                **  
+    **                                                                     **
+    ********************************************************************* -->
+    
+    <settings>
+        <property name="httpServerEnabled" value="true"/>
+    </settings>
+
+    <profile>
+
+        <criteria>
+            <include className="*" methodName="*"/>
+        </criteria>
+
+        <handlers>
+
+            <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
+                <property name="compressOutput" value="false"/>
+            </handler>
+
+        </handlers>
+
+    </profile>
+
+</jrat>
