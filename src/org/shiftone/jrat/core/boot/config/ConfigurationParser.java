@@ -82,23 +82,25 @@ public class ConfigurationParser {
 
         NodeList includes = handlerElement.getElementsByTagName("include");
         for (int i = 0; i < includes.getLength(); i++) {
-            process(profile.createInclude(), (Element) includes.item(i));
+            processCriteria(profile.createInclude(), (Element) includes.item(i));
         }
 
         NodeList excludes = handlerElement.getElementsByTagName("exclude");
         for (int i = 0; i < excludes.getLength(); i++) {
-            process(profile.createExclude(), (Element) excludes.item(i));
+            processCriteria(profile.createExclude(), (Element) excludes.item(i));
         }
 
-        NodeList factories = handlerElement.getElementsByTagName("factory");
+        NodeList factories = handlerElement.getElementsByTagName("handler");
         for (int i = 0; i < factories.getLength(); i++) {
-            process(profile.createFactory(), (Element) factories.item(i));
+            processFactory(profile.createFactory(), (Element) factories.item(i));
         }
     }
 
-    private void process(HandlerFactory handlerFactory, Element factoryElement) {
+    private void processFactory(Factory factory, Element factoryElement) {
+        
+        // <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
 
-        handlerFactory.setClassName(factoryElement.getAttribute("class"));
+        factory.setClassName(factoryElement.getAttribute("factory"));
         NodeList properties = factoryElement.getElementsByTagName("property");
 
         for (int i = 0; i < properties.getLength(); i++) {
@@ -106,11 +108,11 @@ public class ConfigurationParser {
             String name = nvl(property.getAttribute("name"));
             String value = nvl(property.getAttribute("value"));
             Assert.assertNotNull("name", name);
-            handlerFactory.getProperties().put(name, value);
+            factory.getProperties().put(name, value);
         }
     }
 
-    private void process(MatcherMethodCriteria criteria, Element criteriaElement) {
+    private void processCriteria(MatcherMethodCriteria criteria, Element criteriaElement) {
         criteria.setClassName(nvl(criteriaElement.getAttribute("className")));
         criteria.setMethodName(nvl(criteriaElement.getAttribute("methodName")));
         criteria.setSignature(nvl(criteriaElement.getAttribute("signature")));
