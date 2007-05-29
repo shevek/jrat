@@ -31,8 +31,8 @@ public class Profile implements MethodCriteria {
 		return newCriteria;
 	}
 
-	public Factory createFactory() {
-		Factory factory = new Factory();
+	public HandlerFactory createFactory() {
+		HandlerFactory factory = new HandlerFactory();
 		factories.add(factory);
 		return factory;
 	}
