@@ -96,7 +96,7 @@ public class ConfigurationParser {
         }
     }
 
-    private void processFactory(HandlerFactory factory, Element factoryElement) {
+    private void processFactory(Factory factory, Element factoryElement) {
         
         // <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
 

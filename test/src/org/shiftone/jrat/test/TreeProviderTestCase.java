@@ -9,7 +9,7 @@ import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.integration.aop.proxy.JRatInvocationHandler;
+import org.shiftone.jrat.core.proxy.JRatInvocationHandler;
 
 import java.util.ArrayList;
 import java.util.List;

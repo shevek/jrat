@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
     private static final Log LOG = LogFactory.getLog(ConfigMethodHandlerFactory.class);
-
+    private ProfileFactory[] factories;
     private final List profiles ;
 
     public ConfigMethodHandlerFactory(Configuration configuration) {
@@ -28,19 +28,22 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
     }
 
     public void startup(RuntimeContext context) throws Exception {
+        factories = new  ProfileFactory[profiles.size()];
         for (int i = 0 ; i < profiles.size() ; i ++) {
-             Profile profile = (Profile)profiles.get(i);
+             factories[i] = new ProfileFactory((Profile)profiles.get(i));
         }
     }
 
     private class ProfileFactory {
         private MethodHandlerFactory methodHandlerFactory;
-        private final Profile profile;
-
+       private final Profile profile;
 
         public ProfileFactory(Profile profile) {
             this.profile = profile;
+
         }
+
+
     }
 
 }

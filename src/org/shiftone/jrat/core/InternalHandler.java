@@ -18,10 +18,10 @@ import java.util.Map;
 
 
 /**
- * This class basically does all the work for the HandlerFactory. It exists to
+ * This class basically does all the work for the Factory. It exists to
  * allow some singletons to be initialized the first time someone this class is
  * loaded. In contrast, this class should only be loaded when a call is made to
- * the HandlerFactory's getMethodHandler method is called. There is very little
+ * the Factory's getMethodHandler method is called. There is very little
  * difference between this approach and implementing lazy loading.
  *
  * @author $Author: jeffdrost $

@@ -11,9 +11,9 @@ import java.util.HashMap;
 /**
  * @author Jeff Drost
  */
-public class HandlerFactory {
+public class Factory {
 
-    private static final Logger LOG = Logger.getLogger(HandlerFactory.class);
+    private static final Logger LOG = Logger.getLogger(Factory.class);
     private String className;
     private Map properties = new HashMap();
 
