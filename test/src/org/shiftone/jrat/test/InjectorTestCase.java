@@ -9,7 +9,6 @@ import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory;
-import org.shiftone.jrat.provider.config.spring.SpringMethodHandlerFactory;
 import org.shiftone.jrat.test.dummy.CrashTestDummy;
 import org.shiftone.jrat.test.dummy.JuniorDummy;
 import org.shiftone.jrat.util.io.ResourceUtil;
