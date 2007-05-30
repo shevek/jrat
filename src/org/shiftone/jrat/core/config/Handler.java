@@ -12,9 +12,9 @@ import java.util.Map;
 /**
  * @author Jeff Drost
  */
-public class Factory {
+public class Handler {
 
-    private static final Logger LOG = Logger.getLogger(Factory.class);
+    private static final Logger LOG = Logger.getLogger(Handler.class);
     private String className;
     private Map properties = new HashMap();
 

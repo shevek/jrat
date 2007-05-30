@@ -8,7 +8,6 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.Assert;
-import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,11 +35,11 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
             for (int f = 0; f < factories.size(); f++) {
 
-                Factory factory = (Factory) factories.get(f);
+                Handler handler = (Handler) factories.get(f);
 
-                LOG.info("Loading profile " + p + ", factory " + f + " (" + factory.getClassName() + ")...");
+                LOG.info("Loading profile " + p + ", factory " + f + " (" + handler.getClassName() + ")...");
 
-                profileFactories.add(new FactoryInstance(factory.buildMethodHandlerFactory(), profile));
+                profileFactories.add(new FactoryInstance(handler.buildMethodHandlerFactory(), profile));
 
             }
         }

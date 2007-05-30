@@ -104,11 +104,11 @@ public class ConfigurationParser {
         }
     }
 
-    private void processFactory(Factory factory, Element factoryElement) {
+    private void processFactory(Handler handler, Element factoryElement) {
 
         // <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
 
-        factory.setClassName(factoryElement.getAttribute("factory"));
+        handler.setClassName(factoryElement.getAttribute("factory"));
         NodeList properties = factoryElement.getElementsByTagName("property");
 
         for (int i = 0; i < properties.getLength(); i++) {
@@ -116,7 +116,7 @@ public class ConfigurationParser {
             String name = nvl(property.getAttribute("name"));
             String value = nvl(property.getAttribute("value"));
             Assert.assertNotNull("name", name);
-            factory.getProperties().put(name, value);
+            handler.getProperties().put(name, value);
         }
     }
 

@@ -31,10 +31,10 @@ public class Profile implements MethodCriteria {
         return newCriteria;
     }
 
-    public Factory createFactory() {
-        Factory factory = new Factory();
-        factories.add(factory);
-        return factory;
+    public Handler createFactory() {
+        Handler handler = new Handler();
+        factories.add(handler);
+        return handler;
     }
 
     public boolean isMatch(String className, long modifier) {
