@@ -12,8 +12,6 @@ import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.Collection;
 
 /**
@@ -23,11 +21,10 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
     private static final Log LOG = LogFactory.getLog(ConfigMethodHandlerFactory.class);
     private final List profileFactories = new ArrayList();
-    private final List profiles;
-
+    
     public ConfigMethodHandlerFactory(Configuration configuration) {
 
-        this.profiles = configuration.getProfiles();
+        List profiles = configuration.getProfiles();
 
         for (int p = 0; p < profiles.size(); p++) {
 
@@ -37,11 +34,7 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
             for (int f = 0; f < factories.size(); f++) {
 
                 Factory factory = (Factory) factories.get(f);
-
-                MethodHandlerFactory methodHandlerFactory = factory.buildMethodHandlerFactory();
-                MethodCriteria methodCriteria = profile;
-
-                profileFactories.add(new ProfileFactory(methodHandlerFactory, methodCriteria));
+                profileFactories.add(new FactoryInstance(factory.buildMethodHandlerFactory(), profile));
 
             }
         }
@@ -55,10 +48,10 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
         while (iterator.hasNext()) {
 
-           ProfileFactory profileFactory = (ProfileFactory) iterator.next();
+           FactoryInstance factoryInstance = (FactoryInstance) iterator.next();
 
             // todo - get modifiers
-           profileFactory.addHandlerIfApplicable(methodHandlers, methodKey);
+           factoryInstance.addHandlerIfApplicable(methodHandlers, methodKey);
 
         }
 
@@ -78,21 +71,20 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
         while (iterator.hasNext()) {
 
-            ProfileFactory profileFactory = (ProfileFactory) iterator.next();
-            profileFactory.methodHandlerFactory.startup(context);
+            FactoryInstance factoryInstance = (FactoryInstance) iterator.next();
+            factoryInstance.methodHandlerFactory.startup(context);
 
         }
 
     }
 
-    // todo - come up with a better name
-    private class ProfileFactory {
+    private class FactoryInstance {
 
         private final MethodHandlerFactory methodHandlerFactory;
         private final MethodCriteria methodCriteria;
 
 
-        public ProfileFactory(MethodHandlerFactory methodHandlerFactory, MethodCriteria methodCriteria) {
+        public FactoryInstance(MethodHandlerFactory methodHandlerFactory, MethodCriteria methodCriteria) {
             this.methodHandlerFactory = methodHandlerFactory;
             this.methodCriteria = methodCriteria;
         }

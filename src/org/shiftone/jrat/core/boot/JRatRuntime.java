@@ -19,6 +19,7 @@ import java.util.Date;
  * @author Jeff Drost
  */
 public class JRatRuntime {
+    
     private static final Logger LOG = Logger.getLogger(JRatRuntime.class);
     private static final String DEFAULT = "org/shiftone/jrat/core/boot/default.xml";
     public static final JRatRuntime INSTANCE = new JRatRuntime();

@@ -31,6 +31,7 @@ public class Configuration implements MethodCriteria {
 
 
     public Configuration() {
+        
         methodCriteria.addCriteria(customCriteria);
         methodCriteria.addCriteria(new NotMethodCriteria(excludeCriteria));
         addClassExclude("bsh.*");
