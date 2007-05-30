@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core;
 
 
-import org.shiftone.jrat.core.boot.JRatRuntime;
+import org.shiftone.jrat.core.boot.Environment;
 import org.shiftone.jrat.core.boot.config.CacheMethodHandlerFactory;
 import org.shiftone.jrat.core.boot.config.ConfigMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
@@ -39,7 +39,7 @@ public class InternalHandler {
 
             rootHandlerFactory = new CacheMethodHandlerFactory(
                     new ConfigMethodHandlerFactory(
-                            JRatRuntime.INSTANCE.getConfiguration()
+                            Environment.INSTANCE.getConfiguration()
                     )
             );
 

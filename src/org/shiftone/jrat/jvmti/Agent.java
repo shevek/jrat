@@ -1,7 +1,7 @@
 package org.shiftone.jrat.jvmti;
 
 
-import org.shiftone.jrat.core.boot.JRatRuntime;
+import org.shiftone.jrat.core.boot.Environment;
 import org.shiftone.jrat.core.boot.config.Configuration;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.util.VersionUtil;
@@ -18,7 +18,7 @@ public class Agent {
 
     private static final Logger LOG = Logger.getLogger(Agent.class);
     private static boolean installed = false;
-    private static Configuration configuration = JRatRuntime.INSTANCE.getConfiguration();
+    private static Configuration configuration = Environment.INSTANCE.getConfiguration();
 
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {

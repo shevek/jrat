@@ -17,15 +17,15 @@ import java.util.Date;
 /**
  * @author Jeff Drost
  */
-public class JRatRuntime {
+public class Environment {
 
-    private static final Logger LOG = Logger.getLogger(JRatRuntime.class);
+    private static final Logger LOG = Logger.getLogger(Environment.class);
     private static final String DEFAULT = "org/shiftone/jrat/core/boot/default.xml";
-    public static final JRatRuntime INSTANCE = new JRatRuntime();
+    public static final Environment INSTANCE = new Environment();
     private Configuration configuration;
 
 
-    public JRatRuntime() {
+    public Environment() {
 
         File file = new File("jrat.xml");
 

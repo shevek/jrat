@@ -18,35 +18,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idea.iml" afterPath="$PROJECT_DIR$/idea.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idea.ipr" afterPath="$PROJECT_DIR$/idea.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idea.iws" afterPath="$PROJECT_DIR$/idea.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/org/shiftone/jrat/test/InjectorTestCase.java" afterPath="$PROJECT_DIR$/test/src/org/shiftone/jrat/test/InjectorTestCase.java" />
     </list>
     <list name="Failed commit: Default" comment="" />
     <list name="Failed commit: Failed commit: Default" comment="Failed commit: Default" />
     <list name="Failed commit: Default (2)" comment="Failed commit: Default" />
-    <list name="Failed commit: Default (3)" comment="Failed commit: Default">
+    <list name="Failed commit: Default (3)" comment="Failed commit: Default" />
+    <list name="Failed commit: Failed commit: Default (3)" comment="Failed commit: Default" />
+    <list name="Failed commit: Default (4)" comment="Failed commit: Default">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/Agent.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/Agent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/boot" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\LegacyMethodHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\ConfigurationParser.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\ConfigMethodHandlerFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\CacheMethodHandlerFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Configuration.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\JRatRuntime.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/default.xml" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Factory.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/InternalHandler.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/InternalHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Environment.java" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Profile.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\CompositeMethodHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Settings.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config" afterPath="" />
     </list>
-    <list name="Failed commit: Failed commit: Default (3)" comment="Failed commit: Default" />
   </component>
   <component name="ChangeListSynchronizer" />
   <component name="ChangesViewManager" flattened_view="true" />
@@ -186,70 +169,16 @@
       <file leaf-file-name="AbstractMethodHandlerFactory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/AbstractMethodHandlerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="0" selection-start="1781" selection-end="1781" vertical-scroll-proportion="1.3414634">
+            <state line="31" column="90" selection-start="963" selection-end="963" vertical-scroll-proportion="0.9337121">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Settings.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Settings.java">
+      <file leaf-file-name="Environment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/boot/Environment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="207" selection-end="207" vertical-scroll-proportion="0.24186991">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Environment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/Environment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="66" selection-start="700" selection-end="700" vertical-scroll-proportion="0.35639414">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/default.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="23" selection-start="596" selection-end="596" vertical-scroll-proportion="0.55284554">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Commandlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/Commandlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="114" selection-end="114" vertical-scroll-proportion="0.24186991">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MethodHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/MethodHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="17" selection-start="85" selection-end="85" vertical-scroll-proportion="0.20731707">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MethodHandlerFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/MethodHandlerFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="17" selection-start="128" selection-end="128" vertical-scroll-proportion="0.3109756">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RuntimeContext.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/RuntimeContext.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="17" selection-start="225" selection-end="225" vertical-scroll-proportion="0.3109756">
+            <state line="30" column="49" selection-start="918" selection-end="918" vertical-scroll-proportion="0.5964912">
               <folding />
             </state>
           </provider>
@@ -630,7 +559,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\config" />
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -647,7 +576,7 @@
       <showLibraryContents />
       <hideEmptyPackages />
       <abbreviatePackageNames />
-      <showStructure ProjectPane="false" PackagesPane="false" Scope="false" Favorites="false" />
+      <showStructure Scope="false" ProjectPane="false" PackagesPane="false" Favorites="false" />
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
@@ -675,495 +604,7 @@
       <recent name="org.shiftone.jrat.util.log" />
     </key>
   </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="5/30/07 9:41 AM" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\cli\Cli.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\Settings.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\Signature.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\proxy\ProxyCommand.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\proxy\JRatInvocationHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\proxy\ProxyInvocationHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\HandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\RuntimeContextImpl.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\InternalHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\Commandlet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\LegacyMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\MethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\RuntimeContext.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\AbstractMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\ui\ViewContext.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\ui\ViewerXmlHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\ui\OutputViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\ui\AbstractOutputXmlViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\ui\View.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\ui\ViewContainer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\spi\MethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\JmxRegistryFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\NullJmxRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\JmxRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\WaitingJmxRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\benchmark\Benchmark.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\benchmark\BenchmarkMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\info\JRatInfoMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\info\JRatInfo.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\jmx\ServerJmxRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\JRatException.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\Accumulator.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileOutput.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\OutputDirectory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileOutputFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileOutputRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileOutputPrintWriter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileInfo.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileOutputRegistryMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileOutputOutputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\output\FileOutputWriter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\IncludeExcludeMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\MethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\NotMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\OrMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\AndMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\CompositeMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\MatcherMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\DebugMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\ClassMatcherMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria\ConstantMethodCriteria.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\default.xml</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\JRatRuntime.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Profile.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Settings.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\ConfigurationParser.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Configuration.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\CacheMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\ConfigMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\MethodKeyPool.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\ServiceFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\MethodKeyAccumulator.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\MethodKey.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\shutdown\ShutdownListener.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\shutdown\ShutdownRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\shutdown\ShutdownRegistryMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\command\CommandletRegistryFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\command\SystemPropertiesCommandlet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\command\ListRegistryCommandlet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\command\TinyWebServer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\command\CommandletRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\api\Callable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\api\Monitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\api\Command.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\jvmti\InjectClassFileTransformer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\jvmti\Agent.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\jvmti\FilterClassFileTransformer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\jvmti\package.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\TreeMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\TreeMethodHandlerFactoryMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\Delegate.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\StackNode.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\DelegateThreadLocal.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\TreeViewerPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\graph\BufferedJComponent.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\graph\TreeGraphComponent.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\touch\CallEdge.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\touch\CallNode.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\touch\TouchGraphAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\touch\StackTreeNodeGLPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\TreeOutputXmlViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\stack\StackTableModel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\InstanceCache.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\NodeDetailPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\children\ChildrenPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\children\ChildrenTableFormat.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\PercentColorLookup.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\StackTreeNode.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\StackTreeCellRenderer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\action\StatsViewAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\action\SpawnRootAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\ui\pie\PieGraphComponent.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\TreeMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\command\WriteOutputCommandlet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\command\ResetCommandlet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\command\DumpOutputCommandlet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree\package.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\log\JclMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\log\Log4jMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\log\JclMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\log\Log4jMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\RateTimerTask.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\RateMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\RateMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\RateOutput.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\ControlPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\graph\MaxMemoryGraph.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\graph\MeanDurationGraph.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\graph\ThroughputGraph.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\graph\UsedMemoryGraph.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\RateModelTableModel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\RateTableModelListener.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\RateModel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\RateViewerPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\RateModelSample.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate\ui\RateOutputViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\errors\ErrorsMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\errors\ErrorsMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate2\BoundaryMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate2\RateMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate2\Context.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\rate2\RateMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\package.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\silent\SilentMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\silent\package.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\StatMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\StatComparator.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\StatMethodHandlerFactoryMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\StatMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\StatOutput.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\ui\StatsTableFormat.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\ui\StatsViewerPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\ui\StatsOutputViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\ui\TotalsEventList.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\ui\StatsMatcherEditor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\ui\StatsMatcherEditorPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\ui\StatsMatcherEditorsPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\ResetAccumulatorOperation.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\AverageDurationAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\TotalErrorsAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\TotalExitsAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\AbstractAccumulatorAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\MaxConcurrentThreadsAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\TotalEntersAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\MinDurationAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\MaxDurationAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\attributes\ConcurrentThreadsAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\jmx\StatMBeanRegistry.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats\package.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\TraceOutput.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\TraceMethodHandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\TraceMethodHandlerFactoryMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\Delegate.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\TraceMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\ui\TraceModel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\ui\TraceOutputViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\ui\TraceNode.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\ui\TraceTreeCellRenderer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\ui\TraceViewPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\ui\MethodKeyTableFormat.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\trace\ui\TraceInput.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\InjectionException.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\ant\InjectTask.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\ant\AbstractFileTask.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\ant\InjectCopyTask.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\InjectorCli.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\InjectorOptions.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\Injector.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\InjectorStrategy.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\ClassInitClassVisitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\AsmInjectorStrategy.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\InjectClassVisitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\ProxyMethodVisitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\IfInterfaceClassVisitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\MethodCriteriaClassVisitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\ClassInitMethodVisitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\Constants.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\asm\DebugClassVisitor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\Transformer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\TransformerMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\InjectorException.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\Modifier.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode\TransformerOptions.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\FileProcessor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\ArchiveFileProcessor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\CompositeFileProcessor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\AbstractFileProcessor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\DirectoryFileProcessor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\ClassFileProcessor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\CopyFileProcessor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\process\OpenInputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\UserSettings.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\OpenOutputFileAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\ProgressInputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\xml\SimpleXmlTreeNode.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\xml\SimpleXmlOutputViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\SimpleTextOutputViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\ViewContextImpl.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\OpenOutputFileRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\RepaintRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\tsv\TsvComparator.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\tsv\TsvTableModel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\tsv\TsvMouseAdapter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\viewer\tsv\SimpleTsvOutputViewBuilder.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\SplashWindow.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\status\StatusPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\DesktopFrame.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\tab\TabbedPaneViewContainer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\tab\TabbedView.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\help\html\license\lgpl.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\help\html\license\apache.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\help\html\license\index.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\help\html\index.html</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\help\ShowDocsAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\help\AboutAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\Desktop.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\UIConstants.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\inject\InjectRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\inject\InjectDirAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\action\ResizeAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\action\SpawnFrameAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\action\RemoveCurrentTabAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\action\ExitAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\action\RemoveAllTabsAction.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\DotIcon.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\PercentTableCellRenderer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\graph\NGraphPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\graph\SpacingChangeListener.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\graph\GraphModel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\graph\GraphComponent.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\graph\AbstractGraph.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\graph\GraphModelSet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\BackgroundActionListener.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\BrowserPanel.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\NoOpComparator.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\WaitDialog.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\StatusBar.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\ColorSet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\JRatFrame.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\ColorTableCellRenderer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\NSplitPane.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\ui\util\ExceptionDialog.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\SignatureUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\Percent.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\GlobClassLoader.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\Assert.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\Logger.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\LoggingManager.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\LoggingManagerMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\target\TandemTarget.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\target\NullLogTarget.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\target\WriterLogTarget.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\target\LogTarget.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\target\ProxyLogTarget.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\target\ThreadLocalLogTarget.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\LoggerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\AbstractLogCommandlet.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\LoggingSAXErrorHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\log\Constants.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\HtmlUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\StringUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\NestedRuntimeException.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\swing\popup\CloseTabbedPanePopupMouseAdaptor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\swing\popup\TreePopupMouseAdaptor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\swing\popup\TabbedPanePopupMouseAdaptor.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\table\TableRow.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\table\Table.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\table\TableCell.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\table\ArrayTableRow.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\collection\FlagStack.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\collection\Queue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\Command.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\jmx\dynamic\AttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\jmx\dynamic\Operation.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\jmx\dynamic\ConfigurableMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\jmx\dynamic\RunnableOperation.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\jmx\dynamic\OperationKey.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\jmx\dynamic\SimpleAttributeValue.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\time\PauseMovement.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\time\SunMiscPerfMovement.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\time\Movement.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\time\SystemNanoTimeMovement.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\time\Clock.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\time\SystemCurrentTimeMillisMovement.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\time\TimeUnit.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\SavedProperties.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\MethodWrapper.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\Exceptions.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\PropertyUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\VersionUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\WeakScheduler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\proxy\ProxyInputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\proxy\ProxyOutputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\proxy\ProxyWriter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\IOUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\PrintStreamWriter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\ResourceUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\GlobFileFilter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\DelimitedReader.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\field\DateField.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\field\Field.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\field\LongField.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\field\StringField.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\field\DoubleField.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\DelimitedFormat.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\csv\DelimitedWriter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\nop\NullPrintWriter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\nop\NullOutputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\nop\NullWriter.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\OpenInputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\Dir.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\CompositeInvocationHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\regex\ToLowerMatcher.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\regex\Matcher.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\regex\CompositeMatcher.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\regex\GlobMatcher.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\regex\ConstantMatcher.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\AssertionFailedException.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\AtomicLong.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\IntrospectionUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\XMLUtil.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\InjectorTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\StringUtilTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\IOTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\ConfigurationTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\TreeProviderTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\dummy\DummyBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\dummy\JuniorDummy.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\dummy\CrashTestDummy.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\AccumulatorTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\JbossAopTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\jmx\Test.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\jmx\TestMBean.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\ExceptionNewRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\SimpleDateFormatFormatRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\ThrowablePrintStackTraceRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\NoOpRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\MethodCallRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\ClockCurrentTimeNanosRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\StringRegionMatchesRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\SystemNanoTimeRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\DecimalFormatFormatRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\SystemCurrentTimeMillisRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\ThreadSleep0Runnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\MethodReflectCallRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\AddToFloatRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\PatternMatchesRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\StringIndexOfRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\IncrementBigDecimalRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\AddToDoubleRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\Timer.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\MathRandomRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\SimpleDateFormatParseRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\SunMiscPerfCalculateTimeRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\StringConcatRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\ThreadYieldRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\ThrowableNewRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\IncrementIntegerRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\DecimalFormatParseRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\ThreadCurrentThreadRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\IncrementLongRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\time\StringContainsRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\GlobTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\chart\ChartTiming1.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\DebugOutputStream.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\harness\TestHarness.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\harness\VirtualMethodCall.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\harness\HarnessRunnable.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\SimpleExamle.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\BenchmarkTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\JmxTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\XmlTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\test\TestClassLoader.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\event\ShutdownRegistryTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\core\output\FileOutputFactoryTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\core\command\TinyWebServerTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\inject\InjectorCliTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\inject\process\ArchiveFileProcessorTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\util\NestedRuntimeExceptionTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\util\PropertyUtilTestCase.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\util\jmx\dynamic\ConfigurableMBeanTestCase.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\CompositeMethodHandler.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Factory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\test\src\org\shiftone\jrat\core\boot\BootTest.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\RootFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\ConfigurationException.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\ParseException.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\HandlerFactory.java</PATH>
-            <PATH>C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io\InputOutputException.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
-  </component>
+  <component name="RestoreUpdateTree" />
   <component name="RunManager" selected="Application.RuntimeTestCase">
     <tempConfiguration default="false" name="RuntimeTestCase" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" value="org.shiftone.jrat.core.boot.config.RuntimeTestCase" />
@@ -1180,26 +621,6 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <module name="" />
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1219,6 +640,13 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -1230,6 +658,19 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <module name="" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
     </configuration>
   </component>
   <component name="SQLPlugin.ProjectConfiguration">
@@ -1311,17 +752,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="942" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30981347" order="0" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.324291" order="1" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30981347" order="0" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.324291" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3020962" order="8" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3020962" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
@@ -1339,8 +780,8 @@
       <window_info id="BeanShell Box" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="IdeaSpring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Hibernate Tools" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="BSFConsole" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Hibernate Tools" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="3" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
@@ -1383,7 +824,7 @@
     <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
     <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
     <option name="ERROR_OCCURED" value="true" />
-    <option name="ACTIVE_VCS_NAME" value="svn" />
+    <option name="ACTIVE_VCS_NAME" value="" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
@@ -1454,7 +895,7 @@
   <component name="com.intellij.ide.util.scopeChooser.ScopeChooserConfigurable" proportions="" version="1">
     <option name="myLastEditedConfigurable" />
   </component>
-  <component name="com.intellij.openapi.roots.ui.configuration.projectRoot.ProjectRootMasterDetailsConfigurable" proportions="0.16666667" version="1">
+  <component name="com.intellij.openapi.roots.ui.configuration.projectRoot.ProjectRootMasterDetailsConfigurable" proportions="0.16666667,0.5" version="1">
     <option name="myPlainMode" value="false" />
     <option name="myLastEditedConfigurable" value="idea" />
   </component>
@@ -1462,13 +903,6 @@
     <option name="myLastEditedConfigurable" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="25" selection-start="1143" selection-end="1143" vertical-scroll-proportion="0.034552846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/src/org/shiftone/jrat/test/InjectorTestCase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="14" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.2494759">
@@ -1479,42 +913,20 @@
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/integration/aop/dynaop/DynaopInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="509" selection-end="509" vertical-scroll-proportion="0.6219512">
-          <folding>
-            <marker date="1159199021423" expanded="true" signature="120:188" placeholder="/**...*/" />
-            <marker date="1159199021423" expanded="true" signature="321:506" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/integration/aop/nanning/NanningMethodInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="598" selection-end="598" vertical-scroll-proportion="0.6219512">
-          <folding>
-            <marker date="1159199021267" expanded="true" signature="210:278" placeholder="/**...*/" />
-            <marker date="1159199021267" expanded="true" signature="435:595" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/HandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="22" selection-start="363" selection-end="363" vertical-scroll-proportion="0.035639413">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigMethodHandlerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="394" selection-end="394" vertical-scroll-proportion="0.2494759">
-          <folding>
-            <marker date="1180526210319" expanded="true" signature="3144:3154" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/CacheMethodHandlerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="419" selection-end="419" vertical-scroll-proportion="0.44918698">
           <folding />
         </state>
       </provider>
@@ -1549,28 +961,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/AbstractMethodHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="1781" selection-end="1781" vertical-scroll-proportion="1.3414634">
+        <state line="31" column="90" selection-start="963" selection-end="963" vertical-scroll-proportion="0.9337121">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Settings.java">
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/boot/Environment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="207" selection-end="207" vertical-scroll-proportion="0.24186991">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/Environment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="66" selection-start="700" selection-end="700" vertical-scroll-proportion="0.35639414">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/default.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="596" selection-end="596" vertical-scroll-proportion="0.55284554">
+        <state line="30" column="49" selection-start="918" selection-end="918" vertical-scroll-proportion="0.5964912">
           <folding />
         </state>
       </provider>

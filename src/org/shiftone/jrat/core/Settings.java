@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core;
 
 
-import org.shiftone.jrat.core.boot.JRatRuntime;
+import org.shiftone.jrat.core.boot.Environment;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import org.shiftone.jrat.util.io.Dir;
 import org.shiftone.jrat.util.log.Logger;
@@ -33,7 +33,7 @@ public class Settings {
     public static final String USER_HOME = "user.home";
     public static final String USER_CWD = "user.dir";
 
-    private static org.shiftone.jrat.core.boot.config.Settings settings = JRatRuntime.INSTANCE.getSettings();
+    private static org.shiftone.jrat.core.boot.config.Settings settings = Environment.INSTANCE.getSettings();
 
     static {
 
