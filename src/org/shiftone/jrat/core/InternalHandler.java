@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core;
 
 
-import org.shiftone.jrat.core.boot.Environment;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.config.CacheMethodHandlerFactory;
 import org.shiftone.jrat.core.config.ConfigMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;

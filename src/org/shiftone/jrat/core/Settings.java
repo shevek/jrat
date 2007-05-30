@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core;
 
 
-import org.shiftone.jrat.core.boot.Environment;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import org.shiftone.jrat.util.io.Dir;
 import org.shiftone.jrat.util.log.Logger;

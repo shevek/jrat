@@ -1,4 +1,4 @@
-package org.shiftone.jrat.core.boot;
+package org.shiftone.jrat.core;
 
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.config.Configuration;
@@ -20,7 +20,7 @@ import java.util.Date;
 public class Environment {
 
     private static final Logger LOG = Logger.getLogger(Environment.class);
-    private static final String DEFAULT = "org/shiftone/jrat/core/boot/default.xml";
+    private static final String DEFAULT = "default.xml";
     public static final Environment INSTANCE = new Environment();
     private Configuration configuration;
 
