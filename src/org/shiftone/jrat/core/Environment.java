@@ -8,10 +8,7 @@ import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Date;
 
 /**
@@ -20,20 +17,25 @@ import java.util.Date;
 public class Environment {
 
     private static final Logger LOG = Logger.getLogger(Environment.class);
-    private static final String DEFAULT = "default.xml";
+    private static final String CONFIG_FILE = "jrat.xml";
+    private static final String DEFAULT_FILE = "org/shiftone/jrat/core/default-jrat.xml";
     public static final Environment INSTANCE = new Environment();
-    private Configuration configuration;
-
+    private final Configuration configuration;
+    private final byte[] configurationData;
 
     public Environment() {
 
-        File file = new File("jrat.xml");
+        File file = new File(CONFIG_FILE);
 
-        configuration = ConfigurationParser.parse(getConfigurationStream(file));
+        configurationData = getConfigurationData(file);
+
+        configuration = ConfigurationParser.parse(
+                new ByteArrayInputStream(configurationData)
+        );
 
     }
 
-    private InputStream getConfigurationStream(File file) {
+    private byte[] getConfigurationData(File file) {
 
 
         if (!file.exists()) {
@@ -50,7 +52,9 @@ public class Environment {
 
         LOG.info("Loading JRat Configuration : " + file.getAbsolutePath() + "...");
         LOG.info("File was last modified " + new Date(file.lastModified()));
-        return IOUtil.openInputStream(file);
+
+        return IOUtil.readAndClose(IOUtil.openInputStream(file));
+
     }
 
 
@@ -58,7 +62,7 @@ public class Environment {
 
         try {
 
-            InputStream defaultStream = ResourceUtil.loadResourceAsStream(DEFAULT);
+            InputStream defaultStream = ResourceUtil.loadResourceAsStream(DEFAULT_FILE);
             OutputStream outputStream = new FileOutputStream(file);
             IOUtil.copy(defaultStream, outputStream);
 
@@ -68,6 +72,8 @@ public class Environment {
 
         }
     }
+
+
 
     public Configuration getConfiguration() {
         return configuration;
