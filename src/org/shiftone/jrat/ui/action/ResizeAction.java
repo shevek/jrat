@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.action;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.Frame;
@@ -13,18 +12,16 @@ import java.awt.event.ActionListener;
  * Class ResizeAction
  *
  * @author Jeff Drost
- *
  */
 public class ResizeAction implements ActionListener {
 
     private static final Logger LOG = Logger.getLogger(ResizeAction.class);
-    private Frame               frame;
-    private int                 width;
-    private int                 height;
+    private Frame frame;
+    private int width;
+    private int height;
 
     /**
      * Constructor ResizeAction
-     *
      *
      * @param frame
      * @param width
@@ -32,8 +29,8 @@ public class ResizeAction implements ActionListener {
      */
     public ResizeAction(Frame frame, int width, int height) {
 
-        this.frame  = frame;
-        this.width  = width;
+        this.frame = frame;
+        this.width = width;
         this.height = height;
     }
 

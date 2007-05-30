@@ -1,9 +1,8 @@
 package org.shiftone.jrat.inject.bytecode;
 
 
-
-import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.IOUtil;
@@ -20,17 +19,16 @@ import java.io.InputStream;
  * <b>javassist</b>
  *
  * @author Jeff Drost
- *
  */
 public class Transformer implements ShutdownListener, TransformerMBean {
 
-    private static final Logger LOG            = Logger.getLogger(Transformer.class);
+    private static final Logger LOG = Logger.getLogger(Transformer.class);
     private static final String UNKNOWN_SOURCE = "[unknown source]";
-    private InjectorStrategy    injectorStrategy;
-    private AtomicLong          transformedClassCount = new AtomicLong();
-    private AtomicLong          totalInputBytes       = new AtomicLong();
-    private AtomicLong          totalOutputBytes      = new AtomicLong();
-    private AtomicLong          totalTransformTime    = new AtomicLong();
+    private InjectorStrategy injectorStrategy;
+    private AtomicLong transformedClassCount = new AtomicLong();
+    private AtomicLong totalInputBytes = new AtomicLong();
+    private AtomicLong totalOutputBytes = new AtomicLong();
+    private AtomicLong totalTransformTime = new AtomicLong();
 
     public Transformer(InjectorStrategy injectorStrategy) {
         this.injectorStrategy = injectorStrategy;
@@ -41,15 +39,13 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
         String className = Settings.getInjectorStrategyClassName();
 
-        try
-        {
-            Class  klass  = Class.forName(className);
+        try {
+            Class klass = Class.forName(className);
             Object object = klass.newInstance();
 
             this.injectorStrategy = (InjectorStrategy) object;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("error initalizing strategy '" + className, e);
         }
     }
@@ -59,16 +55,14 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
         String className = Settings.getInjectorStrategyClassName();
 
-        try
-        {
-            Class            klass            = Class.forName(className);
-            Object           object           = klass.newInstance();
+        try {
+            Class klass = Class.forName(className);
+            Object object = klass.newInstance();
             InjectorStrategy injectorStrategy = (InjectorStrategy) object;
 
             return new Transformer(injectorStrategy);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("error initalizing strategy '" + className, e);
         }
     }
@@ -86,9 +80,8 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
     public byte[] inject(byte[] input, String sourceName, TransformerOptions options) {
 
-        try
-        {
-            long   start  = System.currentTimeMillis();
+        try {
+            long start = System.currentTimeMillis();
             byte[] output = injectorStrategy.inject(input, options);
 
             totalTransformTime.addAndGet(System.currentTimeMillis() - start);
@@ -98,8 +91,7 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
             return output;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("error injecting : " + sourceName, e);
         }
     }
@@ -113,8 +105,8 @@ public class Transformer implements ShutdownListener, TransformerMBean {
     public double getAverageTransformTimeMs() {
 
         return (transformedClassCount.get() == 0)
-               ? 0.0
-               : (double) totalTransformTime.get() / (double) transformedClassCount.get();
+                ? 0.0
+                : (double) totalTransformTime.get() / (double) transformedClassCount.get();
     }
 
 
@@ -130,14 +122,12 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
     public byte[] inject(InputStream inputClassData, String sourceName, TransformerOptions options) {
 
-        try
-        {
+        try {
             byte[] inputClassDataBytes = IOUtil.readAndClose(inputClassData);
 
             return inject(inputClassDataBytes, sourceName, options);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("error injecting stream : " + sourceName, e);
         }
     }

@@ -17,11 +17,10 @@ import org.shiftone.jrat.util.log.LoggingManager;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ServiceFactory {
 
-    private static final Logger   LOG = Logger.getLogger(ServiceFactory.class);
+    private static final Logger LOG = Logger.getLogger(ServiceFactory.class);
     private static ServiceFactory singleton;
 
     public ServiceFactory() {
@@ -31,8 +30,7 @@ public class ServiceFactory {
 
     public static synchronized ServiceFactory getInstance() {
 
-        if (singleton == null)
-        {
+        if (singleton == null) {
             singleton = new ServiceFactory();
         }
 
@@ -42,10 +40,10 @@ public class ServiceFactory {
 
     private CommandletRegistry commandletRegistry;
 
-	public synchronized CommandletRegistry getCommandletRegistry() {
+    public synchronized CommandletRegistry getCommandletRegistry() {
         if (commandletRegistry == null) {
-			commandletRegistry = CommandletRegistryFactory.createCommandletRegistry();
-		}
+            commandletRegistry = CommandletRegistryFactory.createCommandletRegistry();
+        }
         return commandletRegistry;
     }
 
@@ -54,8 +52,7 @@ public class ServiceFactory {
 
     public synchronized JmxRegistry getJmxRegistry() {
 
-        if (jmxRegistry == null)
-        {
+        if (jmxRegistry == null) {
             jmxRegistry = JmxRegistryFactory.createJmxRegistry();
 
             jmxRegistry.registerMBean(new JRatInfo(), null);
@@ -72,8 +69,7 @@ public class ServiceFactory {
 
     public synchronized FileOutputRegistry getFileOutputRegistry() {
 
-        if (fileOutputRegistry == null)
-        {
+        if (fileOutputRegistry == null) {
             fileOutputRegistry = new FileOutputRegistry();
 
             getJmxRegistry().registerMBean(fileOutputRegistry, null);
@@ -89,8 +85,7 @@ public class ServiceFactory {
 
     public synchronized FileOutputFactory getFileOutputFactory() {
 
-        if (fileOutputFactory == null)
-        {
+        if (fileOutputFactory == null) {
             fileOutputFactory = new FileOutputFactory(getFileOutputRegistry());
         }
 
@@ -103,8 +98,7 @@ public class ServiceFactory {
 
     public synchronized ShutdownRegistry getShutdownRegistry() {
 
-        if (shutdownRegistry == null)
-        {
+        if (shutdownRegistry == null) {
             shutdownRegistry = new ShutdownRegistry();
 
             getJmxRegistry().registerMBean(shutdownRegistry, null);
@@ -119,8 +113,7 @@ public class ServiceFactory {
 
     public synchronized Transformer getTransformer() {
 
-        if (transformer == null)
-        {
+        if (transformer == null) {
             transformer = new Transformer();
 
             getJmxRegistry().registerMBean(transformer, null);

@@ -1,8 +1,8 @@
 package org.shiftone.jrat.core.boot.config;
 
 
-import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.PropertyUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -97,7 +97,7 @@ public class ConfigurationParser {
     }
 
     private void processFactory(Factory factory, Element factoryElement) {
-        
+
         // <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
 
         factory.setClassName(factoryElement.getAttribute("factory"));

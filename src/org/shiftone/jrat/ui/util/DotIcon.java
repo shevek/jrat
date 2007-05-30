@@ -13,24 +13,22 @@ import java.awt.Graphics;
  * Class DotIcon
  *
  * @author Jeff Drost
- *
  */
 public class DotIcon implements Icon {
 
-    private static final Logger LOG   = Logger.getLogger(DotIcon.class);
-    private int                 size  = 0;
-    private Color               color = null;
+    private static final Logger LOG = Logger.getLogger(DotIcon.class);
+    private int size = 0;
+    private Color color = null;
 
     /**
      * Constructor DotIcon
-     *
      *
      * @param size
      * @param color
      */
     public DotIcon(int size, Color color) {
         this.color = color;
-        this.size  = size;
+        this.size = size;
     }
 
 

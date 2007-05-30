@@ -24,31 +24,29 @@ import java.awt.GridLayout;
  * Class ControlPanel
  *
  * @author Jeff Drost
- *
  */
 public class ControlPanel extends JPanel {
 
-    private static final Logger    LOG               = Logger.getLogger(ControlPanel.class);
-    private static final int       SPACING           = 10;
-    private static final Dimension PS                = new Dimension(150, 150);
-    private BoundedRangeModel      boundedRangeModel = new DefaultBoundedRangeModel(20, 5, 0, 50);
-    private JComponent             rightPanel        = null;
-    private JTable                 table             = null;
-    private JScrollPane            scrollPane        = null;
-    private RateModel              rateModel         = null;
-    private JSlider                slider            = null;
+    private static final Logger LOG = Logger.getLogger(ControlPanel.class);
+    private static final int SPACING = 10;
+    private static final Dimension PS = new Dimension(150, 150);
+    private BoundedRangeModel boundedRangeModel = new DefaultBoundedRangeModel(20, 5, 0, 50);
+    private JComponent rightPanel = null;
+    private JTable table = null;
+    private JScrollPane scrollPane = null;
+    private RateModel rateModel = null;
+    private JSlider slider = null;
 
     /**
      * Constructor ControlPanel
-     *
      *
      * @param rateModel
      * @param tableModel
      */
     public ControlPanel(RateModel rateModel, RateModelTableModel tableModel) {
 
-        this.rateModel  = rateModel;
-        this.table      = new JTable(tableModel);
+        this.rateModel = rateModel;
+        this.table = new JTable(tableModel);
         this.scrollPane = new JScrollPane(table);
         this.rightPanel = new JPanel();
 

@@ -12,13 +12,12 @@ import java.util.Properties;
 
 /**
  * @author Jeff Drost
- *
  */
 public class SimpleXmlOutputViewBuilder extends AbstractOutputXmlViewBuilder {
 
-    private static final Logger LOG         = Logger.getLogger(SimpleXmlOutputViewBuilder.class);
-    private SimpleXmlTreeNode   root        = null;
-    private SimpleXmlTreeNode   currentNode = null;
+    private static final Logger LOG = Logger.getLogger(SimpleXmlOutputViewBuilder.class);
+    private SimpleXmlTreeNode root = null;
+    private SimpleXmlTreeNode currentNode = null;
 
     public JComponent endDocumentCreateViewer() throws Exception {
 
@@ -34,7 +33,7 @@ public class SimpleXmlOutputViewBuilder extends AbstractOutputXmlViewBuilder {
 
 
     public void startDocument() throws Exception {
-        root        = new SimpleXmlTreeNode();
+        root = new SimpleXmlTreeNode();
         currentNode = root;
     }
 
@@ -49,5 +48,6 @@ public class SimpleXmlOutputViewBuilder extends AbstractOutputXmlViewBuilder {
     }
 
 
-    public void textElement(String text) throws Exception {}
+    public void textElement(String text) throws Exception {
+    }
 }

@@ -51,12 +51,12 @@ public class JRatFrame extends JFrame implements UIConstants {
 
     private void setDimension() {
 
-        Toolkit   tk         = Toolkit.getDefaultToolkit();
+        Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
-        int       width      = (int) (screenSize.getWidth() * FRAME_WIDTH_PCT);
-        int       height     = (int) (screenSize.getHeight() * FRAME_HEIGHT_PCT);
-        int       x          = (int) ((screenSize.getWidth() / 2) - (width / 2));
-        int       y          = (int) ((screenSize.getHeight() / 2) - (height / 2));
+        int width = (int) (screenSize.getWidth() * FRAME_WIDTH_PCT);
+        int height = (int) (screenSize.getHeight() * FRAME_HEIGHT_PCT);
+        int x = (int) ((screenSize.getWidth() / 2) - (width / 2));
+        int y = (int) ((screenSize.getHeight() / 2) - (height / 2));
 
         x += (openCount * 10);
         y += (openCount * 10);

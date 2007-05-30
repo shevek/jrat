@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate;
 
 
-
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.RuntimeContext;
@@ -18,37 +17,36 @@ import java.io.Writer;
  * Class RateOutput
  *
  * @author Jeff Drost
- *
  */
 public class RateOutput {
 
-    private static final Logger  LOG             = Logger.getLogger(RateOutput.class);
-    private static final Runtime RT              = Runtime.getRuntime();
-    private static final String  TAB             = "\t";
-    public static final String   PREFIX_METHOD   = "METHOD";
-    public static final String   PREFIX_SAMPLE   = "SAMPLE";
-    public static final String   PREFIX_SHUTDOWN = "SHUTDOWN";
-    public static final String   POSTFIX_END     = "END";
-    private int                  methodCount     = 0;
-    private int                  maxMethods      = 0;
-    private RuntimeContext       context         = null;
-    private OutputStream         outputStream    = null;
-    private Writer               writer          = null;
+    private static final Logger LOG = Logger.getLogger(RateOutput.class);
+    private static final Runtime RT = Runtime.getRuntime();
+    private static final String TAB = "\t";
+    public static final String PREFIX_METHOD = "METHOD";
+    public static final String PREFIX_SAMPLE = "SAMPLE";
+    public static final String PREFIX_SHUTDOWN = "SHUTDOWN";
+    public static final String POSTFIX_END = "END";
+    private int methodCount = 0;
+    private int maxMethods = 0;
+    private RuntimeContext context = null;
+    private OutputStream outputStream = null;
+    private Writer writer = null;
 
     /**
      * Constructor for RateOutput
      *
      * @param outputStream .
-     * @param maxMethods .
-     * @param context .
+     * @param maxMethods   .
+     * @param context      .
      */
     public RateOutput(OutputStream outputStream, int maxMethods, RuntimeContext context) {
 
         // super(outputStream);
         this.outputStream = outputStream;
-        this.writer       = new PrintWriter(outputStream);
-        this.maxMethods   = maxMethods;
-        this.context      = context;
+        this.writer = new PrintWriter(outputStream);
+        this.maxMethods = maxMethods;
+        this.context = context;
     }
 
 
@@ -92,7 +90,6 @@ public class RateOutput {
      * method
      *
      * @param methodKey .
-     *
      * @return .
      */
     public synchronized int printMethodDef(MethodKey methodKey) throws IOException {
@@ -140,11 +137,11 @@ public class RateOutput {
      */
     public synchronized void printSample(RateMethodHandler[] handlers) throws IOException {
 
-        RateMethodHandler handler     = null;
-        Accumulator       accumulator = null;
-        long              time        = System.currentTimeMillis() - context.getStartTimeMs();
-        long              totalMemory = RT.totalMemory();    // was maxMemory
-        long              freeMemory  = RT.freeMemory();
+        RateMethodHandler handler = null;
+        Accumulator accumulator = null;
+        long time = System.currentTimeMillis() - context.getStartTimeMs();
+        long totalMemory = RT.totalMemory();    // was maxMemory
+        long freeMemory = RT.freeMemory();
 
         print(PREFIX_SAMPLE + TAB);
         print(time);
@@ -153,9 +150,8 @@ public class RateOutput {
         print(',');
         print(totalMemory);
 
-        for (int i = 0; i < methodCount; i++)
-        {
-            handler     = handlers[i];
+        for (int i = 0; i < methodCount; i++) {
+            handler = handlers[i];
             accumulator = handler.getAndReplaceAccumulator();
 
             print(TAB);

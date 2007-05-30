@@ -14,12 +14,11 @@ import java.util.Stack;
 
 /**
  * @author Jeff Drost
- *
  */
 public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownListener {
 
-    private static final Logger LOG         = Logger.getLogger(FileOutputRegistry.class);
-    private Stack               fileOutputs = new Stack();
+    private static final Logger LOG = Logger.getLogger(FileOutputRegistry.class);
+    private Stack fileOutputs = new Stack();
 
     public int getRegisteredFileOutputCount() {
         return fileOutputs.size();
@@ -65,8 +64,7 @@ public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownList
 
         LOG.info("closeFileOutputs " + fileOutputs);
 
-        while (!fileOutputs.isEmpty())
-        {
+        while (!fileOutputs.isEmpty()) {
             close((FileOutput) fileOutputs.pop());
         }
     }
@@ -78,8 +76,7 @@ public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownList
 
         Iterator iterator = fileOutputs.iterator();
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             flush((FileOutput) iterator.next());
         }
     }
@@ -87,15 +84,12 @@ public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownList
 
     public static void close(FileOutput fileOutput) {
 
-        if (fileOutput != null)
-        {
-            try
-            {
+        if (fileOutput != null) {
+            try {
                 LOG.info("closing : " + fileOutput);
                 fileOutput.close();
             }
-            catch (Throwable e)
-            {
+            catch (Throwable e) {
                 LOG.error("unable to close " + fileOutput, e);
             }
         }
@@ -104,15 +98,12 @@ public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownList
 
     public static void flush(FileOutput fileOutput) {
 
-        if (fileOutput != null)
-        {
-            try
-            {
+        if (fileOutput != null) {
+            try {
                 LOG.info("flushing : " + fileOutput);
                 fileOutput.flush();
             }
-            catch (Throwable e)
-            {
+            catch (Throwable e) {
                 LOG.error("unable to flush " + fileOutput, e);
             }
         }

@@ -24,17 +24,16 @@ import java.util.TreeMap;
  * Apache Ant Task that extends the common Copy task.
  *
  * @author Jeff Drost
- *
  */
 public class InjectCopyTask extends Copy {
 
-    private static final Logger          LOG = Logger.getLogger(InjectCopyTask.class);
-    private Injector                     injector;
+    private static final Logger LOG = Logger.getLogger(InjectCopyTask.class);
+    private Injector injector;
     private IncludeExcludeMethodCriteria methodCriteria;
 
     public InjectCopyTask() {
 
-        injector       = new Injector();
+        injector = new Injector();
         methodCriteria = new IncludeExcludeMethodCriteria();
 
         injector.setMethodCriteria(methodCriteria);
@@ -67,29 +66,23 @@ public class InjectCopyTask extends Copy {
         String extention = IOUtil.getExtention(fromFile);
 
         if ((extention != null)
-                && ("class".equalsIgnoreCase(extention) || ArchiveFileProcessor.isArchiveExtention(extention)))
-        {
+                && ("class".equalsIgnoreCase(extention) || ArchiveFileProcessor.isArchiveExtention(extention))) {
             injector.inject(fromFile, toFile);
-        }
-        else
-        {
-            if (fromFile.equals(toFile))
-            {
+        } else {
+            if (fromFile.equals(toFile)) {
                 log("Skipping self-copy of " + fromFile, verbosity);
-            }
-            else
-            {
+            } else {
 
                 //log("Copying " + fromFile, Project.MSG_VERBOSE);
                 getFileUtils().copyFile(     //
-                    fromFile,                //
-                    toFile,                  //
-                    executionFilters,        // token filtering
-                    getFilterChains(),       // token filtering
-                    forceOverwrite,          //
-                    preserveLastModified,    //
-                    getEncoding(),           //
-                    getProject());
+                        fromFile,                //
+                        toFile,                  //
+                        executionFilters,        // token filtering
+                        getFilterChains(),       // token filtering
+                        forceOverwrite,          //
+                        preserveLastModified,    //
+                        getEncoding(),           //
+                        getProject());
             }
         }
     }
@@ -98,16 +91,11 @@ public class InjectCopyTask extends Copy {
     private String getString(Object to) {
 
         // http://sourceforge.net/tracker/index.php?func=detail&aid=1011493&group_id=41841&atid=431431
-        if (to instanceof String)
-        {
+        if (to instanceof String) {
             return (String) to;
-        }
-        else if (to instanceof String[])
-        {
+        } else if (to instanceof String[]) {
             return ((String[]) to)[0];
-        }
-        else
-        {
+        } else {
             throw new RuntimeException("Error - please report a bug : " + to.getClass().getName());
         }
     }
@@ -120,46 +108,40 @@ public class InjectCopyTask extends Copy {
     protected void doFileOperations() {
 
         Iterator sourceFiles;
-        Map      orderedCopyMap = new TreeMap(fileCopyMap);
+        Map orderedCopyMap = new TreeMap(fileCopyMap);
 
-        if (orderedCopyMap.size() > 0)
-        {
+        if (orderedCopyMap.size() > 0) {
             log("Copying " + orderedCopyMap.size() + " file" + ((orderedCopyMap.size() == 1)
-                                                                ? ""
-                                                                : "s") + " to " + destDir.getAbsolutePath(), verbosity);
+                    ? ""
+                    : "s") + " to " + destDir.getAbsolutePath(), verbosity);
 
             sourceFiles = orderedCopyMap.keySet().iterator();
 
             // injector.setForceOverwrite(forceOverwrite);
             // injector.setPreserveLastModified(preserveLastModified);
-            while (sourceFiles.hasNext())
-            {
+            while (sourceFiles.hasNext()) {
                 String fromFile = (String) sourceFiles.next();
-                Object to       = orderedCopyMap.get(fromFile);
+                Object to = orderedCopyMap.get(fromFile);
                 String toFile;
 
                 // http://sourceforge.net/tracker/index.php?func=detail&aid=1011493&group_id=41841&atid=431431
                 toFile = getString(to);
 
                 //log(fromFile, verbosity);
-                try
-                {
+                try {
                     FilterSetCollection executionFilters = new FilterSetCollection();
 
-                    if (filtering)
-                    {
+                    if (filtering) {
                         executionFilters.addFilterSet(getProject().getGlobalFilterSet());
                     }
 
-                    for (Enumeration filterEnum = getFilterSets().elements(); filterEnum.hasMoreElements(); )
-                    {
+                    for (Enumeration filterEnum = getFilterSets().elements(); filterEnum.hasMoreElements();) {
                         executionFilters.addFilterSet((FilterSet) filterEnum.nextElement());
                     }
 
                     copyOrInjectFile(fromFile, toFile, executionFilters);
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     LOG.error("InjectCopyTask error", e);
 
                     throw new BuildException("Error instramenting " + fromFile, e, getLocation());
@@ -167,8 +149,7 @@ public class InjectCopyTask extends Copy {
             }
         }
 
-        if (includeEmpty)
-        {
+        if (includeEmpty) {
             copyEmptyDirectories();
         }
     }
@@ -176,49 +157,40 @@ public class InjectCopyTask extends Copy {
 
     private void copyEmptyDirectories() {
 
-        Enumeration e     = dirCopyMap.elements();
-        int         count = 0;
+        Enumeration e = dirCopyMap.elements();
+        int count = 0;
 
-        while (e.hasMoreElements())
-        {
+        while (e.hasMoreElements()) {
             File d = new File(getString(e.nextElement()));
 
-            if (!d.exists())
-            {
-                if (!d.mkdirs())
-                {
+            if (!d.exists()) {
+                if (!d.mkdirs()) {
                     log("Unable to create directory " + d.getAbsolutePath(), Project.MSG_ERR);
-                }
-                else
-                {
+                } else {
                     count++;
                 }
             }
         }
 
-        if (count > 0)
-        {
+        if (count > 0) {
             log("Copied " + count + " empty director" + ((count == 1)
-                                                         ? "y"
-                                                         : "ies") + " to " + destDir.getAbsolutePath(), verbosity);
+                    ? "y"
+                    : "ies") + " to " + destDir.getAbsolutePath(), verbosity);
         }
     }
 
 
     public void execute() throws BuildException {
 
-        try
-        {
+        try {
             super.execute();
         }
-        catch (BuildException e)
-        {
+        catch (BuildException e) {
             LOG.error("copy failed", e);
 
             throw e;
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.error("copy failed", e);
 
             throw new BuildException(e);

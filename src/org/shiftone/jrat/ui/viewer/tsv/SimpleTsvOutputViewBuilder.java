@@ -16,7 +16,6 @@ import java.io.InputStream;
 
 /**
  * @author Jeff Drost
- *
  */
 public class SimpleTsvOutputViewBuilder implements OutputViewBuilder {
 
@@ -24,23 +23,21 @@ public class SimpleTsvOutputViewBuilder implements OutputViewBuilder {
 
     public void buildView(ViewContext context) throws Exception {
 
-        InputStream   inputStream = null;
-        TsvTableModel model       = new TsvTableModel();
+        InputStream inputStream = null;
+        TsvTableModel model = new TsvTableModel();
 
-        try
-        {
+        try {
             inputStream = context.openInputStream();
 
             model.load(inputStream);
         }
-        finally
-        {
+        finally {
             IOUtil.close(inputStream);
         }
 
-        JTable       table      = new JTable(model);
-        JScrollPane  scrollPane = new JScrollPane(table);
-        JTableHeader header     = table.getTableHeader();
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        JTableHeader header = table.getTableHeader();
 
         table.setDefaultRenderer(Percent.class, new PercentTableCellRenderer());
         table.setDefaultRenderer(Integer.class, new PercentTableCellRenderer());

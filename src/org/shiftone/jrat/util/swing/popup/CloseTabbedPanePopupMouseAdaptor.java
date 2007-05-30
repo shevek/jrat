@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 
 public class CloseTabbedPanePopupMouseAdaptor extends TabbedPanePopupMouseAdaptor implements ActionListener {
 
-    private JMenuItem closeMenuItem       = new JMenuItem("Close");
+    private JMenuItem closeMenuItem = new JMenuItem("Close");
     private JMenuItem closeAllButMenuItem = new JMenuItem("Close All But This");
-    private JMenuItem closeAllMenuItem    = new JMenuItem("Close All");
+    private JMenuItem closeAllMenuItem = new JMenuItem("Close All");
 
     public CloseTabbedPanePopupMouseAdaptor(JTabbedPane tabPane) {
 
@@ -31,12 +31,9 @@ public class CloseTabbedPanePopupMouseAdaptor extends TabbedPanePopupMouseAdapto
         closeMenuItem.setEnabled(true);
         closeAllMenuItem.setEnabled(true);
 
-        if (tabPane.getTabCount() == 1)
-        {
+        if (tabPane.getTabCount() == 1) {
             closeAllButMenuItem.setEnabled(false);
-        }
-        else
-        {
+        } else {
             closeAllButMenuItem.setEnabled(true);
         }
     }
@@ -44,16 +41,11 @@ public class CloseTabbedPanePopupMouseAdaptor extends TabbedPanePopupMouseAdapto
 
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == closeMenuItem)
-        {
+        if (e.getSource() == closeMenuItem) {
             tabPane.remove(index);
-        }
-        else if (e.getSource() == closeAllButMenuItem)
-        {
+        } else if (e.getSource() == closeAllButMenuItem) {
             closeAll(false);
-        }
-        else if (e.getSource() == closeAllMenuItem)
-        {
+        } else if (e.getSource() == closeAllMenuItem) {
             closeAll(true);
         }
     }
@@ -61,10 +53,8 @@ public class CloseTabbedPanePopupMouseAdaptor extends TabbedPanePopupMouseAdapto
 
     public void closeAll(boolean includeIndex) {
 
-        for (int i = tabPane.getTabCount() - 1; i >= 0; i--)
-        {
-            if ((includeIndex) || (i != index))
-            {
+        for (int i = tabPane.getTabCount() - 1; i >= 0; i--) {
+            if ((includeIndex) || (i != index)) {
                 tabPane.remove(i);
             }
         }

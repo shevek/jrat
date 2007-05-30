@@ -1,13 +1,13 @@
 package org.shiftone.jrat.util.io.csv;
 
 
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.io.csv.field.DateField;
 import org.shiftone.jrat.util.io.csv.field.DoubleField;
 import org.shiftone.jrat.util.io.csv.field.Field;
 import org.shiftone.jrat.util.io.csv.field.LongField;
 import org.shiftone.jrat.util.io.csv.field.StringField;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.JRatException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,15 +17,14 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- *
  */
 public class DelimitedFormat {
 
-    private static final Logger LOG               = Logger.getLogger(DelimitedFormat.class);
-    private boolean             mutable           = true;
-    private List                fields            = new ArrayList();
-    private Map                 columnNameMapping = new HashMap();
-    private char                delimiter         = ',';
+    private static final Logger LOG = Logger.getLogger(DelimitedFormat.class);
+    private boolean mutable = true;
+    private List fields = new ArrayList();
+    private Map columnNameMapping = new HashMap();
+    private char delimiter = ',';
 
     public void lock() {
         mutable = false;
@@ -34,11 +33,10 @@ public class DelimitedFormat {
 
     private void assertMutable(boolean expected) {
 
-        if (mutable != expected)
-        {
+        if (mutable != expected) {
             throw new RuntimeException("record format expected to be " + (mutable
-                                                                          ? "mutable"
-                                                                          : "immutable"));
+                    ? "mutable"
+                    : "immutable"));
         }
     }
 
@@ -75,8 +73,7 @@ public class DelimitedFormat {
 
         Integer index = (Integer) columnNameMapping.get(title.toLowerCase());
 
-        if (index == null)
-        {
+        if (index == null) {
             throw new JRatException("field title is not known : " + title);
         }
 

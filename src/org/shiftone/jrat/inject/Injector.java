@@ -1,8 +1,8 @@
 package org.shiftone.jrat.inject;
 
 
-import org.shiftone.jrat.core.ServiceFactory;
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.ServiceFactory;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.inject.process.CompositeFileProcessor;
@@ -16,33 +16,30 @@ import java.io.File;
 
 /**
  * @author Jeff Drost
- *
  */
 public class Injector {
 
-    private static final Logger LOG            = Logger.getLogger(Injector.class);
-    public static final String  WORK_FILE_END  = "-JRatWorkFile";
-    private FileProcessor       fileProcessor  = new CompositeFileProcessor();
-    private InjectorOptions     options        = new InjectorOptions();
-    private ServiceFactory      serviceFactory = ServiceFactory.getInstance();
-    private Transformer         transformer    = serviceFactory.getTransformer();
+    private static final Logger LOG = Logger.getLogger(Injector.class);
+    public static final String WORK_FILE_END = "-JRatWorkFile";
+    private FileProcessor fileProcessor = new CompositeFileProcessor();
+    private InjectorOptions options = new InjectorOptions();
+    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    private Transformer transformer = serviceFactory.getTransformer();
 
     public void inject(File sourceFile, File targetFile) throws InjectionException {
 
         String sourceExt = IOUtil.getExtention(sourceFile);
         String targetExt = IOUtil.getExtention(targetFile);
-        File   targetDir = targetFile.getParentFile();
+        File targetDir = targetFile.getParentFile();
 
         Assert.assertSame("file extentions", sourceExt, targetExt);
 
         // thanks Ilja Pavkovic for finding this bug
-        if (targetDir != null)
-        {
+        if (targetDir != null) {
 
             // if the parent directory doesn't exist, then it must be created
             // first.
-            if (!targetDir.exists() &&!targetDir.mkdirs())
-            {
+            if (!targetDir.exists() && !targetDir.mkdirs()) {
                 throw new InjectionException("error creating parent directory of target file : " + targetDir);
             }
         }
@@ -58,19 +55,14 @@ public class Injector {
 
     public void inject(File file) throws InjectionException {
 
-        if (file.getName().endsWith(Injector.WORK_FILE_END))
-        {
-            try
-            {
+        if (file.getName().endsWith(Injector.WORK_FILE_END)) {
+            try {
                 IOUtil.delete(file);
             }
-            catch (JRatException e)
-            {
+            catch (JRatException e) {
                 LOG.warn("unable to delete : " + file);
             }
-        }
-        else
-        {
+        } else {
             inject(file, file);
         }
     }

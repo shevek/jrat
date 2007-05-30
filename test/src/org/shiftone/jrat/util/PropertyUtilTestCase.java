@@ -1,12 +1,11 @@
 package org.shiftone.jrat.util;
 
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
 
-import java.util.Map;
 import java.util.HashMap;
-import java.beans.PropertyEditorManager;
+import java.util.Map;
 
 /**
  * @author Jeff Drost
@@ -20,7 +19,7 @@ public class PropertyUtilTestCase extends TestCase {
     private boolean d;
 
     public void testSimple() throws Exception {
-                
+
         Map map = new HashMap();
         map.put("a", "this is a test");
         map.put("b", "1231");

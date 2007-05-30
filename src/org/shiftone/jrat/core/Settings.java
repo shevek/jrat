@@ -13,31 +13,29 @@ import java.io.File;
 /**
  * This class can be used to obtain all the configurable JRat options from
  * system properties.
- * <p>
+ * <p/>
  * I have mixed feelings about this approach...
  *
  * @author Jeff Drost
- *
  * @deprecated
  */
 public class Settings {
 
-    private static final Logger LOG                        = Logger.getLogger(Settings.class);
+    private static final Logger LOG = Logger.getLogger(Settings.class);
 
-    public static final String  CONFIGURATION_FILE         = "jrat.config.file";
-    public static final String  SPRING_CONFIG_FILE         = "jrat.spring.file";
-    public static final String  SPRING_BEAN_NAME           = "jrat.spring.bean";
-    public static final String  HANDLER_CLASS              = "jrat.factory";
+    public static final String CONFIGURATION_FILE = "jrat.config.file";
+    public static final String SPRING_CONFIG_FILE = "jrat.spring.file";
+    public static final String SPRING_BEAN_NAME = "jrat.spring.bean";
+    public static final String HANDLER_CLASS = "jrat.factory";
 
 
-    public static final String USER_NAME                         = "user.name";
-    public static final String USER_HOME                         = "user.home";
-    public static final String USER_CWD                          = "user.dir";
-    
+    public static final String USER_NAME = "user.name";
+    public static final String USER_HOME = "user.home";
+    public static final String USER_CWD = "user.dir";
+
     private static org.shiftone.jrat.core.boot.config.Settings settings = JRatRuntime.INSTANCE.getSettings();
 
-    static
-    {
+    static {
 
         // yea - this is kinda odd.
         // there is a circular relationship between the logger
@@ -96,15 +94,15 @@ public class Settings {
         return settings.isJmxEnabled();
     }
 
-	public static int isHttpPort() {
+    public static int isHttpPort() {
         return settings.getHttpPort();
     }
 
-	public static boolean isHttpServerEnabled() {
+    public static boolean isHttpServerEnabled() {
         return settings.isHttpServerEnabled();
     }
 
-	public static boolean isMBeanServerCreationEnabled() {
+    public static boolean isMBeanServerCreationEnabled() {
         return settings.isMBeanServerCreationEnabled();
     }
 
@@ -144,8 +142,8 @@ public class Settings {
         String fileName = getString(CONFIGURATION_FILE, null);
 
         return (fileName == null)
-               ? null
-               : new File(fileName);
+                ? null
+                : new File(fileName);
     }
 
 
@@ -164,18 +162,13 @@ public class Settings {
     }
 
 
-
-
     private static String getString(String key, String defaultValue) {
 
         String value = System.getProperty(key, defaultValue);
 
-        if (value != null)
-        {
+        if (value != null) {
             LOG.info("string '" + key + "' = '" + value + "'");
-        }
-        else
-        {
+        } else {
             LOG.info("string '" + key + "' is null");
         }
 

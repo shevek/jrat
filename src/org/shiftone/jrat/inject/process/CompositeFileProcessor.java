@@ -11,14 +11,13 @@ import java.io.File;
 
 /**
  * @author Jeff Drost
- *
  */
 public class CompositeFileProcessor implements FileProcessor {
 
-    private static final Logger          LOG                = Logger.getLogger(CompositeFileProcessor.class);
-    private final ClassFileProcessor     classProcessor     = new ClassFileProcessor();
-    private final ArchiveFileProcessor   archiveProcessor   = new ArchiveFileProcessor();
-    private final CopyFileProcessor      fileProcessor      = new CopyFileProcessor();
+    private static final Logger LOG = Logger.getLogger(CompositeFileProcessor.class);
+    private final ClassFileProcessor classProcessor = new ClassFileProcessor();
+    private final ArchiveFileProcessor archiveProcessor = new ArchiveFileProcessor();
+    private final CopyFileProcessor fileProcessor = new CopyFileProcessor();
     private final DirectoryFileProcessor directoryProcessor = new DirectoryFileProcessor(this);
 
     public void process(Transformer transformer, InjectorOptions options, File source, File target) {
@@ -27,30 +26,22 @@ public class CompositeFileProcessor implements FileProcessor {
 
         String ext = IOUtil.getExtention(source);
 
-        if (ext != null)
-        {
+        if (ext != null) {
             ext = ext.toLowerCase();
         }
 
         LOG.debug("ext = >" + ext + "<");
 
-        if (source.isDirectory())
-        {
+        if (source.isDirectory()) {
             LOG.debug("directoryProcessor");
             directoryProcessor.process(transformer, options, source, target);
-        }
-        else if ("class".equals(ext))
-        {
+        } else if ("class".equals(ext)) {
             LOG.debug("classProcessor");
             classProcessor.process(transformer, options, source, target);
-        }
-        else if (archiveProcessor.isArchiveExtention(ext))
-        {
+        } else if (archiveProcessor.isArchiveExtention(ext)) {
             LOG.debug("archiveProcessor");
             archiveProcessor.process(transformer, options, source, target);
-        }
-        else
-        {
+        } else {
             LOG.debug("copy");
             fileProcessor.processFile(transformer, source, target);
         }

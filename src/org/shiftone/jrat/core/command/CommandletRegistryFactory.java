@@ -7,23 +7,23 @@ import org.shiftone.jrat.util.log.Logger;
  * @author Jeff Drost
  */
 public class CommandletRegistryFactory {
-	private static final Logger LOG = Logger.getLogger(CommandletRegistryFactory.class);
+    private static final Logger LOG = Logger.getLogger(CommandletRegistryFactory.class);
 
-	public static CommandletRegistry createCommandletRegistry() {
+    public static CommandletRegistry createCommandletRegistry() {
 
-		CommandletRegistry registry = new CommandletRegistry();
+        CommandletRegistry registry = new CommandletRegistry();
 
-		try {
+        try {
 
-			if (Settings.isHttpServerEnabled()) {
-				TinyWebServer server = new TinyWebServer(registry);
-				server.start();
-			}
+            if (Settings.isHttpServerEnabled()) {
+                TinyWebServer server = new TinyWebServer(registry);
+                server.start();
+            }
 
-		} catch (Exception e) {
-			LOG.error("failed to start tiny web server", e);
-		}
+        } catch (Exception e) {
+            LOG.error("failed to start tiny web server", e);
+        }
 
-		return registry;
-	}
+        return registry;
+    }
 }

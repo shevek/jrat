@@ -5,7 +5,7 @@
     **  sample, default configuration file - modify as need                **  
     **                                                                     **
     ********************************************************************* -->
-    
+
     <settings>
         <property name="httpServerEnabled" value="true"/>
     </settings>

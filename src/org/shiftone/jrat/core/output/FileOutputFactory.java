@@ -20,20 +20,19 @@ import java.util.zip.GZIPOutputStream;
 
 /**
  * @author Jeff Drost
- *
  */
 public class FileOutputFactory {
 
-    private static final Logger      LOG = Logger.getLogger(FileOutputFactory.class);
+    private static final Logger LOG = Logger.getLogger(FileOutputFactory.class);
     private final FileOutputRegistry fileOutputRegistry;
-    private final int                bufferSize;
-    private final boolean            compress;
+    private final int bufferSize;
+    private final boolean compress;
 
     public FileOutputFactory(FileOutputRegistry fileOutputRegistry, int bufferSize, boolean compress) {
 
         this.fileOutputRegistry = fileOutputRegistry;
-        this.bufferSize         = bufferSize;
-        this.compress           = compress;
+        this.bufferSize = bufferSize;
+        this.compress = compress;
     }
 
 
@@ -44,12 +43,10 @@ public class FileOutputFactory {
 
     public OutputStream createOutputStreamSafely(File file) {
 
-        try
-        {
+        try {
             return createOutputStream(file);
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.error("unable to create OutputStream for '" + file + "' return /dev/null");
 
             return NullOutputStream.INSTANCE;
@@ -59,12 +56,10 @@ public class FileOutputFactory {
 
     public Writer createWriterSafely(File file) {
 
-        try
-        {
+        try {
             return createWriter(file);
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.error("unable to create Writer for '" + file + "' return /dev/null");
 
             return NullWriter.INSTANCE;
@@ -74,12 +69,10 @@ public class FileOutputFactory {
 
     public PrintWriter createPrintWriterSafely(File file) {
 
-        try
-        {
+        try {
             return createPrintWriter(file);
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.error("unable to create PrintWriter for '" + file + "' return /dev/null");
 
             return NullPrintWriter.INSTANCE;
@@ -120,8 +113,8 @@ public class FileOutputFactory {
     private File renameIfCompress(File file) {
 
         return (compress)
-               ? new File(file.getAbsolutePath() + ".gz")
-               : file;
+                ? new File(file.getAbsolutePath() + ".gz")
+                : file;
     }
 
 
@@ -133,13 +126,11 @@ public class FileOutputFactory {
 
         OutputStream out = new FileOutputStream(file);
 
-        if (bufferSize > 0)
-        {
+        if (bufferSize > 0) {
             out = new BufferedOutputStream(out, bufferSize);
         }
 
-        if (compress)
-        {
+        if (compress) {
             out = new GZIPOutputStream(out);
         }
 

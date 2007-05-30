@@ -1,23 +1,20 @@
 package org.shiftone.jrat.util.time;
 
 
-
 import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class Clock {
 
-    private static final Logger   LOG = Logger.getLogger(Clock.class);
+    private static final Logger LOG = Logger.getLogger(Clock.class);
     private static final Movement MOVEMENT;
-    private static final Class[]  NOARG_TYPES = {};
+    private static final Class[] NOARG_TYPES = {};
 
-    static
-    {
+    static {
         MOVEMENT = createBestAvalibleMovement();
     }
 
@@ -25,12 +22,10 @@ public class Clock {
 
         Movement movement = null;
 
-        if (Settings.isNanoSecondTimingEnabled())
-        {
+        if (Settings.isNanoSecondTimingEnabled()) {
             LOG.info("trying to use nanosecond timing resolution");
 
-            try
-            {
+            try {
                 Class systemClass = System.class;
 
                 systemClass.getMethod("nanoTime", NOARG_TYPES);
@@ -38,16 +33,14 @@ public class Clock {
 
                 movement = new SystemNanoTimeMovement();
             }
-            catch (Throwable e)
-            {
+            catch (Throwable e) {
                 LOG.debug("System.nanoTime() is not available");
             }
 
 
             if (movement == null) {
 
-                try
-                {
+                try {
                     Class perfClass = Class.forName("sun.misc.Perf");
 
                     perfClass.getMethod("highResCounter", NOARG_TYPES);
@@ -56,8 +49,7 @@ public class Clock {
 
                     movement = new SunMiscPerfMovement();
                 }
-                catch (Throwable e)
-                {
+                catch (Throwable e) {
                     LOG.debug("sun.misc.Perf timing is not available");
                 }
             }

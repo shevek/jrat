@@ -24,15 +24,14 @@ import java.util.Date;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TraceViewPanel extends JPanel implements SwingConstants {
 
     private static final Logger LOG = Logger.getLogger(TraceViewPanel.class);
-    private JTree               traceTree;
-    private JLabel              traceLabel;
-    private JTable              blackListTable;
-    private JLabel              blackListLabel;
+    private JTree traceTree;
+    private JLabel traceLabel;
+    private JTable blackListTable;
+    private JLabel blackListLabel;
 
     public TraceViewPanel(TraceModel traceModel) {
 
@@ -41,7 +40,7 @@ public class TraceViewPanel extends JPanel implements SwingConstants {
         methodList.addAll(traceModel.getMethodKeyBlackList());
 
         SortedList sortedMethodList = new SortedList(methodList, NoOpComparator.INSTANCE);
-        TableModel tableModel       = new EventTableModel(sortedMethodList, new MethodKeyTableFormat());
+        TableModel tableModel = new EventTableModel(sortedMethodList, new MethodKeyTableFormat());
 
         blackListTable = new JTable();
 
@@ -57,8 +56,8 @@ public class TraceViewPanel extends JPanel implements SwingConstants {
         traceTree.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 
         blackListLabel = new JLabel("These " + sortedMethodList.size() + " method(s) were filtered"
-                                    + " from the traceTree results because" + " they were executed too many times");
-        traceLabel     = new JLabel("This traceTree was captured " + new Date(traceModel.getRunTime()) + ".");
+                + " from the traceTree results because" + " they were executed too many times");
+        traceLabel = new JLabel("This traceTree was captured " + new Date(traceModel.getRunTime()) + ".");
 
         JPanel blackList = new JPanel();
 

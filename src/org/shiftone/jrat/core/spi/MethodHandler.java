@@ -1,10 +1,8 @@
 package org.shiftone.jrat.core.spi;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface MethodHandler {
 

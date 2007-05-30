@@ -8,12 +8,12 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.GeneratorAdapter;
-import org.objectweb.asm.commons.Method; 
+import org.objectweb.asm.commons.Method;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.JRatException;
 
 import java.util.Date;
 
@@ -21,9 +21,9 @@ import java.util.Date;
 public class InjectClassVisitor extends ClassAdapter implements Constants, Opcodes {
 
     private static final Logger LOG = Logger.getLogger(InjectClassVisitor.class);
-    private int                 handlerCount;
-    private Type                classType;
-    private GeneratorAdapter    initializer;
+    private int handlerCount;
+    private Type classType;
+    private GeneratorAdapter initializer;
 
     public InjectClassVisitor(ClassVisitor visitor) {
         super(visitor);
@@ -33,7 +33,7 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
 
         handlerCount = 0;
-        classType    = Type.getType("L" + name.replace('.', '/') + ";");
+        classType = Type.getType("L" + name.replace('.', '/') + ";");
 
         super.visit(version, access, name, signature, superName, interfaces);
 
@@ -43,11 +43,11 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
 
     private GeneratorAdapter addInitializer() {
 
-        int              access            = Modifier.PRIVATE_STATIC;
-        String           descriptor        = "()V";
-        MethodVisitor    initMethodVisitor = super.visitMethod(access, initializeName, descriptor, null, null);
-        GeneratorAdapter initializer       = new GeneratorAdapter(initMethodVisitor, access, initializeName,
-                                                 descriptor);
+        int access = Modifier.PRIVATE_STATIC;
+        String descriptor = "()V";
+        MethodVisitor initMethodVisitor = super.visitMethod(access, initializeName, descriptor, null, null);
+        GeneratorAdapter initializer = new GeneratorAdapter(initMethodVisitor, access, initializeName,
+                descriptor);
 
         initMethodVisitor.visitCode();
 
@@ -67,9 +67,9 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
     private void addCommentField() {
 
         FieldVisitor commentField = super.visitField(Modifier.PRIVATE_STATIC_FINAL,
-                                        InjectorStrategy.COMMENT_FIELD_NAME, "Ljava/lang/String;", null,
-                                        "Class enhanced on " + new Date() + " w/ version JRat v"
-                                        + VersionUtil.getBuiltOn() + " built on " + VersionUtil.getBuiltOn());
+                InjectorStrategy.COMMENT_FIELD_NAME, "Ljava/lang/String;", null,
+                "Class enhanced on " + new Date() + " w/ version JRat v"
+                        + VersionUtil.getBuiltOn() + " built on " + VersionUtil.getBuiltOn());
 
         commentField.visitEnd();
     }
@@ -78,8 +78,7 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
     public FieldVisitor visitField(final int access, final String name, final String desc, final String signature,
                                    final Object value) {
 
-        if (name.equals(InjectorStrategy.COMMENT_FIELD_NAME))
-        {
+        if (name.equals(InjectorStrategy.COMMENT_FIELD_NAME)) {
             throw new JRatException("this class was previously injected by JRat");
         }
 
@@ -90,7 +89,7 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
     private void addMethodHandlerField(String fieldName, String methodName, String descriptor) {
 
         FieldVisitor handler = super.visitField(Modifier.PRIVATE_STATIC_FINAL, fieldName,
-                                                MethodHandler.TYPE.getDescriptor(), null, null);
+                MethodHandler.TYPE.getDescriptor(), null, null);
 
         handler.visitEnd();
         initializer.push(classType.getClassName());
@@ -103,12 +102,9 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
 
     public void pushThis(GeneratorAdapter adapter, boolean isStatic) {
 
-        if (isStatic)
-        {
+        if (isStatic) {
             adapter.push("test");
-        }
-        else
-        {
+        } else {
             adapter.loadThis();
         }
     }
@@ -118,14 +114,13 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
                                      String[] exceptions) {
 
         if (name.equals("<clinit>") || name.equals("<init>") || Modifier.isAbstract(access)
-                || Modifier.isNative(access))
-        {
+                || Modifier.isNative(access)) {
 
             // LOG.debug("skipping " + name);
             return super.visitMethod(access, name, descriptor, signature, exceptions);
         }
 
-        int    index            = (handlerCount++);
+        int index = (handlerCount++);
         String handlerFieldName = InjectorStrategy.HANDLER_PREFIX + index;
         String targetMethodName = name + InjectorStrategy.METHOD_POSTFIX;
 
@@ -133,10 +128,10 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
 
         // -- [ Proxy Method ] --
         {
-            Method             method  = new Method(name, descriptor);
-            MethodVisitor      mv      = super.visitMethod(access, name, descriptor, signature, exceptions);
+            Method method = new Method(name, descriptor);
+            MethodVisitor mv = super.visitMethod(access, name, descriptor, signature, exceptions);
             ProxyMethodVisitor visitor = new ProxyMethodVisitor(access, method, mv, classType, targetMethodName,
-                                             handlerFieldName);
+                    handlerFieldName);
 
             visitor.visitCode();
             visitor.visitEnd();

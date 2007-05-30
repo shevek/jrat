@@ -1,7 +1,7 @@
 package org.shiftone.jrat.inject.process;
 
 
-import org.shiftone.jrat.inject.InjectionException;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.Assert;
@@ -11,7 +11,6 @@ import org.shiftone.jrat.util.io.OpenInputStream;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.regex.CompositeMatcher;
 import org.shiftone.jrat.util.regex.Matcher;
-import org.shiftone.jrat.core.JRatException;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,35 +24,31 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ArchiveFileProcessor extends AbstractFileProcessor {
 
-    private static final Logger  LOG               = Logger.getLogger(ArchiveFileProcessor.class);
+    private static final Logger LOG = Logger.getLogger(ArchiveFileProcessor.class);
     private static final Matcher EXTENTION_MATCHER =
-        CompositeMatcher.buildCompositeGlobMatcher("zip,jar,ear,war,sar,har");
-    private static final int     BUFFER_SIZE       = 1024 * 64;
+            CompositeMatcher.buildCompositeGlobMatcher("zip,jar,ear,war,sar,har");
+    private static final int BUFFER_SIZE = 1024 * 64;
 
     protected void processFile(Transformer transformer, InjectorOptions options, File source, File target) {
 
         LOG.debug("processFile " + source.getAbsolutePath() + " => " + target.getAbsolutePath());
 
-        ZipInputStream  sourceStream = new ZipInputStream(IOUtil.openInputStream(source, BUFFER_SIZE));
+        ZipInputStream sourceStream = new ZipInputStream(IOUtil.openInputStream(source, BUFFER_SIZE));
         ZipOutputStream targetStream = new ZipOutputStream(IOUtil.openOutputStream(target, BUFFER_SIZE));
 
         targetStream.setLevel(Deflater.BEST_SPEED);
 
-        try
-        {
+        try {
             processStreams(transformer, options, sourceStream, targetStream);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("error injecting " + source.getAbsoluteFile() + " => "
-                                         + target.getAbsolutePath(), e);
+                    + target.getAbsolutePath(), e);
         }
-        finally
-        {
+        finally {
             IOUtil.close(sourceStream);
             IOUtil.close(targetStream);
         }
@@ -62,47 +57,41 @@ public class ArchiveFileProcessor extends AbstractFileProcessor {
 
     protected boolean processStreams(
             Transformer transformer, InjectorOptions options, ZipInputStream sourceStream, ZipOutputStream targetStream)
-                throws Exception {
+            throws Exception {
 
         Assert.assertNotNull("transformer", transformer);
 
-        ZipEntry    inEntry  = null;
-        ZipEntry    outEntry = null;
+        ZipEntry inEntry = null;
+        ZipEntry outEntry = null;
         InputStream entryInputStream;
 
         addReadmeCommentFile(targetStream);
 
-        while ((inEntry = sourceStream.getNextEntry()) != null)
-        {
-            outEntry         = new ZipEntry(inEntry.getName());
+        while ((inEntry = sourceStream.getNextEntry()) != null) {
+            outEntry = new ZipEntry(inEntry.getName());
             entryInputStream = new OpenInputStream(sourceStream);
 
             targetStream.putNextEntry(outEntry);
 
             String ext = getNormalizedExtention(inEntry);
 
-            if (isArchiveExtention(ext))
-            {
+            if (isArchiveExtention(ext)) {
                 LOG.info("Entering nested archive : " + outEntry.getName());
 
-                ZipInputStream  nestedSourceStream = new ZipInputStream(entryInputStream);
+                ZipInputStream nestedSourceStream = new ZipInputStream(entryInputStream);
                 ZipOutputStream nestedTargetStream = new ZipOutputStream(targetStream);
 
                 processStreams(transformer, options, nestedSourceStream, nestedTargetStream);
                 nestedTargetStream.finish();    // this line seems important...
 
                 // :)
-            }
-            else if (isClassExtention(ext))
-            {
+            } else if (isClassExtention(ext)) {
                 LOG.debug("injecting " + inEntry.getName());
 
                 byte[] transformedClass = transformer.inject(entryInputStream, inEntry.getName(), options);
 
                 targetStream.write(transformedClass);
-            }
-            else
-            {
+            } else {
                 LOG.debug("copying " + inEntry.getName());
                 IOUtil.copy(entryInputStream, targetStream);
             }
@@ -118,8 +107,7 @@ public class ArchiveFileProcessor extends AbstractFileProcessor {
 
         ZipEntry entry = new ZipEntry("_READ_ME.JRAT");
 
-        try
-        {
+        try {
             zipOutputStream.putNextEntry(entry);
 
             PrintStream printStream = new PrintStream(zipOutputStream);
@@ -138,8 +126,7 @@ public class ArchiveFileProcessor extends AbstractFileProcessor {
             System.getProperties().store(zipOutputStream, null);
             zipOutputStream.closeEntry();
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new JRatException("unable to add comment file to archive", e);
         }
     }

@@ -21,25 +21,24 @@ import java.io.StringWriter;
  * Class OpenOutputFileRunnable
  *
  * @author Jeff Drost
- *
  */
 public class OpenOutputFileRunnable implements Runnable {
 
     private static final Logger LOG = Logger.getLogger(OpenOutputFileRunnable.class);
-    private ViewContext         viewContext;
-    private View                view;
-    private OutputViewBuilder   viewBuilder;
-    private BoundedRangeModel   rangeModel;
-    private int                 percent = 0;
-    private String              title;
+    private ViewContext viewContext;
+    private View view;
+    private OutputViewBuilder viewBuilder;
+    private BoundedRangeModel rangeModel;
+    private int percent = 0;
+    private String title;
 
     public OpenOutputFileRunnable(ViewContext viewContext, OutputViewBuilder viewBuilder) {
 
         this.viewContext = viewContext;
         this.viewBuilder = viewBuilder;
-        this.view        = viewContext.getView();
-        this.title       = viewContext.getInputFile().getName();
-        this.rangeModel  = viewContext.getBoundedRangeModel();
+        this.view = viewContext.getView();
+        this.title = viewContext.getInputFile().getName();
+        this.rangeModel = viewContext.getBoundedRangeModel();
 
         // this.rangeModel.addChangeListener(this);
     }
@@ -74,8 +73,7 @@ public class OpenOutputFileRunnable implements Runnable {
     // }
     public void run() {
 
-        try
-        {
+        try {
 
             // view.setIconResource("org/shiftone/jrat/ui/icon/loading.gif");
             // view.setCursor(new Cursor(Cursor.WAIT_CURSOR));
@@ -102,8 +100,7 @@ public class OpenOutputFileRunnable implements Runnable {
             // }
             // });
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.error("error loading file", e);
 
             final JEditorPane editorPane = new JEditorPane();
@@ -130,8 +127,7 @@ public class OpenOutputFileRunnable implements Runnable {
             // }
             // });
         }
-        finally
-        {
+        finally {
 
             // SwingUtilities.invokeLater(new Runnable() {
             //

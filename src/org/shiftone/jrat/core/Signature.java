@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core;
 
 
-
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -13,17 +12,15 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- *
  */
 public class Signature {
 
-    private static final Logger LOG        = Logger.getLogger(Signature.class);
-    private static Map          PRIM_CODES = new HashMap();
-    private String              returnType;
-    private List                parameterTypes = new ArrayList(5);
+    private static final Logger LOG = Logger.getLogger(Signature.class);
+    private static Map PRIM_CODES = new HashMap();
+    private String returnType;
+    private List parameterTypes = new ArrayList(5);
 
-    static
-    {
+    static {
         PRIM_CODES.put("Z", "boolean");
         PRIM_CODES.put("B", "byte");
         PRIM_CODES.put("C", "char");
@@ -57,11 +54,10 @@ public class Signature {
 
     public String getShortParameterType(int index) {
 
-        String type     = getParameterType(index);
-        int    dotIndex = type.lastIndexOf('.');
+        String type = getParameterType(index);
+        int dotIndex = type.lastIndexOf('.');
 
-        if (dotIndex != -1)
-        {
+        if (dotIndex != -1) {
             type = type.substring(dotIndex + 1);
         }
 
@@ -73,10 +69,8 @@ public class Signature {
 
         StringBuffer sb = new StringBuffer();
 
-        for (int i = 0; i < getParameterCount(); i++)
-        {
-            if (i != 0)
-            {
+        for (int i = 0; i < getParameterCount(); i++) {
+            if (i != 0) {
                 sb.append(",");
             }
 
@@ -91,10 +85,8 @@ public class Signature {
 
         StringBuffer sb = new StringBuffer();
 
-        for (int i = 0; i < getParameterCount(); i++)
-        {
-            if (i != 0)
-            {
+        for (int i = 0; i < getParameterCount(); i++) {
+            if (i != 0) {
                 sb.append(",");
             }
 
@@ -111,21 +103,16 @@ public class Signature {
 
         boolean inParams = true;
 
-        while (in.next())
-        {
+        while (in.next()) {
             char c = in.get();
 
-            if (c == ')')
-            {
+            if (c == ')') {
                 inParams = false;
             }
 
-            if (inParams)
-            {
+            if (inParams) {
                 parameterTypes.add(parseType(in));
-            }
-            else
-            {
+            } else {
                 returnType = parseType(in);
             }
         }
@@ -136,16 +123,11 @@ public class Signature {
 
         char c = in.get();
 
-        if (c == 'L')
-        {
+        if (c == 'L') {
             return parseClassType(in);
-        }
-        else if (c == '[')
-        {
+        } else if (c == '[') {
             return parseArrayType(in);
-        }
-        else
-        {
+        } else {
             return (String) PRIM_CODES.get(String.valueOf(c));
         }
     }
@@ -155,8 +137,7 @@ public class Signature {
 
         StringBuffer sb = new StringBuffer("[]");
 
-        while (in.next() && (in.get() == '['))
-        {
+        while (in.next() && (in.get() == '[')) {
             sb.append("[]");
         }
 
@@ -171,20 +152,14 @@ public class Signature {
 
         StringBuffer className = new StringBuffer();
 
-        while (in.next())
-        {
+        while (in.next()) {
             char c = in.get();
 
-            if (c == ';')
-            {
+            if (c == ';') {
                 break;
-            }
-            else if (c == '/')
-            {
+            } else if (c == '/') {
                 className.append('.');
-            }
-            else
-            {
+            } else {
                 className.append(c);
             }
         }
@@ -197,8 +172,8 @@ public class Signature {
     private static class CharacterIterator {
 
         private char[] chars;
-        private int    pos = -1;
-        private char   current;
+        private int pos = -1;
+        private char current;
 
         public CharacterIterator(String text) {
             this.chars = text.toCharArray();
@@ -214,12 +189,9 @@ public class Signature {
 
             pos++;
 
-            if (pos >= chars.length)
-            {
+            if (pos >= chars.length) {
                 return false;
-            }
-            else
-            {
+            } else {
                 current = chars[pos];
 
                 return true;

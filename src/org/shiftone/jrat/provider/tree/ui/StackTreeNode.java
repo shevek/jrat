@@ -17,25 +17,25 @@ import java.util.List;
  * Class StackTreeNode
  *
  * @author Jeff Drost
- *
  */
 public class StackTreeNode extends StackNode implements TreeNode {
 
     private static final Logger LOG = Logger.getLogger(StackTreeNode.class);
 
     //private static final Double ZERO = new Double(0);
-    private boolean  isChildOfRoot = false;
-    private List     childList     = new ArrayList(3);
+    private boolean isChildOfRoot = false;
+    private List childList = new ArrayList(3);
     protected double pctOfAvgParentDuration;
     protected double averageDurationNanos;
     protected double rootAverageDurationNanos;
     protected double rootTotalDurationNanos;
     protected double pctOfAvgRootDuration;
     protected double pctOfRootTotalDuration;
-    private int      totalChildren;
-    private int      maxDepth;
+    private int totalChildren;
+    private int maxDepth;
 
-    public StackTreeNode() {}
+    public StackTreeNode() {
+    }
 
 
     public StackTreeNode(MethodKey methodKey, StackTreeNode parentStackTreeNode) {
@@ -47,43 +47,38 @@ public class StackTreeNode extends StackNode implements TreeNode {
                               long totalOfSquares, long maxDuration, long minDuration, int maxConcurThreads) {
 
         super.setStatistics(totalEnters, totalExits, totalErrors, totalDuration,    //
-                            totalOfSquares, maxDuration, minDuration, maxConcurThreads);
+                totalOfSquares, maxDuration, minDuration, maxConcurThreads);
 
         StackTreeNode p = (StackTreeNode) parent;
 
         this.isChildOfRoot = p.isRootNode();
 
-        if (totalExits > 0)
-        {
+        if (totalExits > 0) {
             averageDurationNanos = (double) getTotalDurationNanos() / (double) getTotalExits();
 
-            if (parent != null)
-            {
+            if (parent != null) {
                 long parentTotalDurationNanos = p.getTotalDurationNanos();
 
-                if (parentTotalDurationNanos > 0)
-                {
+                if (parentTotalDurationNanos > 0) {
                     pctOfAvgParentDuration = (100.0 * getTotalDurationNanos()) / parentTotalDurationNanos;
                 }
             }
         }
 
         this.rootAverageDurationNanos = (isChildOfRoot)
-                                        ? this.averageDurationNanos
-                                        : p.rootAverageDurationNanos;
+                ? this.averageDurationNanos
+                : p.rootAverageDurationNanos;
 
         //
         this.rootTotalDurationNanos = (isChildOfRoot)
-                                      ? getTotalDurationNanos()
-                                      : p.rootTotalDurationNanos;
+                ? getTotalDurationNanos()
+                : p.rootTotalDurationNanos;
 
-        if (rootAverageDurationNanos > 0)
-        {
+        if (rootAverageDurationNanos > 0) {
             pctOfAvgRootDuration = (100.0 * averageDurationNanos) / rootAverageDurationNanos;
         }
 
-        if (rootTotalDurationNanos > 0)
-        {
+        if (rootTotalDurationNanos > 0) {
             pctOfRootTotalDuration = ((100.0 * getTotalDurationNanos()) / rootTotalDurationNanos);
         }
     }
@@ -102,8 +97,7 @@ public class StackTreeNode extends StackNode implements TreeNode {
 
         totalChildren += childList.size();
 
-        for (int i = 0; i < childList.size(); i++)
-        {
+        for (int i = 0; i < childList.size(); i++) {
             StackTreeNode child = (StackTreeNode) childList.get(i);
 
             totalChildren += child.totalChildren;
@@ -118,13 +112,13 @@ public class StackTreeNode extends StackNode implements TreeNode {
 
                 StackTreeNode stn1 = (StackTreeNode) o1;
                 StackTreeNode stn2 = (StackTreeNode) o2;
-                int           diff = stn1.getTotalChildren() - stn2.getTotalChildren();
+                int diff = stn1.getTotalChildren() - stn2.getTotalChildren();
 
                 return (diff == 0)
-                       ? 0
-                       : (diff < 0)
-                         ? 1
-                         : -1;
+                        ? 0
+                        : (diff < 0)
+                        ? 1
+                        : -1;
             }
         };
 
@@ -147,12 +141,10 @@ public class StackTreeNode extends StackNode implements TreeNode {
 
         StackNode treeNode = null;
 
-        synchronized (children)
-        {
+        synchronized (children) {
             treeNode = (StackNode) children.get(methodKey);
 
-            if (treeNode == null)
-            {
+            if (treeNode == null) {
                 treeNode = new StackTreeNode(methodKey, this);
 
                 childList.add(treeNode);
@@ -189,8 +181,8 @@ public class StackTreeNode extends StackNode implements TreeNode {
     public String toString() {
 
         return (isRootNode())
-               ? "Root"
-               : methodKey.getMethodName();
+                ? "Root"
+                : methodKey.getMethodName();
     }
 
 

@@ -12,31 +12,27 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class IfInterfaceClassVisitor implements ClassVisitor {
 
     private static final Logger LOG = Logger.getLogger(IfInterfaceClassVisitor.class);
-    private ClassVisitor        interfaceClassVisitor;
-    private ClassVisitor        concreteClassVisitor;
-    private ClassVisitor        currentVisitor;
+    private ClassVisitor interfaceClassVisitor;
+    private ClassVisitor concreteClassVisitor;
+    private ClassVisitor currentVisitor;
 
     public IfInterfaceClassVisitor(ClassVisitor interfaceClassVisitor, ClassVisitor concreteClassVisitor) {
         this.interfaceClassVisitor = interfaceClassVisitor;
-        this.concreteClassVisitor  = concreteClassVisitor;
+        this.concreteClassVisitor = concreteClassVisitor;
     }
 
 
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
 
-        if (Modifier.isInterface(access))
-        {
+        if (Modifier.isInterface(access)) {
             currentVisitor = interfaceClassVisitor;
 
             // LOG.debug("is interface " + name);
-        }
-        else
-        {
+        } else {
             currentVisitor = concreteClassVisitor;
 
             // LOG.debug("is NOT interface " + name);

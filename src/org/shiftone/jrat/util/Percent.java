@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.text.DecimalFormat;
@@ -9,20 +8,19 @@ import java.text.DecimalFormat;
 
 /**
  * @author Jeff Drost
- *
  */
 public class Percent extends Number implements Comparable {
 
-    private static final Logger  LOG               = Logger.getLogger(Percent.class);
-    public static final Percent  ZERO              = new Percent(0);
-    public static final Percent  HUNDRED           = new Percent(100);
-    private static DecimalFormat pctDecimalFormat  = new DecimalFormat("#,###.0");
-    public static final double   POSITIVE_INFINITY = 1.0 / 0.0;
-    public static final double   NEGATIVE_INFINITY = -1.0 / 0.0;
-    public static final double   NAN               = 0.0d / 0.0d;
-    public static final double   MAX_VALUE         = 1.7976931348623157e+308;
-    public static final double   MIN_VALUE         = 4.9e-324;
-    private double               value;
+    private static final Logger LOG = Logger.getLogger(Percent.class);
+    public static final Percent ZERO = new Percent(0);
+    public static final Percent HUNDRED = new Percent(100);
+    private static DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.0");
+    public static final double POSITIVE_INFINITY = 1.0 / 0.0;
+    public static final double NEGATIVE_INFINITY = -1.0 / 0.0;
+    public static final double NAN = 0.0d / 0.0d;
+    public static final double MAX_VALUE = 1.7976931348623157e+308;
+    public static final double MIN_VALUE = 4.9e-324;
+    private double value;
 
     public Percent(double value) {
         this.value = value;
@@ -79,8 +77,7 @@ public class Percent extends Number implements Comparable {
 
     public String toString() {
 
-        synchronized (pctDecimalFormat)
-        {
+        synchronized (pctDecimalFormat) {
             return pctDecimalFormat.format(value);
         }
 
@@ -135,7 +132,7 @@ public class Percent extends Number implements Comparable {
 
         Assert.assertNotNull("anotherPercent", anotherPercent);
 
-        Double me    = new Double(value);
+        Double me = new Double(value);
         Double other = new Double(anotherPercent.value);
 
         return me.compareTo(other);

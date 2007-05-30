@@ -17,38 +17,35 @@ import java.awt.BorderLayout;
  * and forth.
  *
  * @author Jeff Drost
- *
  */
 public class NGraphPanel extends JPanel {
 
-    private static final Logger LOG                    = Logger.getLogger(NGraphPanel.class);
-    private static final int    SCROLL_UNIT_INCREMENT  = 50;
-    private static final int    SCROLL_BLOCK_INCREMENT = 150;
-    private NSplitPane          splitPane              = null;
-    private JScrollBar          scrollBar              = null;
-    private GraphComponent[]    graphComponents        = null;
-    private JScrollPane[]       scrollPanes            = null;
+    private static final Logger LOG = Logger.getLogger(NGraphPanel.class);
+    private static final int SCROLL_UNIT_INCREMENT = 50;
+    private static final int SCROLL_BLOCK_INCREMENT = 150;
+    private NSplitPane splitPane = null;
+    private JScrollBar scrollBar = null;
+    private GraphComponent[] graphComponents = null;
+    private JScrollPane[] scrollPanes = null;
 
     /**
      * Constructor NGraphPanel
-     *
      *
      * @param graphCount
      */
     public NGraphPanel(int graphCount) {
 
         this.graphComponents = new GraphComponent[graphCount];
-        this.scrollPanes     = new JScrollPane[graphCount];
-        this.splitPane       = new NSplitPane(NSplitPane.VERTICAL_SPLIT);
-        this.scrollBar       = new JScrollBar(JScrollBar.HORIZONTAL);
+        this.scrollPanes = new JScrollPane[graphCount];
+        this.splitPane = new NSplitPane(NSplitPane.VERTICAL_SPLIT);
+        this.scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
 
         scrollBar.setUnitIncrement(SCROLL_UNIT_INCREMENT);
         scrollBar.setBlockIncrement(SCROLL_BLOCK_INCREMENT);
 
-        for (int i = 0; i < graphCount; i++)
-        {
+        for (int i = 0; i < graphCount; i++) {
             graphComponents[i] = new GraphComponent();
-            scrollPanes[i]     = new JScrollPane(graphComponents[i]);
+            scrollPanes[i] = new JScrollPane(graphComponents[i]);
 
             scrollPanes[i].setHorizontalScrollBar(scrollBar);
             splitPane.add(scrollPanes[i]);

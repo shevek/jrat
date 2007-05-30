@@ -10,11 +10,10 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 
 /**
  * @author Jeff Drost
- *
  */
 public class Log4jMethodHandlerFactory implements MethodHandlerFactory {
 
-    private Level  level  = Level.INFO;
+    private Level level = Level.INFO;
     private String prefix = "";
 
     public MethodHandler createMethodHandler(MethodKey methodKey) {
@@ -22,7 +21,8 @@ public class Log4jMethodHandlerFactory implements MethodHandlerFactory {
     }
 
 
-    public void startup(RuntimeContext context) throws Exception {}
+    public void startup(RuntimeContext context) throws Exception {
+    }
 
 
     public void setLevel(String levelName) {

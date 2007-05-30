@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util.log.target;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface LogTarget {
 

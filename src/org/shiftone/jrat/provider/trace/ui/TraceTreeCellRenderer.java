@@ -15,66 +15,53 @@ import java.awt.Component;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TraceTreeCellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
 
-    private static final Logger LOG         = Logger.getLogger(TraceTreeCellRenderer.class);
-    private static Icon         ICON_ROOT   = new DotIcon(9, Color.DARK_GRAY);
-    private static Icon         ICON_METHOD = new DotIcon(9, Color.ORANGE);
-    private TraceNode           node;
+    private static final Logger LOG = Logger.getLogger(TraceTreeCellRenderer.class);
+    private static Icon ICON_ROOT = new DotIcon(9, Color.DARK_GRAY);
+    private static Icon ICON_METHOD = new DotIcon(9, Color.ORANGE);
+    private TraceNode node;
 
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,
-            boolean leaf, int row, boolean hasFocus) {
+                                                  boolean leaf, int row, boolean hasFocus) {
 
-        this.node     = (TraceNode) value;
+        this.node = (TraceNode) value;
         this.hasFocus = hasFocus;
         this.selected = sel;
 
         Icon icon;
 
-        if (node.isRootNode())
-        {
+        if (node.isRootNode()) {
             icon = ICON_ROOT;
-        }
-        else
-        {
+        } else {
             icon = ICON_METHOD;
         }
 
         setIcon(icon);
 
         MethodKey methodKey = node.getMethodKey();
-        String    text;
+        String text;
 
-        if (methodKey == null)
-        {
+        if (methodKey == null) {
             text = "";
-        }
-        else
-        {
+        } else {
             text = methodKey.getClassName() + "." + methodKey.getMethodName() + methodKey.getPrettySignature() + " - "
-                   + node.getDurationMs() + "ms";
+                    + node.getDurationMs() + "ms";
         }
 
         setText(text);
 
-        if (selected)
-        {
+        if (selected) {
             setForeground(Color.white);
-        }
-        else
-        {
+        } else {
             setForeground(Color.black);
         }
 
-        if (!tree.isEnabled())
-        {
+        if (!tree.isEnabled()) {
             setEnabled(false);
             setDisabledIcon(icon);
-        }
-        else
-        {
+        } else {
             setEnabled(true);
             setIcon(icon);
         }

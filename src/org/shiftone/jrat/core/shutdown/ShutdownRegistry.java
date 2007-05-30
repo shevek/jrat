@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.shutdown;
 
 
-
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.HtmlUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -13,14 +12,14 @@ import java.util.Stack;
  * Shut down order is important!
  *
  * @author Jeff Drost
- *
- *          http://java.sun.com/developer/JDCTechTips/2006/tt0211.html#1
+ *         <p/>
+ *         http://java.sun.com/developer/JDCTechTips/2006/tt0211.html#1
  */
 public class ShutdownRegistry implements ShutdownRegistryMBean {
 
-    private static final Logger LOG           = Logger.getLogger(ShutdownRegistry.class);
-    private Stack               shutdownStack = new Stack();
-    private ShutdownListener    firstShutdownListener;
+    private static final Logger LOG = Logger.getLogger(ShutdownRegistry.class);
+    private Stack shutdownStack = new Stack();
+    private ShutdownListener firstShutdownListener;
 
     public ShutdownRegistry() {
 
@@ -48,14 +47,12 @@ public class ShutdownRegistry implements ShutdownRegistryMBean {
 
     private static void shutdown(ShutdownListener shutdownListener) {
 
-        try
-        {
+        try {
             LOG.info("shutting down " + shutdownListener + "...");
             shutdownListener.shutdown();
             LOG.info("shutdown " + shutdownListener + " complete.");
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.error("shutdown failed for " + shutdownListener, e);
             e.printStackTrace(System.err);
         }
@@ -66,13 +63,11 @@ public class ShutdownRegistry implements ShutdownRegistryMBean {
 
         LOG.info("shutting down..." + shutdownStack);
 
-        if (firstShutdownListener != null)
-        {
+        if (firstShutdownListener != null) {
             shutdown(firstShutdownListener);
         }
 
-        while (!shutdownStack.isEmpty())
-        {
+        while (!shutdownStack.isEmpty()) {
             shutdown((ShutdownListener) shutdownStack.pop());
         }
 

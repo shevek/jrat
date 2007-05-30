@@ -25,44 +25,39 @@ import java.io.Reader;
  * Class OpenOutputFileAction
  *
  * @author Jeff Drost
- *
  */
 public class OpenOutputFileAction implements ActionListener, UIConstants {
 
-    private static final Logger LOG           = Logger.getLogger(OpenOutputFileAction.class);
-    public static final String  VIEWER_STRING = "viewer=\"";
-    private Frame               parent        = null;
-    private ViewContainer       viewContainer = null;
-    private ActionEvent         actionEvent   = null;
+    private static final Logger LOG = Logger.getLogger(OpenOutputFileAction.class);
+    public static final String VIEWER_STRING = "viewer=\"";
+    private Frame parent = null;
+    private ViewContainer viewContainer = null;
+    private ActionEvent actionEvent = null;
 
     public OpenOutputFileAction(Frame parent, ViewContainer viewContainer) {
-        this.parent        = parent;
+        this.parent = parent;
         this.viewContainer = viewContainer;
     }
 
 
     public void actionPerformed(ActionEvent e) {
 
-        JFileChooser chooser  = new JFileChooser();
-        File         lastFile = SETTINGS.getLastOpenedOutputFile();
+        JFileChooser chooser = new JFileChooser();
+        File lastFile = SETTINGS.getLastOpenedOutputFile();
 
-        try
-        {
+        try {
             chooser.addChoosableFileFilter(OUTPUT_FILE_FILTER);
 
-            if (lastFile != null)
-            {
+            if (lastFile != null) {
                 chooser.setCurrentDirectory(IOUtil.getNearestExistingParent(lastFile));
                 chooser.setSelectedFile(lastFile);
             }
 
-            if (JFileChooser.APPROVE_OPTION == chooser.showOpenDialog(parent))
-            {
+            if (JFileChooser.APPROVE_OPTION == chooser.showOpenDialog(parent)) {
                 openFile(chooser.getSelectedFile());
             }
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             new ExceptionDialog(parent, ex).setVisible(true);
         }
     }
@@ -73,13 +68,13 @@ public class OpenOutputFileAction implements ActionListener, UIConstants {
         LOG.info("openFile(" + inputFile + ")");
         SETTINGS.setLastOpenedOutputFile(inputFile);
 
-        String            title         = inputFile.getName();
-        ViewContextImpl   runtimeOutput = null;
-        OutputViewBuilder viewBuilder   = null;
-        View              view          = viewContainer.createView(title);
+        String title = inputFile.getName();
+        ViewContextImpl runtimeOutput = null;
+        OutputViewBuilder viewBuilder = null;
+        View view = viewContainer.createView(title);
 
         runtimeOutput = new ViewContextImpl(view, inputFile);
-        viewBuilder   = getOutputViewerFactory(runtimeOutput);
+        viewBuilder = getOutputViewerFactory(runtimeOutput);
 
         Runnable runnable = new OpenOutputFileRunnable(runtimeOutput, viewBuilder);
 
@@ -89,11 +84,11 @@ public class OpenOutputFileAction implements ActionListener, UIConstants {
 
     private OutputViewBuilder getOutputViewerFactory(ViewContext viewContext) throws IOException {
 
-        OutputViewBuilder factory   = null;
-        String            klassName = null;
+        OutputViewBuilder factory = null;
+        String klassName = null;
 
         klassName = getOutputViewerFactoryClassName(viewContext);
-        factory   = (OutputViewBuilder) ResourceUtil.newInstance(klassName);
+        factory = (OutputViewBuilder) ResourceUtil.newInstance(klassName);
 
         return factory;
     }
@@ -101,22 +96,19 @@ public class OpenOutputFileAction implements ActionListener, UIConstants {
 
     private String getOutputViewerFactoryClassName(ViewContext viewContext) throws IOException {
 
-        Reader           reader     = null;
+        Reader reader = null;
         LineNumberReader lineReader = null;
-        String           line       = null;
-        String           klass      = null;
+        String line = null;
+        String klass = null;
 
-        try
-        {
-            reader     = viewContext.openReader();
+        try {
+            reader = viewContext.openReader();
             lineReader = new LineNumberReader(reader);
 
-            while ((line = lineReader.readLine()) != null)
-            {
+            while ((line = lineReader.readLine()) != null) {
                 int a = line.indexOf(VIEWER_STRING);
 
-                if (a >= 0)
-                {
+                if (a >= 0) {
                     int b = a + VIEWER_STRING.length();
                     int c = line.indexOf("\"", b);
 
@@ -128,17 +120,14 @@ public class OpenOutputFileAction implements ActionListener, UIConstants {
                 }
             }
 
-            if (klass == null)
-            {
+            if (klass == null) {
                 throw new IOException("unable to find viewer definition in file");
             }
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw e;
         }
-        finally
-        {
+        finally {
             IOUtil.close(reader);
         }
 

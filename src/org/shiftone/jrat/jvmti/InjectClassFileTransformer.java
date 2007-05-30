@@ -13,10 +13,10 @@ import java.security.ProtectionDomain;
 
 public class InjectClassFileTransformer implements ClassFileTransformer {
 
-    private static final Logger LOG            = Logger.getLogger(InjectClassFileTransformer.class);
-    private ServiceFactory      serviceFactory = ServiceFactory.getInstance();
-    private Transformer         transformer    = serviceFactory.getTransformer();
-    private InjectorOptions     injectorOptions;
+    private static final Logger LOG = Logger.getLogger(InjectClassFileTransformer.class);
+    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    private Transformer transformer = serviceFactory.getTransformer();
+    private InjectorOptions injectorOptions;
 
     public InjectClassFileTransformer(InjectorOptions injectorOptions) throws Exception {
 
@@ -28,24 +28,21 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
 
     public byte[] transform(
             ClassLoader loader, String className, Class /* <?> */ classBeingRedefined, ProtectionDomain protectionDomain, byte[] inClassfileBuffer)
-                throws IllegalClassFormatException {
+            throws IllegalClassFormatException {
 
         if ((loader.getParent() == null)                        //
                 || className.startsWith("org/shiftone/jrat")    //
                 || className.startsWith("sun")                  //
-                || className.startsWith("javax"))
-        {
+                || className.startsWith("javax")) {
 
             // LOG.debug("skipping class : " + className);
             return inClassfileBuffer;
         }
 
-        try
-        {
+        try {
             return transformer.inject(inClassfileBuffer, injectorOptions);
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.info("error transforming : " + className, e);
 
             return inClassfileBuffer;

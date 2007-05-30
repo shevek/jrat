@@ -1,10 +1,9 @@
 package org.shiftone.jrat.test.harness;
 
 
-import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.HandlerFactory;
+import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.util.ArrayList;
@@ -17,23 +16,21 @@ import java.util.Random;
  * Class VirtualMethodCall
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class VirtualMethodCall {
 
-    private static final Logger LOG        = Logger.getLogger(VirtualMethodCall.class);
-    private static Random    random     = new Random();
-    private List             memoryLeak = new LinkedList();
-    private List             children   = new ArrayList();
-    private MethodKey        methodKey  = null;
-    private MethodHandler    handler    = null;
-    private long             childCalls;
-    private long             minDuration;
-    private long             randDuration;
+    private static final Logger LOG = Logger.getLogger(VirtualMethodCall.class);
+    private static Random random = new Random();
+    private List memoryLeak = new LinkedList();
+    private List children = new ArrayList();
+    private MethodKey methodKey = null;
+    private MethodHandler handler = null;
+    private long childCalls;
+    private long minDuration;
+    private long randDuration;
 
     /**
      * Constructor VirtualMethodCall
-     *
      *
      * @param className
      * @param methodName
@@ -41,10 +38,10 @@ public class VirtualMethodCall {
      */
     public VirtualMethodCall(String className, String methodName, String signature) {
 
-        this.methodKey    = new MethodKey(className, methodName, signature);
-        this.handler      = HandlerFactory.getMethodHandler(methodKey);
-        this.childCalls   = positiveRand(20);
-        this.minDuration  = positiveRand(10);
+        this.methodKey = new MethodKey(className, methodName, signature);
+        this.handler = HandlerFactory.getMethodHandler(methodKey);
+        this.childCalls = positiveRand(20);
+        this.minDuration = positiveRand(10);
         this.randDuration = positiveRand(10) + 1;
     }
 
@@ -88,12 +85,12 @@ public class VirtualMethodCall {
 
         long time = minDuration + (positiveRand(randDuration));
 
-        try
-        {
+        try {
             Thread.sleep(time);
             memoryLeak.add(new String("leak"));
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        }
     }
 
 
@@ -104,10 +101,8 @@ public class VirtualMethodCall {
 
         VirtualMethodCall call = null;
 
-        if (children.size() > 0)
-        {
-            for (int i = 0; i < childCalls; i++)
-            {
+        if (children.size() > 0) {
+            for (int i = 0; i < childCalls; i++) {
                 call = (VirtualMethodCall) children.get((int) positiveRand(children.size()));
 
                 call.simulateCall();

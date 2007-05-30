@@ -1,7 +1,6 @@
 package org.shiftone.jrat.api;
 
 
-
 /**
  * @author Jeff Drost
  */

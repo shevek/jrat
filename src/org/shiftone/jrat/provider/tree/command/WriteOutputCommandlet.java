@@ -10,20 +10,20 @@ import org.shiftone.jrat.util.log.Logger;
  */
 public class WriteOutputCommandlet extends AbstractLogCommandlet implements Commandlet {
 
-	private static final Logger LOG = Logger.getLogger(WriteOutputCommandlet.class);
-	private final TreeMethodHandlerFactory treeMethodHandlerFactory;
+    private static final Logger LOG = Logger.getLogger(WriteOutputCommandlet.class);
+    private final TreeMethodHandlerFactory treeMethodHandlerFactory;
 
-	public WriteOutputCommandlet(TreeMethodHandlerFactory treeMethodHandlerFactory) {
-		this.treeMethodHandlerFactory = treeMethodHandlerFactory;
-	}
+    public WriteOutputCommandlet(TreeMethodHandlerFactory treeMethodHandlerFactory) {
+        this.treeMethodHandlerFactory = treeMethodHandlerFactory;
+    }
 
-	public void execute() {
-	  treeMethodHandlerFactory.writeOutputFile();
-	  LOG.info("output file written.");
-	}
+    public void execute() {
+        treeMethodHandlerFactory.writeOutputFile();
+        LOG.info("output file written.");
+    }
 
 
-	public String getTitle() {
-		return "Write Tree Output To File";
-	}
+    public String getTitle() {
+        return "Write Tree Output To File";
+    }
 }

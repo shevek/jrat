@@ -18,23 +18,21 @@ import java.util.zip.GZIPInputStream;
 
 /**
  * @author $author$
- *
  */
 public class ViewContextImpl implements ViewContext {
 
-    private static final Logger     LOG = Logger.getLogger(ViewContextImpl.class);
-    private final File              file;
-    private final View              view;
+    private static final Logger LOG = Logger.getLogger(ViewContextImpl.class);
+    private final File file;
+    private final View view;
     private final BoundedRangeModel boundedRangeModel;
 
     ViewContextImpl(View view, File file) throws IOException {
 
-        this.view              = view;
-        this.file              = file;
+        this.view = view;
+        this.file = file;
         this.boundedRangeModel = view.getRangeModel();
 
-        if (file.exists() == false)
-        {
+        if (file.exists() == false) {
             throw new IOException("file does not exist : " + file);
         }
     }
@@ -53,14 +51,14 @@ public class ViewContextImpl implements ViewContext {
     public InputStream openInputStream() throws IOException {
 
         ProgressInputStream progressInputStream = null;
-        InputStream         intputStream        = null;
+        InputStream intputStream = null;
 
         LOG.info("openInputStream");
 
         progressInputStream = new ProgressInputStream(file, boundedRangeModel);
-        intputStream        = isZipped()
-                       ? (InputStream) new GZIPInputStream(progressInputStream)
-                       : progressInputStream;
+        intputStream = isZipped()
+                ? (InputStream) new GZIPInputStream(progressInputStream)
+                : progressInputStream;
 
         return intputStream;
     }

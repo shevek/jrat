@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate.ui;
 
 
-
 import org.shiftone.jrat.core.spi.ui.OutputViewBuilder;
 import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.util.log.Logger;
@@ -9,7 +8,6 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class RateOutputViewBuilder implements OutputViewBuilder {
 

@@ -15,17 +15,15 @@ import java.awt.Dimension;
  * Class StatusBar
  *
  * @author Jeff Drost
- *
  */
 public class StatusBar extends JPanel {
 
-    private static final Logger LOG         = Logger.getLogger(StatusBar.class);
-    private JLabel              status      = new JLabel();
-    private JProgressBar        progressBar = new JProgressBar();
+    private static final Logger LOG = Logger.getLogger(StatusBar.class);
+    private JLabel status = new JLabel();
+    private JProgressBar progressBar = new JProgressBar();
 
     /**
      * Constructor StatusBar
-     *
      */
     public StatusBar() {
 

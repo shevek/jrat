@@ -1,8 +1,8 @@
 package org.shiftone.jrat.util.io.proxy;
 
 
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.util.log.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +10,6 @@ import java.io.InputStream;
 
 /**
  * @author Jeff Drost
- *
  */
 public abstract class ProxyInputStream extends InputStream {
 
@@ -21,12 +20,10 @@ public abstract class ProxyInputStream extends InputStream {
 
     private InputStream getTargetRTE() {
 
-        try
-        {
+        try {
             return getTarget();
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new JRatException("failed to get target InputStream", e);
         }
     }

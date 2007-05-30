@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.log.target;
 
 
-
 import org.shiftone.jrat.util.Command;
 
 
@@ -12,7 +11,6 @@ import org.shiftone.jrat.util.Command;
  * during the duration of that command.
  *
  * @author Jeff Drost
- *
  */
 public class ThreadLocalLogTarget implements LogTarget {
 
@@ -58,14 +56,12 @@ public class ThreadLocalLogTarget implements LogTarget {
 
         LogTarget oldTarget = getLogTarget();
 
-        try
-        {
+        try {
             setLogTarget(newTarget);
 
             return command.execute();
         }
-        finally
-        {
+        finally {
             setLogTarget(oldTarget);
         }
     }

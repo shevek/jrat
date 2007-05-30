@@ -2,8 +2,8 @@ package org.shiftone.jrat.provider.rate.ui;
 
 
 import org.shiftone.jrat.core.Accumulator;
-import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.rate.RateOutput;
 import org.shiftone.jrat.ui.util.ColorSet;
 import org.shiftone.jrat.util.StringUtil;
@@ -25,39 +25,37 @@ import java.util.List;
  * version of the output file.
  *
  * @author Jeff Drost
- *
  */
 public class RateModel {
 
-    private static final Logger LOG             = Logger.getLogger(RateModel.class);
-    private int                 handlerMax      = 0;
-    private long                rateStartTimeMs = 0;
-    private long                sysStartTimeMs  = 0;
-    private long                periodMs        = 0;
-    private boolean             wasShutdown     = false;    // the handler was shutdown
-    private List                samples         = null;
-    private List                methodKeys      = null;
+    private static final Logger LOG = Logger.getLogger(RateModel.class);
+    private int handlerMax = 0;
+    private long rateStartTimeMs = 0;
+    private long sysStartTimeMs = 0;
+    private long periodMs = 0;
+    private boolean wasShutdown = false;    // the handler was shutdown
+    private List samples = null;
+    private List methodKeys = null;
 
 
     public void load(InputStream inputStream) throws IOException {
 
-        Reader           reader     = new InputStreamReader(inputStream);
+        Reader reader = new InputStreamReader(inputStream);
         LineNumberReader lineReader = new LineNumberReader(reader);
-        String           line       = null;
+        String line = null;
 
         lineReader.readLine();    // this class name, ignore it
 
-        handlerMax      = Integer.parseInt(lineReader.readLine());
-        sysStartTimeMs  = Long.parseLong(lineReader.readLine());
+        handlerMax = Integer.parseInt(lineReader.readLine());
+        sysStartTimeMs = Long.parseLong(lineReader.readLine());
         rateStartTimeMs = Long.parseLong(lineReader.readLine());
-        periodMs        = Long.parseLong(lineReader.readLine());
-        wasShutdown     = false;
-        samples         = new ArrayList();
-        methodKeys      = new ArrayList();
+        periodMs = Long.parseLong(lineReader.readLine());
+        wasShutdown = false;
+        samples = new ArrayList();
+        methodKeys = new ArrayList();
 
         // at any point in an output file, a method or sample may be defined
-        while ((line = lineReader.readLine()) != null)
-        {
+        while ((line = lineReader.readLine()) != null) {
             processLine(line);
         }
 
@@ -65,50 +63,37 @@ public class RateModel {
     }
 
 
-
     private void processLine(String line) {
 
         String[] tokens = StringUtil.tokenize(line, "\t", false);
 
-        if (tokens.length < 3)
-        {
+        if (tokens.length < 3) {
             LOG.info("line only has " + tokens.length + " tokens");
 
             return;
-        }
-        else if (false == tokens[tokens.length - 1].equals(RateOutput.POSTFIX_END))
-        {
+        } else if (false == tokens[tokens.length - 1].equals(RateOutput.POSTFIX_END)) {
             LOG.info("line does not end with END token : " + line);
 
             return;
-        }
-        else if (tokens[0].equals(RateOutput.PREFIX_METHOD))
-        {
+        } else if (tokens[0].equals(RateOutput.PREFIX_METHOD)) {
             addMethod(tokens);
-        }
-        else if (tokens[0].equals(RateOutput.PREFIX_SAMPLE))
-        {
+        } else if (tokens[0].equals(RateOutput.PREFIX_SAMPLE)) {
             addSample(tokens);
-        }
-        else if (tokens[0].equals(RateOutput.PREFIX_SHUTDOWN))
-        {
+        } else if (tokens[0].equals(RateOutput.PREFIX_SHUTDOWN)) {
             wasShutdown = true;
         }
     }
 
 
-
     private void addMethod(String[] tokens) {
 
         // 0 METHOD, 1 index, 2 class, 3 method, 4 signature 5 END
-        if (tokens.length != 6)
-        {
+        if (tokens.length != 6) {
             throw new JRatException("error in format of method key : " + tokens);
         }
 
         methodKeys.add(Integer.parseInt(tokens[1]), new MethodKey(tokens[2], tokens[3], tokens[4]));
     }
-
 
 
     private void addSample(String[] tokens) {
@@ -121,11 +106,9 @@ public class RateModel {
     }
 
 
-
     public int getMethodCount() {
         return methodKeys.size();
     }
-
 
 
     public MethodKey getMethodKey(int index) {
@@ -137,7 +120,6 @@ public class RateModel {
      * Method getMethodColor
      *
      * @param index .
-     *
      * @return .
      */
     public Color getMethodColor(int index) {
@@ -149,7 +131,6 @@ public class RateModel {
      * Method getSample
      *
      * @param sampleNumber .
-     *
      * @return .
      */
     public RateModelSample getSample(int sampleNumber) {
@@ -162,7 +143,6 @@ public class RateModel {
      *
      * @param sampleNumber .
      * @param methodNumber .
-     *
      * @return .
      */
     public Accumulator getAccumulator(int sampleNumber, int methodNumber) {
@@ -174,7 +154,6 @@ public class RateModel {
      * Method getFreeMemory
      *
      * @param sampleNumber .
-     *
      * @return .
      */
     public long getFreeMemory(int sampleNumber) {
@@ -186,7 +165,6 @@ public class RateModel {
      * Method getMaxMemory
      *
      * @param sampleNumber .
-     *
      * @return .
      */
     public long getMaxMemory(int sampleNumber) {
@@ -198,27 +176,23 @@ public class RateModel {
      * Method getMaxAverageDuration
      *
      * @param methodNumber .
-     *
      * @return .
      */
     public int getMaxDuration(int methodNumber) {
 
         Long currentMax = null;
-        int  max        = 0;
+        int max = 0;
 
-        for (int i = 0; i < getSampleCount(); i++)
-        {
+        for (int i = 0; i < getSampleCount(); i++) {
             currentMax = getAccumulator(i, methodNumber).getMaxDurationNanos();
 
-            if (currentMax != null)
-            {
+            if (currentMax != null) {
                 max = Math.max(max, currentMax.intValue());
             }
         }
 
         return max;
     }
-
 
     // --------------------------------------
 

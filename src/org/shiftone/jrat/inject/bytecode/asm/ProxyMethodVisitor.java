@@ -13,27 +13,26 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, Opcodes {
 
     private static final Logger LOG = Logger.getLogger(ProxyMethodVisitor.class);
-    private boolean             isStatic;
-    private boolean             isVoidReturn;
-    private Type                classType;
-    private String              handlerFieldName;
-    private String              targetMethodName;
-    private Method              method;
+    private boolean isStatic;
+    private boolean isVoidReturn;
+    private Type classType;
+    private String handlerFieldName;
+    private String targetMethodName;
+    private Method method;
 
     public ProxyMethodVisitor(int access, Method method, MethodVisitor mv, Type classType, String targetMethodName,
                               String handlerFieldName) {
 
         super(access, method, mv);
 
-        this.method           = method;
-        this.isStatic         = Modifier.isStatic(access);
-        this.isVoidReturn     = Type.VOID_TYPE.equals(method.getReturnType());
-        this.classType        = classType;
+        this.method = method;
+        this.isStatic = Modifier.isStatic(access);
+        this.isVoidReturn = Type.VOID_TYPE.equals(method.getReturnType());
+        this.classType = classType;
         this.targetMethodName = targetMethodName;
         this.handlerFieldName = handlerFieldName;
     }
@@ -62,13 +61,10 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
         // Object result = method(args)
         Label tryStart = mark();    // try {
 
-        if (isStatic)
-        {
+        if (isStatic) {
             loadArgs();    // push the args on the stack
             invokeStatic(classType, new Method(targetMethodName, method.getDescriptor()));
-        }
-        else
-        {
+        } else {
             loadThis();    // push this on the stack (for non-static methods)
             loadArgs();    // push the args on the stack
             invokeVirtual(classType, new Method(targetMethodName, method.getDescriptor()));
@@ -76,8 +72,7 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
         int result = -1;
 
-        if (!isVoidReturn)
-        {
+        if (!isVoidReturn) {
             result = newLocal(method.getReturnType());
 
             storeLocal(result);
@@ -103,8 +98,7 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
         // -------------------------------------------------------------------------------
         // return result;
-        if (!isVoidReturn)
-        {
+        if (!isVoidReturn) {
             loadLocal(result);
         }
 
@@ -149,12 +143,9 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
     private void pushThis() {
 
-        if (isStatic)
-        {
+        if (isStatic) {
             push("test");
-        }
-        else
-        {
+        } else {
             loadThis();
         }
     }

@@ -1,10 +1,8 @@
 package org.shiftone.jrat.inject.bytecode;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface TransformerMBean {
 

@@ -11,18 +11,16 @@ import java.util.TimerTask;
 
 /**
  * @author $author$
- *
  */
 public class WeakScheduler {
 
-    static final Logger          LOG       = Logger.getLogger(WeakScheduler.class);
+    static final Logger LOG = Logger.getLogger(WeakScheduler.class);
     private static WeakScheduler scheduler = null;
-    private Timer                timer     = new Timer();
+    private Timer timer = new Timer();
 
     public synchronized WeakScheduler getInstance() {
 
-        if (scheduler == null)
-        {
+        if (scheduler == null) {
             scheduler = new WeakScheduler();
         }
 
@@ -39,7 +37,7 @@ public class WeakScheduler {
     class WeakTimerTask extends TimerTask {
 
         private Reference reference = null;
-        private String    name      = null;
+        private String name = null;
 
         /**
          * Constructor for WeakTimerTask
@@ -48,7 +46,7 @@ public class WeakScheduler {
          */
         WeakTimerTask(Runnable runnable) {
             reference = new WeakReference(runnable);
-            name      = String.valueOf(runnable);
+            name = String.valueOf(runnable);
         }
 
 
@@ -59,19 +57,14 @@ public class WeakScheduler {
 
             Runnable target = (Runnable) reference.get();
 
-            if (target == null)
-            {
+            if (target == null) {
                 LOG.info("task completed");
                 cancel();
-            }
-            else
-            {
-                try
-                {
+            } else {
+                try {
                     target.run();
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     LOG.warn("task failed to run : " + target, e);
                 }
             }

@@ -1,10 +1,8 @@
 package org.shiftone.jrat.provider.stats;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface StatMethodHandlerFactoryMBean {
 

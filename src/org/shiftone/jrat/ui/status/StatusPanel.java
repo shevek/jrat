@@ -11,20 +11,19 @@ import java.util.TimerTask;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatusPanel extends JPanel {
 
     private static final long MEG = 1024 * 1024;
-    private JLabel            memory;
-    private Timer             timer = new Timer(true);
+    private JLabel memory;
+    private Timer timer = new Timer(true);
 
     public StatusPanel() {
 
         setLayout(new FlowLayout(FlowLayout.TRAILING));
 
         // setBorder(new EmptyBorder(0,0,0,0));
-        timer  = new Timer(true);
+        timer = new Timer(true);
         memory = new JLabel();
 
         add(memory);

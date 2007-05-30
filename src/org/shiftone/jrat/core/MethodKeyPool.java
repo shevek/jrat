@@ -20,14 +20,13 @@ import java.util.Map;
  * can be referenced by id elsewhere.
  *
  * @author Jeff Drost
- *
  */
 public class MethodKeyPool {
 
-    private static final Logger LOG          = Logger.getLogger(MethodKeyPool.class);
-    private int                 idSequence   = 0;
-    private Map                 method2IdMap = new HashMap();
-    private Map                 id2MethodMap = new HashMap();
+    private static final Logger LOG = Logger.getLogger(MethodKeyPool.class);
+    private int idSequence = 0;
+    private Map method2IdMap = new HashMap();
+    private Map id2MethodMap = new HashMap();
 
     public synchronized MethodKey getMethodKey(String className, String methodName, String signature) {
 
@@ -35,8 +34,7 @@ public class MethodKeyPool {
         // to test if the MethodKey exists.
         MethodKey key = new MethodKey(className, methodName, signature);
 
-        if (method2IdMap.containsKey(key))
-        {
+        if (method2IdMap.containsKey(key)) {
 
             // it the method key does exist, DO NOT RETURN the newly created
             // key.
@@ -47,9 +45,7 @@ public class MethodKeyPool {
             KeyAndId entry = (KeyAndId) method2IdMap.get(key);
 
             key = entry.methodKey;
-        }
-        else
-        {
+        } else {
 
             // this is a new method key, so we can add it to the mapping and
             // assign it a unique id.
@@ -67,8 +63,8 @@ public class MethodKeyPool {
         KeyAndId keyAndId = (KeyAndId) method2IdMap.get(methodKey);
 
         return (keyAndId != null)
-               ? keyAndId.id
-               : null;
+                ? keyAndId.id
+                : null;
     }
 
 
@@ -80,19 +76,17 @@ public class MethodKeyPool {
 
         // santity check.. these should never happen if the pool is used
         // correctly.
-        if (method2IdMap.containsKey(methodKey))
-        {
+        if (method2IdMap.containsKey(methodKey)) {
             throw new RuntimeException("method key already exists in pool : " + methodKey);
         }
 
-        if (id2MethodMap.containsKey(id))
-        {
+        if (id2MethodMap.containsKey(id)) {
             throw new RuntimeException("method ID already exists in pool : " + id);
         }
 
         KeyAndId keyAndId = new KeyAndId();
 
-        keyAndId.id        = id;
+        keyAndId.id = id;
         keyAndId.methodKey = methodKey;
 
         method2IdMap.put(methodKey, keyAndId);
@@ -102,15 +96,14 @@ public class MethodKeyPool {
 
     public void printXML(PrintStream out, int indent) {
 
-        KeyAndId   keyAndId     = null;
-        String     indentString = StringUtil.bufferString(indent, ' ');
-        Collection values       = method2IdMap.values();
-        Iterator   iterator     = values.iterator();
+        KeyAndId keyAndId = null;
+        String indentString = StringUtil.bufferString(indent, ' ');
+        Collection values = method2IdMap.values();
+        Iterator iterator = values.iterator();
 
         out.println(indentString + "<method-pool>");
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             keyAndId = (KeyAndId) iterator.next();
 
             out.print(indentString + " ");
@@ -127,6 +120,6 @@ public class MethodKeyPool {
 
     private static class KeyAndId {
         MethodKey methodKey = null;
-        String    id        = null;
+        String id = null;
     }
 }

@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util.time;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public class SystemNanoTimeMovement implements Movement {
 
@@ -12,8 +10,11 @@ public class SystemNanoTimeMovement implements Movement {
         return System.nanoTime();
     }
 
-    public void pauseTime() {}
-    public void resumeTime() {}
+    public void pauseTime() {
+    }
+
+    public void resumeTime() {
+    }
 
     public String toString() {
         return "(System.nanoTime())";

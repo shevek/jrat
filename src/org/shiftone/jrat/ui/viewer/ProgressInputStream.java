@@ -15,21 +15,20 @@ import java.io.InputStream;
  * Class ProgressInputStream
  *
  * @author Jeff Drost
- *
  */
 public class ProgressInputStream extends InputStream {
 
-    private static final Logger LOG         = Logger.getLogger(ProgressInputStream.class);
-    private InputStream         inputStream = null;
-    private BoundedRangeModel   rangeModel  = null;
-    private long                maxBytes    = 0;
-    private long                bytesRead   = 0;
+    private static final Logger LOG = Logger.getLogger(ProgressInputStream.class);
+    private InputStream inputStream = null;
+    private BoundedRangeModel rangeModel = null;
+    private long maxBytes = 0;
+    private long bytesRead = 0;
 
     public ProgressInputStream(InputStream inputStream, long maxBytes, BoundedRangeModel rangeModel) {
 
         this.inputStream = new BufferedInputStream(inputStream, 24 * 1024);
-        this.maxBytes    = maxBytes;
-        this.rangeModel  = rangeModel;
+        this.maxBytes = maxBytes;
+        this.rangeModel = rangeModel;
 
         rangeModel.setMinimum(0);
         rangeModel.setMaximum((int) maxBytes);
@@ -67,8 +66,7 @@ public class ProgressInputStream extends InputStream {
 
         int i = inputStream.read();
 
-        if ((i != -1) && (bytesRead < maxBytes))
-        {
+        if ((i != -1) && (bytesRead < maxBytes)) {
             bytesRead++;
 
             updateModel();
@@ -87,8 +85,7 @@ public class ProgressInputStream extends InputStream {
 
         int i = inputStream.read(b);
 
-        if ((i != -1) && (bytesRead < maxBytes))
-        {
+        if ((i != -1) && (bytesRead < maxBytes)) {
             bytesRead += i;
 
             updateModel();
@@ -102,8 +99,7 @@ public class ProgressInputStream extends InputStream {
 
         int i = inputStream.read(b, off, len);
 
-        if ((i != -1) && (bytesRead < maxBytes))
-        {
+        if ((i != -1) && (bytesRead < maxBytes)) {
             bytesRead += i;
 
             updateModel();
@@ -117,8 +113,7 @@ public class ProgressInputStream extends InputStream {
 
         long i = inputStream.skip(n);
 
-        if ((i != -1) && (bytesRead < maxBytes))
-        {
+        if ((i != -1) && (bytesRead < maxBytes)) {
             bytesRead += i;
 
             updateModel();

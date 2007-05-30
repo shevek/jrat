@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.stats;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.MethodKeyAccumulator;
 import org.shiftone.jrat.core.spi.MethodHandler;
@@ -10,7 +9,6 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatMethodHandler extends MethodKeyAccumulator implements MethodHandler {
 

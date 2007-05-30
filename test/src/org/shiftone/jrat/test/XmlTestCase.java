@@ -1,12 +1,9 @@
 package org.shiftone.jrat.test;
 
 
-
 import junit.framework.TestCase;
-
 import org.shiftone.jrat.util.XMLUtil;
 import org.shiftone.jrat.util.log.Logger;
-
 import org.xml.sax.SAXException;
 
 
@@ -14,7 +11,6 @@ import org.xml.sax.SAXException;
  * Class XmlTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class XmlTestCase extends TestCase {
 
@@ -37,12 +33,10 @@ public class XmlTestCase extends TestCase {
      */
     public void testParserFactory() throws Exception {
 
-        try
-        {
+        try {
             XMLUtil.getXMLReaderFromParserFactory();
         }
-        catch (SAXException e)
-        {
+        catch (SAXException e) {
             LOG.warn("getXMLReaderFromParserFactory failed", e);
         }
     }
@@ -55,12 +49,10 @@ public class XmlTestCase extends TestCase {
      */
     public void testReaderFactory() throws Exception {
 
-        try
-        {
+        try {
             XMLUtil.getXMLReaderFromReaderFactory();
         }
-        catch (SAXException e)
-        {
+        catch (SAXException e) {
             LOG.warn("getXMLReaderFromReaderFactory failed", e);
         }
     }

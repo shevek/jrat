@@ -15,18 +15,17 @@ import java.awt.Graphics;
  * round rectangular swatch.
  *
  * @author Jeff Drost
- *
  */
 public class ColorTableCellRenderer extends DefaultTableCellRenderer {
 
-    private static final Logger LOG   = Logger.getLogger(ColorTableCellRenderer.class);
-    private Object              value = null;
+    private static final Logger LOG = Logger.getLogger(ColorTableCellRenderer.class);
+    private Object value = null;
 
     /**
      * Method getTableCellRendererComponent
      */
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-            int row, int column) {
+                                                   int row, int column) {
 
         this.value = value;
 
@@ -39,8 +38,7 @@ public class ColorTableCellRenderer extends DefaultTableCellRenderer {
      */
     public void paintComponent(Graphics g) {
 
-        if (value instanceof Color)
-        {
+        if (value instanceof Color) {
             int x = 4;
             int y = 4;
             int w = getWidth() - 8;

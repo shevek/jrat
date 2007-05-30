@@ -3,17 +3,16 @@ package org.shiftone.jrat.test.time;
 
 /**
  * @author Jeff Drost
- *
  */
 public class IncrementLongRunnable implements Runnable {
 
-	private long i = 0;
+    private long i = 0;
 
-	public void run() {
-		i++;
-	}
+    public void run() {
+        i++;
+    }
 
-	public String toString() {
-		return "increment a long";
-	}
+    public String toString() {
+        return "increment a long";
+    }
 }

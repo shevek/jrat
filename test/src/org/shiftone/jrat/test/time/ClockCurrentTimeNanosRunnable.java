@@ -4,16 +4,15 @@ import org.shiftone.jrat.util.time.Clock;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ClockCurrentTimeNanosRunnable implements Runnable {
 
-	public void run() {
-		Clock.currentTimeNanos();
-	}
+    public void run() {
+        Clock.currentTimeNanos();
+    }
 
-	public String toString() {
-		return "Clock.currentTimeNanos()";
-	}
+    public String toString() {
+        return "Clock.currentTimeNanos()";
+    }
 
 }

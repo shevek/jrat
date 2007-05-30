@@ -10,50 +10,49 @@ import java.io.Writer;
 
 /**
  * @author Jeff Drost
- *
  */
 public class FileOutputFactoryTestCase extends TestCase {
-	private static final Logger LOG = Logger.getLogger(FileOutputFactoryTestCase.class);
+    private static final Logger LOG = Logger.getLogger(FileOutputFactoryTestCase.class);
 
-	public void testWriter() throws Exception {
+    public void testWriter() throws Exception {
 
-		FileOutputRegistry registry = new FileOutputRegistry();
-		FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
+        FileOutputRegistry registry = new FileOutputRegistry();
+        FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
 
-		Writer writer = factory.createWriter(new File("FileOutputFactoryTestCase.Writer"));
+        Writer writer = factory.createWriter(new File("FileOutputFactoryTestCase.Writer"));
 
-		for (int i = 0; i < 100; i++) {
-			writer.write("test " + i + "\n");
-		}
+        for (int i = 0; i < 100; i++) {
+            writer.write("test " + i + "\n");
+        }
 
-		registry.shutdown();
-	}
+        registry.shutdown();
+    }
 
-	public void testPrintWriter() throws Exception {
+    public void testPrintWriter() throws Exception {
 
-		FileOutputRegistry registry = new FileOutputRegistry();
-		FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
+        FileOutputRegistry registry = new FileOutputRegistry();
+        FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
 
-		PrintWriter printWriter = factory.createPrintWriter(new File("FileOutputFactoryTestCase.PrintWriter"));
+        PrintWriter printWriter = factory.createPrintWriter(new File("FileOutputFactoryTestCase.PrintWriter"));
 
-		for (int i = 0; i < 100; i++) {
-			printWriter.println("test " + i);
-		}
+        for (int i = 0; i < 100; i++) {
+            printWriter.println("test " + i);
+        }
 
-		registry.shutdown();
-	}
+        registry.shutdown();
+    }
 
-	public void testOutputStream() throws Exception {
+    public void testOutputStream() throws Exception {
 
-		FileOutputRegistry registry = new FileOutputRegistry();
-		FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
+        FileOutputRegistry registry = new FileOutputRegistry();
+        FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
 
-		OutputStream outputStream = factory.createOutputStream(new File("FileOutputFactoryTestCase.OutputStream"));
+        OutputStream outputStream = factory.createOutputStream(new File("FileOutputFactoryTestCase.OutputStream"));
 
-		for (int i = 0; i < 9999; i++) {
-			outputStream.write(i);
-		}
+        for (int i = 0; i < 9999; i++) {
+            outputStream.write(i);
+        }
 
-		registry.shutdown();
-	}
+        registry.shutdown();
+    }
 }

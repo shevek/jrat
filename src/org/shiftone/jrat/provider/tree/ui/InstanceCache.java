@@ -16,8 +16,7 @@ public class InstanceCache {
 
         Object value = cache.get(o);
 
-        if (value == null)
-        {
+        if (value == null) {
             cache.put(o, o);
 
             value = o;

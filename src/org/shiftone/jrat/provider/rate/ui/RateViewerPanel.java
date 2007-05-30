@@ -20,39 +20,36 @@ import java.awt.BorderLayout;
  * Class RateViewerPanel
  *
  * @author Jeff Drost
- *
  */
 public class RateViewerPanel extends JPanel {
 
-    private static final Logger LOG          = Logger.getLogger(RateViewerPanel.class);
-    private NGraphPanel         graphPanel   = null;
-    private ControlPanel        controlPanel = null;
-    private RateModelTableModel tableModel   = null;
+    private static final Logger LOG = Logger.getLogger(RateViewerPanel.class);
+    private NGraphPanel graphPanel = null;
+    private ControlPanel controlPanel = null;
+    private RateModelTableModel tableModel = null;
 
     /**
      * Constructor RateViewerPanel
-     *
      *
      * @param rateModel
      */
     public RateViewerPanel(RateModel rateModel) {
 
-        GraphComponent[] graphs        = null;
-        GraphModelSet[]  graphSets     = null;
+        GraphComponent[] graphs = null;
+        GraphModelSet[] graphSets = null;
         ChangeListener[] spaceListener = null;
 
-        tableModel   = new RateModelTableModel(rateModel);
+        tableModel = new RateModelTableModel(rateModel);
         controlPanel = new ControlPanel(rateModel, tableModel);
-        graphPanel   = new NGraphPanel(3);
+        graphPanel = new NGraphPanel(3);
 
         //
-        graphs        = graphPanel.getGraphComponents();
-        graphSets     = new GraphModelSet[graphs.length];
+        graphs = graphPanel.getGraphComponents();
+        graphSets = new GraphModelSet[graphs.length];
         spaceListener = new ChangeListener[graphs.length];
 
-        for (int i = 0; i < graphs.length; i++)
-        {
-            graphSets[i]     = graphs[i].getGraphModelSet();
+        for (int i = 0; i < graphs.length; i++) {
+            graphSets[i] = graphs[i].getGraphModelSet();
             spaceListener[i] = new SpacingChangeListener(graphs[i]);
 
             controlPanel.getBoundedRangeModel().addChangeListener(spaceListener[i]);
@@ -66,8 +63,7 @@ public class RateViewerPanel extends JPanel {
         graphSets[2].add("used", new UsedMemoryGraph(rateModel));
         graphSets[2].add("max", new MaxMemoryGraph(rateModel));
 
-        for (int i = 0; i < rateModel.getMethodCount(); i++)
-        {
+        for (int i = 0; i < rateModel.getMethodCount(); i++) {
             graphSets[0].add(new Integer(i), new MeanDurationGraph(rateModel, i));
             graphSets[1].add(new Integer(i), new ThroughputGraph(rateModel, i));
         }

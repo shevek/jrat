@@ -3,17 +3,16 @@ package org.shiftone.jrat.test.time;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ThreadYieldRunnable implements Runnable {
 
-	public void run() {
+    public void run() {
 
-		Thread.yield();
+        Thread.yield();
 
-	}
+    }
 
-	public String toString() {
-		return "Thread.yield()";
-	}
+    public String toString() {
+        return "Thread.yield()";
+    }
 }

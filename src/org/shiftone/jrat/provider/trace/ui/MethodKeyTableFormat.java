@@ -8,12 +8,11 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class MethodKeyTableFormat implements TableFormat {
 
-    private static final Logger LOG          = Logger.getLogger(MethodKeyTableFormat.class);
-    private String[]            COLUMN_NAMES = { "Class", "Method", "Parameters", "Return Type" };
+    private static final Logger LOG = Logger.getLogger(MethodKeyTableFormat.class);
+    private String[] COLUMN_NAMES = {"Class", "Method", "Parameters", "Return Type"};
 
     public int getColumnCount() {
         return COLUMN_NAMES.length;
@@ -29,25 +28,23 @@ public class MethodKeyTableFormat implements TableFormat {
 
         MethodKey methodKey = (MethodKey) object;
 
-        if (methodKey == null)
-        {
+        if (methodKey == null) {
             return null;
         }
 
-        switch (columnIndex)
-        {
+        switch (columnIndex) {
 
-        case 0 :
-            return methodKey.getClassName();
+            case 0:
+                return methodKey.getClassName();
 
-        case 1 :
-            return methodKey.getMethodName();
+            case 1:
+                return methodKey.getMethodName();
 
-        case 2 :
-            return methodKey.getSig().getLongText();
+            case 2:
+                return methodKey.getSig().getLongText();
 
-        case 3 :
-            return methodKey.getSig().getReturnType();
+            case 3:
+                return methodKey.getSig().getReturnType();
         }
 
         throw new IllegalStateException();

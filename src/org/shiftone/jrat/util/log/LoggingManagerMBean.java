@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util.log;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface LoggingManagerMBean {
 

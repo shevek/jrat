@@ -18,25 +18,24 @@ import java.util.Set;
  * Class GraphModelSet
  *
  * @author Jeff Drost
- *
  */
 public class GraphModelSet {
 
-    private static final Logger LOG           = Logger.getLogger(GraphModelSet.class);
-    private Set                 listeners     = new HashSet();
-    private Long                maxValue      = null;    // value cache
-    private Long                minValue      = null;    // value cache
-    private Integer             maxPointCount = null;    // value cache
-    private Map                 graphMap      = new HashMap();
-    private Map                 hiddenMap     = new HashMap();
-    private List                graphs        = new ArrayList();
-    private String              title         = null;
+    private static final Logger LOG = Logger.getLogger(GraphModelSet.class);
+    private Set listeners = new HashSet();
+    private Long maxValue = null;    // value cache
+    private Long minValue = null;    // value cache
+    private Integer maxPointCount = null;    // value cache
+    private Map graphMap = new HashMap();
+    private Map hiddenMap = new HashMap();
+    private List graphs = new ArrayList();
+    private String title = null;
 
     /**
      * Method invalidateCache
      */
     private void invalidateCache() {
-        maxValue      = null;
+        maxValue = null;
         maxPointCount = null;
     }
 
@@ -62,13 +61,12 @@ public class GraphModelSet {
      */
     private void fireModelChanged() {
 
-        Iterator    iterator = listeners.iterator();
-        ChangeEvent event    = new ChangeEvent(this);
+        Iterator iterator = listeners.iterator();
+        ChangeEvent event = new ChangeEvent(this);
 
         invalidateCache();
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             ((ChangeListener) iterator.next()).stateChanged(event);
         }
     }
@@ -87,8 +85,7 @@ public class GraphModelSet {
      */
     public long getMaxValue() {
 
-        if (maxValue == null)
-        {
+        if (maxValue == null) {
             init();
         }
 
@@ -101,8 +98,7 @@ public class GraphModelSet {
      */
     public long getMinValue() {
 
-        if (minValue == null)
-        {
+        if (minValue == null) {
             init();
         }
 
@@ -132,20 +128,18 @@ public class GraphModelSet {
     public void init() {
 
         GraphModel model = null;
-        long       max   = 0;
-        long       min   = 0;
+        long max = 0;
+        long min = 0;
 
-        if (getGraphModelCount() > 0)
-        {
+        if (getGraphModelCount() > 0) {
             model = getGraphModel(0);
-            max   = model.getMaxValue();
-            min   = model.getMinValue();
+            max = model.getMaxValue();
+            min = model.getMinValue();
 
-            for (int i = 1; i < getGraphModelCount(); i++)
-            {
+            for (int i = 1; i < getGraphModelCount(); i++) {
                 model = getGraphModel(i);
-                max   = Math.max(max, model.getMaxValue());
-                min   = Math.min(min, model.getMinValue());
+                max = Math.max(max, model.getMaxValue());
+                min = Math.min(min, model.getMinValue());
             }
         }
 
@@ -160,14 +154,12 @@ public class GraphModelSet {
     public int getMaxPointCount() {
 
         GraphModel model = null;
-        int        max   = 0;
+        int max = 0;
 
-        if (maxPointCount == null)
-        {
-            for (int i = 0; i < getGraphModelCount(); i++)
-            {
+        if (maxPointCount == null) {
+            for (int i = 0; i < getGraphModelCount(); i++) {
                 model = getGraphModel(i);
-                max   = Math.max(max, model.getPointCount());
+                max = Math.max(max, model.getPointCount());
             }
 
             maxPointCount = new Integer(max);
@@ -190,8 +182,7 @@ public class GraphModelSet {
      */
     public synchronized void add(Object key, GraphModel graphModel) {
 
-        if (false == graphMap.containsKey(key))
-        {
+        if (false == graphMap.containsKey(key)) {
             graphMap.put(key, graphModel);
             graphs.add(graphModel);
             fireModelChanged();
@@ -204,8 +195,7 @@ public class GraphModelSet {
      */
     public synchronized void remove(Object key) {
 
-        if (true == graphMap.containsKey(key))
-        {
+        if (true == graphMap.containsKey(key)) {
             graphs.remove(graphMap.get(key));
             graphMap.remove(key);
             fireModelChanged();
@@ -218,8 +208,7 @@ public class GraphModelSet {
      */
     public synchronized void hide(Object key) {
 
-        if (true == graphMap.containsKey(key))
-        {
+        if (true == graphMap.containsKey(key)) {
             hiddenMap.put(key, graphMap.get(key));
             graphs.remove(graphMap.get(key));
             fireModelChanged();
@@ -232,8 +221,7 @@ public class GraphModelSet {
      */
     public synchronized void unhide(Object key) {
 
-        if (true == hiddenMap.containsKey(key))
-        {
+        if (true == hiddenMap.containsKey(key)) {
             graphs.add(hiddenMap.get(key));
             hiddenMap.remove(key);
             fireModelChanged();

@@ -20,17 +20,16 @@ import java.text.DecimalFormat;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TreeGraphComponent extends BufferedJComponent implements Scrollable {
 
     private static final Logger LOG = Logger.getLogger(TreeGraphComponent.class);
-    private StackTreeNode       node;
-    private Color               LINE_COLOR       = Color.LIGHT_GRAY;
-    private PercentColorLookup  colorLookup      = new PercentColorLookup();
-    private DecimalFormat       pctDecimalFormat = new DecimalFormat("#,###.#'%'");
-    private Font                font             = new Font("SansSerif", Font.PLAIN, 9);
-    private int                 rowHeight        = 12;
+    private StackTreeNode node;
+    private Color LINE_COLOR = Color.LIGHT_GRAY;
+    private PercentColorLookup colorLookup = new PercentColorLookup();
+    private DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.#'%'");
+    private Font font = new Font("SansSerif", Font.PLAIN, 9);
+    private int rowHeight = 12;
 
     public TreeGraphComponent() {
         setDoubleBuffered(false);
@@ -45,8 +44,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         g.setColor(getBackground());
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        if ((node != null) &&!node.isRootNode() && (node.getTotalExits() != 0))
-        {
+        if ((node != null) && !node.isRootNode() && (node.getTotalExits() != 0)) {
             paint(g2d, node, 0, 0, getWidth());
         }
     }
@@ -60,9 +58,9 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         g.setFont(font);
 
         FontMetrics metrics = g.getFontMetrics();
-        Color       color   = colorLookup.getColor(node.getPctOfAvgParentDuration());
-        int         height  = metrics.getHeight() + metrics.getDescent();
-        int         y       = row * height;
+        Color color = colorLookup.getColor(node.getPctOfAvgParentDuration());
+        int height = metrics.getHeight() + metrics.getDescent();
+        int y = row * height;
 
         rowHeight = height;
 
@@ -74,22 +72,18 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
 
         gg.setColor(Color.BLACK);
 
-        MethodKey   methodKey    = node.getMethodKey();
-        String      text         = methodKey.getClassName() + "." + methodKey.getMethodName() + " "
-                                   + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
+        MethodKey methodKey = node.getMethodKey();
+        String text = methodKey.getClassName() + "." + methodKey.getMethodName() + " "
+                + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
         Rectangle2D stringBounds = metrics.getStringBounds(text, g);
 
-        if (stringBounds.getWidth() < width)
-        {
+        if (stringBounds.getWidth() < width) {
             gg.drawString(text, (int) (width / 2 - stringBounds.getWidth() / 2), (int) (stringBounds.getHeight()));
-        }
-        else
-        {
-            text         = methodKey.getMethodName() + " " + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
+        } else {
+            text = methodKey.getMethodName() + " " + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
             stringBounds = metrics.getStringBounds(text, g);
 
-            if (stringBounds.getWidth() < width)
-            {
+            if (stringBounds.getWidth() < width) {
                 gg.drawString(text, (int) (width / 2 - stringBounds.getWidth() / 2), (int) (stringBounds.getHeight()));
             }
         }
@@ -97,22 +91,17 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         // print the children
         long total = node.getTotalDurationNanos();
 
-        if ((total > 0) && (node.getChildCount() > 0))
-        {
+        if ((total > 0) && (node.getChildCount() > 0)) {
             int childX = 0;
 
-            for (int i = 0; i < node.getChildCount(); i++)
-            {
-                StackTreeNode child     = (StackTreeNode) node.getChildAt(i);
-                long          part      = child.getTotalDurationNanos();
-                int           partWidth = (int) ((part * (long) width) / total);
+            for (int i = 0; i < node.getChildCount(); i++) {
+                StackTreeNode child = (StackTreeNode) node.getChildAt(i);
+                long part = child.getTotalDurationNanos();
+                int partWidth = (int) ((part * (long) width) / total);
 
-                if (partWidth > 1)
-                {
+                if (partWidth > 1) {
                     paint(g, child, x + childX, row + 1, partWidth);
-                }
-                else
-                {
+                } else {
                     g.setColor(LINE_COLOR);
                     g.drawLine(x + childX, (row + 1) * height, x + childX, (row + 1 + node.getMaxDepth()) * height);
                 }
@@ -131,9 +120,8 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         dataChanged();
         setPreferredSize(new Dimension(getWidth(), (int) (rowHeight * node.getMaxDepth())));
         setSize(getPreferredSize());
-       // LOG.info("getPreferredSize " + getPreferredSize());
-        if (isVisible())
-        {
+        // LOG.info("getPreferredSize " + getPreferredSize());
+        if (isVisible()) {
             repaint();
         }
     }

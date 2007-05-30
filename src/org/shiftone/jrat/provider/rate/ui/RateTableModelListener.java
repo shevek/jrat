@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate.ui;
 
 
-
 import org.shiftone.jrat.ui.util.graph.GraphModelSet;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -11,22 +10,20 @@ import javax.swing.event.TableModelListener;
 
 /**
  * A bridge between a RateModelTableModel and a GraphModelSet.
- *
+ * <p/>
  * This class receieves events from a RateTableModel and hides and unhides the
  * necessary graph within a GraphModelSet.
  *
  * @author Jeff Drost
- *
  */
 public class RateTableModelListener implements TableModelListener {
 
-    private static final Logger LOG           = Logger.getLogger(RateTableModelListener.class);
-    private RateModelTableModel tableModel    = null;
-    private GraphModelSet       graphModelSet = null;
+    private static final Logger LOG = Logger.getLogger(RateTableModelListener.class);
+    private RateModelTableModel tableModel = null;
+    private GraphModelSet graphModelSet = null;
 
     /**
      * Constructor RateTableModelListener
-     *
      *
      * @param tableModel
      * @param graphModelSet
@@ -34,7 +31,7 @@ public class RateTableModelListener implements TableModelListener {
     public RateTableModelListener(RateModelTableModel tableModel, GraphModelSet graphModelSet) {
 
         this.graphModelSet = graphModelSet;
-        this.tableModel    = tableModel;
+        this.tableModel = tableModel;
 
         syncWithTable(0, tableModel.getRowCount() - 1);
     }
@@ -47,16 +44,12 @@ public class RateTableModelListener implements TableModelListener {
 
         Boolean value = null;
 
-        for (int row = firstRow; row <= lastRow; row++)
-        {
+        for (int row = firstRow; row <= lastRow; row++) {
             value = (Boolean) tableModel.getValueAt(row, RateModelTableModel.FLAG_COLUMN_INDEX);
 
-            if (value.booleanValue() == true)
-            {
+            if (value.booleanValue() == true) {
                 graphModelSet.unhide(new Integer(row));
-            }
-            else
-            {
+            } else {
                 graphModelSet.hide(new Integer(row));
             }
         }
@@ -68,8 +61,7 @@ public class RateTableModelListener implements TableModelListener {
      */
     public void tableChanged(TableModelEvent e) {
 
-        if (e.getType() == TableModelEvent.UPDATE)
-        {
+        if (e.getType() == TableModelEvent.UPDATE) {
             syncWithTable(e.getFirstRow(), e.getLastRow());
         }
     }

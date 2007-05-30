@@ -1,7 +1,6 @@
 package org.shiftone.jrat.test.dummy;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.IOException;
@@ -14,43 +13,47 @@ import java.util.List;
  * Class CrashTestDummy
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class CrashTestDummy implements Serializable {
 
-    private static final Logger LOG        = Logger.getLogger(CrashTestDummy.class);
-    private int              privateInt = 0;
+    private static final Logger LOG = Logger.getLogger(CrashTestDummy.class);
+    private int privateInt = 0;
     private List<String> strings = new ArrayList<String>();
-    public enum SEX {BOY, GIRL};
+
+    public enum SEX {
+        BOY, GIRL
+    }
+
+    ;
 
     private JuniorDummy juniorDummy = new JuniorDummy();
 
     /* ========== JAVA 1.5 TESTS ==================== */
-	// tested
-	@SuppressWarnings("test")
-	@Deprecated()
+    // tested
+    @SuppressWarnings("test")
+    @Deprecated()
     public void oneStringList(List<String> strings) {
         this.strings = strings;
     }
 
-	// tested
-	 public void noArgLocalStringList() {
-		List<String> local = new ArrayList<String>();
-		local.addAll(strings);
+    // tested
+    public void noArgLocalStringList() {
+        List<String> local = new ArrayList<String>();
+        local.addAll(strings);
         this.strings = local;
     }
 
-	// tested
-	public List<String> returnStringsList() {
+    // tested
+    public List<String> returnStringsList() {
         return strings;
     }
 
-	// tested
+    // tested
     public void addString(String text) {
         strings.add(text);
     }
 
-	// tested
+    // tested
     public SEX returnSex() {
         return SEX.GIRL;
     }
@@ -63,11 +66,11 @@ public class CrashTestDummy implements Serializable {
      */
     private static void sleep(long ms) {
 
-        try
-        {
+        try {
             Thread.sleep(ms);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        }
     }
 
 
@@ -78,7 +81,7 @@ public class CrashTestDummy implements Serializable {
         sleep((long) (200 * Math.random()));
     }
 
-	private static void sleep() {
+    private static void sleep() {
         sleep((long) (600 * Math.random()));
     }
 
@@ -98,9 +101,12 @@ public class CrashTestDummy implements Serializable {
      */
     public void oneBooleanArg(boolean b) {
         LOG.debug("public void noOneBooleanArg(boolean b)");
-	    try { Thread.sleep(50); } catch (Exception e) {}
+        try {
+            Thread.sleep(50);
+        } catch (Exception e) {
+        }
         nap();
-	    sleep();
+        sleep();
     }
 
 
@@ -112,8 +118,11 @@ public class CrashTestDummy implements Serializable {
     public void oneIntegerArg(int i) {
         LOG.debug("public void oneIntegerArg(int i)");
         nap();
-	    try { Thread.sleep(50); } catch (Exception e) {}
-	    sleep();
+        try {
+            Thread.sleep(50);
+        } catch (Exception e) {
+        }
+        sleep();
     }
 
 
@@ -124,9 +133,12 @@ public class CrashTestDummy implements Serializable {
      */
     public void oneLongArg(long i) {
         LOG.debug("public void oneLongArg(long i)");
-	    sleep();
+        sleep();
         nap();
-	    try { Thread.sleep(50); } catch (Exception e) {}
+        try {
+            Thread.sleep(50);
+        } catch (Exception e) {
+        }
     }
 
 
@@ -138,7 +150,7 @@ public class CrashTestDummy implements Serializable {
     public void oneObjectArg(Object obj) {
         LOG.debug("public void oneObjectArg(Object obj)");
         nap();
-	    sleep();
+        sleep();
     }
 
 
@@ -150,7 +162,7 @@ public class CrashTestDummy implements Serializable {
     public void oneStringArrayArg(String[] args) {
         LOG.debug("public void oneStringArrayArg(String[] args))");
         nap();
-	    sleep();
+        sleep();
     }
 
 
@@ -158,14 +170,13 @@ public class CrashTestDummy implements Serializable {
      * Method returnBooleanArg
      *
      * @param b .
-     *
      * @return .
      */
     public boolean returnBooleanArg(boolean b) {
 
         LOG.debug("public boolean returnBooleanArg(boolean b)");
         nap();
-	    sleep();
+        sleep();
 
         return b;
     }
@@ -175,7 +186,6 @@ public class CrashTestDummy implements Serializable {
      * Method returnIntegerArg
      *
      * @param i .
-     *
      * @return .
      */
     public int returnIntegerArg(int i) {
@@ -191,7 +201,6 @@ public class CrashTestDummy implements Serializable {
      * Method returnLongArg
      *
      * @param i .
-     *
      * @return .
      */
     public long returnLongArg(long i) {
@@ -207,7 +216,6 @@ public class CrashTestDummy implements Serializable {
      * Method returnObjectArg
      *
      * @param obj .
-     *
      * @return .
      */
     public Object returnObjectArg(Object obj) {
@@ -223,7 +231,6 @@ public class CrashTestDummy implements Serializable {
      * Method returnStringArrayArg
      *
      * @param args .
-     *
      * @return .
      */
     public String[] returnStringArrayArg(String[] args) {
@@ -258,7 +265,6 @@ public class CrashTestDummy implements Serializable {
      *
      * @param a .
      * @param b .
-     *
      * @return .
      */
     public int twoIntegerArg(int a, int b) {
@@ -275,7 +281,6 @@ public class CrashTestDummy implements Serializable {
      *
      * @param a .
      * @param b .
-     *
      * @return .
      */
     public long twoLongArg(long a, long b) {
@@ -292,7 +297,6 @@ public class CrashTestDummy implements Serializable {
      *
      * @param a .
      * @param b .
-     *
      * @return .
      */
     public boolean twoObjectArg(Object a, Object b) {
@@ -309,7 +313,6 @@ public class CrashTestDummy implements Serializable {
      *
      * @param a .
      * @param b .
-     *
      * @return .
      */
     public boolean twoStringArrayArg(String[] a, String[] b) {
@@ -324,11 +327,10 @@ public class CrashTestDummy implements Serializable {
     /**
      * Method argsLongObjectLongLongArg
      *
-     * @param a .
+     * @param a   .
      * @param obj .
-     * @param b .
-     * @param c .
-     *
+     * @param b   .
+     * @param c   .
      * @return .
      */
     public long argsLongObjectLongLongArg(long a, Object obj, long b, long c) {
@@ -343,10 +345,9 @@ public class CrashTestDummy implements Serializable {
     /**
      * Method argsByteBooleanArrayObject
      *
-     * @param b .
+     * @param b    .
      * @param bool .
-     * @param obj .
-     *
+     * @param obj  .
      * @return .
      */
     public int argsByteBooleanArrayObject(byte b, boolean[] bool, Object obj) {
@@ -363,7 +364,6 @@ public class CrashTestDummy implements Serializable {
      *
      * @param a .
      * @param b .
-     *
      * @return .
      */
     private int add(int a, int b) {
@@ -378,8 +378,7 @@ public class CrashTestDummy implements Serializable {
 
         int t = 1;
 
-        while (t < 1000000)
-        {
+        while (t < 1000000) {
             t = add(t, (t / 5) + 1);
         }
     }
@@ -389,17 +388,13 @@ public class CrashTestDummy implements Serializable {
      * Method recurse
      *
      * @param x .
-     *
      * @return .
      */
     private int recurse(int x) {
 
-        if (x == 0)
-        {
+        if (x == 0) {
             return 0;
-        }
-        else
-        {
+        } else {
             return x + (recurse(x - 1));
         }
     }
@@ -409,13 +404,12 @@ public class CrashTestDummy implements Serializable {
      * Method localVariableLength
      *
      * @param arg0 .
-     *
      * @return .
      */
     public int localVariableLength(String arg0) {
 
         StringBuffer sBuffer = new StringBuffer("THis is arg0" + arg0);
-        int          numbah  = 32;
+        int numbah = 32;
 
         LOG.debug(sBuffer);
 
@@ -424,10 +418,10 @@ public class CrashTestDummy implements Serializable {
         sBuffer.append("this is it");
         sBuffer.ensureCapacity(numbah);
 
-        numbah          -= twoLongArg(6, 21);
-        numbah          = 500 - add(60, 24);
+        numbah -= twoLongArg(6, 21);
+        numbah = 500 - add(60, 24);
         this.privateInt = 63;
-        numbah          += this.privateInt;
+        numbah += this.privateInt;
 
         return add(numbah, arg0.length());
     }
@@ -456,8 +450,7 @@ public class CrashTestDummy implements Serializable {
      */
     public void callInLoop_1000() {
 
-        for (int i = 0; i < 1000; i++)
-        {
+        for (int i = 0; i < 1000; i++) {
             compute();
         }
     }
@@ -468,8 +461,7 @@ public class CrashTestDummy implements Serializable {
      */
     public void callInLoop_10000() {
 
-        for (int i = 0; i < 50000; i++)
-        {
+        for (int i = 0; i < 50000; i++) {
             compute();
         }
     }
@@ -482,8 +474,7 @@ public class CrashTestDummy implements Serializable {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < 50000; i++)
-        {
+        for (int i = 0; i < 50000; i++) {
             compute();
         }
 
@@ -498,8 +489,7 @@ public class CrashTestDummy implements Serializable {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < 100000; i++)
-        {
+        for (int i = 0; i < 100000; i++) {
             compute();
         }
 
@@ -514,8 +504,7 @@ public class CrashTestDummy implements Serializable {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < 1000000; i++)
-        {
+        for (int i = 0; i < 1000000; i++) {
             compute();
         }
 

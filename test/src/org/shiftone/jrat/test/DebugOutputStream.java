@@ -1,7 +1,6 @@
 package org.shiftone.jrat.test;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.IOException;
@@ -14,14 +13,13 @@ import java.io.OutputStream;
  * ObjectStreamClass that wrote it's data through and instance of this class.
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class DebugOutputStream extends OutputStream {
 
-    private static final Logger LOG          = Logger.getLogger(DebugOutputStream.class);
-    private OutputStream     outputStream = null;
-    private long             callNumber   = 0;
-    private long             total        = 0;
+    private static final Logger LOG = Logger.getLogger(DebugOutputStream.class);
+    private OutputStream outputStream = null;
+    private long callNumber = 0;
+    private long total = 0;
 
     /**
      * Constructor DebugOutputStream
@@ -37,7 +35,6 @@ public class DebugOutputStream extends OutputStream {
      * Method write
      *
      * @param b .
-     *
      * @throws IOException
      */
     public void write(byte[] b) throws IOException {
@@ -46,8 +43,7 @@ public class DebugOutputStream extends OutputStream {
 
         sb.append("write(byte[]");
 
-        for (int i = 0; i < b.length; i++)
-        {
+        for (int i = 0; i < b.length; i++) {
             sb.append(" ");
             sb.append(Integer.toHexString(b[i]));
 
@@ -63,10 +59,9 @@ public class DebugOutputStream extends OutputStream {
     /**
      * Method write
      *
-     * @param b .
+     * @param b   .
      * @param off .
      * @param len .
-     *
      * @throws IOException
      */
     public void write(byte[] b, int off, int len) throws IOException {
@@ -75,8 +70,7 @@ public class DebugOutputStream extends OutputStream {
 
         sb.append("write(byte[] ");
 
-        for (int i = 0; i < len; i++)
-        {
+        for (int i = 0; i < len; i++) {
             sb.append(" ");
             sb.append(Integer.toHexString(b[i + off]));
 
@@ -115,7 +109,6 @@ public class DebugOutputStream extends OutputStream {
      * Method write
      *
      * @param b .
-     *
      * @throws IOException
      */
     public void write(int b) throws IOException {

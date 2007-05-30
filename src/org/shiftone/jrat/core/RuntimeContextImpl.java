@@ -25,17 +25,16 @@ import java.util.Properties;
  * Class RuntimeContextImpl
  *
  * @author Jeff Drost
- *
  */
 class RuntimeContextImpl implements RuntimeContext {
 
-    protected static final Logger    LOG         = Logger.getLogger(RuntimeContextImpl.class);
-    private final AtomicLong         sequence    = new AtomicLong();
-    private final long               startTimeMs = System.currentTimeMillis();
-    private final ShutdownRegistry   shutdownRegistry;
-    private final JmxRegistry        jmxRegistry;
+    protected static final Logger LOG = Logger.getLogger(RuntimeContextImpl.class);
+    private final AtomicLong sequence = new AtomicLong();
+    private final long startTimeMs = System.currentTimeMillis();
+    private final ShutdownRegistry shutdownRegistry;
+    private final JmxRegistry jmxRegistry;
     private final CommandletRegistry commandletRegistry;
-    private final OutputDirectory    outputDirectory;
+    private final OutputDirectory outputDirectory;
 
     RuntimeContextImpl() {
 
@@ -43,9 +42,9 @@ class RuntimeContextImpl implements RuntimeContext {
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
-        outputDirectory    = OutputDirectory.create(serviceFactory.getFileOutputFactory());
-        shutdownRegistry   = serviceFactory.getShutdownRegistry();
-        jmxRegistry        = serviceFactory.getJmxRegistry();
+        outputDirectory = OutputDirectory.create(serviceFactory.getFileOutputFactory());
+        shutdownRegistry = serviceFactory.getShutdownRegistry();
+        jmxRegistry = serviceFactory.getJmxRegistry();
         commandletRegistry = serviceFactory.getCommandletRegistry();
 
         redirectLogStream();
@@ -75,8 +74,7 @@ class RuntimeContextImpl implements RuntimeContext {
 
         PrintWriter printWriter;
 
-        try
-        {
+        try {
             printWriter = outputDirectory.createPrintWriter("JRat-LOG.jrat");
 
             printWriter.print("viewer=\"");
@@ -86,8 +84,7 @@ class RuntimeContextImpl implements RuntimeContext {
             LOG.info("logfile created");
             LOG.info("Running JRat version " + VersionUtil.getVersion() + " - built on " + VersionUtil.getBuiltOn());
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("unable to redirect LOG to file", e);
         }
     }
@@ -97,16 +94,14 @@ class RuntimeContextImpl implements RuntimeContext {
 
         OutputStream outputStream = null;
 
-        try
-        {
+        try {
             outputStream = outputDirectory.createOutputStream("System.properties");
 
             Properties properties = System.getProperties();
 
             properties.store(outputStream, "system properties as of JRat initialization");
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             IOUtil.close(outputStream);
             LOG.warn("unable to write system properties to file", e);
         }

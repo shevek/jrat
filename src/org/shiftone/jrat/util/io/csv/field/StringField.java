@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util.io.csv.field;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public class StringField implements Field {
 
@@ -13,8 +11,8 @@ public class StringField implements Field {
     public String format(Object value) {
 
         return (value == null)
-               ? null
-               : String.valueOf(value);
+                ? null
+                : String.valueOf(value);
     }
 
 

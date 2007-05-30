@@ -24,11 +24,10 @@ public class StatsOutputViewBuilder implements OutputViewBuilder {
 
         Reader reader = context.openReader();
 
-        try
-        {
-            BufferedReader lineReader            = new BufferedReader(reader);
-            List           methodKeyAccumulators = new BasicEventList();
-            String         line;
+        try {
+            BufferedReader lineReader = new BufferedReader(reader);
+            List methodKeyAccumulators = new BasicEventList();
+            String line;
 
             // throw the first 2 lines away
             // lineReader.readLine();
@@ -36,8 +35,7 @@ public class StatsOutputViewBuilder implements OutputViewBuilder {
 
             DelimitedReader delimitedReader = new DelimitedReader(lineReader, StatOutput.getDelimitedFormat());
 
-            while (delimitedReader.next())
-            {
+            while (delimitedReader.next()) {
                 MethodKeyAccumulator accumulator = readAccumulator(delimitedReader);
 
                 methodKeyAccumulators.add(accumulator);
@@ -45,8 +43,7 @@ public class StatsOutputViewBuilder implements OutputViewBuilder {
 
             context.setComponent(new StatsViewerPanel(methodKeyAccumulators));
         }
-        finally
-        {
+        finally {
             IOUtil.close(reader);
         }
     }
@@ -54,28 +51,28 @@ public class StatsOutputViewBuilder implements OutputViewBuilder {
 
     private MethodKeyAccumulator readAccumulator(DelimitedReader record) {
 
-        String    className        = record.getString(StatOutput.FIELD_CLASS);
-        String    methodName       = record.getString(StatOutput.FIELD_METHOD);
-        String    signature        = record.getString(StatOutput.FIELD_SIGNATURE);
-        long      totalEnters      = record.getLong(StatOutput.FIELD_TOTAL_ENTERS);
-        long      totalExits       = record.getLong(StatOutput.FIELD_TOTAL_EXITS);
-        long      totalErrors      = record.getLong(StatOutput.FIELD_TOTAL_ERRORS);
-        long      totalDuration    = record.getLong(StatOutput.FIELD_TOTAL_DURATION);
-        long      totalOfSquares   = record.getLong(StatOutput.FIELD_SUM_OF_SQUARES);
-        int       maxConcurThreads = (int) record.getLong(StatOutput.FIELD_MAX_CONCUR_THREADS);
-        long      maxDuration      = toLong(record.getNumber(StatOutput.FIELD_MAX_DURATION));
-        long      minDuration      = toLong(record.getNumber(StatOutput.FIELD_MIN_DURATION));
-        MethodKey methodKey        = new MethodKey(className, methodName, signature);
+        String className = record.getString(StatOutput.FIELD_CLASS);
+        String methodName = record.getString(StatOutput.FIELD_METHOD);
+        String signature = record.getString(StatOutput.FIELD_SIGNATURE);
+        long totalEnters = record.getLong(StatOutput.FIELD_TOTAL_ENTERS);
+        long totalExits = record.getLong(StatOutput.FIELD_TOTAL_EXITS);
+        long totalErrors = record.getLong(StatOutput.FIELD_TOTAL_ERRORS);
+        long totalDuration = record.getLong(StatOutput.FIELD_TOTAL_DURATION);
+        long totalOfSquares = record.getLong(StatOutput.FIELD_SUM_OF_SQUARES);
+        int maxConcurThreads = (int) record.getLong(StatOutput.FIELD_MAX_CONCUR_THREADS);
+        long maxDuration = toLong(record.getNumber(StatOutput.FIELD_MAX_DURATION));
+        long minDuration = toLong(record.getNumber(StatOutput.FIELD_MIN_DURATION));
+        MethodKey methodKey = new MethodKey(className, methodName, signature);
 
         return new MethodKeyAccumulator(methodKey, totalEnters, totalExits, totalErrors, totalDuration, totalOfSquares,
-                                        maxDuration, minDuration, maxConcurThreads);
+                maxDuration, minDuration, maxConcurThreads);
     }
 
 
     private long toLong(Number n) {
 
         return (n == null)
-               ? 0
-               : n.longValue();
+                ? 0
+                : n.longValue();
     }
 }

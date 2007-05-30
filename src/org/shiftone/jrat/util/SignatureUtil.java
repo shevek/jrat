@@ -11,15 +11,13 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- *
  */
 public class SignatureUtil {
 
-    private static final Logger LOG             = Logger.getLogger(SignatureUtil.class);
-    private static Map          PRIMITIVE_TYPES = new HashMap();
+    private static final Logger LOG = Logger.getLogger(SignatureUtil.class);
+    private static Map PRIMITIVE_TYPES = new HashMap();
 
-    static
-    {
+    static {
         PRIMITIVE_TYPES.put(Boolean.TYPE, "Z");
         PRIMITIVE_TYPES.put(Byte.TYPE, "B");
         PRIMITIVE_TYPES.put(Character.TYPE, "C");
@@ -36,18 +34,14 @@ public class SignatureUtil {
 
         Assert.assertNotNull("class", klass);
 
-        if (klass.isPrimitive())
-        {
+        if (klass.isPrimitive()) {
             return (String) PRIMITIVE_TYPES.get(klass);
-        }
-        else
-        {
+        } else {
             String sig = klass.getName();
 
             sig = sig.replace('.', '/');
 
-            if (klass.isArray() == false)
-            {
+            if (klass.isArray() == false) {
                 sig = 'L' + sig + ';';
             }
 
@@ -60,14 +54,13 @@ public class SignatureUtil {
 
         Assert.assertNotNull("method", method);
 
-        StringBuffer sb   = new StringBuffer();
-        Class[]      args = method.getParameterTypes();
-        Class        ret  = method.getReturnType();
+        StringBuffer sb = new StringBuffer();
+        Class[] args = method.getParameterTypes();
+        Class ret = method.getReturnType();
 
         sb.append("(");
 
-        for (int i = 0; i < args.length; i++)
-        {
+        for (int i = 0; i < args.length; i++) {
             sb.append(getSignature(args[i]));
         }
 
@@ -82,14 +75,13 @@ public class SignatureUtil {
 
         Assert.assertNotNull("constructor", constructor);
 
-        StringBuffer sb   = new StringBuffer();
-        Class[]      args = constructor.getParameterTypes();
+        StringBuffer sb = new StringBuffer();
+        Class[] args = constructor.getParameterTypes();
 
         // Class ret = constructor.getReturnType();
         sb.append("(");
 
-        for (int i = 0; i < args.length; i++)
-        {
+        for (int i = 0; i < args.length; i++) {
             sb.append(getSignature(args[i]));
         }
 

@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate2;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
@@ -10,7 +9,6 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 
 /**
  * @author Jeff Drost
- *
  */
 public class RateMethodHandlerFactory implements MethodHandlerFactory {
 
@@ -20,8 +18,7 @@ public class RateMethodHandlerFactory implements MethodHandlerFactory {
 
         MethodHandler methodHandler = new RateMethodHandler();
 
-        if (true)
-        {
+        if (true) {
             methodHandler = new BoundaryMethodHandler(context, methodHandler);
         }
 
@@ -29,5 +26,6 @@ public class RateMethodHandlerFactory implements MethodHandlerFactory {
     }
 
 
-    public void startup(RuntimeContext context) throws Exception {}
+    public void startup(RuntimeContext context) throws Exception {
+    }
 }

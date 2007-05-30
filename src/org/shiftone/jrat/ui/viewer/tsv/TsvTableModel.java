@@ -26,32 +26,30 @@ import java.util.Set;
  * Class TsvTableModel
  *
  * @author Jeff Drost
- *
  */
 public class TsvTableModel implements TableModel {
 
-    private static final Logger LOG            = Logger.getLogger(TsvTableModel.class);
-    public static final String  PREFIX_LONG    = "#";
-    public static final String  PREFIX_DOUBLE  = "@";
-    public static final String  PREFIX_PERCENT = "%";
-    private Object[][]          rows           = null;
-    private String[]            columnNames    = null;
-    private Class[]             columnTypes    = null;
-    private Set                 listener       = new HashSet();
+    private static final Logger LOG = Logger.getLogger(TsvTableModel.class);
+    public static final String PREFIX_LONG = "#";
+    public static final String PREFIX_DOUBLE = "@";
+    public static final String PREFIX_PERCENT = "%";
+    private Object[][] rows = null;
+    private String[] columnNames = null;
+    private Class[] columnTypes = null;
+    private Set listener = new HashSet();
 
     /**
      * Method load
      *
      * @param inputStream .
-     *
      * @throws IOException
      */
     public void load(InputStream inputStream) throws IOException {
 
-        Reader           reader     = new InputStreamReader(inputStream);
+        Reader reader = new InputStreamReader(inputStream);
         LineNumberReader lineReader = new LineNumberReader(reader);
-        List             list       = new ArrayList();
-        String           line       = null;
+        List list = new ArrayList();
+        String line = null;
 
         lineReader.readLine();    // this class name, ignore it
 
@@ -59,37 +57,27 @@ public class TsvTableModel implements TableModel {
         columnNames = tokenize(lineReader.readLine());
         columnTypes = new Class[columnNames.length];
 
-        for (int i = 0; i < columnNames.length; i++)
-        {
-            if (columnNames[i].startsWith(PREFIX_LONG))
-            {
+        for (int i = 0; i < columnNames.length; i++) {
+            if (columnNames[i].startsWith(PREFIX_LONG)) {
                 columnTypes[i] = Long.class;
                 columnNames[i] = columnNames[i].substring(1);
-            }
-            else if (columnNames[i].startsWith(PREFIX_DOUBLE))
-            {
+            } else if (columnNames[i].startsWith(PREFIX_DOUBLE)) {
                 columnTypes[i] = Double.class;
                 columnNames[i] = columnNames[i].substring(1);
-            }
-            else if (columnNames[i].startsWith(PREFIX_PERCENT))
-            {
+            } else if (columnNames[i].startsWith(PREFIX_PERCENT)) {
                 columnTypes[i] = Percent.class;
                 columnNames[i] = columnNames[i].substring(1);
-            }
-            else
-            {
+            } else {
                 columnTypes[i] = String.class;
             }
         }
 
         // read the data, convert to correct type
-        while ((line = lineReader.readLine()) != null)
-        {
+        while ((line = lineReader.readLine()) != null) {
             Object[] row = new Object[columnNames.length];
             String[] str = tokenize(line);
 
-            for (int i = 0; i < Math.min(str.length, columnNames.length); i++)
-            {
+            for (int i = 0; i < Math.min(str.length, columnNames.length); i++) {
                 row[i] = IntrospectionUtil.convertSafe(str[i], columnTypes[i]);
             }
 
@@ -99,8 +87,7 @@ public class TsvTableModel implements TableModel {
         // copy arrayList into array for easy sorting
         rows = new Object[list.size()][];
 
-        for (int i = 0; i < list.size(); i++)
-        {
+        for (int i = 0; i < list.size(); i++) {
             rows[i] = (Object[]) list.get(i);
         }
     }
@@ -110,7 +97,6 @@ public class TsvTableModel implements TableModel {
      * Method tokenize
      *
      * @param string .
-     *
      * @return .
      */
     String[] tokenize(String string) {
@@ -147,8 +133,7 @@ public class TsvTableModel implements TableModel {
 
         Iterator iterator = listener.iterator();
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             TableModelListener l = (TableModelListener) iterator.next();
 
             l.tableChanged(event);
@@ -160,7 +145,6 @@ public class TsvTableModel implements TableModel {
      * Method getColumnClass
      *
      * @param columnIndex .
-     *
      * @return .
      */
     public Class getColumnClass(int columnIndex) {
@@ -182,7 +166,6 @@ public class TsvTableModel implements TableModel {
      * Method getColumnName
      *
      * @param columnIndex .
-     *
      * @return .
      */
     public String getColumnName(int columnIndex) {
@@ -203,9 +186,8 @@ public class TsvTableModel implements TableModel {
     /**
      * Method getValueAt
      *
-     * @param rowIndex .
+     * @param rowIndex    .
      * @param columnIndex .
-     *
      * @return .
      */
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -219,9 +201,8 @@ public class TsvTableModel implements TableModel {
     /**
      * Method isCellEditable
      *
-     * @param rowIndex .
+     * @param rowIndex    .
      * @param columnIndex .
-     *
      * @return .
      */
     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -232,24 +213,25 @@ public class TsvTableModel implements TableModel {
     /**
      * Method setValueAt
      *
-     * @param aValue .
-     * @param rowIndex .
+     * @param aValue      .
+     * @param rowIndex    .
      * @param columnIndex .
      */
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {}
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+    }
 
 
     /**
      * Method sortByColumn
      *
-     * @param column .
+     * @param column    .
      * @param ascending .
      */
     public void sortByColumn(int column, boolean ascending) {
 
         LOG.info("sortByColumn " + column + (ascending
-                                             ? " assending"
-                                             : " decending"));
+                ? " assending"
+                : " decending"));
         Arrays.sort(rows, new TsvComparator(column, ascending));
         notifyListeners(new TableModelEvent(this));
     }

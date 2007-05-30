@@ -1,21 +1,19 @@
 package org.shiftone.jrat.provider.rate2;
 
 
-
 import org.shiftone.jrat.core.spi.MethodHandler;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class BoundaryMethodHandler implements MethodHandler {
 
     private MethodHandler methodHandler;
-    private Context       context;
+    private Context context;
 
     public BoundaryMethodHandler(Context context, MethodHandler methodHandler) {
-        this.context       = context;
+        this.context = context;
         this.methodHandler = methodHandler;
     }
 
@@ -24,8 +22,7 @@ public class BoundaryMethodHandler implements MethodHandler {
 
         int depth = context.delta(+1);
 
-        if (depth == 0)
-        {
+        if (depth == 0) {
             methodHandler.onMethodStart(obj);
         }
     }
@@ -35,8 +32,7 @@ public class BoundaryMethodHandler implements MethodHandler {
 
         int depth = context.delta(-1);
 
-        if (depth == 1)
-        {
+        if (depth == 1) {
             methodHandler.onMethodFinish(target, durationNanos, throwable);
         }
     }

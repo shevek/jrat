@@ -12,18 +12,18 @@ import java.util.Properties;
  * Class UserSettings
  *
  * @author Jeff Drost
- *
  */
 public class UserSettings {
 
-    private static final Logger      LOG                     = Logger.getLogger(UserSettings.class);
-    public static final Properties   PROPS                   = SavedProperties.USER_PROPERTIES;
-    public static final String       PROP_LAST_OPENED_FILE   = "lastOpenedOutputFile";
-    public static final String       PROP_LAST_INJECTED_FILE = "lastInjectedFile";
-    public static final String       PROP_LAST_INJECTED_DIR  = "lastInjectedDir";
-    public static final UserSettings INSTANCE                = new UserSettings();
+    private static final Logger LOG = Logger.getLogger(UserSettings.class);
+    public static final Properties PROPS = SavedProperties.USER_PROPERTIES;
+    public static final String PROP_LAST_OPENED_FILE = "lastOpenedOutputFile";
+    public static final String PROP_LAST_INJECTED_FILE = "lastInjectedFile";
+    public static final String PROP_LAST_INJECTED_DIR = "lastInjectedDir";
+    public static final UserSettings INSTANCE = new UserSettings();
 
-    private UserSettings() {}
+    private UserSettings() {
+    }
 
 
     public File getLastOpenedOutputFile() {
@@ -69,7 +69,7 @@ public class UserSettings {
     private File toFile(String fileName) {
 
         return (fileName == null)
-               ? null
-               : new File(fileName);
+                ? null
+                : new File(fileName);
     }
 }

@@ -9,16 +9,15 @@ import org.shiftone.jrat.util.time.TimeUnit;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatsTableFormat implements TableFormat {
 
-    private static final Logger LOG          = Logger.getLogger(StatsTableFormat.class);
-    private String[]            COLUMN_NAMES =
-    {
-        "Class", "Method", "Signature", "Enters", "Exits", "Errors", "Total ms", "Avg ms", "Std Dev", "Min ms",
-        "Max ms",
-    };
+    private static final Logger LOG = Logger.getLogger(StatsTableFormat.class);
+    private String[] COLUMN_NAMES =
+            {
+                    "Class", "Method", "Signature", "Enters", "Exits", "Errors", "Total ms", "Avg ms", "Std Dev", "Min ms",
+                    "Max ms",
+            };
 
     public int getColumnCount() {
         return COLUMN_NAMES.length;
@@ -34,51 +33,48 @@ public class StatsTableFormat implements TableFormat {
 
         MethodKeyAccumulator accumulator = (MethodKeyAccumulator) object;
 
-        if (accumulator == null)
-        {
+        if (accumulator == null) {
             return null;
         }
 
-        if (accumulator.getMethodKey() == null)
-        {
+        if (accumulator.getMethodKey() == null) {
             return "?method?";
         }
 
-        switch (columnIndex)
-        {
+        switch (columnIndex) {
 
-        case 0 :
-            return accumulator.getMethodKey().getClassName();
+            case 0:
+                return accumulator.getMethodKey().getClassName();
 
-        case 1 :
-            return accumulator.getMethodKey().getMethodName();
+            case 1:
+                return accumulator.getMethodKey().getMethodName();
 
-        case 2 :
-            return accumulator.getMethodKey().getSignature();
+            case 2:
+                return accumulator.getMethodKey().getSignature();
 
-        case 3 :
-            return new Long(accumulator.getTotalEnters());
+            case 3:
+                return new Long(accumulator.getTotalEnters());
 
-        case 4 :
-            return new Long(accumulator.getTotalExits());
+            case 4:
+                return new Long(accumulator.getTotalExits());
 
-        case 5 :
-            return new Long(accumulator.getTotalErrors());
+            case 5:
+                return new Long(accumulator.getTotalErrors());
 
-        case 6 :
-            return new Long(accumulator.getTotalDuration(TimeUnit.MS));
+            case 6:
+                return new Long(accumulator.getTotalDuration(TimeUnit.MS));
 
-        case 7 :
-            return accumulator.getAverageDuration(TimeUnit.MS);
+            case 7:
+                return accumulator.getAverageDuration(TimeUnit.MS);
 
-        case 8 :
-            return accumulator.getStdDeviation();
+            case 8:
+                return accumulator.getStdDeviation();
 
-        case 9 :
-            return accumulator.getMinDuration(TimeUnit.MS);
+            case 9:
+                return accumulator.getMinDuration(TimeUnit.MS);
 
-        case 10 :
-            return accumulator.getMaxDuration(TimeUnit.MS);
+            case 10:
+                return accumulator.getMaxDuration(TimeUnit.MS);
         }
 
         throw new IllegalStateException();

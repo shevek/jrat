@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.spi;
 
 
-
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 
 import java.io.OutputStream;
@@ -11,7 +10,6 @@ import java.io.Writer;
 
 /**
  * @author Jeff Drost
- *
  */
 public interface RuntimeContext {
 

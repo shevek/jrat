@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util.io.csv.field;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface Field {
 

@@ -1,18 +1,16 @@
 package org.shiftone.jrat.core.criteria;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class DebugMethodCriteria implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(DebugMethodCriteria.class);
-    private MethodCriteria      criteria;
+    private MethodCriteria criteria;
 
     public DebugMethodCriteria(MethodCriteria criteria) {
         this.criteria = criteria;

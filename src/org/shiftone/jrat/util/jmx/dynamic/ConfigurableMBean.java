@@ -23,20 +23,19 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ConfigurableMBean implements DynamicMBean {
 
-    private static final Logger LOG       = Logger.getLogger(ConfigurableMBean.class);
-    private String              className = ConfigurableMBean.class.getName();
-    private String              description;
-    private Map                 attributeValues = new HashMap();
-    private Map                 operations      = new HashMap();
+    private static final Logger LOG = Logger.getLogger(ConfigurableMBean.class);
+    private String className = ConfigurableMBean.class.getName();
+    private String description;
+    private Map attributeValues = new HashMap();
+    private Map operations = new HashMap();
 
     // --- info cache ---
-    private MBeanAttributeInfo[]    attributeInfos;
-    private MBeanOperationInfo[]    operationInfos;
-    private MBeanConstructorInfo[]  constructors  = null;
+    private MBeanAttributeInfo[] attributeInfos;
+    private MBeanOperationInfo[] operationInfos;
+    private MBeanConstructorInfo[] constructors = null;
     private MBeanNotificationInfo[] notifications = null;
 
     public ConfigurableMBean(String description) {
@@ -56,8 +55,7 @@ public class ConfigurableMBean implements DynamicMBean {
 
     public void add(String name, AttributeValue attributeValue) {
 
-        if (attributeValues.put(name, attributeValue) != null)
-        {
+        if (attributeValues.put(name, attributeValue) != null) {
             LOG.warn("replacing attribute '" + name + "' with new value");
         }
 
@@ -72,13 +70,11 @@ public class ConfigurableMBean implements DynamicMBean {
 
     public void add(String name, String signature[], Operation operation) {
 
-        if (signature == null)
-        {
+        if (signature == null) {
             signature = new String[0];
         }
 
-        if (operations.put(new OperationKey(name, signature), operation) != null)
-        {
+        if (operations.put(new OperationKey(name, signature), operation) != null) {
             LOG.warn("replacing operation '" + name + "' with new operation");
         }
 
@@ -90,8 +86,7 @@ public class ConfigurableMBean implements DynamicMBean {
 
         AttributeValue attribute = (AttributeValue) attributeValues.get(attributeName);
 
-        if (attribute == null)
-        {
+        if (attribute == null) {
             throw new AttributeNotFoundException(attributeName);
         }
 
@@ -117,13 +112,12 @@ public class ConfigurableMBean implements DynamicMBean {
 
         AttributeList attributeList = new AttributeList();
 
-        for (int i = 0; i < attributeNames.length; i++)
-        {
-            try
-            {
+        for (int i = 0; i < attributeNames.length; i++) {
+            try {
                 attributeList.add(getAttribute(attributeNames[i]));
             }
-            catch (Exception ignore) {}
+            catch (Exception ignore) {
+            }
         }
 
         return null;
@@ -134,16 +128,15 @@ public class ConfigurableMBean implements DynamicMBean {
 
         AttributeList setList = new AttributeList();
 
-        for (int i = 0; i < attributes.size(); i++)
-        {
-            try
-            {
+        for (int i = 0; i < attributes.size(); i++) {
+            try {
                 Attribute attribute = (Attribute) attributes.get(i);
 
                 setAttribute(attribute);
                 setList.add(attribute);
             }
-            catch (Exception ignore) {}
+            catch (Exception ignore) {
+            }
         }
 
         return setList;
@@ -153,11 +146,10 @@ public class ConfigurableMBean implements DynamicMBean {
     public Object invoke(String actionName, Object params[], String signature[])
             throws MBeanException, ReflectionException {
 
-        OperationKey key       = new OperationKey(actionName, signature);
-        Operation    operation = (Operation) operations.get(key);
+        OperationKey key = new OperationKey(actionName, signature);
+        Operation operation = (Operation) operations.get(key);
 
-        if (operation == null)
-        {
+        if (operation == null) {
             throw new MBeanException(new Exception("operation not found : " + key));
         }
 
@@ -168,25 +160,22 @@ public class ConfigurableMBean implements DynamicMBean {
     private MBeanOperationInfo[] buildMBeanOperationInfo() {
 
         MBeanOperationInfo[] operationInfos = new MBeanOperationInfo[operations.size()];
-        Iterator             keys           = operations.keySet().iterator();
-        int                  i              = 0;
+        Iterator keys = operations.keySet().iterator();
+        int i = 0;
 
-        while (keys.hasNext())
-        {
-            OperationKey         key            = (OperationKey) keys.next();
-            Operation            operation      = (Operation) operations.get(key);
+        while (keys.hasNext()) {
+            OperationKey key = (OperationKey) keys.next();
+            Operation operation = (Operation) operations.get(key);
             MBeanParameterInfo[] parameterInfos = new MBeanParameterInfo[key.getSignature().length];
 
-            for (int p = 0; i < parameterInfos.length; p++)
-            {
+            for (int p = 0; i < parameterInfos.length; p++) {
                 parameterInfos[p] = new MBeanParameterInfo(operation.getParameterName(p), key.getSignature()[p],
-                                                           operation.getParameterDescription(p));
+                        operation.getParameterDescription(p));
             }
 
             String returnType = operation.getReturnType();
 
-            if (returnType == null)
-            {
+            if (returnType == null) {
                 returnType = Void.TYPE.getName();
             }
 
@@ -195,7 +184,7 @@ public class ConfigurableMBean implements DynamicMBean {
                     parameterInfos,                                        // parameterInfos
                     returnType,                                            // type
                     MBeanOperationInfo.UNKNOWN                             // impact
-                        );
+            );
         }
 
         return operationInfos;
@@ -205,12 +194,11 @@ public class ConfigurableMBean implements DynamicMBean {
     private MBeanAttributeInfo[] buildMBeanAttributeInfo() {
 
         MBeanAttributeInfo[] attributeInfos = new MBeanAttributeInfo[attributeValues.size()];
-        Iterator             keys           = attributeValues.keySet().iterator();
-        int                  i              = 0;
+        Iterator keys = attributeValues.keySet().iterator();
+        int i = 0;
 
-        while (keys.hasNext())
-        {
-            String         key   = (String) keys.next();
+        while (keys.hasNext()) {
+            String key = (String) keys.next();
             AttributeValue value = (AttributeValue) attributeValues.get(key);
 
             attributeInfos[i++] = new MBeanAttributeInfo(key,    // name
@@ -219,7 +207,7 @@ public class ConfigurableMBean implements DynamicMBean {
                     value.isReadable(),                          // isReadable,
                     value.isWritable(),                          // isWritable,
                     false                                        // isIs)
-                        );
+            );
         }
 
         return attributeInfos;
@@ -228,8 +216,7 @@ public class ConfigurableMBean implements DynamicMBean {
 
     public MBeanAttributeInfo[] getMBeanAttributeInfo() {
 
-        if (attributeInfos == null)
-        {
+        if (attributeInfos == null) {
             attributeInfos = buildMBeanAttributeInfo();
         }
 
@@ -239,8 +226,7 @@ public class ConfigurableMBean implements DynamicMBean {
 
     public MBeanOperationInfo[] getMBeanOperationInfo() {
 
-        if (operationInfos == null)
-        {
+        if (operationInfos == null) {
             operationInfos = buildMBeanOperationInfo();
         }
 
@@ -250,7 +236,7 @@ public class ConfigurableMBean implements DynamicMBean {
 
     public MBeanInfo getMBeanInfo() {
         return new MBeanInfo(className, description, getMBeanAttributeInfo(), constructors, getMBeanOperationInfo(),
-                             notifications);
+                notifications);
     }
 
 

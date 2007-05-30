@@ -113,12 +113,12 @@ public class Settings {
     }
 
     public String getMBeanServerServerUrl() {
-         return this.mBeanServerServerUrl == null
-               ?  "service:jmx:rmi:///jndi/rmi://localhost:" + getRmiRegistryPort() + "/jrat"
-               : this.mBeanServerServerUrl;
+        return this.mBeanServerServerUrl == null
+                ? "service:jmx:rmi:///jndi/rmi://localhost:" + getRmiRegistryPort() + "/jrat"
+                : this.mBeanServerServerUrl;
     }
 
-    public void setMBeanServerServerUrl(String mBeanServerServerUrl) {       
+    public void setMBeanServerServerUrl(String mBeanServerServerUrl) {
         this.mBeanServerServerUrl = mBeanServerServerUrl;
     }
 

@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.criteria;
 
 
-
 /**
  * Used by ant task.
  * (p1 or p2 or p3 or p4) and not(n1 or n2 or n3).
@@ -11,12 +10,12 @@ package org.shiftone.jrat.core.criteria;
 public class IncludeExcludeMethodCriteria implements MethodCriteria {
 
     private final AndMethodCriteria root;
-    private final OrMethodCriteria  positive;
-    private final OrMethodCriteria  negative;
+    private final OrMethodCriteria positive;
+    private final OrMethodCriteria negative;
 
     public IncludeExcludeMethodCriteria() {
 
-        root     = new AndMethodCriteria();
+        root = new AndMethodCriteria();
         positive = new OrMethodCriteria();
         negative = new OrMethodCriteria();
 

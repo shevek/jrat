@@ -12,16 +12,15 @@ import java.util.Comparator;
  * Class ColorSet
  *
  * @author Jeff Drost
- *
  */
 public class ColorSet {
 
-    private static final Logger          LOG              = Logger.getLogger(ColorSet.class);
+    private static final Logger LOG = Logger.getLogger(ColorSet.class);
     private static final ColorComparator COLOR_COMPARATOR = new ColorComparator();
-    public static ColorSet               COLOR_SET_3      = new ColorSet(3);
-    public static ColorSet               COLOR_SET_4      = new ColorSet(4);
-    public static ColorSet               COLOR_SET_5      = new ColorSet(5);
-    private Color[]                      colors           = null;
+    public static ColorSet COLOR_SET_3 = new ColorSet(3);
+    public static ColorSet COLOR_SET_4 = new ColorSet(4);
+    public static ColorSet COLOR_SET_5 = new ColorSet(5);
+    private Color[] colors = null;
 
     /**
      * Constructor ColorSet
@@ -30,23 +29,19 @@ public class ColorSet {
      */
     public ColorSet(int cube) {
 
-        int   i = 0;
-        int   d = 255 / (cube - 1);
+        int i = 0;
+        int d = 255 / (cube - 1);
         int[] c = new int[cube];
 
         colors = new Color[cube * cube * cube];
 
-        for (int z = 0; z < cube; z++)
-        {
+        for (int z = 0; z < cube; z++) {
             c[z] = z * d;
         }
 
-        for (int r = 0; r < cube; r++)
-        {
-            for (int g = 0; g < cube; g++)
-            {
-                for (int b = 0; b < cube; b++)
-                {
+        for (int r = 0; r < cube; r++) {
+            for (int g = 0; g < cube; g++) {
+                for (int b = 0; b < cube; b++) {
                     colors[i++] = new Color(c[r], c[g], c[b]);
                 }
             }
@@ -70,7 +65,6 @@ public class ColorSet {
      * Method getColor
      *
      * @param index .
-     *
      * @return .
      */
     public Color getColor(int index) {
@@ -90,7 +84,6 @@ class ColorComparator implements Comparator {
      *
      * @param o1 .
      * @param o2 .
-     *
      * @return .
      */
     public int compare(Object o1, Object o2) {
@@ -106,7 +99,6 @@ class ColorComparator implements Comparator {
      * Method colorValue
      *
      * @param c .
-     *
      * @return .
      */
     private int colorValue(Color c) {

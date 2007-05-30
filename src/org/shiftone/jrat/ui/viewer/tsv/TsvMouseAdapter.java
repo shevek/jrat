@@ -13,14 +13,13 @@ import java.awt.event.MouseEvent;
  * Class TsvMouseAdapter
  *
  * @author Jeff Drost
- *
  */
 public class TsvMouseAdapter extends MouseAdapter {
 
-    private static final Logger LOG           = Logger.getLogger(TsvMouseAdapter.class);
-    private JTable              table         = null;
-    private TsvTableModel       model         = null;
-    private boolean[]           sortAscending = null;
+    private static final Logger LOG = Logger.getLogger(TsvMouseAdapter.class);
+    private JTable table = null;
+    private TsvTableModel model = null;
+    private boolean[] sortAscending = null;
 
     /**
      * Method TsvMouseAdapter
@@ -29,8 +28,8 @@ public class TsvMouseAdapter extends MouseAdapter {
      */
     public TsvMouseAdapter(JTable table) {
 
-        this.table    = table;
-        this.model    = (TsvTableModel) table.getModel();
+        this.table = table;
+        this.model = (TsvTableModel) table.getModel();
         sortAscending = new boolean[this.model.getColumnCount()];
     }
 
@@ -41,8 +40,8 @@ public class TsvMouseAdapter extends MouseAdapter {
     public void mouseClicked(MouseEvent e) {
 
         TableColumnModel columnModel = table.getColumnModel();
-        int              viewColumn  = columnModel.getColumnIndexAtX(e.getX());
-        int              column      = table.convertColumnIndexToModel(viewColumn);
+        int viewColumn = columnModel.getColumnIndexAtX(e.getX());
+        int column = table.convertColumnIndexToModel(viewColumn);
 
         model.sortByColumn(column, sortAscending[column]);
 

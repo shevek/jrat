@@ -12,16 +12,15 @@ import org.shiftone.jrat.util.regex.ToLowerMatcher;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatsMatcherEditor extends ca.odell.glazedlists.matchers.AbstractMatcherEditor {
 
-    private static final Logger LOG       = Logger.getLogger(StatsMatcherEditor.class);
-    private Matcher             glMatcher = Matchers.trueMatcher();
-    private final int           field;
-    public static final int     FIELD_CLASS     = 0;
-    public static final int     FIELD_METHOD    = 1;
-    public static final int     FIELD_SIGNATURE = 2;
+    private static final Logger LOG = Logger.getLogger(StatsMatcherEditor.class);
+    private Matcher glMatcher = Matchers.trueMatcher();
+    private final int field;
+    public static final int FIELD_CLASS = 0;
+    public static final int FIELD_METHOD = 1;
+    public static final int FIELD_SIGNATURE = 2;
 
     public StatsMatcherEditor(int field) {
         this.field = field;
@@ -44,7 +43,7 @@ public class StatsMatcherEditor extends ca.odell.glazedlists.matchers.AbstractMa
     private class MatcherMatcher implements Matcher {
 
         private org.shiftone.jrat.util.regex.Matcher matcher = org.shiftone.jrat.util.regex.Matcher.ALL;
-        private boolean                              inverse;
+        private boolean inverse;
 
         public MatcherMatcher(String pattern, boolean inverse) {
             this.matcher = new ToLowerMatcher(new GlobMatcher(pattern.toLowerCase()));
@@ -55,27 +54,26 @@ public class StatsMatcherEditor extends ca.odell.glazedlists.matchers.AbstractMa
         private boolean invertIfNeeded(boolean result) {
 
             return inverse
-                   ? !result
-                   : result;
+                    ? !result
+                    : result;
         }
 
 
         public boolean matches(Object object) {
 
             MethodKeyAccumulator accumulator = (MethodKeyAccumulator) object;
-            MethodKey            methodKey   = accumulator.getMethodKey();
+            MethodKey methodKey = accumulator.getMethodKey();
 
-            switch (field)
-            {
+            switch (field) {
 
-            case FIELD_CLASS :
-                return invertIfNeeded(matcher.isMatch(methodKey.getClassName()));
+                case FIELD_CLASS:
+                    return invertIfNeeded(matcher.isMatch(methodKey.getClassName()));
 
-            case FIELD_METHOD :
-                return invertIfNeeded(matcher.isMatch(methodKey.getMethodName()));
+                case FIELD_METHOD:
+                    return invertIfNeeded(matcher.isMatch(methodKey.getMethodName()));
 
-            case FIELD_SIGNATURE :
-                return invertIfNeeded(matcher.isMatch(methodKey.getSignature()));
+                case FIELD_SIGNATURE:
+                    return invertIfNeeded(matcher.isMatch(methodKey.getSignature()));
             }
 
             return false;

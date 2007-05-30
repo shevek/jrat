@@ -21,7 +21,7 @@ public class SplashWindow extends JWindow {
         pack();
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension labelSize  = l.getPreferredSize();
+        Dimension labelSize = l.getPreferredSize();
 
         setLocation(screenSize.width / 2 - (labelSize.width / 2), screenSize.height / 2 - (labelSize.height / 2));
         addMouseListener(new MouseAdapter() {
@@ -32,7 +32,7 @@ public class SplashWindow extends JWindow {
             }
         });
 
-        final int      pause        = 1000;
+        final int pause = 1000;
         final Runnable closerRunner = new Runnable() {
 
             public void run() {
@@ -44,13 +44,11 @@ public class SplashWindow extends JWindow {
 
             public void run() {
 
-                try
-                {
+                try {
                     Thread.sleep(pause);
                     SwingUtilities.invokeAndWait(closerRunner);
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     e.printStackTrace();
 
                     // can catch InvocationTargetException

@@ -15,13 +15,13 @@ public class TinyWebServerTestCase {
 //        Thread.sleep(1000 * 60 * 60);
 //    }
 
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-		 System.setProperty(Settings.HANDLER_CLASS, TreeMethodHandlerFactory.class.getName());
+        System.setProperty(Settings.HANDLER_CLASS, TreeMethodHandlerFactory.class.getName());
 
-		 HandlerFactory.initialize();
+        HandlerFactory.initialize();
 
-		 Thread.sleep(1000 * 60 * 60);
+        Thread.sleep(1000 * 60 * 60);
 
-	}
+    }
 }

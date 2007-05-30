@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.log.target;
 
 
-
 import org.shiftone.jrat.util.log.Constants;
 
 
@@ -11,12 +10,11 @@ import org.shiftone.jrat.util.log.Constants;
  * instances in one statement.
  *
  * @author Jeff Drost
- *
  */
 public class ProxyLogTarget implements LogTarget, Constants {
 
     private LogTarget logTarget;
-    private int       currentLevel = DEFAULT_LEVEL;
+    private int currentLevel = DEFAULT_LEVEL;
 
     public ProxyLogTarget(LogTarget logTarget) {
         this.logTarget = logTarget;
@@ -50,8 +48,7 @@ public class ProxyLogTarget implements LogTarget, Constants {
 
     public void log(String topic, int level, Object message, Throwable throwable) {
 
-        if (isLevelEnabled(topic, level))
-        {
+        if (isLevelEnabled(topic, level)) {
             logTarget.log(topic, level, message, throwable);
         }
     }

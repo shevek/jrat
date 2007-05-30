@@ -9,19 +9,19 @@ import org.shiftone.jrat.util.log.Logger;
  * @author Jeff Drost
  */
 public class ResetCommandlet extends AbstractLogCommandlet implements Commandlet {
-	private static final Logger LOG = Logger.getLogger(ResetCommandlet.class);
-	private final TreeMethodHandlerFactory treeMethodHandlerFactory;
+    private static final Logger LOG = Logger.getLogger(ResetCommandlet.class);
+    private final TreeMethodHandlerFactory treeMethodHandlerFactory;
 
-	public ResetCommandlet(TreeMethodHandlerFactory treeMethodHandlerFactory) {
-		this.treeMethodHandlerFactory = treeMethodHandlerFactory;
-	}
+    public ResetCommandlet(TreeMethodHandlerFactory treeMethodHandlerFactory) {
+        this.treeMethodHandlerFactory = treeMethodHandlerFactory;
+    }
 
-	public void execute() {
-		treeMethodHandlerFactory.reset();
-		LOG.info("reset complete");
-	}
+    public void execute() {
+        treeMethodHandlerFactory.reset();
+        LOG.info("reset complete");
+    }
 
-	public String getTitle() {
-		return "Reset Tree Statistics";
-	}
+    public String getTitle() {
+        return "Reset Tree Statistics";
+    }
 }

@@ -11,7 +11,6 @@ import java.awt.GridLayout;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatsMatcherEditorsPanel extends JPanel {
 

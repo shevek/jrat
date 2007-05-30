@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.io;
 
 
-
 import org.shiftone.jrat.util.io.proxy.ProxyInputStream;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -17,12 +16,11 @@ import java.io.InputStream;
  * which would prevent any other archive entries from being read.
  *
  * @author Jeff Drost
- *
  */
 public class OpenInputStream extends ProxyInputStream {
 
-    private static final Logger LOG         = Logger.getLogger(OpenInputStream.class);
-    private InputStream         inputStream = null;
+    private static final Logger LOG = Logger.getLogger(OpenInputStream.class);
+    private InputStream inputStream = null;
 
     public OpenInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
@@ -39,8 +37,7 @@ public class OpenInputStream extends ProxyInputStream {
 
     public void assertOpen() throws IOException {
 
-        if (inputStream == null)
-        {
+        if (inputStream == null) {
             throw new IOException("InputStream is closed");
         }
     }

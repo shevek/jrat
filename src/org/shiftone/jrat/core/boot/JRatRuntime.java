@@ -1,9 +1,9 @@
 package org.shiftone.jrat.core.boot;
 
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.boot.config.Configuration;
 import org.shiftone.jrat.core.boot.config.ConfigurationParser;
 import org.shiftone.jrat.core.boot.config.Settings;
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -18,7 +18,7 @@ import java.util.Date;
  * @author Jeff Drost
  */
 public class JRatRuntime {
-    
+
     private static final Logger LOG = Logger.getLogger(JRatRuntime.class);
     private static final String DEFAULT = "org/shiftone/jrat/core/boot/default.xml";
     public static final JRatRuntime INSTANCE = new JRatRuntime();
@@ -45,7 +45,7 @@ public class JRatRuntime {
         } else {
 
             LOG.info("Using existing configuration file.");
-            
+
         }
 
         LOG.info("Loading JRat Configuration : " + file.getAbsolutePath() + "...");
@@ -73,7 +73,7 @@ public class JRatRuntime {
         return configuration;
     }
 
-     public Settings getSettings() {
+    public Settings getSettings() {
         return getConfiguration().getSettings();
     }
 }

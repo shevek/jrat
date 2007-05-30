@@ -10,41 +10,41 @@ import org.shiftone.jrat.util.time.TimeUnit;
  * Class Accumulator
  *
  * @author Jeff Drost
- *
  */
 public class Accumulator {
 
-    private static final Logger LOG              = Logger.getLogger(Accumulator.class);
-    private long                totalEnters      = 0;
-    private long                totalExits       = 0;
-    private long                totalErrors      = 0;
-    private long                totalDuration    = 0;    // used for mean
-    private long                totalOfSquaresMs = 0;    // used for std dev
-    private long                maxDuration      = 0;
-    private long                minDuration      = Long.MAX_VALUE;
-    private int                 concurThreads    = 0;
-    private int                 maxConcurThreads = 0;
+    private static final Logger LOG = Logger.getLogger(Accumulator.class);
+    private long totalEnters = 0;
+    private long totalExits = 0;
+    private long totalErrors = 0;
+    private long totalDuration = 0;    // used for mean
+    private long totalOfSquaresMs = 0;    // used for std dev
+    private long maxDuration = 0;
+    private long minDuration = Long.MAX_VALUE;
+    private int concurThreads = 0;
+    private int maxConcurThreads = 0;
 
-    public Accumulator() {}
+    public Accumulator() {
+    }
 
 
     public Accumulator(long totalEnters, long totalExits, long totalErrors, long totalDuration, long totalOfSquares,
                        long maxDuration, long minDuration, int maxConcurThreads) {
         setStatistics(totalEnters, totalExits, totalErrors, totalDuration,    //
-                      totalOfSquares, maxDuration, minDuration, maxConcurThreads);
+                totalOfSquares, maxDuration, minDuration, maxConcurThreads);
     }
 
 
     public void setStatistics(long totalEnters, long totalExits, long totalErrors, long totalDuration,
                               long totalOfSquares, long maxDuration, long minDuration, int maxConcurThreads) {
 
-        this.totalEnters      = totalEnters;
-        this.totalExits       = totalExits;
-        this.totalErrors      = totalErrors;
-        this.totalDuration    = totalDuration;
+        this.totalEnters = totalEnters;
+        this.totalExits = totalExits;
+        this.totalErrors = totalErrors;
+        this.totalDuration = totalDuration;
         this.totalOfSquaresMs = totalOfSquares;
-        this.maxDuration      = maxDuration;
-        this.minDuration      = minDuration;
+        this.maxDuration = maxDuration;
+        this.minDuration = minDuration;
         this.maxConcurThreads = maxConcurThreads;
     }
 
@@ -55,28 +55,28 @@ public class Accumulator {
      */
     public void combine(Accumulator accumulator) {
 
-        this.totalEnters      = this.totalEnters + accumulator.totalEnters;
-        this.totalExits       = this.totalExits + accumulator.totalExits;
-        this.totalErrors      = this.totalErrors + accumulator.totalErrors;
-        this.totalDuration    = this.totalDuration + accumulator.totalDuration;
+        this.totalEnters = this.totalEnters + accumulator.totalEnters;
+        this.totalExits = this.totalExits + accumulator.totalExits;
+        this.totalErrors = this.totalErrors + accumulator.totalErrors;
+        this.totalDuration = this.totalDuration + accumulator.totalDuration;
         this.totalOfSquaresMs = this.totalOfSquaresMs + accumulator.totalOfSquaresMs;
-        this.maxDuration      = Math.max(this.maxDuration, accumulator.maxDuration);
-        this.minDuration      = Math.min(this.minDuration, accumulator.minDuration);
-        this.concurThreads    = this.concurThreads + accumulator.concurThreads;
+        this.maxDuration = Math.max(this.maxDuration, accumulator.maxDuration);
+        this.minDuration = Math.min(this.minDuration, accumulator.minDuration);
+        this.concurThreads = this.concurThreads + accumulator.concurThreads;
         this.maxConcurThreads = Math.max(this.maxConcurThreads, accumulator.maxConcurThreads);
     }
 
     public synchronized void reset() {
 
-        this.totalEnters      = 0;
-        this.totalExits       = 0;
-        this.totalErrors      = 0;
-        this.totalDuration    = 0;
+        this.totalEnters = 0;
+        this.totalExits = 0;
+        this.totalErrors = 0;
+        this.totalDuration = 0;
         this.totalOfSquaresMs = 0;
-        this.maxDuration      = 0;
-        this.minDuration      = 0;
+        this.maxDuration = 0;
+        this.minDuration = 0;
         //this.concurThreads    = this.concurThreads ;
-        this.maxConcurThreads =  this.concurThreads ;
+        this.maxConcurThreads = this.concurThreads;
 
     }
 
@@ -85,8 +85,7 @@ public class Accumulator {
         totalEnters++;
         concurThreads++;
 
-        if (concurThreads > maxConcurThreads)
-        {
+        if (concurThreads > maxConcurThreads) {
             maxConcurThreads = concurThreads;
         }
     }
@@ -98,21 +97,18 @@ public class Accumulator {
 
         long durationMs = TimeUnit.MS.fromNanos(durationNanos);
 
-        totalDuration    += durationNanos;
+        totalDuration += durationNanos;
         totalOfSquaresMs += (durationMs * durationMs);
 
-        if (!success)
-        {
+        if (!success) {
             totalErrors++;
         }
 
-        if (durationNanos < minDuration)
-        {
+        if (durationNanos < minDuration) {
             minDuration = durationNanos;
         }
 
-        if (durationNanos > maxDuration)
-        {
+        if (durationNanos > maxDuration) {
             maxDuration = durationNanos;
         }
 
@@ -129,8 +125,7 @@ public class Accumulator {
 
         Float average = null;
 
-        if (totalExits > 0)
-        {
+        if (totalExits > 0) {
             average = new Float((double) totalDuration / (double) totalExits);
         }
 
@@ -142,9 +137,8 @@ public class Accumulator {
 
         Double stdDeviation = null;
 
-        if (totalExits > 1)
-        {
-            double numerator   = totalOfSquaresMs - ((double) (totalDuration * totalDuration) / (double) totalExits);
+        if (totalExits > 1) {
+            double numerator = totalOfSquaresMs - ((double) (totalDuration * totalDuration) / (double) totalExits);
             double denominator = totalExits - 1.0;
 
             stdDeviation = new Double(Math.sqrt(numerator / denominator));
@@ -177,8 +171,8 @@ public class Accumulator {
     public final Long getMinDurationNanos() {
 
         return (totalExits == 0)
-               ? null
-               : new Long(minDuration);
+                ? null
+                : new Long(minDuration);
     }
 
 
@@ -190,8 +184,8 @@ public class Accumulator {
     public final Long getMaxDurationNanos() {
 
         return (totalExits == 0)
-               ? null
-               : new Long(maxDuration);
+                ? null
+                : new Long(maxDuration);
     }
 
 
@@ -236,8 +230,7 @@ public class Accumulator {
         sb.append(',');
         sb.append(acc.maxConcurThreads);    // 5
 
-        if (acc.totalExits != 0)
-        {
+        if (acc.totalExits != 0) {
             sb.append(',');
             sb.append(acc.maxDuration);    // 6
             sb.append(',');
@@ -257,23 +250,20 @@ public class Accumulator {
 
         String[] tokens = StringUtil.tokenize(csv, ",", false);
 
-        if ((tokens.length != 6) && (tokens.length != 8))
-        {
+        if ((tokens.length != 6) && (tokens.length != 8)) {
             throw new JRatException("accumulator CSV must contain 6 or 8 tokens : " + tokens.length + " in " + csv);
         }
 
-        if (tokens.length >= 6)
-        {
-            acc.totalEnters      = Long.parseLong(tokens[0]);
-            acc.totalExits       = Long.parseLong(tokens[1]);
-            acc.totalErrors      = Long.parseLong(tokens[2]);
-            acc.totalDuration    = Long.parseLong(tokens[3]);
+        if (tokens.length >= 6) {
+            acc.totalEnters = Long.parseLong(tokens[0]);
+            acc.totalExits = Long.parseLong(tokens[1]);
+            acc.totalErrors = Long.parseLong(tokens[2]);
+            acc.totalDuration = Long.parseLong(tokens[3]);
             acc.totalOfSquaresMs = Long.parseLong(tokens[4]);
             acc.maxConcurThreads = Integer.parseInt(tokens[5]);
         }
 
-        if (tokens.length == 8)
-        {
+        if (tokens.length == 8) {
             acc.maxDuration = Long.parseLong(tokens[6]);
             acc.minDuration = Long.parseLong(tokens[7]);
         }

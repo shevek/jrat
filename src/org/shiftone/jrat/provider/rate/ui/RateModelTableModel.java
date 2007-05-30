@@ -14,21 +14,19 @@ import java.awt.Color;
  * the viewer.
  *
  * @author Jeff Drost
- *
  */
 public class RateModelTableModel extends AbstractTableModel {
 
-    private static final Logger   LOG               = Logger.getLogger(RateModelTableModel.class);
-    public static final int       FLAG_COLUMN_INDEX = 1;
-    private static final int      CHECKED_AT_START  = 4;
-    private static final String[] COLUMN_NAMES      = { "Method", "Visible", "Color" };
-    private static final Class[]  COLUMN_TYPES      = { String.class, Boolean.class, Color.class };
-    private RateModel             rateModel         = null;
-    private Boolean[]             showFlags         = null;
+    private static final Logger LOG = Logger.getLogger(RateModelTableModel.class);
+    public static final int FLAG_COLUMN_INDEX = 1;
+    private static final int CHECKED_AT_START = 4;
+    private static final String[] COLUMN_NAMES = {"Method", "Visible", "Color"};
+    private static final Class[] COLUMN_TYPES = {String.class, Boolean.class, Color.class};
+    private RateModel rateModel = null;
+    private Boolean[] showFlags = null;
 
     /**
      * Constructor RateModelTableModel
-     *
      *
      * @param rateModel
      */
@@ -37,11 +35,10 @@ public class RateModelTableModel extends AbstractTableModel {
         this.rateModel = rateModel;
         this.showFlags = new Boolean[rateModel.getMethodCount()];
 
-        for (int i = 0; i < showFlags.length; i++)
-        {
+        for (int i = 0; i < showFlags.length; i++) {
             showFlags[i] = (i < CHECKED_AT_START)
-                           ? Boolean.TRUE
-                           : Boolean.FALSE;
+                    ? Boolean.TRUE
+                    : Boolean.FALSE;
         }
     }
 
@@ -93,8 +90,7 @@ public class RateModelTableModel extends AbstractTableModel {
      */
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
-        if (columnIndex == 1)
-        {
+        if (columnIndex == 1) {
             showFlags[rowIndex] = (Boolean) aValue;
 
             super.fireTableCellUpdated(rowIndex, columnIndex);
@@ -108,23 +104,22 @@ public class RateModelTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
 
         MethodKey methodKey = rateModel.getMethodKey(rowIndex);
-        Color     color     = rateModel.getMethodColor(rowIndex);
-        Object    obj       = null;
+        Color color = rateModel.getMethodColor(rowIndex);
+        Object obj = null;
 
-        switch (columnIndex)
-        {
+        switch (columnIndex) {
 
-        case 0 :
-            obj = methodKey;
-            break;
+            case 0:
+                obj = methodKey;
+                break;
 
-        case 1 :
-            obj = showFlags[rowIndex];
-            break;
+            case 1:
+                obj = showFlags[rowIndex];
+                break;
 
-        case 2 :
-            obj = color;
-            break;
+            case 2:
+                obj = color;
+                break;
         }
 
         return obj;

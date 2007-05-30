@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  * @author Jeff Drost
  */
 public class DumpOutputCommandlet implements Commandlet {
-     private final TreeMethodHandlerFactory treeMethodHandlerFactory;
+    private final TreeMethodHandlerFactory treeMethodHandlerFactory;
 
     public DumpOutputCommandlet(TreeMethodHandlerFactory treeMethodHandlerFactory) {
         this.treeMethodHandlerFactory = treeMethodHandlerFactory;
@@ -18,7 +18,7 @@ public class DumpOutputCommandlet implements Commandlet {
 
     public void execute(OutputStream output) {
         PrintWriter out = new PrintWriter(output);
-        treeMethodHandlerFactory.getRootNode().printXML(out);        
+        treeMethodHandlerFactory.getRootNode().printXML(out);
     }
 
     public String getContentType() {

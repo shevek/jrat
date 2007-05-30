@@ -1,10 +1,8 @@
 package org.shiftone.jrat.core.jmx.info;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface JRatInfoMBean {
 

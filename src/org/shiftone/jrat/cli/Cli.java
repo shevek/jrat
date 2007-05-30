@@ -15,19 +15,17 @@ import java.util.Properties;
  */
 public class Cli {
 
-    private static final Logger  LOG         = Logger.getLogger(Cli.class);
-    private static final String  PROPS       = "org/shiftone/jrat/cli/cli.properties";
-    private static final Class[] MAIN_PARAMS = { String[].class };
-    private static PrintStream   OUT         = System.out;
+    private static final Logger LOG = Logger.getLogger(Cli.class);
+    private static final String PROPS = "org/shiftone/jrat/cli/cli.properties";
+    private static final Class[] MAIN_PARAMS = {String[].class};
+    private static PrintStream OUT = System.out;
 
     public static void main(String[] args) {
 
-        try
-        {
+        try {
             runMain(args);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.error("error executing command", e);
         }
     }
@@ -36,39 +34,35 @@ public class Cli {
     private static void runMain(String[] args) throws Exception {
 
         Properties properties = ResourceUtil.getResourceAsProperties(PROPS);
-        Class      klass      = null;
-        Method     method     = null;
-        String     className  = null;
-        String     classKey   = null;
-        String[]   newArgs    = null;
+        Class klass = null;
+        Method method = null;
+        String className = null;
+        String classKey = null;
+        String[] newArgs = null;
 
-        if (args.length == 0)
-        {
-            newArgs  = new String[0];
+        if (args.length == 0) {
+            newArgs = new String[0];
             classKey = properties.getProperty("default");
-        }
-        else
-        {
-            newArgs  = new String[args.length - 1];
+        } else {
+            newArgs = new String[args.length - 1];
             classKey = args[0];
 
             System.arraycopy(args, 1, newArgs, 0, newArgs.length);
         }
 
-        classKey  = classKey.toLowerCase();
+        classKey = classKey.toLowerCase();
         className = properties.getProperty("main." + classKey + ".class");
 
-        if (className == null)
-        {
+        if (className == null) {
             printOptionsAndExit(classKey, properties);
         }
 
         LOG.debug("running " + className + ".main()");
 
-        klass  = Class.forName(className);
+        klass = Class.forName(className);
         method = klass.getMethod("main", MAIN_PARAMS);
 
-        method.invoke(null, new Object[]{ newArgs });
+        method.invoke(null, new Object[]{newArgs});
     }
 
 
@@ -79,12 +73,10 @@ public class Cli {
 
         Enumeration enumeration = properties.keys();
 
-        while (enumeration.hasMoreElements())
-        {
+        while (enumeration.hasMoreElements()) {
             String str = (String) enumeration.nextElement();
 
-            if (str.startsWith("main.") && str.endsWith(".class"))
-            {
+            if (str.startsWith("main.") && str.endsWith(".class")) {
                 str = str.substring(5);
                 str = str.substring(0, str.length() - 6);
 

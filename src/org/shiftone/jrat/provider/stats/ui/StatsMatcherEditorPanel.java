@@ -16,17 +16,16 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatsMatcherEditorPanel extends JPanel implements DocumentListener, ActionListener {
 
-    private static final Logger   LOG         = Logger.getLogger(StatsMatcherEditorPanel.class);
-    public static final String    MATCHES_YES = "matches";
-    public static final String    MATCHES_NO  = "does not match";
-    private static final Object[] MATCH_TYPES = { MATCHES_YES, MATCHES_NO };
-    private StatsMatcherEditor    statsMatcherEditor;
-    private JComboBox             comboBox;
-    private JTextField            textField;
+    private static final Logger LOG = Logger.getLogger(StatsMatcherEditorPanel.class);
+    public static final String MATCHES_YES = "matches";
+    public static final String MATCHES_NO = "does not match";
+    private static final Object[] MATCH_TYPES = {MATCHES_YES, MATCHES_NO};
+    private StatsMatcherEditor statsMatcherEditor;
+    private JComboBox comboBox;
+    private JTextField textField;
 
     public StatsMatcherEditorPanel(StatsMatcherEditor statsMatcherEditor, String title) {
 
@@ -34,10 +33,10 @@ public class StatsMatcherEditorPanel extends JPanel implements DocumentListener,
 
         this.statsMatcherEditor = statsMatcherEditor;
 
-        JPanel left  = new JPanel(new GridLayout(1, 0, 5, 0));
+        JPanel left = new JPanel(new GridLayout(1, 0, 5, 0));
         JLabel label = new JLabel(title);
 
-        comboBox  = new JComboBox(MATCH_TYPES);
+        comboBox = new JComboBox(MATCH_TYPES);
         textField = new JTextField("*");
 
         comboBox.addActionListener(this);

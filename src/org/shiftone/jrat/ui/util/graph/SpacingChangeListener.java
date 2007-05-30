@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.util.graph;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.BoundedRangeModel;
@@ -15,17 +14,15 @@ import javax.swing.event.ChangeListener;
  * component to be updated.
  *
  * @author Jeff Drost
- *
  */
 public class SpacingChangeListener implements ChangeListener {
 
-    private static final Logger  LOG               = Logger.getLogger(SpacingChangeListener.class);
+    private static final Logger LOG = Logger.getLogger(SpacingChangeListener.class);
     private static final boolean CONTINUOUS_UPDATE = true;
-    private GraphComponent       graphComponent    = null;
+    private GraphComponent graphComponent = null;
 
     /**
      * Constructor SpacingChangeListener
-     *
      *
      * @param graphComponent
      */
@@ -39,15 +36,13 @@ public class SpacingChangeListener implements ChangeListener {
      */
     public void stateChanged(ChangeEvent e) {
 
-        Object            source     = e.getSource();
+        Object source = e.getSource();
         BoundedRangeModel rangeModel = null;
 
-        if (source instanceof BoundedRangeModel)
-        {
+        if (source instanceof BoundedRangeModel) {
             rangeModel = (BoundedRangeModel) source;
 
-            if ((CONTINUOUS_UPDATE) || (rangeModel.getValueIsAdjusting() == false))
-            {
+            if ((CONTINUOUS_UPDATE) || (rangeModel.getValueIsAdjusting() == false)) {
                 graphComponent.setPointGap(rangeModel.getValue() + 1);
             }
         }

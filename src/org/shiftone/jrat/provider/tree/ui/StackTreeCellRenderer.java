@@ -19,59 +19,47 @@ import java.text.DecimalFormat;
  * Class StackTreeCellRenderer
  *
  * @author Jeff Drost
- *
  */
 public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
 
-    private static final Logger LOG              = Logger.getLogger(StackTreeCellRenderer.class);
-    private PercentColorLookup  colorLookup      = new PercentColorLookup();
-    private static Icon         ICON_ROOT        = new DotIcon(8, Color.darkGray);
-    private static Icon         ICON_ROOT2       = new DotIcon(8, Color.lightGray);
-    private StackTreeNode       treeNode         = null;
-    private DecimalFormat       pctDecimalFormat = new DecimalFormat("#,###.#'%'");
-    private DecimalFormat       msDecimalFormat  = new DecimalFormat("#,###,###.##'ms'");
+    private static final Logger LOG = Logger.getLogger(StackTreeCellRenderer.class);
+    private PercentColorLookup colorLookup = new PercentColorLookup();
+    private static Icon ICON_ROOT = new DotIcon(8, Color.darkGray);
+    private static Icon ICON_ROOT2 = new DotIcon(8, Color.lightGray);
+    private StackTreeNode treeNode = null;
+    private DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.#'%'");
+    private DecimalFormat msDecimalFormat = new DecimalFormat("#,###,###.##'ms'");
 
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,
-            boolean leaf, int row, boolean hasFocus) {
+                                                  boolean leaf, int row, boolean hasFocus) {
 
         this.treeNode = (StackTreeNode) value;
         this.hasFocus = hasFocus;
         this.selected = sel;
 
-        double w    = treeNode.getPctOfAvgParentDuration();
-        Icon   icon = null;
+        double w = treeNode.getPctOfAvgParentDuration();
+        Icon icon = null;
 
-        if (treeNode.isRootNode())
-        {
+        if (treeNode.isRootNode()) {
             icon = ICON_ROOT;
-        }
-        else if (treeNode.isChildOfRootNode())
-        {
+        } else if (treeNode.isChildOfRootNode()) {
             icon = ICON_ROOT2;
-        }
-        else
-        {
+        } else {
             icon = colorLookup.getIcon(w);
         }
 
         setText(nodeText(sel));
 
-        if (selected)
-        {
+        if (selected) {
             setForeground(Color.white);
-        }
-        else
-        {
+        } else {
             setForeground(Color.black);
         }
 
-        if (!tree.isEnabled())
-        {
+        if (!tree.isEnabled()) {
             setEnabled(false);
             setDisabledIcon(icon);
-        }
-        else
-        {
+        } else {
             setEnabled(true);
             setIcon(icon);
         }
@@ -86,33 +74,24 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
 
         String result;
 
-        if (treeNode.isRootNode())
-        {
+        if (treeNode.isRootNode()) {
             result = "Root";
-        }
-        else
-        {
-            MethodKey methodKey  = treeNode.getMethodKey();
-            String    methodName = methodKey.getMethodName();
+        } else {
+            MethodKey methodKey = treeNode.getMethodKey();
+            String methodName = methodKey.getMethodName();
 
-            if (treeNode.isChildOfRootNode())
-            {
+            if (treeNode.isChildOfRootNode()) {
                 Float avg = treeNode.getAverageDurationNanos();
 
                 result = methodName + ((avg == null)
-                                       ? " - never exited"
-                                       : (" - " + msDecimalFormat.format(treeNode.getAverageDuration(TimeUnit.MS))));
-            }
-            else
-            {
+                        ? " - never exited"
+                        : (" - " + msDecimalFormat.format(treeNode.getAverageDuration(TimeUnit.MS))));
+            } else {
                 double pct = treeNode.getPctOfAvgRootDuration();
 
-                if (pct > 0.09)
-                {
+                if (pct > 0.09) {
                     result = methodName + " - " + pctDecimalFormat.format(pct);
-                }
-                else
-                {
+                } else {
                     result = methodName;
                 }
             }

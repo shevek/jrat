@@ -13,9 +13,9 @@ import java.util.List;
 public class TraceNode implements TreeNode {
 
     private MethodKey methodKey;
-    private int       durationMs;
-    private boolean   success;
-    private List      children = new ArrayList(10);
+    private int durationMs;
+    private boolean success;
+    private List children = new ArrayList(10);
     private TraceNode parent;
 
     public TraceNode(TraceNode parent) {
@@ -82,8 +82,8 @@ public class TraceNode implements TreeNode {
     public String toString() {
 
         return (methodKey == null)
-               ? "root"
-               : (methodKey.toString() + " - " + durationMs + "ms");
+                ? "root"
+                : (methodKey.toString() + " - " + durationMs + "ms");
     }
 
 

@@ -5,14 +5,14 @@ import org.shiftone.jrat.core.JRatException;
 
 /**
  * @author Jeff Drost
- *
  */
 public class Command {
 
     /**
      * implement this method if you DO NOT want to return something
      */
-    protected void run() throws Exception {}
+    protected void run() throws Exception {
+    }
 
 
     /**
@@ -28,16 +28,13 @@ public class Command {
 
     public Object execute() {
 
-        try
-        {
+        try {
             return call();
         }
-        catch (RuntimeException e)
-        {
+        catch (RuntimeException e) {
             throw e;
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             throw new JRatException("command failed", e);
         }
     }

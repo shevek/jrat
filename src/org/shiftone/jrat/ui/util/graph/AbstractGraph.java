@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.util.graph;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.Color;
@@ -11,22 +10,20 @@ import java.awt.Color;
  * Class AbstractGraph
  *
  * @author Jeff Drost
- *
  */
 public abstract class AbstractGraph implements GraphModel {
 
-    private static final Logger LOG      = Logger.getLogger(AbstractGraph.class);
-    private Long                maxValue = null;
-    private Long                minValue = null;
-    private Color               color    = Color.black;
+    private static final Logger LOG = Logger.getLogger(AbstractGraph.class);
+    private Long maxValue = null;
+    private Long minValue = null;
+    private Color color = Color.black;
 
     /**
      * Method getMaxValue
      */
     public long getMaxValue() {
 
-        if (maxValue == null)
-        {
+        if (maxValue == null) {
             init();
         }
 
@@ -39,8 +36,7 @@ public abstract class AbstractGraph implements GraphModel {
      */
     public long getMinValue() {
 
-        if (minValue == null)
-        {
+        if (minValue == null) {
             init();
         }
 
@@ -56,8 +52,7 @@ public abstract class AbstractGraph implements GraphModel {
         long max = getValue(0);
         long min = max;
 
-        for (int i = 1; i < getPointCount(); i++)
-        {
+        for (int i = 1; i < getPointCount(); i++) {
             max = Math.max(max, getValue(i));
             min = Math.min(min, getValue(i));
         }

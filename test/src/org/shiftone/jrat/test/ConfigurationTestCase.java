@@ -1,7 +1,6 @@
 package org.shiftone.jrat.test;
 
 
-
 import junit.framework.TestCase;
 import org.shiftone.jrat.core.HandlerFactory;
 import org.shiftone.jrat.core.Settings;
@@ -13,7 +12,6 @@ import org.shiftone.jrat.util.log.Logger;
  * Class ConfigurationTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class ConfigurationTestCase extends TestCase {
 
@@ -35,7 +33,7 @@ public class ConfigurationTestCase extends TestCase {
 
         System.setProperty(Settings.CONFIGURATION_FILE, "nick-jrat.xml");
 
-     MethodHandler handler1 = HandlerFactory.getMethodHandler("com.adp.sbs.net5.ejb.login.Foo", "getIt", "(I)I");
+        MethodHandler handler1 = HandlerFactory.getMethodHandler("com.adp.sbs.net5.ejb.login.Foo", "getIt", "(I)I");
         MethodHandler handler2 = HandlerFactory.getMethodHandler("com.adp.sbs.net5.ejb.login.Bar", "doIt", "(I)I");
 
         foo(handler1);

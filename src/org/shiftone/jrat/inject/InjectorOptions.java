@@ -1,7 +1,6 @@
 package org.shiftone.jrat.inject;
 
 
-
 import org.shiftone.jrat.inject.bytecode.TransformerOptions;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -11,7 +10,6 @@ import org.shiftone.jrat.util.log.Logger;
  * Transformer.
  *
  * @author Jeff Drost
- *
  */
 public class InjectorOptions extends TransformerOptions {
 

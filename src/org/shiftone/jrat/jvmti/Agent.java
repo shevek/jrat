@@ -16,15 +16,14 @@ import java.lang.instrument.Instrumentation;
  */
 public class Agent {
 
-    private static final Logger LOG       = Logger.getLogger(Agent.class);
-    private static boolean      installed = false;
+    private static final Logger LOG = Logger.getLogger(Agent.class);
+    private static boolean installed = false;
     private static Configuration configuration = JRatRuntime.INSTANCE.getConfiguration();
 
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
 
-        if (installed)
-        {
+        if (installed) {
             LOG.warn("one JRat Agent was already installed.");
             LOG.warn("your probably have the -javaagent arg on the command line twice");
 
@@ -34,12 +33,11 @@ public class Agent {
         LOG.info("Installing JRat " + VersionUtil.getVersion() + " ClassFileTransformer...");
         LOG.info("agentArgs = " + agentArgs);
 
-        
+
         InjectorOptions injectorOptions = new InjectorOptions();
         injectorOptions.setCriteria(configuration);
 
-        try
-        {
+        try {
             ClassFileTransformer transformer;
 
             transformer = new InjectClassFileTransformer(injectorOptions);
@@ -50,8 +48,7 @@ public class Agent {
 
             installed = true;
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             LOG.info("NOT Installed!", e);
         }
     }

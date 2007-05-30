@@ -1,18 +1,16 @@
 package org.shiftone.jrat.util.regex;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class ToLowerMatcher implements Matcher {
 
     private static final Logger LOG = Logger.getLogger(ToLowerMatcher.class);
-    private Matcher             matcher;
+    private Matcher matcher;
 
     public ToLowerMatcher(Matcher matcher) {
         this.matcher = matcher;
@@ -22,8 +20,8 @@ public class ToLowerMatcher implements Matcher {
     public boolean isMatch(String inputString) {
 
         return (inputString == null)
-               ? false
-               : matcher.isMatch(inputString.toLowerCase());
+                ? false
+                : matcher.isMatch(inputString.toLowerCase());
     }
 
 

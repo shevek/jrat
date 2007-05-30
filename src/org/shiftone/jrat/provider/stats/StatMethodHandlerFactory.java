@@ -18,14 +18,13 @@ import java.util.List;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatMethodHandlerFactory extends AbstractMethodHandlerFactory implements StatMethodHandlerFactoryMBean {
 
-    private static final Logger LOG         = Logger.getLogger(StatMethodHandlerFactory.class);
-    private List                handlerList = new ArrayList();
-    private StatMBeanRegistry   statMBeanRegistry;
-    private boolean             recordUnused = true;
+    private static final Logger LOG = Logger.getLogger(StatMethodHandlerFactory.class);
+    private List handlerList = new ArrayList();
+    private StatMBeanRegistry statMBeanRegistry;
+    private boolean recordUnused = true;
 
     public void startup(RuntimeContext context) throws Exception {
 
@@ -64,25 +63,21 @@ public class StatMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     public void writeOutputFile(String fileName) {
 
-        if (fileName == null)
-        {
+        if (fileName == null) {
             fileName = getDefaultOutputFileName() + ".jrat";
         }
 
         Writer writer = null;
 
-        try
-        {
+        try {
             writer = getContext().createWriter(fileName);
 
             writeOutput(writer);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.error("Error writting to : " + fileName, e);
         }
-        finally
-        {
+        finally {
             IOUtil.close(writer);
         }
     }
@@ -102,14 +97,12 @@ public class StatMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
         StatOutput statOutput = null;
 
-        try
-        {
+        try {
             statOutput = new StatOutput(writer);
 
             StatMethodHandler[] handlers;
 
-            synchronized (this)
-            {
+            synchronized (this) {
                 handlers = new StatMethodHandler[handlerList.size()];
                 handlers = (StatMethodHandler[]) handlerList.toArray(handlers);
             }
@@ -117,12 +110,10 @@ public class StatMethodHandlerFactory extends AbstractMethodHandlerFactory imple
             Arrays.sort(handlers, StatComparator.INSTANCE);
             statOutput.printStats(handlers, recordUnused);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.error("Error writting output", e);
         }
-        finally
-        {
+        finally {
             IOUtil.close(writer);
         }
     }

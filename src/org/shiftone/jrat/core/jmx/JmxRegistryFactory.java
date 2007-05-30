@@ -1,14 +1,12 @@
 package org.shiftone.jrat.core.jmx;
 
 
-
 import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class JmxRegistryFactory {
 
@@ -17,31 +15,24 @@ public class JmxRegistryFactory {
     public static JmxRegistry createJmxRegistry() {
 
         JmxRegistry registry = NullJmxRegistry.INSTANCE;
-        boolean     enabled  = Settings.isJmxEnabled();
-        boolean     create   = Settings.isMBeanServerCreationEnabled();
+        boolean enabled = Settings.isJmxEnabled();
+        boolean create = Settings.isMBeanServerCreationEnabled();
 
-        if (enabled && (isJMXAvalible() == false))
-        {
+        if (enabled && (isJMXAvalible() == false)) {
             LOG.info("MBeanServer is not available in this environment. Disabling JMX.");
 
             enabled = false;
         }
 
-        if (enabled)
-        {
-            try
-            {
-                if (create)
-                {
+        if (enabled) {
+            try {
+                if (create) {
                     registry = new ServerJmxRegistry(true);
-                }
-                else
-                {
+                } else {
                     registry = new WaitingJmxRegistry(new ServerJmxRegistry(false));
                 }
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 LOG.error("failed to initialize JMX", e);
             }
         }
@@ -52,14 +43,12 @@ public class JmxRegistryFactory {
 
     private static boolean isJMXAvalible() {
 
-        try
-        {
+        try {
             Class.forName("javax.management.MBeanServer");
 
             return true;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             return false;
         }
     }

@@ -1,20 +1,18 @@
 package org.shiftone.jrat.util.regex;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class ConstantMatcher implements Matcher {
 
-    private static final Logger LOG  = Logger.getLogger(ConstantMatcher.class);
-    public static final Matcher ALL  = new ConstantMatcher(true);
+    private static final Logger LOG = Logger.getLogger(ConstantMatcher.class);
+    public static final Matcher ALL = new ConstantMatcher(true);
     public static final Matcher NONE = new ConstantMatcher(false);
-    private boolean             match;
+    private boolean match;
 
     private ConstantMatcher(boolean match) {
         this.match = match;
@@ -29,7 +27,7 @@ public class ConstantMatcher implements Matcher {
     public String toString() {
 
         return match
-               ? "ALL"
-               : "NONE";
+                ? "ALL"
+                : "NONE";
     }
 }

@@ -21,7 +21,7 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
     private static final Log LOG = LogFactory.getLog(ConfigMethodHandlerFactory.class);
     private final List profileFactories = new ArrayList();
-    
+
     public ConfigMethodHandlerFactory(Configuration configuration) {
 
         List profiles = configuration.getProfiles();
@@ -42,27 +42,27 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
 
     public MethodHandler createMethodHandler(MethodKey methodKey) throws Exception {
-        
+
         List methodHandlers = new ArrayList();
         Iterator iterator = profileFactories.iterator();
 
         while (iterator.hasNext()) {
 
-           FactoryInstance factoryInstance = (FactoryInstance) iterator.next();
+            FactoryInstance factoryInstance = (FactoryInstance) iterator.next();
 
             // todo - get modifiers
-           factoryInstance.addHandlerIfApplicable(methodHandlers, methodKey);
+            factoryInstance.addHandlerIfApplicable(methodHandlers, methodKey);
 
         }
 
         if (methodHandlers.isEmpty()) {
             return SilentMethodHandler.METHOD_HANDLER;
         } else if (methodHandlers.size() == 1) {
-            return (MethodHandler)methodHandlers.get(0);
+            return (MethodHandler) methodHandlers.get(0);
         } else {
             return new CompositeMethodHandler(methodHandlers);
         }
-                
+
     }
 
     public void startup(RuntimeContext context) throws Exception {

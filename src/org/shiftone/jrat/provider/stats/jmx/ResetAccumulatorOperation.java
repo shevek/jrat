@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.stats.jmx;
 
 
-
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.util.jmx.dynamic.RunnableOperation;
 import org.shiftone.jrat.util.log.Logger;
@@ -9,12 +8,11 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ResetAccumulatorOperation extends RunnableOperation {
 
     private static final Logger LOG = Logger.getLogger(ResetAccumulatorOperation.class);
-    private Accumulator         accumulator;
+    private Accumulator accumulator;
 
     public ResetAccumulatorOperation(Accumulator accumulator) {
         this.accumulator = accumulator;

@@ -12,26 +12,25 @@ import java.awt.Graphics;
 
 /**
  * @author Jeff Drost
- *
  */
 public class CallNode extends Node {
 
     private StackTreeNode treeNode;
-    private String[]      lines;
-    private Color         colorDark;
-    private Color         color;
+    private String[] lines;
+    private Color colorDark;
+    private Color color;
 
     public CallNode(String id, String label, StackTreeNode treeNode, Color color) {
 
         super(id, label);
 
-        this.treeNode  = treeNode;
+        this.treeNode = treeNode;
         this.colorDark = color.darker().darker().darker();
-        this.color     = color;
-        this.lines     = new String[2];
-        this.lines[0]  = treeNode.getMethodKey().getShortClassName();
-        this.lines[1]  = treeNode.getMethodKey().getMethodName();
-        font           = new Font("SansSerif", Font.PLAIN, 9);
+        this.color = color;
+        this.lines = new String[2];
+        this.lines[0] = treeNode.getMethodKey().getShortClassName();
+        this.lines[1] = treeNode.getMethodKey().getMethodName();
+        font = new Font("SansSerif", Font.PLAIN, 9);
     }
 
 
@@ -43,10 +42,10 @@ public class CallNode extends Node {
 
         int ix = (int) drawx;
         int iy = (int) drawy;
-        int h  = getHeight();
-        int w  = getWidth();
-        int x  = ix - (w / 2);
-        int y  = iy - (h / 2);
+        int h = getHeight();
+        int w = getWidth();
+        int x = ix - (w / 2);
+        int y = iy - (h / 2);
 
         g.setColor(colorDark);
         g.fillRect(x, y, w, h);
@@ -57,8 +56,7 @@ public class CallNode extends Node {
 
         gg.setColor(Color.WHITE);
 
-        for (int i = 0; i < lines.length; i++)
-        {
+        for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
 
             gg.drawString(line, 5, (1 + i) * (h / lines.length) - 4);
@@ -68,12 +66,9 @@ public class CallNode extends Node {
 
     public int getHeight() {
 
-        if (fontMetrics != null)
-        {
+        if (fontMetrics != null) {
             return fontMetrics.getHeight() * lines.length;
-        }
-        else
-        {
+        } else {
             return 6;
         }
     }
@@ -81,19 +76,15 @@ public class CallNode extends Node {
 
     public int getWidth() {
 
-        if (fontMetrics != null)
-        {
+        if (fontMetrics != null) {
             int max = 0;
 
-            for (int i = 0; i < lines.length; i++)
-            {
+            for (int i = 0; i < lines.length; i++) {
                 max = Math.max(fontMetrics.stringWidth(lines[i]), max);
             }
 
             return max + 12;
-        }
-        else
-        {
+        } else {
             return 10;
         }
     }

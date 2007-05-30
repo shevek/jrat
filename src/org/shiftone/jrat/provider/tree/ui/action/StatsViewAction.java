@@ -19,35 +19,31 @@ import java.util.Map;
 public class StatsViewAction implements ActionListener, UIConstants {
 
     private TreePopupMouseAdaptor treePopupMouseAdaptor;
-    private View                  view;
+    private View view;
 
     public StatsViewAction(TreePopupMouseAdaptor treePopupMouseAdaptor, View view) {
         this.treePopupMouseAdaptor = treePopupMouseAdaptor;
-        this.view                  = view;
+        this.view = view;
     }
 
 
     public void actionPerformed(ActionEvent e) {
 
-        TreePath      treePath  = treePopupMouseAdaptor.getTreePath();
+        TreePath treePath = treePopupMouseAdaptor.getTreePath();
         StackTreeNode nodeModel = (StackTreeNode) treePath.getLastPathComponent();
-        Map           map       = new HashMap();
+        Map map = new HashMap();
 
         populateTable(nodeModel, map);
 
-        try
-        {
+        try {
             StatsViewerPanel statsViewerPanel = new StatsViewerPanel(map.values());
 
             //
             String newViewTitle;
 
-            if (nodeModel.isRootNode())
-            {
+            if (nodeModel.isRootNode()) {
                 newViewTitle = view.getTitle() + " : Flattened View";
-            }
-            else
-            {
+            } else {
                 newViewTitle = view.getTitle() + " : " + nodeModel.getMethodKey().toString() + " : Flattened View";
             }
 
@@ -55,8 +51,7 @@ public class StatsViewAction implements ActionListener, UIConstants {
 
             newView.setBody(statsViewerPanel);
         }
-        catch (Exception x)
-        {
+        catch (Exception x) {
             x.printStackTrace();
         }
     }
@@ -64,15 +59,13 @@ public class StatsViewAction implements ActionListener, UIConstants {
 
     public void populateTable(StackTreeNode nodeModel, Map map) {
 
-        if (!nodeModel.isRootNode())
-        {
+        if (!nodeModel.isRootNode()) {
 
             //
-            MethodKey            methodKey   = nodeModel.getMethodKey();
+            MethodKey methodKey = nodeModel.getMethodKey();
             MethodKeyAccumulator accumulator = (MethodKeyAccumulator) map.get(methodKey);
 
-            if (accumulator == null)
-            {
+            if (accumulator == null) {
                 accumulator = new MethodKeyAccumulator(methodKey);
 
                 map.put(methodKey, accumulator);
@@ -81,8 +74,7 @@ public class StatsViewAction implements ActionListener, UIConstants {
             accumulator.combine(nodeModel);
         }
 
-        for (int i = 0; i < nodeModel.getChildCount(); i++)
-        {
+        for (int i = 0; i < nodeModel.getChildCount(); i++) {
             populateTable(nodeModel.getStackTreeNodeAt(i), map);
         }
     }

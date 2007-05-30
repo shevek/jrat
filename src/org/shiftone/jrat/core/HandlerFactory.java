@@ -11,13 +11,12 @@ import org.shiftone.jrat.util.log.Logger;
  */
 public class HandlerFactory {
 
-    private static final Logger    LOG             = Logger.getLogger(HandlerFactory.class);
+    private static final Logger LOG = Logger.getLogger(HandlerFactory.class);
     private static InternalHandler internalHandler = null;
 
     private static synchronized InternalHandler getInternalHandler() {
 
-        if (internalHandler == null)
-        {
+        if (internalHandler == null) {
             LOG.info("new InternalHandler");
 
             internalHandler = new InternalHandler();
@@ -27,16 +26,15 @@ public class HandlerFactory {
     }
 
 
-	/**
-	 * Force initialization.  This should really only be called from test cases to
-	 * initialize a particular configuration.
-	 *
-	 */
-	public static void initialize() {
-		getInternalHandler();
-	}
+    /**
+     * Force initialization.  This should really only be called from test cases to
+     * initialize a particular configuration.
+     */
+    public static void initialize() {
+        getInternalHandler();
+    }
 
-	/**
+    /**
      * A main runtime entry point.
      */
     public static synchronized MethodHandler getMethodHandler(MethodKey methodKey) {
@@ -57,6 +55,4 @@ public class HandlerFactory {
     }
 
 
- 
-     
 }

@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.jmx;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.util.ArrayList;
@@ -10,18 +9,17 @@ import java.util.List;
 
 /**
  * @author Jeff Drost
- *
  */
 public class WaitingJmxRegistry implements JmxRegistry, Runnable {
 
-    private static final Logger LOG      = Logger.getLogger(WaitingJmxRegistry.class);
-    private List                waitList = new ArrayList();
-    private final JmxRegistry   registry;
-    private final Thread        waitThread;
+    private static final Logger LOG = Logger.getLogger(WaitingJmxRegistry.class);
+    private List waitList = new ArrayList();
+    private final JmxRegistry registry;
+    private final Thread waitThread;
 
     public WaitingJmxRegistry(JmxRegistry registry) {
 
-        this.registry   = registry;
+        this.registry = registry;
         this.waitThread = new Thread(this);
 
         this.waitThread.setDaemon(true);
@@ -38,8 +36,7 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
 
     public void registerMBean(Object object, String name) {
 
-        synchronized (this)
-        {
+        synchronized (this) {
             waitList.add(new WaitingRegisterRequest(object, name));
         }
     }
@@ -49,23 +46,19 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
 
         List currentList = null;
 
-        synchronized (this)
-        {
-            if (!waitList.isEmpty())
-            {
+        synchronized (this) {
+            if (!waitList.isEmpty()) {
 
                 // if there are waiting mbeans, then "copy" the list
-                currentList   = waitList;
+                currentList = waitList;
                 this.waitList = new ArrayList();
             }
         }
 
-        if (currentList != null)
-        {
+        if (currentList != null) {
             LOG.info("registering " + currentList.size() + " mbean(s)");
 
-            for (int i = 0; i < currentList.size(); i++)
-            {
+            for (int i = 0; i < currentList.size(); i++) {
                 WaitingRegisterRequest request = (WaitingRegisterRequest) currentList.get(i);
 
                 registry.registerMBean(request.object, request.name);
@@ -78,14 +71,11 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
 
         int sleep = 10000;
 
-        while (true)
-        {
-            try
-            {
+        while (true) {
+            try {
                 LOG.debug("polling MBeanServer...");
 
-                if (registry.isReady())
-                {
+                if (registry.isReady()) {
                     registerNow();
 
                     return;
@@ -93,8 +83,7 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
 
                 Thread.sleep(sleep);
             }
-            catch (Throwable e)
-            {
+            catch (Throwable e) {
                 LOG.warn("JMX poller thread encountered an error", e);
             }
         }
@@ -108,7 +97,7 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
 
         public WaitingRegisterRequest(Object object, String name) {
             this.object = object;
-            this.name   = name;
+            this.name = name;
         }
     }
 }

@@ -9,20 +9,19 @@ import java.io.File;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ArchiveFileProcessorTestCase extends TestCase {
 
-	private static final Logger  LOG = Logger.getLogger(ArchiveFileProcessorTestCase.class);
+    private static final Logger LOG = Logger.getLogger(ArchiveFileProcessorTestCase.class);
 
 
-	public void testOne() throws Exception {
+    public void testOne() throws Exception {
 
-	   File inFile = new File("C:/test.zip");
-	   File outFile = new File("C:/_test-out.zip");
+        File inFile = new File("C:/test.zip");
+        File outFile = new File("C:/_test-out.zip");
 
-	   ArchiveFileProcessor processor = new ArchiveFileProcessor();
-	   InjectorOptions options = new InjectorOptions();
-	   processor.processFile(new Transformer(), options, inFile, outFile);
-	}
+        ArchiveFileProcessor processor = new ArchiveFileProcessor();
+        InjectorOptions options = new InjectorOptions();
+        processor.processFile(new Transformer(), options, inFile, outFile);
+    }
 }

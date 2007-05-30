@@ -15,30 +15,27 @@ import java.awt.event.ActionListener;
 public class SpawnRootAction implements ActionListener, UIConstants {
 
     private TreePopupMouseAdaptor treePopupMouseAdaptor;
-    private View                  view;
+    private View view;
 
     public SpawnRootAction(TreePopupMouseAdaptor treePopupMouseAdaptor, View view) {
         this.treePopupMouseAdaptor = treePopupMouseAdaptor;
-        this.view                  = view;
+        this.view = view;
     }
 
 
     public void actionPerformed(ActionEvent e) {
 
-        TreePath      treePath  = treePopupMouseAdaptor.getTreePath();
+        TreePath treePath = treePopupMouseAdaptor.getTreePath();
         StackTreeNode nodeModel = (StackTreeNode) treePath.getLastPathComponent();
-        String        newViewTitle;
+        String newViewTitle;
 
-        if (nodeModel.isRootNode())
-        {
+        if (nodeModel.isRootNode()) {
             newViewTitle = view.getTitle() + " : Root Node";
-        }
-        else
-        {
+        } else {
             newViewTitle = view.getTitle() + " : " + nodeModel.getMethodKey().toString();
         }
 
-        View            newView         = view.getContainer().createView(newViewTitle);
+        View newView = view.getContainer().createView(newViewTitle);
         TreeViewerPanel treeViewerPanel = new TreeViewerPanel(nodeModel, newView);
 
         newView.setBody(treeViewerPanel);

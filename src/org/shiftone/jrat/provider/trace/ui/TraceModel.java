@@ -1,26 +1,24 @@
 package org.shiftone.jrat.provider.trace.ui;
 
 
-
 import java.util.Set;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class TraceModel {
 
-    private long      threadId;
-    private int       priority;
-    private String    threadName;
-    private String    groupName;
-    private long      runTime;
+    private long threadId;
+    private int priority;
+    private String threadName;
+    private String groupName;
+    private long runTime;
     private TraceNode rootNode;
-    private Set       methodKeyBlackList;
+    private Set methodKeyBlackList;
 
     public TraceModel(TraceNode traceNode, Set methodKeyBlackList) {
-        this.rootNode           = traceNode;
+        this.rootNode = traceNode;
         this.methodKeyBlackList = methodKeyBlackList;
     }
 

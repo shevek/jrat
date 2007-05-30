@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.Assert;
@@ -9,19 +8,18 @@ import org.shiftone.jrat.util.Assert;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TreeMethodHandler implements MethodHandler {
 
     private final TreeMethodHandlerFactory factory;
-    private final MethodKey                methodKey;
+    private final MethodKey methodKey;
 
     public TreeMethodHandler(TreeMethodHandlerFactory factory, MethodKey methodKey) {
 
         Assert.assertNotNull("factory", factory);
         Assert.assertNotNull("methodKey", methodKey);
 
-        this.factory   = factory;
+        this.factory = factory;
         this.methodKey = methodKey;
     }
 

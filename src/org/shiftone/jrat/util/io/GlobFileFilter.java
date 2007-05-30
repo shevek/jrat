@@ -11,13 +11,12 @@ import java.io.File;
  * Class GlobFileFilter
  *
  * @author Jeff Drost
- *
  */
 public class GlobFileFilter extends javax.swing.filechooser.FileFilter implements java.io.FileFilter {
 
-    private static final Logger LOG          = Logger.getLogger(GlobFileFilter.class);
-    private GlobMatcher[]       globMatchers = null;
-    private String              description  = null;
+    private static final Logger LOG = Logger.getLogger(GlobFileFilter.class);
+    private GlobMatcher[] globMatchers = null;
+    private String description = null;
 
     public GlobFileFilter(String[] globPatterns, String description) {
 
@@ -25,12 +24,10 @@ public class GlobFileFilter extends javax.swing.filechooser.FileFilter implement
 
         this.globMatchers = new GlobMatcher[globPatterns.length];
 
-        for (int i = 0; i < globPatterns.length; i++)
-        {
+        for (int i = 0; i < globPatterns.length; i++) {
             globMatchers[i] = new GlobMatcher(globPatterns[i]);
 
-            if (i != 0)
-            {
+            if (i != 0) {
                 sb.append(", ");
             }
 
@@ -48,15 +45,12 @@ public class GlobFileFilter extends javax.swing.filechooser.FileFilter implement
      */
     public boolean accept(File f) {
 
-        if (f.isDirectory())
-        {
+        if (f.isDirectory()) {
             return true;
         }
 
-        for (int i = 0; i < globMatchers.length; i++)
-        {
-            if (globMatchers[i].isMatch(f.getName()))
-            {
+        for (int i = 0; i < globMatchers.length; i++) {
+            if (globMatchers[i].isMatch(f.getName())) {
                 return true;
             }
         }

@@ -9,9 +9,9 @@ import java.awt.event.MouseEvent;
 
 public class TabbedPanePopupMouseAdaptor extends MouseAdapter {
 
-    protected JPopupMenu  popup   = new JPopupMenu();
+    protected JPopupMenu popup = new JPopupMenu();
     protected JTabbedPane tabPane = null;
-    protected int         index   = -1;
+    protected int index = -1;
 
     public TabbedPanePopupMouseAdaptor(JTabbedPane tabPane) {
         this.tabPane = tabPane;
@@ -28,17 +28,16 @@ public class TabbedPanePopupMouseAdaptor extends MouseAdapter {
     }
 
 
-    protected void preShow() {}
+    protected void preShow() {
+    }
 
 
     private void maybeShowPopup(MouseEvent e) {
 
-        if (e.isPopupTrigger())
-        {
+        if (e.isPopupTrigger()) {
             index = tabPane.indexAtLocation(e.getX(), e.getY());
 
-            if (index != -1)
-            {
+            if (index != -1) {
                 tabPane.setSelectedIndex(index);
                 preShow();
                 popup.show(e.getComponent(), e.getX(), e.getY());

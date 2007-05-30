@@ -12,13 +12,12 @@ import java.util.List;
  * Class Table
  *
  * @author Jeff Drost
- *
  */
 public class Table {
 
-    private static final Logger LOG     = Logger.getLogger(Table.class);
-    private int                 max     = 0;
-    private List                rowList = new ArrayList();
+    private static final Logger LOG = Logger.getLogger(Table.class);
+    private int max = 0;
+    private List rowList = new ArrayList();
 
     /**
      * Method addRow
@@ -44,28 +43,23 @@ public class Table {
      */
     public void print(PrintStream out) {
 
-        int[]         columnWidth = new int[max];
-        TableCell[][] cells       = new TableCell[rowList.size()][];
+        int[] columnWidth = new int[max];
+        TableCell[][] cells = new TableCell[rowList.size()][];
 
-        for (int r = 0; r < rowList.size(); r++)
-        {
+        for (int r = 0; r < rowList.size(); r++) {
             TableRow row = (TableRow) rowList.get(r);
 
             cells[r] = new TableCell[max];
 
-            for (int c = 0; c < row.getValueCount(); c++)
-            {
-                cells[r][c]    = new TableCell(row.getValueAt(c));
+            for (int c = 0; c < row.getValueCount(); c++) {
+                cells[r][c] = new TableCell(row.getValueAt(c));
                 columnWidth[c] = Math.max(cells[r][c].getMinWidth(), columnWidth[c]);
             }
         }
 
-        for (int r = 0; r < cells.length; r++)
-        {
-            for (int c = 0; c < max; c++)
-            {
-                if (cells[r][c] != null)
-                {
+        for (int r = 0; r < cells.length; r++) {
+            for (int c = 0; c < max; c++) {
+                if (cells[r][c] != null) {
                     out.print(cells[r][c].toString(columnWidth[c]) + "  ");
                 }
             }
@@ -82,12 +76,12 @@ public class Table {
 
         Table table = new Table();
 
-        table.addRow(new Object[]{ "test", "test2" });
-        table.addRow(new Object[]{ "sssssss", "zzzzz" });
-        table.addRow(new Object[]{ "323", "555" });
-        table.addRow(new Object[]{ new Integer(1), "adasdads" });
-        table.addRow(new Object[]{ new Integer(66), new Integer(66), new Integer(66) });
-        table.addRow(new Object[]{ new Integer(88), new Double(5.423) });
+        table.addRow(new Object[]{"test", "test2"});
+        table.addRow(new Object[]{"sssssss", "zzzzz"});
+        table.addRow(new Object[]{"323", "555"});
+        table.addRow(new Object[]{new Integer(1), "adasdads"});
+        table.addRow(new Object[]{new Integer(66), new Integer(66), new Integer(66)});
+        table.addRow(new Object[]{new Integer(88), new Double(5.423)});
         table.print(System.out);
     }
 }

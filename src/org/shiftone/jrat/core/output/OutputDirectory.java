@@ -23,16 +23,15 @@ import java.util.List;
 
 /**
  * @author Jeff Drost
- *
  */
 public class OutputDirectory {
 
-    private static final Logger     LOG           = Logger.getLogger(OutputDirectory.class);
-    private final List              fileList      = new ArrayList(10);
-    private final NumberFormat      fileSeqFormat = new DecimalFormat("000");
-    private final AtomicLong        fileSequence  = new AtomicLong();
+    private static final Logger LOG = Logger.getLogger(OutputDirectory.class);
+    private final List fileList = new ArrayList(10);
+    private final NumberFormat fileSeqFormat = new DecimalFormat("000");
+    private final AtomicLong fileSequence = new AtomicLong();
     private final FileOutputFactory outputFactory;
-    private final Dir               outputDir;
+    private final Dir outputDir;
 
     public OutputDirectory(FileOutputFactory outputFactory, Dir outputDir) {
 
@@ -40,7 +39,7 @@ public class OutputDirectory {
         Assert.assertTrue(outputDir + ".isDirectory()", outputDir.isDirectory());
 
         this.outputFactory = outputFactory;
-        this.outputDir     = outputDir;
+        this.outputDir = outputDir;
     }
 
 
@@ -52,31 +51,27 @@ public class OutputDirectory {
     private static Dir createOutputDir() {
 
         String applicationName = Settings.getApplicationName();
-        Format format          = new SimpleDateFormat("yyyy-MM-dd_a-hh-mm-ss");
-        Dir    parent          = Settings.getBaseDirectory();
+        Format format = new SimpleDateFormat("yyyy-MM-dd_a-hh-mm-ss");
+        Dir parent = Settings.getBaseDirectory();
 
-        if (applicationName != null)
-        {
+        if (applicationName != null) {
             parent = parent.createChildDir(applicationName);
         }
 
         parent.make();
 
-        Dir outputDir   = null;
+        Dir outputDir = null;
         int maxAttempts = 100;
 
-        while ((outputDir == null) && (maxAttempts > 0))
-        {
-            try
-            {
+        while ((outputDir == null) && (maxAttempts > 0)) {
+            try {
                 Dir dir = parent.createChildDir(format.format(new Date()));
 
                 dir.make();
 
                 outputDir = dir;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 pause();
             }
 
@@ -91,11 +86,11 @@ public class OutputDirectory {
 
     private static void pause() {
 
-        try
-        {
+        try {
             Thread.sleep(50);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        }
     }
 
 
@@ -103,7 +98,7 @@ public class OutputDirectory {
 
         Assert.assertNotNull("fileName", fileName);
 
-        long   fileNumber     = fileSequence.incrementAndGet();
+        long fileNumber = fileSequence.incrementAndGet();
         String actualFileName = fileSeqFormat.format(fileNumber) + "_" + fileName;
 
         fileList.add(new FileInfo(fileName, actualFileName, System.currentTimeMillis()));
@@ -114,14 +109,13 @@ public class OutputDirectory {
 
     public void writeIndexFile() {
 
-        File        indexFile   = outputDir.createChild("index.xml");
+        File indexFile = outputDir.createChild("index.xml");
         PrintWriter printWriter = outputFactory.createPrintWriterSafely(indexFile);
-        Iterator    files       = fileList.iterator();
+        Iterator files = fileList.iterator();
 
         printWriter.println("<output-index>");
 
-        while (files.hasNext())
-        {
+        while (files.hasNext()) {
             FileInfo fileInfo = (FileInfo) files.next();
 
             printWriter.print(" <file requestedName=\"" + fileInfo.getRequestedName() + "\"");

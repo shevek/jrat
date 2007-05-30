@@ -1,14 +1,12 @@
 package org.shiftone.jrat.util;
 
 
-
 import java.util.Collection;
 import java.util.Iterator;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class HtmlUtil {
 
@@ -20,8 +18,7 @@ public class HtmlUtil {
 
         Iterator iterator = collection.iterator();
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             sb.append("<li>");
             sb.append(iterator.next());
             sb.append("</li>");

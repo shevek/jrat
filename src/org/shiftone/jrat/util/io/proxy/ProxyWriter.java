@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.io.proxy;
 
 
-
 import java.io.IOException;
 import java.io.Writer;
 

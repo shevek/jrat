@@ -5,7 +5,6 @@ import org.shiftone.jrat.core.JRatException;
 
 /**
  * @author Jeff Drost
- *
  */
 public class InjectorException extends JRatException {
 

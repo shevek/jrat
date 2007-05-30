@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.collection;
 
 
-
 import java.util.EmptyStackException;
 
 
@@ -13,8 +12,8 @@ import java.util.EmptyStackException;
 public class FlagStack {
 
     private boolean[] stack;
-    private int       depth        = 0;
-    private boolean   defaultValue = false;    // used for overflow
+    private int depth = 0;
+    private boolean defaultValue = false;    // used for overflow
 
     public FlagStack() {
         this(1000);
@@ -28,8 +27,7 @@ public class FlagStack {
 
     public void push(boolean value) {
 
-        if (isInBounds())
-        {
+        if (isInBounds()) {
             stack[depth] = value;
         }
 
@@ -51,18 +49,13 @@ public class FlagStack {
 
         depth--;
 
-        if (depth < 0)
-        {
+        if (depth < 0) {
             depth = 0;
 
             throw new EmptyStackException();
-        }
-        else if (isInBounds())
-        {
+        } else if (isInBounds()) {
             return stack[depth];
-        }
-        else
-        {
+        } else {
             return defaultValue;
         }
     }

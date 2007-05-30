@@ -13,17 +13,17 @@ public class AsmInjectorStrategy implements InjectorStrategy {
 
     public byte[] inject(byte[] rawClassData, TransformerOptions options) throws Exception {
 
-        ClassReader  reader      = new ClassReader(rawClassData);
-        ClassWriter  classWriter = new ClassWriter(true);
-        ClassVisitor target      = classWriter;
+        ClassReader reader = new ClassReader(rawClassData);
+        ClassWriter classWriter = new ClassWriter(true);
+        ClassVisitor target = classWriter;
 
         // target = new DebugClassVisitor(target);
-        ClassInitClassVisitor      classInitClassVisitor = new ClassInitClassVisitor(target);
-        SerialVersionUIDAdder      serialVersionUIDAdder = new SerialVersionUIDAdder(classInitClassVisitor);
-        InjectClassVisitor         injectClassVisitor    = new InjectClassVisitor(serialVersionUIDAdder);
-        MethodCriteriaClassVisitor criteriaClassVisitor  = new MethodCriteriaClassVisitor(injectClassVisitor,
-                                                               serialVersionUIDAdder);
-        ClassVisitor               visitor               = new IfInterfaceClassVisitor(target, criteriaClassVisitor);
+        ClassInitClassVisitor classInitClassVisitor = new ClassInitClassVisitor(target);
+        SerialVersionUIDAdder serialVersionUIDAdder = new SerialVersionUIDAdder(classInitClassVisitor);
+        InjectClassVisitor injectClassVisitor = new InjectClassVisitor(serialVersionUIDAdder);
+        MethodCriteriaClassVisitor criteriaClassVisitor = new MethodCriteriaClassVisitor(injectClassVisitor,
+                serialVersionUIDAdder);
+        ClassVisitor visitor = new IfInterfaceClassVisitor(target, criteriaClassVisitor);
 
         criteriaClassVisitor.setCriteria(options.getCriteria());
 

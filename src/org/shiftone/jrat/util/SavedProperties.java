@@ -21,19 +21,18 @@ import java.util.Properties;
  * reading or writing the file.
  *
  * @author Jeff Drost
- *
  */
 public class SavedProperties extends Properties {
 
-    private static final Logger    LOG                  = Logger.getLogger(SavedProperties.class);
-    private static final String    VERSION              = StringUtil.revision("$Revision: 1.21 $");
-    private static final String    DEFAULT_HEADER       = "ShiftOne JRat SavedProperties " + VERSION;
-    private static final File      PROPERTIES_FILE_PATH = Settings.getUserPropertiesFile();
-    public static final Properties USER_PROPERTIES      = new SavedProperties(PROPERTIES_FILE_PATH);
+    private static final Logger LOG = Logger.getLogger(SavedProperties.class);
+    private static final String VERSION = StringUtil.revision("$Revision: 1.21 $");
+    private static final String DEFAULT_HEADER = "ShiftOne JRat SavedProperties " + VERSION;
+    private static final File PROPERTIES_FILE_PATH = Settings.getUserPropertiesFile();
+    public static final Properties USER_PROPERTIES = new SavedProperties(PROPERTIES_FILE_PATH);
 
     //
-    private String header    = DEFAULT_HEADER;
-    private File   storeFile = null;
+    private String header = DEFAULT_HEADER;
+    private File storeFile = null;
 
     public SavedProperties(String storeFileName) {
         this(new File(storeFileName));
@@ -54,14 +53,12 @@ public class SavedProperties extends Properties {
 
         OutputStream outputStream = null;
 
-        try
-        {
+        try {
             outputStream = new FileOutputStream(storeFile);
 
             super.store(outputStream, header);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("unable to store properties to file : " + storeFile);
             IOUtil.close(outputStream);
         }
@@ -72,19 +69,16 @@ public class SavedProperties extends Properties {
 
         InputStream inputStream = null;
 
-        try
-        {
+        try {
             inputStream = new FileInputStream(storeFile);
 
             super.load(inputStream);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             super.clear();
             LOG.warn("unable to load properties from file : " + storeFile);
         }
-        finally
-        {
+        finally {
             IOUtil.close(inputStream);
         }
     }

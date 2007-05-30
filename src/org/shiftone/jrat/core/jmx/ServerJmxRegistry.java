@@ -18,21 +18,19 @@ import java.util.Hashtable;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ServerJmxRegistry implements JmxRegistry {
 
     private static final Logger LOG = Logger.getLogger(ServerJmxRegistry.class);
-    private MBeanServer         mBeanServer;
-    private String              agentId = Settings.getMBeanServerAgentId();
+    private MBeanServer mBeanServer;
+    private String agentId = Settings.getMBeanServerAgentId();
 
     // see com.sun.jmx.defaults.JmxProperties
     public static final String JMX_INITIAL_BUILDER = "javax.management.builder.initial";
 
     public ServerJmxRegistry(boolean create) throws Exception {
 
-        if (create)
-        {
+        if (create) {
             this.mBeanServer = createMBeanServer();
         }
     }
@@ -40,8 +38,7 @@ public class ServerJmxRegistry implements JmxRegistry {
 
     private static MBeanServer createMBeanServer() throws Exception {
 
-        if (Settings.isRmiRegistryCreationEnabled())
-        {
+        if (Settings.isRmiRegistryCreationEnabled()) {
             int port = Settings.getRmiRegistryPort();
 
             LOG.info("Creating local RMI jmx on port " + port + ".");
@@ -52,10 +49,9 @@ public class ServerJmxRegistry implements JmxRegistry {
         LOG.info("Creating MBeanServer (MBeanServerFactory will refer to property '" + JMX_INITIAL_BUILDER + "').");
 
         MBeanServer mBeanServer = MBeanServerFactory.createMBeanServer();
-        String      urlText     = Settings.getMBeanServerServerUrl();
+        String urlText = Settings.getMBeanServerServerUrl();
 
-        if (urlText != null)
-        {
+        if (urlText != null) {
 
             // create a URL
             JMXServiceURL url = new JMXServiceURL(urlText);
@@ -63,7 +59,7 @@ public class ServerJmxRegistry implements JmxRegistry {
             LOG.info("Binding JMXConnectorServer to RMI jmx.");
 
             JMXConnectorServer connectorServer = JMXConnectorServerFactory.newJMXConnectorServer(url, null,
-                                                     mBeanServer);
+                    mBeanServer);
 
             LOG.info("Starting JMXConnectorServer.");
             connectorServer.start();
@@ -75,20 +71,16 @@ public class ServerJmxRegistry implements JmxRegistry {
 
     protected synchronized MBeanServer getMBeanServer() {
 
-        if (mBeanServer == null)
-        {
+        if (mBeanServer == null) {
             ArrayList servers = MBeanServerFactory.findMBeanServer(agentId);
 
-            if (servers.size() == 0)
-            {
+            if (servers.size() == 0) {
                 LOG.debug("No MBeanServers were found.");
 
                 return null;
-            }
-            else if (servers.size() > 1)
-            {
+            } else if (servers.size() > 1) {
                 LOG.warn("More than one MBeanServers (" + servers.size() + ") was found with agentId='" + agentId
-                         + "'.  Returning first.");
+                        + "'.  Returning first.");
             }
 
             mBeanServer = (MBeanServer) servers.get(0);
@@ -109,30 +101,26 @@ public class ServerJmxRegistry implements JmxRegistry {
 
         MBeanServer server = getMBeanServer();
 
-        if (server == null)
-        {
+        if (server == null) {
             LOG.info("MBeanServer is not available");
 
             return;
         }
 
-        if (objectNameText == null)
-        {
+        if (objectNameText == null) {
             objectNameText = "shiftone.jrat:service=" + object.getClass().getName();
         }
 
-        try
-        {
+        try {
             LOG.info("registerMBean " + object + " " + objectNameText);
 
             ObjectName objectName = new ObjectName(objectNameText);
-            String     domain     = objectName.getDomain();
-            Hashtable  properties = objectName.getKeyPropertyList();
-            int        index      = 0;
+            String domain = objectName.getDomain();
+            Hashtable properties = objectName.getKeyPropertyList();
+            int index = 0;
 
             // this will loop until an avalible objectName is found
-            while (server.isRegistered(objectName))
-            {
+            while (server.isRegistered(objectName)) {
                 properties.put("index", String.valueOf(++index));
 
                 objectName = new ObjectName(domain, properties);
@@ -140,8 +128,7 @@ public class ServerJmxRegistry implements JmxRegistry {
 
             server.registerMBean(object, objectName);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("MBean registration failed", e);
         }
     }

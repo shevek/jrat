@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.stats;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.util.Comparator;
@@ -9,23 +8,21 @@ import java.util.Comparator;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatComparator implements Comparator {
 
-    private static final Logger    LOG      = Logger.getLogger(StatComparator.class);
+    private static final Logger LOG = Logger.getLogger(StatComparator.class);
     public static final Comparator INSTANCE = new StatComparator();
 
     public int compare(Object a, Object b) {
 
         StatMethodHandler handlerA = (StatMethodHandler) a;
         StatMethodHandler handlerB = (StatMethodHandler) b;
-        int               ret;
+        int ret;
 
         ret = convert(handlerA.getTotalDurationNanos() - handlerB.getTotalDurationNanos());
 
-        if (ret == 0)
-        {
+        if (ret == 0) {
             ret = convert(handlerA.getTotalExits() - handlerB.getTotalExits());
         }
 
@@ -40,16 +37,11 @@ public class StatComparator implements Comparator {
 
         int result;
 
-        if (input > Integer.MAX_VALUE)
-        {
+        if (input > Integer.MAX_VALUE) {
             result = Integer.MAX_VALUE;
-        }
-        else if (input < Integer.MIN_VALUE)
-        {
+        } else if (input < Integer.MIN_VALUE) {
             result = Integer.MIN_VALUE;
-        }
-        else
-        {
+        } else {
             result = (int) input;
         }
 

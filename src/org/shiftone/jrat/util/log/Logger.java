@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.log;
 
 
-
 import org.shiftone.jrat.util.log.target.LogTarget;
 
 
@@ -9,15 +8,14 @@ import org.shiftone.jrat.util.log.target.LogTarget;
  * Interface Log
  *
  * @author Jeff Drost
- *
  */
 public class Logger implements LogTarget, Constants {
 
     private final LogTarget target;
-    private final String    topic;
+    private final String topic;
 
     Logger(String topic, LogTarget target) {
-        this.topic  = topic;
+        this.topic = topic;
         this.target = target;
     }
 

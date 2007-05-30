@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -12,12 +11,11 @@ import org.shiftone.jrat.util.log.Logger;
  * magic native method. This class supports Java 1.4.
  *
  * @author Jeff Drost
- *
  */
 public class AtomicLong {
 
     private static final Logger LOG = Logger.getLogger(AtomicLong.class);
-    private long                value;
+    private long value;
 
     public AtomicLong() {
         value = 0;

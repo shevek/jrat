@@ -10,13 +10,13 @@ import java.awt.event.MouseEvent;
 
 public class TreePopupMouseAdaptor extends MouseAdapter {
 
-    private JPopupMenu popup    = null;
-    private JTree      tree     = null;
-    private TreePath   treePath = null;
+    private JPopupMenu popup = null;
+    private JTree tree = null;
+    private TreePath treePath = null;
 
     public TreePopupMouseAdaptor(JPopupMenu popup, JTree tree) {
         this.popup = popup;
-        this.tree  = tree;
+        this.tree = tree;
     }
 
 
@@ -42,12 +42,10 @@ public class TreePopupMouseAdaptor extends MouseAdapter {
 
     private void maybeShowPopup(MouseEvent e) {
 
-        if (e.isPopupTrigger())
-        {
+        if (e.isPopupTrigger()) {
             treePath = tree.getPathForLocation(e.getX(), e.getY());
 
-            if (treePath != null)
-            {
+            if (treePath != null) {
                 tree.setSelectionPath(treePath);
                 popup.show(e.getComponent(), e.getX(), e.getY());
             }

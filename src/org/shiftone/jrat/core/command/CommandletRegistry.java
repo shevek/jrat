@@ -14,27 +14,27 @@ import java.util.TreeMap;
  */
 public class CommandletRegistry {
 
-	private static final Logger LOG = Logger.getLogger(CommandletRegistry.class);
-	private SortedMap commandlets = new TreeMap();
-	private AtomicLong sequence = new AtomicLong();
-	private Commandlet defaultCommandlet = new ListRegistryCommandlet(this);
+    private static final Logger LOG = Logger.getLogger(CommandletRegistry.class);
+    private SortedMap commandlets = new TreeMap();
+    private AtomicLong sequence = new AtomicLong();
+    private Commandlet defaultCommandlet = new ListRegistryCommandlet(this);
 
 
-	public CommandletRegistry() {
-	   register(defaultCommandlet);
-	   register(new SystemPropertiesCommandlet());
-	}
+    public CommandletRegistry() {
+        register(defaultCommandlet);
+        register(new SystemPropertiesCommandlet());
+    }
 
-	public void register(Commandlet commandlet) {
-		LOG.info("register " + commandlet);
-		commandlets.put(Long.toHexString(sequence.incrementAndGet()), commandlet);
-	}
+    public void register(Commandlet commandlet) {
+        LOG.info("register " + commandlet);
+        commandlets.put(Long.toHexString(sequence.incrementAndGet()), commandlet);
+    }
 
-	public Map getCommandlets() {
-		return Collections.unmodifiableMap(commandlets);
-	}
+    public Map getCommandlets() {
+        return Collections.unmodifiableMap(commandlets);
+    }
 
-	public Commandlet getDefaultCommandlet() {
-		return defaultCommandlet;
-	}
+    public Commandlet getDefaultCommandlet() {
+        return defaultCommandlet;
+    }
 }

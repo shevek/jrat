@@ -12,13 +12,14 @@ import java.awt.image.BufferedImage;
 
 /**
  * Draws a pie chart over and over for 10 seconds.  Reports on how many redraws were achieved.
- * <p>
+ * <p/>
  * On my PC (SuSE Linux 8.2, JDK 1.4, 256mb RAM, 2.66ghz Pentium) I get 90-95 charts per second.
- *
  */
 public class ChartTiming1 implements ActionListener {
 
-    /** A flag that indicates when time is up. */
+    /**
+     * A flag that indicates when time is up.
+     */
     private boolean finished;
 
     /**
@@ -46,11 +47,11 @@ public class ChartTiming1 implements ActionListener {
         // create a pie chart...
         final boolean withLegend = true;
         final JFreeChart chart = ChartFactory.createPieChart(
-            "Testing",
-            data,
-            withLegend,
-            true,
-            false
+                "Testing",
+                data,
+                withLegend,
+                true,
+                false
         );
 
         final BufferedImage image = new BufferedImage(400, 300, BufferedImage.TYPE_INT_RGB);
@@ -59,12 +60,12 @@ public class ChartTiming1 implements ActionListener {
 
         // set up the timer...
 
-        for (int i = 0 ; i < 1000 ; i ++ ) {
+        for (int i = 0; i < 1000; i++) {
 
             chart.draw(g2, chartArea, null, null);
-	        if (i % 10 ==0) {
-		        System.out.println(i);
-	        }
+            if (i % 10 == 0) {
+                System.out.println(i);
+            }
         }
         System.out.println("DONE");
 
@@ -73,7 +74,7 @@ public class ChartTiming1 implements ActionListener {
     /**
      * Receives notification of action events (in this case, from the Timer).
      *
-     * @param event  the event.
+     * @param event the event.
      */
     public void actionPerformed(final ActionEvent event) {
         this.finished = true;
@@ -82,7 +83,7 @@ public class ChartTiming1 implements ActionListener {
     /**
      * Starting point for the application.
      *
-     * @param args  ignored.
+     * @param args ignored.
      */
     public static void main(final String[] args) {
 

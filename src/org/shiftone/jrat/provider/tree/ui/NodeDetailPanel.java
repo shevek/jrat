@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 
-
 import org.shiftone.jrat.provider.tree.ui.children.ChildrenPanel;
 import org.shiftone.jrat.provider.tree.ui.graph.TreeGraphComponent;
 import org.shiftone.jrat.provider.tree.ui.stack.StackTableModel;
@@ -18,14 +17,14 @@ import java.awt.BorderLayout;
 
 public class NodeDetailPanel extends JPanel {
 
-    private StackTreeNode      root;
-    private StackTreeNode      node;
-    private JTabbedPane        tabbedPane         = null;
-    private StackTableModel    stackTableModel    = null;
-    private JTable             stackTable         = null;
-   // private ChildrenTableModel childrenTableModel = null;
-   // private JTable             childrenTable      = null;
-    private JLabel             methodLabel;
+    private StackTreeNode root;
+    private StackTreeNode node;
+    private JTabbedPane tabbedPane = null;
+    private StackTableModel stackTableModel = null;
+    private JTable stackTable = null;
+    // private ChildrenTableModel childrenTableModel = null;
+    // private JTable             childrenTable      = null;
+    private JLabel methodLabel;
     private TreeGraphComponent graphComponent;
 
     private ChildrenPanel childrenPanel;
@@ -33,12 +32,12 @@ public class NodeDetailPanel extends JPanel {
     // /private PieGraphComponent pieGraphComponent;
     public NodeDetailPanel() {
 
-        tabbedPane  = new JTabbedPane();
+        tabbedPane = new JTabbedPane();
         methodLabel = new JLabel();
 
         // ----- [ Stack ] -----
         stackTableModel = new StackTableModel();
-        stackTable      = new JTable(stackTableModel);
+        stackTable = new JTable(stackTableModel);
 
         tabbedPane.add("Call Stack", new JScrollPane(stackTable));
 
@@ -49,7 +48,6 @@ public class NodeDetailPanel extends JPanel {
         // ----- [ Graph ] -----
         graphComponent = new TreeGraphComponent();
         tabbedPane.add("Graph", new JScrollPane(graphComponent));
-
 
         // /pieGraphComponent = new PieGraphComponent();
         // /tabbedPane.add("Pie", pieGraphComponent);
@@ -65,12 +63,9 @@ public class NodeDetailPanel extends JPanel {
         Assert.assertNotNull("root", root);
         Assert.assertNotNull("node", node);
 
-        if (node.isRootNode())
-        {
+        if (node.isRootNode()) {
             methodLabel.setText("");
-        }
-        else
-        {
+        } else {
             methodLabel.setText(" " + node.getMethodKey().toString());
         }
 

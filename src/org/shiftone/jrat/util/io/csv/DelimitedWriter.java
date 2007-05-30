@@ -1,10 +1,9 @@
 package org.shiftone.jrat.util.io.csv;
 
 
- 
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.io.csv.field.Field;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.JRatException;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -12,18 +11,17 @@ import java.io.Writer;
 
 /**
  * @author Jeff Drost
- *
  */
 public class DelimitedWriter {
 
-    private static final Logger   LOG = Logger.getLogger(DelimitedWriter.class);
+    private static final Logger LOG = Logger.getLogger(DelimitedWriter.class);
     private final DelimitedFormat delimitedFormat;
-    private final Writer          writer;
-    private String[]              current;
+    private final Writer writer;
+    private String[] current;
 
     public DelimitedWriter(Writer writer, DelimitedFormat delimitedFormat) {
 
-        this.writer          = writer;
+        this.writer = writer;
         this.delimitedFormat = delimitedFormat;
 
         this.delimitedFormat.lock();
@@ -36,27 +34,22 @@ public class DelimitedWriter {
 
         StringBuffer sb = new StringBuffer();
 
-        for (int i = 0; i < current.length; i++)
-        {
-            if (i != 0)
-            {
+        for (int i = 0; i < current.length; i++) {
+            if (i != 0) {
                 sb.append(delimitedFormat.getDelimiter());
             }
 
-            if (current[i] != null)
-            {
+            if (current[i] != null) {
                 sb.append(current[i]);
             }
         }
 
         sb.append("\n");
 
-        try
-        {
+        try {
             writer.write(sb.toString());
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new JRatException("failed to record", e);
         }
 

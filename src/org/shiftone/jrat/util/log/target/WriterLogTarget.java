@@ -15,16 +15,15 @@ import java.util.Date;
 
 /**
  * @author Jeff Drost
- *
  */
 public class WriterLogTarget implements LogTarget {
 
-    private static final Logger   LOG          = Logger.getLogger(WriterLogTarget.class);
-    public static final LogTarget SYSTEM_OUT   = new WriterLogTarget(System.out);
+    private static final Logger LOG = Logger.getLogger(WriterLogTarget.class);
+    public static final LogTarget SYSTEM_OUT = new WriterLogTarget(System.out);
     public static final LogTarget SYSTEM_ERROR = new WriterLogTarget(System.err);
-    private static final String   DATE_FORMAT  = "MMM/dd HH:mm:ss,SSS";
-    private final Writer          writer;
-    private final DateFormat      dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    private static final String DATE_FORMAT = "MMM/dd HH:mm:ss,SSS";
+    private final Writer writer;
+    private final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public WriterLogTarget(PrintStream printStream) {
         this(new PrintStreamWriter(printStream));
@@ -56,23 +55,19 @@ public class WriterLogTarget implements LogTarget {
         buffer.append(" - ");
         buffer.append(String.valueOf(message));
 
-        if (throwable != null)
-        {
+        if (throwable != null) {
             buffer.append("\n");
             buffer.append(throwableToString(throwable));
         }
 
         buffer.append('\n');
 
-        synchronized (this)
-        {
-            try
-            {
+        synchronized (this) {
+            try {
                 writer.write(buffer.toString());
                 writer.flush();
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 System.err.print("logging failed!");
                 e.printStackTrace(System.err);
             }
@@ -83,7 +78,7 @@ public class WriterLogTarget implements LogTarget {
     private static String throwableToString(Throwable throwable) {
 
         StringWriter stringWriter = new StringWriter();
-        PrintWriter  printWriter  = new PrintWriter(stringWriter);
+        PrintWriter printWriter = new PrintWriter(stringWriter);
 
         printWriter.print('\t');
         printWriter.println(throwable.getMessage());

@@ -19,28 +19,27 @@ import java.util.List;
  * Class StackNode
  *
  * @author Jeff Drost
- *
  */
 public class StackNode extends Accumulator {
 
-    private static final Logger LOG     = Logger.getLogger(StackNode.class);
-    public static final String  VERSION = StringUtil.revision("$Revision: 1.30 $");
-    public static final String  VIEWER  = TreeOutputXmlViewBuilder.class.getName();
-    protected final MethodKey   methodKey;
-    protected final StackNode   parent;
-    protected final HashMap     children = new HashMap(3);
+    private static final Logger LOG = Logger.getLogger(StackNode.class);
+    public static final String VERSION = StringUtil.revision("$Revision: 1.30 $");
+    public static final String VIEWER = TreeOutputXmlViewBuilder.class.getName();
+    protected final MethodKey methodKey;
+    protected final StackNode parent;
+    protected final HashMap children = new HashMap(3);
 
     public StackNode() {
 
         // root node
         this.methodKey = null;
-        this.parent    = null;
+        this.parent = null;
     }
 
 
     public StackNode(MethodKey methodKey, StackNode treeNode) {
         this.methodKey = methodKey;
-        this.parent    = treeNode;
+        this.parent = treeNode;
     }
 
 
@@ -51,12 +50,10 @@ public class StackNode extends Accumulator {
 
         StackNode treeNode = null;
 
-        synchronized (children)
-        {
+        synchronized (children) {
             treeNode = (StackNode) children.get(methodKey);
 
-            if (treeNode == null)
-            {
+            if (treeNode == null) {
                 treeNode = new StackNode(methodKey, this);
 
                 children.put(methodKey, treeNode);
@@ -86,12 +83,9 @@ public class StackNode extends Accumulator {
 
         LOG.info("printXML...");
 
-        if (isRootNode())
-        {
+        if (isRootNode()) {
             printRoot(out);
-        }
-        else
-        {
+        } else {
 
             // this should never happen
             printNonRoot(out, 0);
@@ -133,22 +127,18 @@ public class StackNode extends Accumulator {
         out.print(" sos=\"" + getSumOfSquares() + "\"");
         out.print(" mct=\"" + getMaxConcurrentThreads() + "\"");
 
-        if (getTotalDurationNanos() != 0)
-        {
+        if (getTotalDurationNanos() != 0) {
             out.print(" min=\"" + getMinDurationNanos() + "\"");
             out.print(" max=\"" + getMaxDurationNanos() + "\"");
         }
 
-        if (children.size() > 0)
-        {
+        if (children.size() > 0) {
             out.println(">");
             printChildren(out, depth);
 
             // out.print(StringUtil.bufferString(depth, ' '));
             out.println("</call>");
-        }
-        else
-        {
+        } else {
             out.println("/>");
         }
 
@@ -161,13 +151,11 @@ public class StackNode extends Accumulator {
         // need to clone map - concurrency issues
         List list = new ArrayList();
 
-        synchronized (children)
-        {
+        synchronized (children) {
             list.addAll(children.values());
         }
 
-        for (int i = 0; i < list.size(); i++)
-        {
+        for (int i = 0; i < list.size(); i++) {
             StackNode treeNode = (StackNode) list.get(i);
 
             treeNode.printNonRoot(out, depth + 1);
@@ -181,13 +169,11 @@ public class StackNode extends Accumulator {
         // need to clone map - concurrency issues
         List list = new ArrayList();
 
-        synchronized (children)
-        {
+        synchronized (children) {
             list.addAll(children.values());
         }
 
-        for (int i = 0; i < list.size(); i++)
-        {
+        for (int i = 0; i < list.size(); i++) {
             StackNode treeNode = (StackNode) list.get(i);
 
             treeNode.reset();

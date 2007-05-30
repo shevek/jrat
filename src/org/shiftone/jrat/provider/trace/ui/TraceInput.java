@@ -1,8 +1,8 @@
 package org.shiftone.jrat.provider.trace.ui;
 
 
-import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.trace.TraceOutput;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -19,27 +19,24 @@ import java.util.Set;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TraceInput {
 
     private static final Logger LOG = Logger.getLogger(TraceInput.class);
-    private final DataInput     in;
-    private TraceNode           current;
-    private Set                 blackList  = new HashSet();
-    private Map                 methodKeys = new HashMap();
-    private TraceModel          traceModel = new TraceModel(new TraceNode(null), blackList);
+    private final DataInput in;
+    private TraceNode current;
+    private Set blackList = new HashSet();
+    private Map methodKeys = new HashMap();
+    private TraceModel traceModel = new TraceModel(new TraceNode(null), blackList);
 
     public TraceInput(InputStream inputStream) {
 
-        try
-        {
-            while (inputStream.read() != '\n');
+        try {
+            while (inputStream.read() != '\n') ;
 
             in = new DataInputStream(inputStream);
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new JRatException("error reading header", e);
         }
     }
@@ -51,43 +48,39 @@ public class TraceInput {
 
         boolean complete = false;
 
-        try
-        {
-            while (!complete)
-            {
+        try {
+            while (!complete) {
                 byte b = in.readByte();
 
                 // LOG.info("switch " + (char) b);
-                switch (b)
-                {
+                switch (b) {
 
-                case TraceOutput.ENTER :
-                    readEnter();
-                    break;
+                    case TraceOutput.ENTER:
+                        readEnter();
+                        break;
 
-                case TraceOutput.EXIT :
-                    readExit();
-                    break;
+                    case TraceOutput.EXIT:
+                        readExit();
+                        break;
 
-                case TraceOutput.INDEX :
-                    readIndex();
-                    break;
+                    case TraceOutput.INDEX:
+                        readIndex();
+                        break;
 
-                case TraceOutput.DISBALE :
-                    readDisable();
-                    break;
+                    case TraceOutput.DISBALE:
+                        readDisable();
+                        break;
 
-                case TraceOutput.THREAD :
-                    readThreadInfo();
-                    break;
+                    case TraceOutput.THREAD:
+                        readThreadInfo();
+                        break;
 
-                case TraceOutput.EOF :
-                    complete = true;
+                    case TraceOutput.EOF:
+                        complete = true;
                 }
             }
         }
-        catch (EOFException e)
-        {
+        catch (EOFException e) {
             LOG.info("file was not closed correctly", e);
         }
 
@@ -99,18 +92,14 @@ public class TraceInput {
 
     private void pruneBlacklistNodes(TraceNode traceNode) {
 
-        for (int i = traceNode.getChildCount() - 1; i >= 0; i--)
-        {
+        for (int i = traceNode.getChildCount() - 1; i >= 0; i--) {
             TraceNode child = traceNode.getTraceNode(i);
 
-            if (blackList.contains(child.getMethodKey()))
-            {
+            if (blackList.contains(child.getMethodKey())) {
 
                 // LOG.info("remove " + child.getMethodKey());
                 traceNode.removeChild(i);
-            }
-            else
-            {
+            } else {
                 pruneBlacklistNodes(child);
             }
         }
@@ -120,7 +109,7 @@ public class TraceInput {
     private void readEnter() throws IOException {
 
         MethodKey methodName = getMethodKey(in.readInt());
-        TraceNode child      = new TraceNode(current);
+        TraceNode child = new TraceNode(current);
 
         child.setMethodKey(methodName);
         current.add(child);
@@ -140,11 +129,11 @@ public class TraceInput {
 
     private void readIndex() throws IOException {
 
-        int       methodIndex = in.readInt();
-        String    className   = in.readUTF();
-        String    methodName  = in.readUTF();
-        String    signature   = in.readUTF();
-        MethodKey methodKey   = new MethodKey(className, methodName, signature);
+        int methodIndex = in.readInt();
+        String className = in.readUTF();
+        String methodName = in.readUTF();
+        String signature = in.readUTF();
+        MethodKey methodKey = new MethodKey(className, methodName, signature);
 
         methodKeys.put(new Integer(methodIndex), methodKey);
     }
@@ -168,7 +157,7 @@ public class TraceInput {
     private void readDisable() throws IOException {
 
         MethodKey methodKey = getMethodKey(in.readInt());
-        long      callCount = in.readLong();
+        long callCount = in.readLong();
 
         // LOG.info("disable " + methodKey);
         blackList.add(methodKey);

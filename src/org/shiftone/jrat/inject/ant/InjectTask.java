@@ -12,16 +12,15 @@ import java.io.File;
 
 /**
  * @author Jeff Drost
- *
  */
 public class InjectTask extends AbstractFileTask {
 
-    private Injector                     injector;
+    private Injector injector;
     private IncludeExcludeMethodCriteria methodCriteria;
 
     public InjectTask() {
 
-        injector       = new Injector();
+        injector = new Injector();
         methodCriteria = new IncludeExcludeMethodCriteria();
 
         injector.setMethodCriteria(methodCriteria);
@@ -52,12 +51,10 @@ public class InjectTask extends AbstractFileTask {
 
         log("processFile(" + file.getAbsolutePath() + ")", Project.MSG_VERBOSE);
 
-        try
-        {
+        try {
             injector.inject(file);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new BuildException(e);
         }
     }
@@ -65,8 +62,7 @@ public class InjectTask extends AbstractFileTask {
 
     protected void validateFile(File file) throws BuildException {
 
-        if (file.exists() == false)
-        {
+        if (file.exists() == false) {
             throw new BuildException("File does not exist : " + file.getAbsolutePath());
         }
     }

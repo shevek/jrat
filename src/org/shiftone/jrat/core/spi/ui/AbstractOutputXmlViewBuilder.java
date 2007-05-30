@@ -14,7 +14,6 @@ import java.util.Properties;
 
 /**
  * @author Jeff Drost
- *
  */
 public abstract class AbstractOutputXmlViewBuilder implements OutputViewBuilder {
 
@@ -22,18 +21,17 @@ public abstract class AbstractOutputXmlViewBuilder implements OutputViewBuilder 
 
     public void buildView(ViewContext context) throws Exception {
 
-        JComponent       component        = null;
-        InputStream      inputStream      = null;
-        XMLReader        xmlReader        = null;
+        JComponent component = null;
+        InputStream inputStream = null;
+        XMLReader xmlReader = null;
         ViewerXmlHandler viewerXmlHandler = null;
 
         this.viewContext = context;
 
-        try
-        {
-            inputStream      = context.openInputStream();
+        try {
+            inputStream = context.openInputStream();
             viewerXmlHandler = new ViewerXmlHandler(this);
-            xmlReader        = XMLUtil.getXMLReader();
+            xmlReader = XMLUtil.getXMLReader();
 
             xmlReader.setContentHandler(viewerXmlHandler);
             xmlReader.setErrorHandler(new LoggingSAXErrorHandler());
@@ -43,8 +41,7 @@ public abstract class AbstractOutputXmlViewBuilder implements OutputViewBuilder 
 
             Assert.assertNotNull("component", component);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new Exception("error processing XML JRat output file", e);
         }
 

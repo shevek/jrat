@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.regex;
 
 
-
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -19,18 +18,16 @@ import java.io.File;
  * <li>java 1.4.?
  *
  * @author Jeff Drost
- *
  */
 public class GlobMatcher implements Matcher {
 
-    private static final Logger LOG          = Logger.getLogger(GlobMatcher.class);
-    public static final Matcher INCLUDE_ALL  = new GlobMatcher("*");
-    private char[][]            patternParts = null;
-    private String              pattenString;
+    private static final Logger LOG = Logger.getLogger(GlobMatcher.class);
+    public static final Matcher INCLUDE_ALL = new GlobMatcher("*");
+    private char[][] patternParts = null;
+    private String pattenString;
 
     /**
-     * @param pattenString
-     *            initializes the matcher with the glob patterm.
+     * @param pattenString initializes the matcher with the glob patterm.
      */
     public GlobMatcher(String pattenString) {
 
@@ -60,11 +57,10 @@ public class GlobMatcher implements Matcher {
 
     private static char[][] getPatternParts(String pattenString) {
 
-        String[] sections     = StringUtil.tokenize(pattenString, "*", true);
+        String[] sections = StringUtil.tokenize(pattenString, "*", true);
         char[][] patternParts = new char[sections.length][];
 
-        for (int i = 0; i < sections.length; i++)
-        {
+        for (int i = 0; i < sections.length; i++) {
             patternParts[i] = sections[i].toCharArray();
         }
 
@@ -85,35 +81,24 @@ public class GlobMatcher implements Matcher {
      */
     public static boolean isMatch(String input, char[][] patternParts) {
 
-        char[]  in           = input.toCharArray();
-        boolean canSkip      = false;
-        int     currentIndex = 0;
+        char[] in = input.toCharArray();
+        boolean canSkip = false;
+        int currentIndex = 0;
 
-        for (int i = 0; i < patternParts.length; i++)
-        {
-            if (patternParts[i][0] == '*')
-            {
+        for (int i = 0; i < patternParts.length; i++) {
+            if (patternParts[i][0] == '*') {
                 canSkip = true;
-            }
-            else
-            {
-                if (canSkip == false)
-                {
-                    if (!matchesFixed(in, currentIndex, patternParts[i]))
-                    {
+            } else {
+                if (canSkip == false) {
+                    if (!matchesFixed(in, currentIndex, patternParts[i])) {
                         return false;
                     }
-                }
-                else
-                {
+                } else {
                     int m = nextFixedMatch(in, currentIndex, patternParts[i]);
 
-                    if (m == -1)
-                    {
+                    if (m == -1) {
                         return false;
-                    }
-                    else
-                    {
+                    } else {
                         currentIndex = m + patternParts[i].length;
                     }
                 }
@@ -141,10 +126,8 @@ public class GlobMatcher implements Matcher {
 
         int endIndex = cs.length - ps.length + 1;
 
-        for (int i = offSet; i < endIndex; i++)
-        {
-            if (matchesFixed(cs, i, ps))
-            {
+        for (int i = offSet; i < endIndex; i++) {
+            if (matchesFixed(cs, i, ps)) {
                 return i;
             }
         }
@@ -166,17 +149,14 @@ public class GlobMatcher implements Matcher {
      */
     public static boolean matchesFixed(char[] cs, int offSet, char[] ps) {
 
-        for (int i = 0; i < ps.length; i++)
-        {
+        for (int i = 0; i < ps.length; i++) {
             int c = i + offSet;
 
-            if (c >= cs.length)
-            {
+            if (c >= cs.length) {
                 return false;
             }
 
-            if ((cs[c] != ps[i]) && (ps[i] != '?'))
-            {
+            if ((cs[c] != ps[i]) && (ps[i] != '?')) {
                 return false;
             }
         }

@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.event.ActionEvent;
@@ -15,12 +14,11 @@ import java.awt.event.ActionListener;
  * more time because dirs need to be scanned.
  *
  * @author Jeff Drost
- *
  */
 public abstract class BackgroundActionListener implements ActionListener, Runnable {
 
-    private static final Logger LOG         = Logger.getLogger(BackgroundActionListener.class);
-    private ActionEvent         actionEvent = null;
+    private static final Logger LOG = Logger.getLogger(BackgroundActionListener.class);
+    private ActionEvent actionEvent = null;
 
     /**
      * method
@@ -29,14 +27,11 @@ public abstract class BackgroundActionListener implements ActionListener, Runnab
      */
     public final void actionPerformed(ActionEvent e) {
 
-        if (actionEvent == null)
-        {
+        if (actionEvent == null) {
             this.actionEvent = e;
 
             new Thread(this).start();
-        }
-        else
-        {
+        } else {
             LOG.info("action in progress.. ignoring event : " + e);
         }
     }
@@ -55,16 +50,13 @@ public abstract class BackgroundActionListener implements ActionListener, Runnab
      */
     public final void run() {
 
-        try
-        {
+        try {
             actionPerformedInBackground(actionEvent);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.error("uncaught error : ", e);
         }
-        finally
-        {
+        finally {
             actionEvent = null;
         }
     }

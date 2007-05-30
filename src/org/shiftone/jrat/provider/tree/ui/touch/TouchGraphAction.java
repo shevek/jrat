@@ -21,11 +21,10 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TouchGraphAction implements ActionListener, UIConstants {
 
-    private static final Logger   LOG = Logger.getLogger(TouchGraphAction.class);
+    private static final Logger LOG = Logger.getLogger(TouchGraphAction.class);
     private TreePopupMouseAdaptor treePopupMouseAdaptor;
 
     public TouchGraphAction(TreePopupMouseAdaptor treePopupMouseAdaptor) {
@@ -41,18 +40,15 @@ public class TouchGraphAction implements ActionListener, UIConstants {
 
         StackTreeNode nodeModel = (StackTreeNode) treePath.getLastPathComponent();
 
-        if (nodeModel.isRootNode())
-        {
+        if (nodeModel.isRootNode()) {
             return;    // todo
         }
 
-        try
-        {
+        try {
             Assert.assertNotNull("nodeModel", nodeModel);
             new Thread(new BuildGraphRunnable(nodeModel, nodeModel.getMethodKey().toString())).start();
         }
-        catch (Exception x)
-        {
+        catch (Exception x) {
             LOG.error("error launching touchgraph", x);
         }
     }
@@ -61,48 +57,48 @@ public class TouchGraphAction implements ActionListener, UIConstants {
     private class BuildGraphRunnable implements Runnable {
 
         private StackTreeNode nodeModel;
-        private String        title;
+        private String title;
 
         public BuildGraphRunnable(StackTreeNode nodeModel, String title) {
             this.nodeModel = nodeModel;
-            this.title     = title;
+            this.title = title;
         }
 
 
         public void run() {
 
-            final JRatFrame frame     = new JRatFrame(title);
+            final JRatFrame frame = new JRatFrame(title);
             final Container container = frame.getContentPane();
             try {
-            container.setLayout(new BorderLayout());
+                container.setLayout(new BorderLayout());
 
-            final JLabel label = new JLabel("Building TouchGraph...");
+                final JLabel label = new JLabel("Building TouchGraph...");
 
-            label.setHorizontalAlignment(SwingConstants.CENTER);
-            label.setVerticalAlignment(SwingConstants.CENTER);
-            container.add(label, BorderLayout.CENTER);
-            frame.setVisible(true);
-            container.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+                label.setHorizontalAlignment(SwingConstants.CENTER);
+                label.setVerticalAlignment(SwingConstants.CENTER);
+                container.add(label, BorderLayout.CENTER);
+                frame.setVisible(true);
+                container.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 
-            final StackTreeNodeGLPanel panel = new StackTreeNodeGLPanel(nodeModel);
+                final StackTreeNodeGLPanel panel = new StackTreeNodeGLPanel(nodeModel);
 
-            SwingUtilities.invokeLater(new Runnable() {
+                SwingUtilities.invokeLater(new Runnable() {
 
-                public void run() {
+                    public void run() {
 
-                    container.remove(label);
-                    container.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    container.add(panel, BorderLayout.CENTER);
-                    panel.setVisible(true);
-                    container.setVisible(true);
-                    frame.setVisible(true);
-                    panel.repaint();
-                    container.repaint();
-                    frame.repaint();
-                }
-            });
+                        container.remove(label);
+                        container.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        container.add(panel, BorderLayout.CENTER);
+                        panel.setVisible(true);
+                        container.setVisible(true);
+                        frame.setVisible(true);
+                        panel.repaint();
+                        container.repaint();
+                        frame.repaint();
+                    }
+                });
             } catch (Exception e) {
-                LOG.error("error building TouchGraph",e);
+                LOG.error("error building TouchGraph", e);
             }
         }
     }

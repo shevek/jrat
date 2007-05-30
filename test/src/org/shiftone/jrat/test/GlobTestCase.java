@@ -1,18 +1,15 @@
 package org.shiftone.jrat.test;
 
 
-
 import junit.framework.TestCase;
-
-import org.shiftone.jrat.util.regex.GlobMatcher;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.regex.GlobMatcher;
 
 
 /**
  * Class GlobTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class GlobTestCase extends TestCase {
 
@@ -52,7 +49,6 @@ public class GlobTestCase extends TestCase {
      * Method matchesFixed
      *
      * @param offStr .
-     *
      * @throws Exception
      */
     private void matchesFixed(String offStr) throws Exception {
@@ -120,9 +116,8 @@ public class GlobTestCase extends TestCase {
     /**
      * Method nextFixedMatchOffset
      *
-     * @param str .
+     * @param str    .
      * @param offset .
-     *
      * @throws Exception
      */
     private void nextFixedMatchOffset(String str, int offset) throws Exception {

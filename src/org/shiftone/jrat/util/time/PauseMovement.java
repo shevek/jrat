@@ -18,7 +18,7 @@ public class PauseMovement implements Movement {
     }
 
     public void pauseTime() {
-        ThreadState state = (ThreadState)STATE.get();
+        ThreadState state = (ThreadState) STATE.get();
         if (state.pauseTime == 0) {
             // if not paused, record the pause time (now)
             state.pauseTime = movement.currentTimeNanos();
@@ -26,7 +26,7 @@ public class PauseMovement implements Movement {
     }
 
     public void resumeTime() {
-        ThreadState state = (ThreadState)STATE.get();
+        ThreadState state = (ThreadState) STATE.get();
         if (state.pauseTime != 0) {
             // if paused, calc the new skew
             state.clockSkew += (movement.currentTimeNanos() - state.pauseTime);
@@ -35,7 +35,7 @@ public class PauseMovement implements Movement {
     }
 
     public long currentTimeNanos() {
-        ThreadState state = (ThreadState)STATE.get();
+        ThreadState state = (ThreadState) STATE.get();
         return movement.currentTimeNanos() - state.clockSkew;
     }
 

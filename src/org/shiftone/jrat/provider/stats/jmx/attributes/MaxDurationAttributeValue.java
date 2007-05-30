@@ -1,13 +1,11 @@
 package org.shiftone.jrat.provider.stats.jmx.attributes;
 
 
-
 import org.shiftone.jrat.core.MethodKeyAccumulator;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class MaxDurationAttributeValue extends AbstractAccumulatorAttributeValue {
 

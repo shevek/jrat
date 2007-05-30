@@ -25,27 +25,26 @@ import java.util.TreeSet;
 
 /**
  * @author Jeff Drost
- *
  */
 public class InjectRunnable implements Runnable, UIConstants {
 
     private static final Logger LOG = Logger.getLogger(InjectRunnable.class);
-    private View                view;
-    private JTextArea           textArea;
-    private JScrollPane         scrollPane;
-    private int                 textOffset = 0;
-    private Document            document;
-    private BoundedRangeModel   scrollBarRangeModel;
-    private Injector            injector = null;
-    private File[]              targets;
+    private View view;
+    private JTextArea textArea;
+    private JScrollPane scrollPane;
+    private int textOffset = 0;
+    private Document document;
+    private BoundedRangeModel scrollBarRangeModel;
+    private Injector injector = null;
+    private File[] targets;
 
     public InjectRunnable(Injector injector, File[] targets, View view) {
 
         LOG.info("InjectFilesRunnable");
 
         this.injector = injector;
-        this.targets  = targets;
-        this.view     = view;
+        this.targets = targets;
+        this.view = view;
         this.textArea = new JTextArea();
 
         this.textArea.setEditable(false);
@@ -53,9 +52,9 @@ public class InjectRunnable implements Runnable, UIConstants {
 
         // this.textArea.setBackground(Color.BLACK);
         // this.textArea.setForeground(Color.GREEN);
-        this.scrollPane          = new JScrollPane(textArea);
+        this.scrollPane = new JScrollPane(textArea);
         this.scrollBarRangeModel = scrollPane.getVerticalScrollBar().getModel();
-        this.document            = textArea.getDocument();
+        this.document = textArea.getDocument();
 
         view.setBody(scrollPane);
     }
@@ -85,30 +84,26 @@ public class InjectRunnable implements Runnable, UIConstants {
 
         Set fileSet = new TreeSet();
 
-        for (int i = 0; i < targets.length; i++)
-        {
+        for (int i = 0; i < targets.length; i++) {
             LOG.info("scanning " + targets[i] + "...");
             scan(targets[i], fileSet);
         }
 
-        File[]            files      = (File[]) fileSet.toArray(new File[fileSet.size()]);
+        File[] files = (File[]) fileSet.toArray(new File[fileSet.size()]);
         BoundedRangeModel rangeModel = view.getRangeModel();
 
         LOG.info("done scanning : " + files.length + " file(s) found");
         rangeModel.setMaximum(files.length);
 
-        for (int i = 0; i < files.length; i++)
-        {
+        for (int i = 0; i < files.length; i++) {
             File file = files[i];
 
-            try
-            {
+            try {
                 LOG.info("inject : " + file);
                 injector.inject(file);
                 rangeModel.setValue(i + 1);
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 throw new NestedRuntimeException("Error injecting file : " + file, e);
             }
         }
@@ -117,8 +112,7 @@ public class InjectRunnable implements Runnable, UIConstants {
 
     public synchronized void addText(String text) {
 
-        try
-        {
+        try {
             document.insertString(textOffset, text, SimpleAttributeSet.EMPTY);
 
             textOffset += text.length();
@@ -130,8 +124,7 @@ public class InjectRunnable implements Runnable, UIConstants {
                 }
             });
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.error("unable to write to log document", e);
         }
     }
@@ -139,19 +132,15 @@ public class InjectRunnable implements Runnable, UIConstants {
 
     private void scan(File file, Set fileSet) {
 
-        if (file.isDirectory())
-        {
+        if (file.isDirectory()) {
             LOG.info("scanning " + file.getAbsolutePath());
 
             File[] files = file.listFiles(INJECT_FILE_FILTER);
 
-            for (int i = 0; i < files.length; i++)
-            {
+            for (int i = 0; i < files.length; i++) {
                 scan(files[i], fileSet);
             }
-        }
-        else if (INJECT_FILE_FILTER.accept(file))
-        {
+        } else if (INJECT_FILE_FILTER.accept(file)) {
             fileSet.add(file);
         }
     }
@@ -168,8 +157,7 @@ public class InjectRunnable implements Runnable, UIConstants {
 
         public void log(String topic, int level, Object message, Throwable throwable) {
 
-            if (isLevelEnabled(topic, level))
-            {
+            if (isLevelEnabled(topic, level)) {
                 StringBuffer buffer = new StringBuffer(80);
 
                 buffer.append("[");
@@ -181,8 +169,7 @@ public class InjectRunnable implements Runnable, UIConstants {
                 buffer.append(" -  ");
                 buffer.append(String.valueOf(message));
 
-                if (throwable != null)
-                {
+                if (throwable != null) {
                     buffer.append("\n");
                     buffer.append(Exceptions.printStackTrace(throwable));
                 }

@@ -24,7 +24,6 @@ import java.util.Collection;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatsViewerPanel extends JPanel {
 
@@ -36,20 +35,20 @@ public class StatsViewerPanel extends JPanel {
 
         accumulatorsEventList.addAll(methodKeyAccumulators);
 
-        TableFormat        tableFormat            = new StatsTableFormat();
-        StatsMatcherEditor classMatcherEditor     = new StatsMatcherEditor(StatsMatcherEditor.FIELD_CLASS);
-        StatsMatcherEditor methodMatcherEditor    = new StatsMatcherEditor(StatsMatcherEditor.FIELD_METHOD);
+        TableFormat tableFormat = new StatsTableFormat();
+        StatsMatcherEditor classMatcherEditor = new StatsMatcherEditor(StatsMatcherEditor.FIELD_CLASS);
+        StatsMatcherEditor methodMatcherEditor = new StatsMatcherEditor(StatsMatcherEditor.FIELD_METHOD);
         StatsMatcherEditor signatureMatcherEditor = new StatsMatcherEditor(StatsMatcherEditor.FIELD_SIGNATURE);
 
         accumulatorsEventList = new FilterList(accumulatorsEventList, classMatcherEditor);
         accumulatorsEventList = new FilterList(accumulatorsEventList, methodMatcherEditor);
         accumulatorsEventList = new FilterList(accumulatorsEventList, signatureMatcherEditor);
 
-        TotalsEventList totalsEventList    = new TotalsEventList(accumulatorsEventList);
-        SortedList      sortedAccumulators = new SortedList(accumulatorsEventList, NoOpComparator.INSTANCE);
-        JTable          accumulatorsTable  = new JTable(new EventTableModel(sortedAccumulators, tableFormat));
-        JTable          totalsTable        = new JTable(new EventTableModel(totalsEventList, tableFormat),
-                                                 accumulatorsTable.getColumnModel()) {
+        TotalsEventList totalsEventList = new TotalsEventList(accumulatorsEventList);
+        SortedList sortedAccumulators = new SortedList(accumulatorsEventList, NoOpComparator.INSTANCE);
+        JTable accumulatorsTable = new JTable(new EventTableModel(sortedAccumulators, tableFormat));
+        JTable totalsTable = new JTable(new EventTableModel(totalsEventList, tableFormat),
+                accumulatorsTable.getColumnModel()) {
 
             public void columnMarginChanged(ChangeEvent e) {
 
@@ -78,7 +77,7 @@ public class StatsViewerPanel extends JPanel {
         setLayout(new BorderLayout());
         add(editorsPanel, BorderLayout.NORTH);
         add(new JScrollPane(accumulatorsTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants
-            .HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
+                .HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
         add(totalsTable, BorderLayout.SOUTH);
     }
 }

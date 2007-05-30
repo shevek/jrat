@@ -1,18 +1,16 @@
 package org.shiftone.jrat.core.criteria;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class NotMethodCriteria implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(NotMethodCriteria.class);
-    private MethodCriteria      methodCriteria;
+    private MethodCriteria methodCriteria;
 
     public NotMethodCriteria(MethodCriteria methodCriteria) {
         this.methodCriteria = methodCriteria;

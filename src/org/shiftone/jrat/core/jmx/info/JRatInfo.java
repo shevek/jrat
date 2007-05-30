@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.jmx.info;
 
 
-
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.Clock;
@@ -11,7 +10,6 @@ import java.lang.reflect.Method;
 
 /**
  * @author Jeff Drost
- *
  */
 public class JRatInfo implements JRatInfoMBean {
 
@@ -44,14 +42,14 @@ public class JRatInfo implements JRatInfoMBean {
 
     public long getMaxMemory() {
 
-        try
-        {
+        try {
             Method maxMemory = Runtime.class.getMethod("maxMemory", new Class[]{});
-            Long   result    = (Long) maxMemory.invoke(Runtime.getRuntime(), new Object[]{});
+            Long result = (Long) maxMemory.invoke(Runtime.getRuntime(), new Object[]{});
 
             return result.longValue();
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        }
 
         return 0;
     }

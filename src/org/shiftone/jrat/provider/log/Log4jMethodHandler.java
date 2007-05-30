@@ -9,18 +9,17 @@ import org.shiftone.jrat.core.spi.MethodHandler;
 
 /**
  * @author Jeff Drost
- *
  */
 public class Log4jMethodHandler implements MethodHandler {
 
     private final String name;
     private final Logger logger;
-    private final Level  level;
+    private final Level level;
 
     public Log4jMethodHandler(MethodKey methodKey, String prefix, Level level) {
 
-        this.level  = level;
-        this.name   = methodKey.getMethodName() + methodKey.getPrettySignature();
+        this.level = level;
+        this.name = methodKey.getMethodName() + methodKey.getPrettySignature();
         this.logger = Logger.getLogger(prefix + methodKey.getClassName());
     }
 

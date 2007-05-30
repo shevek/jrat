@@ -1,21 +1,20 @@
 package org.shiftone.jrat.core.criteria;
 
 
-
 import org.shiftone.jrat.util.regex.CompositeMatcher;
 import org.shiftone.jrat.util.regex.Matcher;
 
 
 /**
  * Used by ant task.
- * @author Jeff Drost
  *
+ * @author Jeff Drost
  */
 public class MatcherMethodCriteria implements MethodCriteria {
 
-    private Matcher classNameMatcher  = Matcher.ALL;
+    private Matcher classNameMatcher = Matcher.ALL;
     private Matcher methodNameMatcher = Matcher.ALL;
-    private Matcher signatureMatcher  = Matcher.ALL;
+    private Matcher signatureMatcher = Matcher.ALL;
 
     public void setClassName(String classNameMatcher) {
         this.classNameMatcher = CompositeMatcher.buildCompositeGlobMatcher(classNameMatcher);
@@ -39,6 +38,6 @@ public class MatcherMethodCriteria implements MethodCriteria {
 
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
         return classNameMatcher.isMatch(className) && methodNameMatcher.isMatch(methodName)
-               && signatureMatcher.isMatch(signature);
+                && signatureMatcher.isMatch(signature);
     }
 }

@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 
 
@@ -14,7 +13,6 @@ import org.shiftone.jrat.core.MethodKey;
  * manipulates a tree structure as invocations are made.
  *
  * @author Jeff Drost
- *
  */
 public class Delegate {
 
@@ -22,8 +20,7 @@ public class Delegate {
 
     public Delegate(StackNode rootNode) {
 
-        if (rootNode == null)
-        {
+        if (rootNode == null) {
             throw new NullPointerException("delegate created to null initial node");
         }
 

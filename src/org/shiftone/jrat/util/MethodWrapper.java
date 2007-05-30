@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util;
 
 
-
 import java.lang.reflect.Method;
 
 
@@ -13,16 +12,15 @@ import java.lang.reflect.Method;
  * calls getName().
  *
  * @author Jeff Drost
- *
  */
 public class MethodWrapper {
 
     private Method method;
-    private int    hashCode;
+    private int hashCode;
 
     public MethodWrapper(Method method) {
 
-        this.method   = method;
+        this.method = method;
         this.hashCode = method.getDeclaringClass().hashCode() ^ method.getName().hashCode();
 
         // this.hashCode = method.getDeclaringClass().getName().hashCode() ^

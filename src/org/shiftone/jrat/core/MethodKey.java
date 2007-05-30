@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core;
 
 
-
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -11,17 +10,16 @@ import org.shiftone.jrat.util.log.Logger;
  * for use as a Map key.
  *
  * @author Jeff Drost
- *
  */
 public class MethodKey {
 
-    private static final Logger LOG           = Logger.getLogger(MethodKey.class);
-    private String              className     = null;
-    private String              methodName    = null;
-    private String              signature     = null;
-    private int                 hashCode      = 0;
-    private String              toStringValue = null;
-    private Signature           sig           = null;
+    private static final Logger LOG = Logger.getLogger(MethodKey.class);
+    private String className = null;
+    private String methodName = null;
+    private String signature = null;
+    private int hashCode = 0;
+    private String toStringValue = null;
+    private Signature sig = null;
 
     public MethodKey(String className, String methodName, String signature) {
 
@@ -29,12 +27,12 @@ public class MethodKey {
         Assert.assertNotNull("methodName", methodName);
         Assert.assertNotNull("signature", signature);
 
-        this.className  = className;
+        this.className = className;
         this.methodName = methodName;
-        this.signature  = signature;
-        hashCode        = className.hashCode();
-        hashCode        = (29 * hashCode) + methodName.hashCode();
-        hashCode        = (29 * hashCode) + signature.hashCode();
+        this.signature = signature;
+        hashCode = className.hashCode();
+        hashCode = (29 * hashCode) + methodName.hashCode();
+        hashCode = (29 * hashCode) + signature.hashCode();
     }
 
 
@@ -58,37 +56,32 @@ public class MethodKey {
         int index = className.lastIndexOf('.');
 
         return (index == -1)
-               ? className
-               : className.substring(index + 1);
+                ? className
+                : className.substring(index + 1);
     }
 
 
     public final boolean equals(Object o) {
 
-        if (this == o)
-        {
+        if (this == o) {
             return true;
         }
 
-        if (!(o instanceof MethodKey))
-        {
+        if (!(o instanceof MethodKey)) {
             return false;
         }
 
         final MethodKey methodKey = (MethodKey) o;
 
-        if (!className.equals(methodKey.className))
-        {
+        if (!className.equals(methodKey.className)) {
             return false;
         }
 
-        if (!methodName.equals(methodKey.methodName))
-        {
+        if (!methodName.equals(methodKey.methodName)) {
             return false;
         }
 
-        if (!signature.equals(methodKey.signature))
-        {
+        if (!signature.equals(methodKey.signature)) {
             return false;
         }
 
@@ -98,8 +91,7 @@ public class MethodKey {
 
     public final String toString() {
 
-        if (toStringValue == null)
-        {
+        if (toStringValue == null) {
             toStringValue = className + '.' + methodName + getPrettySignature();
         }
 
@@ -109,8 +101,7 @@ public class MethodKey {
 
     public Signature getSig() {
 
-        if (sig == null)
-        {
+        if (sig == null) {
             sig = new Signature(signature);
         }
 

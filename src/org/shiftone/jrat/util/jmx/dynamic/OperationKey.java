@@ -1,28 +1,25 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
 
-
 import java.util.Arrays;
 
 
 /**
  * @author Jeff Drost
- *
  */
 class OperationKey {
 
-    private String   name;
+    private String name;
     private String[] signature;
-    private int      hashCode;
+    private int hashCode;
 
     public OperationKey(String action, String[] signature) {
 
-        this.name      = action;
+        this.name = action;
         this.signature = signature;
-        this.hashCode  = name.hashCode();
+        this.hashCode = name.hashCode();
 
-        for (int i = 0; i < signature.length; i++)
-        {
+        for (int i = 0; i < signature.length; i++) {
             hashCode += signature[i].hashCode();
         }
     }
@@ -40,25 +37,21 @@ class OperationKey {
 
     public boolean equals(Object o) {
 
-        if (this == o)
-        {
+        if (this == o) {
             return true;
         }
 
-        if ((o == null) || (getClass() != o.getClass()))
-        {
+        if ((o == null) || (getClass() != o.getClass())) {
             return false;
         }
 
         final OperationKey that = (OperationKey) o;
 
-        if (!name.equals(that.name))
-        {
+        if (!name.equals(that.name)) {
             return false;
         }
 
-        if (!Arrays.equals(signature, that.signature))
-        {
+        if (!Arrays.equals(signature, that.signature)) {
             return false;
         }
 

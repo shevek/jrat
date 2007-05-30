@@ -22,23 +22,22 @@ import java.awt.Cursor;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TabbedView extends JPanel implements View, ChangeListener {
 
-    private static final Logger     LOG           = Logger.getLogger(TabbedView.class);
-    public static final int         STATE_NORMAL  = 0;
-    public static final int         STATE_WORKING = 1;
-    public static final int         STATE_ERROR   = 2;
-    private String                  title;
-    private String                  rangeText;
+    private static final Logger LOG = Logger.getLogger(TabbedView.class);
+    public static final int STATE_NORMAL = 0;
+    public static final int STATE_WORKING = 1;
+    public static final int STATE_ERROR = 2;
+    private String title;
+    private String rangeText;
     private TabbedPaneViewContainer tabbedPane;
-    private BoundedRangeModel       rangeModel;
-    private Component               body;
+    private BoundedRangeModel rangeModel;
+    private Component body;
 
     public TabbedView(TabbedPaneViewContainer tabbedPane, String title) {
 
-        this.title      = title;
+        this.title = title;
         this.tabbedPane = tabbedPane;
         this.rangeModel = new DefaultBoundedRangeModel();
 
@@ -49,8 +48,7 @@ public class TabbedView extends JPanel implements View, ChangeListener {
 
     public void stateChanged(ChangeEvent e) {
 
-        if (e.getSource() == rangeModel)
-        {
+        if (e.getSource() == rangeModel) {
             computeRangeText();
         }
     }
@@ -61,24 +59,19 @@ public class TabbedView extends JPanel implements View, ChangeListener {
         String newRangeText = rangeText;
 
         if ((rangeModel.getValue() == 0) || (rangeModel.getMaximum() == 0)
-                || (rangeModel.getValue() == rangeModel.getMaximum()))
-        {
+                || (rangeModel.getValue() == rangeModel.getMaximum())) {
             newRangeText = "";
-        }
-        else
-        {
+        } else {
             int pct = (int) (((double) rangeModel.getValue() * 100.0) / (double) rangeModel.getMaximum());
 
-            if (pct < 0)
-            {
+            if (pct < 0) {
                 LOG.info(rangeModel.getValue() + "  " + rangeModel.getMaximum() + " => " + pct);
             }
 
             newRangeText = pct + "% ";
         }
 
-        if (!newRangeText.equals(rangeText))
-        {
+        if (!newRangeText.equals(rangeText)) {
             rangeText = newRangeText;
 
             internalSetTitle();
@@ -121,16 +114,14 @@ public class TabbedView extends JPanel implements View, ChangeListener {
 
         setState(STATE_WORKING);
 
-        try
-        {
+        try {
             Object result = command.execute();
 
             setState(STATE_NORMAL);
 
             return result;
         }
-        catch (RuntimeException e)
-        {
+        catch (RuntimeException e) {
             LOG.error("error executing " + command, e);
             setState(STATE_ERROR);
 
@@ -146,8 +137,7 @@ public class TabbedView extends JPanel implements View, ChangeListener {
 
     public synchronized void setBody(final Component component) {
 
-        if (body != null)
-        {
+        if (body != null) {
             body.setVisible(false);
             remove(body);
         }
@@ -184,22 +174,17 @@ public class TabbedView extends JPanel implements View, ChangeListener {
 
             public void run() {
 
-                if (state == STATE_WORKING)
-                {
+                if (state == STATE_WORKING) {
                     LOG.info("setState - working");
 
                     // setIconResource("org/shiftone/jrat/ui/icon/loading.gif");
                     setIconResource("org/shiftone/jrat/ui/icon/run.gif");
                     setCursor(new Cursor(Cursor.WAIT_CURSOR));
-                }
-                else if (state == STATE_ERROR)
-                {
+                } else if (state == STATE_ERROR) {
                     LOG.info("setState - error");
                     setIconResource("org/shiftone/jrat/ui/icon/alert.gif");
                     setCursor(Cursor.getDefaultCursor());
-                }
-                else
-                {
+                } else {
                     LOG.info("setState - normal");
                     setIconResource("org/shiftone/jrat/ui/icon/view.gif");
                     setCursor(Cursor.getDefaultCursor());

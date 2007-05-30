@@ -12,12 +12,11 @@ import java.io.File;
  * Class Desktop
  *
  * @author Jeff Drost
- *
  */
 public class Desktop {
 
-    private static final Logger LOG         = Logger.getLogger(Desktop.class);
-    private DesktopFrame        viewerFrame = null;
+    private static final Logger LOG = Logger.getLogger(Desktop.class);
+    private DesktopFrame viewerFrame = null;
 
     public Desktop() {
         viewerFrame = new DesktopFrame();
@@ -32,16 +31,14 @@ public class Desktop {
 
     public static void main(String[] args) throws Exception {
 
-        try
-        {
+        try {
             UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
 
             // UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
             // UIManager.setLookAndFeel("javax.swing.plaf.basic.BasicLookAndFeel");
             // javax.swing.plaf.basic.BasicLookAndFeel
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.warn("unable to load look and feel");
         }
 
@@ -52,8 +49,7 @@ public class Desktop {
 
         viewer.begin();
 
-        for (int i = 0; i < args.length; i++)
-        {
+        for (int i = 0; i < args.length; i++) {
             viewer.viewerFrame.openFile(new File(args[i]));
         }
     }

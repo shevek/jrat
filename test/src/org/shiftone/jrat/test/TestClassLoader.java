@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test;
 
 
-
 import java.io.Serializable;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +10,6 @@ import java.util.Map;
  * This ClassLoader allows classes to be
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class TestClassLoader extends ClassLoader implements Serializable {
 
@@ -22,15 +19,12 @@ public class TestClassLoader extends ClassLoader implements Serializable {
      * Method loadClass
      *
      * @param name .
-     *
      * @return .
-     *
      * @throws ClassNotFoundException
      */
     public Class loadClass(String name) throws ClassNotFoundException {
 
-        if (hackedMap.containsKey(name))
-        {
+        if (hackedMap.containsKey(name)) {
             byte[] data = (byte[]) hackedMap.get(name);
 
             return defineClass(name, data, 0, data.length);

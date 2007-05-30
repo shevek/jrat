@@ -1,7 +1,6 @@
 package org.shiftone.jrat.test.dummy;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -9,19 +8,18 @@ import org.shiftone.jrat.util.log.Logger;
  * Class DummyBean
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class DummyBean {
 
-    private static final Logger LOG   = Logger.getLogger(DummyBean.class);
-    private String           one   = null;
-    private String           two   = null;
-    private Integer          three = null;
-    private int              four  = 1;
-    private Long             five  = null;
-    private long             six   = 1;
-    private Boolean          seven = null;
-    private boolean          eight = false;
+    private static final Logger LOG = Logger.getLogger(DummyBean.class);
+    private String one = null;
+    private String two = null;
+    private Integer three = null;
+    private int four = 1;
+    private Long five = null;
+    private long six = 1;
+    private Boolean seven = null;
+    private boolean eight = false;
 
     /**
      * Method getEight

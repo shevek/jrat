@@ -14,14 +14,13 @@ import java.util.Collection;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TotalsEventList extends AbstractEventList implements ListEventListener {
 
-    private static final Logger  LOG = Logger.getLogger(TotalsEventList.class);
-    private EventList            eventList;
-    private MethodKey            methodKey = new MethodKey("", "", "");
-    private MethodKeyAccumulator totals    = new MethodKeyAccumulator(methodKey);
+    private static final Logger LOG = Logger.getLogger(TotalsEventList.class);
+    private EventList eventList;
+    private MethodKey methodKey = new MethodKey("", "", "");
+    private MethodKeyAccumulator totals = new MethodKeyAccumulator(methodKey);
 
     public TotalsEventList(EventList eventList) {
 
@@ -46,8 +45,7 @@ public class TotalsEventList extends AbstractEventList implements ListEventListe
 
         MethodKeyAccumulator newTotals = new MethodKeyAccumulator(methodKey);
 
-        for (int i = 0; i < eventList.size(); i++)
-        {
+        for (int i = 0; i < eventList.size(); i++) {
             MethodKeyAccumulator accumulator = (MethodKeyAccumulator) eventList.get(i);
 
             newTotals.combine(accumulator);
@@ -61,7 +59,7 @@ public class TotalsEventList extends AbstractEventList implements ListEventListe
 
 
     public Object[] toArray(Object[] a) {
-        return new Object[]{ totals };
+        return new Object[]{totals};
     }
 
 

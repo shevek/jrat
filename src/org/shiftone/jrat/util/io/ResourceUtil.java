@@ -1,9 +1,9 @@
 package org.shiftone.jrat.util.io;
 
 
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.JRatException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -20,45 +20,38 @@ import java.util.Properties;
  * Class ResourceUtil
  *
  * @author Jeff Drost
- *
  */
 public class ResourceUtil {
 
-    private static final Logger LOG           = Logger.getLogger(ResourceUtil.class);
-    private static ClassLoader  CLASS_LOADER  = ResourceUtil.class.getClassLoader();
-    private static Map          resourceCache = new Hashtable();
+    private static final Logger LOG = Logger.getLogger(ResourceUtil.class);
+    private static ClassLoader CLASS_LOADER = ResourceUtil.class.getClassLoader();
+    private static Map resourceCache = new Hashtable();
 
-    static
-    {
-        if (CLASS_LOADER == null)
-        {
+    static {
+        if (CLASS_LOADER == null) {
             CLASS_LOADER = Class.class.getClassLoader();
         }
     }
 
     public static Object newInstance(String className) {
 
-        Class  klass    = null;
+        Class klass = null;
         Object instance = null;
 
         Assert.assertNotNull("className", className);
         LOG.debug("newInstance(" + className + ")");
 
-        try
-        {
+        try {
             klass = CLASS_LOADER.loadClass(className);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("unable to load class '" + className + "'", e);
         }
 
-        try
-        {
+        try {
             instance = klass.newInstance();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("unable to instantiate '" + className + "'", e);
         }
 
@@ -75,23 +68,18 @@ public class ResourceUtil {
 
         inputStream = CLASS_LOADER.getResourceAsStream(resourceName);
 
-        if (inputStream == null)
-        {
+        if (inputStream == null) {
             LOG.info("resource not found on classpath, trying to open as file");
 
-            try
-            {
+            try {
                 inputStream = new FileInputStream(resourceName);
 
                 LOG.debug("resource opened as file");
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 throw new JRatException("unable to locate resource : " + resourceName);
             }
-        }
-        else
-        {
+        } else {
             LOG.debug("resource opened from classpath");
         }
 
@@ -101,15 +89,13 @@ public class ResourceUtil {
 
     public static byte[] loadResourceAsBytes(String resourceName) {
 
-        InputStream           inputStream  = loadResourceAsStream(resourceName);
+        InputStream inputStream = loadResourceAsStream(resourceName);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        try
-        {
+        try {
             IOUtil.copy(inputStream, outputStream);
         }
-        finally
-        {
+        finally {
             IOUtil.close(inputStream);
         }
 
@@ -119,28 +105,25 @@ public class ResourceUtil {
 
     private static String fetchResource(String name) {
 
-        Reader       reader      = null;
-        StringBuffer sb          = null;
-        InputStream  inputStream = null;
-        int          c           = 0;
-        char[]       buffer      = new char[1025 * 1];
+        Reader reader = null;
+        StringBuffer sb = null;
+        InputStream inputStream = null;
+        int c = 0;
+        char[] buffer = new char[1025 * 1];
 
         Assert.assertNotNull("name", name);
         LOG.debug("fetchResource : " + name);
 
         inputStream = loadResourceAsStream(name);
-        reader      = new InputStreamReader(inputStream);
-        sb          = new StringBuffer();
+        reader = new InputStreamReader(inputStream);
+        sb = new StringBuffer();
 
-        try
-        {
-            for (c = 0; c >= 0; c = reader.read(buffer))
-            {
+        try {
+            for (c = 0; c >= 0; c = reader.read(buffer)) {
                 sb.append(buffer, 0, c);
             }
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             throw new JRatException("unable to read resource data : " + name, e);
         }
 
@@ -156,8 +139,7 @@ public class ResourceUtil {
 
         resource = (String) resourceCache.get(name);
 
-        if (resource == null)
-        {
+        if (resource == null) {
             LOG.info("loading and caching resource : " + name);
 
             resource = fetchResource(name);
@@ -172,20 +154,18 @@ public class ResourceUtil {
     public static Properties getResourceAsProperties(String name) {
 
         InputStream inputStream = null;
-        Properties  props       = null;
+        Properties props = null;
 
         Assert.assertNotNull("name", name);
         LOG.debug("getResourceAsProperties : " + name);
 
         inputStream = loadResourceAsStream(name);
-        props       = new Properties();
+        props = new Properties();
 
-        try
-        {
+        try {
             props.load(inputStream);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new JRatException("unable to load properties from resource : " + name, e);
         }
 

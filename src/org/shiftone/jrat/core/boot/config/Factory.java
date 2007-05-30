@@ -36,7 +36,7 @@ public class Factory {
     public MethodHandlerFactory buildMethodHandlerFactory() {
 
         Object instance = ResourceUtil.newInstance(className);
-              
+
         PropertyUtil.setProperties(instance, properties);
 
         return (MethodHandlerFactory) instance;

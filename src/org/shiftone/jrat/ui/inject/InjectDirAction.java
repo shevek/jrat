@@ -19,26 +19,25 @@ import java.io.File;
  * Class InjectJarAction
  *
  * @author Jeff Drost
- *
  */
 public class InjectDirAction implements ActionListener, UIConstants {
 
     private static final Logger LOG = Logger.getLogger(InjectDirAction.class);
-    private ViewContainer       viewContainer;
-    private Injector            injector;
-    private String              dialogTitle;
-    private String              userPropertyName;
-    private int                 fileSelectionMode;
+    private ViewContainer viewContainer;
+    private Injector injector;
+    private String dialogTitle;
+    private String userPropertyName;
+    private int fileSelectionMode;
 
     public static InjectDirAction createForDirs(Injector injector, ViewContainer viewContainer) {
 
         InjectDirAction action = new InjectDirAction();
 
-        action.injector          = injector;
-        action.viewContainer     = viewContainer;
-        action.dialogTitle       = CHOOSE_INJECT_DIR_TITLE;
+        action.injector = injector;
+        action.viewContainer = viewContainer;
+        action.dialogTitle = CHOOSE_INJECT_DIR_TITLE;
         action.fileSelectionMode = JFileChooser.DIRECTORIES_ONLY;
-        action.userPropertyName  = UserSettings.PROP_LAST_INJECTED_DIR;
+        action.userPropertyName = UserSettings.PROP_LAST_INJECTED_DIR;
 
         return action;
     }
@@ -48,17 +47,18 @@ public class InjectDirAction implements ActionListener, UIConstants {
 
         InjectDirAction action = new InjectDirAction();
 
-        action.injector          = injector;
-        action.viewContainer     = viewContainer;
-        action.dialogTitle       = CHOOSE_INJECT_JAR_TITLE;
+        action.injector = injector;
+        action.viewContainer = viewContainer;
+        action.dialogTitle = CHOOSE_INJECT_JAR_TITLE;
         action.fileSelectionMode = JFileChooser.FILES_ONLY;
-        action.userPropertyName  = UserSettings.PROP_LAST_INJECTED_FILE;
+        action.userPropertyName = UserSettings.PROP_LAST_INJECTED_FILE;
 
         return action;
     }
 
 
-    private InjectDirAction() {}
+    private InjectDirAction() {
+    }
 
 
     public void actionPerformed(ActionEvent e) {
@@ -66,24 +66,21 @@ public class InjectDirAction implements ActionListener, UIConstants {
         LOG.info("actionPerformed");
 
         JFileChooser chooser = new JFileChooser();
-        File         lastDir = SETTINGS.getFileProperty(userPropertyName);
+        File lastDir = SETTINGS.getFileProperty(userPropertyName);
 
         chooser.setDialogTitle(dialogTitle);
         chooser.setFileSelectionMode(fileSelectionMode);
         chooser.setMultiSelectionEnabled(true);
 
-        if (lastDir != null)
-        {
+        if (lastDir != null) {
             chooser.setCurrentDirectory(IOUtil.getNearestExistingParent(lastDir));
             chooser.setSelectedFile(lastDir);
         }
 
-        if (JFileChooser.APPROVE_OPTION == chooser.showOpenDialog(null))
-        {
+        if (JFileChooser.APPROVE_OPTION == chooser.showOpenDialog(null)) {
             File[] targets = chooser.getSelectedFiles();
 
-            if (targets.length > 0)
-            {
+            if (targets.length > 0) {
                 SETTINGS.setFileProperty(userPropertyName, targets[0]);
 
                 View tab = viewContainer.createView("Inject " + targets.length + " target(s)");

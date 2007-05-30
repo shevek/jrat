@@ -1,7 +1,6 @@
 package org.shiftone.jrat.test.harness;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -9,11 +8,10 @@ import org.shiftone.jrat.util.log.Logger;
  * Class TestHarness
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class TestHarness {
 
-    private static final Logger               LOG    = Logger.getLogger(TestHarness.class);
+    private static final Logger LOG = Logger.getLogger(TestHarness.class);
     private static final VirtualMethodCall CALL_A = new VirtualMethodCall("a.b.c", "This", "()");
     private static final VirtualMethodCall CALL_B = new VirtualMethodCall("a.b.c", "Is", "()");
     private static final VirtualMethodCall CALL_C = new VirtualMethodCall("a.b.c", "Another", "()");
@@ -22,8 +20,7 @@ public class TestHarness {
     private static final VirtualMethodCall CALL_F = new VirtualMethodCall("a.b.c", "Method", "()");
     private static final VirtualMethodCall CALL_G = new VirtualMethodCall("a.b.c", "Runner", "()");
 
-    static
-    {
+    static {
         CALL_A.addChildMethodCall(CALL_B);
         CALL_A.addChildMethodCall(CALL_C);
         CALL_A.addChildMethodCall(CALL_D);
@@ -62,25 +59,23 @@ public class TestHarness {
      */
     public static void main(String[] args) throws Exception {
 
-     //   System.setProperty("jrat.factory", Log4jMethodHandlerFactory.class.getName());
+        //   System.setProperty("jrat.factory", Log4jMethodHandlerFactory.class.getName());
 
-        Runnable[] runnables = { new HarnessRunnable(10, CALL_A),     //
-                                 new HarnessRunnable(200, CALL_B),    //
-                                 new HarnessRunnable(300, CALL_C) };
-        Thread[]   threads   = new Thread[runnables.length];
+        Runnable[] runnables = {new HarnessRunnable(10, CALL_A),     //
+                new HarnessRunnable(200, CALL_B),    //
+                new HarnessRunnable(300, CALL_C)};
+        Thread[] threads = new Thread[runnables.length];
 
         System.out.println("testing " + System.getProperty("jrat.factory"));
 
-        for (int i = 0; i < runnables.length; i++)
-        {
+        for (int i = 0; i < runnables.length; i++) {
             threads[i] = new Thread(runnables[i]);
 
             threads[i].setDaemon(true);
             threads[i].start();
         }
 
-        for (int i = 0; i < runnables.length; i++)
-        {
+        for (int i = 0; i < runnables.length; i++) {
             threads[i].join();
         }
 

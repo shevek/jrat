@@ -5,14 +5,13 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class InjectorCliTestCase extends TestCase {
-	private static final Logger LOG = Logger.getLogger(InjectorCliTestCase.class);
+    private static final Logger LOG = Logger.getLogger(InjectorCliTestCase.class);
 
-	public void testOne() throws Exception {
+    public void testOne() throws Exception {
 
-	      InjectorCli.main(new String[] {"target/classes/org/shiftone/jrat/ui"});
+        InjectorCli.main(new String[]{"target/classes/org/shiftone/jrat/ui"});
 
-}
+    }
 }

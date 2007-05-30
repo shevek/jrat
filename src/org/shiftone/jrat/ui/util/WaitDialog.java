@@ -15,17 +15,15 @@ import java.awt.Frame;
  * Class WaitDialog
  *
  * @author Jeff Drost
- *
  */
 public class WaitDialog extends JDialog {
 
-    private static final Logger LOG     = Logger.getLogger(WaitDialog.class);
-    private JLabel              label   = new JLabel("Working..");
-    private int                 counter = 0;
+    private static final Logger LOG = Logger.getLogger(WaitDialog.class);
+    private JLabel label = new JLabel("Working..");
+    private int counter = 0;
 
     /**
      * Constructor WaitDialog
-     *
      *
      * @param frame
      */
@@ -55,14 +53,12 @@ public class WaitDialog extends JDialog {
      */
     public void setUndecorated(boolean value) {
 
-        try
-        {
+        try {
 
             // TODO: better java 1.3 support
             super.setUndecorated(value);
         }
-        catch (NoSuchMethodError e)
-        {
+        catch (NoSuchMethodError e) {
 
             // oh well, somebody is using java 1.3
         }
@@ -74,10 +70,10 @@ public class WaitDialog extends JDialog {
      */
     private void setDimension(Frame frame) {
 
-        int width  = 200;
+        int width = 200;
         int height = 50;
-        int x      = (int) ((frame.getWidth() / 2) - (width / 2));
-        int y      = (int) ((frame.getHeight() / 2) - (height / 2));
+        int x = (int) ((frame.getWidth() / 2) - (width / 2));
+        int y = (int) ((frame.getHeight() / 2) - (height / 2));
 
         setSize(width, height);
         setLocation(frame.getX() + x, frame.getY() + y);
@@ -91,27 +87,24 @@ public class WaitDialog extends JDialog {
 
         counter++;
 
-        int    sleep;
+        int sleep;
         String message;
 
-        if (counter % 2 == 0)
-        {
+        if (counter % 2 == 0) {
             message = "Please wait...";
-            sleep   = 500;
-        }
-        else
-        {
+            sleep = 500;
+        } else {
             message = "";
-            sleep   = 300;
+            sleep = 300;
         }
 
         label.setText(message);
 
-        try
-        {
+        try {
             Thread.sleep(sleep);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        }
 
         return isVisible();
     }
@@ -125,7 +118,7 @@ public class WaitDialog extends JDialog {
         Runnable r = new Runnable() {
 
             public void run() {
-                while (animate());
+                while (animate()) ;
             }
         };
 

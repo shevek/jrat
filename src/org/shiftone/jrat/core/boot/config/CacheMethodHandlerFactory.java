@@ -14,7 +14,7 @@ import java.util.Map;
  * @author Jeff Drost
  */
 public class CacheMethodHandlerFactory implements MethodHandlerFactory {
-    
+
     private static final Log LOG = LogFactory.getLog(CacheMethodHandlerFactory.class);
     private final MethodHandlerFactory methodHandlerFactory;
     private Map cache = new HashMap();
@@ -25,7 +25,7 @@ public class CacheMethodHandlerFactory implements MethodHandlerFactory {
 
     public synchronized MethodHandler createMethodHandler(MethodKey methodKey) throws Exception {
 
-        MethodHandler methodHandler = (MethodHandler)cache.get(methodKey);
+        MethodHandler methodHandler = (MethodHandler) cache.get(methodKey);
 
         if (methodHandler == null) {
             methodHandler = methodHandlerFactory.createMethodHandler(methodKey);

@@ -16,24 +16,22 @@ import java.util.Properties;
  * Class AboutAction
  *
  * @author Jeff Drost
- *
  */
 public class AboutAction extends BackgroundActionListener implements UIConstants {
 
-    private static final Logger LOG     = Logger.getLogger(AboutAction.class);
-    private Frame               parent  = null;
-    private String              message = null;
+    private static final Logger LOG = Logger.getLogger(AboutAction.class);
+    private Frame parent = null;
+    private String message = null;
 
     /**
      * Constructor AboutAction
-     *
      *
      * @param parent
      */
     public AboutAction(Frame parent) {
 
-        Properties   properties = null;
-        StringBuffer sb         = new StringBuffer(UI_TITLE);
+        Properties properties = null;
+        StringBuffer sb = new StringBuffer(UI_TITLE);
 
         //      sb.append(" v" + VersionUtil.getVersion());
         sb.append("\nBy Jeff Drost, Released under the LGPL\n");
@@ -41,7 +39,7 @@ public class AboutAction extends BackgroundActionListener implements UIConstants
         sb.append(WEBSITE + "\n");
         sb.append(EMAIL + "\n");
 
-        message     = sb.toString();
+        message = sb.toString();
         this.parent = parent;
     }
 

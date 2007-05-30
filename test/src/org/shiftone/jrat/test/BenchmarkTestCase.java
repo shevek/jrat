@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test;
 
 
-
 import junit.framework.TestCase;
-
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -15,15 +13,14 @@ import org.shiftone.jrat.util.log.Logger;
  */
 public class BenchmarkTestCase extends TestCase {
 
-    private static final Logger LOG        = Logger.getLogger(BenchmarkTestCase.class);
+    private static final Logger LOG = Logger.getLogger(BenchmarkTestCase.class);
     private static final int ITERATIONS = 100000000;
-    int                      i          = 0;
-    int                      j          = 0;
+    int i = 0;
+    int j = 0;
 
     public void d() {
 
-        if (i == 10)
-        {
+        if (i == 10) {
             j++;
         }
     }
@@ -49,8 +46,7 @@ public class BenchmarkTestCase extends TestCase {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < ITERATIONS; i++)
-        {
+        for (int i = 0; i < ITERATIONS; i++) {
             a();
         }
 
@@ -62,8 +58,7 @@ public class BenchmarkTestCase extends TestCase {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < ITERATIONS; i++)
-        {
+        for (int i = 0; i < ITERATIONS; i++) {
             b();
         }
 
@@ -75,8 +70,7 @@ public class BenchmarkTestCase extends TestCase {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < ITERATIONS; i++)
-        {
+        for (int i = 0; i < ITERATIONS; i++) {
             c();
         }
 
@@ -88,8 +82,7 @@ public class BenchmarkTestCase extends TestCase {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < ITERATIONS; i++)
-        {
+        for (int i = 0; i < ITERATIONS; i++) {
             d();
         }
 
@@ -101,8 +94,7 @@ public class BenchmarkTestCase extends TestCase {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < ITERATIONS; i++)
-        {
+        for (int i = 0; i < ITERATIONS; i++) {
             j++;
         }
 
@@ -114,8 +106,7 @@ public class BenchmarkTestCase extends TestCase {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < ITERATIONS; i++)
-        {
+        for (int i = 0; i < ITERATIONS; i++) {
             ;
         }
 
@@ -127,8 +118,7 @@ public class BenchmarkTestCase extends TestCase {
 
         int max = 10;
 
-        for (int i = 0; i < max; i++)
-        {
+        for (int i = 0; i < max; i++) {
             doA();
             doB();
             doC();

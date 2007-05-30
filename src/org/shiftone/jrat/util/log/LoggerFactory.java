@@ -1,8 +1,8 @@
 package org.shiftone.jrat.util.log;
 
 
-import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.Command;
 import org.shiftone.jrat.util.log.target.LogTarget;
@@ -23,14 +23,13 @@ import java.io.PrintWriter;
  * (this is for the Desktop)
  *
  * @author Jeff Drost
- *
  */
 public class LoggerFactory implements Constants {
 
-    private static final NullLogTarget        NULL_LOG_TARGET   = NullLogTarget.INSTANCE;
-    private static final WriterLogTarget      SYSTEM_OUT_TARGET = new WriterLogTarget(System.out);
-    private static final ProxyLogTarget       PROXY_LOG_TARGET  = new ProxyLogTarget(SYSTEM_OUT_TARGET);
-    private static final ThreadLocalLogTarget THREAD_TARGET     = new ThreadLocalLogTarget(SYSTEM_OUT_TARGET);
+    private static final NullLogTarget NULL_LOG_TARGET = NullLogTarget.INSTANCE;
+    private static final WriterLogTarget SYSTEM_OUT_TARGET = new WriterLogTarget(System.out);
+    private static final ProxyLogTarget PROXY_LOG_TARGET = new ProxyLogTarget(SYSTEM_OUT_TARGET);
+    private static final ThreadLocalLogTarget THREAD_TARGET = new ThreadLocalLogTarget(SYSTEM_OUT_TARGET);
 
     public static void initialize() {
 
@@ -62,10 +61,8 @@ public class LoggerFactory implements Constants {
 
         levelName = levelName.toUpperCase();
 
-        for (int i = 0; i < LEVEL_NAMES.length; i++)
-        {
-            if (levelName.equals(LEVEL_NAMES[i]))
-            {
+        for (int i = 0; i < LEVEL_NAMES.length; i++) {
+            if (levelName.equals(LEVEL_NAMES[i])) {
                 return i;
             }
         }
@@ -98,15 +95,15 @@ public class LoggerFactory implements Constants {
         setLogTarget(SYSTEM_OUT_TARGET);
     }
 
-	public static synchronized void setLogTarget(LogTarget logTarget) {
+    public static synchronized void setLogTarget(LogTarget logTarget) {
         PROXY_LOG_TARGET.setLogTarget(logTarget);
     }
 
-	public static synchronized LogTarget getLogTarget() {
+    public static synchronized LogTarget getLogTarget() {
         return PROXY_LOG_TARGET.getLogTarget();
     }
 
-	public static void redirectLogging(PrintWriter printWriter) {
+    public static void redirectLogging(PrintWriter printWriter) {
 
         TandemTarget tandemTarget = new TandemTarget(SYSTEM_OUT_TARGET, new WriterLogTarget(printWriter));
 

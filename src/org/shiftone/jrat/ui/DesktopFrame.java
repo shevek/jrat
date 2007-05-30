@@ -34,32 +34,31 @@ import java.io.File;
  * Class DesktopFrame
  *
  * @author Jeff Drost
- *
  */
 public class DesktopFrame extends JRatFrame implements UIConstants, ContainerListener {
 
-    private static final Logger     LOG           = Logger.getLogger(DesktopFrame.class);
-    private JMenuBar                menuBar       = new JMenuBar();
-    private TabbedPaneViewContainer tabbedPane    = new TabbedPaneViewContainer();
-    private StatusPanel             statusPanel   = new StatusPanel();
-    private ViewContainer           viewContainer = tabbedPane;
-    private JMenu                   fileMenu      = new JMenu(MENU_FILE);
-    private JMenu                   windowMenu    = new JMenu(MENU_WINDOW);
-    private JMenu                   injectMenu    = new JMenu(MENU_INSTRUMENT);
-    private JMenu                   helpMenu      = new JMenu(MENU_HELP);
-    private JMenuItem               open          = new JMenuItem(MENU_OPEN);
-    private JMenuItem               close         = new JMenuItem(MENU_CLOSE);
-    private JMenuItem               closeAll      = new JMenuItem(MENU_CLOSE_ALL);
-    private JMenuItem               exit          = new JMenuItem(MENU_EXIT);
-    private JMenuItem               injectFile    = new JMenuItem(MENU_INJECT_JAR);
-    private JMenuItem               injectDir     = new JMenuItem(MENU_INJECT_DIR);
-    private JMenuItem               docs          = new JMenuItem(MENU_DOCS);
-    private JMenuItem               license       = new JMenuItem(MENU_LICENSE);
-    private JMenuItem               about         = new JMenuItem(MENU_ABOUT);
-    private JMenuItem               resize640x480 = new JMenuItem(MENU_640X480);
-    private JMenuItem               resize800x600 = new JMenuItem(MENU_800x600);
-    private OpenOutputFileAction    outputFileAction;
-    private Injector                injector = new Injector();
+    private static final Logger LOG = Logger.getLogger(DesktopFrame.class);
+    private JMenuBar menuBar = new JMenuBar();
+    private TabbedPaneViewContainer tabbedPane = new TabbedPaneViewContainer();
+    private StatusPanel statusPanel = new StatusPanel();
+    private ViewContainer viewContainer = tabbedPane;
+    private JMenu fileMenu = new JMenu(MENU_FILE);
+    private JMenu windowMenu = new JMenu(MENU_WINDOW);
+    private JMenu injectMenu = new JMenu(MENU_INSTRUMENT);
+    private JMenu helpMenu = new JMenu(MENU_HELP);
+    private JMenuItem open = new JMenuItem(MENU_OPEN);
+    private JMenuItem close = new JMenuItem(MENU_CLOSE);
+    private JMenuItem closeAll = new JMenuItem(MENU_CLOSE_ALL);
+    private JMenuItem exit = new JMenuItem(MENU_EXIT);
+    private JMenuItem injectFile = new JMenuItem(MENU_INJECT_JAR);
+    private JMenuItem injectDir = new JMenuItem(MENU_INJECT_DIR);
+    private JMenuItem docs = new JMenuItem(MENU_DOCS);
+    private JMenuItem license = new JMenuItem(MENU_LICENSE);
+    private JMenuItem about = new JMenuItem(MENU_ABOUT);
+    private JMenuItem resize640x480 = new JMenuItem(MENU_640X480);
+    private JMenuItem resize800x600 = new JMenuItem(MENU_800x600);
+    private OpenOutputFileAction outputFileAction;
+    private Injector injector = new Injector();
 
     public DesktopFrame() {
 
@@ -159,13 +158,10 @@ public class DesktopFrame extends JRatFrame implements UIConstants, ContainerLis
 
     public void setEnabled(boolean isEnable) {
 
-        if (isEnable)
-        {
+        if (isEnable) {
             menuBar.setEnabled(true);
             getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-        }
-        else
-        {
+        } else {
             menuBar.setEnabled(false);
             getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         }

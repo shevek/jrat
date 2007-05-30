@@ -15,12 +15,11 @@ import java.util.Vector;
 
 /**
  * @author Jeff Drost
- *
  */
 public abstract class AbstractFileTask extends Task {
 
     protected Vector filesets = new Vector();
-    protected File   file     = null;
+    protected File file = null;
 
     /**
      * called by Ant
@@ -48,8 +47,7 @@ public abstract class AbstractFileTask extends Task {
 
         Iterator iterator = fileNames.iterator();
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             processFile((File) iterator.next());
         }
     }
@@ -60,31 +58,27 @@ public abstract class AbstractFileTask extends Task {
      */
     public void execute() throws BuildException {
 
-        Set    files     = new TreeSet();
-        String fileName  = null;
-        File   fileToAdd = null;
+        Set files = new TreeSet();
+        String fileName = null;
+        File fileToAdd = null;
 
-        try
-        {
+        try {
 
             // single file
-            if (this.file != null)
-            {
+            if (this.file != null) {
                 validateFile(this.file);
                 files.add(this.file);
             }
 
             // FileSet(s)
-            for (int i = 0; i < filesets.size(); i++)
-            {
-                FileSet          fs       = (FileSet) filesets.elementAt(i);
-                DirectoryScanner ds       = fs.getDirectoryScanner(getProject());
-                File             fromDir  = fs.getDir(getProject());
-                String[]         srcFiles = ds.getIncludedFiles();
+            for (int i = 0; i < filesets.size(); i++) {
+                FileSet fs = (FileSet) filesets.elementAt(i);
+                DirectoryScanner ds = fs.getDirectoryScanner(getProject());
+                File fromDir = fs.getDir(getProject());
+                String[] srcFiles = ds.getIncludedFiles();
 
-                for (int x = 0; x < srcFiles.length; x++)
-                {
-                    fileName  = fromDir + File.separator + srcFiles[x];
+                for (int x = 0; x < srcFiles.length; x++) {
+                    fileName = fromDir + File.separator + srcFiles[x];
                     fileToAdd = new File(fileName);
 
                     validateFile(fileToAdd);
@@ -94,8 +88,7 @@ public abstract class AbstractFileTask extends Task {
 
             processFiles(files);
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             e.printStackTrace();
 
             throw new BuildException("file task failed", e);

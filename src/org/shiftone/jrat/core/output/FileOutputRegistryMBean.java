@@ -1,10 +1,8 @@
 package org.shiftone.jrat.core.output;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface FileOutputRegistryMBean {
 

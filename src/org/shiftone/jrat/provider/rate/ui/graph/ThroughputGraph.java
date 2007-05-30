@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate.ui.graph;
 
 
-
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.provider.rate.ui.RateModel;
 import org.shiftone.jrat.ui.util.graph.AbstractGraph;
@@ -11,16 +10,14 @@ import org.shiftone.jrat.ui.util.graph.AbstractGraph;
  * Class ThroughputGraph
  *
  * @author Jeff Drost
- *
  */
 public class ThroughputGraph extends AbstractGraph {
 
-    private RateModel rateModel    = null;
-    private int       methodNumber = 0;
+    private RateModel rateModel = null;
+    private int methodNumber = 0;
 
     /**
      * Constructor ThroughputGraph
-     *
      *
      * @param rateModel
      * @param methodNumber
@@ -28,7 +25,7 @@ public class ThroughputGraph extends AbstractGraph {
     public ThroughputGraph(RateModel rateModel, int methodNumber) {
 
         this.methodNumber = methodNumber;
-        this.rateModel    = rateModel;
+        this.rateModel = rateModel;
 
         setColor(rateModel.getMethodColor(methodNumber));
     }

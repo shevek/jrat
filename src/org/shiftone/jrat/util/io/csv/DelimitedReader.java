@@ -1,10 +1,10 @@
 package org.shiftone.jrat.util.io.csv;
 
 
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.csv.field.Field;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.JRatException;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -15,15 +15,14 @@ import java.util.StringTokenizer;
 
 /**
  * @author Jeff Drost
- *
  */
 public class DelimitedReader {
 
-    private static final Logger    LOG = Logger.getLogger(DelimitedReader.class);
-    private String[]               current;
+    private static final Logger LOG = Logger.getLogger(DelimitedReader.class);
+    private String[] current;
     private final LineNumberReader lineReader;
-    private final DelimitedFormat  delimitedFormat;
-    private final String           delimiter;
+    private final DelimitedFormat delimitedFormat;
+    private final String delimiter;
 
     public DelimitedReader(Reader reader, DelimitedFormat delimitedFormat) {
 
@@ -33,12 +32,9 @@ public class DelimitedReader {
 
         this.delimiter = String.valueOf(delimitedFormat.getDelimiter());
 
-        if (reader instanceof LineNumberReader)
-        {
+        if (reader instanceof LineNumberReader) {
             this.lineReader = (LineNumberReader) reader;
-        }
-        else
-        {
+        } else {
             this.lineReader = new LineNumberReader(reader);
         }
     }
@@ -60,26 +56,21 @@ public class DelimitedReader {
     private synchronized String[] readRecord() throws IOException {
 
         String[] values = null;
-        String   line   = lineReader.readLine();
+        String line = lineReader.readLine();
 
-        if (line != null)
-        {
+        if (line != null) {
             StringTokenizer st = new StringTokenizer(line, delimiter, true);
 
             values = new String[delimitedFormat.getFieldCount()];
 
             int i = 0;
 
-            while (st.hasMoreTokens())
-            {
+            while (st.hasMoreTokens()) {
                 String token = st.nextToken();
 
-                if (token.equals(delimiter))
-                {
+                if (token.equals(delimiter)) {
                     i++;
-                }
-                else
-                {
+                } else {
                     values[i] = token;
                 }
             }
@@ -102,17 +93,15 @@ public class DelimitedReader {
 
     public Object getValue(int columnIndex, boolean nullable) {
 
-        if (current == null)
-        {
+        if (current == null) {
             throw new JRatException("current record is null");
         }
 
-        Field  field     = delimitedFormat.getField(columnIndex);
+        Field field = delimitedFormat.getField(columnIndex);
         String textValue = current[columnIndex];
-        Object value     = field.parse(textValue);
+        Object value = field.parse(textValue);
 
-        if ((value == null) && (!nullable))
-        {
+        if ((value == null) && (!nullable)) {
             throw new JRatException("value is null on line " + getLineNumber() + " column " + columnIndex);
         }
 

@@ -23,7 +23,7 @@ public class DebugClassVisitor extends ClassAdapter {
                       final String superName, final String[] interfaces) {
 
         LOG.info("visit " + version + ", " + access + ", " + name + ", " + signature + ", " + superName + ", "
-                 + interfaces);
+                + interfaces);
         super.visit(version, access, name, signature, superName, interfaces);
     }
 

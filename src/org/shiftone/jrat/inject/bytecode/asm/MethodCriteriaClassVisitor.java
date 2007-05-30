@@ -12,20 +12,19 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class MethodCriteriaClassVisitor implements ClassVisitor {
 
     private static final Logger LOG = Logger.getLogger(MethodCriteriaClassVisitor.class);
-    private final ClassVisitor  injector;
-    private final ClassVisitor  bypass;
-    private MethodCriteria      criteria;
-    private String              className;
-    private ClassVisitor        defaultClassVisitor;
+    private final ClassVisitor injector;
+    private final ClassVisitor bypass;
+    private MethodCriteria criteria;
+    private String className;
+    private ClassVisitor defaultClassVisitor;
 
     public MethodCriteriaClassVisitor(ClassVisitor injector, ClassVisitor bypass) {
         this.injector = injector;
-        this.bypass   = bypass;
+        this.bypass = bypass;
     }
 
 
@@ -43,14 +42,11 @@ public class MethodCriteriaClassVisitor implements ClassVisitor {
 
         className = name.replace('/', '.');
 
-        if (criteria.isMatch(className, access))
-        {
+        if (criteria.isMatch(className, access)) {
             defaultClassVisitor = injector;
 
             LOG.debug("not filtering class " + className);
-        }
-        else
-        {
+        } else {
             defaultClassVisitor = bypass;
         }
 
@@ -66,12 +62,9 @@ public class MethodCriteriaClassVisitor implements ClassVisitor {
      */
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
 
-        if (criteria.isMatch(className, name, desc, access))
-        {
+        if (criteria.isMatch(className, name, desc, access)) {
             return defaultClassVisitor.visitMethod(access, name, desc, signature, exceptions);
-        }
-        else
-        {
+        } else {
             return bypass.visitMethod(access, name, desc, signature, exceptions);
         }
     }
@@ -112,6 +105,6 @@ public class MethodCriteriaClassVisitor implements ClassVisitor {
         defaultClassVisitor.visitEnd();
 
         defaultClassVisitor = null;
-        className           = null;
+        className = null;
     }
 }

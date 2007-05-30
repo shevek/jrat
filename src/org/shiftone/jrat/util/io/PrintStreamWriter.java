@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.io;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.IOException;
@@ -11,12 +10,11 @@ import java.io.Writer;
 
 /**
  * @author Jeff Drost
- *
  */
 public class PrintStreamWriter extends Writer {
 
     private static final Logger LOG = Logger.getLogger(PrintStreamWriter.class);
-    private final PrintStream   printStream;
+    private final PrintStream printStream;
 
     public PrintStreamWriter(PrintStream printStream) {
 

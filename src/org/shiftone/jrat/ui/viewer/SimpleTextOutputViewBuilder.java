@@ -16,7 +16,6 @@ import java.io.InputStream;
 
 /**
  * @author Jeff Drost
- *
  */
 public class SimpleTextOutputViewBuilder implements OutputViewBuilder {
 
@@ -24,15 +23,14 @@ public class SimpleTextOutputViewBuilder implements OutputViewBuilder {
 
     public void buildView(ViewContext context) throws Exception {
 
-        InputStream           inputStream  = null;
-        JTextArea             textArea     = new JTextArea();
-        JScrollPane           scrollPane   = new JScrollPane(textArea);
+        InputStream inputStream = null;
+        JTextArea textArea = new JTextArea();
+        JScrollPane scrollPane = new JScrollPane(textArea);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         LOG.debug("createViewerComponent");
 
-        try
-        {
+        try {
             inputStream = context.openInputStream();
 
             IOUtil.copy(inputStream, outputStream);
@@ -44,8 +42,7 @@ public class SimpleTextOutputViewBuilder implements OutputViewBuilder {
             textArea.setBackground(Color.white);
             textArea.setText(outputStream.toString());
         }
-        finally
-        {
+        finally {
             IOUtil.close(inputStream);
             IOUtil.close(outputStream);
         }

@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test;
 
 
-
 import junit.framework.TestCase;
-
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -12,11 +10,10 @@ import org.shiftone.jrat.util.log.Logger;
  * Class AccumulatorTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class AccumulatorTestCase extends TestCase {
 
-    private static final Logger    LOG       = Logger.getLogger(AccumulatorTestCase.class);
+    private static final Logger LOG = Logger.getLogger(AccumulatorTestCase.class);
     private static final double TOLERANCE = 0.00000001;
 
     /**
@@ -47,15 +44,14 @@ public class AccumulatorTestCase extends TestCase {
      */
     public void testStdDeviation11() {
 
-        Accumulator stats  = new Accumulator();
-        double      expect = 26.84568697;
-        long[]      values =
-        {
-            3, 4, 67, 23, 44, 56, 77, 1, 23, 44, 55
-        };
+        Accumulator stats = new Accumulator();
+        double expect = 26.84568697;
+        long[] values =
+                {
+                        3, 4, 67, 23, 44, 56, 77, 1, 23, 44, 55
+                };
 
-        for (int i = 0; i < values.length; i++)
-        {
+        for (int i = 0; i < values.length; i++) {
             stats.onMethodFinish(values[i], true);
         }
 
@@ -69,17 +65,16 @@ public class AccumulatorTestCase extends TestCase {
      */
     public void testStdDeviation20() {
 
-        Accumulator stats  = new Accumulator();
-        double      expect = 128047.77056645500;
-        long[]      values =
-        {
-            1, 2, 4, 8, 16, 32, 64, 128, 256,      //
-            512, 1024, 2048, 4096, 8192, 16384,    //
-            32768, 65536, 131072, 262144, 524288
-        };
+        Accumulator stats = new Accumulator();
+        double expect = 128047.77056645500;
+        long[] values =
+                {
+                        1, 2, 4, 8, 16, 32, 64, 128, 256,      //
+                        512, 1024, 2048, 4096, 8192, 16384,    //
+                        32768, 65536, 131072, 262144, 524288
+                };
 
-        for (int i = 0; i < values.length; i++)
-        {
+        for (int i = 0; i < values.length; i++) {
             stats.onMethodFinish(values[i], true);
         }
 

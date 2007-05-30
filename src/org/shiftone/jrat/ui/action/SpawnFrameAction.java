@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
  * Class SpawnFrameAction
  *
  * @author Jeff Drost
- *
  */
 public class SpawnFrameAction implements ActionListener {
 
@@ -32,11 +31,10 @@ public class SpawnFrameAction implements ActionListener {
 
         View view = viewContainer.getCurrentView();
 
-        if (view != null)
-        {
+        if (view != null) {
             Component component = view.getBody();
-            String    title     = view.getTitle();
-            Dimension size      = component.getSize();
+            String title = view.getTitle();
+            Dimension size = component.getSize();
 
             viewContainer.removeView(view);
 

@@ -28,27 +28,26 @@ import java.awt.Graphics;
  * Class RateViewerPanel
  *
  * @author Jeff Drost
- *
  */
 public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UIConstants {
 
-    private static final Logger LOG        = Logger.getLogger(TreeViewerPanel.class);
-    private JSplitPane          splitPane  = null;
-    private JTree               tree       = null;
-    private StackTreeNode       rootNode   = null;
-    private JMenuItem           spawnRoot  = new JMenuItem(MENU_TREE_SPAWN_ROOT);
-    private JMenuItem           statView   = new JMenuItem(MENU_TREE_STAT_VIEW);
-    private JMenuItem           touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
-    private NodeDetailPanel     detailPanel;
-    private View                view;
+    private static final Logger LOG = Logger.getLogger(TreeViewerPanel.class);
+    private JSplitPane splitPane = null;
+    private JTree tree = null;
+    private StackTreeNode rootNode = null;
+    private JMenuItem spawnRoot = new JMenuItem(MENU_TREE_SPAWN_ROOT);
+    private JMenuItem statView = new JMenuItem(MENU_TREE_STAT_VIEW);
+    private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
+    private NodeDetailPanel detailPanel;
+    private View view;
 
     public TreeViewerPanel(StackTreeNode rootNode, View view) {
 
-        this.view     = view;
+        this.view = view;
         this.rootNode = rootNode;
-        tree          = new JTree(rootNode);
-        detailPanel   = new NodeDetailPanel();
-        splitPane     = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+        tree = new JTree(rootNode);
+        detailPanel = new NodeDetailPanel();
+        splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 
         splitPane.setDividerLocation(0.75);
         splitPane.setResizeWeight(0.75);
@@ -88,11 +87,10 @@ public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UI
 
     public void valueChanged(TreeSelectionEvent e) {
 
-        TreePath      treePath = e.getNewLeadSelectionPath();
+        TreePath treePath = e.getNewLeadSelectionPath();
         StackTreeNode thisNode = null;
 
-        if (treePath != null)
-        {
+        if (treePath != null) {
             thisNode = (StackTreeNode) treePath.getLastPathComponent();
         }
 

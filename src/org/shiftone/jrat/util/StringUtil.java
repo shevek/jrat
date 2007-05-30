@@ -14,38 +14,35 @@ import java.util.StringTokenizer;
  * Class StringUtil
  *
  * @author Jeff Drost
- *
  */
 public class StringUtil {
 
-    public static final String          PROPERTY_DELIMITER = "|";
-    public static final char            DEFAULT_PAD_CHAR   = ' ';
-    private static final Logger         LOG                = Logger.getLogger(StringUtil.class);
-    private static DateFormat           dateFormat         = new SimpleDateFormat("MMM d, yy  h:mm:ss:S aaa");
-    private static final DurationUnit   DU_MILLI_SECONDS   = new DurationUnit(1, "ms", "ms");
-    private static final DurationUnit   DU_SECONDS         = new DurationUnit(1000, "sec", "sec");
-    private static final DurationUnit   DU_MINUTES         = new DurationUnit(DU_SECONDS.ms * 60, "minute", "minutes");
-    private static final DurationUnit   DU_HOURS           = new DurationUnit(DU_MINUTES.ms * 60, "hour", "hours");
-    private static final DurationUnit   DU_DAYS            = new DurationUnit(DU_HOURS.ms * 24, "day", "days");
-    private static final DurationUnit   DU_YEARS           = new DurationUnit(DU_DAYS.ms * 365, "year", "years");
-    private static final DurationUnit   DU_DECADES         = new DurationUnit(DU_YEARS.ms * 10, "decade", "decades");
-    private static final DurationUnit   DU_CENTURIES       = new DurationUnit(DU_DECADES.ms * 10, "century",
-                                                                 "centuries");
-    private static final DurationUnit[] UNITS              =
-    {
-        DU_CENTURIES, DU_DECADES, DU_YEARS, DU_DAYS, DU_HOURS, DU_MINUTES, DU_SECONDS, DU_MILLI_SECONDS
-    };
-    private static final String[]       SPACES             = new String[16];
-    private static final String[]       ZEROS              = new String[16];
+    public static final String PROPERTY_DELIMITER = "|";
+    public static final char DEFAULT_PAD_CHAR = ' ';
+    private static final Logger LOG = Logger.getLogger(StringUtil.class);
+    private static DateFormat dateFormat = new SimpleDateFormat("MMM d, yy  h:mm:ss:S aaa");
+    private static final DurationUnit DU_MILLI_SECONDS = new DurationUnit(1, "ms", "ms");
+    private static final DurationUnit DU_SECONDS = new DurationUnit(1000, "sec", "sec");
+    private static final DurationUnit DU_MINUTES = new DurationUnit(DU_SECONDS.ms * 60, "minute", "minutes");
+    private static final DurationUnit DU_HOURS = new DurationUnit(DU_MINUTES.ms * 60, "hour", "hours");
+    private static final DurationUnit DU_DAYS = new DurationUnit(DU_HOURS.ms * 24, "day", "days");
+    private static final DurationUnit DU_YEARS = new DurationUnit(DU_DAYS.ms * 365, "year", "years");
+    private static final DurationUnit DU_DECADES = new DurationUnit(DU_YEARS.ms * 10, "decade", "decades");
+    private static final DurationUnit DU_CENTURIES = new DurationUnit(DU_DECADES.ms * 10, "century",
+            "centuries");
+    private static final DurationUnit[] UNITS =
+            {
+                    DU_CENTURIES, DU_DECADES, DU_YEARS, DU_DAYS, DU_HOURS, DU_MINUTES, DU_SECONDS, DU_MILLI_SECONDS
+            };
+    private static final String[] SPACES = new String[16];
+    private static final String[] ZEROS = new String[16];
 
-    static
-    {
+    static {
         SPACES[0] = ZEROS[0] = "";
 
-        for (int i = 1; i < SPACES.length; i++)
-        {
+        for (int i = 1; i < SPACES.length; i++) {
             SPACES[i] = SPACES[i - 1] + " ";
-            ZEROS[i]  = ZEROS[i - 1] + "0";
+            ZEROS[i] = ZEROS[i - 1] + "0";
         }
     }
 
@@ -62,30 +59,26 @@ public class StringUtil {
     public static void parsePropertiesString(String propString, Properties properties) {
 
         StringTokenizer tokenizer = null;
-        String          token     = null;
-        String          key       = null;
-        String          value     = null;
-        int             eqIndex;
+        String token = null;
+        String key = null;
+        String value = null;
+        int eqIndex;
 
         Assert.assertNotNull("propString", propString);
         Assert.assertNotNull("properties", properties);
 
         tokenizer = new StringTokenizer(propString, PROPERTY_DELIMITER);
 
-        while (tokenizer.hasMoreTokens())
-        {
-            token   = tokenizer.nextToken();
+        while (tokenizer.hasMoreTokens()) {
+            token = tokenizer.nextToken();
             eqIndex = token.indexOf('=');
 
-            if (eqIndex > 0)
-            {
-                key   = token.substring(0, eqIndex);
+            if (eqIndex > 0) {
+                key = token.substring(0, eqIndex);
                 value = token.substring(eqIndex + 1);
 
                 properties.put(key, value);
-            }
-            else
-            {
+            } else {
                 LOG.warn("property assignment can not be parsed from '" + token + "'");
             }
         }
@@ -98,8 +91,7 @@ public class StringUtil {
 
         StringBuffer sb = new StringBuffer();
 
-        for (int i = 0; i < desiredLength; i++)
-        {
+        for (int i = 0; i < desiredLength; i++) {
             sb.append(padChar);
         }
 
@@ -111,11 +103,10 @@ public class StringUtil {
 
         Assert.assertNotNull("input string", input);
 
-        String result    = input;
-        int    padAmount = desiredLength - input.length();
+        String result = input;
+        int padAmount = desiredLength - input.length();
 
-        if (padAmount > 0)
-        {
+        if (padAmount > 0) {
             result = bufferString(padAmount, padChar) + result;
         }
 
@@ -127,11 +118,10 @@ public class StringUtil {
 
         Assert.assertNotNull("input string", input);
 
-        String result    = input;
-        int    padAmount = desiredLength - input.length();
+        String result = input;
+        int padAmount = desiredLength - input.length();
 
-        if (padAmount > 0)
-        {
+        if (padAmount > 0) {
             result = result + bufferString(padAmount, padChar);
         }
 
@@ -172,16 +162,15 @@ public class StringUtil {
     public static String[] tokenize(String str, String delim, boolean returnDelims) {
 
         StringTokenizer tokenizer = null;
-        String[]        matches   = null;
+        String[] matches = null;
 
         Assert.assertNotNull("string", str);
         Assert.assertNotNull("delimiter", delim);
 
         tokenizer = new StringTokenizer(str, delim, returnDelims);
-        matches   = new String[tokenizer.countTokens()];
+        matches = new String[tokenizer.countTokens()];
 
-        for (int i = 0; i < matches.length; i++)
-        {
+        for (int i = 0; i < matches.length; i++) {
             matches[i] = tokenizer.nextToken();
         }
 
@@ -196,8 +185,7 @@ public class StringUtil {
 
         String ver = "?";
 
-        if ((rev != null) && (rev.startsWith("$" + "Revision: ")))
-        {
+        if ((rev != null) && (rev.startsWith("$" + "Revision: "))) {
             ver = rev.substring(11, rev.length() - 2);
         }
 
@@ -222,8 +210,7 @@ public class StringUtil {
 
         Assert.assertNotNull("date", date);
 
-        synchronized (dateFormat)
-        {
+        synchronized (dateFormat) {
             return dateFormat.format(date);
         }
     }
@@ -249,8 +236,7 @@ public class StringUtil {
 
         byte[] bytes = new byte[value.length()];
 
-        for (int i = 0; i < bytes.length; i++)
-        {
+        for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte) value.charAt(i);
         }
 
@@ -263,12 +249,10 @@ public class StringUtil {
         Assert.assertNotNull("string", string);
 
         StringBuffer sb = new StringBuffer(string.length());
-        char[]       in = string.toCharArray();
+        char[] in = string.toCharArray();
 
-        for (int i = 0; i < in.length; i++)
-        {
-            if (Character.isLetterOrDigit(in[i]))
-            {
+        for (int i = 0; i < in.length; i++) {
+            if (Character.isLetterOrDigit(in[i])) {
                 sb.append(in[i]);
             }
         }
@@ -279,32 +263,26 @@ public class StringUtil {
 
     public static String durationToString(long duration) {
 
-        StringBuffer sb    = new StringBuffer();
-        boolean      match = false;
+        StringBuffer sb = new StringBuffer();
+        boolean match = false;
 
-        for (int i = 0; i < UNITS.length; i++)
-        {
-            DurationUnit du    = UNITS[i];
-            long         units = duration / du.ms;
+        for (int i = 0; i < UNITS.length; i++) {
+            DurationUnit du = UNITS[i];
+            long units = duration / du.ms;
 
-            if (units > 0)
-            {
+            if (units > 0) {
                 duration -= (units * du.ms);
 
-                if (match)
-                {
+                if (match) {
                     sb.append(", ");
                 }
 
                 sb.append(units);
                 sb.append(" ");
 
-                if (units > 1)
-                {
+                if (units > 1) {
                     sb.append(du.pName);
-                }
-                else
-                {
+                } else {
                     sb.append(du.sName);
                 }
 
@@ -318,13 +296,13 @@ public class StringUtil {
 
 class DurationUnit {
 
-    long   ms;
+    long ms;
     String sName;
     String pName;
 
     public DurationUnit(long ms, String sName, String pName) {
 
-        this.ms    = ms;
+        this.ms = ms;
         this.pName = pName;
         this.sName = sName;
     }

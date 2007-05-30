@@ -1,9 +1,7 @@
 package org.shiftone.jrat.provider.rate.ui;
 
 
-
 import org.shiftone.jrat.core.Accumulator;
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -12,16 +10,15 @@ import org.shiftone.jrat.util.log.Logger;
  * Data structure holds the data for a sample.
  *
  * @author Jeff Drost
- *
  */
 public class RateModelSample {
 
-    private static final Logger      LOG              = Logger.getLogger(RateModelSample.class);
+    private static final Logger LOG = Logger.getLogger(RateModelSample.class);
     private static final Accumulator ZERO_ACCUMULATOR = new Accumulator();
-    private long                     upTimeMs         = 0;
-    private long                     freeMemory       = 0;
-    private long                     maxMemory        = 0;
-    private Accumulator[]            accumulators     = null;
+    private long upTimeMs = 0;
+    private long freeMemory = 0;
+    private long maxMemory = 0;
+    private Accumulator[] accumulators = null;
 
     RateModelSample(String[] tokens) {
         load(tokens);
@@ -32,13 +29,12 @@ public class RateModelSample {
 
         String[] headerTokens = StringUtil.tokenize(tokens[1], ",", false);
 
-        upTimeMs     = Long.parseLong(headerTokens[0]);
-        freeMemory   = Long.parseLong(headerTokens[1]);
-        maxMemory    = Long.parseLong(headerTokens[2]);
+        upTimeMs = Long.parseLong(headerTokens[0]);
+        freeMemory = Long.parseLong(headerTokens[1]);
+        maxMemory = Long.parseLong(headerTokens[2]);
         accumulators = new Accumulator[tokens.length - 1];
 
-        for (int i = 0; i < accumulators.length - 2; i++)
-        {
+        for (int i = 0; i < accumulators.length - 2; i++) {
             accumulators[i] = Accumulator.fromCSV(tokens[i + 2]);
         }
     }
@@ -50,8 +46,8 @@ public class RateModelSample {
     public Accumulator getAccumulator(int index) {
 
         return (index < accumulators.length)
-               ? accumulators[index]
-               : ZERO_ACCUMULATOR;
+                ? accumulators[index]
+                : ZERO_ACCUMULATOR;
     }
 
 

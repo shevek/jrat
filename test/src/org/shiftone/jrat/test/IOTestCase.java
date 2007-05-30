@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test;
 
 
-
 import junit.framework.TestCase;
-
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -14,7 +12,6 @@ import java.io.File;
  * Class IOTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class IOTestCase extends TestCase {
 

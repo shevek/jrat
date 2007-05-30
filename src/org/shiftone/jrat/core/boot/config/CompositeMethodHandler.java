@@ -12,16 +12,16 @@ public class CompositeMethodHandler implements MethodHandler {
     private final MethodHandler[] handlers;
 
     public CompositeMethodHandler(Collection methodHandlers) {
-        this((MethodHandler[])methodHandlers.toArray(new MethodHandler[methodHandlers.size()]));
+        this((MethodHandler[]) methodHandlers.toArray(new MethodHandler[methodHandlers.size()]));
     }
-    
+
     private CompositeMethodHandler(MethodHandler[] handlers) {
         this.handlers = handlers;
     }
 
     public void onMethodStart(Object obj) {
 
-        for (int i = 0 ; i < handlers.length ; i ++) {
+        for (int i = 0; i < handlers.length; i++) {
             handlers[i].onMethodStart(obj);
         }
 
@@ -29,7 +29,7 @@ public class CompositeMethodHandler implements MethodHandler {
 
     public void onMethodFinish(Object target, long durationNanos, Throwable throwable) {
 
-        for (int i = 0 ; i < handlers.length ; i ++) {
+        for (int i = 0; i < handlers.length; i++) {
             handlers[i].onMethodFinish(target, durationNanos, throwable);
         }
 

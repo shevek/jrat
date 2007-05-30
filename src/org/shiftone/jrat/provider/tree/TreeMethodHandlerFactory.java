@@ -19,22 +19,21 @@ import java.io.PrintWriter;
  * Class TreeMethodHandlerFactory
  *
  * @author Jeff Drost
- *
  */
 public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory implements TreeMethodHandlerFactoryMBean {
 
-    private static final Logger       LOG                 = Logger.getLogger(TreeMethodHandlerFactory.class);
-    private final StackNode           rootNode            = new StackNode();
+    private static final Logger LOG = Logger.getLogger(TreeMethodHandlerFactory.class);
+    private final StackNode rootNode = new StackNode();
     private final DelegateThreadLocal delegateThreadLocal = new DelegateThreadLocal(this);
-    private final AtomicLong          methodHandlerCount  = new AtomicLong();
+    private final AtomicLong methodHandlerCount = new AtomicLong();
 
     public void startup(RuntimeContext context) throws Exception {
         super.startup(context);
         context.registerMBean(this);
         context.register(new ResetCommandlet(this));
         context.register(new WriteOutputCommandlet(this));
-		context.register(new DumpOutputCommandlet(this));
-	}
+        context.register(new DumpOutputCommandlet(this));
+    }
 
 
     public final MethodHandler createMethodHandler(MethodKey methodKey) {
@@ -75,15 +74,13 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     public synchronized void writeOutputFile(String fileName) {
 
-        if (fileName == null)
-        {
+        if (fileName == null) {
             fileName = getDefaultOutputFileName() + ".xrat";
         }
 
         PrintWriter printWriter = null;
 
-        try
-        {
+        try {
             LOG.info("writeOutputFile...");
 
             printWriter = getContext().createPrintWriter(fileName);
@@ -92,12 +89,10 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
             LOG.info("printWriter.flush " + printWriter);
             printWriter.flush();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.error("Error writting to " + getDefaultOutputFileName(), e);
         }
-        finally
-        {
+        finally {
             IOUtil.close(printWriter);
             LOG.info("writeOutputFile(" + fileName + ") complete");
         }

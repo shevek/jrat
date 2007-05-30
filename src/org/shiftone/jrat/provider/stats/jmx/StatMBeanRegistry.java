@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.stats.jmx;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.MethodKeyAccumulator;
 import org.shiftone.jrat.core.Signature;
@@ -22,11 +21,10 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- *
  */
 public class StatMBeanRegistry {
 
-    private Map            classMbeans = new HashMap();    // maps methodKey to ConfigurableMBean
+    private Map classMbeans = new HashMap();    // maps methodKey to ConfigurableMBean
     private RuntimeContext context;
 
     public StatMBeanRegistry(RuntimeContext context) {
@@ -38,8 +36,7 @@ public class StatMBeanRegistry {
 
         ConfigurableMBean attributeMBean = (ConfigurableMBean) classMbeans.get(className);
 
-        if (attributeMBean == null)
-        {
+        if (attributeMBean == null) {
             attributeMBean = new ConfigurableMBean("JRat Statistics for class " + className);
 
             classMbeans.put(className, attributeMBean);
@@ -52,10 +49,10 @@ public class StatMBeanRegistry {
 
     public void registerMethodKeyAccumulator(MethodKeyAccumulator accumulator) {
 
-        MethodKey         methodKey = accumulator.getMethodKey();
-        ConfigurableMBean mBean     = getMBean(methodKey.getClassName());
-        Signature         signature = new Signature(methodKey.getSignature());
-        String            name      = methodKey.getMethodName() + "(" + signature.getShortText() + ")";
+        MethodKey methodKey = accumulator.getMethodKey();
+        ConfigurableMBean mBean = getMBean(methodKey.getClassName());
+        Signature signature = new Signature(methodKey.getSignature());
+        String name = methodKey.getMethodName() + "(" + signature.getShortText() + ")";
 
         mBean.add(name + ".AverageDuration", new AverageDurationAttributeValue(accumulator));
         mBean.add(name + ".ConcurrentThreads", new ConcurrentThreadsAttributeValue(accumulator));

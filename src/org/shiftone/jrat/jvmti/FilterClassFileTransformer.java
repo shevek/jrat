@@ -11,35 +11,34 @@ import java.security.ProtectionDomain;
 
 /**
  * @author Jeff Drost
- *
  */
 public class FilterClassFileTransformer implements ClassFileTransformer {
 
-	private static final Logger LOG = Logger.getLogger(FilterClassFileTransformer.class);
-	private final MethodCriteria methodCriteria;
-	private final ClassFileTransformer classFileTransformer;
+    private static final Logger LOG = Logger.getLogger(FilterClassFileTransformer.class);
+    private final MethodCriteria methodCriteria;
+    private final ClassFileTransformer classFileTransformer;
 
-	public FilterClassFileTransformer(MethodCriteria methodCriteria, ClassFileTransformer classFileTransformer) {
-		this.methodCriteria = methodCriteria;
-		this.classFileTransformer = classFileTransformer;
-	}
+    public FilterClassFileTransformer(MethodCriteria methodCriteria, ClassFileTransformer classFileTransformer) {
+        this.methodCriteria = methodCriteria;
+        this.classFileTransformer = classFileTransformer;
+    }
 
 
-	public byte[] transform(
-			ClassLoader loader,
-			String className,
-			Class /* <?> */ classBeingRedefined,
-			ProtectionDomain protectionDomain,
-			byte[] classfileBuffer)
-			throws IllegalClassFormatException {
+    public byte[] transform(
+            ClassLoader loader,
+            String className,
+            Class /* <?> */ classBeingRedefined,
+            ProtectionDomain protectionDomain,
+            byte[] classfileBuffer)
+            throws IllegalClassFormatException {
 
-		String fixedClassName = className.replace('/', '.');
+        String fixedClassName = className.replace('/', '.');
 
-		if (methodCriteria.isMatch(fixedClassName, classBeingRedefined.getModifiers())) {
-			return classFileTransformer.transform(loader, className, classBeingRedefined, protectionDomain,
-					classfileBuffer);
-		} else {
-			return classfileBuffer;
-		}
-	}
+        if (methodCriteria.isMatch(fixedClassName, classBeingRedefined.getModifiers())) {
+            return classFileTransformer.transform(loader, className, classBeingRedefined, protectionDomain,
+                    classfileBuffer);
+        } else {
+            return classfileBuffer;
+        }
+    }
 }

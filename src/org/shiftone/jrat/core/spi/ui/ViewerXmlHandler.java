@@ -14,15 +14,14 @@ import java.util.Properties;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ViewerXmlHandler extends DefaultHandler {
 
-    private static final Logger          LOG              = Logger.getLogger(ViewerXmlHandler.class);
+    private static final Logger LOG = Logger.getLogger(ViewerXmlHandler.class);
     private AbstractOutputXmlViewBuilder xmlViewerFactory = null;
-    private JComponent                   component        = null;
-    private int                          depth            = 0;
-    private long                         startTimeMs      = 0;
+    private JComponent component = null;
+    private int depth = 0;
+    private long startTimeMs = 0;
 
     public ViewerXmlHandler(AbstractOutputXmlViewBuilder xmlViewerFactory) {
 
@@ -39,12 +38,10 @@ public class ViewerXmlHandler extends DefaultHandler {
 
     public void characters(char[] ch, int start, int length) throws SAXException {
 
-        try
-        {
+        try {
             xmlViewerFactory.textElement(new String(ch, start, length));
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new SAXException("characters/textElement failed");
         }
     }
@@ -57,16 +54,14 @@ public class ViewerXmlHandler extends DefaultHandler {
 
     public void endDocument() throws SAXException {
 
-        try
-        {
+        try {
             LOG.info("parse took " + (System.currentTimeMillis() - startTimeMs) + "ms");
 
             component = xmlViewerFactory.endDocumentCreateViewer();
 
             LOG.info("got " + component + " from " + xmlViewerFactory);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new SAXException("endDocument/endDocumentCreateViewer failed");
         }
     }
@@ -74,22 +69,19 @@ public class ViewerXmlHandler extends DefaultHandler {
 
     private AbstractOutputXmlViewBuilder getOutputXMLViewerFactory(Properties props) throws SAXException {
 
-        AbstractOutputXmlViewBuilder factory     = null;
-        String                       viewerClass = props.getProperty("viewer");
-        Object                       object      = null;
+        AbstractOutputXmlViewBuilder factory = null;
+        String viewerClass = props.getProperty("viewer");
+        Object object = null;
 
-        if (viewerClass == null)
-        {
+        if (viewerClass == null) {
             throw new SAXException("attribute not correctly defined on root XML element");
         }
 
-        try
-        {
-            object  = ResourceUtil.newInstance(viewerClass);
+        try {
+            object = ResourceUtil.newInstance(viewerClass);
             factory = (AbstractOutputXmlViewBuilder) object;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new SAXException("error creating instance of XML viewer factory", e);
         }
 
@@ -103,19 +95,15 @@ public class ViewerXmlHandler extends DefaultHandler {
 
         depth++;
 
-        for (int i = 0; i < attributes.getLength(); i++)
-        {
+        for (int i = 0; i < attributes.getLength(); i++) {
             props.put(attributes.getQName(i), attributes.getValue(i));
         }
 
-        try
-        {
-            if (depth == 1)
-            {
+        try {
+            if (depth == 1) {
 
                 // billjdap
-                if (xmlViewerFactory == null)
-                {
+                if (xmlViewerFactory == null) {
                     xmlViewerFactory = getOutputXMLViewerFactory(props);
                 }
 
@@ -124,8 +112,7 @@ public class ViewerXmlHandler extends DefaultHandler {
 
             xmlViewerFactory.startElement(qName, props);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new SAXException(e);
         }
     }
@@ -133,14 +120,12 @@ public class ViewerXmlHandler extends DefaultHandler {
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
 
-        try
-        {
+        try {
             xmlViewerFactory.endElement(qName);
 
             depth--;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             throw new SAXException(e);
         }
     }

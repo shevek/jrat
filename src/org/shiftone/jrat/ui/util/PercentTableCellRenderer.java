@@ -15,16 +15,15 @@ import java.text.DecimalFormat;
 
 /**
  * @author Jeff Drost
- *
  */
 public class PercentTableCellRenderer extends DefaultTableCellRenderer {
 
-    private static final Logger LOG                 = Logger.getLogger(PercentTableCellRenderer.class);
-    private Object              value               = null;
-    private DecimalFormat       floatDecimalFormat  = new DecimalFormat("#,##0.00");
-    private DecimalFormat       doubleDecimalFormat = new DecimalFormat("#,##0.0000");
-    private DecimalFormat       longDecimalFormat   = new DecimalFormat("###,###,###");
-    private static final Color  COLOR_XOR           = Color.LIGHT_GRAY;
+    private static final Logger LOG = Logger.getLogger(PercentTableCellRenderer.class);
+    private Object value = null;
+    private DecimalFormat floatDecimalFormat = new DecimalFormat("#,##0.00");
+    private DecimalFormat doubleDecimalFormat = new DecimalFormat("#,##0.0000");
+    private DecimalFormat longDecimalFormat = new DecimalFormat("###,###,###");
+    private static final Color COLOR_XOR = Color.LIGHT_GRAY;
 
     public PercentTableCellRenderer() {
         super();
@@ -47,16 +46,13 @@ public class PercentTableCellRenderer extends DefaultTableCellRenderer {
      * Method getTableCellRendererComponent
      */
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-            int row, int column) {
+                                                   int row, int column) {
 
         this.value = value;
 
-        if (value instanceof Number)
-        {
+        if (value instanceof Number) {
             setHorizontalAlignment(JLabel.RIGHT);
-        }
-        else
-        {
+        } else {
             setHorizontalAlignment(JLabel.LEFT);
         }
 
@@ -73,12 +69,10 @@ public class PercentTableCellRenderer extends DefaultTableCellRenderer {
 
         super.paint(g);
 
-        if (value instanceof Percent)
-        {
+        if (value instanceof Percent) {
             double pct = ((Percent) value).doubleValue();
 
-            if (pct > 100.0)
-            {
+            if (pct > 100.0) {
                 pct = 100.0;
             }
 
@@ -95,41 +89,27 @@ public class PercentTableCellRenderer extends DefaultTableCellRenderer {
      */
     protected synchronized void setValue(Object value) {
 
-        if (value == null)
-        {
+        if (value == null) {
             value = "";
-        }
-        else if (value instanceof Number)
-        {
+        } else if (value instanceof Number) {
             Number num = (Number) value;
 
-            if ((value instanceof Integer) || (value instanceof Long))
-            {
+            if ((value instanceof Integer) || (value instanceof Long)) {
                 value = longDecimalFormat.format(num);
-            }
-            else if (value instanceof Float)
-            {
+            } else if (value instanceof Float) {
                 Float f = (Float) value;
 
-                if (f.isNaN() || f.isInfinite())
-                {
+                if (f.isNaN() || f.isInfinite()) {
                     value = String.valueOf(f);
-                }
-                else
-                {
+                } else {
                     value = floatDecimalFormat.format(num);
                 }
-            }
-            else if (value instanceof Double)
-            {
+            } else if (value instanceof Double) {
                 Double d = (Double) value;
 
-                if (d.isNaN() || d.isInfinite())
-                {
+                if (d.isNaN() || d.isInfinite()) {
                     value = String.valueOf(d);
-                }
-                else
-                {
+                } else {
                     value = doubleDecimalFormat.format(num);
                 }
             }

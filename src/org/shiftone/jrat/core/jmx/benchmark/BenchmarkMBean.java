@@ -1,10 +1,8 @@
 package org.shiftone.jrat.core.jmx.benchmark;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface BenchmarkMBean {
 

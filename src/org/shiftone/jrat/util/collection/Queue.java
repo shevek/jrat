@@ -11,12 +11,11 @@ import java.util.LinkedList;
  * Simple wrapper around a LinkedList.
  *
  * @author Jeff Drost
- *
  */
 public class Queue {
 
-    private static final Logger LOG        = Logger.getLogger(Queue.class);
-    private LinkedList          linkedList = new LinkedList();
+    private static final Logger LOG = Logger.getLogger(Queue.class);
+    private LinkedList linkedList = new LinkedList();
 
     public void enqueue(Object object) {
         Assert.assertNotNull("object", object);
@@ -27,8 +26,8 @@ public class Queue {
     public Object dequeue() {
 
         return (linkedList.size() > 0)
-               ? linkedList.removeFirst()
-               : null;
+                ? linkedList.removeFirst()
+                : null;
     }
 
 

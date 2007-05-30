@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.util.graph;
 
 
-
 import java.awt.Color;
 
 
@@ -9,7 +8,6 @@ import java.awt.Color;
  * Interface GraphModel
  *
  * @author Jeff Drost
- *
  */
 public interface GraphModel {
 

@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.criteria;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.util.ArrayList;
@@ -12,12 +11,11 @@ import java.util.List;
 
 /**
  * @author Jeff Drost
- *
  */
 public abstract class CompositeMethodCriteria implements MethodCriteria {
 
-    private static final Logger LOG       = Logger.getLogger(CompositeMethodCriteria.class);
-    private List                criterion = new ArrayList();
+    private static final Logger LOG = Logger.getLogger(CompositeMethodCriteria.class);
+    private List criterion = new ArrayList();
 
     public void addCriteria(MethodCriteria criteria) {
         criterion.add(criteria);
@@ -46,12 +44,9 @@ public abstract class CompositeMethodCriteria implements MethodCriteria {
 
     private MethodCriteria optimize() {
 
-        if (criterion.size() == 0)
-        {
+        if (criterion.size() == 0) {
             return ConstantMethodCriteria.ALL;
-        }
-        else if (criterion.size() == 1)
-        {
+        } else if (criterion.size() == 1) {
             return (MethodCriteria) criterion.get(0);
         }
 
@@ -68,8 +63,7 @@ public abstract class CompositeMethodCriteria implements MethodCriteria {
 
         sb.append("<" + getTag() + ">");
 
-        for (int i = 0; i < criterion.size(); i++)
-        {
+        for (int i = 0; i < criterion.size(); i++) {
             MethodCriteria criteria = (MethodCriteria) criterion.get(i);
 
             sb.append(criteria.toString());

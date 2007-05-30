@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.trace;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
@@ -11,14 +10,13 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TraceMethodHandlerFactory implements MethodHandlerFactory, TraceMethodHandlerFactoryMBean {
 
     private static final Logger LOG = Logger.getLogger(TraceMethodHandlerFactory.class);
-    private RuntimeContext      context;
-    private int                 callsThreshold      = 1000;
-    private ThreadLocal         delegateThreadLocal = new ThreadLocal() {
+    private RuntimeContext context;
+    private int callsThreshold = 1000;
+    private ThreadLocal delegateThreadLocal = new ThreadLocal() {
 
         protected Object initialValue() {
             return new Delegate(context);

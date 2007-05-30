@@ -16,50 +16,41 @@ import java.util.Timer;
  * Class RateMethodHandlerFactory
  *
  * @author Jeff Drost
- *
  */
 public class RateMethodHandlerFactory extends AbstractMethodHandlerFactory {
 
-    private static final Logger  LOG              = Logger.getLogger(RateMethodHandlerFactory.class);
-    private static final Runtime RT               = Runtime.getRuntime();
-    private Timer                timer            = new Timer(true);
-    private RateTimerTask        task             = new RateTimerTask(this);
-    private RateMethodHandler[]  handlers         = null;
-    private RateOutput           output           = null;
-    private boolean              startupSucceeded = false;
-    private int                  handlerMax       = 100;
-    private long                 period           = 1000 * 10;
+    private static final Logger LOG = Logger.getLogger(RateMethodHandlerFactory.class);
+    private static final Runtime RT = Runtime.getRuntime();
+    private Timer timer = new Timer(true);
+    private RateTimerTask task = new RateTimerTask(this);
+    private RateMethodHandler[] handlers = null;
+    private RateOutput output = null;
+    private boolean startupSucceeded = false;
+    private int handlerMax = 100;
+    private long period = 1000 * 10;
 
     /**
      * Method createMethodHandler
      *
      * @param methodKey .
-     *
      * @return .
      */
     public synchronized MethodHandler createMethodHandler(MethodKey methodKey) {
 
-        MethodHandler handler     = null;
-        int           methodCount = output.getMethodCount();
+        MethodHandler handler = null;
+        int methodCount = output.getMethodCount();
 
-        if (startupSucceeded == false)
-        {
+        if (startupSucceeded == false) {
             LOG.info("startup failed, returning null handler");
-        }
-        else if (methodCount >= handlerMax)
-        {
+        } else if (methodCount >= handlerMax) {
             LOG.info("handler max (" + handlerMax + ") exceeded, returning null handler");
-        }
-        else
-        {
+        } else {
             handler = handlers[methodCount] = new RateMethodHandler(methodKey);
 
-            try
-            {
+            try {
                 output.printMethodDef(methodKey);
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 LOG.error("error writing method def : " + methodKey, e);
             }
         }
@@ -81,10 +72,9 @@ public class RateMethodHandlerFactory extends AbstractMethodHandlerFactory {
 
         this.handlers = new RateMethodHandler[handlerMax];
 
-        try
-        {
+        try {
             outputStream = context.createOutputStream(getDefaultOutputFileName() + ".jrat");
-            output       = new RateOutput(outputStream, handlerMax, context);
+            output = new RateOutput(outputStream, handlerMax, context);
 
             output.printHeader(period);
             context.registerShutdownListener(this);
@@ -92,8 +82,7 @@ public class RateMethodHandlerFactory extends AbstractMethodHandlerFactory {
 
             startupSucceeded = true;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             output.close();
 
             throw e;
@@ -119,12 +108,10 @@ public class RateMethodHandlerFactory extends AbstractMethodHandlerFactory {
         timer.cancel();
         task.cancel();
 
-        try
-        {
+        try {
             output.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             LOG.error("error closing output", e);
         }
     }

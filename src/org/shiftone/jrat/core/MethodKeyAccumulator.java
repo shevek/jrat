@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core;
 
 
-
 public class MethodKeyAccumulator extends Accumulator {
 
     protected MethodKey methodKey;
@@ -16,7 +15,7 @@ public class MethodKeyAccumulator extends Accumulator {
                                 int maxConcurThreads) {
 
         super(totalEnters, totalExits, totalErrors, totalDuration, totalOfSquares, maxDuration, minDuration,
-              maxConcurThreads);
+                maxConcurThreads);
 
         this.methodKey = methodKey;
     }

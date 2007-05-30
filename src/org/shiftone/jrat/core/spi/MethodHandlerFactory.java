@@ -1,13 +1,11 @@
 package org.shiftone.jrat.core.spi;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public interface MethodHandlerFactory {
 
@@ -18,7 +16,6 @@ public interface MethodHandlerFactory {
      * <li>if there is an error, or some reason not to create a handler - this
      * method should log a message and return null (this allows chain handler to
      * not log to several silent handlers)</li>
-     *
      */
     MethodHandler createMethodHandler(MethodKey methodKey) throws Exception;
 

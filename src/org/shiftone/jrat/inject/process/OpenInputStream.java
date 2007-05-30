@@ -1,7 +1,6 @@
 package org.shiftone.jrat.inject.process;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.IOException;
@@ -16,13 +15,12 @@ import java.io.InputStream;
  * which would prevent any other archive entries from being read.
  *
  * @author Jeff Drost
- *
  */
-public class   OpenInputStream extends InputStream {
+public class OpenInputStream extends InputStream {
 
-    private static final Logger LOG         = Logger.getLogger(OpenInputStream.class);
-    private InputStream         inputStream = null;
-    private boolean             isOpen      = true;
+    private static final Logger LOG = Logger.getLogger(OpenInputStream.class);
+    private InputStream inputStream = null;
+    private boolean isOpen = true;
 
     public OpenInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
@@ -31,8 +29,7 @@ public class   OpenInputStream extends InputStream {
 
     public void assertOpen() throws IOException {
 
-        if (isOpen == false)
-        {
+        if (isOpen == false) {
             throw new IOException("InputStream is closed");
         }
     }

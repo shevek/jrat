@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree;
 
 
-
 import org.shiftone.jrat.util.Assert;
 
 
@@ -9,7 +8,6 @@ import org.shiftone.jrat.util.Assert;
  * Class DelegateThreadLocal
  *
  * @author Jeff Drost
- *
  */
 public class DelegateThreadLocal extends ThreadLocal {
 

@@ -11,7 +11,6 @@ import java.io.Reader;
 
 /**
  * @author $author$
- *
  */
 public interface ViewContext {
 
@@ -30,6 +29,8 @@ public interface ViewContext {
     View getView();
 
 
-    /** shorthand for getView().setBody(component) */
+    /**
+     * shorthand for getView().setBody(component)
+     */
     void setComponent(JComponent component);
 }

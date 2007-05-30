@@ -20,7 +20,6 @@ import java.lang.reflect.Method;
  * difference between this approach and implementing lazy loading.
  *
  * @author Jeff Drost
- *
  */
 public class InternalHandler {
 

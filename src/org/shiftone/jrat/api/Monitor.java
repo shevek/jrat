@@ -17,7 +17,6 @@ public class Monitor {
         this.handler = handler;
     }
 
-
 //    public Monitor(Method method) {
 //        this.handler = HandlerFactory.getMethodHandler(method);
 //    }
@@ -40,16 +39,13 @@ public class Monitor {
 
     public Object execute(Object instance, Command command) throws Throwable {
 
-        try
-        {
+        try {
             return execute(handler, instance, command);
         }
-        catch (RuntimeException e)
-        {
+        catch (RuntimeException e) {
             throw e;
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
@@ -57,20 +53,16 @@ public class Monitor {
 
     public Object execute(Command command) {
 
-        try
-        {
+        try {
             return execute(handler, null, command);
         }
-        catch (RuntimeException e)
-        {
+        catch (RuntimeException e) {
             throw e;
         }
-        catch (Throwable e)
-        {
+        catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
-
 
 //    public static Object execute(Method method, Object instance, Command command) throws Throwable {
 //        return execute(HandlerFactory.getMethodHandler(method), instance, command);
@@ -83,16 +75,14 @@ public class Monitor {
 
         long startTime = Clock.currentTimeNanos();
 
-        try
-        {
+        try {
             Object result = command.execute();
 
             handler.onMethodFinish(instance, Clock.currentTimeNanos() - startTime, null);
 
             return result;
         }
-        catch (Throwable throwable)
-        {
+        catch (Throwable throwable) {
             handler.onMethodFinish(instance, Clock.currentTimeNanos() - startTime, throwable);
 
             throw throwable;

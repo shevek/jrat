@@ -7,12 +7,11 @@ import org.shiftone.jrat.util.regex.Matcher;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ClassMatcherMethodCriteria implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(ClassMatcherMethodCriteria.class);
-    private final Matcher       matcher;
+    private final Matcher matcher;
 
     public ClassMatcherMethodCriteria(Matcher matcher) {
         this.matcher = matcher;

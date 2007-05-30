@@ -1,9 +1,9 @@
 package org.shiftone.jrat.util.io;
 
 
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.JRatException;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

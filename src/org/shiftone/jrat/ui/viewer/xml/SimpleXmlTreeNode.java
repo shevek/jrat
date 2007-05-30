@@ -13,18 +13,16 @@ import java.util.Properties;
  * Class SimpleXmlTreeNode
  *
  * @author Jeff Drost
- *
  */
 public class SimpleXmlTreeNode implements TreeNode {
 
-    private SimpleXmlTreeNode parent     = null;
-    private String            name       = null;
-    private Properties        properties = null;
-    private List              childList  = new ArrayList();
+    private SimpleXmlTreeNode parent = null;
+    private String name = null;
+    private Properties properties = null;
+    private List childList = new ArrayList();
 
     /**
      * Constructor SimpleXmlTreeNode
-     *
      *
      * @param parent
      * @param name
@@ -32,17 +30,17 @@ public class SimpleXmlTreeNode implements TreeNode {
      */
     public SimpleXmlTreeNode(SimpleXmlTreeNode parent, String name, Properties properties) {
 
-        this.parent     = parent;
-        this.name       = name;
+        this.parent = parent;
+        this.name = name;
         this.properties = properties;
     }
 
 
     /**
      * Constructor SimpleXmlTreeNode
-     *
      */
-    public SimpleXmlTreeNode() {}
+    public SimpleXmlTreeNode() {
+    }
 
 
     /**
@@ -115,7 +113,7 @@ public class SimpleXmlTreeNode implements TreeNode {
     public String toString() {
 
         return (name == null)
-               ? "DOCUMENT"
-               : name + " " + properties;
+                ? "DOCUMENT"
+                : name + " " + properties;
     }
 }

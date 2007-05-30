@@ -11,13 +11,12 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- *
  */
 public class ClassInitClassVisitor extends ClassAdapter implements Constants, Opcodes {
 
-    private static final Logger LOG           = Logger.getLogger(ClassInitClassVisitor.class);
-    private boolean             clinitVisited = false;
-    private String              className;
+    private static final Logger LOG = Logger.getLogger(ClassInitClassVisitor.class);
+    private boolean clinitVisited = false;
+    private String className;
 
     public ClassInitClassVisitor(final ClassVisitor cv) {
         super(cv);
@@ -28,7 +27,7 @@ public class ClassInitClassVisitor extends ClassAdapter implements Constants, Op
                       final String superName, final String[] interfaces) {
 
         clinitVisited = false;
-        className     = name;
+        className = name;
 
         super.visit(version, access, name, signature, superName, interfaces);
     }
@@ -39,10 +38,9 @@ public class ClassInitClassVisitor extends ClassAdapter implements Constants, Op
 
         MethodVisitor visitor = super.visitMethod(access, name, desc, signature, exceptions);
 
-        if (classInitName.equals(name))
-        {
+        if (classInitName.equals(name)) {
             clinitVisited = true;
-            visitor       = new ClassInitMethodVisitor(className, visitor);
+            visitor = new ClassInitMethodVisitor(className, visitor);
         }
 
         return visitor;
@@ -51,8 +49,7 @@ public class ClassInitClassVisitor extends ClassAdapter implements Constants, Op
 
     public void visitEnd() {
 
-        if (!clinitVisited)
-        {
+        if (!clinitVisited) {
 
             // LOG.info("adding new <clinit> method to " + className);
             MethodVisitor clinit = visitMethod(Modifier.PRIVATE_STATIC, classInitName, classInitDesc, null, null);
@@ -60,9 +57,7 @@ public class ClassInitClassVisitor extends ClassAdapter implements Constants, Op
             clinit.visitCode();
             clinit.visitInsn(RETURN);
             clinit.visitEnd();
-        }
-        else
-        {
+        } else {
 
             // LOG.info("class already had <clinit> method " + className);
         }

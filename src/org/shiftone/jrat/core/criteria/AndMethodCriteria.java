@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.criteria;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.util.Iterator;
@@ -9,7 +8,6 @@ import java.util.Iterator;
 
 /**
  * @author Jeff Drost
- *
  */
 public class AndMethodCriteria extends CompositeMethodCriteria {
 
@@ -19,12 +17,10 @@ public class AndMethodCriteria extends CompositeMethodCriteria {
 
         Iterator iterator = getCriterion().iterator();
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             MethodCriteria criteria = (MethodCriteria) iterator.next();
 
-            if (!criteria.isMatch(className, modifier))
-            {
+            if (!criteria.isMatch(className, modifier)) {
                 return false;
             }
         }
@@ -37,12 +33,10 @@ public class AndMethodCriteria extends CompositeMethodCriteria {
 
         Iterator iterator = getCriterion().iterator();
 
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             MethodCriteria criteria = (MethodCriteria) iterator.next();
 
-            if (!criteria.isMatch(className, methodName, signature, modifier))
-            {
+            if (!criteria.isMatch(className, methodName, signature, modifier)) {
                 return false;
             }
         }

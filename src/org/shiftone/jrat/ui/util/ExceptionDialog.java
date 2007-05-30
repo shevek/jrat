@@ -29,22 +29,21 @@ import java.io.StringWriter;
  * Class ExceptionDialog
  *
  * @author Jeff Drost
- *
  */
 public class ExceptionDialog extends JDialog implements ActionListener {
 
     // http://www.sutic.nu/misc/plaf/
-    private static final Logger LOG          = Logger.getLogger(ExceptionDialog.class);
-    private JPanel              main         = new JPanel();
-    private JPanel              buttons      = new JPanel();
-    private JTabbedPane         tabPane      = new JTabbedPane();
-    private JTextArea           textArea     = new JTextArea();
-    private JScrollPane         scrollPane   = new JScrollPane(textArea);
-    private UIDefaults          uiDefaults   = UIManager.getLookAndFeelDefaults();
-    private Icon                icon         = uiDefaults.getIcon("OptionPane.errorIcon");
-    private JLabel              messageLabel = null;
-    private JLabel              iconLabel    = new JLabel(icon);
-    private JButton             close        = new JButton("Close");
+    private static final Logger LOG = Logger.getLogger(ExceptionDialog.class);
+    private JPanel main = new JPanel();
+    private JPanel buttons = new JPanel();
+    private JTabbedPane tabPane = new JTabbedPane();
+    private JTextArea textArea = new JTextArea();
+    private JScrollPane scrollPane = new JScrollPane(textArea);
+    private UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
+    private Icon icon = uiDefaults.getIcon("OptionPane.errorIcon");
+    private JLabel messageLabel = null;
+    private JLabel iconLabel = new JLabel(icon);
+    private JButton close = new JButton("Close");
 
     /**
      * Constructor ExceptionDialog
@@ -115,17 +114,14 @@ public class ExceptionDialog extends JDialog implements ActionListener {
 
         Throwable t = throwable;
 
-        try
-        {
+        try {
 
             // TODO : better java 1.3 support
-            while (t.getCause() != null)
-            {
+            while (t.getCause() != null) {
                 t = t.getCause();
             }
         }
-        catch (NoSuchMethodError e)
-        {
+        catch (NoSuchMethodError e) {
 
             // oh well, somebody is using java 1.3
         }
@@ -137,8 +133,8 @@ public class ExceptionDialog extends JDialog implements ActionListener {
     /**
      * Method initialize
      *
-     * @param title .
-     * @param message .
+     * @param title     .
+     * @param message   .
      * @param throwable .
      */
     private void initialize(String title, String message, Throwable throwable) {
@@ -185,14 +181,13 @@ public class ExceptionDialog extends JDialog implements ActionListener {
      * Method stackTrace
      *
      * @param throwable .
-     *
      * @return .
      */
     private String stackTrace(Throwable throwable) {
 
-        String       value        = null;
+        String value = null;
         StringWriter stringWriter = new StringWriter();
-        PrintWriter  printWriter  = new PrintWriter(stringWriter);
+        PrintWriter printWriter = new PrintWriter(stringWriter);
 
         throwable.printStackTrace(printWriter);
         printWriter.flush();
@@ -210,8 +205,7 @@ public class ExceptionDialog extends JDialog implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == close)
-        {
+        if (e.getSource() == close) {
             this.dispose();
         }
     }

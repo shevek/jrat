@@ -12,12 +12,11 @@ import org.shiftone.jrat.util.log.Logger;
  * intitializer to call the JRat initializer method.
  *
  * @author Jeff Drost
- *
  */
 public class ClassInitMethodVisitor extends MethodAdapter implements Constants {
 
     private static final Logger LOG = Logger.getLogger(ClassInitMethodVisitor.class);
-    private String              className;
+    private String className;
 
     public ClassInitMethodVisitor(String className, MethodVisitor mv) {
 

@@ -1,10 +1,8 @@
 package org.shiftone.jrat.core.jmx;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public interface JmxRegistry {
 

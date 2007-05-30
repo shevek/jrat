@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test;
 
 
-
 import junit.framework.TestCase;
-
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -14,7 +12,6 @@ import java.io.Serializable;
  * Class StringUtilTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- *
  */
 public class StringUtilTestCase extends TestCase implements Serializable {
 

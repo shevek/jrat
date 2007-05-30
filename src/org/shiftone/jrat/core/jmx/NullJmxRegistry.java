@@ -1,20 +1,19 @@
 package org.shiftone.jrat.core.jmx;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class NullJmxRegistry implements JmxRegistry {
 
-    private static final Logger     LOG      = Logger.getLogger(NullJmxRegistry.class);
+    private static final Logger LOG = Logger.getLogger(NullJmxRegistry.class);
     public static final JmxRegistry INSTANCE = new NullJmxRegistry();
 
-    private NullJmxRegistry() {}
+    private NullJmxRegistry() {
+    }
 
 
     public boolean isReady() {

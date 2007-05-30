@@ -1,5 +1,5 @@
 package org.shiftone.jrat.util.log;
- 
+
 import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.util.log.target.LogTarget;
 import org.shiftone.jrat.util.log.target.TandemTarget;
@@ -17,35 +17,36 @@ import java.io.Writer;
  */
 public abstract class AbstractLogCommandlet implements Commandlet {
 
-	private static final Logger LOG = Logger.getLogger(AbstractLogCommandlet.class);
-	protected abstract void execute() throws Exception;
+    private static final Logger LOG = Logger.getLogger(AbstractLogCommandlet.class);
 
-	public final void execute(OutputStream output) throws Exception {
+    protected abstract void execute() throws Exception;
 
-		LogTarget previous = LoggerFactory.getLogTarget();
+    public final void execute(OutputStream output) throws Exception {
 
-		Writer outputWriter = new OutputStreamWriter(output);
-		WriterLogTarget writer = new WriterLogTarget(outputWriter);
-		TandemTarget tandem = new TandemTarget(previous, writer);
+        LogTarget previous = LoggerFactory.getLogTarget();
 
-		try {
+        Writer outputWriter = new OutputStreamWriter(output);
+        WriterLogTarget writer = new WriterLogTarget(outputWriter);
+        TandemTarget tandem = new TandemTarget(previous, writer);
 
-			LoggerFactory.setLogTarget(tandem);
-			execute();
+        try {
 
-		} catch (Throwable e) {
+            LoggerFactory.setLogTarget(tandem);
+            execute();
 
-			LOG.error("Commandlet failed", e);
+        } catch (Throwable e) {
 
-		} finally {
+            LOG.error("Commandlet failed", e);
 
-			LoggerFactory.setLogTarget(previous);
+        } finally {
 
-		}
-	}
+            LoggerFactory.setLogTarget(previous);
 
-	public final String getContentType() {
-		return Commandlet.ContentType.PLAIN;
-	}
+        }
+    }
+
+    public final String getContentType() {
+        return Commandlet.ContentType.PLAIN;
+    }
 
 }

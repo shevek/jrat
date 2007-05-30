@@ -1,10 +1,8 @@
 package org.shiftone.jrat.provider.rate2;
 
 
-
 /**
  * @author Jeff Drost
- *
  */
 public class Context {
 
@@ -17,8 +15,8 @@ public class Context {
 
     public int delta(int delta) {
 
-        Data data  = get();
-        int  value = data.depth;
+        Data data = get();
+        int value = data.depth;
 
         data.depth = value + delta;
 

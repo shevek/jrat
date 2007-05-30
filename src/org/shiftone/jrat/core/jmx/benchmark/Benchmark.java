@@ -9,13 +9,12 @@ import org.shiftone.jrat.util.time.Clock;
 
 /**
  * @author Jeff Drost
- *
  */
 public class Benchmark implements BenchmarkMBean {
 
     private static final Logger LOG = Logger.getLogger(Benchmark.class);
-    private MethodHandler       methodHandler;
-    private long                iterations = 1000000;
+    private MethodHandler methodHandler;
+    private long iterations = 1000000;
 
     private void doWork() {
         ;
@@ -45,7 +44,7 @@ public class Benchmark implements BenchmarkMBean {
 
     public String calculateCostPerMethodCallNanosText() {
         return "JRat is adding an overhead of about " + calculateCostPerMethodCallNanos()
-               + " nanoseconds to each instrumented method call.";
+                + " nanoseconds to each instrumented method call.";
     }
 
 
@@ -57,8 +56,7 @@ public class Benchmark implements BenchmarkMBean {
 
         start = Clock.currentTimeNanos();
 
-        for (int i = 0; i < iterations; i++)
-        {
+        for (int i = 0; i < iterations; i++) {
             doWork();
         }
 
@@ -66,14 +64,13 @@ public class Benchmark implements BenchmarkMBean {
 
         start = Clock.currentTimeNanos();
 
-        for (int i = 0; i < iterations; i++)
-        {
+        for (int i = 0; i < iterations; i++) {
             monitorDoWork();
         }
 
-        long   jrat  = Clock.currentTimeNanos() - start;
-        long   delta = jrat - raw;
-        double each  = (double) delta / (double) iterations;
+        long jrat = Clock.currentTimeNanos() - start;
+        long delta = jrat - raw;
+        double each = (double) delta / (double) iterations;
 
         LOG.info("overhead = " + each + " nanoseconds");
 

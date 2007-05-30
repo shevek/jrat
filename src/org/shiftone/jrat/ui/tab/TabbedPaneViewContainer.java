@@ -11,7 +11,6 @@ import java.awt.Graphics;
 
 /**
  * @author Jeff Drost
- *
  */
 public class TabbedPaneViewContainer extends JTabbedPane implements ViewContainer {
 

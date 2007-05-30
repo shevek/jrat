@@ -1,15 +1,14 @@
 package org.shiftone.jrat.core.spi;
 
 
-
 import org.shiftone.jrat.util.time.TimeUnit;
 
 
 /**
  * This is a really fast/easy way to port an older MethodHandler to the new interface.
  * Extend this class.
- * @author Jeff Drost
  *
+ * @author Jeff Drost
  */
 public abstract class LegacyMethodHandler implements MethodHandler {
 
@@ -29,8 +28,7 @@ public abstract class LegacyMethodHandler implements MethodHandler {
 
     public void onMethodFinish(Object target, long durationNanos, Throwable throwable) {
 
-        if (throwable != null)
-        {
+        if (throwable != null) {
             onMethodError(target, null, throwable);
         }
 

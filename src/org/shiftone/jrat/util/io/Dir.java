@@ -1,13 +1,11 @@
 package org.shiftone.jrat.util.io;
 
 
-
 import java.io.File;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class Dir extends File {
 

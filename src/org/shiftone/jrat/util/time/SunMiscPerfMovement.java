@@ -1,13 +1,11 @@
 package org.shiftone.jrat.util.time;
 
 
-
 import sun.misc.Perf;
 
 
 /**
  * @author Jeff Drost
- *
  */
 public class SunMiscPerfMovement implements Movement {
 
@@ -18,8 +16,11 @@ public class SunMiscPerfMovement implements Movement {
         return (perf.highResCounter() * 1000000000 / FREQUENCY);
     }
 
-    public void pauseTime() {}
-    public void resumeTime() {}
+    public void pauseTime() {
+    }
+
+    public void resumeTime() {
+    }
 
     public String toString() {
         return "(perf.highResCounter() * 1,000,000,000 / perf.highResFrequency())";
