@@ -34,10 +34,20 @@ public class JRatRuntime {
     }
 
     private InputStream getConfigurationStream(File file) {
-        
+
+
         if (!file.exists()) {
+
+            LOG.info("Initializing configuration file with default...");
+            LOG.info("Edit this file to further configure JRat.");
             copyDefaultFile(file);
+
+        } else {
+
+            LOG.info("Using existing configuration file.");
+            
         }
+
         LOG.info("Loading JRat Configuration : " + file.getAbsolutePath() + "...");
         LOG.info("File was last modified " + new Date(file.lastModified()));
         return IOUtil.openInputStream(file);
@@ -46,9 +56,6 @@ public class JRatRuntime {
 
     private void copyDefaultFile(File file) {
 
-        LOG.info("Initializing configuration file with default...");
-        LOG.info("Edit this file to configure JRat.");
-
         try {
 
             InputStream defaultStream = ResourceUtil.loadResourceAsStream(DEFAULT);
@@ -56,7 +63,9 @@ public class JRatRuntime {
             IOUtil.copy(defaultStream, outputStream);
 
         } catch (Exception e) {
-            throw new JRatException("unable to initialize : " + file.getAbsolutePath(), e);
+
+            throw new JRatException("unable to copy default configuration file to : " + file.getAbsolutePath(), e);
+
         }
     }
 
