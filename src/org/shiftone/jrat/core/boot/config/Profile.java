@@ -44,4 +44,9 @@ public class Profile implements MethodCriteria {
 	public boolean isMatch(String className, String methodName, String signature, long modifier) {
 		return methodCriteria.isMatch(className, methodName, signature, modifier);
 	}
+
+
+    public List getFactories() {
+        return factories;
+    }
 }

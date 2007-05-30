@@ -69,12 +69,7 @@ public class HandlerFactory {
         return getInternalHandler().getMethodHandler(method);
     }
 
-
-    public static MethodHandler getMethodHandler(Constructor constructor) {
-        return getInternalHandler().getMethodHandler(constructor);
-    }
-
-
+ 
     /**
      * A main runtime entry point.
      */

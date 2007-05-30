@@ -3,6 +3,7 @@ package org.shiftone.jrat.core.boot.config;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.PropertyUtil;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
+import org.shiftone.jrat.core.JRatException;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -32,14 +33,24 @@ public class Factory {
     /**
      * create a new instance of a configured factory
      */
-    public MethodHandlerFactory buildMethodHandlerFactory() throws Exception {
+    public MethodHandlerFactory buildMethodHandlerFactory() {
 
-        Class klass = Class.forName(className);
-        Object instance = klass.newInstance();
+        Object instance = null;
 
+        try {
+
+            instance = Class.forName(className).newInstance();
+
+        } catch (Exception e) {
+
+            throw new JRatException("unable to create new instance of : " + className, e);
+
+        }
+        
         PropertyUtil.setProperties(instance, properties);
 
         return (MethodHandlerFactory) instance;
+
     }
 
 }

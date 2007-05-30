@@ -68,7 +68,7 @@ public class Configuration implements MethodCriteria {
     }
 
 
-    public List getProfiles() {
+    protected List getProfiles() {
         return profiles;
     }
 

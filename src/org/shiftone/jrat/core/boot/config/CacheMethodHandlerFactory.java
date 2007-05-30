@@ -14,6 +14,7 @@ import java.util.HashMap;
  * @author Jeff Drost
  */
 public class CacheMethodHandlerFactory implements MethodHandlerFactory {
+    
     private static final Log LOG = LogFactory.getLog(CacheMethodHandlerFactory.class);
     private final MethodHandlerFactory methodHandlerFactory;
     private Map cache = new HashMap();
