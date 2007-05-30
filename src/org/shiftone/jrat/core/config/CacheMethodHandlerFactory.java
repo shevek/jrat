@@ -6,6 +6,7 @@ import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.core.spi.RuntimeContext;
+import org.shiftone.jrat.util.log.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 public class CacheMethodHandlerFactory implements MethodHandlerFactory {
 
-    private static final Log LOG = LogFactory.getLog(CacheMethodHandlerFactory.class);
+    private static final Logger LOG = Logger.getLogger(CacheMethodHandlerFactory.class);
     private final MethodHandlerFactory methodHandlerFactory;
     private Map cache = new HashMap();
 
@@ -35,6 +36,7 @@ public class CacheMethodHandlerFactory implements MethodHandlerFactory {
     }
 
     public void startup(RuntimeContext context) throws Exception {
+        LOG.info("startup");
         methodHandlerFactory.startup(context);
     }
 }

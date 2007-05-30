@@ -1,13 +1,14 @@
 package org.shiftone.jrat.core.config;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
+import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.Assert;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
-    private static final Log LOG = LogFactory.getLog(ConfigMethodHandlerFactory.class);
+    private static final Logger LOG = Logger.getLogger(ConfigMethodHandlerFactory.class);
     private final List profileFactories = new ArrayList();
 
     public ConfigMethodHandlerFactory(Configuration configuration) {
@@ -28,12 +29,17 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
         for (int p = 0; p < profiles.size(); p++) {
 
+            LOG.info("Loading profile " + p + "...");
+
             Profile profile = (Profile) profiles.get(p);
             List factories = profile.getFactories();
 
             for (int f = 0; f < factories.size(); f++) {
 
                 Factory factory = (Factory) factories.get(f);
+
+                LOG.info("Loading profile " + p + ", factory " + f + " (" + factory.getClassName() + ")...");
+
                 profileFactories.add(new FactoryInstance(factory.buildMethodHandlerFactory(), profile));
 
             }
@@ -67,6 +73,8 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
     public void startup(RuntimeContext context) throws Exception {
 
+        LOG.info("startup");
+
         Iterator iterator = profileFactories.iterator();
 
         while (iterator.hasNext()) {
@@ -85,6 +93,8 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
 
         public FactoryInstance(MethodHandlerFactory methodHandlerFactory, MethodCriteria methodCriteria) {
+            Assert.assertNotNull(methodHandlerFactory);
+            Assert.assertNotNull(methodCriteria);
             this.methodHandlerFactory = methodHandlerFactory;
             this.methodCriteria = methodCriteria;
         }

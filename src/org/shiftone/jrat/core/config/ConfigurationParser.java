@@ -34,6 +34,7 @@ public class ConfigurationParser {
     public void parse(Configuration configuration, InputStream in) {
 
         LOG.info("parsing configuration...");
+
         try {
 
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -51,20 +52,25 @@ public class ConfigurationParser {
 
     private void processJrat(Configuration configuration, Element jratElement) {
 
-        NodeList handlers = jratElement.getElementsByTagName("handler");
+        Assert.assertNotNull(jratElement);
+
+        NodeList handlers = jratElement.getElementsByTagName("handlers");
         for (int i = 0; i < handlers.getLength(); i++) {
-            processHandler(configuration, (Element) handlers.item(i));
+            processHandlers(configuration, (Element) handlers.item(i));
         }
 
         NodeList settings = jratElement.getElementsByTagName("settings");
-        for (int i = 0; i < handlers.getLength(); i++) {
+        for (int i = 0; i < settings.getLength(); i++) {
             processSettings(configuration, (Element) settings.item(i));
         }
     }
 
     private void processSettings(Configuration configuration, Element settingsElement) {
 
+        Assert.assertNotNull(settingsElement);
+
         NodeList properties = settingsElement.getElementsByTagName("property");
+
         Map map = new HashMap();
 
         for (int i = 0; i < properties.getLength(); i++) {
@@ -76,21 +82,23 @@ public class ConfigurationParser {
         PropertyUtil.setProperties(configuration.getSettings(), map);
     }
 
-    private void processHandler(Configuration configuration, Element handlerElement) {
+    private void processHandlers(Configuration configuration, Element handlersElement) {
+
+        Assert.assertNotNull(handlersElement);
 
         Profile profile = configuration.createProfile();
 
-        NodeList includes = handlerElement.getElementsByTagName("include");
+        NodeList includes = handlersElement.getElementsByTagName("include");
         for (int i = 0; i < includes.getLength(); i++) {
             processCriteria(profile.createInclude(), (Element) includes.item(i));
         }
 
-        NodeList excludes = handlerElement.getElementsByTagName("exclude");
+        NodeList excludes = handlersElement.getElementsByTagName("exclude");
         for (int i = 0; i < excludes.getLength(); i++) {
             processCriteria(profile.createExclude(), (Element) excludes.item(i));
         }
 
-        NodeList factories = handlerElement.getElementsByTagName("handler");
+        NodeList factories = handlersElement.getElementsByTagName("handler");
         for (int i = 0; i < factories.getLength(); i++) {
             processFactory(profile.createFactory(), (Element) factories.item(i));
         }
@@ -113,9 +121,11 @@ public class ConfigurationParser {
     }
 
     private void processCriteria(MatcherMethodCriteria criteria, Element criteriaElement) {
+
         criteria.setClassName(nvl(criteriaElement.getAttribute("className")));
         criteria.setMethodName(nvl(criteriaElement.getAttribute("methodName")));
         criteria.setSignature(nvl(criteriaElement.getAttribute("signature")));
+
     }
 
     private String nvl(String s) {
