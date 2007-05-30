@@ -1,4 +1,4 @@
-package org.shiftone.jrat.core.boot.config;
+package org.shiftone.jrat.core.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

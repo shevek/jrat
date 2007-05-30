@@ -1,9 +1,9 @@
 package org.shiftone.jrat.core.boot;
 
 import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.core.boot.config.Configuration;
-import org.shiftone.jrat.core.boot.config.ConfigurationParser;
-import org.shiftone.jrat.core.boot.config.Settings;
+import org.shiftone.jrat.core.config.Configuration;
+import org.shiftone.jrat.core.config.ConfigurationParser;
+import org.shiftone.jrat.core.config.Settings;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;

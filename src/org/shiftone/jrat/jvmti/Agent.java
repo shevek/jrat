@@ -2,7 +2,7 @@ package org.shiftone.jrat.jvmti;
 
 
 import org.shiftone.jrat.core.boot.Environment;
-import org.shiftone.jrat.core.boot.config.Configuration;
+import org.shiftone.jrat.core.config.Configuration;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;

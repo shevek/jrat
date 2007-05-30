@@ -33,7 +33,7 @@ public class Settings {
     public static final String USER_HOME = "user.home";
     public static final String USER_CWD = "user.dir";
 
-    private static org.shiftone.jrat.core.boot.config.Settings settings = Environment.INSTANCE.getSettings();
+    private static org.shiftone.jrat.core.config.Settings settings = Environment.INSTANCE.getSettings();
 
     static {
 

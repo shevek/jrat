@@ -1,4 +1,4 @@
-package org.shiftone.jrat.core.boot.config;
+package org.shiftone.jrat.core.config;
 
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.util.PropertyUtil;

@@ -18,18 +18,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idea.iws" afterPath="$PROJECT_DIR$/idea.iws" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\ConfigurationParser.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\ConfigMethodHandlerFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Configuration.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\CacheMethodHandlerFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Factory.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Profile.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/InternalHandler.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/InternalHandler.java" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\Settings.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot\config\CompositeMethodHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/boot/config" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/boot/Environment.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/boot/Environment.java" />
     </list>
     <list name="Failed commit: Default" comment="" />
     <list name="Failed commit: Failed commit: Default" comment="Failed commit: Default" />
     <list name="Failed commit: Default (2)" comment="Failed commit: Default" />
     <list name="Failed commit: Default (3)" comment="Failed commit: Default" />
     <list name="Failed commit: Failed commit: Default (3)" comment="Failed commit: Default" />
-    <list name="Failed commit: Default (4)" comment="Failed commit: Default">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/Agent.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/Agent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/InternalHandler.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/InternalHandler.java" />
-    </list>
+    <list name="Failed commit: Default (4)" comment="Failed commit: Default" />
   </component>
   <component name="ChangeListSynchronizer" />
   <component name="ChangesViewManager" flattened_view="true" />
@@ -169,7 +177,7 @@
       <file leaf-file-name="AbstractMethodHandlerFactory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/AbstractMethodHandlerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="90" selection-start="963" selection-end="963" vertical-scroll-proportion="0.9337121">
+            <state line="31" column="90" selection-start="963" selection-end="963" vertical-scroll-proportion="0.021794872">
               <folding />
             </state>
           </provider>
@@ -178,7 +186,7 @@
       <file leaf-file-name="Environment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/boot/Environment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="49" selection-start="918" selection-end="918" vertical-scroll-proportion="0.5964912">
+            <state line="19" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.15555556">
               <folding />
             </state>
           </provider>
@@ -559,6 +567,36 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\config" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\boot" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
@@ -576,7 +614,7 @@
       <showLibraryContents />
       <hideEmptyPackages />
       <abbreviatePackageNames />
-      <showStructure Scope="false" ProjectPane="false" PackagesPane="false" Favorites="false" />
+      <showStructure Favorites="false" ProjectPane="false" Scope="false" PackagesPane="false" />
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
@@ -621,6 +659,38 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <module name="" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -636,38 +706,6 @@
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="wholeProject" />
       </option>
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <module name="" />
       <method>
         <option name="Make" value="true" />
       </method>
@@ -752,17 +790,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="942" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30981347" order="0" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30981347" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.324291" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3020962" order="8" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3020962" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
@@ -780,8 +818,8 @@
       <window_info id="BeanShell Box" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="IdeaSpring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="BSFConsole" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Hibernate Tools" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
+      <window_info id="BSFConsole" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="3" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
@@ -961,14 +999,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/AbstractMethodHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="90" selection-start="963" selection-end="963" vertical-scroll-proportion="0.9337121">
+        <state line="31" column="90" selection-start="963" selection-end="963" vertical-scroll-proportion="0.021794872">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/boot/Environment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="49" selection-start="918" selection-end="918" vertical-scroll-proportion="0.5964912">
+        <state line="19" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.15555556">
           <folding />
         </state>
       </provider>
