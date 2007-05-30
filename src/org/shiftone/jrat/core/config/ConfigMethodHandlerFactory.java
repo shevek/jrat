@@ -6,8 +6,8 @@ import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.Assert;
+import org.shiftone.jrat.util.log.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;

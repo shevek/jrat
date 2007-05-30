@@ -18,6 +18,7 @@
     <profile>
 
         <criteria>
+            
             <!--
             A profile's handlers are used if any of the includes are
             satisfied and none of the excludes are.
@@ -29,6 +30,9 @@
             <include className="*" methodName="*" signature="*"/>
             <exclude className="*" methodName="*" signature="*"/>
             -->
+            
+            <include/>
+
         </criteria>
 
         <handlers>

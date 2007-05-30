@@ -1,14 +1,13 @@
 package org.shiftone.jrat.core.config;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.shiftone.jrat.util.io.Dir;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
  */
 public class Settings {
-    private static final Log LOG = LogFactory.getLog(Settings.class);
+    private static final Logger LOG = Logger.getLogger(Settings.class);
 
     private String applicationName;
     private String baseDirectory = "JRatOutput";
@@ -28,7 +27,7 @@ public class Settings {
     private boolean rmiRegistryCreationEnabled = true;
     private int rmiRegistryPort = 2121;
     //
-    private String injectorStrategyClassName;
+
     private boolean injectorDefaultExcludesEnabled;
 
 
@@ -145,15 +144,6 @@ public class Settings {
     public void setRmiRegistryPort(int rmiRegistryPort) {
         this.rmiRegistryPort = rmiRegistryPort;
     }
-
-    public String getInjectorStrategyClassName() {
-        return injectorStrategyClassName;
-    }
-
-    public void setInjectorStrategyClassName(String injectorStrategyClassName) {
-        this.injectorStrategyClassName = injectorStrategyClassName;
-    }
-
 
     public boolean isInjectorDefaultExcludesEnabled() {
         return injectorDefaultExcludesEnabled;

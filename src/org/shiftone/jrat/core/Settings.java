@@ -152,11 +152,6 @@ public class Settings {
     }
 
 
-    public static String getInjectorStrategyClassName() {
-        return settings.getInjectorStrategyClassName();
-    }
-
-
     public static boolean isInjectorDefaultExcludesEnabled() {
         return settings.isInjectorDefaultExcludesEnabled();
     }

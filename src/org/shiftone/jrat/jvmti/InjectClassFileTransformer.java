@@ -30,7 +30,9 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
             ClassLoader loader, String className, Class /* <?> */ classBeingRedefined, ProtectionDomain protectionDomain, byte[] inClassfileBuffer)
             throws IllegalClassFormatException {
 
-        if ((loader.getParent() == null)                        //
+
+        if ((loader == null)
+                || (loader.getParent() == null)                        //
                 || className.startsWith("org/shiftone/jrat")    //
                 || className.startsWith("sun")                  //
                 || className.startsWith("javax")) {

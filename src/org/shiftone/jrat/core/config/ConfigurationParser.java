@@ -54,15 +54,17 @@ public class ConfigurationParser {
 
         Assert.assertNotNull(jratElement);
 
-        NodeList handlers = jratElement.getElementsByTagName("handlers");
-        for (int i = 0; i < handlers.getLength(); i++) {
-            processHandlers(configuration, (Element) handlers.item(i));
-        }
-
         NodeList settings = jratElement.getElementsByTagName("settings");
         for (int i = 0; i < settings.getLength(); i++) {
             processSettings(configuration, (Element) settings.item(i));
         }
+
+        NodeList handlers = jratElement.getElementsByTagName("profile");
+        for (int i = 0; i < handlers.getLength(); i++) {
+            processProfile(configuration.createProfile(), (Element) handlers.item(i));
+        }
+
+
     }
 
     private void processSettings(Configuration configuration, Element settingsElement) {
@@ -82,29 +84,27 @@ public class ConfigurationParser {
         PropertyUtil.setProperties(configuration.getSettings(), map);
     }
 
-    private void processHandlers(Configuration configuration, Element handlersElement) {
+    private void processProfile(Profile profile, Element profileElement) {
 
-        Assert.assertNotNull(handlersElement);
+        Assert.assertNotNull(profileElement);
 
-        Profile profile = configuration.createProfile();
-
-        NodeList includes = handlersElement.getElementsByTagName("include");
+        NodeList includes = profileElement.getElementsByTagName("include");
         for (int i = 0; i < includes.getLength(); i++) {
             processCriteria(profile.createInclude(), (Element) includes.item(i));
         }
 
-        NodeList excludes = handlersElement.getElementsByTagName("exclude");
+        NodeList excludes = profileElement.getElementsByTagName("exclude");
         for (int i = 0; i < excludes.getLength(); i++) {
             processCriteria(profile.createExclude(), (Element) excludes.item(i));
         }
 
-        NodeList factories = handlersElement.getElementsByTagName("handler");
-        for (int i = 0; i < factories.getLength(); i++) {
-            processFactory(profile.createFactory(), (Element) factories.item(i));
+        NodeList handlers = profileElement.getElementsByTagName("handler");
+        for (int i = 0; i < handlers.getLength(); i++) {
+            processHandler(profile.createFactory(), (Element) handlers.item(i));
         }
     }
 
-    private void processFactory(Handler handler, Element factoryElement) {
+    private void processHandler(Handler handler, Element factoryElement) {
 
         // <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
 
@@ -122,10 +122,12 @@ public class ConfigurationParser {
 
     private void processCriteria(MatcherMethodCriteria criteria, Element criteriaElement) {
 
+
         criteria.setClassName(nvl(criteriaElement.getAttribute("className")));
         criteria.setMethodName(nvl(criteriaElement.getAttribute("methodName")));
         criteria.setSignature(nvl(criteriaElement.getAttribute("signature")));
 
+        LOG.info("processCriteria " + criteria);
     }
 
     private String nvl(String s) {

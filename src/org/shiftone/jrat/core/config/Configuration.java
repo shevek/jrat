@@ -1,13 +1,8 @@
 package org.shiftone.jrat.core.config;
 
-import org.shiftone.jrat.core.criteria.AndMethodCriteria;
-import org.shiftone.jrat.core.criteria.ClassMatcherMethodCriteria;
-import org.shiftone.jrat.core.criteria.MethodCriteria;
-import org.shiftone.jrat.core.criteria.NotMethodCriteria;
-import org.shiftone.jrat.core.criteria.OrMethodCriteria;
+import org.shiftone.jrat.core.criteria.*;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.regex.CompositeMatcher;
-import org.shiftone.jrat.util.regex.Matcher;
+import org.shiftone.jrat.util.regex.GlobMatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,37 +21,44 @@ public class Configuration implements MethodCriteria {
     private static final Logger LOG = Logger.getLogger(Configuration.class);
     private Settings settings = new Settings();
     private AndMethodCriteria methodCriteria = new AndMethodCriteria();
-    private OrMethodCriteria customCriteria = new OrMethodCriteria();
+    private OrMethodCriteria profilesCriteria = new OrMethodCriteria();
     private OrMethodCriteria excludeCriteria = new OrMethodCriteria();
     private List profiles = new ArrayList();
 
 
     public Configuration() {
 
-        methodCriteria.addCriteria(customCriteria);
+        methodCriteria.addCriteria(profilesCriteria);
         methodCriteria.addCriteria(new NotMethodCriteria(excludeCriteria));
-        addClassExclude("bsh.*");
-        addClassExclude("com.sun.*");
-        addClassExclude("EDU.oswego.*");
-        addClassExclude("gnu.*");
-        addClassExclude("org.apache.*");
-        addClassExclude("org.dom4j.*");
-        addClassExclude("org.hsqldb.*");
-        addClassExclude("org.jboss.*");
-        addClassExclude("org.jnp.*");
-        addClassExclude("$Proxy*");
+//        addClassExclude("bsh.*");
+//        addClassExclude("com.sun.*");
+//        addClassExclude("EDU.oswego.*");
+//        addClassExclude("gnu.*");
+//        addClassExclude("org.apache.*");
+//        addClassExclude("org.dom4j.*");
+//        addClassExclude("org.hsqldb.*");
+//        addClassExclude("org.jboss.*");
+//        addClassExclude("org.jnp.*");
+//        addClassExclude("$Proxy*");
+        addClassExclude("java.*");
+        addClassExclude("javax.*");
     }
 
     protected void addClassExclude(String className) {
+
         LOG.info("exclude " + className);
-        Matcher matcher = CompositeMatcher.buildCompositeGlobMatcher(className);
-        excludeCriteria.addCriteria(new ClassMatcherMethodCriteria(matcher));
+
+        excludeCriteria.addCriteria(
+                new ClassMatcherMethodCriteria(
+                        new GlobMatcher(className)
+                )
+        );
     }
 
     protected Profile createProfile() {
         Profile profile = new Profile();
         profiles.add(profile);
-        customCriteria.addCriteria(profile);
+        profilesCriteria.addCriteria(profile);
         return profile;
     }
 
@@ -77,4 +79,5 @@ public class Configuration implements MethodCriteria {
     public Settings getSettings() {
         return settings;
     }
+
 }

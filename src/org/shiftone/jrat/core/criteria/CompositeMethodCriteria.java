@@ -61,7 +61,7 @@ public abstract class CompositeMethodCriteria implements MethodCriteria {
 
         StringBuffer sb = new StringBuffer();
 
-        sb.append("<" + getTag() + ">");
+        sb.append("<" + getTag() + " size='" + criterion.size() + "'>");
 
         for (int i = 0; i < criterion.size(); i++) {
             MethodCriteria criteria = (MethodCriteria) criterion.get(i);

@@ -5,6 +5,8 @@ import org.shiftone.jrat.core.HandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.time.Clock;
 
+import java.lang.reflect.Method;
+
 
 /**
  * @author Jeff Drost
@@ -64,9 +66,10 @@ public class Monitor {
         }
     }
 
-//    public static Object execute(Method method, Object instance, Command command) throws Throwable {
-//        return execute(HandlerFactory.getMethodHandler(method), instance, command);
-//    }
+    public static Object execute(Method method, Object instance, Command command) throws Throwable {
+       // return execute(HandlerFactory.getMethodHandler(method), instance, command);
+        return null;
+    }
 
 
     public static Object execute(MethodHandler handler, Object instance, Command command) throws Throwable {

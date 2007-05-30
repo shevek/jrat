@@ -1,5 +1,7 @@
 package org.shiftone.jrat.core.criteria;
 
+import org.shiftone.jrat.util.log.Logger;
+
 
 /**
  * Used by ant task.
@@ -9,6 +11,7 @@ package org.shiftone.jrat.core.criteria;
  */
 public class IncludeExcludeMethodCriteria implements MethodCriteria {
 
+    private static final Logger LOG = Logger.getLogger(IncludeExcludeMethodCriteria.class);
     private final AndMethodCriteria root;
     private final OrMethodCriteria positive;
     private final OrMethodCriteria negative;

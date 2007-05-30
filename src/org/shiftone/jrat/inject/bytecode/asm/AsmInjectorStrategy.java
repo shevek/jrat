@@ -42,10 +42,5 @@ public class AsmInjectorStrategy implements InjectorStrategy {
         reader.accept(visitor, false);
 
         return classWriter.toByteArray();
-    }
-
-
-    public String toString() {
-        return "AsmInjectorStrategy(uses http://asm.objectweb.org)";
-    }
+    }    
 }

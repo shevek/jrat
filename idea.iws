@@ -18,11 +18,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idea.iws" afterPath="$PROJECT_DIR$/idea.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/default-jrat.xml" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/default-jrat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/api/Monitor.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/api/Monitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/Settings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/util/regex/GlobMatcher.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/util/regex/GlobMatcher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/inject/bytecode/asm/AsmInjectorStrategy.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/inject/bytecode/asm/AsmInjectorStrategy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigMethodHandlerFactory.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigMethodHandlerFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/CacheMethodHandlerFactory.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/CacheMethodHandlerFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/FilterClassFileTransformer.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/FilterClassFileTransformer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/MatcherMethodCriteria.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/MatcherMethodCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idea.iml" afterPath="$PROJECT_DIR$/idea.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idea.iws" afterPath="$PROJECT_DIR$/idea.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/IncludeExcludeMethodCriteria.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/IncludeExcludeMethodCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Settings.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Settings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Configuration.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Configuration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/InjectClassFileTransformer.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/InjectClassFileTransformer.java" />
+      <change type="DELETED" beforePath="C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop\proxy\JRatInvocationHandler.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/default-jrat.xml" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/default-jrat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/CompositeMethodCriteria.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/CompositeMethodCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/inject/bytecode/Transformer.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/inject/bytecode/Transformer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java" afterPath="$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java" />
     </list>
     <list name="Failed commit: Default" comment="" />
     <list name="Failed commit: Failed commit: Default" comment="Failed commit: Default" />
@@ -102,6 +116,47 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/FilterClassFileTransformer.java" line="46" class="org.shiftone.jrat.jvmti.FilterClassFileTransformer" package="org.shiftone.jrat.jvmti">
+        <option name="ENABLED" value="true" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java" line="125" class="org.shiftone.jrat.core.config.ConfigurationParser" package="org.shiftone.jrat.core.config">
+        <option name="ENABLED" value="true" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/InjectClassFileTransformer.java" line="33" class="org.shiftone.jrat.jvmti.InjectClassFileTransformer" package="org.shiftone.jrat.jvmti">
+        <option name="ENABLED" value="true" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -169,93 +224,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConfigMethodHandlerFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigMethodHandlerFactory.java">
+      <file leaf-file-name="CompositeMethodCriteria.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/CompositeMethodCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="13" selection-start="631" selection-end="631" vertical-scroll-proportion="-0.6217228">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IOUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/io/IOUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="25" selection-start="1544" selection-end="1549" vertical-scroll-proportion="0.043071162">
+            <state line="65" column="60" selection-start="1353" selection-end="1353" vertical-scroll-proportion="1.0556844">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dir.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/io/Dir.java">
+      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="18" selection-start="596" selection-end="596" vertical-scroll-proportion="1.0783242">
+            <state line="32" column="4" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.15865384">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutputDirectory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/output/OutputDirectory.java">
+      <file leaf-file-name="InjectClassFileTransformer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/InjectClassFileTransformer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="82" selection-start="1455" selection-end="1455" vertical-scroll-proportion="0.08196721">
+            <state line="28" column="0" selection-start="904" selection-end="904" vertical-scroll-proportion="0.28125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Profile.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Profile.java">
+      <file leaf-file-name="ClassFileTransformer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../../apps/Java/jdk1.5.0_07/src.zip!/java/lang/instrument/ClassFileTransformer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="25" selection-start="1050" selection-end="1063" vertical-scroll-proportion="0.6138433">
+            <state line="88" column="4" selection-start="4302" selection-end="4302" vertical-scroll-proportion="1.2211539">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigurationParser.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java">
+      <file leaf-file-name="ConfigurableMBean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/jmx/dynamic/ConfigurableMBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="58" selection-start="4645" selection-end="4645" vertical-scroll-proportion="0.69034606">
+            <state line="26" column="13" selection-start="774" selection-end="774" vertical-scroll-proportion="-2.3653846">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PropertyDescriptor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../../apps/Java/jdk1.5.0_07/src.zip!/java/beans/PropertyDescriptor.java">
+      <file leaf-file-name="FilterClassFileTransformer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/FilterClassFileTransformer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="0" selection-start="3351" selection-end="3351" vertical-scroll-proportion="-0.052434456">
+            <state line="40" column="64" selection-start="1352" selection-end="1352" vertical-scroll-proportion="0.36298078">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PropertyUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/PropertyUtil.java">
+      <file leaf-file-name="ClassMatcherMethodCriteria.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/ClassMatcherMethodCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.85393256">
+            <state line="20" column="61" selection-start="515" selection-end="515" vertical-scroll-proportion="0.7764423">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Factory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Factory.java">
+      <file leaf-file-name="MatcherMethodCriteria.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/MatcherMethodCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="0" selection-start="903" selection-end="903" vertical-scroll-proportion="0.98542804">
+            <state line="13" column="13" selection-start="248" selection-end="248" vertical-scroll-proportion="0.33173078">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default-jrat.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="IncludeExcludeMethodCriteria.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/IncludeExcludeMethodCriteria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="8" selection-start="404" selection-end="404" vertical-scroll-proportion="0.15865384">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default-jrat.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/default-jrat.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="15" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.8925319">
+            <state line="36" column="38" selection-start="1274" selection-end="1274" vertical-scroll-proportion="1.4199536">
               <folding />
             </state>
           </provider>
@@ -592,37 +645,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\io" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="idea.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="idea" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\util" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\collection" />
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\util\regex" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -696,11 +719,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\tree" />
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\jvmti" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -726,11 +745,195 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider" />
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\provider\stats" />
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop\proxy" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop\aspectwerkz" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\integration\aop\alliance" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\inject\bytecode" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -757,6 +960,36 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="idea" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\workspace\jrat\trunk\src\org\shiftone\jrat\core\criteria" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -992,17 +1225,17 @@
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32278994" order="0" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.324291" order="1" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25060827" order="0" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32305795" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3020962" order="8" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37731197" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24918567" order="1" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11922141" order="1" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2540074" order="2" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.270037" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950678" order="4" />
@@ -1128,117 +1361,115 @@
   <component name="com.intellij.ide.util.scopeChooser.ScopeChooserConfigurable" proportions="" version="1">
     <option name="myLastEditedConfigurable" />
   </component>
-  <component name="com.intellij.openapi.roots.ui.configuration.projectRoot.ProjectRootMasterDetailsConfigurable" proportions="0.16666667,0.5" version="1">
+  <component name="com.intellij.openapi.roots.ui.configuration.projectRoot.ProjectRootMasterDetailsConfigurable" proportions="0.16666667" version="1">
     <option name="myPlainMode" value="false" />
-    <option name="myLastEditedConfigurable" value="idea" />
+    <option name="myLastEditedConfigurable" value="log4j-1.2.13.jar" />
   </component>
   <component name="com.intellij.profile.ui.ErrorOptionsConfigurable" proportions="" version="1">
     <option name="myLastEditedConfigurable" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/spi/MethodHandlerFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Profile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="928" selection-end="928" vertical-scroll-proportion="1.1281464">
+        <state line="43" column="98" selection-start="1399" selection-end="1399" vertical-scroll-proportion="1.1394231">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Settings.java">
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Handler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="222" selection-end="271" vertical-scroll-proportion="0.36074272">
+        <state line="14" column="13" selection-start="323" selection-end="323" vertical-scroll-proportion="0.22737819">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/CacheMethodHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="456" selection-end="456" vertical-scroll-proportion="0.31564987">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="25" selection-start="1050" selection-end="1063" vertical-scroll-proportion="0.6138433">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/PropertyUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.85393256">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Factory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="903" selection-end="903" vertical-scroll-proportion="0.98542804">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/default-jrat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="15" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.8925319">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../apps/Java/jdk1.5.0_07/src.zip!/java/beans/PropertyDescriptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="3351" selection-end="3351" vertical-scroll-proportion="-0.052434456">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/CompositeMethodHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="163" selection-end="163" vertical-scroll-proportion="0.31564987">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/apache-ant-1.6.5/ant.jar!/org/apache/tools/ant/taskdefs/Mkdir.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="0.18037136">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/io/IOUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="25" selection-start="1544" selection-end="1549" vertical-scroll-proportion="0.043071162">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/io/Dir.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="18" selection-start="596" selection-end="596" vertical-scroll-proportion="1.0783242">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/output/OutputDirectory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="82" selection-start="1455" selection-end="1455" vertical-scroll-proportion="0.08196721">
+        <state line="14" column="13" selection-start="371" selection-end="371" vertical-scroll-proportion="0.28605768">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigMethodHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="631" selection-end="631" vertical-scroll-proportion="-0.6217228">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="19" column="13" selection-start="585" selection-end="585" vertical-scroll-proportion="-1.5528846">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/ConfigurationParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="58" selection-start="4645" selection-end="4645" vertical-scroll-proportion="0.69034606">
+        <state line="21" column="13" selection-start="570" selection-end="570" vertical-scroll-proportion="0.31554523">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/CompositeMethodCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="60" selection-start="1353" selection-end="1353" vertical-scroll-proportion="1.0556844">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/ClassMatcherMethodCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="61" selection-start="515" selection-end="515" vertical-scroll-proportion="0.7764423">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/MatcherMethodCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="248" selection-end="248" vertical-scroll-proportion="0.33173078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/config/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="4" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.15865384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/FilterClassFileTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="64" selection-start="1352" selection-end="1352" vertical-scroll-proportion="0.36298078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/jvmti/InjectClassFileTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="904" selection-end="904" vertical-scroll-proportion="0.28125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../apps/Java/jdk1.5.0_07/src.zip!/java/lang/instrument/ClassFileTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="4" selection-start="4302" selection-end="4302" vertical-scroll-proportion="1.2211539">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/util/jmx/dynamic/ConfigurableMBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="774" selection-end="774" vertical-scroll-proportion="-2.3653846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/criteria/IncludeExcludeMethodCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="8" selection-start="404" selection-end="404" vertical-scroll-proportion="0.15865384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/shiftone/jrat/core/default-jrat.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="38" selection-start="1274" selection-end="1274" vertical-scroll-proportion="1.4199536">
           <folding />
         </state>
       </provider>

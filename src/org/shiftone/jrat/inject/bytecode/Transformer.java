@@ -7,6 +7,7 @@ import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.inject.bytecode.asm.AsmInjectorStrategy;
 
 import java.io.InputStream;
 
@@ -36,37 +37,9 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
 
     public Transformer() {
-
-        String className = Settings.getInjectorStrategyClassName();
-
-        try {
-            Class klass = Class.forName(className);
-            Object object = klass.newInstance();
-
-            this.injectorStrategy = (InjectorStrategy) object;
-        }
-        catch (Exception e) {
-            throw new JRatException("error initalizing strategy '" + className, e);
-        }
+        this.injectorStrategy = new AsmInjectorStrategy();
     }
-
-
-    public static Transformer create() {
-
-        String className = Settings.getInjectorStrategyClassName();
-
-        try {
-            Class klass = Class.forName(className);
-            Object object = klass.newInstance();
-            InjectorStrategy injectorStrategy = (InjectorStrategy) object;
-
-            return new Transformer(injectorStrategy);
-        }
-        catch (Exception e) {
-            throw new JRatException("error initalizing strategy '" + className, e);
-        }
-    }
-
+   
 
     public byte[] inject(byte[] inputClassData, TransformerOptions options) {
         return inject(inputClassData, UNKNOWN_SOURCE, options);

@@ -26,6 +26,10 @@ public class GlobMatcher implements Matcher {
     private char[][] patternParts = null;
     private String pattenString;
 
+    public static Matcher create(String pattenString) {
+        return (pattenString == null) ? INCLUDE_ALL : new GlobMatcher(pattenString);               
+    }
+
     /**
      * @param pattenString initializes the matcher with the glob patterm.
      */

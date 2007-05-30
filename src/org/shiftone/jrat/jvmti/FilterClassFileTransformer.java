@@ -3,6 +3,7 @@ package org.shiftone.jrat.jvmti;
 
 import org.shiftone.jrat.core.criteria.MethodCriteria;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.Assert;
 
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
@@ -19,6 +20,8 @@ public class FilterClassFileTransformer implements ClassFileTransformer {
     private final ClassFileTransformer classFileTransformer;
 
     public FilterClassFileTransformer(MethodCriteria methodCriteria, ClassFileTransformer classFileTransformer) {
+        Assert.assertNotNull("methodCriteria", methodCriteria);
+        Assert.assertNotNull("classFileTransformer", classFileTransformer);
         this.methodCriteria = methodCriteria;
         this.classFileTransformer = classFileTransformer;
     }
@@ -32,13 +35,34 @@ public class FilterClassFileTransformer implements ClassFileTransformer {
             byte[] classfileBuffer)
             throws IllegalClassFormatException {
 
-        String fixedClassName = className.replace('/', '.');
+        
+        try {
+            String fixedClassName = className.replace('/', '.');
 
-        if (methodCriteria.isMatch(fixedClassName, classBeingRedefined.getModifiers())) {
-            return classFileTransformer.transform(loader, className, classBeingRedefined, protectionDomain,
-                    classfileBuffer);
-        } else {
+            int modifiers = 0;
+            if (classBeingRedefined != null) {
+               modifiers = classBeingRedefined.getModifiers();
+            }
+
+            if (methodCriteria.isMatch(fixedClassName, modifiers)) {
+
+                return classFileTransformer.transform(
+                        loader,
+                        className,
+                        classBeingRedefined,
+                        protectionDomain,
+                        classfileBuffer);
+
+            } else {
+
+                return classfileBuffer;
+
+            }
+        } catch (Exception e) {
+
+            LOG.error("failed to transform class : " + className, e);
             return classfileBuffer;
+            
         }
     }
 }
