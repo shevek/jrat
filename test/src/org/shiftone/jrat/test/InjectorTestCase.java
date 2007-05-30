@@ -2,7 +2,7 @@ package org.shiftone.jrat.test;
 
 
 import junit.framework.TestCase;
-import org.shiftone.jrat.core.boot.JRatRuntime;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.criteria.IncludeExcludeMethodCriteria;
 import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.inject.InjectorOptions;
@@ -36,8 +36,8 @@ public class InjectorTestCase extends TestCase {
         //System.setProperty(Settings.BASE_DIRECTORY, "c:/temp") ;
         //System.setProperty(Settings.APPLICATION, "app") ;
 
-        JRatRuntime.INSTANCE.getSettings().setJmxEnabled(true);
-        JRatRuntime.INSTANCE.getSettings().setMBeanServerCreationEnabled(true);
+        Environment.INSTANCE.getSettings().setJmxEnabled(true);
+        Environment.INSTANCE.getSettings().setMBeanServerCreationEnabled(true);
 
         //System.setProperty(Settings.HANDLER_CLASS, TraceMethodHandlerFactory.class.getName()) ;
         //System.setProperty(Settings.HANDLER_CLASS, StatMethodHandlerFactory.class.getName());

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4" relativePaths="true" type="JAVA_MODULE">
   <component name="ModuleRootManager" />
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/src" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/integration/blaze" />
+      <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/integration" />
       <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/provider/log" />
     </content>
     <orderEntry type="inheritedJdk" />
