@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class SimpleDateFormatFormatRunnable implements Runnable {
 

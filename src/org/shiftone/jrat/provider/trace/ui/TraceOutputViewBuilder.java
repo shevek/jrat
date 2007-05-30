@@ -8,7 +8,7 @@ import org.shiftone.jrat.core.spi.ui.ViewContext;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.5 $
+ *
  */
 public class TraceOutputViewBuilder implements OutputViewBuilder {
 

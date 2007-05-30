@@ -5,7 +5,7 @@ import sun.misc.Perf;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class SunMiscPerfCalculateTimeRunnable implements Runnable {
 	static Perf perf = Perf.getPerf();

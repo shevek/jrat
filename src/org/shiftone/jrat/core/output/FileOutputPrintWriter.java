@@ -9,8 +9,8 @@ import java.io.Writer;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class FileOutputPrintWriter extends PrintWriter implements FileOutput {
 

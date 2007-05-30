@@ -7,7 +7,7 @@ import org.shiftone.jrat.core.MethodKeyAccumulator;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class ConcurrentThreadsAttributeValue extends AbstractAccumulatorAttributeValue {
 

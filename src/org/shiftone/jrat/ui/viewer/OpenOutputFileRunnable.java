@@ -1,21 +1,18 @@
 package org.shiftone.jrat.ui.viewer;
 
 
-
 import org.shiftone.jrat.core.spi.ui.OutputViewBuilder;
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContext;
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.Command;
+import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoundedRangeModel;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.text.html.HTMLEditorKit;
-
 import java.awt.Color;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -23,8 +20,8 @@ import java.io.StringWriter;
 /**
  * Class OpenOutputFileRunnable
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.27 $
+ * @author Jeff Drost
+ *
  */
 public class OpenOutputFileRunnable implements Runnable {
 

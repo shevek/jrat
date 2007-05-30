@@ -1,9 +1,8 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 
-
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 
 /**

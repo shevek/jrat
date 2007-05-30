@@ -1,20 +1,18 @@
 package org.shiftone.jrat.provider.stats.ui;
 
 
-
 import ca.odell.glazedlists.matchers.Matcher;
 import ca.odell.glazedlists.matchers.Matchers;
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.MethodKeyAccumulator;
+import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.regex.GlobMatcher;
 import org.shiftone.jrat.util.regex.ToLowerMatcher;
-import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class StatsMatcherEditor extends ca.odell.glazedlists.matchers.AbstractMatcherEditor {
 

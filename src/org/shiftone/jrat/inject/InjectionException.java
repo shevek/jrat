@@ -1,13 +1,11 @@
 package org.shiftone.jrat.inject;
 
-
-
 import org.shiftone.jrat.core.JRatException;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.16 $
+ * @author Jeff Drost
+ *
  */
 public class InjectionException extends JRatException {
 

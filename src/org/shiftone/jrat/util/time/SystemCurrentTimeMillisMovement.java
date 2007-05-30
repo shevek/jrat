@@ -3,8 +3,8 @@ package org.shiftone.jrat.util.time;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class SystemCurrentTimeMillisMovement implements Movement {
 

@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util.swing.popup;
 
 
-
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

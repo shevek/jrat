@@ -2,8 +2,6 @@ package org.shiftone.jrat.core.boot.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.shiftone.jrat.provider.silent.SilentMethodHandler;
-import org.shiftone.jrat.inject.bytecode.asm.AsmInjectorStrategy;
 import org.shiftone.jrat.util.io.Dir;
 
 /**

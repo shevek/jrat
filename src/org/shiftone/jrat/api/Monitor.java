@@ -1,17 +1,13 @@
 package org.shiftone.jrat.api;
 
 
-
 import org.shiftone.jrat.core.HandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.time.Clock;
 
-import java.lang.reflect.Method;
-
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
  */
 public class Monitor {
 
@@ -22,9 +18,9 @@ public class Monitor {
     }
 
 
-    public Monitor(Method method) {
-        this.handler = HandlerFactory.getMethodHandler(method);
-    }
+//    public Monitor(Method method) {
+//        this.handler = HandlerFactory.getMethodHandler(method);
+//    }
 
 
     public Monitor(String className, String methodName, String signature) {
@@ -76,9 +72,9 @@ public class Monitor {
     }
 
 
-    public static Object execute(Method method, Object instance, Command command) throws Throwable {
-        return execute(HandlerFactory.getMethodHandler(method), instance, command);
-    }
+//    public static Object execute(Method method, Object instance, Command command) throws Throwable {
+//        return execute(HandlerFactory.getMethodHandler(method), instance, command);
+//    }
 
 
     public static Object execute(MethodHandler handler, Object instance, Command command) throws Throwable {

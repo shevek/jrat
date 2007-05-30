@@ -8,8 +8,8 @@ import java.util.Comparator;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.17 $
+ * @author Jeff Drost
+ *
  */
 public class StatComparator implements Comparator {
 

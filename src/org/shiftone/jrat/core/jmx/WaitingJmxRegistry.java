@@ -9,8 +9,8 @@ import java.util.List;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.2 $
+ * @author Jeff Drost
+ *
  */
 public class WaitingJmxRegistry implements JmxRegistry, Runnable {
 

@@ -10,7 +10,7 @@ import java.io.Writer;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class FileOutputFactoryTestCase extends TestCase {
 	private static final Logger LOG = Logger.getLogger(FileOutputFactoryTestCase.class);

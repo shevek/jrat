@@ -1,20 +1,18 @@
 package org.shiftone.jrat.provider.tree.ui.touch;
 
 
-
 import com.touchgraph.graphlayout.Node;
 import com.touchgraph.graphlayout.TGPanel;
-
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Font;
+import java.awt.Graphics;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class CallNode extends Node {
 

@@ -8,7 +8,7 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.5 $
+ *
  */
 public class TransformerOptions {
 

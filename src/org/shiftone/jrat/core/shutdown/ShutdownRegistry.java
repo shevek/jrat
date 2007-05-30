@@ -12,8 +12,8 @@ import java.util.Stack;
 /**
  * Shut down order is important!
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  *          http://java.sun.com/developer/JDCTechTips/2006/tt0211.html#1
  */
 public class ShutdownRegistry implements ShutdownRegistryMBean {

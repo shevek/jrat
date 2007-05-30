@@ -10,8 +10,8 @@ import java.awt.Color;
 /**
  * Class AbstractGraph
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public abstract class AbstractGraph implements GraphModel {
 

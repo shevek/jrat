@@ -12,11 +12,11 @@ import org.shiftone.jrat.ui.util.NoOpComparator;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.BorderLayout;
 
 /**
  * @author Jeff Drost

@@ -4,7 +4,7 @@ package org.shiftone.jrat.core.criteria;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public interface MethodCriteria {
 

@@ -1,17 +1,16 @@
 package org.shiftone.jrat.util.io.csv.field;
 
 
+import org.shiftone.jrat.core.JRatException;
 
-import org.shiftone.jrat.util.io.InputOutputException;
-
-import java.text.DateFormat;
-import java.text.ParseException;
+import java.text.DateFormat; 
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class DateField implements Field {
 
@@ -52,7 +51,7 @@ public class DateField implements Field {
         }
         catch (ParseException e)
         {
-            throw new InputOutputException("failed to parse date : " + value, e);
+            throw new JRatException("failed to parse date : " + value, e);
         }
     }
 }

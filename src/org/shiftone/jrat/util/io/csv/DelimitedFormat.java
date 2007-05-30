@@ -1,14 +1,13 @@
 package org.shiftone.jrat.util.io.csv;
 
 
-
 import org.shiftone.jrat.util.io.csv.field.DateField;
 import org.shiftone.jrat.util.io.csv.field.DoubleField;
 import org.shiftone.jrat.util.io.csv.field.Field;
 import org.shiftone.jrat.util.io.csv.field.LongField;
 import org.shiftone.jrat.util.io.csv.field.StringField;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +17,7 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.5 $
+ *
  */
 public class DelimitedFormat {
 
@@ -78,7 +77,7 @@ public class DelimitedFormat {
 
         if (index == null)
         {
-            throw new InputOutputException("field title is not known : " + title);
+            throw new JRatException("field title is not known : " + title);
         }
 
         return index.intValue();

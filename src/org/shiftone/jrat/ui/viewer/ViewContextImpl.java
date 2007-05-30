@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.viewer;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.util.io.IOUtil;
@@ -9,19 +8,17 @@ import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.BoundedRangeModel;
 import javax.swing.JComponent;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-
 import java.util.zip.GZIPInputStream;
 
 
 /**
  * @author $author$
- * @version $Revision: 1.6 $
+ *
  */
 public class ViewContextImpl implements ViewContext {
 

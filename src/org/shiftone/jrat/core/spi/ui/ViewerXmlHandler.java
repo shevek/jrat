@@ -1,23 +1,20 @@
 package org.shiftone.jrat.core.spi.ui;
 
 
-
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.swing.JComponent;
-
 import java.util.Properties;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.6 $
+ * @author Jeff Drost
+ *
  */
 public class ViewerXmlHandler extends DefaultHandler {
 

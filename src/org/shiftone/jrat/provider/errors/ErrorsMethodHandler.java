@@ -1,19 +1,17 @@
 package org.shiftone.jrat.provider.errors;
 
 
-
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.PrintWriter;
-
 import java.util.Date;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.7 $
+ * @author Jeff Drost
+ *
  */
 public class ErrorsMethodHandler implements MethodHandler {
 

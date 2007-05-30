@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class PatternMatchesRunnable implements Runnable {
 

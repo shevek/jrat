@@ -1,11 +1,9 @@
 package org.shiftone.jrat.ui.viewer;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.BoundedRangeModel;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,8 +14,8 @@ import java.io.InputStream;
 /**
  * Class ProgressInputStream
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.17 $
+ * @author Jeff Drost
+ *
  */
 public class ProgressInputStream extends InputStream {
 

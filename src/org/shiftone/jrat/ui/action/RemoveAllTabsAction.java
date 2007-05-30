@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 /**
  * Class RemoveAllTabsAction
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.14 $
+ * @author Jeff Drost
+ *
  */
 public class RemoveAllTabsAction implements ActionListener {
 

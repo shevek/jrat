@@ -11,7 +11,7 @@ import org.shiftone.jrat.util.log.Logger;
  * Class JbossAopTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.2 $
+ *
  */
 public class JbossAopTestCase extends InjectorTestCase {
 

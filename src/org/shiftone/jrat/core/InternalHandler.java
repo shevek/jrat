@@ -1,21 +1,15 @@
 package org.shiftone.jrat.core;
 
 
-import org.shiftone.jrat.core.spi.MethodHandler;
-import org.shiftone.jrat.core.spi.MethodHandlerFactory;
-import org.shiftone.jrat.core.spi.RuntimeContext;
+import org.shiftone.jrat.core.boot.JRatRuntime;
 import org.shiftone.jrat.core.boot.config.CacheMethodHandlerFactory;
 import org.shiftone.jrat.core.boot.config.ConfigMethodHandlerFactory;
-import org.shiftone.jrat.core.boot.JRatRuntime;
+import org.shiftone.jrat.core.spi.MethodHandler;
+import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
-import org.shiftone.jrat.util.MethodWrapper;
-import org.shiftone.jrat.util.SignatureUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.lang.reflect.Method;
-
-import java.util.Hashtable;
-import java.util.Map;
 
 
 /**
@@ -25,8 +19,8 @@ import java.util.Map;
  * the Factory's getMethodHandler method is called. There is very little
  * difference between this approach and implementing lazy loading.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.26 $
+ * @author Jeff Drost
+ *
  */
 public class InternalHandler {
 

@@ -3,8 +3,8 @@ package org.shiftone.jrat.core.spi.ui;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.6 $
+ * @author Jeff Drost
+ *
  */
 public interface ViewContainer {
 

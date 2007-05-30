@@ -1,9 +1,7 @@
 package org.shiftone.jrat.ui.viewer.xml;
 
 
-
 import javax.swing.tree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -14,8 +12,8 @@ import java.util.Properties;
 /**
  * Class SimpleXmlTreeNode
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.10 $
+ * @author Jeff Drost
+ *
  */
 public class SimpleXmlTreeNode implements TreeNode {
 

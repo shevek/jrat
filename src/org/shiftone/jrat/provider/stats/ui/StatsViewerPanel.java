@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.stats.ui;
 
 
-
 import ca.odell.glazedlists.BasicEventList;
 import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.FilterList;
@@ -9,7 +8,6 @@ import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.swing.EventTableModel;
 import ca.odell.glazedlists.swing.TableComparatorChooser;
-
 import org.shiftone.jrat.ui.util.NoOpComparator;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 import org.shiftone.jrat.util.log.Logger;
@@ -19,16 +17,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ChangeEvent;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import java.util.Collection;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.19 $
+ *
  */
 public class StatsViewerPanel extends JPanel {
 

@@ -1,13 +1,13 @@
 package org.shiftone.jrat.test.time;
  
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.lang.reflect.Method;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class MethodReflectCallRunnable implements Runnable {
 	private static final Logger LOG = Logger.getLogger(MethodReflectCallRunnable.class);

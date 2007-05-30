@@ -1,20 +1,18 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.Attribute;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
-
 import org.shiftone.jrat.core.criteria.MethodCriteria;
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.5 $
+ *
  */
 public class MethodCriteriaClassVisitor implements ClassVisitor {
 

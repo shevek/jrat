@@ -1,10 +1,10 @@
 package org.shiftone.jrat.util.io.csv;
 
 
-
-import org.shiftone.jrat.util.io.InputOutputException;
+ 
 import org.shiftone.jrat.util.io.csv.field.Field;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -12,7 +12,7 @@ import java.io.Writer;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class DelimitedWriter {
 
@@ -57,7 +57,7 @@ public class DelimitedWriter {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("failed to record", e);
+            throw new JRatException("failed to record", e);
         }
 
         current = new String[delimitedFormat.getFieldCount()];

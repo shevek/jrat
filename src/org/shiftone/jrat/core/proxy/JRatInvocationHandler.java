@@ -1,22 +1,17 @@
 package org.shiftone.jrat.core.proxy;
 
 
-
-import org.shiftone.jrat.core.HandlerFactory;
-import org.shiftone.jrat.core.spi.MethodHandler;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
 import java.util.Hashtable;
 import java.util.Map;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.1 $
+ * @author Jeff Drost
+ *
  * @deprecated Basicly Java 1.4 built in AOP.
  */
 public class JRatInvocationHandler implements InvocationHandler {
@@ -65,32 +60,33 @@ public class JRatInvocationHandler implements InvocationHandler {
 
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
-        MethodHandler methodHandler = null;
-        Object        result        = null;
-        long          start         = 0;
-        boolean       success       = false;
-
-        methodHandler = HandlerFactory.getMethodHandler(className, method);
-
-        try
-        {
-            methodHandler.onMethodStart(target);
-
-            start   = System.currentTimeMillis();
-            result  = doInvoke(method, args);
-            success = true;
-
-            methodHandler.onMethodFinish(target, System.currentTimeMillis() - start, null);
-
-            return result;
-        }
-        catch (Throwable throwable)
-        {
-            methodHandler.onMethodFinish(target, System.currentTimeMillis() - start, throwable);
-
-            throw throwable;
-        }
+//
+//        MethodHandler methodHandler = null;
+//        Object        result        = null;
+//        long          start         = 0;
+//        boolean       success       = false;
+//
+//        methodHandler = HandlerFactory.getMethodHandler(className, method);
+//
+//        try
+//        {
+//            methodHandler.onMethodStart(target);
+//
+//            start   = System.currentTimeMillis();
+//            result  = doInvoke(method, args);
+//            success = true;
+//
+//            methodHandler.onMethodFinish(target, System.currentTimeMillis() - start, null);
+//
+//            return result;
+//        }
+//        catch (Throwable throwable)
+//        {
+//            methodHandler.onMethodFinish(target, System.currentTimeMillis() - start, throwable);
+//
+//            throw throwable;
+//        }
+        return null; ///
     }
 
 

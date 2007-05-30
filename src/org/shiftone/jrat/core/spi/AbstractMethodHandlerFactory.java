@@ -8,8 +8,8 @@ import org.shiftone.jrat.util.log.Logger;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.22 $
+ * @author Jeff Drost
+ *
  */
 public abstract class AbstractMethodHandlerFactory implements MethodHandlerFactory, ShutdownListener {
 

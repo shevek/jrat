@@ -1,11 +1,9 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.Color;
-
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -13,8 +11,8 @@ import java.util.Comparator;
 /**
  * Class ColorSet
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class ColorSet {
 
@@ -83,7 +81,7 @@ public class ColorSet {
 /**
  * Class ColorComparator
  *
- * @author $Author: jeffdrost $
+ * @author Jeff Drost
  */
 class ColorComparator implements Comparator {
 

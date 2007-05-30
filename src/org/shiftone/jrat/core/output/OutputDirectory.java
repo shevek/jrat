@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.output;
 
 
-
 import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.AtomicLong;
@@ -12,21 +11,19 @@ import java.io.File;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
-
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-
-import java.util.Date;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.5 $
+ * @author Jeff Drost
+ *
  */
 public class OutputDirectory {
 

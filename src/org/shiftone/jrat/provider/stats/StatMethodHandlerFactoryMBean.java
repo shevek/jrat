@@ -3,8 +3,8 @@ package org.shiftone.jrat.provider.stats;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.5 $
+ * @author Jeff Drost
+ *
  */
 public interface StatMethodHandlerFactoryMBean {
 

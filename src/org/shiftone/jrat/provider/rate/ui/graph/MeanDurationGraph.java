@@ -11,8 +11,8 @@ import org.shiftone.jrat.util.time.TimeUnit;
 /**
  * Class MeanDurationGraph
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.13 $
+ * @author Jeff Drost
+ *
  */
 public class MeanDurationGraph extends AbstractGraph {
 

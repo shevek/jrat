@@ -1,15 +1,12 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +14,8 @@ import java.util.List;
 /**
  * Class NSplitPane is like a JSplitPane, except it supports N splits.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class NSplitPane extends JPanel {
 

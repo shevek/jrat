@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.management.Attribute;
@@ -17,7 +16,6 @@ import javax.management.MBeanNotificationInfo;
 import javax.management.MBeanOperationInfo;
 import javax.management.MBeanParameterInfo;
 import javax.management.ReflectionException;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,7 +23,7 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class ConfigurableMBean implements DynamicMBean {
 

@@ -14,7 +14,7 @@ import org.xml.sax.SAXException;
  * Class XmlTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.2 $
+ *
  */
 public class XmlTestCase extends TestCase {
 

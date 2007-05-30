@@ -10,8 +10,8 @@ import java.util.Comparator;
 /**
  * Class TsvComparator
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class TsvComparator implements Comparator {
 

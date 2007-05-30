@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.BorderFactory;
@@ -16,14 +15,12 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.UIDefaults;
 import javax.swing.UIManager;
-
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -31,8 +28,8 @@ import java.io.StringWriter;
 /**
  * Class ExceptionDialog
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.18 $
+ * @author Jeff Drost
+ *
  */
 public class ExceptionDialog extends JDialog implements ActionListener {
 

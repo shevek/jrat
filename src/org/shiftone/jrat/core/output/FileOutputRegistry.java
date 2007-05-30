@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.output;
 
 
-
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.util.HtmlUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -9,14 +8,13 @@ import org.shiftone.jrat.util.log.Logger;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
-
 import java.util.Iterator;
 import java.util.Stack;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.4 $
+ * @author Jeff Drost
+ *
  */
 public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownListener {
 

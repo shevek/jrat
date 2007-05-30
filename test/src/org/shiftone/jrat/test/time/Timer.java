@@ -10,7 +10,7 @@ import java.text.NumberFormat;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class Timer {
 	private static final Logger LOG = Logger.getLogger(Timer.class);

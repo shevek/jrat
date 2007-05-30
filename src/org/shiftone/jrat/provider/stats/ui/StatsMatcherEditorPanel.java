@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.stats.ui;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JComboBox;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +16,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class StatsMatcherEditorPanel extends JPanel implements DocumentListener, ActionListener {
 

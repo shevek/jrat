@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.1 $
+ * @author Jeff Drost
+ *
  */
 public class ProxyCommand implements Command {
 

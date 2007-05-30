@@ -1,20 +1,18 @@
 package org.shiftone.jrat.inject.ant;
 
 
-
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
-
-import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.core.criteria.IncludeExcludeMethodCriteria;
+import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.inject.Injector;
 
 import java.io.File;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.23 $
+ * @author Jeff Drost
+ *
  */
 public class InjectTask extends AbstractFileTask {
 

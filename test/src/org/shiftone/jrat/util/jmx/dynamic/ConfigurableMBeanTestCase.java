@@ -17,7 +17,7 @@ import java.rmi.registry.LocateRegistry;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class ConfigurableMBeanTestCase extends TestCase {
 	private static final Logger LOG = Logger.getLogger(ConfigurableMBeanTestCase.class);

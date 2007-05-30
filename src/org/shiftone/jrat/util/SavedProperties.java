@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -11,7 +10,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.util.Map;
 import java.util.Properties;
 
@@ -22,8 +20,8 @@ import java.util.Properties;
  * store anything critical. This class silently failes if there is an error
  * reading or writing the file.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.21 $
+ * @author Jeff Drost
+ *
  */
 public class SavedProperties extends Properties {
 

@@ -10,8 +10,8 @@ import org.shiftone.jrat.ui.util.graph.AbstractGraph;
 /**
  * Class ThroughputGraph
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.10 $
+ * @author Jeff Drost
+ *
  */
 public class ThroughputGraph extends AbstractGraph {
 

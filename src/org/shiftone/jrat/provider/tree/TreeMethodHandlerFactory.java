@@ -1,17 +1,16 @@
 package org.shiftone.jrat.provider.tree;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.AbstractMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.RuntimeContext;
+import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
+import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
+import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
-import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
-import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
 
 import java.io.PrintWriter;
 
@@ -19,8 +18,8 @@ import java.io.PrintWriter;
 /**
  * Class TreeMethodHandlerFactory
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.39 $
+ * @author Jeff Drost
+ *
  */
 public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory implements TreeMethodHandlerFactoryMBean {
 

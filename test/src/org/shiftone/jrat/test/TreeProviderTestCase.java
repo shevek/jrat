@@ -19,7 +19,7 @@ import java.util.List;
  * Class TreeProviderTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.6 $
+ *
  */
 public class TreeProviderTestCase extends TestCase {
 

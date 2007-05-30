@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JButton;
@@ -14,25 +13,22 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.html.HTMLEditorKit;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 import java.net.URL;
 
 
 /**
  * Class BrowserPanel
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  */
 public class BrowserPanel extends JPanel implements HyperlinkListener, ActionListener {
 

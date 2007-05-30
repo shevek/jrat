@@ -6,8 +6,8 @@ import java.io.File;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.6 $
+ * @author Jeff Drost
+ *
  */
 public class Dir extends File {
 

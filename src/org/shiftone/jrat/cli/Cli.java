@@ -1,21 +1,17 @@
 package org.shiftone.jrat.cli;
 
 
-
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.PrintStream;
-
 import java.lang.reflect.Method;
-
 import java.util.Enumeration;
 import java.util.Properties;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.26 $
+ * @author Jeff Drost
  */
 public class Cli {
 

@@ -1,12 +1,10 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -16,8 +14,8 @@ import java.awt.Graphics;
  * Class ColorTableCellRenderer renders a Color int a table by displaying a
  * round rectangular swatch.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.15 $
+ * @author Jeff Drost
+ *
  */
 public class ColorTableCellRenderer extends DefaultTableCellRenderer {
 

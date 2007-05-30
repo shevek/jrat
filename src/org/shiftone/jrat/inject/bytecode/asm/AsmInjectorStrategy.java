@@ -1,12 +1,10 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.commons.SerialVersionUIDAdder;
-
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.TransformerOptions;
 

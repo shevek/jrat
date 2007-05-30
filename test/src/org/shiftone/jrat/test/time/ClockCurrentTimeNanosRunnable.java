@@ -4,7 +4,7 @@ import org.shiftone.jrat.util.time.Clock;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class ClockCurrentTimeNanosRunnable implements Runnable {
 

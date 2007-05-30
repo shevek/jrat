@@ -2,8 +2,8 @@ package org.shiftone.jrat.provider.errors;
 
 
 
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.spi.AbstractMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.log.Logger;
@@ -12,8 +12,8 @@ import java.io.PrintWriter;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.7 $
+ * @author Jeff Drost
+ *
  */
 public class ErrorsMethodHandlerFactory extends AbstractMethodHandlerFactory {
 

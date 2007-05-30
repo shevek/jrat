@@ -8,8 +8,8 @@ import org.shiftone.jrat.util.Assert;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.16 $
+ * @author Jeff Drost
+ *
  */
 public class TreeMethodHandler implements MethodHandler {
 

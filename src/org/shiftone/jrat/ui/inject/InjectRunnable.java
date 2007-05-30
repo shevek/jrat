@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.inject;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.inject.Injector;
 import org.shiftone.jrat.ui.UIConstants;
@@ -18,18 +17,15 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
-
 import java.awt.Insets;
-
 import java.io.File;
-
 import java.util.Set;
 import java.util.TreeSet;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.23 $
+ * @author Jeff Drost
+ *
  */
 public class InjectRunnable implements Runnable, UIConstants {
 

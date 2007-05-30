@@ -6,8 +6,8 @@ import sun.misc.Perf;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class SunMiscPerfMovement implements Movement {
 

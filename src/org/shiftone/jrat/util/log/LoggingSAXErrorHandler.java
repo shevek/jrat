@@ -8,8 +8,8 @@ import org.xml.sax.SAXParseException;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  */
 public class LoggingSAXErrorHandler implements ErrorHandler {
 

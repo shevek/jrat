@@ -1,24 +1,22 @@
 package org.shiftone.jrat.inject.process;
 
 
-
 import org.shiftone.jrat.inject.InjectionException;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.io.OpenInputStream;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.regex.CompositeMatcher;
 import org.shiftone.jrat.util.regex.Matcher;
+import org.shiftone.jrat.core.JRatException;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -26,8 +24,8 @@ import java.util.zip.ZipOutputStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class ArchiveFileProcessor extends AbstractFileProcessor {
 
@@ -51,7 +49,7 @@ public class ArchiveFileProcessor extends AbstractFileProcessor {
         }
         catch (Exception e)
         {
-            throw new InjectionException("error injecting " + source.getAbsoluteFile() + " => "
+            throw new JRatException("error injecting " + source.getAbsoluteFile() + " => "
                                          + target.getAbsolutePath(), e);
         }
         finally
@@ -142,7 +140,7 @@ public class ArchiveFileProcessor extends AbstractFileProcessor {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("unable to add comment file to archive", e);
+            throw new JRatException("unable to add comment file to archive", e);
         }
     }
 

@@ -1,23 +1,19 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.io.File;
-
-import java.lang.reflect.Method;
-
-import java.text.ParseException;
-
+import java.lang.reflect.Method; 
 import java.util.Date;
 
 
 /**
  * Class IntrospectionUtil
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.25 $
+ * @author Jeff Drost
+ *
  */
 public class IntrospectionUtil {
 
@@ -86,7 +82,7 @@ public class IntrospectionUtil {
     }
 
 
-    public static Object convert(String text, Class targetType) throws ParseException {
+    public static Object convert(String text, Class targetType)  {
 
         Object result = null;
 
@@ -138,12 +134,12 @@ public class IntrospectionUtil {
             }
             else
             {
-                throw new ParseException("conversion to " + targetType.getName() + " is not supported", 0);
+                throw new JRatException("conversion to " + targetType.getName() + " is not supported");
             }
         }
         catch (Exception e)
         {
-            throw new ParseException("unable to convert " + text + " into a " + targetType.getName(), 0);
+            throw new JRatException("unable to convert " + text + " into a " + targetType.getName(), e);
         }
 
         return result;

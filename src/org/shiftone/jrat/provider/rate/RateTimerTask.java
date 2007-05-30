@@ -11,8 +11,8 @@ import java.util.TimerTask;
 /**
  * Class RateTimerTask
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class RateTimerTask extends TimerTask {
 

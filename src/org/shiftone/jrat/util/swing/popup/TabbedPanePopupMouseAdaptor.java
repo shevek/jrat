@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util.swing.popup;
 
 
-
 import javax.swing.JPopupMenu;
 import javax.swing.JTabbedPane;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

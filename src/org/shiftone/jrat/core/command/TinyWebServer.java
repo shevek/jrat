@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 

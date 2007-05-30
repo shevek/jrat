@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.time.TimeUnit;
  * This is a really fast/easy way to port an older MethodHandler to the new interface.
  * Extend this class.
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public abstract class LegacyMethodHandler implements MethodHandler {
 

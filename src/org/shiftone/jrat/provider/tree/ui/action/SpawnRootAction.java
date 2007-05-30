@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui.action;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.provider.tree.ui.TreeViewerPanel;
@@ -9,7 +8,6 @@ import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
 
 import javax.swing.tree.TreePath;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

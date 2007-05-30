@@ -9,6 +9,7 @@ import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.io.File;
 import java.io.InputStream;
@@ -16,8 +17,8 @@ import java.io.OutputStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  * todo - this logic should all go in the Injector.
  */
 public abstract class AbstractFileProcessor implements FileProcessor {
@@ -28,8 +29,7 @@ public abstract class AbstractFileProcessor implements FileProcessor {
     private boolean             overwriteNewer       = false;
     private boolean             preserveLastModified = false;
 
-    public void process(Transformer transformer, InjectorOptions options, File source, File target)
-            throws InjectionException {
+    public void process(Transformer transformer, InjectorOptions options, File source, File target) {
 
         LOG.debug("process " + source.getAbsolutePath() + " " + target.getAbsolutePath());
         Assert.assertNotNull("transformer", transformer);
@@ -38,21 +38,21 @@ public abstract class AbstractFileProcessor implements FileProcessor {
 
         if (!source.exists())
         {
-            throw new InjectionException("source file does not exist : " + source);
+            throw new JRatException("source file does not exist : " + source);
         }
 
         LOG.debug("source exists");
 
         if (source.isDirectory())
         {
-            throw new InjectionException("source file is a directory : " + source);
+            throw new JRatException("source file is a directory : " + source);
         }
 
         LOG.debug("source is real file (not dir)");
 
         if (source.canRead() == false)
         {
-            throw new InjectionException("source file can not be read (check permissions): " + source);
+            throw new JRatException("source file can not be read (check permissions): " + source);
         }
 
         LOG.debug("source can be read");
@@ -65,17 +65,17 @@ public abstract class AbstractFileProcessor implements FileProcessor {
 
             if (forceOverwrite == false)
             {
-                throw new InjectionException("target exists and forceOverwrite is disabled : " + source);
+                throw new JRatException("target exists and forceOverwrite is disabled : " + source);
             }
 
             if (target.isDirectory())
             {
-                throw new InjectionException("target is directory : " + target);
+                throw new JRatException("target is directory : " + target);
             }
 
             if (target.canWrite() == false)
             {
-                throw new InjectionException("unable to write to target (check permissions) : " + target);
+                throw new JRatException("unable to write to target (check permissions) : " + target);
             }
 
             // newer is bigger
@@ -85,7 +85,7 @@ public abstract class AbstractFileProcessor implements FileProcessor {
                 // target is newer than source
                 if (!overwriteNewer)
                 {
-                    throw new InjectionException("target is newer than source and overwriteNewer is disabled : "
+                    throw new JRatException("target is newer than source and overwriteNewer is disabled : "
                                                  + source);
                 }
             }
@@ -123,7 +123,7 @@ public abstract class AbstractFileProcessor implements FileProcessor {
 
             if (!workFile.exists())
             {
-                throw new InjectionException("processFile seems to have worked, but target file doesn't exist : "
+                throw new JRatException("processFile seems to have worked, but target file doesn't exist : "
                                              + source);
             }
 
@@ -138,7 +138,7 @@ public abstract class AbstractFileProcessor implements FileProcessor {
                 msg += " and couldn't delete the corrupt file " + workFile.getAbsolutePath();
             }
 
-            throw new InjectionException(msg, e);
+            throw new JRatException(msg, e);
         }
         finally
         {
@@ -170,8 +170,7 @@ public abstract class AbstractFileProcessor implements FileProcessor {
 
 
     protected void processStream(
-            Transformer transformer, InjectorOptions options, InputStream inputStream, OutputStream outputStream, String fileName)
-                throws InjectionException {
+            Transformer transformer, InjectorOptions options, InputStream inputStream, OutputStream outputStream, String fileName) {
         throw new UnsupportedOperationException("processStream should be implemented by derived class");
     }
 }

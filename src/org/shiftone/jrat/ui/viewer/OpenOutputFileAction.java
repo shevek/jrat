@@ -1,11 +1,10 @@
 package org.shiftone.jrat.ui.viewer;
 
 
-
 import org.shiftone.jrat.core.spi.ui.OutputViewBuilder;
-import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
+import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.ui.util.ExceptionDialog;
 import org.shiftone.jrat.util.io.IOUtil;
@@ -13,11 +12,9 @@ import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JFileChooser;
-
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -27,8 +24,8 @@ import java.io.Reader;
 /**
  * Class OpenOutputFileAction
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.28 $
+ * @author Jeff Drost
+ *
  */
 public class OpenOutputFileAction implements ActionListener, UIConstants {
 

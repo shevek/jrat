@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public abstract class CompositeMethodCriteria implements MethodCriteria {
 

@@ -14,7 +14,7 @@ import java.io.File;
  * Class IOTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.3 $
+ *
  */
 public class IOTestCase extends TestCase {
 

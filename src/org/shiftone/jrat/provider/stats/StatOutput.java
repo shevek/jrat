@@ -1,10 +1,9 @@
 package org.shiftone.jrat.provider.stats;
 
 
-
 import org.shiftone.jrat.core.MethodKeyAccumulator;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.provider.stats.ui.StatsOutputViewBuilder;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.io.csv.DelimitedFormat;
 import org.shiftone.jrat.util.io.csv.DelimitedWriter;
 
@@ -14,7 +13,7 @@ import java.io.Writer;
 
 /**
  * @author $author$
- * @version $Revision: 1.15 $
+ *
  */
 public class StatOutput {
 
@@ -43,7 +42,7 @@ public class StatOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("failed to write header", e);
+            throw new JRatException("failed to write header", e);
         }
 
         this.writer = new DelimitedWriter(writer, getDelimitedFormat());

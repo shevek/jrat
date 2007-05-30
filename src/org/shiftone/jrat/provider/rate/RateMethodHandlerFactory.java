@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.AbstractMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
@@ -10,15 +9,14 @@ import org.shiftone.jrat.util.log.Logger;
 
 import java.io.IOException;
 import java.io.OutputStream;
-
 import java.util.Timer;
 
 
 /**
  * Class RateMethodHandlerFactory
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.30 $
+ * @author Jeff Drost
+ *
  */
 public class RateMethodHandlerFactory extends AbstractMethodHandlerFactory {
 

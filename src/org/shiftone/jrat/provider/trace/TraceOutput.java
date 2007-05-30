@@ -1,10 +1,9 @@
 package org.shiftone.jrat.provider.trace;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.provider.trace.ui.TraceOutputViewBuilder;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.TimeUnit;
 
@@ -41,7 +40,7 @@ public class TraceOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("writeMethodEnter failed", e);
+            throw new JRatException("writeMethodEnter failed", e);
         }
     }
 
@@ -55,7 +54,7 @@ public class TraceOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("writeMethodEnter failed", e);
+            throw new JRatException("writeMethodEnter failed", e);
         }
     }
 
@@ -70,7 +69,7 @@ public class TraceOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("writeMethodExit failed", e);
+            throw new JRatException("writeMethodExit failed", e);
         }
     }
 
@@ -87,7 +86,7 @@ public class TraceOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("writeMethodIndex failed", e);
+            throw new JRatException("writeMethodIndex failed", e);
         }
     }
 
@@ -106,7 +105,7 @@ public class TraceOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("writeMethodDisabled failed", e);
+            throw new JRatException("writeMethodDisabled failed", e);
         }
     }
 
@@ -125,7 +124,7 @@ public class TraceOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("writeMethodDisabled failed", e);
+            throw new JRatException("writeMethodDisabled failed", e);
         }
     }
 
@@ -139,7 +138,7 @@ public class TraceOutput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("writeEOF failed", e);
+            throw new JRatException("writeEOF failed", e);
         }
     }
 }

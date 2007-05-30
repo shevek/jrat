@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.provider.tree.ui.action.SpawnRootAction;
 import org.shiftone.jrat.provider.tree.ui.action.StatsViewAction;
@@ -21,7 +20,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
-
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 
@@ -29,8 +27,8 @@ import java.awt.Graphics;
 /**
  * Class RateViewerPanel
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.25 $
+ * @author Jeff Drost
+ *
  */
 public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UIConstants {
 

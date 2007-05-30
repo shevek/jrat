@@ -1,20 +1,18 @@
 package org.shiftone.jrat.ui;
 
 
-
 import org.shiftone.jrat.util.SavedProperties;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.File;
-
 import java.util.Properties;
 
 
 /**
  * Class UserSettings
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.21 $
+ * @author Jeff Drost
+ *
  */
 public class UserSettings {
 

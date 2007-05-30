@@ -9,8 +9,8 @@ import org.shiftone.jrat.util.log.Logger;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.20 $
+ * @author Jeff Drost
+ *
  */
 public class StatMethodHandler extends MethodKeyAccumulator implements MethodHandler {
 

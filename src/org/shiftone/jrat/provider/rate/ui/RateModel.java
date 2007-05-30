@@ -1,10 +1,9 @@
 package org.shiftone.jrat.provider.rate.ui;
 
 
-
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.core.ParseException;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.provider.rate.RateOutput;
 import org.shiftone.jrat.ui.util.ColorSet;
 import org.shiftone.jrat.util.StringUtil;
@@ -12,13 +11,11 @@ import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.Color;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.Reader;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +24,8 @@ import java.util.List;
  * Data structure holds all samples for a particular run. This is an in-memory
  * version of the output file.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.25 $
+ * @author Jeff Drost
+ *
  */
 public class RateModel {
 
@@ -41,15 +38,8 @@ public class RateModel {
     private List                samples         = null;
     private List                methodKeys      = null;
 
-    /**
-     * Method load
-     *
-     * @param inputStream .
-     *
-     * @throws IOException
-     * @throws ParseException
-     */
-    public void load(InputStream inputStream) throws IOException, ParseException {
+
+    public void load(InputStream inputStream) throws IOException {
 
         Reader           reader     = new InputStreamReader(inputStream);
         LineNumberReader lineReader = new LineNumberReader(reader);
@@ -75,14 +65,8 @@ public class RateModel {
     }
 
 
-    /**
-     * Method processLine
-     *
-     * @param line .
-     *
-     * @throws ParseException
-     */
-    private void processLine(String line) throws ParseException {
+
+    private void processLine(String line) {
 
         String[] tokens = StringUtil.tokenize(line, "\t", false);
 
@@ -113,64 +97,37 @@ public class RateModel {
     }
 
 
-    /**
-     * Method addMethodKey
-     *
-     * @param tokens .
-     *
-     * @throws ParseException
-     */
-    private void addMethod(String[] tokens) throws ParseException {
+
+    private void addMethod(String[] tokens) {
 
         // 0 METHOD, 1 index, 2 class, 3 method, 4 signature 5 END
         if (tokens.length != 6)
         {
-            throw new ParseException("error in format of method key : " + tokens);
+            throw new JRatException("error in format of method key : " + tokens);
         }
 
         methodKeys.add(Integer.parseInt(tokens[1]), new MethodKey(tokens[2], tokens[3], tokens[4]));
     }
 
 
-    /**
-     * Method addSample
-     *
-     * @param tokens .
-     *
-     * @throws ParseException
-     */
-    private void addSample(String[] tokens) throws ParseException {
+
+    private void addSample(String[] tokens) {
         samples.add(new RateModelSample(tokens));
     }
 
 
-    /**
-     * Method getSampleCount
-     *
-     * @return .
-     */
     public int getSampleCount() {
         return samples.size();
     }
 
 
-    /**
-     * Method getMethodCount
-     *
-     * @return .
-     */
+
     public int getMethodCount() {
         return methodKeys.size();
     }
 
 
-    /**
-     * Method getMethodKey
-     *
-     * @param index .
-     *
-     * @return .
-     */
+
     public MethodKey getMethodKey(int index) {
         return (MethodKey) methodKeys.get(index);
     }

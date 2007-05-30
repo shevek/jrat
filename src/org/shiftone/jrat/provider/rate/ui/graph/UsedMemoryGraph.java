@@ -11,8 +11,8 @@ import java.awt.Color;
 /**
  * Class UsedMemoryGraph
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class UsedMemoryGraph extends AbstractGraph {
 

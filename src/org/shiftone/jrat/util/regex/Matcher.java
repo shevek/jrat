@@ -3,8 +3,8 @@ package org.shiftone.jrat.util.regex;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.5 $
+ * @author Jeff Drost
+ *
  */
 public interface Matcher {
 

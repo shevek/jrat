@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui;
 
 
-
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
 import org.shiftone.jrat.inject.Injector;
 import org.shiftone.jrat.ui.action.ExitAction;
@@ -11,10 +10,10 @@ import org.shiftone.jrat.ui.action.ResizeAction;
 import org.shiftone.jrat.ui.help.AboutAction;
 import org.shiftone.jrat.ui.help.ShowDocsAction;
 import org.shiftone.jrat.ui.inject.InjectDirAction;
+import org.shiftone.jrat.ui.status.StatusPanel;
 import org.shiftone.jrat.ui.tab.TabbedPaneViewContainer;
 import org.shiftone.jrat.ui.util.JRatFrame;
 import org.shiftone.jrat.ui.viewer.OpenOutputFileAction;
-import org.shiftone.jrat.ui.status.StatusPanel;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.CloseTabbedPanePopupMouseAdaptor;
 
@@ -22,22 +21,20 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.awt.event.KeyEvent;
-
 import java.io.File;
 
 
 /**
  * Class DesktopFrame
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.36 $
+ * @author Jeff Drost
+ *
  */
 public class DesktopFrame extends JRatFrame implements UIConstants, ContainerListener {
 

@@ -5,7 +5,7 @@ import org.shiftone.jrat.util.io.nop.NullPrintWriter;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class ThrowablePrintStackTraceRunnable implements Runnable {
 	private Throwable throwable = new Throwable();

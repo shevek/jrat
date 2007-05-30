@@ -1,21 +1,19 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.ui.AbstractOutputXmlViewBuilder;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.*;
-
+import javax.swing.JComponent;
 import java.util.Properties;
 
 
 /**
  * Class TreeOutputXmlViewerFactory
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class TreeOutputXmlViewBuilder extends AbstractOutputXmlViewBuilder {
 

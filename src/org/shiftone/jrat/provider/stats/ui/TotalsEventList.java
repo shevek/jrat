@@ -1,14 +1,12 @@
 package org.shiftone.jrat.provider.stats.ui;
 
 
-
 import ca.odell.glazedlists.AbstractEventList;
 import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.event.ListEvent;
 import ca.odell.glazedlists.event.ListEventListener;
-
-import org.shiftone.jrat.core.MethodKeyAccumulator;
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.MethodKeyAccumulator;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.util.Collection;
@@ -16,7 +14,7 @@ import java.util.Collection;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class TotalsEventList extends AbstractEventList implements ListEventListener {
 

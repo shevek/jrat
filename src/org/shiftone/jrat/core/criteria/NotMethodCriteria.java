@@ -7,7 +7,7 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class NotMethodCriteria implements MethodCriteria {
 

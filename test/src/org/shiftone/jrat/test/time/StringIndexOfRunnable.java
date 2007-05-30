@@ -3,7 +3,7 @@ package org.shiftone.jrat.test.time;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class StringIndexOfRunnable implements Runnable {
 	private final String string;

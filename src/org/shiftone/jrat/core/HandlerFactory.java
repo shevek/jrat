@@ -1,13 +1,8 @@
 package org.shiftone.jrat.core;
 
 
-
 import org.shiftone.jrat.core.spi.MethodHandler;
-import org.shiftone.jrat.util.SignatureUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 
 
 /**
@@ -62,22 +57,6 @@ public class HandlerFactory {
     }
 
 
-    /**
-     * A main runtime entry point.
-     */
-    public static MethodHandler getMethodHandler(Method method) {
-        return getInternalHandler().getMethodHandler(method);
-    }
-
  
-    /**
-     * A main runtime entry point.
-     */
-    public static MethodHandler getMethodHandler(String className, Method method) {
-
-        String methodName = method.getName();
-        String signature  = SignatureUtil.getSignature(method);
-
-        return getMethodHandler(className, methodName, signature);
-    }
+     
 }

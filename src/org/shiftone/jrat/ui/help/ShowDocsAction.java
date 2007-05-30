@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.help;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
 import org.shiftone.jrat.ui.util.BackgroundActionListener;
@@ -9,15 +8,14 @@ import org.shiftone.jrat.ui.util.BrowserPanel;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.event.ActionEvent;
-
 import java.net.URL;
 
 
 /**
  * Class ShowDocsAction
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.19 $
+ * @author Jeff Drost
+ *
  */
 public class ShowDocsAction extends BackgroundActionListener {
 

@@ -1,26 +1,24 @@
 package org.shiftone.jrat.provider.stats;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.AbstractMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.RuntimeContext;
+import org.shiftone.jrat.provider.stats.jmx.StatMBeanRegistry;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.provider.stats.jmx.StatMBeanRegistry;
 
 import java.io.StringWriter;
 import java.io.Writer;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.38 $
+ * @author Jeff Drost
+ *
  */
 public class StatMethodHandlerFactory extends AbstractMethodHandlerFactory implements StatMethodHandlerFactoryMBean {
 

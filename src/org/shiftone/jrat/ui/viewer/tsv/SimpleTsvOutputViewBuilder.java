@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.viewer.tsv;
 
 
-
 import org.shiftone.jrat.core.spi.ui.OutputViewBuilder;
 import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
@@ -12,13 +11,12 @@ import org.shiftone.jrat.util.log.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
-
 import java.io.InputStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.6 $
+ * @author Jeff Drost
+ *
  */
 public class SimpleTsvOutputViewBuilder implements OutputViewBuilder {
 

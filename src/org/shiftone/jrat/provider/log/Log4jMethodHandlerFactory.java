@@ -1,18 +1,16 @@
 package org.shiftone.jrat.provider.log;
 
 
-
+import org.apache.log4j.Level;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.core.spi.RuntimeContext;
 
-import org.apache.log4j.Level;
-
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class Log4jMethodHandlerFactory implements MethodHandlerFactory {
 

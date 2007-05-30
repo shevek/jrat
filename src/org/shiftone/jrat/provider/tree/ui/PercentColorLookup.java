@@ -1,12 +1,10 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 
-
 import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.Icon;
-
 import java.awt.Color;
 
 

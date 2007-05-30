@@ -1,19 +1,17 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-
 import org.objectweb.asm.ClassAdapter;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
-
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class ClassInitClassVisitor extends ClassAdapter implements Constants, Opcodes {
 

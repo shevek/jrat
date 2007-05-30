@@ -4,7 +4,7 @@ package org.shiftone.jrat.provider.rate2;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class Context {
 

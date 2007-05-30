@@ -1,20 +1,18 @@
 package org.shiftone.jrat.inject.process;
 
 
-
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.inject.bytecode.Transformer;
-import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class ClassFileProcessor extends AbstractFileProcessor {
 
@@ -33,7 +31,7 @@ public class ClassFileProcessor extends AbstractFileProcessor {
         }
         catch (Exception e)
         {
-            throw new InputOutputException("unable to write data to output stream", e);
+            throw new JRatException("unable to write data to output stream", e);
         }
     }
 }

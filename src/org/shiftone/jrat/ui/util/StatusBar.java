@@ -1,14 +1,12 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.border.BevelBorder;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -16,8 +14,8 @@ import java.awt.Dimension;
 /**
  * Class StatusBar
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  */
 public class StatusBar extends JPanel {
 

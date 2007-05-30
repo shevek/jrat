@@ -8,8 +8,8 @@ import org.shiftone.jrat.util.log.Logger;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.6 $
+ * @author Jeff Drost
+ *
  */
 public class RateOutputViewBuilder implements OutputViewBuilder {
 

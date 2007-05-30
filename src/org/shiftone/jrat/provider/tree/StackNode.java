@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree;
 
 
-
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.TreeOutputXmlViewBuilder;
@@ -10,7 +9,6 @@ import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.Clock;
 
 import java.io.PrintWriter;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,8 +18,8 @@ import java.util.List;
 /**
  * Class StackNode
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.30 $
+ * @author Jeff Drost
+ *
  */
 public class StackNode extends Accumulator {
 

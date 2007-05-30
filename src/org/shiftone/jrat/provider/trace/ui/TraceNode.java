@@ -1,11 +1,9 @@
 package org.shiftone.jrat.provider.trace.ui;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 
 import javax.swing.tree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;

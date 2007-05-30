@@ -1,15 +1,13 @@
 package org.shiftone.jrat.provider.tree.ui.stack;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.util.Percent;
-import org.shiftone.jrat.util.time.TimeUnit;
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.util.Percent;
+import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.time.TimeUnit;
 
 import javax.swing.table.AbstractTableModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +15,8 @@ import java.util.List;
 /**
  * Class StackTableModel
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.4 $
+ * @author Jeff Drost
+ *
  */
 public class StackTableModel extends AbstractTableModel {
 

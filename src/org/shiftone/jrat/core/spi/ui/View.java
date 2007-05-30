@@ -1,17 +1,15 @@
 package org.shiftone.jrat.core.spi.ui;
 
 
-
 import org.shiftone.jrat.util.Command;
 
 import javax.swing.BoundedRangeModel;
-
 import java.awt.Component;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public interface View {
 

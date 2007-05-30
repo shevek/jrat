@@ -14,7 +14,7 @@ import java.io.OutputStream;
  * ObjectStreamClass that wrote it's data through and instance of this class.
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.2 $
+ *
  */
 public class DebugOutputStream extends OutputStream {
 

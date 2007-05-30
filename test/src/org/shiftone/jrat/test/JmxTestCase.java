@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class JmxTestCase extends TestCase {
 	private static final Logger LOG = Logger.getLogger(JmxTestCase.class);

@@ -1,17 +1,16 @@
 package org.shiftone.jrat.core;
 
 
-
 import org.shiftone.jrat.util.StringUtil;
-import org.shiftone.jrat.util.time.TimeUnit;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.time.TimeUnit;
 
 
 /**
  * Class Accumulator
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.32 $
+ * @author Jeff Drost
+ *
  */
 public class Accumulator {
 
@@ -254,13 +253,13 @@ public class Accumulator {
     }
 
 
-    public static Accumulator fromCSV(String csv, Accumulator acc) throws ParseException {
+    public static Accumulator fromCSV(String csv, Accumulator acc) {
 
         String[] tokens = StringUtil.tokenize(csv, ",", false);
 
         if ((tokens.length != 6) && (tokens.length != 8))
         {
-            throw new ParseException("accumulator CSV must contain 6 or 8 tokens : " + tokens.length + " in " + csv);
+            throw new JRatException("accumulator CSV must contain 6 or 8 tokens : " + tokens.length + " in " + csv);
         }
 
         if (tokens.length >= 6)
@@ -283,7 +282,7 @@ public class Accumulator {
     }
 
 
-    public static Accumulator fromCSV(String csv) throws ParseException {
+    public static Accumulator fromCSV(String csv) {
         return fromCSV(csv, new Accumulator());
     }
 }

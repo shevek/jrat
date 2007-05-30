@@ -1,9 +1,7 @@
 package org.shiftone.jrat.provider.stats.ui;
 
 
-
 import ca.odell.glazedlists.BasicEventList;
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.MethodKeyAccumulator;
 import org.shiftone.jrat.core.spi.ui.OutputViewBuilder;
@@ -15,7 +13,6 @@ import org.shiftone.jrat.util.log.Logger;
 
 import java.io.BufferedReader;
 import java.io.Reader;
-
 import java.util.List;
 
 

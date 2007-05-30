@@ -9,7 +9,7 @@ import java.io.File;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class ArchiveFileProcessorTestCase extends TestCase {
 

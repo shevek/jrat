@@ -1,17 +1,15 @@
 package org.shiftone.jrat.provider.stats.ui;
 
 
-
 import ca.odell.glazedlists.gui.TableFormat;
-
 import org.shiftone.jrat.core.MethodKeyAccumulator;
-import org.shiftone.jrat.util.time.TimeUnit;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.time.TimeUnit;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class StatsTableFormat implements TableFormat {
 

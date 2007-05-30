@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class ShutdownRegistryTestCase extends TestCase {
 	private static final Logger LOG = Logger.getLogger(ShutdownRegistryTestCase.class);

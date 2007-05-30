@@ -1,9 +1,8 @@
 package org.shiftone.jrat.ui;
 
 
-
-import org.shiftone.jrat.util.io.GlobFileFilter;
 import org.shiftone.jrat.util.VersionUtil;
+import org.shiftone.jrat.util.io.GlobFileFilter;
 
 import java.util.ResourceBundle;
 
@@ -11,8 +10,8 @@ import java.util.ResourceBundle;
 /**
  * Interface UIConstants
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.32 $
+ * @author Jeff Drost
+ *
  */
 public interface UIConstants {
 

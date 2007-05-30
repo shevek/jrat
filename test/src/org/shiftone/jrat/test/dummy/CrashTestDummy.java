@@ -14,7 +14,7 @@ import java.util.List;
  * Class CrashTestDummy
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.4 $
+ *
  */
 public class CrashTestDummy implements Serializable {
 

@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class Signature {
 

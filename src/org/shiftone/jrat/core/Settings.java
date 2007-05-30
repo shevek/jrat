@@ -1,14 +1,11 @@
 package org.shiftone.jrat.core;
 
 
-
-import org.shiftone.jrat.inject.bytecode.asm.AsmInjectorStrategy;
+import org.shiftone.jrat.core.boot.JRatRuntime;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import org.shiftone.jrat.util.io.Dir;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
-import org.shiftone.jrat.core.boot.JRatRuntime;
-import org.shiftone.jrat.core.boot.config.Configuration;
 
 import java.io.File;
 
@@ -19,8 +16,8 @@ import java.io.File;
  * <p>
  * I have mixed feelings about this approach...
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.19 $
+ * @author Jeff Drost
+ *
  * @deprecated
  */
 public class Settings {

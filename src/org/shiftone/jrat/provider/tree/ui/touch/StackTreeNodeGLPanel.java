@@ -1,13 +1,11 @@
 package org.shiftone.jrat.provider.tree.ui.touch;
 
 
-
 import com.touchgraph.graphlayout.GLPanel;
 import com.touchgraph.graphlayout.Node;
 import com.touchgraph.graphlayout.TGException;
-
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.provider.tree.ui.PercentColorLookup;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.util.Assert;
@@ -17,7 +15,7 @@ import java.awt.Color;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.6 $
+ *
  */
 public class StackTreeNodeGLPanel extends GLPanel {
 

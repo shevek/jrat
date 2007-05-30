@@ -1,11 +1,9 @@
 package org.shiftone.jrat.ui.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.Icon;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -14,8 +12,8 @@ import java.awt.Graphics;
 /**
  * Class DotIcon
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class DotIcon implements Icon {
 

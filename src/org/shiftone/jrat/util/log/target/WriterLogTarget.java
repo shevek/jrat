@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.log.target;
 
 
-
 import org.shiftone.jrat.util.io.PrintStreamWriter;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -9,16 +8,14 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.7 $
+ * @author Jeff Drost
+ *
  */
 public class WriterLogTarget implements LogTarget {
 

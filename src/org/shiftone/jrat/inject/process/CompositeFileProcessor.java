@@ -1,9 +1,8 @@
 package org.shiftone.jrat.inject.process;
 
 
-
-import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.inject.InjectorOptions;
+import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -11,8 +10,8 @@ import java.io.File;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class CompositeFileProcessor implements FileProcessor {
 

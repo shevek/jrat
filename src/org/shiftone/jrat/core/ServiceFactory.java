@@ -1,24 +1,23 @@
 package org.shiftone.jrat.core;
 
 
-
-import org.shiftone.jrat.inject.bytecode.Transformer;
-import org.shiftone.jrat.core.shutdown.ShutdownRegistry;
-import org.shiftone.jrat.core.jmx.benchmark.Benchmark;
-import org.shiftone.jrat.core.output.FileOutputFactory;
-import org.shiftone.jrat.core.output.FileOutputRegistry;
-import org.shiftone.jrat.core.jmx.JmxRegistry;
-import org.shiftone.jrat.core.jmx.JmxRegistryFactory;
-import org.shiftone.jrat.core.jmx.info.JRatInfo;
 import org.shiftone.jrat.core.command.CommandletRegistry;
 import org.shiftone.jrat.core.command.CommandletRegistryFactory;
+import org.shiftone.jrat.core.jmx.JmxRegistry;
+import org.shiftone.jrat.core.jmx.JmxRegistryFactory;
+import org.shiftone.jrat.core.jmx.benchmark.Benchmark;
+import org.shiftone.jrat.core.jmx.info.JRatInfo;
+import org.shiftone.jrat.core.output.FileOutputFactory;
+import org.shiftone.jrat.core.output.FileOutputRegistry;
+import org.shiftone.jrat.core.shutdown.ShutdownRegistry;
+import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggingManager;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.14 $
+ * @author Jeff Drost
+ *
  */
 public class ServiceFactory {
 

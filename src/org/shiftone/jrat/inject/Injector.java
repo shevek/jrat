@@ -1,23 +1,22 @@
 package org.shiftone.jrat.inject;
 
 
-
-import org.shiftone.jrat.inject.bytecode.Transformer;
+import org.shiftone.jrat.core.ServiceFactory;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
+import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.inject.process.CompositeFileProcessor;
 import org.shiftone.jrat.inject.process.FileProcessor;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.ServiceFactory;
 
 import java.io.File;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.41 $
+ * @author Jeff Drost
+ *
  */
 public class Injector {
 
@@ -65,7 +64,7 @@ public class Injector {
             {
                 IOUtil.delete(file);
             }
-            catch (InputOutputException e)
+            catch (JRatException e)
             {
                 LOG.warn("unable to delete : " + file);
             }

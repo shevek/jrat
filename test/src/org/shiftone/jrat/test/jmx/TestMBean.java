@@ -2,7 +2,7 @@ package org.shiftone.jrat.test.jmx;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public interface TestMBean {
 

@@ -1,13 +1,11 @@
 package org.shiftone.jrat.provider.trace.ui;
 
 
-
 import ca.odell.glazedlists.BasicEventList;
 import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.swing.EventTableModel;
 import ca.odell.glazedlists.swing.TableComparatorChooser;
-
 import org.shiftone.jrat.ui.util.NoOpComparator;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -20,15 +18,13 @@ import javax.swing.JTable;
 import javax.swing.JTree;
 import javax.swing.SwingConstants;
 import javax.swing.table.TableModel;
-
 import java.awt.BorderLayout;
-
 import java.util.Date;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.5 $
+ *
  */
 public class TraceViewPanel extends JPanel implements SwingConstants {
 

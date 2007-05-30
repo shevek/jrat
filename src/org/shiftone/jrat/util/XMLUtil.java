@@ -1,9 +1,7 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -15,8 +13,8 @@ import javax.xml.parsers.SAXParserFactory;
 /**
  * This class was written in reaction to crazy changing interfaces. Uuug.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.21 $
+ * @author Jeff Drost
+ *
  */
 public class XMLUtil {
 

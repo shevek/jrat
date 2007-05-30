@@ -9,8 +9,8 @@ import java.io.File;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.6 $
+ * @author Jeff Drost
+ *
  */
 public interface FileProcessor {
     public void process(Transformer transformer, InjectorOptions options, File source, File target);

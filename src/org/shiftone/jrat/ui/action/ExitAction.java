@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * Class ExitAction
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class ExitAction implements ActionListener {
 

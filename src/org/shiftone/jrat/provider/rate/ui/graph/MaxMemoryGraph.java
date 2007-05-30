@@ -11,8 +11,8 @@ import java.awt.Color;
 /**
  * Class MaxMemoryGraph
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class MaxMemoryGraph extends AbstractGraph {
 

@@ -3,8 +3,8 @@ package org.shiftone.jrat.util;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class Assert {
 

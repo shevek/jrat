@@ -1,25 +1,22 @@
 package org.shiftone.jrat.ui.help;
 
 
-
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.ui.util.BackgroundActionListener;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JOptionPane;
-
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
-
 import java.util.Properties;
 
 
 /**
  * Class AboutAction
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.16 $
+ * @author Jeff Drost
+ *
  */
 public class AboutAction extends BackgroundActionListener implements UIConstants {
 

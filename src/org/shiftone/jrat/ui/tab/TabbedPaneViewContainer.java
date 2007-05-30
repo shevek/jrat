@@ -1,19 +1,17 @@
 package org.shiftone.jrat.ui.tab;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JTabbedPane;
-
 import java.awt.Graphics;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class TabbedPaneViewContainer extends JTabbedPane implements ViewContainer {
 

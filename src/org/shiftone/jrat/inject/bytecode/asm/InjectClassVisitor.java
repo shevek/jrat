@@ -1,7 +1,6 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-
 import org.objectweb.asm.ClassAdapter;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
@@ -9,13 +8,12 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.GeneratorAdapter;
-import org.objectweb.asm.commons.Method;
-
-import org.shiftone.jrat.inject.bytecode.InjectorException;
+import org.objectweb.asm.commons.Method; 
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.util.Date;
 
@@ -82,7 +80,7 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
 
         if (name.equals(InjectorStrategy.COMMENT_FIELD_NAME))
         {
-            throw new InjectorException("this class was previously injected by JRat");
+            throw new JRatException("this class was previously injected by JRat");
         }
 
         return super.visitField(access, name, desc, signature, value);

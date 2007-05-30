@@ -4,7 +4,7 @@ package org.shiftone.jrat.util.jmx.dynamic;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public interface Operation {
 

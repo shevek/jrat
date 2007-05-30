@@ -1,9 +1,8 @@
 package org.shiftone.jrat.util.collection;
 
 
-
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.Assert;
+import org.shiftone.jrat.util.log.Logger;
 
 import java.util.LinkedList;
 
@@ -11,8 +10,8 @@ import java.util.LinkedList;
 /**
  * Simple wrapper around a LinkedList.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class Queue {
 

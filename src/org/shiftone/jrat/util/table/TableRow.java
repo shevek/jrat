@@ -5,8 +5,8 @@ package org.shiftone.jrat.util.table;
 /**
  * Interface TableRow
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.8 $
+ * @author Jeff Drost
+ *
  */
 public interface TableRow {
 

@@ -10,8 +10,8 @@ import java.security.ProtectionDomain;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.8 $
+ * @author Jeff Drost
+ *
  */
 public class FilterClassFileTransformer implements ClassFileTransformer {
 

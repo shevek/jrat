@@ -9,7 +9,7 @@ import java.util.zip.ZipException;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class NestedRuntimeExceptionTestCase extends TestCase {
 	private static final Logger LOG  = Logger.getLogger(NestedRuntimeExceptionTestCase.class);

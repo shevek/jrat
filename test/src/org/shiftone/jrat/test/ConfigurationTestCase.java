@@ -13,7 +13,7 @@ import org.shiftone.jrat.util.log.Logger;
  * Class ConfigurationTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.4 $
+ *
  */
 public class ConfigurationTestCase extends TestCase {
 

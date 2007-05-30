@@ -12,7 +12,7 @@ import java.util.Map;
  * This ClassLoader allows classes to be
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.1 $
+ *
  */
 public class TestClassLoader extends ClassLoader implements Serializable {
 

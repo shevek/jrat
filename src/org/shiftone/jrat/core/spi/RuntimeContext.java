@@ -10,8 +10,8 @@ import java.io.Writer;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.17 $
+ * @author Jeff Drost
+ *
  */
 public interface RuntimeContext {
 

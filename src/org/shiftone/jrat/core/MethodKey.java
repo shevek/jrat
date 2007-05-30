@@ -10,8 +10,8 @@ import org.shiftone.jrat.util.log.Logger;
  * Immutable object that can be used to uniquely identify a method - suitable
  * for use as a Map key.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.25 $
+ * @author Jeff Drost
+ *
  */
 public class MethodKey {
 

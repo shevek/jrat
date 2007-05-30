@@ -6,8 +6,8 @@ import org.shiftone.jrat.util.log.Logger;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class ArrayTableRow implements TableRow {
 

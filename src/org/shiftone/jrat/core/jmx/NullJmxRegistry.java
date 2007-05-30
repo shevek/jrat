@@ -6,8 +6,8 @@ import org.shiftone.jrat.util.log.Logger;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class NullJmxRegistry implements JmxRegistry {
 

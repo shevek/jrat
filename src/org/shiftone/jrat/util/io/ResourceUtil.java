@@ -1,10 +1,9 @@
 package org.shiftone.jrat.util.io;
 
 
-
-import org.shiftone.jrat.core.ConfigurationException;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -12,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Properties;
@@ -21,8 +19,8 @@ import java.util.Properties;
 /**
  * Class ResourceUtil
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.10 $
+ * @author Jeff Drost
+ *
  */
 public class ResourceUtil {
 
@@ -38,7 +36,7 @@ public class ResourceUtil {
         }
     }
 
-    public static Object newInstance(String className) throws ConfigurationException {
+    public static Object newInstance(String className) {
 
         Class  klass    = null;
         Object instance = null;
@@ -52,7 +50,7 @@ public class ResourceUtil {
         }
         catch (Exception e)
         {
-            throw new ConfigurationException("unable to load class '" + className + "'", e);
+            throw new JRatException("unable to load class '" + className + "'", e);
         }
 
         try
@@ -61,14 +59,14 @@ public class ResourceUtil {
         }
         catch (Exception e)
         {
-            throw new ConfigurationException("unable to instantiate '" + className + "'", e);
+            throw new JRatException("unable to instantiate '" + className + "'", e);
         }
 
         return instance;
     }
 
 
-    public static InputStream loadResourceAsStream(String resourceName) throws ConfigurationException {
+    public static InputStream loadResourceAsStream(String resourceName) {
 
         InputStream inputStream = null;
 
@@ -89,7 +87,7 @@ public class ResourceUtil {
             }
             catch (Exception e)
             {
-                throw new ConfigurationException("unable to locate resource : " + resourceName);
+                throw new JRatException("unable to locate resource : " + resourceName);
             }
         }
         else
@@ -119,7 +117,7 @@ public class ResourceUtil {
     }
 
 
-    private static String fetchResource(String name) throws ConfigurationException {
+    private static String fetchResource(String name) {
 
         Reader       reader      = null;
         StringBuffer sb          = null;
@@ -143,14 +141,14 @@ public class ResourceUtil {
         }
         catch (IOException e)
         {
-            throw new ConfigurationException("unable to read resource data : " + name, e);
+            throw new JRatException("unable to read resource data : " + name, e);
         }
 
         return sb.toString();
     }
 
 
-    public static String loadResource(String name) throws ConfigurationException {
+    public static String loadResource(String name) {
 
         String resource = null;
 
@@ -171,7 +169,7 @@ public class ResourceUtil {
     }
 
 
-    public static Properties getResourceAsProperties(String name) throws ConfigurationException {
+    public static Properties getResourceAsProperties(String name) {
 
         InputStream inputStream = null;
         Properties  props       = null;
@@ -188,7 +186,7 @@ public class ResourceUtil {
         }
         catch (Exception e)
         {
-            throw new ConfigurationException("unable to load properties from resource : " + name, e);
+            throw new JRatException("unable to load properties from resource : " + name, e);
         }
 
         return props;

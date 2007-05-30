@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.util.graph;
 
 
-
 import org.shiftone.jrat.ui.util.NSplitPane;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -9,7 +8,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-
 import java.awt.BorderLayout;
 
 
@@ -18,8 +16,8 @@ import java.awt.BorderLayout;
  * other, each in a resizable pane, and a single scroll bar to move them back
  * and forth.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.14 $
+ * @author Jeff Drost
+ *
  */
 public class NGraphPanel extends JPanel {
 

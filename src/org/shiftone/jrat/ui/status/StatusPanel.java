@@ -1,21 +1,17 @@
 package org.shiftone.jrat.ui.status;
 
 
-
-import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
-
-import java.util.TimerTask;
-import java.util.Date;
-import java.util.Timer;
-
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import java.awt.FlowLayout;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class StatusPanel extends JPanel {
 

@@ -3,8 +3,8 @@ package org.shiftone.jrat.core.spi;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  */
 public interface MethodHandler {
 

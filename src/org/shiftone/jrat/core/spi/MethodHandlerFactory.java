@@ -6,8 +6,8 @@ import org.shiftone.jrat.core.MethodKey;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.18 $
+ * @author Jeff Drost
+ *
  */
 public interface MethodHandlerFactory {
 

@@ -7,8 +7,8 @@ import java.io.OutputStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.5 $
+ * @author Jeff Drost
+ *
  */
 public class NullOutputStream extends OutputStream {
 

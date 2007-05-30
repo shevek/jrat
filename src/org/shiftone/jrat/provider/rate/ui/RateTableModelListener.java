@@ -15,8 +15,8 @@ import javax.swing.event.TableModelListener;
  * This class receieves events from a RateTableModel and hides and unhides the
  * necessary graph within a GraphModelSet.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  */
 public class RateTableModelListener implements TableModelListener {
 

@@ -10,8 +10,8 @@ import java.lang.reflect.Method;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.2 $
+ * @author Jeff Drost
+ *
  */
 public class JRatInfo implements JRatInfoMBean {
 

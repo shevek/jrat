@@ -1,12 +1,10 @@
 package org.shiftone.jrat.ui.util.graph;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,8 +17,8 @@ import java.util.Set;
 /**
  * Class GraphModelSet
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.13 $
+ * @author Jeff Drost
+ *
  */
 public class GraphModelSet {
 

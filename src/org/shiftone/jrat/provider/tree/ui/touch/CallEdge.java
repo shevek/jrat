@@ -1,11 +1,9 @@
 package org.shiftone.jrat.provider.tree.ui.touch;
 
 
-
 import com.touchgraph.graphlayout.Edge;
 import com.touchgraph.graphlayout.Node;
 import com.touchgraph.graphlayout.TGPanel;
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.Color;
@@ -14,7 +12,7 @@ import java.awt.Graphics;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.3 $
+ *
  */
 public class CallEdge extends Edge {
 

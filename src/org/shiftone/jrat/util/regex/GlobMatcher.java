@@ -18,8 +18,8 @@ import java.io.File;
  * <li>?he q???k br?wn fox
  * <li>java 1.4.?
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.5 $
+ * @author Jeff Drost
+ *
  */
 public class GlobMatcher implements Matcher {
 

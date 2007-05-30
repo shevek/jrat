@@ -1,13 +1,11 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.StackNode;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.tree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,8 +16,8 @@ import java.util.List;
 /**
  * Class StackTreeNode
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.24 $
+ * @author Jeff Drost
+ *
  */
 public class StackTreeNode extends StackNode implements TreeNode {
 

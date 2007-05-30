@@ -1,12 +1,10 @@
 package org.shiftone.jrat.provider.log;
 
 
-
-import org.shiftone.jrat.core.spi.MethodHandler;
-import org.shiftone.jrat.core.MethodKey;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.spi.MethodHandler;
 
 
 public class JclMethodHandler implements MethodHandler {

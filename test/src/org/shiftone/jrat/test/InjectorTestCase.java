@@ -25,7 +25,7 @@ import java.util.List;
  * Class InjectorTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.18 $
+ *
  */
 public class InjectorTestCase extends TestCase {
 

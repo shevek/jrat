@@ -1,14 +1,12 @@
 package org.shiftone.jrat.inject.ant;
 
 
-
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.DirectoryScanner;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.FileSet;
 
 import java.io.File;
-
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -16,8 +14,8 @@ import java.util.Vector;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.13 $
+ * @author Jeff Drost
+ *
  */
 public abstract class AbstractFileTask extends Task {
 

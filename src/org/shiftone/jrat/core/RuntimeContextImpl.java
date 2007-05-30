@@ -1,33 +1,31 @@
 package org.shiftone.jrat.core;
 
 
-
+import org.shiftone.jrat.core.command.CommandletRegistry;
+import org.shiftone.jrat.core.jmx.JmxRegistry;
+import org.shiftone.jrat.core.output.OutputDirectory;
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.core.shutdown.ShutdownRegistry;
-import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.core.spi.Commandlet;
-import org.shiftone.jrat.core.output.OutputDirectory;
+import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.ui.viewer.SimpleTextOutputViewBuilder;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.core.jmx.JmxRegistry;
-import org.shiftone.jrat.core.command.CommandletRegistry;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
-
 import java.util.Properties;
 
 
 /**
  * Class RuntimeContextImpl
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.64 $
+ * @author Jeff Drost
+ *
  */
 class RuntimeContextImpl implements RuntimeContext {
 

@@ -1,12 +1,10 @@
 package org.shiftone.jrat.core;
 
 
-
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.PrintStream;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,8 +19,8 @@ import java.util.Map;
  * in their output, the output can contain a method pool section, and methods
  * can be referenced by id elsewhere.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.22 $
+ * @author Jeff Drost
+ *
  */
 public class MethodKeyPool {
 

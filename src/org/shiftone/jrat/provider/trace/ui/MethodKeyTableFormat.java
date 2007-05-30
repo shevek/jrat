@@ -1,16 +1,14 @@
 package org.shiftone.jrat.provider.trace.ui;
 
 
-
 import ca.odell.glazedlists.gui.TableFormat;
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.util.log.Logger;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class MethodKeyTableFormat implements TableFormat {
 

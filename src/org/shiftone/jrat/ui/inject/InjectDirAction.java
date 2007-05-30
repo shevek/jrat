@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.inject;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
 import org.shiftone.jrat.inject.Injector;
@@ -11,18 +10,16 @@ import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JFileChooser;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.io.File;
 
 
 /**
  * Class InjectJarAction
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.20 $
+ * @author Jeff Drost
+ *
  */
 public class InjectDirAction implements ActionListener, UIConstants {
 

@@ -1,19 +1,17 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.23 $
+ * @author Jeff Drost
+ *
  */
 public class SignatureUtil {
 

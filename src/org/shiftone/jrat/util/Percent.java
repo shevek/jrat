@@ -8,8 +8,8 @@ import java.text.DecimalFormat;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.21 $
+ * @author Jeff Drost
+ *
  */
 public class Percent extends Number implements Comparable {
 

@@ -1,21 +1,19 @@
 package org.shiftone.jrat.util;
 
 
-
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.8 $
+ * @author Jeff Drost
+ *
  */
 public class CompositeInvocationHandler implements InvocationHandler {
 

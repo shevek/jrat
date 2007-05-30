@@ -1,22 +1,19 @@
 package org.shiftone.jrat.inject.ant;
 
 
-
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Copy;
 import org.apache.tools.ant.types.FilterSet;
 import org.apache.tools.ant.types.FilterSetCollection;
-
-import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.core.criteria.IncludeExcludeMethodCriteria;
+import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.inject.Injector;
 import org.shiftone.jrat.inject.process.ArchiveFileProcessor;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.File;
-
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,8 +23,8 @@ import java.util.TreeMap;
 /**
  * Apache Ant Task that extends the common Copy task.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.30 $
+ * @author Jeff Drost
+ *
  */
 public class InjectCopyTask extends Copy {
 

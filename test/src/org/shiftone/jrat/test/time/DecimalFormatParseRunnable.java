@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class DecimalFormatParseRunnable implements Runnable {
 	private DecimalFormat decimalFormat = new DecimalFormat();

@@ -3,8 +3,8 @@ package org.shiftone.jrat.core.shutdown;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public interface ShutdownRegistryMBean {
 

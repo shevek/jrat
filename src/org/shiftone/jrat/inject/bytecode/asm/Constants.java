@@ -1,16 +1,14 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.Method;
-
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public interface Constants {
 

@@ -8,8 +8,8 @@ import org.shiftone.jrat.util.Assert;
 /**
  * Class DelegateThreadLocal
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.13 $
+ * @author Jeff Drost
+ *
  */
 public class DelegateThreadLocal extends ThreadLocal {
 

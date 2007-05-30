@@ -1,27 +1,24 @@
 package org.shiftone.jrat.core.jmx;
 
 
-
 import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
-import javax.management.remote.JMXServiceURL;
 import javax.management.remote.JMXConnectorServer;
 import javax.management.remote.JMXConnectorServerFactory;
-
+import javax.management.remote.JMXServiceURL;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import java.rmi.registry.Registry;
-import java.rmi.registry.LocateRegistry;
-
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class ServerJmxRegistry implements JmxRegistry {
 

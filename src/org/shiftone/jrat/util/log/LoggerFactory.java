@@ -1,12 +1,16 @@
 package org.shiftone.jrat.util.log;
 
 
-
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.Command;
-import org.shiftone.jrat.util.log.target.*;
+import org.shiftone.jrat.util.log.target.LogTarget;
+import org.shiftone.jrat.util.log.target.NullLogTarget;
+import org.shiftone.jrat.util.log.target.ProxyLogTarget;
+import org.shiftone.jrat.util.log.target.TandemTarget;
+import org.shiftone.jrat.util.log.target.ThreadLocalLogTarget;
+import org.shiftone.jrat.util.log.target.WriterLogTarget;
 
 import java.io.PrintWriter;
 
@@ -18,8 +22,8 @@ import java.io.PrintWriter;
  * <li>using thread based logging - each thread can have it's own LogTarget
  * (this is for the Desktop)
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.7 $
+ * @author Jeff Drost
+ *
  */
 public class LoggerFactory implements Constants {
 

@@ -10,7 +10,7 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class RateMethodHandlerFactory implements MethodHandlerFactory {
 

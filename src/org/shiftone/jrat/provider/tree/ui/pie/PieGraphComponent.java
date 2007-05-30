@@ -12,7 +12,7 @@ import java.awt.Graphics2D;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class PieGraphComponent extends BufferedJComponent {
 

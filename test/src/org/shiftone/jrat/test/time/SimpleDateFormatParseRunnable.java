@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class SimpleDateFormatParseRunnable implements Runnable {
 	private String source = "2001-07-04T12:08:56.235-0700";

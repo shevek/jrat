@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
@@ -11,18 +10,16 @@ import javax.swing.Icon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
-
 import java.awt.Color;
 import java.awt.Component;
-
 import java.text.DecimalFormat;
 
 
 /**
  * Class StackTreeCellRenderer
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.23 $
+ * @author Jeff Drost
+ *
  */
 public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
 

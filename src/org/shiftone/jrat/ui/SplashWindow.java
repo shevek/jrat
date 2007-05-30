@@ -1,12 +1,9 @@
 package org.shiftone.jrat.ui;
 
 
-
-import javax.swing.JWindow;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
+import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;

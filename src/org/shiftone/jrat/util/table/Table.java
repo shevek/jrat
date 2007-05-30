@@ -1,11 +1,9 @@
 package org.shiftone.jrat.util.table;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.PrintStream;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +11,8 @@ import java.util.List;
 /**
  * Class Table
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.16 $
+ * @author Jeff Drost
+ *
  */
 public class Table {
 

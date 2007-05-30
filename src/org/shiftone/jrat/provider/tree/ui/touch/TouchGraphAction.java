@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui.touch;
 
 
-
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.ui.util.JRatFrame;
@@ -13,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.tree.TreePath;
-
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Cursor;
@@ -23,7 +21,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class TouchGraphAction implements ActionListener, UIConstants {
 

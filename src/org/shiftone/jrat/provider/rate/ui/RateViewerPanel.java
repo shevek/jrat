@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate.ui;
 
 
-
 import org.shiftone.jrat.provider.rate.ui.graph.MaxMemoryGraph;
 import org.shiftone.jrat.provider.rate.ui.graph.MeanDurationGraph;
 import org.shiftone.jrat.provider.rate.ui.graph.ThroughputGraph;
@@ -14,15 +13,14 @@ import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.JPanel;
 import javax.swing.event.ChangeListener;
-
 import java.awt.BorderLayout;
 
 
 /**
  * Class RateViewerPanel
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  */
 public class RateViewerPanel extends JPanel {
 

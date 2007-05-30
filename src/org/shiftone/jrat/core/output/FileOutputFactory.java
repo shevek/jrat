@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.output;
 
 
-
 import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.io.nop.NullOutputStream;
 import org.shiftone.jrat.util.io.nop.NullPrintWriter;
@@ -16,13 +15,12 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
-
 import java.util.zip.GZIPOutputStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class FileOutputFactory {
 

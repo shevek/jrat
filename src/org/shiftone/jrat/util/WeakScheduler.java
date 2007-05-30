@@ -1,19 +1,17 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 /**
  * @author $author$
- * @version $Revision: 1.13 $
+ *
  */
 public class WeakScheduler {
 

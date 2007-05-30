@@ -11,7 +11,7 @@ import org.shiftone.jrat.util.log.Logger;
  * Transformer.
  *
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class InjectorOptions extends TransformerOptions {
 

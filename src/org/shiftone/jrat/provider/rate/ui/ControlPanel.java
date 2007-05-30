@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.rate.ui;
 
 
-
 import org.shiftone.jrat.ui.util.ColorTableCellRenderer;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -15,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTable;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,8 +23,8 @@ import java.awt.GridLayout;
 /**
  * Class ControlPanel
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.18 $
+ * @author Jeff Drost
+ *
  */
 public class ControlPanel extends JPanel {
 

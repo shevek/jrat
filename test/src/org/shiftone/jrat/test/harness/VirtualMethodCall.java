@@ -17,7 +17,7 @@ import java.util.Random;
  * Class VirtualMethodCall
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.3 $
+ *
  */
 public class VirtualMethodCall {
 

@@ -9,7 +9,7 @@ import java.util.Comparator;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class NoOpComparator implements Comparator {
 

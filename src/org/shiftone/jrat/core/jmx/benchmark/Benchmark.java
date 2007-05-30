@@ -1,16 +1,15 @@
 package org.shiftone.jrat.core.jmx.benchmark;
 
 
-
-import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.HandlerFactory;
+import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.Clock;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.2 $
+ * @author Jeff Drost
+ *
  */
 public class Benchmark implements BenchmarkMBean {
 

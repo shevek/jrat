@@ -12,8 +12,8 @@ import java.text.Format;
 /**
  * Class TableCell
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class TableCell {
 

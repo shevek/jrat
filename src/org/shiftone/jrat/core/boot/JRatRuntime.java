@@ -4,15 +4,14 @@ import org.shiftone.jrat.core.boot.config.Configuration;
 import org.shiftone.jrat.core.boot.config.ConfigurationParser;
 import org.shiftone.jrat.core.boot.config.Settings;
 import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.apache.commons.logging.LogFactory;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.FileOutputStream;
 import java.util.Date;
 
 /**
@@ -46,11 +45,16 @@ public class JRatRuntime {
 
 
     private void copyDefaultFile(File file) {
-        LOG.info("initializing configuration file with default...");
+
+        LOG.info("Initializing configuration file with default...");
+        LOG.info("Edit this file to configure JRat.");
+
         try {
+
             InputStream defaultStream = ResourceUtil.loadResourceAsStream(DEFAULT);
             OutputStream outputStream = new FileOutputStream(file);
             IOUtil.copy(defaultStream, outputStream);
+
         } catch (Exception e) {
             throw new JRatException("unable to initialize : " + file.getAbsolutePath(), e);
         }

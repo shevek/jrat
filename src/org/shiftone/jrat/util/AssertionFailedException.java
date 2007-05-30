@@ -1,13 +1,11 @@
 package org.shiftone.jrat.util;
 
-
-
 import org.shiftone.jrat.core.JRatException;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.11 $
+ * @author Jeff Drost
+ *
  */
 public class AssertionFailedException extends JRatException {
 

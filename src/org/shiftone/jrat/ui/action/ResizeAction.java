@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 /**
  * Class ResizeAction
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.9 $
+ * @author Jeff Drost
+ *
  */
 public class ResizeAction implements ActionListener {
 

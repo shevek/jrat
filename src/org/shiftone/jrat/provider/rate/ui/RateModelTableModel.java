@@ -1,12 +1,10 @@
 package org.shiftone.jrat.provider.rate.ui;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.table.AbstractTableModel;
-
 import java.awt.Color;
 
 
@@ -15,8 +13,8 @@ import java.awt.Color;
  * Allows selection and deselection of methods, which add and remove graphs from
  * the viewer.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.15 $
+ * @author Jeff Drost
+ *
  */
 public class RateModelTableModel extends AbstractTableModel {
 

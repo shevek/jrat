@@ -3,8 +3,8 @@ package org.shiftone.jrat.provider.tree.ui.children;
 import ca.odell.glazedlists.gui.TableFormat;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
-import org.shiftone.jrat.util.time.TimeUnit;
 import org.shiftone.jrat.util.Percent;
+import org.shiftone.jrat.util.time.TimeUnit;
 
 /**
  * @author Jeff Drost

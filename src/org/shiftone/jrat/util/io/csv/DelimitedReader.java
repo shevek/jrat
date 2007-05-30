@@ -1,23 +1,21 @@
 package org.shiftone.jrat.util.io.csv;
 
 
-
 import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.io.csv.field.Field;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.JRatException;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
-
 import java.util.Date;
 import java.util.StringTokenizer;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.6 $
+ *
  */
 public class DelimitedReader {
 
@@ -106,7 +104,7 @@ public class DelimitedReader {
 
         if (current == null)
         {
-            throw new InputOutputException("current record is null");
+            throw new JRatException("current record is null");
         }
 
         Field  field     = delimitedFormat.getField(columnIndex);
@@ -115,7 +113,7 @@ public class DelimitedReader {
 
         if ((value == null) && (!nullable))
         {
-            throw new InputOutputException("value is null on line " + getLineNumber() + " column " + columnIndex);
+            throw new JRatException("value is null on line " + getLineNumber() + " column " + columnIndex);
         }
 
         return value;

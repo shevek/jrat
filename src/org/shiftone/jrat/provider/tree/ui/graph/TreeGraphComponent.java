@@ -1,14 +1,12 @@
 package org.shiftone.jrat.provider.tree.ui.graph;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.PercentColorLookup;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.Scrollable;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,13 +15,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
-
 import java.text.DecimalFormat;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.8 $
+ *
  */
 public class TreeGraphComponent extends BufferedJComponent implements Scrollable {
 

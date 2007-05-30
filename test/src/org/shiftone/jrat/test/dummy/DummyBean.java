@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.log.Logger;
  * Class DummyBean
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
- * @version $Revision: 1.2 $
+ *
  */
 public class DummyBean {
 

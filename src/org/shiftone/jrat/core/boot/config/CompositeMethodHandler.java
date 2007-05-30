@@ -2,7 +2,6 @@ package org.shiftone.jrat.core.boot.config;
 
 import org.shiftone.jrat.core.spi.MethodHandler;
 
-import java.util.Set;
 import java.util.Collection;
 
 /**

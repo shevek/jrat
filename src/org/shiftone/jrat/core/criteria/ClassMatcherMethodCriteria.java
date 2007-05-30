@@ -1,14 +1,13 @@
 package org.shiftone.jrat.core.criteria;
 
 
-
-import org.shiftone.jrat.util.regex.Matcher;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.regex.Matcher;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class ClassMatcherMethodCriteria implements MethodCriteria {
 

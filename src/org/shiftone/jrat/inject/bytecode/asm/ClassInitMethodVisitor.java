@@ -1,11 +1,9 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-
 import org.objectweb.asm.MethodAdapter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
-
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -13,8 +11,8 @@ import org.shiftone.jrat.util.log.Logger;
  * All this visitor does is add a single instruction to the start of the static
  * intitializer to call the JRat initializer method.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.3 $
+ * @author Jeff Drost
+ *
  */
 public class ClassInitMethodVisitor extends MethodAdapter implements Constants {
 

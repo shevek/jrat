@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.tab;
 
 
-
 import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
 import org.shiftone.jrat.util.Command;
@@ -16,15 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.12 $
+ * @author Jeff Drost
+ *
  */
 public class TabbedView extends JPanel implements View, ChangeListener {
 

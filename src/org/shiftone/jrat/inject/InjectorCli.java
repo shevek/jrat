@@ -8,8 +8,8 @@ import java.io.PrintStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.13 $
+ * @author Jeff Drost
+ *
  */
 public class InjectorCli {
 

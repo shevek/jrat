@@ -8,8 +8,8 @@ import java.awt.Color;
 /**
  * Interface GraphModel
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.7 $
+ * @author Jeff Drost
+ *
  */
 public interface GraphModel {
 

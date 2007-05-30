@@ -1,7 +1,6 @@
 package org.shiftone.jrat.provider.trace.ui;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
@@ -10,14 +9,13 @@ import javax.swing.Icon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
-
 import java.awt.Color;
 import java.awt.Component;
 
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class TraceTreeCellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
 

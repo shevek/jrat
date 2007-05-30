@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.regex.GlobMatcher;
@@ -10,7 +9,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -19,8 +17,8 @@ import java.net.URLClassLoader;
 /**
  * Class GlobClassLoader
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.20 $
+ * @author Jeff Drost
+ *
  */
 public class GlobClassLoader extends URLClassLoader {
 

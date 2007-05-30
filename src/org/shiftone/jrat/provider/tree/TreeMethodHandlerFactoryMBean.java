@@ -3,8 +3,8 @@ package org.shiftone.jrat.provider.tree;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.6 $
+ * @author Jeff Drost
+ *
  */
 public interface TreeMethodHandlerFactoryMBean {
 

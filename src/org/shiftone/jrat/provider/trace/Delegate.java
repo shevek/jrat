@@ -17,7 +17,7 @@ import java.util.Set;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.6 $
+ *
  */
 public class Delegate implements ShutdownListener {
 

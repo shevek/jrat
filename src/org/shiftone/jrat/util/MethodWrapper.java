@@ -12,8 +12,8 @@ import java.lang.reflect.Method;
  * slower. This implementation uses getDeclaringClass().hashCode(), and never
  * calls getName().
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.10 $
+ * @author Jeff Drost
+ *
  */
 public class MethodWrapper {
 

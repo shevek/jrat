@@ -17,8 +17,8 @@ import java.io.Writer;
 /**
  * Class RateOutput
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.17 $
+ * @author Jeff Drost
+ *
  */
 public class RateOutput {
 

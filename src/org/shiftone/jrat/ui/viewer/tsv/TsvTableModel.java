@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.viewer.tsv;
 
 
-
 import org.shiftone.jrat.util.IntrospectionUtil;
 import org.shiftone.jrat.util.Percent;
 import org.shiftone.jrat.util.StringUtil;
@@ -10,13 +9,11 @@ import org.shiftone.jrat.util.log.Logger;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.Reader;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -28,8 +25,8 @@ import java.util.Set;
 /**
  * Class TsvTableModel
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.15 $
+ * @author Jeff Drost
+ *
  */
 public class TsvTableModel implements TableModel {
 

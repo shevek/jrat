@@ -3,6 +3,7 @@ package org.shiftone.jrat.inject.bytecode;
 
 
 import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.IOUtil;
@@ -18,8 +19,8 @@ import java.io.InputStream;
  * change the InjectorStrategy. Avalible options are <b>bcel</b> and
  * <b>javassist</b>
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.4 $
+ * @author Jeff Drost
+ *
  */
 public class Transformer implements ShutdownListener, TransformerMBean {
 
@@ -49,7 +50,7 @@ public class Transformer implements ShutdownListener, TransformerMBean {
         }
         catch (Exception e)
         {
-            throw new InjectorException("error initalizing strategy '" + className, e);
+            throw new JRatException("error initalizing strategy '" + className, e);
         }
     }
 
@@ -68,7 +69,7 @@ public class Transformer implements ShutdownListener, TransformerMBean {
         }
         catch (Exception e)
         {
-            throw new InjectorException("error initalizing strategy '" + className, e);
+            throw new JRatException("error initalizing strategy '" + className, e);
         }
     }
 
@@ -99,7 +100,7 @@ public class Transformer implements ShutdownListener, TransformerMBean {
         }
         catch (Exception e)
         {
-            throw new InjectorException("error injecting : " + sourceName, e);
+            throw new JRatException("error injecting : " + sourceName, e);
         }
     }
 
@@ -137,7 +138,7 @@ public class Transformer implements ShutdownListener, TransformerMBean {
         }
         catch (Exception e)
         {
-            throw new InjectorException("error injecting stream : " + sourceName, e);
+            throw new JRatException("error injecting stream : " + sourceName, e);
         }
     }
 

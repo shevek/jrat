@@ -1,24 +1,20 @@
 package org.shiftone.jrat.core.spi.ui;
 
 
-
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.XMLUtil;
 import org.shiftone.jrat.util.log.LoggingSAXErrorHandler;
-
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 import javax.swing.JComponent;
-
 import java.io.InputStream;
-
 import java.util.Properties;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.7 $
+ * @author Jeff Drost
+ *
  */
 public abstract class AbstractOutputXmlViewBuilder implements OutputViewBuilder {
 

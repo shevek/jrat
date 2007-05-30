@@ -1,7 +1,6 @@
 package org.shiftone.jrat.ui.viewer;
 
 
-
 import org.shiftone.jrat.core.spi.ui.OutputViewBuilder;
 import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.util.io.IOUtil;
@@ -10,16 +9,14 @@ import org.shiftone.jrat.util.log.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
 import java.awt.Color;
-
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.8 $
+ * @author Jeff Drost
+ *
  */
 public class SimpleTextOutputViewBuilder implements OutputViewBuilder {
 

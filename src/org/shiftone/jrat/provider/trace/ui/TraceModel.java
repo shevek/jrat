@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.4 $
+ *
  */
 public class TraceModel {
 

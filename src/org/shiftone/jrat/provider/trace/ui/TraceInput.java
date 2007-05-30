@@ -1,10 +1,9 @@
 package org.shiftone.jrat.provider.trace.ui;
 
 
-
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.provider.trace.TraceOutput;
-import org.shiftone.jrat.util.io.InputOutputException;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.DataInput;
@@ -12,7 +11,6 @@ import java.io.DataInputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -21,7 +19,7 @@ import java.util.Set;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.6 $
+ *
  */
 public class TraceInput {
 
@@ -42,7 +40,7 @@ public class TraceInput {
         }
         catch (IOException e)
         {
-            throw new InputOutputException("error reading header", e);
+            throw new JRatException("error reading header", e);
         }
     }
 

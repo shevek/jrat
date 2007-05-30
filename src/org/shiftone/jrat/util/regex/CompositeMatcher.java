@@ -13,8 +13,8 @@ import java.util.StringTokenizer;
 /**
  * OR
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.8 $
+ * @author Jeff Drost
+ *
  */
 public class CompositeMatcher implements Matcher {
 

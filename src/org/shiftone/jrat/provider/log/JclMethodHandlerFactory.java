@@ -1,12 +1,11 @@
 package org.shiftone.jrat.provider.log;
 
 
-
-import org.shiftone.jrat.core.spi.MethodHandlerFactory;
-import org.shiftone.jrat.core.spi.MethodHandler;
-import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.core.ConfigurationException;
+import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.spi.MethodHandler;
+import org.shiftone.jrat.core.spi.MethodHandlerFactory;
+import org.shiftone.jrat.core.spi.RuntimeContext;
 
 
 public class JclMethodHandlerFactory implements MethodHandlerFactory {
@@ -40,7 +39,7 @@ public class JclMethodHandlerFactory implements MethodHandlerFactory {
         }
         else
         {
-            throw new ConfigurationException("level not supported : " + levelName);
+            throw new JRatException("level not supported : " + levelName);
         }
     }
 

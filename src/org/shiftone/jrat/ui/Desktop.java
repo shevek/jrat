@@ -1,20 +1,18 @@
 package org.shiftone.jrat.ui;
 
 
-
-import java.io.File;
-
-import javax.swing.UIManager;
-
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
+
+import javax.swing.UIManager;
+import java.io.File;
 
 
 /**
  * Class Desktop
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.23 $
+ * @author Jeff Drost
+ *
  */
 public class Desktop {
 

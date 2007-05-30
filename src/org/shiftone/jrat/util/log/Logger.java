@@ -8,8 +8,8 @@ import org.shiftone.jrat.util.log.target.LogTarget;
 /**
  * Interface Log
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.13 $
+ * @author Jeff Drost
+ *
  */
 public class Logger implements LogTarget, Constants {
 

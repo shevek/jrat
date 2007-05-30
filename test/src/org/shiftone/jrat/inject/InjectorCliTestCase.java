@@ -5,7 +5,7 @@ import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class InjectorCliTestCase extends TestCase {
 	private static final Logger LOG = Logger.getLogger(InjectorCliTestCase.class);

@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.2 $
+ *
  */
 public class AndMethodCriteria extends CompositeMethodCriteria {
 

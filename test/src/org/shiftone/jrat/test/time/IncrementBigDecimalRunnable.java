@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 /**
  * @author Jeff Drost
- * @version $Revision: 1.1 $
+ *
  */
 public class IncrementBigDecimalRunnable implements Runnable {
 

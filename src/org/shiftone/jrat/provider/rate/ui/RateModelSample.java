@@ -3,7 +3,7 @@ package org.shiftone.jrat.provider.rate.ui;
 
 
 import org.shiftone.jrat.core.Accumulator;
-import org.shiftone.jrat.core.ParseException;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -11,8 +11,8 @@ import org.shiftone.jrat.util.log.Logger;
 /**
  * Data structure holds the data for a sample.
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.15 $
+ * @author Jeff Drost
+ *
  */
 public class RateModelSample {
 
@@ -23,12 +23,12 @@ public class RateModelSample {
     private long                     maxMemory        = 0;
     private Accumulator[]            accumulators     = null;
 
-    RateModelSample(String[] tokens) throws ParseException {
+    RateModelSample(String[] tokens) {
         load(tokens);
     }
 
 
-    void load(String[] tokens) throws ParseException {
+    void load(String[] tokens) {
 
         String[] headerTokens = StringUtil.tokenize(tokens[1], ",", false);
 

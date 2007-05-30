@@ -1,9 +1,8 @@
 package org.shiftone.jrat.util.io;
 
 
-
-import org.shiftone.jrat.util.regex.GlobMatcher;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.regex.GlobMatcher;
 
 import java.io.File;
 
@@ -11,8 +10,8 @@ import java.io.File;
 /**
  * Class GlobFileFilter
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.7 $
+ * @author Jeff Drost
+ *
  */
 public class GlobFileFilter extends javax.swing.filechooser.FileFilter implements java.io.FileFilter {
 

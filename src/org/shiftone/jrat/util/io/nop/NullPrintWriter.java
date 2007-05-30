@@ -6,8 +6,8 @@ import java.io.PrintWriter;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.5 $
+ * @author Jeff Drost
+ *
  */
 public class NullPrintWriter extends PrintWriter {
 

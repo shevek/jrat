@@ -1,12 +1,10 @@
 package org.shiftone.jrat.util;
 
 
-
 import org.shiftone.jrat.util.log.Logger;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.Properties;
 import java.util.StringTokenizer;
@@ -15,8 +13,8 @@ import java.util.StringTokenizer;
 /**
  * Class StringUtil
  *
- * @author $Author: jeffdrost $
- * @version $Revision: 1.26 $
+ * @author Jeff Drost
+ *
  */
 public class StringUtil {
 
