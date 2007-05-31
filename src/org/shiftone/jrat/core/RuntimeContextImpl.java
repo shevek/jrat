@@ -38,7 +38,7 @@ class RuntimeContextImpl implements RuntimeContext {
 
     RuntimeContextImpl() {
 
-        LOG.debug("new RuntimeContextImpl");
+        LOG.info("new");
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
 

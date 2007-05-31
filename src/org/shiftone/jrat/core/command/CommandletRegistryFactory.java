@@ -7,6 +7,7 @@ import org.shiftone.jrat.util.log.Logger;
  * @author Jeff Drost
  */
 public class CommandletRegistryFactory {
+    
     private static final Logger LOG = Logger.getLogger(CommandletRegistryFactory.class);
 
     public static CommandletRegistry createCommandletRegistry() {
@@ -16,12 +17,20 @@ public class CommandletRegistryFactory {
         try {
 
             if (Environment.getSettings().isHttpServerEnabled()) {
-                TinyWebServer server = new TinyWebServer(registry);
+
+                LOG.info("Starting tiny web server...");
+                TinyWebServer server = new TinyWebServer(
+                        registry,
+                        Environment.getSettings().getHttpPort());
+
                 server.start();
+
             }
 
         } catch (Exception e) {
+
             LOG.error("failed to start tiny web server", e);
+
         }
 
         return registry;

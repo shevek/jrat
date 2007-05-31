@@ -37,13 +37,16 @@ public class ServiceFactory {
         return singleton;
     }
 
-
     private CommandletRegistry commandletRegistry;
 
     public synchronized CommandletRegistry getCommandletRegistry() {
+
         if (commandletRegistry == null) {
+
             commandletRegistry = CommandletRegistryFactory.createCommandletRegistry();
+
         }
+
         return commandletRegistry;
     }
 

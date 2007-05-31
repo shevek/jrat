@@ -1,6 +1,8 @@
 package org.shiftone.jrat.util;
 
 import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.core.Environment;
+import org.shiftone.jrat.core.config.Settings;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.beans.PropertyDescriptor;
@@ -37,8 +39,11 @@ public class PropertyUtil {
                 }
 
                 propertyEditor.setValue(instance);
+                
                 LOG.info(klass.getName() + "." + propertyName + " = " + value);
+                
                 propertyEditor.setAsText(value);
+                descriptor.getWriteMethod().invoke(instance, new Object[] { propertyEditor.getValue() } );
 
             } catch (Exception e) {
 
