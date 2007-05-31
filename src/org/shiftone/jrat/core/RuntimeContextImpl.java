@@ -75,11 +75,7 @@ class RuntimeContextImpl implements RuntimeContext {
         PrintWriter printWriter;
 
         try {
-            printWriter = outputDirectory.createPrintWriter("JRat-LOG.jrat");
-
-            printWriter.print("viewer=\"");
-            printWriter.print(SimpleTextOutputViewBuilder.class.getName());
-            printWriter.println("\"");
+            printWriter = outputDirectory.createPrintWriter("jrat.log");           
             LoggerFactory.redirectLogging(printWriter);
             LOG.info("logfile created");
             LOG.info("Running JRat version " + VersionUtil.getVersion() + " - built on " + VersionUtil.getBuiltOn());

@@ -64,7 +64,7 @@ public class StatMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     public void writeOutputFile(String fileName) {
 
         if (fileName == null) {
-            fileName = getDefaultOutputFileName() + ".jrat";
+            fileName = getOutputFile();
         }
 
         Writer writer = null;

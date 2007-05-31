@@ -22,7 +22,7 @@ public class ErrorsMethodHandlerFactory extends AbstractMethodHandlerFactory {
 
         try {
             if (methodHandler == null) {
-                PrintWriter printWriter = getContext().createPrintWriter(getDefaultOutputFileName());
+                PrintWriter printWriter = getContext().createPrintWriter(getOutputFile());
 
                 methodHandler = new ErrorsMethodHandler(printWriter);
             }

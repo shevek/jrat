@@ -93,7 +93,7 @@ public class OutputDirectory {
         }
     }
 
-
+    // todo - get rid of sequence
     public synchronized File createFile(String fileName) {
 
         Assert.assertNotNull("fileName", fileName);

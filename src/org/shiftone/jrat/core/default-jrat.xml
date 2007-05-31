@@ -39,7 +39,7 @@
         <handlers>
 
             <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
-
+                <property name="outputFile" value="my_tree.xrat"/>
             </handler>
 
 

@@ -73,7 +73,7 @@ public class RateMethodHandlerFactory extends AbstractMethodHandlerFactory {
         this.handlers = new RateMethodHandler[handlerMax];
 
         try {
-            outputStream = context.createOutputStream(getDefaultOutputFileName() + ".jrat");
+            outputStream = context.createOutputStream(getOutputFile());
             output = new RateOutput(outputStream, handlerMax, context);
 
             output.printHeader(period);

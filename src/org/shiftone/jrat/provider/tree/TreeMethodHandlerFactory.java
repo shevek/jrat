@@ -75,7 +75,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     public synchronized void writeOutputFile(String fileName) {
 
         if (fileName == null) {
-            fileName = getDefaultOutputFileName() + ".xrat";
+            fileName = getOutputFile();
         }
 
         PrintWriter printWriter = null;
@@ -90,7 +90,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
             printWriter.flush();
         }
         catch (Exception e) {
-            LOG.error("Error writting to " + getDefaultOutputFileName(), e);
+            LOG.error("Error writting to " + getOutputFile(), e);
         }
         finally {
             IOUtil.close(printWriter);
