@@ -1,16 +1,11 @@
 package org.shiftone.jrat.util.log;
 
 
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.Command;
-import org.shiftone.jrat.util.log.target.LogTarget;
-import org.shiftone.jrat.util.log.target.NullLogTarget;
-import org.shiftone.jrat.util.log.target.ProxyLogTarget;
-import org.shiftone.jrat.util.log.target.TandemTarget;
-import org.shiftone.jrat.util.log.target.ThreadLocalLogTarget;
-import org.shiftone.jrat.util.log.target.WriterLogTarget;
+import org.shiftone.jrat.util.log.target.*;
 
 import java.io.PrintWriter;
 
@@ -34,7 +29,7 @@ public class LoggerFactory implements Constants {
     public static void initialize() {
 
         // try {
-        setLevel(getLevelFromName(Settings.getLogLevel()));
+        setLevel(getLevelFromName(Environment.getSettings().getLogLevel()));
 
         // } catch (Exception e) {}
     }

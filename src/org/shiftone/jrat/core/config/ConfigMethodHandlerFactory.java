@@ -28,16 +28,20 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
         for (int p = 0; p < profiles.size(); p++) {
 
-            LOG.info("Loading profile " + p + "...");
-
             Profile profile = (Profile) profiles.get(p);
+            String profileName = profile.getName() != null
+                    ? "'" + profile.getName() + "'"
+                    : String.valueOf(p);
+
+            LOG.info("Loading profile " + profileName + "...");
+
             List factories = profile.getFactories();
 
             for (int f = 0; f < factories.size(); f++) {
 
                 Handler handler = (Handler) factories.get(f);
 
-                LOG.info("Loading profile " + p + ", factory " + f + " (" + handler.getClassName() + ")...");
+                LOG.info("Loading profile " + profileName + ", factory " + f + " (" + handler.getClassName() + ")...");
 
                 profileFactories.add(new FactoryInstance(handler.buildMethodHandlerFactory(), profile));
 

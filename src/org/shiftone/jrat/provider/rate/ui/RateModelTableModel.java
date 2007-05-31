@@ -5,7 +5,7 @@ import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.table.AbstractTableModel;
-import java.awt.Color;
+import java.awt.*;
 
 
 /**

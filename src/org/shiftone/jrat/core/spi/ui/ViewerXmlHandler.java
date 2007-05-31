@@ -8,7 +8,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.util.Properties;
 
 

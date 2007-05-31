@@ -10,7 +10,7 @@ import org.shiftone.jrat.provider.tree.ui.PercentColorLookup;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.util.Assert;
 
-import java.awt.Color;
+import java.awt.*;
 
 
 /**

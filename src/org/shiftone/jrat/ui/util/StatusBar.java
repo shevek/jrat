@@ -3,12 +3,9 @@ package org.shiftone.jrat.ui.util;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.*;
 
 
 /**

@@ -9,19 +9,11 @@ import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
 
-import javax.swing.BorderFactory;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTree;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
-import java.awt.BorderLayout;
-import java.awt.Graphics;
+import java.awt.*;
 
 
 /**

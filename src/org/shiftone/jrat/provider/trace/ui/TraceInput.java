@@ -6,11 +6,7 @@ import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.trace.TraceOutput;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

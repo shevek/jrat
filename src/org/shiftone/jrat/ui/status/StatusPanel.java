@@ -1,10 +1,8 @@
 package org.shiftone.jrat.ui.status;
 
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 

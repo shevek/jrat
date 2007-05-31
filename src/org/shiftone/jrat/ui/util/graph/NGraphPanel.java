@@ -4,11 +4,8 @@ package org.shiftone.jrat.ui.util.graph;
 import org.shiftone.jrat.ui.util.NSplitPane;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

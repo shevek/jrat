@@ -2,12 +2,11 @@ package org.shiftone.jrat.inject.bytecode;
 
 
 import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
+import org.shiftone.jrat.inject.bytecode.asm.AsmInjectorStrategy;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.inject.bytecode.asm.AsmInjectorStrategy;
 
 import java.io.InputStream;
 
@@ -39,7 +38,7 @@ public class Transformer implements ShutdownListener, TransformerMBean {
     public Transformer() {
         this.injectorStrategy = new AsmInjectorStrategy();
     }
-   
+
 
     public byte[] inject(byte[] inputClassData, TransformerOptions options) {
         return inject(inputClassData, UNKNOWN_SOURCE, options);

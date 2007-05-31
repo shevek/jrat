@@ -3,11 +3,9 @@ package org.shiftone.jrat.ui.util;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
+import java.awt.*;
 
 
 /**

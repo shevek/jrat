@@ -7,12 +7,8 @@ import org.shiftone.jrat.provider.tree.ui.stack.StackTableModel;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 import org.shiftone.jrat.util.Assert;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class NodeDetailPanel extends JPanel {

@@ -27,7 +27,7 @@ public class ConstantMatcher implements Matcher {
     public String toString() {
 
         return match
-                ? "ALL"
-                : "NONE";
+                ? "<All/>"
+                : "<None/>";
     }
 }

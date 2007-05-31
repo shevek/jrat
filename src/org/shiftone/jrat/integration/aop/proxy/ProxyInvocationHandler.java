@@ -1,10 +1,8 @@
 package org.shiftone.jrat.integration.aop.proxy;
 
 
-
 import org.shiftone.jrat.api.Monitor;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.integration.aop.proxy.ProxyCommand;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -17,7 +15,7 @@ import java.lang.reflect.Method;
 public class ProxyInvocationHandler implements InvocationHandler {
 
     private static final Logger LOG = Logger.getLogger(ProxyInvocationHandler.class);
-    private final Object        target;
+    private final Object target;
 
     public ProxyInvocationHandler(Object target) {
         this.target = target;

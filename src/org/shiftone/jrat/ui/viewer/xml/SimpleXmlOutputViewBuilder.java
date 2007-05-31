@@ -4,9 +4,7 @@ package org.shiftone.jrat.ui.viewer.xml;
 import org.shiftone.jrat.core.spi.ui.AbstractOutputXmlViewBuilder;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JComponent;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
+import javax.swing.*;
 import java.util.Properties;
 
 

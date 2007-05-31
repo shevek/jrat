@@ -1,9 +1,7 @@
 package org.shiftone.jrat.integration.aop.aspectwerkz;
 
 
-
 import org.codehaus.aspectwerkz.joinpoint.JoinPoint;
-
 import org.shiftone.jrat.api.Command;
 
 

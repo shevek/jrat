@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core.jmx;
 
 
-import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -15,8 +15,8 @@ public class JmxRegistryFactory {
     public static JmxRegistry createJmxRegistry() {
 
         JmxRegistry registry = NullJmxRegistry.INSTANCE;
-        boolean enabled = Settings.isJmxEnabled();
-        boolean create = Settings.isMBeanServerCreationEnabled();
+        boolean enabled = Environment.getSettings().isJmxEnabled();
+        boolean create = Environment.getSettings().isMBeanServerCreationEnabled();
 
         if (enabled && (isJMXAvalible() == false)) {
             LOG.info("MBeanServer is not available in this environment. Disabling JMX.");

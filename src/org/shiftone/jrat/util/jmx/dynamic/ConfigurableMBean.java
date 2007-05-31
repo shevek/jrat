@@ -3,19 +3,7 @@ package org.shiftone.jrat.util.jmx.dynamic;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.AttributeNotFoundException;
-import javax.management.DynamicMBean;
-import javax.management.InvalidAttributeValueException;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanException;
-import javax.management.MBeanInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanParameterInfo;
-import javax.management.ReflectionException;
+import javax.management.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;

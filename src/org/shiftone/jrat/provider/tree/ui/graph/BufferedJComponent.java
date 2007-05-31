@@ -3,10 +3,8 @@ package org.shiftone.jrat.provider.tree.ui.graph;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JComponent;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import javax.swing.*;
+import java.awt.*;
 
 
 public abstract class BufferedJComponent extends JComponent {

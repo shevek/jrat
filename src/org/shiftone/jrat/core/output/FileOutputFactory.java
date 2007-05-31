@@ -1,20 +1,13 @@
 package org.shiftone.jrat.core.output;
 
 
-import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.io.nop.NullOutputStream;
 import org.shiftone.jrat.util.io.nop.NullPrintWriter;
 import org.shiftone.jrat.util.io.nop.NullWriter;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.zip.GZIPOutputStream;
 
 
@@ -37,7 +30,7 @@ public class FileOutputFactory {
 
 
     public FileOutputFactory(FileOutputRegistry fileOutputRegistry) {
-        this(fileOutputRegistry, Settings.getOutputBufferSize(), Settings.isOutputCompressionEnabled());
+        this(fileOutputRegistry, Environment.getSettings().getOutputBufferSize(), Environment.getSettings().isOutputCompressionEnabled());
     }
 
 

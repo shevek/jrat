@@ -44,4 +44,20 @@ public class MatcherMethodCriteria implements MethodCriteria {
                 && methodNameMatcher.isMatch(methodName)
                 && signatureMatcher.isMatch(signature);
     }
+
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("<MatcherMethodCriteria>");
+        sb.append("<Class>");
+        sb.append(classNameMatcher);
+        sb.append("</Class>");
+        sb.append("<Method>");
+        sb.append(methodNameMatcher);
+        sb.append("</Method>");
+        sb.append("<Signature>");
+        sb.append(signatureMatcher);
+        sb.append("</Signature>");
+        sb.append("</MatcherMethodCriteria>");
+        return sb.toString();
+    }
 }

@@ -3,7 +3,7 @@ package org.shiftone.jrat.ui.util.graph;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BoundedRangeModel;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 

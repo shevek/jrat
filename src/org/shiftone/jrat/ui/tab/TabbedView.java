@@ -7,17 +7,10 @@ import org.shiftone.jrat.util.Command;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BoundedRangeModel;
-import javax.swing.DefaultBoundedRangeModel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Cursor;
+import java.awt.*;
 
 
 /**

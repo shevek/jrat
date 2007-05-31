@@ -6,7 +6,7 @@ import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.provider.tree.ui.graph.BufferedJComponent;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 
 /**

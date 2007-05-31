@@ -1,7 +1,7 @@
 package org.shiftone.jrat.util.time;
 
 
-import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -22,7 +22,7 @@ public class Clock {
 
         Movement movement = null;
 
-        if (Settings.isNanoSecondTimingEnabled()) {
+        if (Environment.getSettings().isNanoSecondTimingEnabled()) {
             LOG.info("trying to use nanosecond timing resolution");
 
             try {

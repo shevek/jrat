@@ -5,14 +5,7 @@ import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.MethodKeyAccumulator;
 import org.shiftone.jrat.core.Signature;
 import org.shiftone.jrat.core.spi.RuntimeContext;
-import org.shiftone.jrat.provider.stats.jmx.attributes.AverageDurationAttributeValue;
-import org.shiftone.jrat.provider.stats.jmx.attributes.ConcurrentThreadsAttributeValue;
-import org.shiftone.jrat.provider.stats.jmx.attributes.MaxConcurrentThreadsAttributeValue;
-import org.shiftone.jrat.provider.stats.jmx.attributes.MaxDurationAttributeValue;
-import org.shiftone.jrat.provider.stats.jmx.attributes.MinDurationAttributeValue;
-import org.shiftone.jrat.provider.stats.jmx.attributes.TotalEntersAttributeValue;
-import org.shiftone.jrat.provider.stats.jmx.attributes.TotalErrorsAttributeValue;
-import org.shiftone.jrat.provider.stats.jmx.attributes.TotalExitsAttributeValue;
+import org.shiftone.jrat.provider.stats.jmx.attributes.*;
 import org.shiftone.jrat.util.jmx.dynamic.ConfigurableMBean;
 
 import java.util.HashMap;

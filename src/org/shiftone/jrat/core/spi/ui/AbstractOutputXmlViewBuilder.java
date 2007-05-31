@@ -7,7 +7,7 @@ import org.shiftone.jrat.util.log.LoggingSAXErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.io.InputStream;
 import java.util.Properties;
 

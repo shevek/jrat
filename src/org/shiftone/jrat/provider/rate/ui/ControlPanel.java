@@ -5,19 +5,8 @@ import org.shiftone.jrat.ui.util.ColorTableCellRenderer;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoundedRangeModel;
-import javax.swing.DefaultBoundedRangeModel;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSlider;
-import javax.swing.JTable;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

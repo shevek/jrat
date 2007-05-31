@@ -6,8 +6,7 @@ import com.touchgraph.graphlayout.Node;
 import com.touchgraph.graphlayout.TGPanel;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 
 
 /**

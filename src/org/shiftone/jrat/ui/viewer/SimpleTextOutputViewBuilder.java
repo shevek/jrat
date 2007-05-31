@@ -6,10 +6,8 @@ import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 

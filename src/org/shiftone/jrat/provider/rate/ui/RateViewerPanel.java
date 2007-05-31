@@ -11,9 +11,9 @@ import org.shiftone.jrat.ui.util.graph.NGraphPanel;
 import org.shiftone.jrat.ui.util.graph.SpacingChangeListener;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.event.ChangeListener;
-import java.awt.BorderLayout;
+import java.awt.*;
 
 
 /**

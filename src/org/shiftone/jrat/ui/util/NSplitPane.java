@@ -3,10 +3,8 @@ package org.shiftone.jrat.ui.util;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import java.awt.BorderLayout;
-import java.awt.Component;
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

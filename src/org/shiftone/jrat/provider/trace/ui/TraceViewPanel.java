@@ -9,16 +9,9 @@ import ca.odell.glazedlists.swing.TableComparatorChooser;
 import org.shiftone.jrat.ui.util.NoOpComparator;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JTree;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.table.TableModel;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.util.Date;
 
 

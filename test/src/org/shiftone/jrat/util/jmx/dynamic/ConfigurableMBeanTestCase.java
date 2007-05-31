@@ -1,7 +1,7 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
-import junit.framework.TestCase;
-import org.shiftone.jrat.core.Settings;
+import junit.framework.TestCase; 
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.jmx.info.JRatInfo;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -41,10 +41,10 @@ public class ConfigurableMBeanTestCase extends TestCase {
         mBeanServer.registerMBean(beanAttribute, new ObjectName("test:number=1"));
         mBeanServer.registerMBean(new JRatInfo(), new ObjectName("test:number=2"));
 
-        int port = Settings.getRmiRegistryPort();
+        int port = Environment.getSettings().getRmiRegistryPort();
 
         Registry registry = LocateRegistry.createRegistry(port);
-        String urlText = Settings.getMBeanServerServerUrl();
+        String urlText = Environment.getSettings().getMBeanServerServerUrl();
 
         if (urlText != null) {
 

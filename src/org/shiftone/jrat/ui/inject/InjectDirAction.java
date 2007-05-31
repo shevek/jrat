@@ -9,7 +9,7 @@ import org.shiftone.jrat.ui.UserSettings;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JFileChooser;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;

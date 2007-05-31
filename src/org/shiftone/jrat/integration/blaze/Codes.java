@@ -82,7 +82,7 @@ public class Codes implements NdRuleAgentEventCodes {
         registerTraceCode(NdTraceEvent.STATEMENT_EXITING, "STATEMENT_EXITING");
         registerTraceCode(NdTraceEvent.RULEFLOW_STARTING, "RULEFLOW_STARTING");
         registerTraceCode(NdTraceEvent.RULEFLOW_ENDING, "RULEFLOW_ENDING");
-        registerTraceCode(NdTraceEvent.RULEFLOW_ENTERINGBLOCK, "RULEFLOW_ENTERINGBLOCK"); 
+        registerTraceCode(NdTraceEvent.RULEFLOW_ENTERINGBLOCK, "RULEFLOW_ENTERINGBLOCK");
         registerTraceCode(NdTraceEvent.RULEFLOW_EXITINGBLOCK, "RULEFLOW_EXITINGBLOCK");
         registerTraceCode(NdTraceEvent.RULEFLOW_BEGINNINGFLOW, "RULEFLOW_BEGINNINGFLOW");
         registerTraceCode(NdTraceEvent.RULEFLOW_ENDINGFLOW, "RULEFLOW_ENDINGFLOW");

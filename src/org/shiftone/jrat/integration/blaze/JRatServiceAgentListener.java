@@ -13,13 +13,13 @@ import java.util.Map;
 
 /**
  * @author Jeff Drost
- * <pre>
- * <ServiceAgentMonitorFactory>
- *         <JavaName>org.shiftone.jrat.integration.blaze.JRatServiceAgentListener</JavaName>
- * </ServiceAgentMonitorFactory>
- * </pre>
- * <pre>getLocalMonitoredServiceAgent(serviceName, null).
- *     addNdServiceAgentListener(new JRatServiceAgentListener());</pre>
+ *         <pre>
+ *                 <ServiceAgentMonitorFactory>
+ *                         <JavaName>org.shiftone.jrat.integration.blaze.JRatServiceAgentListener</JavaName>
+ *                 </ServiceAgentMonitorFactory>
+ *                 </pre>
+ *         <pre>getLocalMonitoredServiceAgent(serviceName, null).
+ *                     addNdServiceAgentListener(new JRatServiceAgentListener());</pre>
  */
 public class JRatServiceAgentListener implements NdServiceAgentListener, NdRuleAgentEventCodes {
     private static final Logger LOG = Logger.getLogger(JRatServiceAgentListener.class);
@@ -38,13 +38,12 @@ public class JRatServiceAgentListener implements NdServiceAgentListener, NdRuleA
 //        registerBeginEnd(NdTraceEvent.RULEFLOW_ENTERINGBLOCK, NdTraceEvent.RULEFLOW_EXITINGBLOCK);
 //        registerBeginEnd(NdTraceEvent.RULEFLOW_BEGINNINGFLOW, NdTraceEvent.RULEFLOW_ENDINGFLOW);
 
-
-          //registerBeginEnd(EVENT_RULE_SCHEDULE, EVENT_RULE_UNSCHEDULE);
-          registerBeginEnd(EVENT_RULE_BEGIN_FIRE, EVENT_RULE_END_FIRE);
-          registerBeginEnd(EVENT_OBJECT_BEGIN_INITIALIZATION, EVENT_OBJECT_END_INITIALIZATION);
-          registerBeginEnd(EVENT_FUNCTIONAL_CALL, EVENT_FUNCTIONAL_RETURN);
-          registerBeginEnd(EVENT_RULESET_BEGIN_PROPAGATION, EVENT_RULESET_END_PROPAGATION);
-          registerBeginEnd(EVENT_RULESET_BEGIN_FIRE, EVENT_RULESET_END_FIRE);
+        //registerBeginEnd(EVENT_RULE_SCHEDULE, EVENT_RULE_UNSCHEDULE);
+        registerBeginEnd(EVENT_RULE_BEGIN_FIRE, EVENT_RULE_END_FIRE);
+        registerBeginEnd(EVENT_OBJECT_BEGIN_INITIALIZATION, EVENT_OBJECT_END_INITIALIZATION);
+        registerBeginEnd(EVENT_FUNCTIONAL_CALL, EVENT_FUNCTIONAL_RETURN);
+        registerBeginEnd(EVENT_RULESET_BEGIN_PROPAGATION, EVENT_RULESET_END_PROPAGATION);
+        registerBeginEnd(EVENT_RULESET_BEGIN_FIRE, EVENT_RULESET_END_FIRE);
 
     }
 
@@ -95,7 +94,7 @@ public class JRatServiceAgentListener implements NdServiceAgentListener, NdRuleA
 
         } catch (Throwable e) {
 
-            LOG.error("onServiceAgentEvent failed",e);
+            LOG.error("onServiceAgentEvent failed", e);
 
         }
     }

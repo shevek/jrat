@@ -5,8 +5,8 @@ import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JTabbedPane;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

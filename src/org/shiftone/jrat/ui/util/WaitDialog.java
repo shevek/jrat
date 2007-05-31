@@ -3,12 +3,8 @@ package org.shiftone.jrat.ui.util;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BorderFactory;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
-import java.awt.Frame;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

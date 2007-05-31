@@ -3,8 +3,8 @@ package org.shiftone.jrat.core.spi.ui;
 
 import org.shiftone.jrat.util.Command;
 
-import javax.swing.BoundedRangeModel;
-import java.awt.Component;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

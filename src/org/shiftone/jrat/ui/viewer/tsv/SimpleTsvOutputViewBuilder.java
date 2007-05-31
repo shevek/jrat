@@ -8,8 +8,7 @@ import org.shiftone.jrat.util.Percent;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.JTableHeader;
 import java.io.InputStream;
 

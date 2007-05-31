@@ -1,15 +1,10 @@
 package org.shiftone.jrat.util;
 
 
-import org.shiftone.jrat.core.Settings;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Map;
 import java.util.Properties;
 
@@ -27,8 +22,7 @@ public class SavedProperties extends Properties {
     private static final Logger LOG = Logger.getLogger(SavedProperties.class);
     private static final String VERSION = StringUtil.revision("$Revision: 1.21 $");
     private static final String DEFAULT_HEADER = "ShiftOne JRat SavedProperties " + VERSION;
-    private static final File PROPERTIES_FILE_PATH = Settings.getUserPropertiesFile();
-    public static final Properties USER_PROPERTIES = new SavedProperties(PROPERTIES_FILE_PATH);
+    public static final Properties USER_PROPERTIES = new SavedProperties(getStoreFile());
 
     //
     private String header = DEFAULT_HEADER;
@@ -48,6 +42,17 @@ public class SavedProperties extends Properties {
         load();
     }
 
+    private static File getStoreFile() {
+
+        String homeDir = System.getProperty("user.home");
+        if (homeDir == null) {
+            homeDir = "";
+        }
+
+        return new File(new File(homeDir).getAbsolutePath()
+                + File.separator
+                + ".jrat-user-settings.properties");
+    }
 
     private synchronized void store() {
 

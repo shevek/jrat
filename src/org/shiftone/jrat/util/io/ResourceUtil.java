@@ -5,12 +5,7 @@ import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Properties;

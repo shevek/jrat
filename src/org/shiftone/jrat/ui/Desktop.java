@@ -4,7 +4,7 @@ package org.shiftone.jrat.ui;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
 
-import javax.swing.UIManager;
+import javax.swing.*;
 import java.io.File;
 
 

@@ -3,12 +3,8 @@ package org.shiftone.jrat.ui.viewer;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BoundedRangeModel;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.swing.*;
+import java.io.*;
 
 
 /**

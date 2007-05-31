@@ -10,12 +10,8 @@ import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.awt.Color;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.io.Reader;
+import java.awt.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 

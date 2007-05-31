@@ -4,7 +4,7 @@ package org.shiftone.jrat.provider.rate.ui.graph;
 import org.shiftone.jrat.provider.rate.ui.RateModel;
 import org.shiftone.jrat.ui.util.graph.AbstractGraph;
 
-import java.awt.Color;
+import java.awt.*;
 
 
 /**

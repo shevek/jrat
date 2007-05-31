@@ -1,10 +1,8 @@
 package org.shiftone.jrat.integration.aop.alliance;
 
 
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-
 import org.shiftone.jrat.api.Monitor;
 
 
@@ -24,6 +22,6 @@ public class AllianceMethodInterceptor implements MethodInterceptor {
 
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         return Monitor.execute(methodInvocation.getMethod(), methodInvocation.getThis(),
-                               new AllianceMethodInvocationCommand(methodInvocation));
+                new AllianceMethodInvocationCommand(methodInvocation));
     }
 }

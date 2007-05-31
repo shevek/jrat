@@ -1,8 +1,7 @@
 package org.shiftone.jrat.core.spi.ui;
 
 
-import javax.swing.BoundedRangeModel;
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

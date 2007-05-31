@@ -1,11 +1,7 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-import org.objectweb.asm.AnnotationVisitor;
-import org.objectweb.asm.Attribute;
-import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.FieldVisitor;
-import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.*;
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.log.Logger;
 

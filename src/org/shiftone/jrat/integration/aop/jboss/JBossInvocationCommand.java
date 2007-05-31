@@ -1,9 +1,7 @@
 package org.shiftone.jrat.integration.aop.jboss;
 
 
-
 import org.jboss.aop.joinpoint.Invocation;
-
 import org.shiftone.jrat.api.Command;
 
 

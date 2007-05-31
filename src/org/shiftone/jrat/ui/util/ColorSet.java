@@ -3,7 +3,7 @@ package org.shiftone.jrat.ui.util;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.Comparator;
 

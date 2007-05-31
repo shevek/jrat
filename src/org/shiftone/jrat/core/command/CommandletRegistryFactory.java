@@ -1,6 +1,6 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
@@ -15,7 +15,7 @@ public class CommandletRegistryFactory {
 
         try {
 
-            if (Settings.isHttpServerEnabled()) {
+            if (Environment.getSettings().isHttpServerEnabled()) {
                 TinyWebServer server = new TinyWebServer(registry);
                 server.start();
             }

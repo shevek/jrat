@@ -3,17 +3,10 @@ package org.shiftone.jrat.ui.util.graph;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JComponent;
-import javax.swing.JViewport;
-import javax.swing.Scrollable;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.text.DecimalFormat;
 
 

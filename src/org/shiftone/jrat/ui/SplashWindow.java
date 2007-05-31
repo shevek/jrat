@@ -1,12 +1,8 @@
 package org.shiftone.jrat.ui;
 
 
-import javax.swing.JLabel;
-import javax.swing.JWindow;
-import javax.swing.SwingUtilities;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

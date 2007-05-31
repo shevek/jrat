@@ -6,8 +6,8 @@ import org.shiftone.jrat.ui.util.BackgroundActionListener;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JOptionPane;
-import java.awt.Frame;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Properties;
 

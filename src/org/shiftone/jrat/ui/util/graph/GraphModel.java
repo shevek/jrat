@@ -1,7 +1,7 @@
 package org.shiftone.jrat.ui.util.graph;
 
 
-import java.awt.Color;
+import java.awt.*;
 
 
 /**

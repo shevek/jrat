@@ -11,10 +11,8 @@ import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.ui.util.NoOpComparator;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

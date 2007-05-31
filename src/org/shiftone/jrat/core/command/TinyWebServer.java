@@ -1,17 +1,11 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -82,7 +76,7 @@ public class TinyWebServer extends Thread {
 
     public void run() {
 
-        int port = Settings.isHttpPort();
+        int port = Environment.getSettings().getHttpPort();
         Socket socket = null;
         OutputStream outputStream = null;
         Writer writer = null;

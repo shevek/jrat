@@ -88,6 +88,8 @@ public class ConfigurationParser {
 
         Assert.assertNotNull(profileElement);
 
+        profile.setName(profileElement.getAttribute("name"));
+
         NodeList includes = profileElement.getElementsByTagName("include");
         for (int i = 0; i < includes.getLength(); i++) {
             processCriteria(profile.createInclude(), (Element) includes.item(i));
@@ -112,16 +114,17 @@ public class ConfigurationParser {
         NodeList properties = factoryElement.getElementsByTagName("property");
 
         for (int i = 0; i < properties.getLength(); i++) {
+
             Element property = (Element) properties.item(i);
             String name = nvl(property.getAttribute("name"));
             String value = nvl(property.getAttribute("value"));
             Assert.assertNotNull("name", name);
             handler.getProperties().put(name, value);
+
         }
     }
 
     private void processCriteria(MatcherMethodCriteria criteria, Element criteriaElement) {
-
 
         criteria.setClassName(nvl(criteriaElement.getAttribute("className")));
         criteria.setMethodName(nvl(criteriaElement.getAttribute("methodName")));

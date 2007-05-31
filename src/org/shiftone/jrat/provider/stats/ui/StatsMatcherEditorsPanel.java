@@ -3,10 +3,9 @@ package org.shiftone.jrat.provider.stats.ui;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.Border;
-import java.awt.GridLayout;
+import java.awt.*;
 
 
 /**

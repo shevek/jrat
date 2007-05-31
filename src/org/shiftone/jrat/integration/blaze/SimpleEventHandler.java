@@ -11,7 +11,8 @@ public class SimpleEventHandler implements EventHandler {
     private static final Logger LOG = Logger.getLogger(SimpleEventHandler.class);
     public static final EventHandler INSTANCE = new SimpleEventHandler();
 
-    public  SimpleEventHandler() {}
+    public SimpleEventHandler() {
+    }
 
     public void onRulesServiceAgentEvent(NdRulesServiceAgentEvent event) {
         // getCode == getEventCode

@@ -3,7 +3,7 @@ package org.shiftone.jrat.ui.viewer.tsv;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

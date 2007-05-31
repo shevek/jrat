@@ -18,7 +18,7 @@ public class Agent {
 
     private static final Logger LOG = Logger.getLogger(Agent.class);
     private static boolean installed = false;
-    private static Configuration configuration = Environment.INSTANCE.getConfiguration();
+    private static Configuration configuration = Environment.getConfiguration();
 
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
@@ -39,7 +39,6 @@ public class Agent {
         try {
 
             ClassFileTransformer transformer;
-
 
 
             transformer = new InjectClassFileTransformer(injectorOptions);

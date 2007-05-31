@@ -1,9 +1,7 @@
 package org.shiftone.jrat.integration.aop.nanning;
 
 
-
 import org.codehaus.nanning.Invocation;
-
 import org.shiftone.jrat.api.Command;
 
 

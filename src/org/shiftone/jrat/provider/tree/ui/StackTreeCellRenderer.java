@@ -6,12 +6,10 @@ import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.TimeUnit;
 
-import javax.swing.Icon;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
-import java.awt.Color;
-import java.awt.Component;
+import java.awt.*;
 import java.text.DecimalFormat;
 
 

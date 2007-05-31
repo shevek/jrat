@@ -3,10 +3,8 @@ package org.shiftone.jrat.ui.util;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.Icon;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

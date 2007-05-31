@@ -56,6 +56,10 @@ public class StringUtil {
     }
 
 
+    public static boolean isEmpty(String text) {
+        return (text == null) || (text.trim().length() == 0);
+    }
+
     public static void parsePropertiesString(String propString, Properties properties) {
 
         StringTokenizer tokenizer = null;

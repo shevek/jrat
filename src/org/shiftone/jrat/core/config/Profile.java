@@ -16,6 +16,7 @@ public class Profile implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(Profile.class);
     private IncludeExcludeMethodCriteria methodCriteria = new IncludeExcludeMethodCriteria();
+    private String name;
     private List factories = new ArrayList();
 
     public MatcherMethodCriteria createInclude() {
@@ -45,6 +46,14 @@ public class Profile implements MethodCriteria {
         return methodCriteria.isMatch(className, methodName, signature, modifier);
     }
 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public List getFactories() {
         return factories;

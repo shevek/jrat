@@ -1,7 +1,6 @@
 package org.shiftone.jrat.integration.blaze;
 
 import com.blazesoft.server.base.NdServiceSessionId;
-
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.Clock;
@@ -39,7 +38,7 @@ public class BlazeSessionState {
             throw new RuntimeException("expected event code of "
                     + Codes.getEventCodeName(node.eventCode)
                     + " but got "
-                    +  Codes.getEventCodeName(eventCode));
+                    + Codes.getEventCodeName(eventCode));
         }
         if (!entityName.equals(node.entityName)) {
             throw new RuntimeException("expected entity name of " + node.entityName + " but got " + entityName);

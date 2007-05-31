@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core.jmx;
 
 
-import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.management.MBeanServer;
@@ -23,7 +23,7 @@ public class ServerJmxRegistry implements JmxRegistry {
 
     private static final Logger LOG = Logger.getLogger(ServerJmxRegistry.class);
     private MBeanServer mBeanServer;
-    private String agentId = Settings.getMBeanServerAgentId();
+    private String agentId = Environment.getSettings().getMBeanServerAgentId();
 
     // see com.sun.jmx.defaults.JmxProperties
     public static final String JMX_INITIAL_BUILDER = "javax.management.builder.initial";
@@ -38,8 +38,9 @@ public class ServerJmxRegistry implements JmxRegistry {
 
     private static MBeanServer createMBeanServer() throws Exception {
 
-        if (Settings.isRmiRegistryCreationEnabled()) {
-            int port = Settings.getRmiRegistryPort();
+        if (Environment.getSettings().isRmiRegistryCreationEnabled()) {
+
+            int port = Environment.getSettings().getRmiRegistryPort();
 
             LOG.info("Creating local RMI jmx on port " + port + ".");
 
@@ -49,7 +50,7 @@ public class ServerJmxRegistry implements JmxRegistry {
         LOG.info("Creating MBeanServer (MBeanServerFactory will refer to property '" + JMX_INITIAL_BUILDER + "').");
 
         MBeanServer mBeanServer = MBeanServerFactory.createMBeanServer();
-        String urlText = Settings.getMBeanServerServerUrl();
+        String urlText = Environment.getSettings().getMBeanServerServerUrl();
 
         if (urlText != null) {
 

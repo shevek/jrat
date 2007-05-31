@@ -1,11 +1,9 @@
 package org.shiftone.jrat.integration.aop.jboss;
 
 
-
+import org.jboss.aop.advice.Interceptor;
 import org.jboss.aop.joinpoint.Invocation;
 import org.jboss.aop.joinpoint.MethodInvocation;
-import org.jboss.aop.advice.Interceptor;
-
 import org.shiftone.jrat.api.Monitor;
 
 
@@ -22,15 +20,12 @@ public class JBossInterceptor implements Interceptor {
 
     public Object invoke(Invocation invocation) throws Throwable {
 
-        if (invocation instanceof MethodInvocation)
-        {
+        if (invocation instanceof MethodInvocation) {
             MethodInvocation methodInvocation = (MethodInvocation) invocation;
 
             return Monitor.execute(methodInvocation.getMethod(), invocation.getTargetObject(),
-                                   new JBossInvocationCommand(invocation));
-        }
-        else
-        {
+                    new JBossInvocationCommand(invocation));
+        } else {
             return invocation.invokeNext();
         }
     }

@@ -1,9 +1,7 @@
 package org.shiftone.jrat.integration.aop.alliance;
 
 
-
 import org.aopalliance.intercept.MethodInvocation;
-
 import org.shiftone.jrat.api.Command;
 
 

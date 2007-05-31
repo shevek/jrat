@@ -1,6 +1,5 @@
 package org.shiftone.jrat.core;
 
-import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.config.Configuration;
 import org.shiftone.jrat.core.config.ConfigurationParser;
 import org.shiftone.jrat.core.config.Settings;
@@ -74,12 +73,13 @@ public class Environment {
     }
 
 
-
-    public Configuration getConfiguration() {
-        return configuration;
+    public static Configuration getConfiguration() {
+        return INSTANCE.configuration;
     }
 
-    public Settings getSettings() {
+    public static Settings getSettings() {
         return getConfiguration().getSettings();
     }
+
+
 }

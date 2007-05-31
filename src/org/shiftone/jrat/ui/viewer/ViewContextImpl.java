@@ -6,13 +6,8 @@ import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.BoundedRangeModel;
-import javax.swing.JComponent;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import javax.swing.*;
+import java.io.*;
 import java.util.zip.GZIPInputStream;
 
 

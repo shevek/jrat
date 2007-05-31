@@ -1,9 +1,7 @@
 package org.shiftone.jrat.integration.aop.dynaop;
 
 
-
 import dynaop.Invocation;
-
 import org.shiftone.jrat.api.Command;
 
 

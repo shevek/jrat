@@ -42,5 +42,5 @@ public class AsmInjectorStrategy implements InjectorStrategy {
         reader.accept(visitor, false);
 
         return classWriter.toByteArray();
-    }    
+    }
 }

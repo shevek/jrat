@@ -15,10 +15,11 @@
      be satisfied in order for a method to be monitored with those handlers.
      In a single configuration file you can have multiple profile.
     -->
-    <profile>
+
+    <profile name="my code">
 
         <criteria>
-            
+
             <!--
             A profile's handlers are used if any of the includes are
             satisfied and none of the excludes are.
@@ -30,15 +31,15 @@
             <include className="*" methodName="*" signature="*"/>
             <exclude className="*" methodName="*" signature="*"/>
             -->
-            
-            <include/>
+
+            <!-- <include/> -->
 
         </criteria>
 
         <handlers>
 
             <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
-               
+
             </handler>
 
 

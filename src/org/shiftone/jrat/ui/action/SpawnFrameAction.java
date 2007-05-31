@@ -5,9 +5,8 @@ import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.core.spi.ui.ViewContainer;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JFrame;
-import java.awt.Component;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

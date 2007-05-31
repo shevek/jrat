@@ -1,7 +1,7 @@
 package org.shiftone.jrat.core.output;
 
 
-import org.shiftone.jrat.core.Settings;
+import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.Dir;
@@ -50,9 +50,9 @@ public class OutputDirectory {
 
     private static Dir createOutputDir() {
 
-        String applicationName = Settings.getApplicationName();
+        String applicationName = Environment.getSettings().getApplicationName();
         Format format = new SimpleDateFormat("yyyy-MM-dd_a-hh-mm-ss");
-        Dir parent = Settings.getBaseDirectory();
+        Dir parent = Environment.getSettings().getBaseDirectory();
 
         if (applicationName != null) {
             parent = parent.createChildDir(applicationName);

@@ -1,9 +1,7 @@
 package org.shiftone.jrat.integration.aop.cglib;
 
 
-
 import net.sf.cglib.proxy.MethodProxy;
-
 import org.shiftone.jrat.api.Monitor;
 
 import java.lang.reflect.Method;

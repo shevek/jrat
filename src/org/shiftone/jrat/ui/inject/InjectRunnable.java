@@ -11,13 +11,10 @@ import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
 import org.shiftone.jrat.util.log.target.LogTarget;
 
-import javax.swing.BoundedRangeModel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
-import java.awt.Insets;
+import java.awt.*;
 import java.io.File;
 import java.util.Set;
 import java.util.TreeSet;

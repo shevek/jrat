@@ -3,13 +3,8 @@ package org.shiftone.jrat.ui.util;
 
 import org.shiftone.jrat.ui.UIConstants;
 
-import javax.swing.JFrame;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.HeadlessException;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class JRatFrame extends JFrame implements UIConstants {

@@ -27,7 +27,7 @@ public class GlobMatcher implements Matcher {
     private String pattenString;
 
     public static Matcher create(String pattenString) {
-        return (pattenString == null) ? INCLUDE_ALL : new GlobMatcher(pattenString);               
+        return (pattenString == null) ? Matcher.ALL : new GlobMatcher(pattenString);
     }
 
     /**

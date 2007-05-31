@@ -5,7 +5,7 @@ import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.ui.AbstractOutputXmlViewBuilder;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.util.Properties;
 
 
