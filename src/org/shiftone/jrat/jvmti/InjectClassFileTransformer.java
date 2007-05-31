@@ -53,6 +53,6 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
 
 
     public String toString() {
-        return getClass().getName() + "[" + injectorOptions + "]";
+        return "InjectClassFileTransformer[" + transformer + "]";
     }
 }

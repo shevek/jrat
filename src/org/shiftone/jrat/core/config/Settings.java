@@ -10,7 +10,9 @@ public class Settings {
     private static final Logger LOG = Logger.getLogger(Settings.class);
 
     private String applicationName;
-    private String baseDirectory = "JRatOutput";
+
+    private boolean systemPropertyTweakingEnabled = true;
+    private String baseDirectory = "jrat.output";
     private String logLevel = "info";
     private boolean nanoSecondTimingEnabled;
     private int outputBufferSize = 1024 * 8;
@@ -30,6 +32,20 @@ public class Settings {
 
     private boolean injectorDefaultExcludesEnabled;
 
+
+    /**
+     * It is occasionally necessary for JRat to set a system property that
+     * it knows will change the behavior of an environment in a way that
+     * is necessary for profiling.
+     * This is only done when using the jvmti agent.
+     */
+    public boolean isSystemPropertyTweakingEnabled() {
+        return systemPropertyTweakingEnabled;
+    }
+
+    public void setSystemPropertyTweakingEnabled(boolean systemPropertyTweakingEnabled) {
+        this.systemPropertyTweakingEnabled = systemPropertyTweakingEnabled;
+    }
 
     public String getApplicationName() {
         return applicationName;
