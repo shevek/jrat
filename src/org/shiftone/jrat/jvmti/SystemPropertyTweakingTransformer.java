@@ -42,7 +42,7 @@ public class SystemPropertyTweakingTransformer implements ClassFileTransformer {
 
     private void setSystemProperty(String key, String value, String reason) {
 
-        if (System.getProperty(key).equals(value)) {
+        if (value.equals(System.getProperty(key))) {
             return;
         }
 

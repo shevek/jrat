@@ -32,7 +32,7 @@
             <exclude className="*" methodName="*" signature="*"/>
             -->
 
-            <!-- <include/> -->
+            <include/>
 
         </criteria>
 

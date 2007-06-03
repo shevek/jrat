@@ -27,28 +27,25 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
 
 
     public byte[] transform(
-            ClassLoader loader, String className, Class /* <?> */ classBeingRedefined, ProtectionDomain protectionDomain, byte[] inClassfileBuffer)
+            ClassLoader loader,
+            String className,
+            Class /* <?> */ classBeingRedefined,
+            ProtectionDomain protectionDomain,
+            byte[] inClassfileBuffer)
             throws IllegalClassFormatException {
 
-
         if ((loader == null)
-                || (loader.getParent() == null)                        //
-                || className.startsWith("org/shiftone/jrat")    //
-                || className.startsWith("sun")                  //
+                || (loader.getParent() == null)
+                || className.startsWith("org/shiftone/jrat")
+                || className.startsWith("sun")
                 || className.startsWith("javax")) {
 
             // LOG.debug("skipping class : " + className);
             return inClassfileBuffer;
         }
 
-        try {
-            return transformer.inject(inClassfileBuffer, injectorOptions);
-        }
-        catch (Throwable e) {
-            LOG.info("error transforming : " + className, e);
+        return transformer.inject(inClassfileBuffer, injectorOptions);
 
-            return inClassfileBuffer;
-        }
     }
 
 

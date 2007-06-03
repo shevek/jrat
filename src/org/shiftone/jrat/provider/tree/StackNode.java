@@ -34,7 +34,7 @@ public class StackNode extends Accumulator implements Externalizable {
 
 
     public void writeExternal(ObjectOutput out) throws IOException {
-
+ 
         super.writeExternal(out);
 
         if (methodKey == null) {
@@ -56,8 +56,7 @@ public class StackNode extends Accumulator implements Externalizable {
         // write the children
         for (int i = 0; i < list.size(); i++) {
             StackNode child = (StackNode) list.get(i);
-            //child.writeExternal(out);
-            out.writeObject(child);
+            child.writeExternal(out);
         }
     }
 
@@ -71,9 +70,9 @@ public class StackNode extends Accumulator implements Externalizable {
 
         int childCount = in.readInt();
         for (int i = 0; i < childCount; i++) {
-            StackNode stackNode = (StackNode) in.readObject();
+            StackNode stackNode = new StackNode();
             stackNode.parent = this;
-            children.put(stackNode.getMethodKey(), stackNode);
+            stackNode.readExternal(in);
         }
 
     }

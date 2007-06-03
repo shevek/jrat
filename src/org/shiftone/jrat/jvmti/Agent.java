@@ -48,6 +48,8 @@ public class Agent {
                 transformer = new SystemPropertyTweakingTransformer(transformer);
             }
 
+            transformer = new TryCatchClassFileTransformer(transformer);
+
             instrumentation.addTransformer(transformer);
             LOG.info("Installed " + transformer + ".");
 

@@ -2,6 +2,7 @@ package org.shiftone.jrat.jvmti;
 
 
 import org.shiftone.jrat.core.criteria.MethodCriteria;
+import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -36,38 +37,32 @@ public class FilterClassFileTransformer implements ClassFileTransformer {
             throws IllegalClassFormatException {
 
 
-        try {
-            String fixedClassName = className.replace('/', '.');
+        String fixedClassName = className.replace('/', '.');
 
-            int modifiers = 0;
+        int modifiers = 0;
 
-            if (classBeingRedefined != null) {
-                modifiers = classBeingRedefined.getModifiers();
-            }
+        if (classBeingRedefined != null) {
+            modifiers = classBeingRedefined.getModifiers();
+        }
 
-            if (methodCriteria.isMatch(fixedClassName, modifiers)) {
+        if (methodCriteria.isMatch(fixedClassName, modifiers)) {
 
-                return transformer.transform(
-                        loader,
-                        className,
-                        classBeingRedefined,
-                        protectionDomain,
-                        classfileBuffer);
+            return transformer.transform(
+                    loader,
+                    className,
+                    classBeingRedefined,
+                    protectionDomain,
+                    classfileBuffer);
 
-            } else {
+        } else {
 
-                return classfileBuffer;
-
-            }
-        } catch (Exception e) {
-
-            LOG.error("failed to transform class : " + className, e);
             return classfileBuffer;
 
         }
+
     }
 
     public String toString() {
-        return "FilterClassFileTransformer[" + transformer + "]";
+        return "FilterClassFileTransformer[" + methodCriteria + " : " + transformer + "]";
     }
 }
