@@ -18,6 +18,8 @@ import org.shiftone.jrat.util.log.LoggerFactory;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.io.Serializable;
+import java.io.ObjectOutputStream;
 import java.util.Properties;
 
 
@@ -75,7 +77,7 @@ class RuntimeContextImpl implements RuntimeContext {
         PrintWriter printWriter;
 
         try {
-            printWriter = outputDirectory.createPrintWriter("jrat.log");           
+            printWriter = outputDirectory.createPrintWriter("jrat.log");
             LoggerFactory.redirectLogging(printWriter);
             LOG.info("logfile created");
             LOG.info("Running JRat version " + VersionUtil.getVersion() + " - built on " + VersionUtil.getBuiltOn());
@@ -128,6 +130,30 @@ class RuntimeContextImpl implements RuntimeContext {
         shutdownRegistry.registerShutdownListener(listener);
     }
 
+
+    public void writeSerializable(String fileName, Serializable serializable) {
+
+        OutputStream outputStream = createOutputStream(fileName);
+        ObjectOutputStream objectOutputStream = null;
+        
+        try {
+
+            objectOutputStream = new ObjectOutputStream(outputStream);
+
+            objectOutputStream.writeObject(serializable);
+
+            objectOutputStream.flush();
+            objectOutputStream.close();
+
+        } catch (Exception e) {
+
+             LOG.error("unable to write object '" + serializable + "' to file : " + fileName, e);
+
+        } finally {
+            IOUtil.close(objectOutputStream);
+        }
+
+    }
 
     public String toString() {
         return "RuntimeContextImpl created @ " + startTimeMs;

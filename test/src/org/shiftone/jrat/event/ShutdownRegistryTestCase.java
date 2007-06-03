@@ -17,7 +17,7 @@ public class ShutdownRegistryTestCase extends TestCase {
 
         ShutdownRegistry shutdownRegistry = new ShutdownRegistry();
         FileOutputRegistry fileOutputRegistry = new FileOutputRegistry();
-        FileOutputFactory fileOutputFactory = new FileOutputFactory(fileOutputRegistry, 0, false);
+        FileOutputFactory fileOutputFactory = new FileOutputFactory(fileOutputRegistry, 0);
 
         shutdownRegistry.registerShutdownListener(fileOutputRegistry);
         for (int i = 0; i < 1000; i++) {

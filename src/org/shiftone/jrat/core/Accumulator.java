@@ -5,13 +5,18 @@ import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.TimeUnit;
 
+import java.io.Externalizable;
+import java.io.ObjectOutput;
+import java.io.IOException;
+import java.io.ObjectInput;
+
 
 /**
  * Class Accumulator
  *
  * @author Jeff Drost
  */
-public class Accumulator {
+public class Accumulator implements Externalizable {
 
     private static final Logger LOG = Logger.getLogger(Accumulator.class);
     private long totalEnters = 0;
@@ -24,19 +29,47 @@ public class Accumulator {
     private int concurThreads = 0;
     private int maxConcurThreads = 0;
 
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeLong(totalEnters);
+        out.writeLong(totalExits);
+        out.writeLong(totalErrors);
+        out.writeLong(totalDuration);
+        out.writeLong(totalOfSquaresMs);
+        out.writeLong(maxDuration);
+        out.writeLong(minDuration);        
+        out.writeInt(maxConcurThreads);
+    }
+
+
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public Accumulator() {
     }
 
 
-    public Accumulator(long totalEnters, long totalExits, long totalErrors, long totalDuration, long totalOfSquares,
-                       long maxDuration, long minDuration, int maxConcurThreads) {
+    public Accumulator(long totalEnters,
+                       long totalExits,
+                       long totalErrors,
+                       long totalDuration,
+                       long totalOfSquares,
+                       long maxDuration,
+                       long minDuration,
+                       int maxConcurThreads) {
         setStatistics(totalEnters, totalExits, totalErrors, totalDuration,    //
                 totalOfSquares, maxDuration, minDuration, maxConcurThreads);
     }
 
 
-    public void setStatistics(long totalEnters, long totalExits, long totalErrors, long totalDuration,
-                              long totalOfSquares, long maxDuration, long minDuration, int maxConcurThreads) {
+    public void setStatistics(long totalEnters,
+                              long totalExits,
+                              long totalErrors,
+                              long totalDuration,
+                              long totalOfSquares,
+                              long maxDuration,
+                              long minDuration,
+                              int maxConcurThreads) {
 
         this.totalEnters = totalEnters;
         this.totalExits = totalExits;
@@ -275,4 +308,6 @@ public class Accumulator {
     public static Accumulator fromCSV(String csv) {
         return fromCSV(csv, new Accumulator());
     }
+
+
 }

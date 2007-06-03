@@ -4,6 +4,11 @@ package org.shiftone.jrat.core;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
+import java.io.Externalizable;
+import java.io.ObjectOutput;
+import java.io.IOException;
+import java.io.ObjectInput;
+
 
 /**
  * Immutable object that can be used to uniquely identify a method - suitable
@@ -11,7 +16,7 @@ import org.shiftone.jrat.util.log.Logger;
  *
  * @author Jeff Drost
  */
-public class MethodKey {
+public class MethodKey implements Externalizable {
 
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
     private String className = null;
@@ -20,6 +25,25 @@ public class MethodKey {
     private int hashCode = 0;
     private String toStringValue = null;
     private Signature sig = null;
+
+
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeUTF(className);
+        out.writeUTF(methodName);
+        out.writeUTF(signature);
+        out.writeInt(hashCode);
+    }
+
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        className = in.readUTF();
+        methodName = in.readUTF();
+        signature = in.readUTF();
+        hashCode = in.readInt();
+    }
+
+
+    public MethodKey() {
+    }
 
     public MethodKey(String className, String methodName, String signature) {
 

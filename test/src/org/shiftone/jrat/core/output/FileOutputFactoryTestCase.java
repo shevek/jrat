@@ -17,7 +17,7 @@ public class FileOutputFactoryTestCase extends TestCase {
     public void testWriter() throws Exception {
 
         FileOutputRegistry registry = new FileOutputRegistry();
-        FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
+        FileOutputFactory factory = new FileOutputFactory(registry, 0);
 
         Writer writer = factory.createWriter(new File("FileOutputFactoryTestCase.Writer"));
 
@@ -31,7 +31,7 @@ public class FileOutputFactoryTestCase extends TestCase {
     public void testPrintWriter() throws Exception {
 
         FileOutputRegistry registry = new FileOutputRegistry();
-        FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
+        FileOutputFactory factory = new FileOutputFactory(registry, 0);
 
         PrintWriter printWriter = factory.createPrintWriter(new File("FileOutputFactoryTestCase.PrintWriter"));
 
@@ -45,7 +45,7 @@ public class FileOutputFactoryTestCase extends TestCase {
     public void testOutputStream() throws Exception {
 
         FileOutputRegistry registry = new FileOutputRegistry();
-        FileOutputFactory factory = new FileOutputFactory(registry, 0, false);
+        FileOutputFactory factory = new FileOutputFactory(registry, 0);
 
         OutputStream outputStream = factory.createOutputStream(new File("FileOutputFactoryTestCase.OutputStream"));
 

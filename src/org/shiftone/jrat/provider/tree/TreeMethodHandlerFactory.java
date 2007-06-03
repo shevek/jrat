@@ -74,11 +74,13 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     public synchronized void writeOutputFile(String fileName) {
 
+        LOG.info("writeOutputFile...");
 
         PrintWriter printWriter = null;
 
+        getContext().writeSerializable("BIN_" + fileName, rootNode);
+
         try {
-            LOG.info("writeOutputFile...");
 
             printWriter = getContext().createPrintWriter(fileName);
 
