@@ -5,6 +5,7 @@ import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.io.nop.NullOutputStream;
 import org.shiftone.jrat.util.io.nop.NullPrintWriter;
 import org.shiftone.jrat.util.io.nop.NullWriter;
+import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.*;
@@ -19,18 +20,17 @@ public class FileOutputFactory {
     private static final Logger LOG = Logger.getLogger(FileOutputFactory.class);
     private final FileOutputRegistry fileOutputRegistry;
     private final int bufferSize;
-    private final boolean compress;
 
-    public FileOutputFactory(FileOutputRegistry fileOutputRegistry, int bufferSize, boolean compress) {
+    public FileOutputFactory(FileOutputRegistry fileOutputRegistry, int bufferSize) {
 
         this.fileOutputRegistry = fileOutputRegistry;
         this.bufferSize = bufferSize;
-        this.compress = compress;
+
     }
 
 
     public FileOutputFactory(FileOutputRegistry fileOutputRegistry) {
-        this(fileOutputRegistry, Environment.getSettings().getOutputBufferSize(), Environment.getSettings().isOutputCompressionEnabled());
+        this(fileOutputRegistry, Environment.getSettings().getOutputBufferSize());
     }
 
 
@@ -103,28 +103,22 @@ public class FileOutputFactory {
     }
 
 
-    private File renameIfCompress(File file) {
-
-        return (compress)
-                ? new File(file.getAbsolutePath() + ".gz")
-                : file;
-    }
-
 
     private OutputStream internalCreateOutputStream(File file) throws IOException {
 
         LOG.info("createOutputStream " + file.getAbsolutePath());
 
-        file = renameIfCompress(file);
+        File parent = file.getParentFile();
+
+        if (!parent.exists()) {
+            LOG.info("creating parent directory : " + parent.getAbsolutePath());
+            parent.mkdirs();
+        }
 
         OutputStream out = new FileOutputStream(file);
 
         if (bufferSize > 0) {
             out = new BufferedOutputStream(out, bufferSize);
-        }
-
-        if (compress) {
-            out = new GZIPOutputStream(out);
         }
 
         return out;

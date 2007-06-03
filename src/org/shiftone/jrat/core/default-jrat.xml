@@ -39,11 +39,13 @@
         <handlers>
 
             <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
-                <property name="outputFile" value="my_tree.xrat"/>
+                <property name="outputFile" value="my_code_tree.jrat"/>
             </handler>
 
 
-            <handler factory="org.shiftone.jrat.provider.stats.StatMethodHandlerFactory"/>
+            <handler factory="org.shiftone.jrat.provider.stats.StatMethodHandlerFactory">
+                <property name="outputFile" value="my_code_stats.jrat"/>
+            </handler>
 
         </handlers>
 

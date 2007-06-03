@@ -40,6 +40,14 @@ public class IOUtil {
         }
     }
 
+    public static boolean createNewFile(File file) {
+
+        try {
+        return file.createNewFile();
+        } catch (IOException e) {
+            throw new JRatException("failed to create new file : " + file.getAbsolutePath(),e);
+        }
+    }
 
     public static void deleteIfExists(File file) {
 

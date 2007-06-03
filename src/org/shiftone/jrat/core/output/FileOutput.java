@@ -8,6 +8,5 @@ public interface FileOutput {
 
     public void close() throws Exception;
 
-
     public void flush() throws Exception;
 }

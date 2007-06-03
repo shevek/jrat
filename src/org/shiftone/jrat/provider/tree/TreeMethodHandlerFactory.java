@@ -65,7 +65,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
 
     public synchronized void writeOutputFile() {
-        writeOutputFile(null);
+        writeOutputFile(getOutputFile());
     }
 
     public synchronized void reset() {
@@ -74,9 +74,6 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     public synchronized void writeOutputFile(String fileName) {
 
-        if (fileName == null) {
-            fileName = getOutputFile();
-        }
 
         PrintWriter printWriter = null;
 
@@ -88,11 +85,13 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
             rootNode.printXML(printWriter);
             LOG.info("printWriter.flush " + printWriter);
             printWriter.flush();
-        }
-        catch (Exception e) {
-            LOG.error("Error writting to " + getOutputFile(), e);
-        }
-        finally {
+
+        } catch (Exception e) {
+
+            LOG.error("Error writting to " + fileName, e);
+
+        } finally {
+
             IOUtil.close(printWriter);
             LOG.info("writeOutputFile(" + fileName + ") complete");
         }

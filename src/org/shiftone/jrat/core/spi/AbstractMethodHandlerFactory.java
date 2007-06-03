@@ -14,7 +14,6 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
     private static final Logger LOG = Logger.getLogger(AbstractMethodHandlerFactory.class);
     private static final String FACTORY_POSTFIX = "Factory";
     private RuntimeContext context = null;
-    private boolean compressOutput = false;
     private String outputFile = getDefaultOutputFile();
     public abstract MethodHandler createMethodHandler(MethodKey methodKey);
 
@@ -38,7 +37,7 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
             name = name.substring(0, name.length() - FACTORY_POSTFIX.length());
         }
         
-        return name + ".xrat";
+        return name + ".jrat";
     }
 
 

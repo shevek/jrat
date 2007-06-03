@@ -5,6 +5,7 @@ import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.Dir;
+import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.File;
@@ -93,37 +94,23 @@ public class OutputDirectory {
         }
     }
 
-    // todo - get rid of sequence
     public synchronized File createFile(String fileName) {
 
         Assert.assertNotNull("fileName", fileName);
 
-        long fileNumber = fileSequence.incrementAndGet();
-        String actualFileName = fileSeqFormat.format(fileNumber) + "_" + fileName;
+        File file = outputDir.createChild(fileName);
 
-        fileList.add(new FileInfo(fileName, actualFileName, System.currentTimeMillis()));
-
-        return outputDir.createChild(actualFileName);
-    }
-
-
-    public void writeIndexFile() {
-
-        File indexFile = outputDir.createChild("index.xml");
-        PrintWriter printWriter = outputFactory.createPrintWriterSafely(indexFile);
-        Iterator files = fileList.iterator();
-
-        printWriter.println("<output-index>");
-
-        while (files.hasNext()) {
-            FileInfo fileInfo = (FileInfo) files.next();
-
-            printWriter.print(" <file requestedName=\"" + fileInfo.getRequestedName() + "\"");
-            printWriter.print(" actualName=\"" + fileInfo.getActualName() + "\"");
-            printWriter.println(" creationTime=\"" + fileInfo.getCreationTime() + "\"/>");
+        int i = 2;
+        while (file.exists()) {
+            file = outputDir.createChild(i + "_" + fileName);
+            i++;
         }
 
-        printWriter.println("<output-index>");
+        IOUtil.createNewFile(file);
+        
+        fileList.add(file);
+        
+        return file;
     }
 
 
