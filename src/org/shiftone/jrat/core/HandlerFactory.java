@@ -5,10 +5,7 @@ import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.log.Logger;
 
 
-/**
- * This class temporary. It's purpose is to smooth the change of the
- * MethodHandler interface.
- */
+
 public class HandlerFactory {
 
     private static final Logger LOG = Logger.getLogger(HandlerFactory.class);
