@@ -21,6 +21,7 @@ import java.io.Writer;
 import java.io.Serializable;
 import java.io.ObjectOutputStream;
 import java.util.Properties;
+import java.util.zip.GZIPOutputStream;
 
 
 /**
@@ -137,6 +138,8 @@ class RuntimeContextImpl implements RuntimeContext {
         ObjectOutputStream objectOutputStream = null;
         
         try {
+
+            outputStream = new GZIPOutputStream(outputStream);                         
 
             objectOutputStream = new ObjectOutputStream(outputStream);
 

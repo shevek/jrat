@@ -41,33 +41,6 @@ public class OpenOutputFileRunnable implements Runnable {
     }
 
 
-    // public void stateChanged(ChangeEvent e) {
-    //
-    // // this method is called when the rangeModel changes
-    // int total = rangeModel.getMaximum() - rangeModel.getMinimum();
-    // int prog = rangeModel.getValue() - rangeModel.getMinimum();
-    // int newPercent = (int) ((prog * 100.0) / total);
-    //
-    // if (newPercent != percent)
-    // {
-    // percent = newPercent;
-    //
-    // SwingUtilities.invokeLater(new Runnable() {
-    //
-    // public void run() {
-    //
-    // if (percent != 0)
-    // {
-    // view.setTitle(percent + "% of " + title);
-    // }
-    // else
-    // {
-    // view.setTitle(title);
-    // }
-    // }
-    // });
-    // }
-    // }
     public void run() {
 
         try {
@@ -81,21 +54,7 @@ public class OpenOutputFileRunnable implements Runnable {
                 }
             });
 
-            // SwingUtilities.invokeLater(new Runnable() {
-            // public void run() {
-            // ((JComponent)viewContext.getView().getContainer()).repaint();
-            // }
-            // });
-            // Assert.assertNotNull("component", component);
-            // view.setBody(component);
-            // tab.setTitle(title);
-            // SwingUtilities.invokeLater(new Runnable() {
-            //
-            // public void run() {
-            // view.setBody(component);
-            // view.setIcon(null);
-            // }
-            // });
+
         }
         catch (Throwable e) {
             LOG.error("error loading file", e);
@@ -114,24 +73,11 @@ public class OpenOutputFileRunnable implements Runnable {
             editorPane.setText(writer.toString());
             scrollPane.setBackground(Color.WHITE);
 
-            // SwingUtilities.invokeLater(new Runnable() {
-            //
-            // public void run() {
-            //
-            // view.setBody(scrollPane);
-            // view.setIconResource("org/shiftone/jrat/ui/icon/alert.gif");
-            //
-            // }
-            // });
+
         }
         finally {
 
-            // SwingUtilities.invokeLater(new Runnable() {
-            //
-            // public void run() {
-            // view.setCursor(Cursor.getDefaultCursor());
-            // }
-            // });
+
         }
     }
 }

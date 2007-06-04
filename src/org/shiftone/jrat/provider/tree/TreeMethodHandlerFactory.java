@@ -8,6 +8,7 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
 import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
 import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
+import org.shiftone.jrat.provider.tree.ui.TreeViewBuilder;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -78,13 +79,13 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
         PrintWriter printWriter = null;
 
-        getContext().writeSerializable("BIN_" + fileName, rootNode);
+        getContext().writeSerializable("BIN_" + fileName, new TreeViewBuilder(rootNode));
 
         try {
 
             printWriter = getContext().createPrintWriter(fileName);
 
-            rootNode.printXML(printWriter);
+          //  rootNode.printXML(printWriter);
             LOG.info("printWriter.flush " + printWriter);
             printWriter.flush();
 

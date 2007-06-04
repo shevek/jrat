@@ -2,8 +2,6 @@ package org.shiftone.jrat.provider.tree.ui;
 
 
 import org.shiftone.jrat.core.spi.ui.View;
-import org.shiftone.jrat.provider.tree.ui.action.SpawnRootAction;
-import org.shiftone.jrat.provider.tree.ui.action.StatsViewAction;
 import org.shiftone.jrat.provider.tree.ui.touch.TouchGraphAction;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.log.Logger;
@@ -31,11 +29,10 @@ public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UI
     private JMenuItem statView = new JMenuItem(MENU_TREE_STAT_VIEW);
     private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
     private NodeDetailPanel detailPanel;
-    private View view;
 
-    public TreeViewerPanel(StackTreeNode rootNode, View view) {
+    public TreeViewerPanel(StackTreeNode rootNode) {
 
-        this.view = view;
+
         this.rootNode = rootNode;
         tree = new JTree(rootNode);
         detailPanel = new NodeDetailPanel();
@@ -65,8 +62,8 @@ public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UI
         TreePopupMouseAdaptor treePopupMouseAdaptor = new TreePopupMouseAdaptor(popupMenu, tree);
 
         tree.addMouseListener(treePopupMouseAdaptor);
-        statView.addActionListener(new StatsViewAction(treePopupMouseAdaptor, view));
-        spawnRoot.addActionListener(new SpawnRootAction(treePopupMouseAdaptor, view));
+      //  statView.addActionListener(new StatsViewAction(treePopupMouseAdaptor));
+       // spawnRoot.addActionListener(new SpawnRootAction(treePopupMouseAdaptor));
         touchGraph.addActionListener(new TouchGraphAction(treePopupMouseAdaptor));
     }
 

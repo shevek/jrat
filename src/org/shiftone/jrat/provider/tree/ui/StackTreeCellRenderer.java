@@ -6,10 +6,12 @@ import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.TimeUnit;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
 import java.text.DecimalFormat;
 
 
@@ -79,11 +81,11 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
             String methodName = methodKey.getMethodName();
 
             if (treeNode.isChildOfRootNode()) {
-                Float avg = treeNode.getAverageDurationNanos();
+                Float avg = treeNode.getAverageDuration();
 
                 result = methodName + ((avg == null)
                         ? " - never exited"
-                        : (" - " + msDecimalFormat.format(treeNode.getAverageDuration(TimeUnit.MS))));
+                        : (" - " + msDecimalFormat.format(treeNode.getAverageDuration())));
             } else {
                 double pct = treeNode.getPctOfAvgRootDuration();
 

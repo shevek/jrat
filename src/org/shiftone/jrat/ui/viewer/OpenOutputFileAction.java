@@ -74,9 +74,11 @@ public class OpenOutputFileAction implements ActionListener, UIConstants {
         View view = viewContainer.createView(title);
 
         runtimeOutput = new ViewContextImpl(view, inputFile);
-        viewBuilder = getOutputViewerFactory(runtimeOutput);
 
-        Runnable runnable = new OpenOutputFileRunnable(runtimeOutput, viewBuilder);
+        //viewBuilder = getOutputViewerFactory(runtimeOutput);
+        //Runnable runnable = new OpenOutputFileRunnable(runtimeOutput, viewBuilder);
+
+        Runnable runnable = new OpenOutputFileRunnable2(runtimeOutput);
 
         new Thread(runnable).start();
     }

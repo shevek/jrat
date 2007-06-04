@@ -4,7 +4,6 @@ import ca.odell.glazedlists.gui.TableFormat;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.util.Percent;
-import org.shiftone.jrat.util.time.TimeUnit;
 
 /**
  * @author Jeff Drost
@@ -61,19 +60,19 @@ public class ChildrenTableFormat implements TableFormat {
                 return new Integer(node.getMaxConcurrentThreads());
 
             case 7:
-                return new Long(node.getTotalDuration(TimeUnit.MS));
+                return new Long(node.getTotalDuration());
 
             case 8:
-                return node.getAverageDuration(TimeUnit.MS);
+                return node.getAverageDuration();
 
             case 9:
                 return node.getStdDeviation();
 
             case 10:
-                return node.getMinDuration(TimeUnit.MS);
+                return node.getMinDuration();
 
             case 11:
-                return node.getMaxDuration(TimeUnit.MS);
+                return node.getMaxDuration();
 
             case 12:
                 return new Percent(node.getPctOfAvgParentDuration());

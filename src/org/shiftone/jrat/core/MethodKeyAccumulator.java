@@ -27,6 +27,6 @@ public class MethodKeyAccumulator extends Accumulator {
 
 
     public String toString() {
-        return "MethodKeyAccumulator[" + methodKey + ":" + toCSV(this) + "]";
+        return "MethodKeyAccumulator[" + methodKey + "]";
     }
 }

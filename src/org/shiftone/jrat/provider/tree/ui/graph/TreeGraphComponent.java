@@ -83,14 +83,14 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         }
 
         // print the children
-        long total = node.getTotalDurationNanos();
+        long total = node.getTotalDuration();
 
         if ((total > 0) && (node.getChildCount() > 0)) {
             int childX = 0;
 
             for (int i = 0; i < node.getChildCount(); i++) {
                 StackTreeNode child = (StackTreeNode) node.getChildAt(i);
-                long part = child.getTotalDurationNanos();
+                long part = child.getTotalDuration();
                 int partWidth = (int) ((part * (long) width) / total);
 
                 if (partWidth > 1) {

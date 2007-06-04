@@ -51,7 +51,7 @@ public class PieGraphComponent extends BufferedJComponent {
         for (int i = 0; i < node.getChildCount(); i++) {
             StackTreeNode child = (StackTreeNode) node.getChildAt(i);
 
-            if (child.getTotalDurationNanos() > 0) {
+            if (child.getTotalDuration() > 0) {
                 maxChildDepth = Math.max(maxChildDepth, getMaxEffectiveDepth(child));
             }
         }
@@ -68,14 +68,14 @@ public class PieGraphComponent extends BufferedJComponent {
         }
 
         long totalDegrees = max - min;
-        long totalNanos = node.getTotalDurationNanos();
+        long totalNanos = node.getTotalDuration();
 
         if ((totalNanos > 0) && (node.getChildCount() > 0)) {
             int startDegrees = min;
 
             for (int i = 0; i < node.getChildCount(); i++) {
                 StackTreeNode child = (StackTreeNode) node.getChildAt(i);
-                long partNanos = child.getTotalDurationNanos();
+                long partNanos = child.getTotalDuration();
                 int partDegrees = (int) ((partNanos * totalDegrees) / totalNanos);
 
                 if (partDegrees > 1) {

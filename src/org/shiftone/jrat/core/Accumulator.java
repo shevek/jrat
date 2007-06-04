@@ -23,21 +23,21 @@ public class Accumulator implements Externalizable {
     private long totalExits = 0;
     private long totalErrors = 0;
     private long totalDuration = 0;    // used for mean
-    private long totalOfSquaresMs = 0;    // used for std dev
+    private long sumOfSquares = 0;    // used for std dev
     private long maxDuration = 0;
     private long minDuration = Long.MAX_VALUE;
     private int concurThreads = 0;
-    private int maxConcurThreads = 0;
+    private int maxConcurrentThreads = 0;
 
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeLong(totalEnters);
         out.writeLong(totalExits);
         out.writeLong(totalErrors);
         out.writeLong(totalDuration);
-        out.writeLong(totalOfSquaresMs);
+        out.writeLong(sumOfSquares);
         out.writeLong(maxDuration);
         out.writeLong(minDuration);        
-        out.writeInt(maxConcurThreads);
+        out.writeInt(maxConcurrentThreads);
     }
 
 
@@ -75,10 +75,10 @@ public class Accumulator implements Externalizable {
         this.totalExits = totalExits;
         this.totalErrors = totalErrors;
         this.totalDuration = totalDuration;
-        this.totalOfSquaresMs = totalOfSquares;
+        this.sumOfSquares = totalOfSquares;
         this.maxDuration = maxDuration;
         this.minDuration = minDuration;
-        this.maxConcurThreads = maxConcurThreads;
+        this.maxConcurrentThreads = maxConcurThreads;
     }
 
 
@@ -92,11 +92,11 @@ public class Accumulator implements Externalizable {
         this.totalExits = this.totalExits + accumulator.totalExits;
         this.totalErrors = this.totalErrors + accumulator.totalErrors;
         this.totalDuration = this.totalDuration + accumulator.totalDuration;
-        this.totalOfSquaresMs = this.totalOfSquaresMs + accumulator.totalOfSquaresMs;
+        this.sumOfSquares = this.sumOfSquares + accumulator.sumOfSquares;
         this.maxDuration = Math.max(this.maxDuration, accumulator.maxDuration);
         this.minDuration = Math.min(this.minDuration, accumulator.minDuration);
         this.concurThreads = this.concurThreads + accumulator.concurThreads;
-        this.maxConcurThreads = Math.max(this.maxConcurThreads, accumulator.maxConcurThreads);
+        this.maxConcurrentThreads = Math.max(this.maxConcurrentThreads, accumulator.maxConcurrentThreads);
     }
 
     public synchronized void reset() {
@@ -105,11 +105,11 @@ public class Accumulator implements Externalizable {
         this.totalExits = 0;
         this.totalErrors = 0;
         this.totalDuration = 0;
-        this.totalOfSquaresMs = 0;
+        this.sumOfSquares = 0;
         this.maxDuration = 0;
         this.minDuration = 0;
         //this.concurThreads    = this.concurThreads ;
-        this.maxConcurThreads = this.concurThreads;
+        this.maxConcurrentThreads = this.concurThreads;
 
     }
 
@@ -118,8 +118,8 @@ public class Accumulator implements Externalizable {
         totalEnters++;
         concurThreads++;
 
-        if (concurThreads > maxConcurThreads) {
-            maxConcurThreads = concurThreads;
+        if (concurThreads > maxConcurrentThreads) {
+            maxConcurrentThreads = concurThreads;
         }
     }
 
@@ -131,7 +131,7 @@ public class Accumulator implements Externalizable {
         long durationMs = TimeUnit.MS.fromNanos(durationNanos);
 
         totalDuration += durationNanos;
-        totalOfSquaresMs += (durationMs * durationMs);
+        sumOfSquares += (durationMs * durationMs);
 
         if (!success) {
             totalErrors++;
@@ -149,8 +149,8 @@ public class Accumulator implements Externalizable {
     }
 
 
-    public final Float getAverageDuration(TimeUnit units) {
-        return TimeUnit.MS.fromNanos(getAverageDurationNanos());
+    public final Float getAverageDuration() {
+        return getAverageDuration();
     }
 
 
@@ -171,7 +171,7 @@ public class Accumulator implements Externalizable {
         Double stdDeviation = null;
 
         if (totalExits > 1) {
-            double numerator = totalOfSquaresMs - ((double) (totalDuration * totalDuration) / (double) totalExits);
+            double numerator = sumOfSquares - ((double) (totalDuration * totalDuration) / (double) totalExits);
             double denominator = totalExits - 1.0;
 
             stdDeviation = new Double(Math.sqrt(numerator / denominator));
@@ -181,10 +181,26 @@ public class Accumulator implements Externalizable {
     }
 
 
+    public long getTotalDuration() {
+        return totalDuration;
+    }
+
+
+    public int getMaxConcurrentThreads() {
+        return maxConcurrentThreads;
+    }
+
+    public long getSumOfSquares() {
+        return sumOfSquares;
+    }
+
     public final int getConcurrentThreads() {
         return concurThreads;
     }
 
+    public long getTotalErrors() {
+        return totalErrors;
+    }
 
     public final long getTotalEnters() {
         return totalEnters;
@@ -196,87 +212,74 @@ public class Accumulator implements Externalizable {
     }
 
 
-    public final Long getMinDuration(TimeUnit units) {
-        return TimeUnit.MS.fromNanos(getMinDurationNanos());
+    public final Long getMinDuration() {
+        return minDuration;
     }
 
 
-    public final Long getMinDurationNanos() {
 
-        return (totalExits == 0)
-                ? null
-                : new Long(minDuration);
+    public final Long getMaxDuration( ) {
+        return maxDuration;
     }
 
+ 
 
-    public final Long getMaxDuration(TimeUnit units) {
-        return TimeUnit.MS.fromNanos(getMaxDurationNanos());
-    }
-
-
-    public final Long getMaxDurationNanos() {
-
-        return (totalExits == 0)
-                ? null
-                : new Long(maxDuration);
-    }
+//
+//    public final long getTotalDuration(TimeUnit units) {
+//        return units.fromNanos(getTotalDurationNanos());
+//    }
 
 
-    public final long getTotalDuration(TimeUnit units) {
-        return units.fromNanos(getTotalDurationNanos());
-    }
+//    public final long getTotalDurationNanos() {
+//        return totalDuration;
+//    }
+//
+//
+//    public final long getSumOfSquares() {
+//        return sumOfSquares;
+//    }
+//
+//
+//    public final long getTotalErrors() {
+//        return totalErrors;
+//    }
+//
+//
+//    public int getMaxConcurrentThreads() {
+//        return maxConcurrentThreads;
+//    }
 
+//
+//    public static String toCSV(Accumulator acc) {
+//
+//        StringBuffer sb = new StringBuffer(100);
+//
+//        sb.append(acc.totalEnters);         // 0
+//        sb.append(',');
+//        sb.append(acc.totalExits);          // 1
+//        sb.append(',');
+//        sb.append(acc.totalErrors);         // 2
+//        sb.append(',');
+//        sb.append(acc.totalDuration);       // 3
+//        sb.append(',');
+//        sb.append(acc.sumOfSquares);    // 4
+//        sb.append(',');
+//        sb.append(acc.maxConcurrentThreads);    // 5
+//
+//        if (acc.totalExits != 0) {
+//            sb.append(',');
+//            sb.append(acc.maxDuration);    // 6
+//            sb.append(',');
+//            sb.append(acc.minDuration);    // 7
+//        }
+//
+//        return sb.toString();
+//    }
 
-    public final long getTotalDurationNanos() {
-        return totalDuration;
-    }
-
-
-    public final long getSumOfSquares() {
-        return totalOfSquaresMs;
-    }
-
-
-    public final long getTotalErrors() {
-        return totalErrors;
-    }
-
-
-    public int getMaxConcurrentThreads() {
-        return maxConcurThreads;
-    }
-
-
-    public static String toCSV(Accumulator acc) {
-
-        StringBuffer sb = new StringBuffer(100);
-
-        sb.append(acc.totalEnters);         // 0
-        sb.append(',');
-        sb.append(acc.totalExits);          // 1
-        sb.append(',');
-        sb.append(acc.totalErrors);         // 2
-        sb.append(',');
-        sb.append(acc.totalDuration);       // 3
-        sb.append(',');
-        sb.append(acc.totalOfSquaresMs);    // 4
-        sb.append(',');
-        sb.append(acc.maxConcurThreads);    // 5
-
-        if (acc.totalExits != 0) {
-            sb.append(',');
-            sb.append(acc.maxDuration);    // 6
-            sb.append(',');
-            sb.append(acc.minDuration);    // 7
-        }
-
-        return sb.toString();
-    }
-
-
-    public String toString() {
-        return "Accumulator[" + toCSV(this) + "]";
-    }
+//
+//    public String toString() {
+//        return "Accumulator[" + toCSV(this) + "]";
+//    }
 
 
     public static Accumulator fromCSV(String csv, Accumulator acc) {
@@ -292,8 +295,8 @@ public class Accumulator implements Externalizable {
             acc.totalExits = Long.parseLong(tokens[1]);
             acc.totalErrors = Long.parseLong(tokens[2]);
             acc.totalDuration = Long.parseLong(tokens[3]);
-            acc.totalOfSquaresMs = Long.parseLong(tokens[4]);
-            acc.maxConcurThreads = Integer.parseInt(tokens[5]);
+            acc.sumOfSquares = Long.parseLong(tokens[4]);
+            acc.maxConcurrentThreads = Integer.parseInt(tokens[5]);
         }
 
         if (tokens.length == 8) {

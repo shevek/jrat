@@ -43,9 +43,11 @@
             </handler>
 
 
+            <!--
             <handler factory="org.shiftone.jrat.provider.stats.StatMethodHandlerFactory">
                 <property name="outputFile" value="my_code_stats.jrat"/>
             </handler>
+            -->
 
         </handlers>
 
