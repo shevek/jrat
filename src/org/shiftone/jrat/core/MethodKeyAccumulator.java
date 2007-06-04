@@ -1,6 +1,9 @@
 package org.shiftone.jrat.core;
 
 
+/**
+ * @deprecated ????
+ */
 public class MethodKeyAccumulator extends Accumulator {
 
     protected MethodKey methodKey;

@@ -29,6 +29,7 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
         for (int p = 0; p < profiles.size(); p++) {
 
             Profile profile = (Profile) profiles.get(p);
+
             String profileName = profile.getName() != null
                     ? "'" + profile.getName() + "'"
                     : String.valueOf(p);
@@ -40,10 +41,19 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
             for (int f = 0; f < factories.size(); f++) {
 
                 Handler handler = (Handler) factories.get(f);
+                String factoryName = profileName + ", factory " + f + " (" + handler.getClassName() + ")";
+                LOG.info("Loading factory " + handler + "...");
 
-                LOG.info("Loading profile " + profileName + ", factory " + f + " (" + handler.getClassName() + ")...");
+                try {
 
-                profileFactories.add(new FactoryInstance(handler.buildMethodHandlerFactory(), profile));
+                    profileFactories.add(new FactoryInstance(handler.buildMethodHandlerFactory(), profile));
+
+                } catch (Exception e) {
+
+                    LOG.error("There was an error loading factory " + factoryName, e);
+                    LOG.info("Execution will proceed, however this factory will not receieve events.");
+
+                }
 
             }
         }

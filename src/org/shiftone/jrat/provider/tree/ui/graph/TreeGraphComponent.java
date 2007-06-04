@@ -67,8 +67,10 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         gg.setColor(Color.BLACK);
 
         MethodKey methodKey = node.getMethodKey();
-        String text = methodKey.getClassName() + "." + methodKey.getMethodName() + " "
-                + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
+        String text = methodKey.getClassName()
+                + "." + methodKey.getMethodName()
+                + " "  + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
+
         Rectangle2D stringBounds = metrics.getStringBounds(text, g);
 
         if (stringBounds.getWidth() < width) {

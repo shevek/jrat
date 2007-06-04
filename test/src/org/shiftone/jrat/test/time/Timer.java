@@ -54,8 +54,6 @@ public class Timer {
 
     public static void main(String[] args) {
 
-        LOG.info("Clock.getStrategyText() = " + Clock.getStrategyText());
-
         LoggerFactory.disableLogging();
 
         time(SHORT_RUNNABLES, ITERATIONS * 10);

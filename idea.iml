@@ -7,6 +7,11 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/src" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/provider/rate" />
+      <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/provider/rate2" />
+      <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/provider/stats" />
+      <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/provider/trace" />
+      <excludeFolder url="file://$MODULE_DIR$/src/org/shiftone/jrat/provider/tree/ui/action" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

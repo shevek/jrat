@@ -69,10 +69,10 @@ public class ChildrenTableFormat implements TableFormat {
                 return node.getStdDeviation();
 
             case 10:
-                return node.getMinDuration();
+                return new Long(node.getMinDuration());
 
             case 11:
-                return node.getMaxDuration();
+                return new Long(node.getMaxDuration());
 
             case 12:
                 return new Percent(node.getPctOfAvgParentDuration());

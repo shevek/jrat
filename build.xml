@@ -45,6 +45,9 @@
 			excludes="**/blaze/**"
 			source="1.2" target="1.2">
 
+            <exclude name="org/shiftone/jrat/provider/rate*/**"/>
+            <exclude name="org/shiftone/jrat/provider/stats/**"/>
+            <exclude name="org/shiftone/jrat/provider/tree/ui/action/**"/>
             <classpath>
 
                 <fileset dir="${lib.dir}">

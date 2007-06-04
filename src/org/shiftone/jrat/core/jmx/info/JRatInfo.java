@@ -29,11 +29,7 @@ public class JRatInfo implements JRatInfoMBean {
         return VersionUtil.getVersion();
     }
 
-
-    public String getClockStrategy() {
-        return Clock.getStrategyText();
-    }
-
+ 
 
     public long getTotalMemory() {
         return Runtime.getRuntime().totalMemory();

@@ -62,7 +62,7 @@ public class NodeDetailPanel extends JPanel {
         if (node.isRootNode()) {
             methodLabel.setText("");
         } else {
-            methodLabel.setText(" " + node.getMethodKey().toString());
+            methodLabel.setText(" " + node.getMethodKey().toString() );
         }
 
         stackTableModel.setStackTreeNode(root, node);

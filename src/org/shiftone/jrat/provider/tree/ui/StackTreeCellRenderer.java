@@ -42,7 +42,7 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
 
         if (treeNode.isRootNode()) {
             icon = ICON_ROOT;
-        } else if (treeNode.isChildOfRootNode()) {
+        } else if (treeNode.getDepth() == 1) {
             icon = ICON_ROOT2;
         } else {
             icon = colorLookup.getIcon(w);
@@ -80,7 +80,7 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
             MethodKey methodKey = treeNode.getMethodKey();
             String methodName = methodKey.getMethodName();
 
-            if (treeNode.isChildOfRootNode()) {
+            if (treeNode.getDepth() == 1) {
                 Float avg = treeNode.getAverageDuration();
 
                 result = methodName + ((avg == null)

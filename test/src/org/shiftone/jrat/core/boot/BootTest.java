@@ -10,11 +10,20 @@ public class BootTest {
 
     public static void main(String[] args) throws Exception {
 
-        HandlerFactory.initialize();
+        //HandlerFactory.initialize();
 
-        MethodHandler handler = HandlerFactory.getMethodHandler("org.test.package.Klass", "doIt", "V()");
-        handler.onMethodStart(handler);
-        handler.onMethodFinish(handler, 1000, null);
+        MethodHandler a = HandlerFactory.getMethodHandler("org.test.package.AKlass", "doIt", "()V");
+        MethodHandler b = HandlerFactory.getMethodHandler("org.test.package.BKlass", "doIt", "()V");
+        MethodHandler c = HandlerFactory.getMethodHandler("org.test.package.CKlass", "doIt", "()V");
+
+        for (int i = 0 ; i < 1000 ; i ++) {
+            a.onMethodStart(null);
+            b.onMethodStart(null);
+            c.onMethodStart(null);
+            c.onMethodFinish(null, 1000, null);
+            b.onMethodFinish(null, 1000, null);
+            a.onMethodFinish(null, 1000, null);
+        }
 
     }
 }

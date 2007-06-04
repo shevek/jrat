@@ -76,17 +76,17 @@ public class Monitor {
 
         handler.onMethodStart(instance);
 
-        long startTime = Clock.currentTimeNanos();
+        long startTime = Clock.currentTimeMillis();
 
         try {
             Object result = command.execute();
 
-            handler.onMethodFinish(instance, Clock.currentTimeNanos() - startTime, null);
+            handler.onMethodFinish(instance, Clock.currentTimeMillis() - startTime, null);
 
             return result;
         }
         catch (Throwable throwable) {
-            handler.onMethodFinish(instance, Clock.currentTimeNanos() - startTime, throwable);
+            handler.onMethodFinish(instance, Clock.currentTimeMillis() - startTime, throwable);
 
             throw throwable;
         }

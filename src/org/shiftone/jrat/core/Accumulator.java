@@ -36,13 +36,20 @@ public class Accumulator implements Externalizable {
         out.writeLong(totalDuration);
         out.writeLong(sumOfSquares);
         out.writeLong(maxDuration);
-        out.writeLong(minDuration);        
+        out.writeLong(minDuration);
         out.writeInt(maxConcurrentThreads);
     }
 
 
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        //To change body of implemented methods use File | Settings | File Templates.
+        totalEnters = in.readLong();
+        totalExits = in.readLong();
+        totalErrors = in.readLong();
+        totalDuration = in.readLong();
+        sumOfSquares = in.readLong();
+        maxDuration = in.readLong();
+        minDuration = in.readLong();
+        maxConcurrentThreads = in.readInt();
     }
 
     public Accumulator() {
@@ -149,12 +156,8 @@ public class Accumulator implements Externalizable {
     }
 
 
+
     public final Float getAverageDuration() {
-        return getAverageDuration();
-    }
-
-
-    public final Float getAverageDurationNanos() {
 
         Float average = null;
 
@@ -212,23 +215,19 @@ public class Accumulator implements Externalizable {
     }
 
 
-    public final Long getMinDuration() {
+    public final long getMinDuration() {
         return minDuration;
     }
 
 
-
-    public final Long getMaxDuration( ) {
+    public final long getMaxDuration() {
         return maxDuration;
     }
-
- 
 
 //
 //    public final long getTotalDuration(TimeUnit units) {
 //        return units.fromNanos(getTotalDurationNanos());
 //    }
-
 
 //    public final long getTotalDurationNanos() {
 //        return totalDuration;

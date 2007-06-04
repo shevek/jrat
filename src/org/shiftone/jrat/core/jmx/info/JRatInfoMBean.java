@@ -14,10 +14,7 @@ public interface JRatInfoMBean {
 
     String getVersion();
 
-
-    String getClockStrategy();
-
-
+ 
     long getTotalMemory();
 
 

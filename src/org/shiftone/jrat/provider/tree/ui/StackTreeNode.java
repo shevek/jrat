@@ -4,7 +4,7 @@ package org.shiftone.jrat.provider.tree.ui;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.StackNode;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.time.TimeUnit;
+import org.shiftone.jrat.util.collection.ArrayEnumeration;
 
 import javax.swing.tree.TreeNode;
 import java.util.*;
@@ -20,52 +20,73 @@ public class StackTreeNode implements TreeNode {
     private static final Logger LOG = Logger.getLogger(StackTreeNode.class);
 
     private final StackNode node;
-    private final int depth;   // replace with depth
-    private final List childList ;
-    private StackTreeNode parent;    
-    protected double pctOfAvgParentDuration;
-    protected double averageDurationNanos;
-    protected double rootAverageDurationNanos;
-    protected double rootTotalDurationNanos;
-    protected double pctOfAvgRootDuration;
-    protected double pctOfRootTotalDuration;
-    private int totalChildren;
-    private int maxDepth;
+    private final StackTreeNode root;
+    private final int depth;
+    private final StackTreeNode[] childArray;
+    private final StackTreeNode parent;
+    private double pctOfAvgRootDuration;
+    private double pctOfAvgParentDuration;
+
+    private int totalChildren;   // total # of children and all children's children
+    private int maxDepth;        // depth deepest child
 
 
     public StackTreeNode(StackNode node) {
-        this(node, 0);
+        this(node, 0, null, null);
     }
 
 
-    private StackTreeNode(StackNode node, int depth) {
+    private StackTreeNode(StackNode node, int depth, StackTreeNode parent, StackTreeNode root) {
 
-        LOG.info("new " + depth);
         this.node = node;
-        this.depth = depth;        
-        this.childList = new ArrayList(3);
+        this.depth = depth;
+        this.parent = parent;
+
+        if (root == null) {
+            // if no parents have claimed to be the root yet, I'll do it.
+            root = this;
+        }
+
+        this.root = root;
+
+        if ((parent != null) && (getTotalExits() > 0)) {
+
+            long parentTotalDuration = parent.getTotalDuration();
+
+            if (parentTotalDuration > 0) {
+                pctOfAvgParentDuration = (100.0 * getTotalDuration()) / parentTotalDuration;
+            }
+
+        }
+
+        if ((root != null) && (getTotalExits() > 0)) {
+
+            long rootTotalDuration = root.getTotalDuration();
+
+            if (rootTotalDuration > 0) {
+                pctOfAvgRootDuration = (100.0 * getTotalDuration()) / rootTotalDuration;
+            }
+
+        }
+
+        List c = node.getChildren();
+
+        this.childArray = new StackTreeNode[c.size()];
 
         Iterator childIterator = node.getChildren().iterator();
 
-        while (childIterator.hasNext())  {
-             StackNode childNode = (StackNode)childIterator.next();
-             StackTreeNode childStackTreeNode = new StackTreeNode(childNode, depth + 1);
-             childStackTreeNode.parent = this;
-             childList.add(childStackTreeNode);
+        for (int i = 0; i < childArray.length; i++) {
+
+            StackNode childNode = (StackNode) c.get(i);
+            StackTreeNode childStackTreeNode = new StackTreeNode(childNode, depth + 1, this, root);
+
+            totalChildren += (1 + childStackTreeNode.totalChildren);
+            maxDepth = Math.max(maxDepth, 1 + childStackTreeNode.maxDepth);
+
+            childArray[i] = childStackTreeNode;
         }
 
-
-        if (node.getTotalExits() > 0) {
-            averageDurationNanos = (double) node.getTotalDuration() / (double) node.getTotalExits();
-
-            if (parent != null) {
-                long parentTotalDurationNanos = parent.node.getTotalDuration();
-
-                if (parentTotalDurationNanos > 0) {
-                    pctOfAvgParentDuration = (100.0 * node.getTotalDuration()) / parentTotalDurationNanos;
-                }
-            }
-        }
+        Arrays.sort(childArray, TotalChildrenComparator.INSTANCE);
 
 //        this.rootAverageDurationNanos = (childOfRoot)
 //                ? this.averageDurationNanos
@@ -86,46 +107,25 @@ public class StackTreeNode implements TreeNode {
     }
 
 
-    /**
-     * stats are set on a node, then all the children are added to that node,
-     * and then.. after all that, completeStats is called on the node. the node
-     * has a chance to (1) count it's childrent and it's children's children and
-     * (2) sortColumn it's children based on the total number of children below.
-     * This has the result of putting more complex nodes first on the screen.
-     */
-    public void completeStats() {
-
-        int maxChildDepth = 0;
-
-        totalChildren += childList.size();
-
-        for (int i = 0; i < childList.size(); i++) {
-            StackTreeNode child = (StackTreeNode) childList.get(i);
-
-            totalChildren += child.totalChildren;
-            maxChildDepth = Math.max(maxChildDepth, child.maxDepth);
-        }
-
-        maxDepth = maxChildDepth + 1;
-
-        Comparator comparator = new Comparator() {
-
-            public int compare(Object o1, Object o2) {
-
-                StackTreeNode stn1 = (StackTreeNode) o1;
-                StackTreeNode stn2 = (StackTreeNode) o2;
-                int diff = stn1.getTotalChildren() - stn2.getTotalChildren();
-
-                return (diff == 0)
-                        ? 0
-                        : (diff < 0)
-                        ? 1
-                        : -1;
-            }
-        };
-
-        Collections.sort(childList, comparator);
+    public int getMaxDepth() {
+        return maxDepth;
     }
+
+    public int getDepth() {
+        return depth;
+    }
+
+
+    public double getPctOfAvgParentDuration() {
+        return pctOfAvgParentDuration;
+    }
+
+
+    public double getPctOfAvgRootDuration() {
+        return pctOfAvgRootDuration;
+    }
+
+    // ----------------------------------------------------------
 
 
     public int getMaxConcurrentThreads() {
@@ -140,13 +140,8 @@ public class StackTreeNode implements TreeNode {
         return node.getMethodKey();
     }
 
-    public Long getMaxDurationNanos() {
-        return node.getMaxDuration();
-    }
-
-
-    public Float getAverageDuration () {
-        return node.getAverageDuration ();
+    public Float getAverageDuration() {
+        return node.getAverageDuration();
     }
 
     public Double getStdDeviation() {
@@ -161,7 +156,6 @@ public class StackTreeNode implements TreeNode {
         return node.getConcurrentThreads();
     }
 
-
     public long getTotalErrors() {
         return node.getTotalErrors();
     }
@@ -174,67 +168,17 @@ public class StackTreeNode implements TreeNode {
         return node.getTotalExits();
     }
 
-    public Long getMinDuration() {
+    public long getMinDuration() {
         return node.getMinDuration();
     }
 
 
-    public Long getMaxDuration() {
+    public long getMaxDuration() {
         return node.getMaxDuration();
     }
 
     public boolean isRootNode() {
         return node.isRootNode();
-    }
-
-    public int getMaxDepth() {
-        return maxDepth;
-    }
-
-
-//    /**
-//     * Method gets <b>AND CREATES IF NEEDED</b> the requested tree node. This
-//     * method does the <i>exact</i> same thing as that of the parent class,
-//     * <i>except</i> new child nodes are also added to a list, which is used to
-//     * support the TreeNode interface.
-//     */
-//    public StackNode getChild(MethodKey methodKey) {
-//
-//        StackNode treeNode = null;
-//
-//        synchronized (children) {
-//            treeNode = (StackNode) children.get(methodKey);
-//
-//            if (treeNode == null) {
-//                treeNode = new StackTreeNode(methodKey, this);
-//
-//                childList.add(treeNode);
-//                children.put(methodKey, treeNode);
-//            }
-//        }
-//
-//        return treeNode;
-//    }
-
-
-    // -------------------------------------------------------------
-    public int getTotalChildren() {
-        return totalChildren;
-    }
-
-
-    public double getPctOfAvgParentDuration() {
-        return pctOfAvgParentDuration;
-    }
-
-
-    public double getPctOfAvgRootDuration() {
-        return pctOfRootTotalDuration;
-    }
-
-
-    public boolean isChildOfRootNode() {
-        return depth == 1;
     }
 
 
@@ -248,7 +192,7 @@ public class StackTreeNode implements TreeNode {
 
 
     public Enumeration children() {
-        return Collections.enumeration(childList);
+        return new ArrayEnumeration(childArray);
     }
 
 
@@ -263,12 +207,12 @@ public class StackTreeNode implements TreeNode {
 
 
     public StackTreeNode getStackTreeNodeAt(int childIndex) {
-        return (StackTreeNode) childList.get(childIndex);
+        return childArray[childIndex];
     }
 
 
     public int getChildCount() {
-        return childList.size();
+        return childArray.length;
     }
 
 
@@ -282,11 +226,37 @@ public class StackTreeNode implements TreeNode {
     }
 
     public int getIndex(TreeNode node) {
-        return childList.indexOf(node);
+        for (int i = 0; i < childArray.length; i++) {
+            if (node == childArray[i]) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 
     public boolean isLeaf() {
         return (getChildCount() == 0);
     }
+
+
+    private static class TotalChildrenComparator implements Comparator {
+
+        private static final Comparator INSTANCE = new TotalChildrenComparator();
+
+        public int compare(Object o1, Object o2) {
+
+            StackTreeNode stn1 = (StackTreeNode) o1;
+            StackTreeNode stn2 = (StackTreeNode) o2;
+            int diff = stn1.totalChildren - stn2.totalChildren;
+
+            return (diff == 0)
+                    ? 0
+                    : (diff < 0)
+                    ? 1
+                    : -1;
+        }
+    }
+
+    ;
 }

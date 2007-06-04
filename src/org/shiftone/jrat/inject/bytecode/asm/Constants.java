@@ -26,7 +26,7 @@ public interface Constants {
 
         public static Class CLASS = org.shiftone.jrat.util.time.Clock.class;
         public static Type TYPE = Type.getType(CLASS);
-        public static Method currentTimeNanos = Method.getMethod("long currentTimeNanos()");
+        public static Method currentTimeNanos = Method.getMethod("long currentTimeMillis()");
     }
 
     public interface System {

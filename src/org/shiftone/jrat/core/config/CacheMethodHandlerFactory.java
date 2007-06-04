@@ -27,7 +27,9 @@ public class CacheMethodHandlerFactory implements MethodHandlerFactory {
         MethodHandler methodHandler = (MethodHandler) cache.get(methodKey);
 
         if (methodHandler == null) {
+            
             methodHandler = methodHandlerFactory.createMethodHandler(methodKey);
+
         }
 
         return methodHandler;

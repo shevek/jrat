@@ -8,7 +8,7 @@ import org.shiftone.jrat.util.time.Clock;
 public class ClockCurrentTimeNanosRunnable implements Runnable {
 
     public void run() {
-        Clock.currentTimeNanos();
+        Clock.currentTimeMillis();
     }
 
     public String toString() {

@@ -25,10 +25,10 @@ public class Benchmark implements BenchmarkMBean {
 
         methodHandler.onMethodStart(this);
 
-        long start = Clock.currentTimeNanos();
+        long start = Clock.currentTimeMillis();
 
         doWork();
-        methodHandler.onMethodFinish(this, Clock.currentTimeNanos() - start, null);
+        methodHandler.onMethodFinish(this, Clock.currentTimeMillis() - start, null);
     }
 
 
@@ -54,21 +54,21 @@ public class Benchmark implements BenchmarkMBean {
 
         long start;
 
-        start = Clock.currentTimeNanos();
+        start = Clock.currentTimeMillis();
 
         for (int i = 0; i < iterations; i++) {
             doWork();
         }
 
-        long raw = Clock.currentTimeNanos() - start;
+        long raw = Clock.currentTimeMillis() - start;
 
-        start = Clock.currentTimeNanos();
+        start = Clock.currentTimeMillis();
 
         for (int i = 0; i < iterations; i++) {
             monitorDoWork();
         }
 
-        long jrat = Clock.currentTimeNanos() - start;
+        long jrat = Clock.currentTimeMillis() - start;
         long delta = jrat - raw;
         double each = (double) delta / (double) iterations;
 

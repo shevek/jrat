@@ -23,14 +23,14 @@ public class BlazeSessionState {
         StackNode node = new StackNode();
         node.eventCode = eventCode;
         node.entityName = entityName;
-        node.startTime = Clock.currentTimeNanos();
+        node.startTime = Clock.currentTimeMillis();
         stack.push(node);
         BlazeState.getMethodHandler(entityName, eventCode).onMethodStart(source);
     }
 
     public void pop(int eventCode, String entityName, Object source) {
 
-        long now = Clock.currentTimeNanos();
+        long now = Clock.currentTimeMillis();
 
         StackNode node = (StackNode) stack.pop();
 
