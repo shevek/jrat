@@ -7,7 +7,11 @@ import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 
 /**
@@ -20,18 +24,24 @@ public class Environment {
     private static final String DEFAULT_FILE = "org/shiftone/jrat/core/default-jrat.xml";
     public static final Environment INSTANCE = new Environment();
     private final Configuration configuration;
-    private final byte[] configurationData;
 
     public Environment() {
 
-        File file = new File(CONFIG_FILE);
+        if (Mode.get().isEnvironmentLoadingEnabled()) {
 
-        configurationData = getConfigurationData(file);
+            File file = new File(CONFIG_FILE);
 
-        configuration = ConfigurationParser.parse(
-                new ByteArrayInputStream(configurationData)
-        );
+            byte[] configurationData = getConfigurationData(file);
 
+            configuration = ConfigurationParser.parse(
+                    new ByteArrayInputStream(configurationData)
+            );
+
+        } else {
+            
+            configuration = new Configuration();
+
+        }
     }
 
     private byte[] getConfigurationData(File file) {

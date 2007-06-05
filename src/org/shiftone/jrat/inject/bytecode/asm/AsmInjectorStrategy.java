@@ -43,4 +43,9 @@ public class AsmInjectorStrategy implements InjectorStrategy {
 
         return classWriter.toByteArray();
     }
+
+
+    public String toString() {
+        return "ASM";
+    }
 }

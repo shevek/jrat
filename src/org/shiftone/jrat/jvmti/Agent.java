@@ -2,6 +2,7 @@ package org.shiftone.jrat.jvmti;
 
 
 import org.shiftone.jrat.core.Environment;
+import org.shiftone.jrat.core.Mode;
 import org.shiftone.jrat.core.config.Configuration;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.util.VersionUtil;
@@ -23,6 +24,8 @@ public class Agent {
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
 
+        Mode.set(Mode.RUNTIME);
+        
         if (installed) {
 
             LOG.warn("one JRat Agent was already installed.");

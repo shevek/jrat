@@ -3,6 +3,7 @@ package org.shiftone.jrat.ui;
 
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
+import org.shiftone.jrat.core.Mode;
 
 import javax.swing.*;
 import java.io.File;
@@ -31,6 +32,7 @@ public class Desktop {
 
     public static void main(String[] args) throws Exception {
 
+        Mode.set(Mode.DESKTOP);
         try {
             //UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
 
