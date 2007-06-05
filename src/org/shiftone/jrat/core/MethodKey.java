@@ -8,6 +8,7 @@ import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.IOException;
 import java.io.ObjectInput;
+import java.io.Serializable;
 
 
 /**
@@ -16,30 +17,16 @@ import java.io.ObjectInput;
  *
  * @author Jeff Drost
  */
-public class MethodKey implements Externalizable {
+public class MethodKey implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
+    private static final long serialVersionUID = 1;
     private String className = null;
     private String methodName = null;
     private String signature = null;
     private int hashCode = 0;
-    private String toStringValue = null;
-    private Signature sig = null;
-
-
-    public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeUTF(className);
-        out.writeUTF(methodName);
-        out.writeUTF(signature);
-        out.writeInt(hashCode);
-    }
-
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        className = in.readUTF();
-        methodName = in.readUTF();
-        signature = in.readUTF();
-        hashCode = in.readInt();
-    }
+    private transient String toStringValue = null;
+    private transient Signature sig = null;
 
 
     public MethodKey() {

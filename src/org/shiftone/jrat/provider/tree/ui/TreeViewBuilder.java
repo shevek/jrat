@@ -15,7 +15,7 @@ import java.io.ObjectInput;
 /**
  * @Author Jeff Drost
  */
-public class TreeViewBuilder implements ViewBuilder, Externalizable {
+public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
 
     private StackNode root;
 
@@ -30,13 +30,13 @@ public class TreeViewBuilder implements ViewBuilder, Externalizable {
         return new TreeViewerPanel(new StackTreeNode(root));
     }
 
-
-    public void writeExternal(ObjectOutput out) throws IOException {
-        root.writeExternal(out);
-    }
-
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        root = new StackNode();
-        root.readExternal(in);
-    }
+//
+//    public void writeExternal(ObjectOutput out) throws IOException {
+//        root.writeExternal(out);
+//    }
+//
+//    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+//        root = new StackNode();
+//        root.readExternal(in);
+//    }
 }

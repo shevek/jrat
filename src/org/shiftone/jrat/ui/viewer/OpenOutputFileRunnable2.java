@@ -33,7 +33,7 @@ public class OpenOutputFileRunnable2 implements Runnable {
 
             InputStream inputStream = IOUtil.openInputStream(file);
 
-            inputStream = new GZIPInputStream(inputStream);
+           // inputStream = new GZIPInputStream(inputStream);
 
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 

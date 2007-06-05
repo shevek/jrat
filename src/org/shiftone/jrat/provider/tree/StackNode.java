@@ -19,25 +19,20 @@ import java.util.List;
  *
  * @author Jeff Drost
  */
-public class StackNode extends Accumulator implements Externalizable {
+public class StackNode implements Externalizable {
 
-    private static final Logger LOG = Logger.getLogger(StackNode.class);    
+    private static final Logger LOG = Logger.getLogger(StackNode.class);
+    private static final long serialVersionUID = 1;
     protected MethodKey methodKey;
     protected StackNode parent;
+    private Accumulator accumulator;
     protected HashMap children = new HashMap(3);
 
 
     public void writeExternal(ObjectOutput out) throws IOException {
 
-        super.writeExternal(out);
-
-        boolean hasMethodKey = (methodKey != null);
-
-        out.writeBoolean(hasMethodKey);
-
-        if (hasMethodKey) {
-            methodKey.writeExternal(out);
-        }
+        out.writeObject(accumulator);
+        out.writeObject(methodKey);
 
         // create a copy of the children
         List list = getChildren();
@@ -55,19 +50,10 @@ public class StackNode extends Accumulator implements Externalizable {
 
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 
-        super.readExternal(in);
-
-        boolean hasMethodKey = in.readBoolean();
-
-        if (hasMethodKey) { // root
-            this.methodKey = new MethodKey();
-            this.methodKey.readExternal(in);
-        } else {
-            this.methodKey = null;
-        }
+        this.accumulator = (Accumulator) in.readObject();
+        this.methodKey = (MethodKey) in.readObject();
 
         int childCount = in.readInt();
-
         for (int i = 0; i < childCount; i++) {
 
             StackNode child = new StackNode();
@@ -85,8 +71,15 @@ public class StackNode extends Accumulator implements Externalizable {
         // root node
         this.methodKey = null;
         this.parent = null;
+        this.accumulator = new Accumulator();
     }
 
+
+    public StackNode(MethodKey methodKey, StackNode treeNode) {
+        this.methodKey = methodKey;
+        this.parent = treeNode;
+        this.accumulator = new Accumulator();
+    }
 
     public List getChildren() {
 
@@ -95,13 +88,8 @@ public class StackNode extends Accumulator implements Externalizable {
         synchronized (children) {
             list.addAll(children.values());
         }
-        
-        return list;
-    }
 
-    public StackNode(MethodKey methodKey, StackNode treeNode) {
-        this.methodKey = methodKey;
-        this.parent = treeNode;
+        return list;
     }
 
 
@@ -136,12 +124,13 @@ public class StackNode extends Accumulator implements Externalizable {
     }
 
 
+    public Accumulator getAccumulator() {
+        return accumulator;
+    }
+
     public MethodKey getMethodKey() {
         return methodKey;
     }
-
-
-
 
     // ---------------------------------------------------------------
 
@@ -160,7 +149,7 @@ public class StackNode extends Accumulator implements Externalizable {
             treeNode.reset();
         }
 
-        super.reset();  // this is the actual call to reset
+        accumulator.reset();  // this is the actual call to reset
     }
 
 

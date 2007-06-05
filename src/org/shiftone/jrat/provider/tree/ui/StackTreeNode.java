@@ -129,11 +129,11 @@ public class StackTreeNode implements TreeNode {
 
 
     public int getMaxConcurrentThreads() {
-        return node.getMaxConcurrentThreads();
+        return node.getAccumulator().getMaxConcurrentThreads();
     }
 
     public long getSumOfSquares() {
-        return node.getSumOfSquares();
+        return node.getAccumulator().getSumOfSquares();
     }
 
     public MethodKey getMethodKey() {
@@ -141,40 +141,40 @@ public class StackTreeNode implements TreeNode {
     }
 
     public Float getAverageDuration() {
-        return node.getAverageDuration();
+        return node.getAccumulator().getAverageDuration();
     }
 
     public Double getStdDeviation() {
-        return node.getStdDeviation();
+        return node.getAccumulator().getStdDeviation();
     }
 
     public long getTotalDuration() {
-        return node.getTotalDuration();
+        return node.getAccumulator().getTotalDuration();
     }
 
     public int getConcurrentThreads() {
-        return node.getConcurrentThreads();
+        return node.getAccumulator().getConcurrentThreads();
     }
 
     public long getTotalErrors() {
-        return node.getTotalErrors();
+        return node.getAccumulator().getTotalErrors();
     }
 
     public long getTotalEnters() {
-        return node.getTotalEnters();
+        return node.getAccumulator().getTotalEnters();
     }
 
     public long getTotalExits() {
-        return node.getTotalExits();
+        return node.getAccumulator().getTotalExits();
     }
 
     public long getMinDuration() {
-        return node.getMinDuration();
+        return node.getAccumulator().getMinDuration();
     }
 
 
     public long getMaxDuration() {
-        return node.getMaxDuration();
+        return node.getAccumulator().getMaxDuration();
     }
 
     public boolean isRootNode() {

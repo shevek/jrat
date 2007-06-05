@@ -139,7 +139,7 @@ class RuntimeContextImpl implements RuntimeContext {
         
         try {
 
-            outputStream = new GZIPOutputStream(outputStream);                         
+           // outputStream = new GZIPOutputStream(outputStream);                         
 
             objectOutputStream = new ObjectOutputStream(outputStream);
 

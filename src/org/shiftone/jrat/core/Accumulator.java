@@ -9,6 +9,7 @@ import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.IOException;
 import java.io.ObjectInput;
+import java.io.Serializable;
 
 
 /**
@@ -16,9 +17,10 @@ import java.io.ObjectInput;
  *
  * @author Jeff Drost
  */
-public class Accumulator implements Externalizable {
+public class Accumulator implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(Accumulator.class);
+    private static final long serialVersionUID = 1;
     private long totalEnters = 0;
     private long totalExits = 0;
     private long totalErrors = 0;
@@ -28,29 +30,6 @@ public class Accumulator implements Externalizable {
     private long minDuration = Long.MAX_VALUE;
     private int concurThreads = 0;
     private int maxConcurrentThreads = 0;
-
-    public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeLong(totalEnters);
-        out.writeLong(totalExits);
-        out.writeLong(totalErrors);
-        out.writeLong(totalDuration);
-        out.writeLong(sumOfSquares);
-        out.writeLong(maxDuration);
-        out.writeLong(minDuration);
-        out.writeInt(maxConcurrentThreads);
-    }
-
-
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        totalEnters = in.readLong();
-        totalExits = in.readLong();
-        totalErrors = in.readLong();
-        totalDuration = in.readLong();
-        sumOfSquares = in.readLong();
-        maxDuration = in.readLong();
-        minDuration = in.readLong();
-        maxConcurrentThreads = in.readInt();
-    }
 
     public Accumulator() {
     }

@@ -32,7 +32,7 @@ public class Desktop {
     public static void main(String[] args) throws Exception {
 
         try {
-            UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
+            //UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
 
             // UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
             // UIManager.setLookAndFeel("javax.swing.plaf.basic.BasicLookAndFeel");

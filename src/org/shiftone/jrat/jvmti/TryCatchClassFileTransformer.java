@@ -41,4 +41,9 @@ public class TryCatchClassFileTransformer implements ClassFileTransformer {
 
         }
     }
+
+
+    public String toString() {
+        return "TryCatchClassFileTransformer[" + transformer + "]";
+    }
 }
