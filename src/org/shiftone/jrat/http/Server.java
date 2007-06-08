@@ -60,7 +60,12 @@ public class Server extends Thread {
             Request request = new Request(inputStream);
             Response response = new Response(outputStream);
 
-            handler.handle(request, response);
+            try {
+                handler.handle(request, response);
+            } catch (HttpException e) {
+                LOG.info("Exception",e);
+                response.setStatus(e.getStatus());                    
+            }
 
             response.flush();
 

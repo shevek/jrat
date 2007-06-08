@@ -14,27 +14,25 @@ public class Response {
 
 
     private static final Logger LOG = Logger.getLogger(Response.class);
-    private final OutputStream internalStream;
-    private final OutputStream outputStream;
+
     private final Writer writer;
+    private final ResponseWriter responseWriter = new ResponseWriter();
     private boolean committed = false;
-    private int status = 200;
+    private Status status = Status.OK;
     private String contentType;
 
 
-    public Response(OutputStream outputStream) {
-        this.internalStream = outputStream;
-        this.outputStream = new ResponseOutputStream();
+    public Response(OutputStream outputStream) {        
         this.writer = new OutputStreamWriter(outputStream);
     }
 
-
     public Writer getWriter() {
-        return writer;
+        return responseWriter;
     }
 
-    public OutputStream getOutputStream() {
-        return outputStream;
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public void setContentType(String contentType) {
@@ -42,54 +40,52 @@ public class Response {
     }
 
     public void flush() throws IOException {
+        commit();
         writer.flush();
     }
 
     private void writeHeaders() throws IOException {
-        LOG.info("writeHeaders");
-        writer.write("HTTP/1.1 " + status + " OK\n");
+
+        String statusLine = "HTTP/1.1 " + status.getCode() + " " + status.getMessage() + "\n";
+        LOG.info(statusLine);
+
+        writer.write(statusLine);
         writer.write("Content-Type: " + contentType + "\n");
         writer.write("Cache-Control: no-store, no-cache, must-revalidate\n");    // normal
         writer.write("Cache-Control: post-check=0, pre-check=0");                // IE
         writer.write("Pragma: no-cache\n");                                      // good luck
         writer.write("Expires: Sat, 6 May 1995 12:00:00 GMT\n");                 // more lock
+
         writer.write("\n");
-        writer.flush();
+
+
     }
 
     private void commit() throws IOException {
+
         if (!committed) {
-            committed = true;
             writeHeaders();
+            committed = true;
         }
     }
 
-    private class ResponseOutputStream extends OutputStream {
+    private class ResponseWriter extends Writer {
 
-        public void write(byte b[]) throws IOException {
+        public void write(char cbuf[], int off, int len) throws IOException {
             commit();
-            outputStream.write(b);
-        }
-
-        public void write(byte b[], int off, int len) throws IOException {
-            commit();
-            outputStream.write(b, off, len);
+            writer.write(cbuf, off, len);
         }
 
         public void flush() throws IOException {
             commit();
-            outputStream.flush();
+            writer.flush();
         }
 
         public void close() throws IOException {
             commit();
-            outputStream.close();
-        }
-
-        public void write(int b) throws IOException {
-            commit();
-            outputStream.write(b);
+            writer.close();
         }
 
     }
+
 }

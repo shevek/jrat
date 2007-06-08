@@ -49,9 +49,13 @@ public class Dispatcher implements Handler {
             handler.handle(request, response);
             //return;
 
-        } else {
+        } else if (firstPart.length() == 0) {
 
             listHandlers(request, response);
+
+        }  else {
+
+            throw new HttpException(Status.STATUS_404);            
 
         }
 
@@ -60,28 +64,20 @@ public class Dispatcher implements Handler {
     private void listHandlers(Request request, Response response) throws Exception {
 
         LOG.info("listHandlers");
+
         response.setContentType(ContentType.TEXT_HTML);
-
-        Iterator iterator = contexts.entrySet().iterator();
-
+        
         Writer out = response.getWriter();
+        Iterator iterator = contexts.keySet().iterator();
 
         out.write("<h2>" + title + "</h2>");
-        out.write("<table border='1'>");
 
+        out.write("<ul>");
         while (iterator.hasNext()) {
-
-            Map.Entry entry = (Map.Entry)iterator.next();
-            out.write("<tr>");
-
-            out.write("<td><a href='" + entry.getKey() + "/'>" + entry.getKey()  + "</a></td>");
-            out.write("<td>" + entry.getValue() + "</td>");
-
-            out.write("</tr>");
-
+            String key = (String)iterator.next();
+            out.write("<li><a href='" + key + "/'>" + key  + "</a></li>");
         }
-
-        out.write("</table>");
+        out.write("</ul>");
     }
 
 }
