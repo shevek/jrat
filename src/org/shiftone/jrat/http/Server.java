@@ -1,0 +1,116 @@
+package org.shiftone.jrat.http;
+
+import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.log.Logger;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * @Author Jeff Drost
+ */
+public class Server extends Thread {
+
+    private static final Logger LOG = Logger.getLogger(Server.class);
+    private final int port;
+    private ServerSocket serverSocket;
+    private Handler handler;
+
+    public Server(int port) {
+        this.port = port;
+        setDaemon(true);
+        setName("HTTP Server");
+    }
+
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    private void initialize() {
+
+        try {
+
+            LOG.info("starting on port " + port + "...");
+            serverSocket = new ServerSocket(port);
+
+        } catch (Throwable e) {
+
+            throw new RuntimeException(e);
+
+        }
+    }
+
+    private void processRequest(Socket socket) throws Exception {
+
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+
+        try {
+            
+            inputStream = socket.getInputStream();
+            outputStream = socket.getOutputStream();
+
+            Request request = new Request(inputStream);
+            Response response = new Response(outputStream);
+
+            handler.handle(request, response);
+
+            response.flush();
+
+        } finally {
+
+            IOUtil.close(inputStream);
+            IOUtil.close(outputStream);
+
+        }
+        
+    }
+
+    public void run() {
+
+        initialize();
+
+        while (true) {
+
+            try {
+                processRequest(serverSocket.accept());
+            } catch (Throwable e) {
+                LOG.error("failed to processRequest request", e);
+            }
+
+        } // while
+
+    }
+
+    public static void main(String[] args) {
+        Dispatcher dispatcher = new Dispatcher("Root Dispatcher");
+        Server server = new Server(8008);
+        server.setHandler(dispatcher);
+        server.setDaemon(false);
+        server.start();
+
+        Dispatcher dispatcher2 = new Dispatcher("dispatcher2");
+        dispatcher.addRoute("1", dispatcher2);
+        dispatcher.addRoute("2", dispatcher2);
+        dispatcher.addRoute("3", dispatcher2);
+        dispatcher.addRoute("4", dispatcher2);
+        dispatcher.addRoute("5", dispatcher2);
+
+
+        Dispatcher dispatcher3 = new Dispatcher("dispatcher3");
+        dispatcher2.addRoute("a", dispatcher3);
+        dispatcher2.addRoute("b", dispatcher3);
+        dispatcher2.addRoute("c", dispatcher3);
+        dispatcher2.addRoute("d", dispatcher3);
+
+    }
+
+
+}
