@@ -5,6 +5,10 @@ import org.shiftone.jrat.util.log.Logger;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Writer;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -63,8 +67,7 @@ public class Server extends Thread {
             try {
                 handler.handle(request, response);
             } catch (HttpException e) {
-                LOG.info("Exception",e);
-                response.setStatus(e.getStatus());                    
+                handleException(response, e);
             }
 
             response.flush();
@@ -76,6 +79,23 @@ public class Server extends Thread {
 
         }
         
+    }
+
+    private void handleException(Response response, HttpException e) throws IOException {
+        response.setStatus(e.getStatus());
+        Writer out = response.getWriter();
+        out.write("<h1>HTTP ");
+        out.write(String.valueOf(e.getStatus().getCode()));
+        out.write(" - ");
+        out.write(e.getStatus().getMessage());
+        out.write("</h1>");
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter printWriter = new  PrintWriter(stringWriter);
+        e.printStackTrace( printWriter );
+        printWriter.flush();
+        out.write("<pre>");
+        out.write(stringWriter.toString());
+        out.write("</pre>");
     }
 
     public void run() {
@@ -108,6 +128,7 @@ public class Server extends Thread {
         dispatcher.addRoute("4", dispatcher2);
         dispatcher.addRoute("5", dispatcher2);
 
+        dispatcher.addRoute("fs", new FsBrowseHandler());
 
         Dispatcher dispatcher3 = new Dispatcher("dispatcher3");
         dispatcher2.addRoute("a", dispatcher3);

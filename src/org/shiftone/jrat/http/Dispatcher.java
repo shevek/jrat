@@ -27,7 +27,7 @@ public class Dispatcher implements Handler {
 
     public void handle(Request request, Response response) throws Exception {
 
-        LOG.info("handle");
+        //LOG.info("handle");
 
         String path = request.getRequestUri();
         if (path.length() > 0 && path.charAt(0) == '/') {
@@ -39,7 +39,7 @@ public class Dispatcher implements Handler {
                 ? path
                 : path.substring(0, firstSlash);
 
-        LOG.info("firstPart = " + firstPart);
+        //LOG.info("firstPart = " + firstPart);
         Handler handler = (Handler)contexts.get(firstPart);
 
         if (handler != null) {

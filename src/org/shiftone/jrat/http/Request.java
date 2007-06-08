@@ -45,7 +45,6 @@ public class Request {
 
     private void parseRequestLine(String line) {
 
-        LOG.info("parseRequestLine >> " + line);
         int a = line.indexOf(' ');
         int b = line.lastIndexOf(' ');
 
@@ -60,13 +59,9 @@ public class Request {
             requestUri = requestUri.substring(0, q);   // remove the query string and ?
         }
 
-        LOG.info("requestUri =>" + requestUri + "<");
-        LOG.info("queryString =>" + queryString + "<");
-
     }
 
-    private void parseHeaderField(String line) {
-        LOG.info("parseHeaderField >> " + line);
+    private void parseHeaderField(String line) {       
         int a = line.indexOf(':');
         String key = line.substring(0, a);
         String value = line.substring(a + 2);  // remove ": "        
