@@ -45,6 +45,7 @@ public class Request {
 
     private void parseRequestLine(String line) {
 
+        LOG.info(line);
         int a = line.indexOf(' ');
         int b = line.lastIndexOf(' ');
 

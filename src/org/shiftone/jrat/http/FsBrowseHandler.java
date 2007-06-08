@@ -1,8 +1,14 @@
 package org.shiftone.jrat.http;
 
+import org.shiftone.jrat.util.io.IOUtil;
+
 import java.io.File;
 import java.io.Writer;
 import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * @Author Jeff Drost
@@ -10,34 +16,58 @@ import java.io.FileInputStream;
 public class FsBrowseHandler implements Handler {
 
     private static final String ROOT = new File("").getAbsolutePath();
+    private static Map mimeTypes = new HashMap();
+
+    static {
+        mimeTypes.put("txt", ContentType.TEXT_PLAIN);
+        mimeTypes.put("log", ContentType.TEXT_PLAIN);
+        mimeTypes.put("htm", ContentType.TEXT_HTML);
+        mimeTypes.put("html", ContentType.TEXT_HTML);
+        mimeTypes.put("xml", ContentType.TEXT_XML);
+    }
 
     public void handle(Request request, Response response) throws Exception {
 
         response.setContentType(ContentType.TEXT_HTML);
-        Writer out = response.getWriter();
+
         String uri = request.getRequestUri();
         File file = new File(ROOT + uri);
 
-       
+
         if (file.isDirectory()) {
-            
-            out.write("<ul>");
+
+            Writer writer = response.getWriter();
+            writer.write("<ul>");
             File[] children = file.listFiles();
 
             for (int i = 0; i < children.length; i++) {
                 File child = children[i];
                 if (child.isDirectory()) {
-                    out.write("<li><a href='" + child.getName() + "/'>" + child.getName() + "/</a>");
+                    writer.write("<li><a href='" + child.getName() + "/'>" + child.getName() + "/</a>");
                 } else {
-                    out.write("<li><a href='" + child.getName() + "'>" + child.getName() + "</a>");
+                    writer.write("<li><a href='" + child.getName() + "'>" + child.getName() + "</a> ");
+                    writer.write(" (" + child.length() + " bytes)");
                 }
             }
 
-            out.write("</ul>");
+            writer.write("</ul>");
 
         } else {
 
-            out.write(file.getAbsolutePath());
+            String ext = IOUtil.getExtention(file.getName()).toLowerCase();
+            String contentType = (String) mimeTypes.get(ext);
+            OutputStream outputStream = response.getOutputStream();
+            InputStream inputStream = null;
+            try {
+                if (contentType == null) {
+                    contentType = ContentType.OCTET_STREAM;
+                }
+                response.setContentType(contentType);
+                inputStream = IOUtil.openInputStream(file);
+                IOUtil.copy(inputStream, outputStream);
+            } finally {
+                IOUtil.close(inputStream);
+            }
 
         }
 
