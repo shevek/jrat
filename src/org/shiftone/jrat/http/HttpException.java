@@ -4,6 +4,7 @@ package org.shiftone.jrat.http;
  * @Author Jeff Drost
  */
 public class HttpException extends RuntimeException {
+    
     private final Status status;
 
     public HttpException(Status status) {

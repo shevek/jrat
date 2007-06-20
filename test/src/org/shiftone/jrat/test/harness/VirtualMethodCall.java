@@ -38,7 +38,7 @@ public class VirtualMethodCall {
      */
     public VirtualMethodCall(String className, String methodName, String signature) {
 
-        this.methodKey = new MethodKey(className, methodName, signature);
+        this.methodKey = MethodKey.create(className, methodName, signature);
         this.handler = HandlerFactory.getMethodHandler(methodKey);
         this.childCalls = positiveRand(20);
         this.minDuration = positiveRand(10);

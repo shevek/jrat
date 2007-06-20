@@ -4,10 +4,6 @@ package org.shiftone.jrat.core;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.Externalizable;
-import java.io.ObjectOutput;
-import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.Serializable;
 
 
@@ -21,6 +17,7 @@ public class MethodKey implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
     private static final long serialVersionUID = 1;
+    private String packageName = null;
     private String className = null;
     private String methodName = null;
     private String signature = null;
@@ -28,20 +25,39 @@ public class MethodKey implements Serializable {
     private transient String toStringValue = null;
     private transient Signature sig = null;
 
+//  Do I need this to serialize? 
+//    public MethodKey() {
+//    }
+    
+    private MethodKey() { }
 
-    public MethodKey() {
+    public static MethodKey create(String fullyQualifiedClassName, String methodName, String signature) {
+        int dot = fullyQualifiedClassName.lastIndexOf('.');
+        return create(
+                (dot == -1) ? "" : fullyQualifiedClassName.substring(0, dot),
+                (dot == -1) ? fullyQualifiedClassName : fullyQualifiedClassName.substring(dot+1),
+                methodName,
+                signature);
     }
 
-    public MethodKey(String className, String methodName, String signature) {
+    public static MethodKey create(String packageName, String className, String methodName, String signature) {
+        return new MethodKey(packageName, className, methodName, signature);
+    }
 
+    private MethodKey(String packageName, String className, String methodName, String signature) {
+
+        Assert.assertNotNull("packageName", packageName);
         Assert.assertNotNull("className", className);
         Assert.assertNotNull("methodName", methodName);
         Assert.assertNotNull("signature", signature);
 
-        this.className = className;
+        this.packageName = packageName.intern();
+        this.className = className.intern();
         this.methodName = methodName;
         this.signature = signature;
-        hashCode = className.hashCode();
+
+        hashCode = packageName.hashCode();
+        hashCode = (29 * hashCode) + className.hashCode();
         hashCode = (29 * hashCode) + methodName.hashCode();
         hashCode = (29 * hashCode) + signature.hashCode();
     }
@@ -129,8 +145,4 @@ public class MethodKey implements Serializable {
         return hashCode;
     }
 
-
-    public static String toTSV(MethodKey methodKey) {
-        return methodKey.getClassName() + "\t" + methodKey.getMethodName() + "\t" + methodKey.getSignature();
-    }
 }
