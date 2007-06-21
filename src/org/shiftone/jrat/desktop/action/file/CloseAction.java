@@ -15,7 +15,7 @@ public class CloseAction extends AbstractAction {
     private static final Logger LOG = Logger.getLogger(CloseAction.class);
 
     public CloseAction() {
-        super("Close Session");
+        super("Close");
         putValue(Action.MNEMONIC_KEY,  KeyEvent.VK_C);        
     }
 

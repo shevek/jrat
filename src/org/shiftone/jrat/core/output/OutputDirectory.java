@@ -28,6 +28,7 @@ import java.util.List;
 public class OutputDirectory {
 
     private static final Logger LOG = Logger.getLogger(OutputDirectory.class);
+
     private final List fileList = new ArrayList(10);
     private final NumberFormat fileSeqFormat = new DecimalFormat("000");
     private final AtomicLong fileSequence = new AtomicLong();

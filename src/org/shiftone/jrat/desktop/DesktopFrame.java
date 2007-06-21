@@ -27,6 +27,7 @@ public class DesktopFrame extends JFrame {
 
     public DesktopFrame() {
         super("JRat Desktop");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         setSize((int) dimension.getWidth() - 150, (int) dimension.getHeight() - 150);
         // setStartPosition(StartPosition.CenterInScreen);
@@ -42,7 +43,7 @@ public class DesktopFrame extends JFrame {
         {
             JMenu file = new JMenu("File");
             file.setMnemonic('F');
-            file.add(new OpenAction());
+            file.add(new OpenAction(this));
             file.add(new CloseAction());
             {
                 JMenu resize = new JMenu("Window Size");

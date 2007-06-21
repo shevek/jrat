@@ -111,7 +111,7 @@ public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownList
 
 
     public void shutdown() {
-        closeFileOutputs();
+        closeFileOutputs();                       
     }
 
 
