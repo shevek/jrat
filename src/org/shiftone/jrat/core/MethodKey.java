@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Jeff Drost
  */
-public class MethodKey implements Serializable {
+public class MethodKey implements Serializable, Comparable {
 
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
     private static final long serialVersionUID = 1;
@@ -28,14 +28,15 @@ public class MethodKey implements Serializable {
 //  Do I need this to serialize? 
 //    public MethodKey() {
 //    }
-    
-    private MethodKey() { }
+
+    private MethodKey() {
+    }
 
     public static MethodKey create(String fullyQualifiedClassName, String methodName, String signature) {
         int dot = fullyQualifiedClassName.lastIndexOf('.');
         return create(
                 (dot == -1) ? "" : fullyQualifiedClassName.substring(0, dot),
-                (dot == -1) ? fullyQualifiedClassName : fullyQualifiedClassName.substring(dot+1),
+                (dot == -1) ? fullyQualifiedClassName : fullyQualifiedClassName.substring(dot + 1),
                 methodName,
                 signature);
     }
@@ -135,6 +136,18 @@ public class MethodKey implements Serializable {
         return sig;
     }
 
+
+    public int compareTo(Object o) {
+        MethodKey other = (MethodKey) o;
+        int c = className.compareTo(other.className);
+        if (c != 0) {
+            c = methodName.compareTo(other.methodName);
+            if (c != 0) {
+                c = signature.compareTo(other.signature);
+            }
+        }
+        return c;
+    }
 
     public final String getPrettySignature() {
         return "(" + getSig().getShortText() + ")";

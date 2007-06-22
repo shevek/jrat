@@ -42,12 +42,11 @@
                 <property name="outputFile" value="my_code_tree.jrat"/>
             </handler>
 
-
-            <!--
-            <handler factory="org.shiftone.jrat.provider.stats.StatMethodHandlerFactory">
-                <property name="outputFile" value="my_code_stats.jrat"/>
+            
+            <handler factory="org.shiftone.jrat.provider.coverage.CoverageMethodHandlerFactory">
+                <property name="outputFile" value="my_code_coverage.csv"/>
             </handler>
-            -->
+
 
         </handlers>
 

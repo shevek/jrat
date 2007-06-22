@@ -8,5 +8,7 @@ package org.shiftone.jrat.core.shutdown;
  * @author Jeff Drost
  */
 public interface ShutdownListener {
-    void shutdown();
+
+    void shutdown() throws Exception;
+    
 }

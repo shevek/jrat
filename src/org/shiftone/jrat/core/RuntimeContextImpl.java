@@ -38,6 +38,7 @@ class RuntimeContextImpl implements RuntimeContext {
     private final JmxRegistry jmxRegistry;
     private final CommandletRegistry commandletRegistry;
     private final OutputDirectory outputDirectory;
+    private final MemoryMonitor memoryMonitor;
 
     RuntimeContextImpl() {
 
@@ -49,9 +50,12 @@ class RuntimeContextImpl implements RuntimeContext {
         shutdownRegistry = serviceFactory.getShutdownRegistry();
         jmxRegistry = serviceFactory.getJmxRegistry();
         commandletRegistry = serviceFactory.getCommandletRegistry();
+        memoryMonitor = new MemoryMonitor(this);
 
         redirectLogStream();
         writeSystemProperties();
+        
+
     }
 
 
@@ -72,6 +76,8 @@ class RuntimeContextImpl implements RuntimeContext {
     public void register(Commandlet commandlet) {
         commandletRegistry.register(commandlet);
     }
+
+
 
     private void redirectLogStream() {
 
