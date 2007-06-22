@@ -20,6 +20,6 @@ public class ExitAction extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent e) {
-        LOG.info("actionPerformed " + e);
+        System.exit(0);
     }
 }

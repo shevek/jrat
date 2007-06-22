@@ -10,6 +10,7 @@ import javax.swing.JFileChooser;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
+import javax.swing.JButton;
 import javax.swing.filechooser.FileFilter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
@@ -48,6 +49,8 @@ public class OpenAction extends AbstractAction {
 
         chooser.showOpenDialog(desktopFrame);
         LOG.info("actionPerformed " + e);
+
+        desktopFrame.createView("This is a test", new JButton());
     }
 
     private static class SessionFileFilter extends FileFilter {
