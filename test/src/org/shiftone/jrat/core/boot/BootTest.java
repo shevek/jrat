@@ -23,7 +23,7 @@ public class BootTest {
             c.onMethodFinish(null, 1000, null);
             b.onMethodFinish(null, 1000, null);
             a.onMethodFinish(null, 1000, null);
-            Thread.sleep(10);
+        
         }
 
     }

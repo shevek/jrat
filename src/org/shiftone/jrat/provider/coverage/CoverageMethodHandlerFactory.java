@@ -1,23 +1,22 @@
 package org.shiftone.jrat.provider.coverage;
 
+import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.AbstractMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.RuntimeContext;
-import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.util.io.IOUtil;
 
-import java.util.Set;
+import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.io.Writer;
-import java.io.PrintWriter;
 
 /**
  * @Author Jeff Drost
  */
-public class CoverageMethodHandlerFactory extends AbstractMethodHandlerFactory  {
+public class CoverageMethodHandlerFactory extends AbstractMethodHandlerFactory {
 
     private final Set handlers = new HashSet();
     private PrintWriter printWriter;
@@ -42,8 +41,8 @@ public class CoverageMethodHandlerFactory extends AbstractMethodHandlerFactory  
         Iterator iterator = sorted.iterator();
 
         while (iterator.hasNext()) {
-            
-            CoverageMethodHandler handler = (CoverageMethodHandler)iterator.next();            
+
+            CoverageMethodHandler handler = (CoverageMethodHandler) iterator.next();
             printWriter.write(Long.toString(handler.count));
             printWriter.write(",");
             printWriter.write(handler.methodKey.getClassName());
@@ -55,13 +54,13 @@ public class CoverageMethodHandlerFactory extends AbstractMethodHandlerFactory  
         }
 
         IOUtil.close(printWriter);
-        
+
     }
 
 
     private class CoverageMethodHandler implements MethodHandler, Comparable {
 
-        private final MethodKey methodKey;      
+        private final MethodKey methodKey;
         private transient long count = 0;
 
         public CoverageMethodHandler(MethodKey methodKey) {
@@ -82,8 +81,8 @@ public class CoverageMethodHandlerFactory extends AbstractMethodHandlerFactory  
 
 
         public int compareTo(Object o) {
-            CoverageMethodHandler other = (CoverageMethodHandler)o;
-            int c = (count <other.count ? -1 : (count ==other.count ? 0 : 1));
+            CoverageMethodHandler other = (CoverageMethodHandler) o;
+            int c = (count < other.count ? -1 : (count == other.count ? 0 : 1));
             if (c == 0) {
                 c = methodKey.compareTo(other.methodKey);
             }

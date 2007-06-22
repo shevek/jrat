@@ -10,7 +10,6 @@ import javax.swing.JComponent;
 import java.io.File;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
-import java.util.zip.GZIPInputStream;
 
 /**
  * @Author Jeff Drost
@@ -39,7 +38,7 @@ public class OpenOutputFileRunnable2 implements Runnable {
 
             ViewBuilder viewBuilder = (ViewBuilder) objectInputStream.readObject();
 
-            JComponent component = viewBuilder.buildView();
+            JComponent component = viewBuilder.buildView(null);
 
             viewContext.setComponent(component);
 

@@ -1,22 +1,17 @@
 package org.shiftone.jrat.provider.tree.ui;
 
-import org.shiftone.jrat.core.spi.ui.OutputViewBuilder;
-import org.shiftone.jrat.core.spi.ui.ViewContext;
 import org.shiftone.jrat.core.spi.ViewBuilder;
 import org.shiftone.jrat.provider.tree.StackNode;
 
 import javax.swing.JComponent;
-import java.io.Serializable;
-import java.io.Externalizable;
-import java.io.ObjectOutput;
-import java.io.IOException;
-import java.io.ObjectInput;
+import java.io.File;
 
 /**
  * @Author Jeff Drost
  */
 public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
 
+    private static final long serialVersionUID = 1;
     private StackNode root;
 
     public TreeViewBuilder() {
@@ -26,7 +21,7 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
         this.root = root;
     }
 
-    public JComponent buildView() throws Exception {
+    public JComponent buildView(File source) throws Exception {
         return new TreeViewerPanel(new StackTreeNode(root));
     }
 

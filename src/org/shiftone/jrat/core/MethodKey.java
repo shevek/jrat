@@ -140,9 +140,9 @@ public class MethodKey implements Serializable, Comparable {
     public int compareTo(Object o) {
         MethodKey other = (MethodKey) o;
         int c = className.compareTo(other.className);
-        if (c != 0) {
+        if (c == 0) {
             c = methodName.compareTo(other.methodName);
-            if (c != 0) {
+            if (c == 0) {
                 c = signature.compareTo(other.signature);
             }
         }

@@ -17,12 +17,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.awt.Container;
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.event.ContainerListener;
 import java.awt.event.ContainerEvent;
 
@@ -36,6 +38,7 @@ public class DesktopFrame extends JFrame {
     private JTabbedPane tabbedPane = new JTabbedPane();
     private CloseAction closeAction = new CloseAction(tabbedPane);
     private CloseAllAction closeAllAction = new CloseAllAction(tabbedPane);
+    private int waiters = 0;
 
     public DesktopFrame() {
         super("JRat Desktop");
@@ -55,8 +58,21 @@ public class DesktopFrame extends JFrame {
         tabbedPane.addMouseListener(new TabMouseListener(tabbedPane));
         tabbedPane.addContainerListener(new TabChangeListener());
         checkTabs();
+
+
     }
 
+    public void waitCursor() {
+        waiters++;
+        setCursor(Cursor.WAIT_CURSOR);
+    }
+
+    public void unwaitCursor() {
+        waiters--;
+        if (waiters == 0) {
+            setCursor(Cursor.DEFAULT_CURSOR);
+        }
+    }
 
     private JMenuBar createMenuBar() {
         JMenuBar toolBar = new JMenuBar();
@@ -96,10 +112,14 @@ public class DesktopFrame extends JFrame {
         return toolBar;
     }
 
-    public View createView(String title, JComponent component) {
-        View view = new View();
+    public View createView(final String title, JComponent component) {
+        final View view = new View();
         view.setComponent(component);
-        tabbedPane.addTab(title, view);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                tabbedPane.addTab(title, view);
+            }
+        });
         return view;
     }
 
