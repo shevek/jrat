@@ -1,9 +1,9 @@
-package org.shiftone.jrat.provider.tree.ui.pie;
+package org.shiftone.jrat.provider.tree.ui.trace.pie;
 
 
-import org.shiftone.jrat.provider.tree.ui.PercentColorLookup;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
-import org.shiftone.jrat.provider.tree.ui.graph.BufferedJComponent;
+import org.shiftone.jrat.provider.tree.ui.trace.PercentColorLookup;
+import org.shiftone.jrat.provider.tree.ui.trace.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.trace.graph.BufferedJComponent;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.*;

@@ -16,7 +16,7 @@ public class LicenseAction  extends AbstractAction {
 
     public LicenseAction() {
         super("Open Source Licenses");
-        putValue(Action.MNEMONIC_KEY,  KeyEvent.VK_L);
+        putValue(Action.MNEMONIC_KEY,  new Integer(KeyEvent.VK_L));
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -16,7 +16,7 @@ public class ExitAction extends AbstractAction {
 
     public ExitAction() {
         super("Exit");
-        putValue(Action.MNEMONIC_KEY,  KeyEvent.VK_X);        
+        putValue(Action.MNEMONIC_KEY,  new Integer(KeyEvent.VK_X));        
     }
 
     public void actionPerformed(ActionEvent e) {

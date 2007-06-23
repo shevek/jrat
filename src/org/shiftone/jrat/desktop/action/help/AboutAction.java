@@ -16,7 +16,7 @@ public class AboutAction  extends AbstractAction {
 
     public AboutAction() {
         super("About JRat");
-        putValue(Action.MNEMONIC_KEY,  KeyEvent.VK_A);
+        putValue(Action.MNEMONIC_KEY,  new Integer(KeyEvent.VK_A));
     }
 
     public void actionPerformed(ActionEvent e) {

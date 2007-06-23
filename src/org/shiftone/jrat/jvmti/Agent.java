@@ -19,7 +19,7 @@ public class Agent {
 
     private static final Logger LOG = Logger.getLogger(Agent.class);
     private static boolean installed = false;
-    private static Configuration configuration = Environment.getConfiguration();
+    private static Configuration configuration;
 
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
@@ -35,6 +35,12 @@ public class Agent {
         }
 
         LOG.info("Installing JRat " + VersionUtil.getVersion() + " ClassFileTransformer...");
+
+        if (configuration == null) {
+            // this must happen after the mode is set because it will
+            // GET the mode locking it.
+            configuration = Environment.getConfiguration();
+        }
 
         InjectorOptions injectorOptions = new InjectorOptions();
         injectorOptions.setCriteria(configuration);

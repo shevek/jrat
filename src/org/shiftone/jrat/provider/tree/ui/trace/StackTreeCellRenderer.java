@@ -1,10 +1,9 @@
-package org.shiftone.jrat.provider.tree.ui;
+package org.shiftone.jrat.provider.tree.ui.trace;
 
 
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.time.TimeUnit;
 
 import javax.swing.Icon;
 import javax.swing.JTree;

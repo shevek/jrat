@@ -1,4 +1,4 @@
-package org.shiftone.jrat.provider.tree.ui.children;
+package org.shiftone.jrat.provider.tree.ui.trace.children;
 
 import ca.odell.glazedlists.BasicEventList;
 import ca.odell.glazedlists.EventList;
@@ -7,7 +7,7 @@ import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.swing.EventTableModel;
 import ca.odell.glazedlists.swing.TableComparatorChooser;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.trace.StackTreeNode;
 import org.shiftone.jrat.ui.util.NoOpComparator;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 

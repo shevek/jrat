@@ -18,7 +18,7 @@ public class CloseAction extends AbstractAction {
 
     public CloseAction(JTabbedPane tabbedPane) {
         super("Close");
-        putValue(Action.MNEMONIC_KEY, KeyEvent.VK_C);
+        putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
         this.tabbedPane = tabbedPane;
     }
 

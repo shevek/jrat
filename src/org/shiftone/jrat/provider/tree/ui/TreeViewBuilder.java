@@ -22,7 +22,7 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
     }
 
     public JComponent buildView(File source) throws Exception {
-        return new TreeViewerPanel(new StackTreeNode(root));
+        return new MainViewPanel(root);
     }
 
 //

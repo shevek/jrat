@@ -1,4 +1,4 @@
-package org.shiftone.jrat.provider.tree.ui.graph;
+package org.shiftone.jrat.provider.tree.ui.trace.graph;
 
 
 import org.shiftone.jrat.util.log.Logger;

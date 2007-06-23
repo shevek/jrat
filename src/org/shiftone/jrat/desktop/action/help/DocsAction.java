@@ -16,7 +16,7 @@ public class DocsAction  extends AbstractAction {
 
     public DocsAction() {
         super("Documentation");
-        putValue(Action.MNEMONIC_KEY,  KeyEvent.VK_D);
+        putValue(Action.MNEMONIC_KEY,  new Integer(KeyEvent.VK_D));
     }
 
     public void actionPerformed(ActionEvent e) {

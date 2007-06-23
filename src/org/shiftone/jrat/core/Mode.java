@@ -41,11 +41,15 @@ public class Mode {
         return environmentLoadingEnabled;
     }
 
+    // todo - fix this
     public static void set(Mode newMode) {
 
         LOG.info("set " + newMode);
+        if (current.priority >= newMode.priority) {
 
-        if (locked) {
+            return;
+
+        } else if (locked) {
 
             throw new IllegalStateException("mode is locked");
 
@@ -61,6 +65,7 @@ public class Mode {
     }
 
     public static Mode get() {
+        LOG.info("get",new Throwable());
         if (!locked) {
             LOG.info("locking");
             locked = true;

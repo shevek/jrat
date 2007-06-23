@@ -1,4 +1,4 @@
-package org.shiftone.jrat.provider.tree.ui;
+package org.shiftone.jrat.provider.tree.ui.trace;
 
 
 import org.shiftone.jrat.ui.util.DotIcon;

@@ -31,7 +31,7 @@ public class OpenAction extends AbstractAction {
     public OpenAction(DesktopFrame desktopFrame) {
         super("Open");
         this.desktopFrame = desktopFrame;
-        putValue(Action.MNEMONIC_KEY, KeyEvent.VK_O);
+        putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
     }
 
     public void actionPerformed(ActionEvent e) {

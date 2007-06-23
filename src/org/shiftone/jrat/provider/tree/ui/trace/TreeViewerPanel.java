@@ -1,7 +1,6 @@
-package org.shiftone.jrat.provider.tree.ui;
+package org.shiftone.jrat.provider.tree.ui.trace;
 
 
-import org.shiftone.jrat.core.spi.ui.View;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
