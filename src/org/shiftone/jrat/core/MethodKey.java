@@ -74,18 +74,17 @@ public class MethodKey implements Serializable, Comparable {
     }
 
 
+    public String getPackageName() {
+        return packageName;
+    }
+
     public final String getClassName() {
-        return className;
+        return className;       // todo
     }
 
 
     public final String getShortClassName() {
-
-        int index = className.lastIndexOf('.');
-
-        return (index == -1)
-                ? className
-                : className.substring(index + 1);
+        return className;
     }
 
 
@@ -100,6 +99,10 @@ public class MethodKey implements Serializable, Comparable {
         }
 
         final MethodKey methodKey = (MethodKey) o;
+
+        if (!packageName.equals(methodKey.packageName)) {
+            return false;
+        }
 
         if (!className.equals(methodKey.className)) {
             return false;
@@ -139,11 +142,14 @@ public class MethodKey implements Serializable, Comparable {
 
     public int compareTo(Object o) {
         MethodKey other = (MethodKey) o;
-        int c = className.compareTo(other.className);
+        int c = packageName.compareTo(other.packageName);
         if (c == 0) {
-            c = methodName.compareTo(other.methodName);
+            c = className.compareTo(other.className);
             if (c == 0) {
-                c = signature.compareTo(other.signature);
+                c = methodName.compareTo(other.methodName);
+                if (c == 0) {
+                    c = signature.compareTo(other.signature);
+                }
             }
         }
         return c;

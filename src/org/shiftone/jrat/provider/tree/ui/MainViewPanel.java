@@ -2,7 +2,7 @@ package org.shiftone.jrat.provider.tree.ui;
 
 import org.shiftone.jrat.provider.tree.StackNode;
 import org.shiftone.jrat.provider.tree.ui.trace.TreeViewerPanel;
-import org.shiftone.jrat.provider.tree.ui.trace.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.GraphViewPanel;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -21,7 +21,8 @@ public class MainViewPanel extends JPanel {
         setLayout(new BorderLayout());
         add(tabbedPane, BorderLayout.CENTER);
 
-        tabbedPane.addTab("Trace", new TreeViewerPanel(new StackTreeNode(rootNode)));
+        tabbedPane.addTab("Trace", new TreeViewerPanel(rootNode));
+        tabbedPane.addTab("Hierarchy", new GraphViewPanel(rootNode));
     }
 
 }

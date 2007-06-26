@@ -18,15 +18,16 @@ import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Rectangle;
 import java.awt.event.ContainerListener;
 import java.awt.event.ContainerEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 /**
  * @Author Jeff Drost
@@ -34,6 +35,7 @@ import java.awt.event.ContainerEvent;
 public class DesktopFrame extends JFrame {
 
     private static final Logger LOG = Logger.getLogger(DesktopFrame.class);
+    private final Preferences preferences;
     private JXStatusBar statusBar = new JXStatusBar();
     private JTabbedPane tabbedPane = new JTabbedPane();
     private CloseAction closeAction = new CloseAction(tabbedPane);
@@ -41,13 +43,24 @@ public class DesktopFrame extends JFrame {
     private int waiters = 0;
 
     public DesktopFrame() {
+
         super("JRat Desktop");
+
+        preferences = Preferences.load();
+        preferences.setLastRunTime(System.currentTimeMillis());
+        preferences.incrementRunCount();
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize((int) dimension.getWidth() - 150, (int) dimension.getHeight() - 150);
-        // setStartPosition(StartPosition.CenterInScreen);
-        // setStatusBar(statusBar);
-        setLocation(50, 50);
+
+        Rectangle windowBounds = preferences.getWindowBounds();
+
+        if (windowBounds == null) {
+            Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+            windowBounds = new Rectangle(50, 50, (int) dimension.getWidth() - 150, (int) dimension.getHeight() - 150);
+        }
+
+        setBounds(windowBounds);
+
         statusBar.add(new JLabel("test"));
         setJMenuBar(createMenuBar());
 
@@ -59,6 +72,7 @@ public class DesktopFrame extends JFrame {
         tabbedPane.addContainerListener(new TabChangeListener());
         checkTabs();
 
+        addComponentListener(new ComponentListener());
 
     }
 
@@ -112,6 +126,11 @@ public class DesktopFrame extends JFrame {
         return toolBar;
     }
 
+
+    public Preferences getPreferences() {
+        return preferences;
+    }
+
     public View createView(final String title, JComponent component) {
         final View view = new View();
         view.setComponent(component);
@@ -127,6 +146,17 @@ public class DesktopFrame extends JFrame {
         boolean enableClose = tabbedPane.getTabCount() > 0;
         closeAction.setEnabled(enableClose);
         closeAllAction.setEnabled(enableClose);
+    }
+
+    private class ComponentListener extends ComponentAdapter {
+
+        public void componentResized(ComponentEvent e) {
+            preferences.setWindowBounds(getBounds());
+        }
+
+        public void componentMoved(ComponentEvent e) {
+            preferences.setWindowBounds(getBounds());
+        }
     }
 
     private class TabChangeListener implements ContainerListener {

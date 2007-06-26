@@ -3,6 +3,7 @@ package org.shiftone.jrat.desktop.action.file;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.desktop.DesktopFrame;
+import org.shiftone.jrat.desktop.Preferences;
 import org.shiftone.jrat.core.spi.ViewBuilder;
 
 import javax.swing.Action;
@@ -25,13 +26,31 @@ import java.util.zip.GZIPInputStream;
 public class OpenAction extends AbstractAction {
 
     private static final Logger LOG = Logger.getLogger(OpenAction.class);
-    private DesktopFrame desktopFrame;
+    private final DesktopFrame desktopFrame;
+    private final Preferences preferences;
 
 
     public OpenAction(DesktopFrame desktopFrame) {
         super("Open");
+
         this.desktopFrame = desktopFrame;
+        this.preferences = desktopFrame.getPreferences();
+
         putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
+    }
+
+    private File getCurrentDirectory() {
+        File file = preferences.getLastOpenedFile();
+        return (file != null) ? getParent(file) : new File("");
+    }
+
+    private File getParent(File file) {
+        File parent = file.getParentFile();
+        if (parent.exists()) {
+            return parent;
+        } else {
+            return getParent(parent);
+        }
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -41,28 +60,25 @@ public class OpenAction extends AbstractAction {
         chooser.setMultiSelectionEnabled(true);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setAcceptAllFileFilterUsed(false);
+        chooser.setCurrentDirectory(getCurrentDirectory());
 
         chooser.addChoosableFileFilter(JRatFileFilter.INSTANCE);
         //chooser.addChoosableFileFilter(SessionFileFilter.INSTANCE);
 
         if (JFileChooser.APPROVE_OPTION == chooser.showOpenDialog(desktopFrame)) {
-
             openFiles(chooser.getSelectedFiles());
-
         }
-        
-
     }
 
 
     private void openFiles(File[] files) {
-
         for (int i = 0; i < files.length; i++) {
             openFile(files[i]);
         }
     }
 
     private void openFile(File file) {
+        preferences.setLastOpenedFile(file);
         new Thread(new OpenRunnable(file)).start();
     }
 
@@ -76,7 +92,7 @@ public class OpenAction extends AbstractAction {
         }
 
         public void run() {
-            
+
             InputStream inputStream = null;
 
             try {
@@ -85,7 +101,7 @@ public class OpenAction extends AbstractAction {
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
                 LOG.info("reading : " + file);
-                ViewBuilder viewBuilder = (ViewBuilder)objectInputStream.readObject();
+                ViewBuilder viewBuilder = (ViewBuilder) objectInputStream.readObject();
 
                 LOG.info("building view");
                 JComponent component = viewBuilder.buildView(file);

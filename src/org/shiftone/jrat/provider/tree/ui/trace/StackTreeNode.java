@@ -11,8 +11,7 @@ import java.util.*;
 
 
 /**
- * Class StackTreeNode
- *
+ * @todo lazy init children
  * @author Jeff Drost
  */
 public class StackTreeNode implements TreeNode {
@@ -201,29 +200,19 @@ public class StackTreeNode implements TreeNode {
     }
 
 
-    public TreeNode getChildAt(int childIndex) {
-        return getStackTreeNodeAt(childIndex);
+    public StackTreeNode getChildAt(int childIndex) {
+         return childArray[childIndex];
     }
-
-
-    public StackTreeNode getStackTreeNodeAt(int childIndex) {
-        return childArray[childIndex];
-    }
-
 
     public int getChildCount() {
         return childArray.length;
     }
 
 
-    public TreeNode getParent() {
-        return getParentNode();
-    }
-
-
-    public StackTreeNode getParentNode() {
+    public StackTreeNode getParent() {
         return parent;
     }
+
 
     public int getIndex(TreeNode node) {
         for (int i = 0; i < childArray.length; i++) {

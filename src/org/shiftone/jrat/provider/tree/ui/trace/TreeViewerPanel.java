@@ -4,6 +4,7 @@ package org.shiftone.jrat.provider.tree.ui.trace;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
+import org.shiftone.jrat.provider.tree.StackNode;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -29,10 +30,10 @@ public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UI
     private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
     private NodeDetailPanel detailPanel;
 
-    public TreeViewerPanel(StackTreeNode rootNode) {
+    public TreeViewerPanel(StackNode stackNode) {
 
 
-        this.rootNode = rootNode;
+        this.rootNode = new StackTreeNode(stackNode);
         tree = new JTree(rootNode);
         detailPanel = new NodeDetailPanel();
         splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);

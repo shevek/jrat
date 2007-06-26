@@ -52,7 +52,7 @@ public class StackTableModel extends AbstractTableModel {
                 break;
             }
 
-            currNode = (StackTreeNode) currNode.getParentNode();
+            currNode = currNode.getParent();
         }
 
         // -------------------------------------
