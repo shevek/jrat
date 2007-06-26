@@ -15,6 +15,7 @@ import java.util.TimerTask;
 import java.util.Queue;
 
 /**
+ * This class will be serialized to the user's home directory in order to persist UI state.
  * @Author Jeff Drost
  */
 public class Preferences implements Serializable {
