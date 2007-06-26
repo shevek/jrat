@@ -44,6 +44,11 @@ public class OpenAction extends AbstractAction {
         return (file != null) ? getParent(file) : new File("");
     }
 
+    private File getSelectedFile() {
+        File file = preferences.getLastOpenedFile();
+        return (file != null && file.exists()) ? file : null;
+    }
+
     private File getParent(File file) {
         File parent = file.getParentFile();
         if (parent.exists()) {
@@ -61,7 +66,7 @@ public class OpenAction extends AbstractAction {
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setCurrentDirectory(getCurrentDirectory());
-
+        chooser.setSelectedFile(getSelectedFile());
         chooser.addChoosableFileFilter(JRatFileFilter.INSTANCE);
         //chooser.addChoosableFileFilter(SessionFileFilter.INSTANCE);
 

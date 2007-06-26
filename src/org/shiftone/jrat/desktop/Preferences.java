@@ -27,7 +27,9 @@ public class Preferences implements Serializable {
     private Rectangle windowBounds;
     private File lastOpenedFile;
 
-
+    /**
+     * todo - better error handling
+     */
     public static Preferences load() {
 
         Preferences preferences;

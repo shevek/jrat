@@ -21,8 +21,7 @@ import java.util.Map;
 public class GraphViewPanel extends JPanel implements ActionListener {
     private static final Logger LOG = Logger.getLogger(GraphViewPanel.class);
     private StackNode rootNode;
-    private JButton button = new JButton();
-    private Map nodes = new HashMap();
+    private JButton button = new JButton("push me");
 
     public GraphViewPanel(StackNode rootNode) {
         this.rootNode = rootNode;
@@ -35,26 +34,28 @@ public class GraphViewPanel extends JPanel implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
-        //To change body of implemented methods use File | Settings | File Templates.
+       Map map = new HashMap();
+       processTree(rootNode, map);
+       LOG.info(map.size());
     }
 
-    private void processTree(StackNode node) {
+    private void processTree(StackNode node, Map nodes) {
         List children = node.getChildren();
         for (int i = 0; i < children.size(); i++) {
             StackNode child = (StackNode) children.get(i);
-            processNode(child);
-            processTree(node);
+            processNode(child, nodes);
+            processTree(child, nodes);
         }
     }
 
-    private void processNode(StackNode stackNode) {
+    private void processNode(StackNode stackNode, Map nodes) {
         MethodKey methodKey = stackNode.getMethodKey();
-        GraphNode graphNode = getGraphNode(methodKey);
+        GraphNode graphNode = getGraphNode(methodKey, nodes);
 
         List children = stackNode.getChildren();
         for (int i = 0; i < children.size(); i++) {
             StackNode child = (StackNode) children.get(i);
-            GraphNode childGraphNode = getGraphNode(child.getMethodKey());
+            GraphNode childGraphNode = getGraphNode(child.getMethodKey(), nodes);
 
             graphNode.addCalled(childGraphNode);
             childGraphNode.addCalledBy(graphNode);
@@ -63,7 +64,7 @@ public class GraphViewPanel extends JPanel implements ActionListener {
         graphNode.addStackNode(stackNode);
     }
 
-    private GraphNode getGraphNode(MethodKey methodKey) {
+    private GraphNode getGraphNode(MethodKey methodKey, Map nodes) {
         GraphNode node = (GraphNode) nodes.get(methodKey);
         if (node == null) {
             node = new GraphNode(methodKey);
