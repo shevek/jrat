@@ -15,6 +15,6 @@ public class MinDurationAttributeValue extends AbstractAccumulatorAttributeValue
 
 
     public Object getValue() {
-        return accumulator.getMinDurationNanos();
+        return accumulator.getMinDuration();
     }
 }

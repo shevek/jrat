@@ -19,7 +19,7 @@ public class TotalsEventList extends AbstractEventList implements ListEventListe
 
     private static final Logger LOG = Logger.getLogger(TotalsEventList.class);
     private EventList eventList;
-    private MethodKey methodKey = new MethodKey("", "", "");
+    private MethodKey methodKey = MethodKey.create("", "", "");       // todo
     private MethodKeyAccumulator totals = new MethodKeyAccumulator(methodKey);
 
     public TotalsEventList(EventList eventList) {

@@ -15,6 +15,6 @@ public class AverageDurationAttributeValue extends AbstractAccumulatorAttributeV
 
 
     public Object getValue() {
-        return accumulator.getAverageDurationNanos();
+        return accumulator.getAverageDuration();
     }
 }

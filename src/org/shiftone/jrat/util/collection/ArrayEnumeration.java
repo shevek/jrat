@@ -1,8 +1,5 @@
 package org.shiftone.jrat.util.collection;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.util.Enumeration;
 
 /**

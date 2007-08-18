@@ -15,6 +15,6 @@ public class MaxDurationAttributeValue extends AbstractAccumulatorAttributeValue
 
 
     public Object getValue() {
-        return accumulator.getMaxDurationNanos();
+        return accumulator.getMaxDuration();
     }
 }

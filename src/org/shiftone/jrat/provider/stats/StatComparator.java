@@ -20,7 +20,7 @@ public class StatComparator implements Comparator {
         StatMethodHandler handlerB = (StatMethodHandler) b;
         int ret;
 
-        ret = convert(handlerA.getTotalDurationNanos() - handlerB.getTotalDurationNanos());
+        ret = convert(handlerA.getTotalDuration() - handlerB.getTotalDuration());
 
         if (ret == 0) {
             ret = convert(handlerA.getTotalExits() - handlerB.getTotalExits());

@@ -62,7 +62,7 @@ public class StatsOutputViewBuilder implements OutputViewBuilder {
         int maxConcurThreads = (int) record.getLong(StatOutput.FIELD_MAX_CONCUR_THREADS);
         long maxDuration = toLong(record.getNumber(StatOutput.FIELD_MAX_DURATION));
         long minDuration = toLong(record.getNumber(StatOutput.FIELD_MIN_DURATION));
-        MethodKey methodKey = new MethodKey(className, methodName, signature);
+        MethodKey methodKey = MethodKey.create(className, methodName, signature);
 
         return new MethodKeyAccumulator(methodKey, totalEnters, totalExits, totalErrors, totalDuration, totalOfSquares,
                 maxDuration, minDuration, maxConcurThreads);

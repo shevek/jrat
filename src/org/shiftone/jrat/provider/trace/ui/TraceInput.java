@@ -129,7 +129,7 @@ public class TraceInput {
         String className = in.readUTF();
         String methodName = in.readUTF();
         String signature = in.readUTF();
-        MethodKey methodKey = new MethodKey(className, methodName, signature);
+        MethodKey methodKey = MethodKey.create(className, methodName, signature);
 
         methodKeys.put(new Integer(methodIndex), methodKey);
     }

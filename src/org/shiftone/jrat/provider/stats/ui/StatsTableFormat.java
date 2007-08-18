@@ -62,19 +62,19 @@ public class StatsTableFormat implements TableFormat {
                 return new Long(accumulator.getTotalErrors());
 
             case 6:
-                return new Long(accumulator.getTotalDuration(TimeUnit.MS));
+                return new Long(accumulator.getTotalDuration());
 
             case 7:
-                return accumulator.getAverageDuration(TimeUnit.MS);
+                return accumulator.getAverageDuration();
 
             case 8:
                 return accumulator.getStdDeviation();
 
             case 9:
-                return accumulator.getMinDuration(TimeUnit.MS);
+                return accumulator.getMinDuration();
 
             case 10:
-                return accumulator.getMaxDuration(TimeUnit.MS);
+                return accumulator.getMaxDuration();
         }
 
         throw new IllegalStateException();

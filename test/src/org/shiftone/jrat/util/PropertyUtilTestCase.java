@@ -1,17 +1,17 @@
 package org.shiftone.jrat.util;
 
 import junit.framework.TestCase;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
  */
 public class PropertyUtilTestCase extends TestCase {
-    private static final Log LOG = LogFactory.getLog(PropertyUtilTestCase.class);
+    private static final Logger LOG = Logger.getLogger(PropertyUtilTestCase.class);
 
     private String a;
     private long b;

@@ -64,9 +64,9 @@ public class StatOutput {
         writer.setValue(FIELD_TOTAL_ENTERS, handler.getTotalEnters());
         writer.setValue(FIELD_TOTAL_EXITS, handler.getTotalExits());
         writer.setValue(FIELD_TOTAL_ERRORS, handler.getTotalErrors());
-        writer.setValue(FIELD_TOTAL_DURATION, handler.getTotalDurationNanos());
-        writer.setValue(FIELD_MIN_DURATION, handler.getMinDurationNanos());
-        writer.setValue(FIELD_MAX_DURATION, handler.getMaxDurationNanos());
+        writer.setValue(FIELD_TOTAL_DURATION, handler.getTotalDuration());
+        writer.setValue(FIELD_MIN_DURATION, handler.getMinDuration());
+        writer.setValue(FIELD_MAX_DURATION, handler.getMaxDuration());
         writer.setValue(FIELD_STD_DEVIATION, handler.getStdDeviation());
         writer.setValue(FIELD_SUM_OF_SQUARES, handler.getSumOfSquares());
         writer.setValue(FIELD_MAX_CONCUR_THREADS, handler.getMaxConcurrentThreads());
