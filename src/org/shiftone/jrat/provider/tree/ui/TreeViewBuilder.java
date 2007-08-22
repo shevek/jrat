@@ -5,6 +5,7 @@ import org.shiftone.jrat.provider.tree.StackNode;
 
 import javax.swing.JComponent;
 import java.io.File;
+import java.util.Set;
 
 /**
  * @Author Jeff Drost
@@ -13,16 +14,18 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
 
     private static final long serialVersionUID = 1;
     private StackNode root;
+    private Set allMethodKeys;
 
     public TreeViewBuilder() {
     }
 
-    public TreeViewBuilder(StackNode root) {
+    public TreeViewBuilder(StackNode root, Set allMethodKeys) {
         this.root = root;
+        this.allMethodKeys = allMethodKeys;
     }
 
     public JComponent buildView(File source) throws Exception {
-        return new MainViewPanel(root);
+        return new MainViewPanel(root, allMethodKeys);
     }
 
 //

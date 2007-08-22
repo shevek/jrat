@@ -14,6 +14,8 @@ import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -25,6 +27,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     private static final Logger LOG = Logger.getLogger(TreeMethodHandlerFactory.class);
     private final StackNode rootNode = new StackNode();
+    private final Set allMethodKeys = new HashSet();
     private final DelegateThreadLocal delegateThreadLocal = new DelegateThreadLocal(this);
     private final AtomicLong methodHandlerCount = new AtomicLong();
 
@@ -39,8 +42,11 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     public final MethodHandler createMethodHandler(MethodKey methodKey) {
 
+    	
         methodHandlerCount.incrementAndGet();
-
+        
+        allMethodKeys.add(methodKey);
+        
         return new TreeMethodHandler(this, methodKey);
     }
 
@@ -79,7 +85,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
         PrintWriter printWriter = null;
 
-        getContext().writeSerializable("BIN_" + fileName, new TreeViewBuilder(rootNode));
+        getContext().writeSerializable("BIN_" + fileName, new TreeViewBuilder(rootNode, allMethodKeys));
 
         try {
 
