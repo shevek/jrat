@@ -15,6 +15,6 @@ public class MinDurationAttributeValue extends AbstractAccumulatorAttributeValue
 
 
     public Object getValue() {
-        return accumulator.getMinDuration();
+        return new Long(accumulator.getMinDuration());
     }
 }

@@ -71,10 +71,10 @@ public class StatsTableFormat implements TableFormat {
                 return accumulator.getStdDeviation();
 
             case 9:
-                return accumulator.getMinDuration();
+                return new Long(accumulator.getMinDuration());
 
             case 10:
-                return accumulator.getMaxDuration();
+                return new Long(accumulator.getMaxDuration());
         }
 
         throw new IllegalStateException();

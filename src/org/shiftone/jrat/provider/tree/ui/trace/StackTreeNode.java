@@ -200,7 +200,7 @@ public class StackTreeNode implements TreeNode {
     }
 
 
-    public StackTreeNode getChildAt(int childIndex) {
+    public TreeNode getChildAt(int childIndex) {
          return childArray[childIndex];
     }
 
@@ -209,10 +209,12 @@ public class StackTreeNode implements TreeNode {
     }
 
 
-    public StackTreeNode getParent() {
+    public TreeNode getParent() {
         return parent;
     }
-
+    public StackTreeNode getParentNode() {
+        return parent;
+    }
 
     public int getIndex(TreeNode node) {
         for (int i = 0; i < childArray.length; i++) {

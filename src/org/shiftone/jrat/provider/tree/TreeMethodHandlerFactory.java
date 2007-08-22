@@ -40,13 +40,13 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     }
 
 
-    public final MethodHandler createMethodHandler(MethodKey methodKey) {
+
+    public synchronized final MethodHandler createMethodHandler(MethodKey methodKey) {
 
     	
         methodHandlerCount.incrementAndGet();
-        
         allMethodKeys.add(methodKey);
-        
+
         return new TreeMethodHandler(this, methodKey);
     }
 
@@ -83,27 +83,9 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
         LOG.info("writeOutputFile...");
 
-        PrintWriter printWriter = null;
+        getContext().writeSerializable("BIN_" + fileName,
+                new TreeViewBuilder(rootNode, allMethodKeys));
 
-        getContext().writeSerializable("BIN_" + fileName, new TreeViewBuilder(rootNode, allMethodKeys));
-
-        try {
-
-            printWriter = getContext().createPrintWriter(fileName);
-
-          //  rootNode.printXML(printWriter);
-            LOG.info("printWriter.flush " + printWriter);
-            printWriter.flush();
-
-        } catch (Exception e) {
-
-            LOG.error("Error writting to " + fileName, e);
-
-        } finally {
-
-            IOUtil.close(printWriter);
-            LOG.info("writeOutputFile(" + fileName + ") complete");
-        }
     }
 
 

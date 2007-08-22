@@ -42,13 +42,9 @@
             debug="yes"
             destdir="${classes.dir}"
             deprecation="false"
-			excludes="**/blaze/**"
 			source="1.2" target="1.2">
 
-            <exclude name="org/shiftone/jrat/provider/rate*/**"/>
-            <exclude name="org/shiftone/jrat/provider/stats/**"/>
-            <exclude name="org/shiftone/jrat/provider/trace/**"/>
-            <exclude name="org/shiftone/jrat/provider/tree/ui/action/**"/>
+
             <classpath>
 
                 <fileset dir="${lib.dir}">
@@ -202,11 +198,7 @@
             <zap pattern="ca.odell.glazedlists.swt.**"/>
             <zap pattern="ca.odell.glazedlists.io.**"/>
             <!-- ========================================================= -->
-            <zipfileset src="lib/TGGL_122_jre11/TGGraphLayout.jar"/>
-
-            <rule pattern="com.touchgraph.graphlayout.**" result="org.shiftone.jrat.depends.touchgraph.@1"/>
-            <!-- ========================================================= -->
-
+        
             <manifest>
                 <attribute name="Main-Class"             value="org.shiftone.jrat.cli.Cli"/>
                 <attribute name="Product-Name"		    value="${title}"/>

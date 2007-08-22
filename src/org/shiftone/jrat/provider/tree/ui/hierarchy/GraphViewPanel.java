@@ -36,7 +36,6 @@ public class GraphViewPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
        Map map = new HashMap();
        processTree(rootNode, map);
-       LOG.info(map.size());
     }
 
     private void processTree(StackNode node, Map nodes) {

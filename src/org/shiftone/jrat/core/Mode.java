@@ -65,7 +65,7 @@ public class Mode {
     }
 
     public static Mode get() {
-        LOG.info("get",new Throwable());
+        //LOG.info("get",new Throwable());
         if (!locked) {
             LOG.info("locking");
             locked = true;

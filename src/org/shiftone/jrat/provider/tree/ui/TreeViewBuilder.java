@@ -6,6 +6,7 @@ import org.shiftone.jrat.provider.tree.StackNode;
 import javax.swing.JComponent;
 import java.io.File;
 import java.util.Set;
+import java.util.HashSet;
 
 /**
  * @Author Jeff Drost
@@ -21,7 +22,7 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
 
     public TreeViewBuilder(StackNode root, Set allMethodKeys) {
         this.root = root;
-        this.allMethodKeys = allMethodKeys;
+        this.allMethodKeys = new HashSet(allMethodKeys);
     }
 
     public JComponent buildView(File source) throws Exception {

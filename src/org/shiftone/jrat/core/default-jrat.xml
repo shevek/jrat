@@ -38,15 +38,14 @@
 
         <handlers>
 
+            <!--
+            The Tree Method Handler is the general purpose included method handler,
+            but you can choose to write your own.  Simply implement MethodHandlerFactory
+            and get ready to receieve runtime events.
+            -->
             <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
                 <property name="outputFile" value="my_code_tree.jrat"/>
             </handler>
-
-            
-            <handler factory="org.shiftone.jrat.provider.coverage.CoverageMethodHandlerFactory">
-                <property name="outputFile" value="my_code_coverage.csv"/>
-            </handler>
-
 
         </handlers>
 

@@ -15,6 +15,6 @@ public class MaxDurationAttributeValue extends AbstractAccumulatorAttributeValue
 
 
     public Object getValue() {
-        return accumulator.getMaxDuration();
+        return new Long(accumulator.getMaxDuration());
     }
 }
