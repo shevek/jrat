@@ -16,17 +16,22 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
     private static final long serialVersionUID = 1;
     private StackNode root;
     private Set allMethodKeys;
+    private long sessionStartMs;
+    private long sessionEndMs;
 
     public TreeViewBuilder() {
     }
 
-    public TreeViewBuilder(StackNode root, Set allMethodKeys) {
+
+    public TreeViewBuilder(StackNode root, Set allMethodKeys, long sessionStartMs, long sessionEndMs) {
         this.root = root;
-        this.allMethodKeys = new HashSet(allMethodKeys);
+        this.allMethodKeys = allMethodKeys;
+        this.sessionStartMs = sessionStartMs;
+        this.sessionEndMs = sessionEndMs;
     }
 
     public JComponent buildView(File source) throws Exception {
-        return new MainViewPanel(root, allMethodKeys);
+        return new MainViewPanel(root, allMethodKeys, sessionStartMs, sessionEndMs);
     }
 
 //

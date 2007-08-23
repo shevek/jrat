@@ -83,8 +83,12 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
         LOG.info("writeOutputFile...");
 
-        getContext().writeSerializable("BIN_" + fileName,
-                new TreeViewBuilder(rootNode, allMethodKeys));
+        getContext().writeSerializable(fileName,
+                new TreeViewBuilder(
+                        rootNode,
+                        new HashSet(allMethodKeys), // copy to avoid sync issues
+                        getContext().getStartTimeMs(),
+                        System.currentTimeMillis()));
 
     }
 
