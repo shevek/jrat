@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * @todo lazy init children
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StackTreeNode implements TreeNode {
 

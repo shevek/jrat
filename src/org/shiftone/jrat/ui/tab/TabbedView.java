@@ -14,7 +14,7 @@ import java.awt.*;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class TabbedView extends JPanel implements View, ChangeListener {
 

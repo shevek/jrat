@@ -14,7 +14,7 @@ import java.util.Properties;
 /**
  * Class ResourceUtil
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ResourceUtil {
 

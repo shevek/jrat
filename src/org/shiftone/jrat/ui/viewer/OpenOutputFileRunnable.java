@@ -17,7 +17,7 @@ import java.io.StringWriter;
 /**
  * Class OpenOutputFileRunnable
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class OpenOutputFileRunnable implements Runnable {
 

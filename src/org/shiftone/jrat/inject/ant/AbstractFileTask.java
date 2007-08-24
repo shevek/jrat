@@ -14,7 +14,7 @@ import java.util.Vector;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public abstract class AbstractFileTask extends Task {
 

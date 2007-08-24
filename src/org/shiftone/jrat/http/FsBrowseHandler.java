@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class FsBrowseHandler implements Handler {
 

@@ -14,7 +14,7 @@ import java.io.StringWriter;
 /**
  * Class ExceptionDialog
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ExceptionDialog extends JDialog implements ActionListener {
 

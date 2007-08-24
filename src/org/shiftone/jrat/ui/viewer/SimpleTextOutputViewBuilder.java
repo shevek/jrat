@@ -13,7 +13,7 @@ import java.io.InputStream;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SimpleTextOutputViewBuilder implements OutputViewBuilder {
 

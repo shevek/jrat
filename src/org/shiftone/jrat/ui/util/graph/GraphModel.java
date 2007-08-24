@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Interface GraphModel
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface GraphModel {
 

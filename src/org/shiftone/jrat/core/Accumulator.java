@@ -15,7 +15,7 @@ import java.io.Serializable;
 /**
  * Class Accumulator
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Accumulator implements Serializable {
 

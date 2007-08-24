@@ -13,7 +13,7 @@ import java.util.Stack;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class FileOutputRegistry implements FileOutputRegistryMBean, ShutdownListener {
 

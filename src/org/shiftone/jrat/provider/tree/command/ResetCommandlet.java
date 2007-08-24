@@ -6,7 +6,7 @@ import org.shiftone.jrat.util.log.AbstractLogCommandlet;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ResetCommandlet extends AbstractLogCommandlet implements Commandlet {
     private static final Logger LOG = Logger.getLogger(ResetCommandlet.class);

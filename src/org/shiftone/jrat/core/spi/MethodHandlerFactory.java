@@ -5,7 +5,7 @@ import org.shiftone.jrat.core.MethodKey;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface MethodHandlerFactory {
 

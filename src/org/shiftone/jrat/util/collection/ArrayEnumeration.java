@@ -3,7 +3,7 @@ package org.shiftone.jrat.util.collection;
 import java.util.Enumeration;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ArrayEnumeration implements Enumeration {
 

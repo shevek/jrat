@@ -9,7 +9,7 @@ import java.util.Comparator;
 /**
  * Class TsvComparator
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class TsvComparator implements Comparator {
 

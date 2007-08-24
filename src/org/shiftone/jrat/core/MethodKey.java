@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Immutable object that can be used to uniquely identify a method - suitable
  * for use as a Map key.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class MethodKey implements Serializable, Comparable {
 

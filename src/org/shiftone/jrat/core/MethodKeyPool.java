@@ -19,7 +19,7 @@ import java.util.Map;
  * in their output, the output can contain a method pool section, and methods
  * can be referenced by id elsewhere.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class MethodKeyPool {
 

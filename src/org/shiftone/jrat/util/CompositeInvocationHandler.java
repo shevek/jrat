@@ -12,7 +12,7 @@ import java.util.List;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class CompositeInvocationHandler implements InvocationHandler {
 

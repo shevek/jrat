@@ -7,7 +7,7 @@ import org.shiftone.jrat.util.log.target.LogTarget;
 /**
  * Interface Log
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Logger implements LogTarget, Constants {
 

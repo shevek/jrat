@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ProxyCommand implements Command {
 

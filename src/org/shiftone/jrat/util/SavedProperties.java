@@ -15,7 +15,7 @@ import java.util.Properties;
  * store anything critical. This class silently failes if there is an error
  * reading or writing the file.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SavedProperties extends Properties {
 

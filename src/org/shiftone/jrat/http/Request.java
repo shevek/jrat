@@ -15,7 +15,7 @@ import java.util.HashMap;
  * such a simple http server.  The handler owns the request.  If it wants to change the data and
  * redispatch it, then it can, without any need to wrap it.
  *
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Request {
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.io.File;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface ViewBuilder extends Serializable {
 

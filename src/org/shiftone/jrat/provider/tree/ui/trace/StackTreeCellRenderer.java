@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 /**
  * Class StackTreeCellRenderer
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
 

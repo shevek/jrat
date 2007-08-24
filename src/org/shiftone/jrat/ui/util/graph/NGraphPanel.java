@@ -13,7 +13,7 @@ import java.awt.*;
  * other, each in a resizable pane, and a single scroll bar to move them back
  * and forth.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class NGraphPanel extends JPanel {
 

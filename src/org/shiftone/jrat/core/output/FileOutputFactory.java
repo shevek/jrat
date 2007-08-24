@@ -13,7 +13,7 @@ import java.util.zip.GZIPOutputStream;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class FileOutputFactory {
 

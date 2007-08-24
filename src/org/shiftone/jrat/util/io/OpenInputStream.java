@@ -15,7 +15,7 @@ import java.io.InputStream;
  * that calls close(). This would typically close the entire ZipInputStream,
  * which would prevent any other archive entries from being read.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class OpenInputStream extends ProxyInputStream {
 

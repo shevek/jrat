@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class PercentTableCellRenderer extends DefaultTableCellRenderer {
 

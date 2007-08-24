@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class HtmlUtil {
 

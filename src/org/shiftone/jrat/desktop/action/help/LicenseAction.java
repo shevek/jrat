@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class LicenseAction  extends AbstractAction {
 

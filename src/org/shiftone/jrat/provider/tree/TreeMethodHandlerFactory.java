@@ -21,7 +21,7 @@ import java.util.Set;
 /**
  * Class TreeMethodHandlerFactory
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory implements TreeMethodHandlerFactoryMBean {
 

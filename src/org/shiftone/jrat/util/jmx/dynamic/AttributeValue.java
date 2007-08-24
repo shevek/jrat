@@ -2,7 +2,7 @@ package org.shiftone.jrat.util.jmx.dynamic;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface AttributeValue {
 

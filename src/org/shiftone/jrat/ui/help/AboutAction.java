@@ -15,7 +15,7 @@ import java.util.Properties;
 /**
  * Class AboutAction
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class AboutAction extends BackgroundActionListener implements UIConstants {
 

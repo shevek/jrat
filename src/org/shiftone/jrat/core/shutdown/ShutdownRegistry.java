@@ -11,7 +11,7 @@ import java.util.Stack;
 /**
  * Shut down order is important!
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  *         <p/>
  *         http://java.sun.com/developer/JDCTechTips/2006/tt0211.html#1
  */

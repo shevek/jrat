@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class DateField implements Field {
 

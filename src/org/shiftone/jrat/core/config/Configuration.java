@@ -14,7 +14,7 @@ import java.util.List;
  * class can be used to determine what classes and methods jrat cares about
  * at a high level - perhaps to govern the behavior of injection.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Configuration implements MethodCriteria {
 

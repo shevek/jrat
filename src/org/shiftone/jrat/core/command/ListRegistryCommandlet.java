@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * This is a "special" commandlet that lists other commandlets.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ListRegistryCommandlet implements Commandlet {
     private static final Logger LOG = Logger.getLogger(ListRegistryCommandlet.class);

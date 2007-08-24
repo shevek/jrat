@@ -7,7 +7,7 @@ import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class TryCatchClassFileTransformer implements ClassFileTransformer {
 

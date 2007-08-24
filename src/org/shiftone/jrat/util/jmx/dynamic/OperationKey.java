@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 class OperationKey {
 

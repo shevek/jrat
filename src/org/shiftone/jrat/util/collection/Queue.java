@@ -10,7 +10,7 @@ import java.util.LinkedList;
 /**
  * Simple wrapper around a LinkedList.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Queue {
 

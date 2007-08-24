@@ -16,7 +16,7 @@ import java.awt.*;
 /**
  * Class RateViewerPanel
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UIConstants {
 

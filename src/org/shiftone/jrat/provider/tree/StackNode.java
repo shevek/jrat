@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Class StackNode
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StackNode implements Externalizable {
 

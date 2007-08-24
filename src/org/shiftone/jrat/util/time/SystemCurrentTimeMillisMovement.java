@@ -2,7 +2,7 @@ package org.shiftone.jrat.util.time;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SystemCurrentTimeMillisMovement implements Movement {
 

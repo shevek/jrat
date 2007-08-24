@@ -7,8 +7,7 @@ import org.shiftone.jrat.api.Monitor;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.1 $
+ * @author jeff@shiftone.org (Jeff Drost)
  * @link http://aopalliance.sourceforge.net
  */
 public class AllianceMethodInterceptor implements MethodInterceptor {

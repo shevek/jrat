@@ -11,7 +11,7 @@ import java.awt.*;
 /**
  * Class StatusBar
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StatusBar extends JPanel {
 

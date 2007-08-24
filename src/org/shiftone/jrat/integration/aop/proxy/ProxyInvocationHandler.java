@@ -9,8 +9,7 @@ import java.lang.reflect.Method;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.1 $
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ProxyInvocationHandler implements InvocationHandler {
 

@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
 /**
  * Class GraphComponent
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class GraphComponent extends JComponent implements Scrollable, ChangeListener {
 

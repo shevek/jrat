@@ -11,7 +11,7 @@ import java.text.Format;
 /**
  * Class TableCell
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class TableCell {
 

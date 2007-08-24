@@ -10,7 +10,7 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 /**
  * Class SilentMethodHandler
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SilentMethodHandler implements MethodHandler, MethodHandlerFactory {
 

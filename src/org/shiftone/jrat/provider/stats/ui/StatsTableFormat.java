@@ -8,7 +8,7 @@ import org.shiftone.jrat.util.time.TimeUnit;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StatsTableFormat implements TableFormat {
 

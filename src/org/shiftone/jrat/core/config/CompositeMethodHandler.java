@@ -5,7 +5,7 @@ import org.shiftone.jrat.core.spi.MethodHandler;
 import java.util.Collection;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class CompositeMethodHandler implements MethodHandler {
 

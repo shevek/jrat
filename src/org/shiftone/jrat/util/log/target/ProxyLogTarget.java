@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.log.Constants;
  * possible to switch the LogTarget that is being used by many LogTargetLog
  * instances in one statement.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ProxyLogTarget implements LogTarget, Constants {
 

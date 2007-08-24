@@ -28,7 +28,7 @@ import java.io.File;
 /**
  * Class DesktopFrame
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class DesktopFrame extends JRatFrame implements UIConstants, ContainerListener {
 

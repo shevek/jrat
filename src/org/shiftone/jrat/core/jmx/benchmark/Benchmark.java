@@ -8,7 +8,7 @@ import org.shiftone.jrat.util.time.Clock;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Benchmark implements BenchmarkMBean {
 

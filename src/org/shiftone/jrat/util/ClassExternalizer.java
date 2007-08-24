@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInput;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ClassExternalizer implements Externalizable {
 

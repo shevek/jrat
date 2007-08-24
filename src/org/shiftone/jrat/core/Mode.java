@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.log.Logger;
  * would be silly.
  * The mode can be set multiple times, but once it's read it can not be set.
  *
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Mode {
 

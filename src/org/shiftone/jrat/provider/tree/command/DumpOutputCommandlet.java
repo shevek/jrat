@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class DumpOutputCommandlet implements Commandlet {
     private final TreeMethodHandlerFactory treeMethodHandlerFactory;

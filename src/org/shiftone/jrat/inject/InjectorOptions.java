@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.log.Logger;
  * This is a placeholder for any options that are not of the concern of the
  * Transformer.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class InjectorOptions extends TransformerOptions {
 

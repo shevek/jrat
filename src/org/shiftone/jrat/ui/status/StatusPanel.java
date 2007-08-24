@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StatusPanel extends JPanel {
 

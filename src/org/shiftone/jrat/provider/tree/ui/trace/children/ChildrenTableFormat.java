@@ -6,7 +6,7 @@ import org.shiftone.jrat.provider.tree.ui.trace.StackTreeNode;
 import org.shiftone.jrat.util.Percent;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ChildrenTableFormat implements TableFormat {
     private String[] COLUMN_NAMES =

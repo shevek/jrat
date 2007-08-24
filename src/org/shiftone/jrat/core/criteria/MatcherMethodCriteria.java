@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.regex.Matcher;
 /**
  * Used by ant task.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class MatcherMethodCriteria implements MethodCriteria {
 

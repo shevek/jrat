@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  * @deprecated Basicly Java 1.4 built in AOP.
  */
 public class JRatInvocationHandler implements InvocationHandler {

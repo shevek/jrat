@@ -10,7 +10,7 @@ import org.shiftone.jrat.util.Command;
  * activities of that scope to be logged to a different LogTarget - but only
  * during the duration of that command.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ThreadLocalLogTarget implements LogTarget {
 

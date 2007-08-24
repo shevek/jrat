@@ -9,7 +9,7 @@ import java.io.OutputStream;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class FileOutputOutputStream extends ProxyOutputStream implements FileOutput {
 

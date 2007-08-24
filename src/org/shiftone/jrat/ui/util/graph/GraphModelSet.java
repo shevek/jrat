@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Class GraphModelSet
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class GraphModelSet {
 

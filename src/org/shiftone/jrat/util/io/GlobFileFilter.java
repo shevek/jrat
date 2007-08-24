@@ -10,7 +10,7 @@ import java.io.File;
 /**
  * Class GlobFileFilter
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class GlobFileFilter extends javax.swing.filechooser.FileFilter implements java.io.FileFilter {
 

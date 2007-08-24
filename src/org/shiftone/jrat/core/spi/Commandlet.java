@@ -3,7 +3,7 @@ package org.shiftone.jrat.core.spi;
 import java.io.OutputStream;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface Commandlet {
 

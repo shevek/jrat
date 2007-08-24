@@ -4,7 +4,7 @@ import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class CommandletRegistryFactory {
     

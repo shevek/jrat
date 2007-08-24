@@ -6,7 +6,7 @@ import org.shiftone.jrat.util.jmx.dynamic.AttributeValue;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public abstract class AbstractAccumulatorAttributeValue implements AttributeValue {
 

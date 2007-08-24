@@ -11,7 +11,7 @@ import org.shiftone.jrat.util.log.Logger;
  * All this visitor does is add a single instruction to the start of the static
  * intitializer to call the JRat initializer method.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ClassInitMethodVisitor extends MethodAdapter implements Constants {
 

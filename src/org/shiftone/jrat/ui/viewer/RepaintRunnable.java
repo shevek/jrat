@@ -2,7 +2,7 @@ package org.shiftone.jrat.ui.viewer;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class RepaintRunnable implements Runnable {
 

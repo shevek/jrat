@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 /**
  * Class SpawnFrameAction
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SpawnFrameAction implements ActionListener {
 

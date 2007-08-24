@@ -4,7 +4,7 @@ import org.shiftone.jrat.util.io.Dir;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Settings {
     private static final Logger LOG = Logger.getLogger(Settings.class);

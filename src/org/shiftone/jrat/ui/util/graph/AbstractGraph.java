@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * Class AbstractGraph
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public abstract class AbstractGraph implements GraphModel {
 

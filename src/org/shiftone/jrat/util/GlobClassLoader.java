@@ -17,7 +17,7 @@ import java.net.URLClassLoader;
 /**
  * Class GlobClassLoader
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class GlobClassLoader extends URLClassLoader {
 

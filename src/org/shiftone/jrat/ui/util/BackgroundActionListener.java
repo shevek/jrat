@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * performed, even it is simply opening a dialig. Showing a file dialog may take
  * more time because dirs need to be scanned.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public abstract class BackgroundActionListener implements ActionListener, Runnable {
 

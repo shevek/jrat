@@ -13,7 +13,7 @@ import javax.xml.parsers.SAXParserFactory;
 /**
  * This class was written in reaction to crazy changing interfaces. Uuug.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class XMLUtil {
 

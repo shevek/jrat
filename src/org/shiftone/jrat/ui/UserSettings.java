@@ -11,7 +11,7 @@ import java.util.Properties;
 /**
  * Class UserSettings
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class UserSettings {
 

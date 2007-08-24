@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Class StackTableModel
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StackTableModel extends AbstractTableModel {
 

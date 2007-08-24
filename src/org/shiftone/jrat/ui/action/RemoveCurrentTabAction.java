@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 /**
  * Class RemoveCurrentTabAction
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class RemoveCurrentTabAction implements ActionListener {
 

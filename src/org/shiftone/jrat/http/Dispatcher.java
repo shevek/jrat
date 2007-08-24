@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.io.Writer;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Dispatcher implements Handler {
 

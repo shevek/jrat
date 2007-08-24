@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ConfigurableMBean implements DynamicMBean {
 

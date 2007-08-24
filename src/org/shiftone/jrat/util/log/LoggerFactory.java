@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  * <li>using thread based logging - each thread can have it's own LogTarget
  * (this is for the Desktop)
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class LoggerFactory implements Constants {
 

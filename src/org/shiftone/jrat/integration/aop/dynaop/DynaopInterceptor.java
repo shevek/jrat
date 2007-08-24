@@ -6,8 +6,7 @@ import org.shiftone.jrat.api.Monitor;
 
 
 /**
- * @author $Author: jeffdrost $
- * @version $Revision: 1.1 $
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class DynaopInterceptor implements dynaop.Interceptor {
 

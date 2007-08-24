@@ -11,7 +11,7 @@ import java.util.Comparator;
 /**
  * Class ColorSet
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ColorSet {
 
@@ -75,7 +75,7 @@ public class ColorSet {
 /**
  * Class ColorComparator
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 class ColorComparator implements Comparator {
 

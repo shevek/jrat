@@ -21,7 +21,7 @@ import java.util.TreeSet;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class InjectRunnable implements Runnable, UIConstants {
 

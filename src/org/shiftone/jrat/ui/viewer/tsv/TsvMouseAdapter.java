@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
 /**
  * Class TsvMouseAdapter
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class TsvMouseAdapter extends MouseAdapter {
 

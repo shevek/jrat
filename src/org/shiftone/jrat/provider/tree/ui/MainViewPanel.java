@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.Date;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class MainViewPanel extends JPanel {
     private static final Logger LOG = Logger.getLogger(MainViewPanel.class);

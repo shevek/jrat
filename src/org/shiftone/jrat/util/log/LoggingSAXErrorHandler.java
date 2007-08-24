@@ -7,7 +7,7 @@ import org.xml.sax.SAXParseException;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class LoggingSAXErrorHandler implements ErrorHandler {
 

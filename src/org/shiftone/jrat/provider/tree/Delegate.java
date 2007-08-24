@@ -12,7 +12,7 @@ import org.shiftone.jrat.core.MethodKey;
  * class will exist for each thread that is creating JRat events. This class
  * manipulates a tree structure as invocations are made.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Delegate {
 

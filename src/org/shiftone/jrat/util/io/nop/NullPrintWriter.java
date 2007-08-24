@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class NullPrintWriter extends PrintWriter {
 

@@ -7,7 +7,7 @@ import java.util.Comparator;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StatComparator implements Comparator {
 

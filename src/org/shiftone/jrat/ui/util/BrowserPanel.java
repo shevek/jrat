@@ -19,7 +19,7 @@ import java.net.URL;
 /**
  * Class BrowserPanel
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class BrowserPanel extends JPanel implements HyperlinkListener, ActionListener {
 

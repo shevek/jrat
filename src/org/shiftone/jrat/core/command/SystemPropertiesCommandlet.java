@@ -8,7 +8,7 @@ import java.io.OutputStream;
 /**
  * dumps system propeties.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SystemPropertiesCommandlet implements Commandlet {
     private static final Logger LOG = Logger.getLogger(SystemPropertiesCommandlet.class);

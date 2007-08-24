@@ -24,7 +24,7 @@ import java.io.Reader;
 /**
  * Class OpenOutputFileAction
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class OpenOutputFileAction implements ActionListener, UIConstants {
 

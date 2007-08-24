@@ -13,7 +13,7 @@ import javax.swing.event.ChangeListener;
  * the value of the BoundedRangeModel cause the "pointGap" of the GraphComponent
  * component to be updated.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SpacingChangeListener implements ChangeListener {
 

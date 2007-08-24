@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class GraphNode {
 

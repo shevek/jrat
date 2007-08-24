@@ -8,7 +8,7 @@ import java.io.File;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface FileProcessor {
     public void process(Transformer transformer, InjectorOptions options, File source, File target);

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class GraphViewPanel extends JPanel implements ActionListener {
     private static final Logger LOG = Logger.getLogger(GraphViewPanel.class);

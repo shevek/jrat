@@ -12,7 +12,7 @@ import java.awt.*;
  * Class ColorTableCellRenderer renders a Color int a table by displaying a
  * round rectangular swatch.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ColorTableCellRenderer extends DefaultTableCellRenderer {
 

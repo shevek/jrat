@@ -5,7 +5,7 @@ import org.shiftone.jrat.util.NestedRuntimeException;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class JRatException extends NestedRuntimeException {
 

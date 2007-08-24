@@ -17,7 +17,7 @@ import java.io.File;
  * <li>?he q???k br?wn fox
  * <li>java 1.4.?
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class GlobMatcher implements Matcher {
 

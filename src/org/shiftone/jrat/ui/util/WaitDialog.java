@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Class WaitDialog
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class WaitDialog extends JDialog {
 

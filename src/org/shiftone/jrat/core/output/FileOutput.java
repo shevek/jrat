@@ -2,7 +2,7 @@ package org.shiftone.jrat.core.output;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface FileOutput {
 

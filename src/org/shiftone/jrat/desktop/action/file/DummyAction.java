@@ -6,7 +6,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class DummyAction extends AbstractAction  {
 

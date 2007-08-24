@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 /**
  * OR
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class CompositeMatcher implements Matcher {
 

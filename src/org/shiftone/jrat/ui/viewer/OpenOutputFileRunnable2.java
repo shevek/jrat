@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class OpenOutputFileRunnable2 implements Runnable {
 

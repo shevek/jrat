@@ -8,7 +8,7 @@ import java.awt.*;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface View {
 

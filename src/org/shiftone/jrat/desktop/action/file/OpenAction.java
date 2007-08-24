@@ -21,7 +21,7 @@ import java.util.zip.GZIPInputStream;
 
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class OpenAction extends AbstractAction {
 

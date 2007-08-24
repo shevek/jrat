@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Class NSplitPane is like a JSplitPane, except it supports N splits.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class NSplitPane extends JPanel {
 

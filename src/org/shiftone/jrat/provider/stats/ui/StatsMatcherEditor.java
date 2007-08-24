@@ -11,7 +11,7 @@ import org.shiftone.jrat.util.regex.ToLowerMatcher;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StatsMatcherEditor extends ca.odell.glazedlists.matchers.AbstractMatcherEditor {
 

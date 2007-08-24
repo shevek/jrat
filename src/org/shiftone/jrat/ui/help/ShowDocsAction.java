@@ -14,7 +14,7 @@ import java.net.URL;
 /**
  * Class ShowDocsAction
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ShowDocsAction extends BackgroundActionListener {
 

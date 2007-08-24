@@ -1,7 +1,7 @@
 package org.shiftone.jrat.desktop;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Main {
     public static void main(String[] args) {

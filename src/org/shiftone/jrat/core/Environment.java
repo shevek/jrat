@@ -15,7 +15,7 @@ import java.io.OutputStream;
 import java.util.Date;
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Environment {
 

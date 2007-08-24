@@ -27,7 +27,7 @@ import java.util.zip.GZIPOutputStream;
 /**
  * Class RuntimeContextImpl
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 class RuntimeContextImpl implements RuntimeContext {
 

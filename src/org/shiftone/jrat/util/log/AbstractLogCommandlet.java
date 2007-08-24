@@ -13,7 +13,7 @@ import java.io.Writer;
  * this is a base class for Commandlets that redirects the log output produced by
  * the command's thread to the command's output stream, and then reverst the logger back.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public abstract class AbstractLogCommandlet implements Commandlet {
 

@@ -10,7 +10,7 @@ import org.shiftone.jrat.util.log.Logger;
  * obvious what it does. This class does synchronize, while AtomicLong uses a
  * magic native method. This class supports Java 1.4.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class AtomicLong {
 

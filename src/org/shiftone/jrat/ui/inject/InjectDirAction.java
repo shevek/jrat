@@ -18,7 +18,7 @@ import java.io.File;
 /**
  * Class InjectJarAction
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class InjectDirAction implements ActionListener, UIConstants {
 

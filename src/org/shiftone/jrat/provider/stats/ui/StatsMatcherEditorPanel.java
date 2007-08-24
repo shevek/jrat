@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class StatsMatcherEditorPanel extends JPanel implements DocumentListener, ActionListener {
 

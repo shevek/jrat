@@ -18,7 +18,7 @@ import java.io.InputStream;
  * change the InjectorStrategy. Avalible options are <b>bcel</b> and
  * <b>javassist</b>
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Transformer implements ShutdownListener, TransformerMBean {
 

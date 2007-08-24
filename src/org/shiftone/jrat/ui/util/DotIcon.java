@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Class DotIcon
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class DotIcon implements Icon {
 

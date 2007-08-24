@@ -17,7 +17,7 @@ import java.util.Hashtable;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ServerJmxRegistry implements JmxRegistry {
 

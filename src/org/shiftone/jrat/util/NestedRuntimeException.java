@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 /**
  * Ok.. before Java 1.4 - exceptions did not have a cause.
  *
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class NestedRuntimeException extends RuntimeException {
 

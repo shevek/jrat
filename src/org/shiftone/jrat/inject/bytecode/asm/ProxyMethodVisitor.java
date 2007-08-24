@@ -12,7 +12,7 @@ import org.shiftone.jrat.util.log.Logger;
 
 
 /**
- * @author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, Opcodes {
 

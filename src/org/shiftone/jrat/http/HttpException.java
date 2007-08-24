@@ -1,7 +1,7 @@
 package org.shiftone.jrat.http;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class HttpException extends RuntimeException {
     

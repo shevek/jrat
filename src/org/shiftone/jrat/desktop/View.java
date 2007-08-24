@@ -6,7 +6,7 @@ import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 
 /**
- * @Author Jeff Drost
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class View extends JPanel {
 
