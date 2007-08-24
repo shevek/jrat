@@ -4,9 +4,8 @@ import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.StackNode;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -34,8 +33,8 @@ public class GraphViewPanel extends JPanel implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
-       Map map = new HashMap();
-       processTree(rootNode, map);
+        Map map = new HashMap();
+        processTree(rootNode, map);
     }
 
     private void processTree(StackNode node, Map nodes) {
