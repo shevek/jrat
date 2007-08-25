@@ -18,7 +18,8 @@ public class HierarchyViewPanel extends JPanel {
     public HierarchyViewPanel(HierarchyTreeTableModel model) {
 
         treeTable = new JXTreeTable();
-      treeTable.setTreeTableModel(model);
+        treeTable.setTreeTableModel(model);
+        treeTable.getColumn(0).setMinWidth(300);
 
         setLayout(new BorderLayout());
         add(new JScrollPane(treeTable), BorderLayout.CENTER);

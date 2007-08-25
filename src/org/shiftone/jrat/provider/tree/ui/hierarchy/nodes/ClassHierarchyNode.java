@@ -1,5 +1,3 @@
-// Copyright 2007 Google Inc. All Rights Reserved.
-
 package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
 import java.util.ArrayList;
@@ -8,7 +6,7 @@ import java.util.List;
 import java.util.Collections;
 
 /**
- * @author jeffdrost@google.com (Jeff Drost)
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ClassHierarchyNode extends HierarchyNode {
 

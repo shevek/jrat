@@ -1,5 +1,3 @@
-// Copyright 2007 Google Inc. All Rights Reserved.
-
 package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
 import org.shiftone.jrat.core.Accumulator;
@@ -10,7 +8,7 @@ import java.util.List;
 import java.util.Collections;
 
 /**
- * @author jeffdrost@google.com (Jeff Drost)
+ * @author jeff@shiftone.org (Jeff Drost)
  */
 public class MethodHierarchyNode extends HierarchyNode {
 
@@ -19,7 +17,7 @@ public class MethodHierarchyNode extends HierarchyNode {
     private long totalExits;
 
     public MethodHierarchyNode(MethodKey methodKey) {
-        super(methodKey.getMethodName() + methodKey.getSignature());
+        super(methodKey.getMethodName() + "(" + methodKey.getSig().getShortText() + ")");
         this.methodKey = methodKey;
     }
 

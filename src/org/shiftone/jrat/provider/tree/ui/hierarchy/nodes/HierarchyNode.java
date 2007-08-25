@@ -41,7 +41,7 @@ public abstract class HierarchyNode {
        return i;
      }
     }
-    throw new RuntimeException("");
+    return -1;
   }
 
   public HierarchyNode getChild(int index) {
