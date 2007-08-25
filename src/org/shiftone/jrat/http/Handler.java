@@ -2,6 +2,7 @@ package org.shiftone.jrat.http;
 
 /**
  * This is basicly a lightweight Servlet.
+ *
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public interface Handler {

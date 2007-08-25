@@ -18,7 +18,6 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -108,9 +107,9 @@ public class OutputDirectory {
         }
 
         IOUtil.createNewFile(file);
-        
+
         fileList.add(file);
-        
+
         return file;
     }
 

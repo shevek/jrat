@@ -2,10 +2,7 @@ package org.shiftone.jrat.desktop.action.file;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JTabbedPane;
-import java.awt.event.KeyEvent;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**

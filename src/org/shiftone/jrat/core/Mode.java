@@ -59,7 +59,7 @@ public class Mode {
                 // the mode can be changed to a higher priority mode
                 current = newMode;
             }
-            
+
         }
 
     }

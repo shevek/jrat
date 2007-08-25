@@ -1,23 +1,18 @@
 package org.shiftone.jrat.desktop.action.file;
 
-import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.core.spi.ViewBuilder;
 import org.shiftone.jrat.desktop.DesktopFrame;
 import org.shiftone.jrat.desktop.Preferences;
-import org.shiftone.jrat.core.spi.ViewBuilder;
+import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.Action;
-import javax.swing.AbstractAction;
-import javax.swing.JFileChooser;
-import javax.swing.JButton;
-import javax.swing.JComponent;
+import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
-import java.util.zip.GZIPInputStream;
 
 
 /**

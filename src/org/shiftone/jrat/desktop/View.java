@@ -1,9 +1,7 @@
 package org.shiftone.jrat.desktop;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -34,7 +32,7 @@ public class View extends JPanel {
         if (component != null) {
             this.add(component, BorderLayout.CENTER);
         }
-        
+
     }
 
     public void remove() {

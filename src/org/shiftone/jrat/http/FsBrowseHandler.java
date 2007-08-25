@@ -3,12 +3,11 @@ package org.shiftone.jrat.http;
 import org.shiftone.jrat.util.io.IOUtil;
 
 import java.io.File;
-import java.io.Writer;
-import java.io.FileInputStream;
-import java.io.OutputStream;
 import java.io.InputStream;
-import java.util.Map;
+import java.io.OutputStream;
+import java.io.Writer;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

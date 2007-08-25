@@ -5,8 +5,8 @@ import org.shiftone.jrat.util.log.Logger;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This object us mutable.
@@ -62,7 +62,7 @@ public class Request {
 
     }
 
-    private void parseHeaderField(String line) {       
+    private void parseHeaderField(String line) {
         int a = line.indexOf(':');
         String key = line.substring(0, a);
         String value = line.substring(a + 2);  // remove ": "        

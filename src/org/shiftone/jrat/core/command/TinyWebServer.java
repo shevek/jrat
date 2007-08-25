@@ -1,6 +1,5 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -53,7 +52,7 @@ public class TinyWebServer extends Thread {
 
             commandletKey = uri.substring(commandletIndex + 11);
             LOG.info("commandletKey = " + commandletKey);
-            
+
         }
 
         while ((line != null) && (line.length() > 0)) {
@@ -78,7 +77,7 @@ public class TinyWebServer extends Thread {
 
 
     public void run() {
- 
+
         Socket socket = null;
         OutputStream outputStream = null;
         Writer writer = null;

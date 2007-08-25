@@ -4,7 +4,6 @@ package org.shiftone.jrat.provider.stats.ui;
 import ca.odell.glazedlists.gui.TableFormat;
 import org.shiftone.jrat.core.MethodKeyAccumulator;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.time.TimeUnit;
 
 
 /**

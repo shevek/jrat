@@ -8,20 +8,14 @@ import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.core.shutdown.ShutdownRegistry;
 import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.core.spi.RuntimeContext;
-import org.shiftone.jrat.ui.viewer.SimpleTextOutputViewBuilder;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.Writer;
-import java.io.Serializable;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Properties;
-import java.util.zip.GZIPOutputStream;
 
 
 /**
@@ -54,7 +48,7 @@ class RuntimeContextImpl implements RuntimeContext {
 
         redirectLogStream();
         writeSystemProperties();
-        
+
 
     }
 
@@ -76,7 +70,6 @@ class RuntimeContextImpl implements RuntimeContext {
     public void register(Commandlet commandlet) {
         commandletRegistry.register(commandlet);
     }
-
 
 
     private void redirectLogStream() {
@@ -142,10 +135,10 @@ class RuntimeContextImpl implements RuntimeContext {
 
         OutputStream outputStream = createOutputStream(fileName);
         ObjectOutputStream objectOutputStream = null;
-        
+
         try {
 
-           // outputStream = new GZIPOutputStream(outputStream);                         
+            // outputStream = new GZIPOutputStream(outputStream);
 
             objectOutputStream = new ObjectOutputStream(outputStream);
 
@@ -156,7 +149,7 @@ class RuntimeContextImpl implements RuntimeContext {
 
         } catch (Exception e) {
 
-             LOG.error("unable to write object '" + serializable + "' to file : " + fileName, e);
+            LOG.error("unable to write object '" + serializable + "' to file : " + fileName, e);
 
         } finally {
             IOUtil.close(objectOutputStream);

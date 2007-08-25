@@ -1,10 +1,10 @@
 package org.shiftone.jrat.provider.tree.ui.trace;
 
 
+import org.shiftone.jrat.provider.tree.StackNode;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
-import org.shiftone.jrat.provider.tree.StackNode;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -21,7 +21,7 @@ import java.awt.*;
 public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UIConstants {
 
     private static final Logger LOG = Logger.getLogger(TreeViewerPanel.class);
-     private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 1;
     private JSplitPane splitPane = null;
     private JTree tree = null;
     private StackTreeNode rootNode = null;
@@ -62,9 +62,9 @@ public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UI
         TreePopupMouseAdaptor treePopupMouseAdaptor = new TreePopupMouseAdaptor(popupMenu, tree);
 
         tree.addMouseListener(treePopupMouseAdaptor);
-      //  statView.addActionListener(new StatsViewAction(treePopupMouseAdaptor));
-       // spawnRoot.addActionListener(new SpawnRootAction(treePopupMouseAdaptor));
-       // touchGraph.addActionListener(new TouchGraphAction(treePopupMouseAdaptor));
+        //  statView.addActionListener(new StatsViewAction(treePopupMouseAdaptor));
+        // spawnRoot.addActionListener(new SpawnRootAction(treePopupMouseAdaptor));
+        // touchGraph.addActionListener(new TouchGraphAction(treePopupMouseAdaptor));
     }
 
 

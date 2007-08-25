@@ -10,5 +10,5 @@ package org.shiftone.jrat.core.shutdown;
 public interface ShutdownListener {
 
     void shutdown() throws Exception;
-    
+
 }

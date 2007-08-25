@@ -5,11 +5,9 @@ import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.io.nop.NullOutputStream;
 import org.shiftone.jrat.util.io.nop.NullPrintWriter;
 import org.shiftone.jrat.util.io.nop.NullWriter;
-import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.*;
-import java.util.zip.GZIPOutputStream;
 
 
 /**
@@ -101,7 +99,6 @@ public class FileOutputFactory {
 
         return fileOutputRegistry.add(out, file.getName());
     }
-
 
 
     private OutputStream internalCreateOutputStream(File file) throws IOException {

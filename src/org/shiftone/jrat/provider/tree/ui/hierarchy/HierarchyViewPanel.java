@@ -1,13 +1,10 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
 import org.jdesktop.swingx.JXTreeTable;
-import org.jdesktop.swingx.treetable.TreeTableModel;
-import org.shiftone.jrat.provider.tree.ui.trace.StackTreeCellRenderer;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
-import java.awt.*;
-
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -21,8 +18,8 @@ public class HierarchyViewPanel extends JPanel {
 
         treeTable = new JXTreeTable();
         treeTable.setTreeTableModel(model);
-        for (int i = 1 ; i < treeTable.getColumnCount() ; i ++) {
-           treeTable.getColumn(i).setMaxWidth(150);
+        for (int i = 1; i < treeTable.getColumnCount(); i ++) {
+            treeTable.getColumn(i).setMaxWidth(150);
         }
         PercentTableCellRenderer.setDefaultRenderer(treeTable);
 

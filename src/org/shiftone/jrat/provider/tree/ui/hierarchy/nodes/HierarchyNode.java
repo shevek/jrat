@@ -38,7 +38,7 @@ public abstract class HierarchyNode {
     }
 
     public int getUncalledMethods() {
-       return getTotalMethods() - getEnteredMethods();
+        return getTotalMethods() - getEnteredMethods();
     }
 
     public abstract List getChildren();

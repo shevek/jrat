@@ -34,7 +34,7 @@ public class HierarchyViewBuilder {
 
     }
 
-  public HierarchyTreeTableModel getModel() {
+    public HierarchyTreeTableModel getModel() {
         return new HierarchyTreeTableModel(getRoot());
     }
 

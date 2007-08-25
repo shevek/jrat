@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Configuration implements MethodCriteria {
 
-    private static final Logger LOG = Logger.getLogger(Configuration.class);    
+    private static final Logger LOG = Logger.getLogger(Configuration.class);
     private Settings settings = new Settings();
     private AndMethodCriteria methodCriteria = new AndMethodCriteria();
     private OrMethodCriteria profilesCriteria = new OrMethodCriteria();

@@ -14,7 +14,7 @@ public interface JRatInfoMBean {
 
     String getVersion();
 
- 
+
     long getTotalMemory();
 
 

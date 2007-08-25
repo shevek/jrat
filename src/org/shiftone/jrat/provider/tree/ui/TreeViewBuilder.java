@@ -3,10 +3,9 @@ package org.shiftone.jrat.provider.tree.ui;
 import org.shiftone.jrat.core.spi.ViewBuilder;
 import org.shiftone.jrat.provider.tree.StackNode;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.io.File;
 import java.util.Set;
-import java.util.HashSet;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

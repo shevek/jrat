@@ -3,12 +3,7 @@ package org.shiftone.jrat.http;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Writer;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -57,7 +52,7 @@ public class Server extends Thread {
         OutputStream outputStream = null;
 
         try {
-            
+
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
 
@@ -78,7 +73,7 @@ public class Server extends Thread {
             IOUtil.close(outputStream);
 
         }
-        
+
     }
 
     private void handleException(Response response, HttpException e) throws IOException {
@@ -90,8 +85,8 @@ public class Server extends Thread {
         out.write(e.getStatus().getMessage());
         out.write("</h1>");
         StringWriter stringWriter = new StringWriter();
-        PrintWriter printWriter = new  PrintWriter(stringWriter);
-        e.printStackTrace( printWriter );
+        PrintWriter printWriter = new PrintWriter(stringWriter);
+        e.printStackTrace(printWriter);
         printWriter.flush();
         out.write("<pre>");
         out.write(stringWriter.toString());

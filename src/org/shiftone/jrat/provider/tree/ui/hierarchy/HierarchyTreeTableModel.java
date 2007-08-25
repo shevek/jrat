@@ -1,15 +1,10 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
-import org.jdesktop.swingx.treetable.TreeTableModel;
 import org.jdesktop.swingx.treetable.AbstractTreeTableModel;
-import org.jdesktop.swingx.treetable.DefaultTreeTableModel;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.HierarchyNode;
-import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 import org.shiftone.jrat.util.Percent;
-
-import javax.swing.tree.TreePath;
-import javax.swing.event.TreeModelListener;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

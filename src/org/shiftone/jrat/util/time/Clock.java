@@ -1,7 +1,6 @@
 package org.shiftone.jrat.util.time;
 
 
-import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.log.Logger;
 
 
@@ -20,7 +19,7 @@ public class Clock {
 
     // todo - use this method
     public static void pauseTime() {
-       // MOVEMENT.pauseTime();
+        // MOVEMENT.pauseTime();
     }
 
     // todo - use this method

@@ -69,7 +69,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         MethodKey methodKey = node.getMethodKey();
         String text = methodKey.getClassName()
                 + "." + methodKey.getMethodName()
-                + " "  + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
+                + " " + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
 
         Rectangle2D stringBounds = metrics.getStringBounds(text, g);
 

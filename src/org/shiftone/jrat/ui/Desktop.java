@@ -1,11 +1,10 @@
 package org.shiftone.jrat.ui;
 
 
+import org.shiftone.jrat.core.Mode;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
-import org.shiftone.jrat.core.Mode;
 
-import javax.swing.*;
 import java.io.File;
 
 

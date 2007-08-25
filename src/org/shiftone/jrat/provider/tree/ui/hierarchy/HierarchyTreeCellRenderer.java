@@ -1,12 +1,12 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
-import org.shiftone.jrat.ui.util.DotIcon;
-import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.ClassHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
+import org.shiftone.jrat.ui.util.DotIcon;
 
-import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.*;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 
 
@@ -23,11 +23,9 @@ public class HierarchyTreeCellRenderer extends DefaultTreeCellRenderer {
 
         if (value instanceof PackageHierarchyNode) {
             setIcon(PACKAGE);
-        }
-        else if (value instanceof ClassHierarchyNode) {
+        } else if (value instanceof ClassHierarchyNode) {
             setIcon(CLASS);
-        }
-        else if (value instanceof MethodHierarchyNode) {
+        } else if (value instanceof MethodHierarchyNode) {
             setIcon(METHOD);
         }
 

@@ -5,10 +5,6 @@ import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.TimeUnit;
 
-import java.io.Externalizable;
-import java.io.ObjectOutput;
-import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.Serializable;
 
 
@@ -133,7 +129,6 @@ public class Accumulator implements Serializable {
 
         concurThreads--;
     }
-
 
 
     public final Float getAverageDuration() {

@@ -7,7 +7,7 @@ import org.shiftone.jrat.util.log.Logger;
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class CommandletRegistryFactory {
-    
+
     private static final Logger LOG = Logger.getLogger(CommandletRegistryFactory.class);
 
     public static CommandletRegistry createCommandletRegistry() {

@@ -1,12 +1,12 @@
 package org.shiftone.jrat.core;
 
 
-import org.shiftone.jrat.core.spi.MethodHandler;
-import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.core.config.CacheMethodHandlerFactory;
 import org.shiftone.jrat.core.config.ConfigMethodHandlerFactory;
-import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.core.spi.MethodHandler;
+import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
+import org.shiftone.jrat.util.log.Logger;
 
 
 public class HandlerFactory {
@@ -59,7 +59,7 @@ public class HandlerFactory {
             return getInternalHandler().createMethodHandler(methodKey);
         } catch (Exception e) {
             LOG.error("failed to create MethodHandler for : " + methodKey, e);
-            return  SilentMethodHandler.METHOD_HANDLER;
+            return SilentMethodHandler.METHOD_HANDLER;
         }
     }
 

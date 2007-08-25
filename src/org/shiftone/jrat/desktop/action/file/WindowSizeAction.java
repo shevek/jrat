@@ -1,8 +1,7 @@
 package org.shiftone.jrat.desktop.action.file;
 
-import javax.swing.AbstractAction;
-import javax.swing.JFrame;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**

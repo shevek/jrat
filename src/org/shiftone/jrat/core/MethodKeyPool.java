@@ -32,7 +32,7 @@ public class MethodKeyPool {
 
         // a new MethodKey object is created to use as key in a map
         // to test if the MethodKey exists.
-        MethodKey key =  MethodKey.create(className, methodName, signature);
+        MethodKey key = MethodKey.create(className, methodName, signature);
 
         if (method2IdMap.containsKey(key)) {
 

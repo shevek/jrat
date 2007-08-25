@@ -4,8 +4,8 @@ import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.StackNode;
 
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

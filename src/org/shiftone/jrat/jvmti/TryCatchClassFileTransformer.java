@@ -27,14 +27,14 @@ public class TryCatchClassFileTransformer implements ClassFileTransformer {
 
         try {
 
-        return transformer.transform(
-                loader,
-                className,
-                classBeingRedefined,
-                protectionDomain,
-                classfileBuffer);
+            return transformer.transform(
+                    loader,
+                    className,
+                    classBeingRedefined,
+                    protectionDomain,
+                    classfileBuffer);
 
-        } catch (Exception e ) {
+        } catch (Exception e) {
 
             LOG.error("failed to transform : " + className, e);
             return classfileBuffer;

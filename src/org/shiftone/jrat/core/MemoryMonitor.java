@@ -1,12 +1,10 @@
 package org.shiftone.jrat.core;
 
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
-import org.shiftone.jrat.core.output.OutputDirectory;
 import org.shiftone.jrat.core.spi.RuntimeContext;
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.log.Logger;
 
-import java.io.PrintWriter;
 import java.io.Writer;
 
 /**

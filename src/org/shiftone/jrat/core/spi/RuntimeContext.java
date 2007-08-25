@@ -5,8 +5,8 @@ import org.shiftone.jrat.core.shutdown.ShutdownListener;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.io.Serializable;
+import java.io.Writer;
 
 
 /**
@@ -15,7 +15,7 @@ import java.io.Serializable;
 public interface RuntimeContext {
 
     void writeSerializable(String fileName, Serializable serializable);
-    
+
 
     OutputStream createOutputStream(String fileName);
 

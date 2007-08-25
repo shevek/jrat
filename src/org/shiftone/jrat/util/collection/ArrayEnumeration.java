@@ -9,7 +9,7 @@ public class ArrayEnumeration implements Enumeration {
 
     private Object[] array;
     private int index = 0;
- 
+
     public ArrayEnumeration(Object[] array) {
         this.array = array;
     }

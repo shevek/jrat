@@ -3,7 +3,6 @@ package org.shiftone.jrat.core.jmx.info;
 
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.time.Clock;
 
 import java.lang.reflect.Method;
 
@@ -29,7 +28,6 @@ public class JRatInfo implements JRatInfoMBean {
         return VersionUtil.getVersion();
     }
 
- 
 
     public long getTotalMemory() {
         return Runtime.getRuntime().totalMemory();

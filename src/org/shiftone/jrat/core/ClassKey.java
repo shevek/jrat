@@ -4,6 +4,7 @@ package org.shiftone.jrat.core;
 
 /**
  * TODO
+ *
  * @author jeffdrost@google.com (Jeff Drost)
  */
 public class ClassKey {

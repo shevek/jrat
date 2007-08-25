@@ -3,7 +3,6 @@ package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Collections;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

@@ -7,11 +7,7 @@ import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Date;
 
 /**
@@ -38,7 +34,7 @@ public class Environment {
             );
 
         } else {
-            
+
             configuration = new Configuration();
 
         }

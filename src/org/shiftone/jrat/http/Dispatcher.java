@@ -2,11 +2,10 @@ package org.shiftone.jrat.http;
 
 import org.shiftone.jrat.util.log.Logger;
 
-import java.util.Map;
+import java.io.Writer;
+import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.Iterator;
-import java.io.Writer;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -22,7 +21,7 @@ public class Dispatcher implements Handler {
     }
 
     public void addRoute(String path, Handler handler) {
-        contexts.put(path, handler);        
+        contexts.put(path, handler);
     }
 
     public void handle(Request request, Response response) throws Exception {
@@ -40,12 +39,12 @@ public class Dispatcher implements Handler {
                 : path.substring(0, firstSlash);
 
         //LOG.info("firstPart = " + firstPart);
-        Handler handler = (Handler)contexts.get(firstPart);
+        Handler handler = (Handler) contexts.get(firstPart);
 
         if (handler != null) {
 
             // trim the firstPart off the URI
-            request.setRequestUri( path.substring(firstPart.length()));
+            request.setRequestUri(path.substring(firstPart.length()));
             handler.handle(request, response);
             //return;
 
@@ -53,9 +52,9 @@ public class Dispatcher implements Handler {
 
             listHandlers(request, response);
 
-        }  else {
+        } else {
 
-            throw new HttpException(Status.STATUS_404);            
+            throw new HttpException(Status.STATUS_404);
 
         }
 
@@ -66,7 +65,7 @@ public class Dispatcher implements Handler {
         LOG.info("listHandlers");
 
         response.setContentType(ContentType.TEXT_HTML);
-        
+
         Writer out = response.getWriter();
         Iterator iterator = contexts.keySet().iterator();
 
@@ -74,8 +73,8 @@ public class Dispatcher implements Handler {
 
         out.write("<ul>");
         while (iterator.hasNext()) {
-            String key = (String)iterator.next();
-            out.write("<li><a href='" + key + "/'>" + key  + "</a></li>");
+            String key = (String) iterator.next();
+            out.write("<li><a href='" + key + "/'>" + key + "</a></li>");
         }
         out.write("</ul>");
     }

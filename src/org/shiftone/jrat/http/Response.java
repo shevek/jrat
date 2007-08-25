@@ -23,7 +23,7 @@ public class Response {
 
 
     public Response(OutputStream outputStream) {
-        this.outputStream = outputStream;        
+        this.outputStream = outputStream;
         this.writer = new OutputStreamWriter(outputStream);
 
     }

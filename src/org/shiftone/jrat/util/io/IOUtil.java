@@ -43,9 +43,9 @@ public class IOUtil {
     public static boolean createNewFile(File file) {
 
         try {
-        return file.createNewFile();
+            return file.createNewFile();
         } catch (IOException e) {
-            throw new JRatException("failed to create new file : " + file.getAbsolutePath(),e);
+            throw new JRatException("failed to create new file : " + file.getAbsolutePath(), e);
         }
     }
 

@@ -3,16 +3,16 @@ package org.shiftone.jrat.provider.tree.ui.trace;
 
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.StackNode;
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.collection.ArrayEnumeration;
+import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.tree.TreeNode;
 import java.util.*;
 
 
 /**
- * @todo lazy init children
  * @author jeff@shiftone.org (Jeff Drost)
+ * @todo lazy init children
  */
 public class StackTreeNode implements TreeNode {
 
@@ -201,7 +201,7 @@ public class StackTreeNode implements TreeNode {
 
 
     public TreeNode getChildAt(int childIndex) {
-         return childArray[childIndex];
+        return childArray[childIndex];
     }
 
     public int getChildCount() {
@@ -212,6 +212,7 @@ public class StackTreeNode implements TreeNode {
     public TreeNode getParent() {
         return parent;
     }
+
     public StackTreeNode getParentNode() {
         return parent;
     }

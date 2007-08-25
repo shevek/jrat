@@ -10,10 +10,8 @@ import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
 import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
 import org.shiftone.jrat.provider.tree.ui.TreeViewBuilder;
 import org.shiftone.jrat.util.AtomicLong;
-import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,10 +38,9 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     }
 
 
-
     public synchronized final MethodHandler createMethodHandler(MethodKey methodKey) {
 
-    	
+
         methodHandlerCount.incrementAndGet();
         allMethodKeys.add(methodKey);
 

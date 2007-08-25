@@ -1,32 +1,17 @@
 package org.shiftone.jrat.desktop;
 
-import org.shiftone.jrat.desktop.action.file.ExitAction;
-import org.shiftone.jrat.desktop.action.file.OpenAction;
-import org.shiftone.jrat.desktop.action.file.CloseAction;
-import org.shiftone.jrat.desktop.action.file.WindowSizeAction;
-import org.shiftone.jrat.desktop.action.file.CloseAllAction;
+import org.shiftone.jrat.desktop.action.file.*;
 import org.shiftone.jrat.desktop.action.help.AboutAction;
 import org.shiftone.jrat.desktop.action.help.DocsAction;
 import org.shiftone.jrat.desktop.action.help.LicenseAction;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.JMenu;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JLabel;
-import javax.swing.JTabbedPane;
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-import java.awt.Toolkit;
-import java.awt.Dimension;
-import java.awt.Container;
-import java.awt.BorderLayout;
-import java.awt.Cursor;
-import java.awt.Rectangle;
-import java.awt.event.ContainerListener;
-import java.awt.event.ContainerEvent;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ContainerEvent;
+import java.awt.event.ContainerListener;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -35,7 +20,7 @@ public class DesktopFrame extends JFrame {
 
     private static final Logger LOG = Logger.getLogger(DesktopFrame.class);
     private final Preferences preferences;
-   // private JXStatusBar statusBar = new JXStatusBar();
+    // private JXStatusBar statusBar = new JXStatusBar();
     private JTabbedPane tabbedPane = new JTabbedPane();
     private CloseAction closeAction = new CloseAction(tabbedPane);
     private CloseAllAction closeAllAction = new CloseAllAction(tabbedPane);
@@ -60,7 +45,7 @@ public class DesktopFrame extends JFrame {
 
         setBounds(windowBounds);
 
-      //  statusBar.add(new JLabel("test"));
+        //  statusBar.add(new JLabel("test"));
         setJMenuBar(createMenuBar());
 
         Container pane = getContentPane();

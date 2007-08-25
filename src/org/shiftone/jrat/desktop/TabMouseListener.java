@@ -2,14 +2,11 @@ package org.shiftone.jrat.desktop;
 
 import org.shiftone.jrat.util.Assert;
 
-import javax.swing.JPopupMenu;
-import javax.swing.JTabbedPane;
-import javax.swing.JMenuItem;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -26,17 +23,17 @@ public class TabMouseListener extends MouseAdapter implements ActionListener {
 
 
     public TabMouseListener(JTabbedPane tabPane) {
-           Assert.assertNotNull(tabPane);
-           this.tabPane = tabPane;
+        Assert.assertNotNull(tabPane);
+        this.tabPane = tabPane;
 
-           popup.add(closeMenuItem);
-           popup.add(closeAllButMenuItem);
-           popup.add(closeAllMenuItem);
+        popup.add(closeMenuItem);
+        popup.add(closeAllButMenuItem);
+        popup.add(closeAllMenuItem);
 
-           closeMenuItem.addActionListener(this);
-           closeAllButMenuItem.addActionListener(this);
-           closeAllMenuItem.addActionListener(this);
-       }
+        closeMenuItem.addActionListener(this);
+        closeAllButMenuItem.addActionListener(this);
+        closeAllMenuItem.addActionListener(this);
+    }
 
 
     public void mousePressed(MouseEvent e) {

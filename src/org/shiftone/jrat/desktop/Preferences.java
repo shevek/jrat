@@ -3,19 +3,12 @@ package org.shiftone.jrat.desktop;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.awt.Rectangle;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.util.TimerTask;
-import java.util.Queue;
+import java.awt.*;
+import java.io.*;
 
 /**
  * This class will be serialized to the user's home directory in order to persist UI state.
+ *
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Preferences implements Serializable {

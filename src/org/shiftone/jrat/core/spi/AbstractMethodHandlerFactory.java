@@ -15,6 +15,7 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
     private static final String FACTORY_POSTFIX = "Factory";
     private RuntimeContext context = null;
     private String outputFile = getDefaultOutputFile();
+
     public abstract MethodHandler createMethodHandler(MethodKey methodKey);
 
 
@@ -36,7 +37,7 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
         if (name.endsWith(FACTORY_POSTFIX)) {
             name = name.substring(0, name.length() - FACTORY_POSTFIX.length());
         }
-        
+
         return name + ".jrat";
     }
 
@@ -46,9 +47,9 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
     }
 
     public String getOutputFile() {
-        return outputFile ;
+        return outputFile;
     }
-   
+
 
     // ------------------------------------------------------------
     public void shutdown() {

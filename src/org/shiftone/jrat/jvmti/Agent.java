@@ -25,7 +25,7 @@ public class Agent {
     public static void premain(String agentArgs, Instrumentation instrumentation) {
 
         Mode.set(Mode.RUNTIME);
-        
+
         if (installed) {
 
             LOG.warn("one JRat Agent was already installed.");
