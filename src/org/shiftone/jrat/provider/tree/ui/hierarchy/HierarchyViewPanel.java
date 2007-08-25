@@ -26,6 +26,8 @@ public class HierarchyViewPanel extends JPanel {
         }
         PercentTableCellRenderer.setDefaultRenderer(treeTable);
 
+        treeTable.setTreeCellRenderer(new HierarchyTreeCellRenderer());
+
         setLayout(new BorderLayout());
         add(new JScrollPane(treeTable), BorderLayout.CENTER);
 
