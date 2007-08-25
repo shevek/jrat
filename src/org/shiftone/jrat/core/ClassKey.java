@@ -75,17 +75,17 @@ public class ClassKey implements Serializable, Comparable {
             return false;
         }
 
-        final ClassKey classKey = (ClassKey) o;
+        final ClassKey other = (ClassKey) o;
 
-        if (!classKey.equals(classKey)) {
+        if (!other.equals(other)) {
             return false;
         }
 
-        if (!className.equals(classKey.className)) {
+        if (!className.equals(other.className)) {
             return false;
         }
 
-        if (!packageName.equals(classKey.packageName)) {
+        if (!packageName.equals(other.packageName)) {
             return false;
         }
 

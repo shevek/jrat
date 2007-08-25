@@ -102,17 +102,17 @@ public class MethodKey implements Serializable, Comparable {
             return false;
         }
 
-        final MethodKey methodKey = (MethodKey) o;
+        final MethodKey other = (MethodKey) o;
 
         if (!classKey.equals(classKey)) {
             return false;
         }
 
-        if (!methodName.equals(methodKey.methodName)) {
+        if (!methodName.equals(other.methodName)) {
             return false;
         }
 
-        if (!signature.equals(methodKey.signature)) {
+        if (!signature.equals(other.signature)) {
             return false;
         }
 

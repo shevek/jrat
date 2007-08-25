@@ -12,10 +12,10 @@ import org.shiftone.jrat.util.Percent;
 public class HierarchyTreeTableModel extends AbstractTreeTableModel {
 
     private static final String[] COLUMNS = {
-            "Class", "Methods", "Uncalled", "Coverage", "Duration"
+            "Class", "Methods", "Uncalled", "Coverage %", "Duration"
     };
     private static final Class[] COLUMN_TYPES = {
-            String.class, Integer.class, Integer.class, Percent.class, Long.class
+            String.class, Integer.class, Integer.class,  Percent.class, Long.class
     };
 
     private final PackageHierarchyNode root;
@@ -25,7 +25,7 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
     }
 
     public Class getColumnClass(int i) {
-        return (i == 0) ? String.class : Integer.class;
+        return COLUMN_TYPES[i];
     }
 
     public int getColumnCount() {
@@ -36,21 +36,29 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
         return COLUMNS[i];
     }
 
-
     public Object getValueAt(Object o, int i) {
+        HierarchyNode node = (HierarchyNode)o;
         switch (i) {
             case 0:
                 return o.toString();
             case 1:
-                return new Integer(node(o).getTotalMethods());
+                return getTotalMethods(node);
             case 2:
-                return new Integer(node(o).getUncalledMethods());
+                return getUncalledMethods(node);
             case 3:
-                return node(o).getCoverage();
+                return node.getCoverage();
             case 4:
-                return new Long(node(o).getTotalDurationMs());
+                return new Long(node.getTotalDurationMs());
         }
         return null;
+    }
+
+    private static Integer getTotalMethods(HierarchyNode node) {
+       return (node instanceof MethodHierarchyNode) ? null : new Integer(node.getTotalMethods());
+    }
+
+    private static Integer getUncalledMethods(HierarchyNode node) {
+       return (node instanceof MethodHierarchyNode) ? null : new Integer(node.getUncalledMethods());
     }
 
     public boolean isCellEditable(Object o, int i) {
@@ -84,6 +92,4 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
     private HierarchyNode node(Object o) {
         return (HierarchyNode) o;
     }
-
-
 }

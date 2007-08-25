@@ -29,44 +29,25 @@ public class VirtualMethodCall {
     private long minDuration;
     private long randDuration;
 
-    /**
-     * Constructor VirtualMethodCall
-     *
-     * @param className
-     * @param methodName
-     * @param signature
-     */
     public VirtualMethodCall(String className, String methodName, String signature) {
 
-        this.methodKey = MethodKey.create(className, methodName, signature);
+        this.methodKey = MethodKey.getInstance(className, methodName, signature);
         this.handler = HandlerFactory.getMethodHandler(methodKey);
         this.childCalls = positiveRand(20);
         this.minDuration = positiveRand(10);
         this.randDuration = positiveRand(10) + 1;
     }
 
-
-    /**
-     * Method positiveRand
-     */
     private static long positiveRand(long max) {
 
         // System.out.println("max = " + max);
         return (Math.abs(random.nextLong()) % max);
     }
 
-
-    /**
-     * Method addChildMethodCall
-     */
     public void addChildMethodCall(VirtualMethodCall virtualMethodCall) {
         children.add(virtualMethodCall);
     }
 
-
-    /**
-     * Method simulateCall
-     */
     public void simulateCall() {
 
         long start = System.currentTimeMillis();
@@ -77,10 +58,6 @@ public class VirtualMethodCall {
         handler.onMethodFinish(this, System.currentTimeMillis() - start, null);
     }
 
-
-    /**
-     * Method simulateWork
-     */
     private void simulateWork() {
 
         long time = minDuration + (positiveRand(randDuration));
@@ -93,10 +70,6 @@ public class VirtualMethodCall {
         }
     }
 
-
-    /**
-     * Method simulateCallChildren
-     */
     private void simulateCallChildren() {
 
         VirtualMethodCall call = null;

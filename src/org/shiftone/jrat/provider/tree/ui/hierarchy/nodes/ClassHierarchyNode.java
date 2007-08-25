@@ -21,12 +21,12 @@ public class ClassHierarchyNode extends HierarchyNode {
 
     public void finalizeStatistics() {
         for (Iterator i = childMethods.iterator(); i.hasNext();) {
-            MethodHierarchyNode child = (MethodHierarchyNode) i.next();
-            totalDurationMs += child.getTotalDurationMs();
+            MethodHierarchyNode method = (MethodHierarchyNode) i.next();
+            totalDurationMs += method.getTotalDurationMs();
 
-            if (child.getTotalMethods() > 0) {
+            if (method.isEntered()) {
                 enteredMethods++;
-                if (child.getTotalExits() > 0) {
+                if (method.isExited()) {
                     existedMethods++;
                 }
             }
