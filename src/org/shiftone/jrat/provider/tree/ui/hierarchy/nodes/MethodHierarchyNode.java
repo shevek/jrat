@@ -15,6 +15,7 @@ public class MethodHierarchyNode extends HierarchyNode {
     private final MethodKey methodKey;
     private long totalEnters;
     private long totalExits;
+    private long totalDurationMs;
 
     public MethodHierarchyNode(MethodKey methodKey) {
         super(methodKey.getMethodName() + "(" + methodKey.getSig().getShortText() + ")");
@@ -26,6 +27,7 @@ public class MethodHierarchyNode extends HierarchyNode {
         Accumulator accumulator = input.getAccumulator();
         totalEnters += accumulator.getTotalEnters();
         totalExits += accumulator.getTotalExits();
+        totalDurationMs += accumulator.getTotalDuration();
     }
 
     public long getTotalEnters() {
@@ -56,8 +58,11 @@ public class MethodHierarchyNode extends HierarchyNode {
         return totalExits > 0 ? 1 : 0;
     }
 
+    public long getTotalDurationMs() {
+        return totalDurationMs;
+    }
 
-  public List getChildren() {
-    return Collections.emptyList();
-  }
+    public List getChildren() {
+        return Collections.emptyList();
+    }
 }

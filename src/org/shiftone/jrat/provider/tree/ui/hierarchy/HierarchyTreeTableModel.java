@@ -6,6 +6,7 @@ import org.jdesktop.swingx.treetable.DefaultTreeTableModel;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.HierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
+import org.shiftone.jrat.util.Percent;
 
 import javax.swing.tree.TreePath;
 import javax.swing.event.TreeModelListener;
@@ -16,7 +17,10 @@ import javax.swing.event.TreeModelListener;
 public class HierarchyTreeTableModel extends AbstractTreeTableModel {
 
     private static final String[] COLUMNS = {
-            "Class", "A", "B", "C"
+            "Class", "Methods", "Uncalled", "Coverage", "Duration"
+    };
+    private static final Class[] COLUMN_TYPES = {
+            String.class, Integer.class, Integer.class, Percent.class, Long.class
     };
 
     private final PackageHierarchyNode root;
@@ -45,9 +49,11 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
             case 1:
                 return new Integer(node(o).getTotalMethods());
             case 2:
-                return new Integer(node(o).getEnteredMethods());
+                return new Integer(node(o).getUncalledMethods());
             case 3:
-                return new Integer(node(o).getExistedMethods());
+                return node(o).getCoverage();
+            case 4:
+                return new Long(node(o).getTotalDurationMs());
         }
         return null;
     }

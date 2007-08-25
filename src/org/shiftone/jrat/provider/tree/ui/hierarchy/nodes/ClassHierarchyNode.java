@@ -10,47 +10,51 @@ import java.util.Collections;
  */
 public class ClassHierarchyNode extends HierarchyNode {
 
-  private final List childMethods = new ArrayList();
+    private final List childMethods = new ArrayList();
 
-  private int enteredMethods;
+    private int enteredMethods;
+    private int existedMethods;
+    private long totalDurationMs;
 
-  private int existedMethods;
-
-  public ClassHierarchyNode(String name) {
-    super(name);
-  }
-
-  public void finalizeStatistics() {
-
-    for (Iterator i = childMethods.iterator(); i.hasNext();) {
-      MethodHierarchyNode child = (MethodHierarchyNode) i.next();
-      if (child.getTotalEnters() > 0) {
-        enteredMethods++;
-        if (child.getTotalExits() > 0) {
-          existedMethods++;
-        }
-      }
+    public ClassHierarchyNode(String name) {
+        super(name);
     }
-  }
 
-  public void addMethod(MethodHierarchyNode methodNode) {
-    childMethods.add(methodNode);
-  }
+    public void finalizeStatistics() {
+        for (Iterator i = childMethods.iterator(); i.hasNext();) {
+            MethodHierarchyNode child = (MethodHierarchyNode) i.next();
+            totalDurationMs += child.getTotalDurationMs();
 
-  public List getChildren() {
-    return childMethods;
-  }
+            if (child.getTotalMethods() > 0) {
+                enteredMethods++;
+                if (child.getTotalExits() > 0) {
+                    existedMethods++;
+                }
+            }
+        }
+    }
 
-  public int getTotalMethods() {
-    return childMethods.size();
-  }
+    public void addMethod(MethodHierarchyNode methodNode) {
+        childMethods.add(methodNode);
+    }
 
-  public int getEnteredMethods() {
-    return enteredMethods;
-  }
+    public List getChildren() {
+        return childMethods;
+    }
 
-  public int getExistedMethods() {
-    return existedMethods;
-  }
- 
+    public int getTotalMethods() {
+        return childMethods.size();
+    }
+
+    public int getEnteredMethods() {
+        return enteredMethods;
+    }
+
+    public int getExistedMethods() {
+        return existedMethods;
+    }
+
+    public long getTotalDurationMs() {
+        return totalDurationMs;
+    }
 }
