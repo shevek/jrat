@@ -68,12 +68,12 @@ public class HandlerFactory {
      * A main runtime entry point.
      */
     public static synchronized MethodHandler getMethodHandler(String className, String methodName, String signature) {
-        return getMethodHandler(MethodKey.create(className, methodName, signature));
+        return getMethodHandler(MethodKey.getInstance(className, methodName, signature));
     }
 
 
     public static synchronized MethodHandler getMethodHandler(Class klass, String methodName, String signature) {
-        return getMethodHandler(MethodKey.create(klass.getName(), methodName, signature));
+        return getMethodHandler(MethodKey.getInstance(klass.getName(), methodName, signature));
     }
 
 

@@ -5,9 +5,7 @@ import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 
 /**
@@ -22,55 +20,42 @@ public class MethodKey implements Serializable, Comparable {
 
     private static final long serialVersionUID = 1;
 
-    private String packageName = null;
-    private String className = null;
+    private ClassKey classKey = null;
     private String methodName = null;
     private String signature = null;
     private int hashCode = 0;
     private transient String toStringValue = null;
     private transient Signature sig = null;
 
-//  Do I need this to serialize? 
-//    public MethodKey() {
-//    }
+    private static Map CACHE = new HashMap(); //<MethodKey, MethodKey>
+
+
+    public static MethodKey getInstance(String fullyQualifiedClassName, String methodName, String signature) {
+        ClassKey classKey = ClassKey.getInstance(fullyQualifiedClassName);
+        MethodKey key = new MethodKey(classKey, methodName, signature);
+        MethodKey value = (MethodKey)CACHE.get(key);
+        if (value == null) {
+            CACHE.put(key, key);
+            value = key;
+        }
+        return value;
+    }
 
     private MethodKey() {
     }
 
-    public static MethodKey create(String fullyQualifiedClassName,
-                                   String methodName, String signature) {
-        int dot = fullyQualifiedClassName.lastIndexOf('.');
-        return create(
-                (dot == -1)
-                        ? ""
-                        : fullyQualifiedClassName.substring(0, dot),
-                (dot == -1)
-                        ? fullyQualifiedClassName
-                        : fullyQualifiedClassName.substring(dot + 1),
-                methodName,
-                signature);
-    }
 
-    public static MethodKey create(String packageName, String className,
-                                   String methodName, String signature) {
-        return new MethodKey(packageName, className, methodName, signature);
-    }
+    private MethodKey(ClassKey classKey, String methodName, String signature) {
 
-    private MethodKey(String packageName, String className, String methodName,
-                      String signature) {
-
-        Assert.assertNotNull("packageName", packageName);
-        Assert.assertNotNull("className", className);
+        Assert.assertNotNull("classKey", classKey);
         Assert.assertNotNull("methodName", methodName);
         Assert.assertNotNull("signature", signature);
 
-        this.packageName = packageName.intern();
-        this.className = className.intern();
+        this.classKey = classKey;
         this.methodName = methodName;
         this.signature = signature;
 
-        hashCode = packageName.hashCode();
-        hashCode = (29 * hashCode) + className.hashCode();
+        hashCode = classKey.hashCode();
         hashCode = (29 * hashCode) + methodName.hashCode();
         hashCode = (29 * hashCode) + signature.hashCode();
     }
@@ -87,32 +72,23 @@ public class MethodKey implements Serializable, Comparable {
 
 
     public String getPackageName() {
-        return packageName;
+        return classKey.getPackageName();
     }
 
     /**
      * Gets the package's name in pieces.
      */
     public String[] getPackageNameParts() {
-        String[] result = new String[0];
-        if (packageName.length() != 0) {
-            StringTokenizer st = new StringTokenizer(packageName, ".");
-            List parts = new ArrayList();
-            while (st.hasMoreTokens()) {
-                parts.add(st.nextToken());
-            }
-            result = (String[]) parts.toArray(new String[parts.size()]);
-        }
-        return result;
+        return classKey.getPackageNameParts();
     }
 
     public final String getClassName() {
-        return className;       // todo
+        return classKey.getClassName();       // todo
     }
 
 
     public final String getShortClassName() {
-        return className;
+        return classKey.getClassName();
     }
 
 
@@ -128,11 +104,7 @@ public class MethodKey implements Serializable, Comparable {
 
         final MethodKey methodKey = (MethodKey) o;
 
-        if (!packageName.equals(methodKey.packageName)) {
-            return false;
-        }
-
-        if (!className.equals(methodKey.className)) {
+        if (!classKey.equals(classKey)) {
             return false;
         }
 
@@ -151,7 +123,7 @@ public class MethodKey implements Serializable, Comparable {
     public final String toString() {
 
         if (toStringValue == null) {
-            toStringValue = className + '.' + methodName + getPrettySignature();
+            toStringValue = classKey.getClassName() + '.' + methodName + getPrettySignature();
         }
 
         return toStringValue;
@@ -170,14 +142,11 @@ public class MethodKey implements Serializable, Comparable {
 
     public int compareTo(Object o) {
         MethodKey other = (MethodKey) o;
-        int c = packageName.compareTo(other.packageName);
+        int c = classKey.compareTo(other.classKey);
         if (c == 0) {
-            c = className.compareTo(other.className);
+            c = methodName.compareTo(other.methodName);
             if (c == 0) {
-                c = methodName.compareTo(other.methodName);
-                if (c == 0) {
-                    c = signature.compareTo(other.signature);
-                }
+                c = signature.compareTo(other.signature);
             }
         }
         return c;
