@@ -1,4 +1,4 @@
-package org.shiftone.jrat.provider.tree.ui.hierarchy;
+package org.shiftone.jrat.provider.tree.ui.graph;
 
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.StackNode;

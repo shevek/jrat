@@ -13,8 +13,7 @@ import java.util.List;
 public class MethodHierarchyNode extends HierarchyNode {
 
     private final MethodKey methodKey;
-    private boolean entered;
-    private boolean exited;
+    private long totalExecutions;
     private long totalDurationMs;
 
     public MethodHierarchyNode(MethodKey methodKey) {
@@ -25,17 +24,17 @@ public class MethodHierarchyNode extends HierarchyNode {
 
     public void addStatistics(StackNode input) {
         Accumulator accumulator = input.getAccumulator();
-        entered = entered || accumulator.getTotalEnters() > 0;
-        exited = exited || accumulator.getTotalExits() > 0;
+        totalExecutions += accumulator.getTotalEnters() ;
         totalDurationMs += accumulator.getTotalDuration();
     }
 
-    public boolean isEntered() {
-        return entered;
+
+    public boolean isExecuted() {
+        return totalExecutions > 0;
     }
 
-    public boolean isExited() {
-        return exited;
+    public long getTotalExecutions() {
+       return totalExecutions;
     }
 
     public MethodKey getMethodKey() {
@@ -50,12 +49,8 @@ public class MethodHierarchyNode extends HierarchyNode {
         return 1;
     }
 
-    public int getEnteredMethods() {
-        return entered ? 1 : 0;
-    }
-
-    public int getExistedMethods() {
-        return exited ? 1 : 0;
+    public int getExecutedMethods() {
+        return isExecuted() ? 1 : 0;
     }
 
     public long getTotalDurationMs() {

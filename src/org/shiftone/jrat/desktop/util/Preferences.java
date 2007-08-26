@@ -1,4 +1,4 @@
-package org.shiftone.jrat.desktop;
+package org.shiftone.jrat.desktop.util;
 
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
@@ -56,21 +56,12 @@ public class Preferences implements Serializable {
         }
 
         preferences.file = file;
-        preferences.install();
 
         return preferences;
     }
 
-    public void install() {
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            public void run() {
-                save();
-            }
-        }));
-    }
 
-
-    public void save() {
+    public void save() throws Exception {
 
         OutputStream outputStream;
         ObjectOutputStream objectOutputStream = null;
@@ -83,9 +74,8 @@ public class Preferences implements Serializable {
             objectOutputStream.writeObject(this);
             LOG.info("done");
 
-        } catch (Exception e) {
-
-            LOG.warn("unable to save preferences", e);
+            if (true)
+                throw new Exception("woops");
 
         } finally {
 

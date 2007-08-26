@@ -1,7 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui;
 
 import org.shiftone.jrat.provider.tree.StackNode;
-import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyViewBuilder;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyModelBuilder;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyViewPanel;
 import org.shiftone.jrat.provider.tree.ui.trace.TreeViewerPanel;
 import org.shiftone.jrat.util.log.Logger;
@@ -43,7 +43,7 @@ public class MainViewPanel extends JPanel {
         LOG.info("creating Hierarchy");
 
 
-        HierarchyViewBuilder builder = new HierarchyViewBuilder(rootNode, allMethodKeys);
+        HierarchyModelBuilder builder = new HierarchyModelBuilder(rootNode, allMethodKeys);
         tabbedPane.addTab("Hierarchy", new HierarchyViewPanel(builder.getModel()));
 
         //tabbedPane.addTab("Hierarchy", new GraphViewPanel(rootNode));

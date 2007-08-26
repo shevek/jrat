@@ -11,14 +11,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class HierarchyViewBuilder {
+public class HierarchyModelBuilder {
 
     private final Map methodKeyNodes = new HashMap(); // method node cache <MethodKey, MethodHierarchyNode>
     private final Map packageNodes = new HashMap();  // package node cache <String, PackageHierarchyNode>
 
     private final PackageHierarchyNode root = new PackageHierarchyNode("");
 
-    public HierarchyViewBuilder(StackNode rootNode, Set allMethodKeys) {
+    public HierarchyModelBuilder(StackNode rootNode, Set allMethodKeys) {
 
         // loop over the "all methods" set to initially populate the hierarchy
         Iterator iterator = allMethodKeys.iterator();

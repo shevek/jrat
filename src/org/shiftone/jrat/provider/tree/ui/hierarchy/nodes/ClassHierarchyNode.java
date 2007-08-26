@@ -11,8 +11,7 @@ public class ClassHierarchyNode extends HierarchyNode {
 
     private final List childMethods = new ArrayList();
 
-    private int enteredMethods;
-    private int existedMethods;
+    private int executedMethods;
     private long totalDurationMs;
 
     public ClassHierarchyNode(String name) {
@@ -24,11 +23,8 @@ public class ClassHierarchyNode extends HierarchyNode {
             MethodHierarchyNode method = (MethodHierarchyNode) i.next();
             totalDurationMs += method.getTotalDurationMs();
 
-            if (method.isEntered()) {
-                enteredMethods++;
-                if (method.isExited()) {
-                    existedMethods++;
-                }
+            if (method.isExecuted()) {
+                executedMethods++;
             }
         }
     }
@@ -45,12 +41,8 @@ public class ClassHierarchyNode extends HierarchyNode {
         return childMethods.size();
     }
 
-    public int getEnteredMethods() {
-        return enteredMethods;
-    }
-
-    public int getExistedMethods() {
-        return existedMethods;
+    public int getExecutedMethods() {
+        return executedMethods;
     }
 
     public long getTotalDurationMs() {

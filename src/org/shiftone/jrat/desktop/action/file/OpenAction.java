@@ -2,7 +2,7 @@ package org.shiftone.jrat.desktop.action.file;
 
 import org.shiftone.jrat.core.spi.ViewBuilder;
 import org.shiftone.jrat.desktop.DesktopFrame;
-import org.shiftone.jrat.desktop.Preferences;
+import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 

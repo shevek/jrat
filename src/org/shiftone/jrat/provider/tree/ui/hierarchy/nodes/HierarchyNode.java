@@ -29,16 +29,14 @@ public abstract class HierarchyNode {
 
     public abstract int getTotalMethods();
 
-    public abstract int getEnteredMethods();
-
-    public abstract int getExistedMethods();
+    public abstract int getExecutedMethods();
 
     public Percent getCoverage() {
-        return new Percent((double) getEnteredMethods() / (double) getTotalMethods() * 100.0);
+        return new Percent((double) getExecutedMethods() / (double) getTotalMethods() * 100.0);
     }
 
     public int getUncalledMethods() {
-        return getTotalMethods() - getEnteredMethods();
+        return getTotalMethods() - getExecutedMethods();
     }
 
     public abstract List getChildren();

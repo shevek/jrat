@@ -12,8 +12,7 @@ public class PackageHierarchyNode extends HierarchyNode {
     private List childPackages = new ArrayList();
     private List childClasses = new ArrayList();
     private int totalMethods;
-    private int enteredMethods;
-    private int existedMethods;
+    private int executedMethods;
     private long totalDurationMs;
 
     public PackageHierarchyNode(String name) {
@@ -36,8 +35,7 @@ public class PackageHierarchyNode extends HierarchyNode {
     private void addStatistics(HierarchyNode node) {
         node.finalizeStatistics();
         totalMethods += node.getTotalMethods();
-        enteredMethods += node.getEnteredMethods();
-        existedMethods += node.getExistedMethods();
+        executedMethods += node.getExecutedMethods();
         totalDurationMs += node.getTotalDurationMs();
     }
 
@@ -45,12 +43,8 @@ public class PackageHierarchyNode extends HierarchyNode {
         return totalMethods;
     }
 
-    public int getEnteredMethods() {
-        return enteredMethods;
-    }
-
-    public int getExistedMethods() {
-        return existedMethods;
+    public int getExecutedMethods() {
+        return executedMethods;
     }
 
     public long getTotalDurationMs() {

@@ -1,9 +1,12 @@
 package org.shiftone.jrat.desktop;
 
+import org.jdesktop.swingx.JXStatusBar;
+import org.shiftone.jrat.desktop.action.WindowClosingAction;
 import org.shiftone.jrat.desktop.action.file.*;
 import org.shiftone.jrat.desktop.action.help.AboutAction;
 import org.shiftone.jrat.desktop.action.help.DocsAction;
 import org.shiftone.jrat.desktop.action.help.LicenseAction;
+import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.*;
@@ -20,7 +23,7 @@ public class DesktopFrame extends JFrame {
 
     private static final Logger LOG = Logger.getLogger(DesktopFrame.class);
     private final Preferences preferences;
-    // private JXStatusBar statusBar = new JXStatusBar();
+    private JXStatusBar statusBar = new JXStatusBar();
     private JTabbedPane tabbedPane = new JTabbedPane();
     private CloseAction closeAction = new CloseAction(tabbedPane);
     private CloseAllAction closeAllAction = new CloseAllAction(tabbedPane);
@@ -34,7 +37,7 @@ public class DesktopFrame extends JFrame {
         preferences.setLastRunTime(System.currentTimeMillis());
         preferences.incrementRunCount();
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        addWindowListener(new WindowClosingAction(this, preferences));
 
         Rectangle windowBounds = preferences.getWindowBounds();
 
@@ -45,12 +48,15 @@ public class DesktopFrame extends JFrame {
 
         setBounds(windowBounds);
 
-        //  statusBar.add(new JLabel("test"));
+        statusBar.add(new JLabel("ShiftOne JRat"), JXStatusBar.Constraint.ResizeBehavior.FILL);
+
+
         setJMenuBar(createMenuBar());
 
         Container pane = getContentPane();
         pane.setLayout(new BorderLayout());
         pane.add(tabbedPane, BorderLayout.CENTER);
+        pane.add(statusBar, BorderLayout.SOUTH);
 
         tabbedPane.addMouseListener(new TabMouseListener(tabbedPane));
         tabbedPane.addContainerListener(new TabChangeListener());
@@ -59,6 +65,7 @@ public class DesktopFrame extends JFrame {
         addComponentListener(new ComponentListener());
 
     }
+
 
     public void waitCursor() {
         waiters++;
