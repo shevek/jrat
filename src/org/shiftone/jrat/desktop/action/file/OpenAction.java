@@ -122,22 +122,6 @@ public class OpenAction extends AbstractAction {
         }
     }
 
-//    private static class SessionFileFilter extends FileFilter {
-//
-//        static FileFilter INSTANCE = new SessionFileFilter();
-//
-//        public boolean accept(File f) {
-//            if (f.isDirectory()) {
-//                return true;
-//            }
-//            return (f.getName().endsWith(".session"));
-//        }
-//
-//        public String getDescription() {
-//            return "Session File (*.session)";
-//        }
-//    }
-
     private static class JRatFileFilter extends FileFilter {
 
         static FileFilter INSTANCE = new JRatFileFilter();
