@@ -5,6 +5,7 @@ import org.shiftone.jrat.provider.tree.StackNode;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.ObjectInputStream;
 import java.util.Set;
 
 /**
@@ -29,7 +30,7 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
         this.sessionEndMs = sessionEndMs;
     }
 
-    public JComponent buildView(File source) throws Exception {
+    public JComponent buildView(ObjectInputStream input) throws Exception {
         return new MainViewPanel(root, allMethodKeys, sessionStartMs, sessionEndMs);
     }
 

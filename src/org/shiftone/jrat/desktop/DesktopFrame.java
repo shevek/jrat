@@ -92,6 +92,7 @@ public class DesktopFrame extends JFrame {
                 resize.setMnemonic('S');
                 resize.add(new WindowSizeAction(this, 640, 480));
                 resize.add(new WindowSizeAction(this, 800, 600));
+                resize.add(new WindowSizeAction(this, 1024, 768));
                 file.add(resize);
             }
             file.add(new ExitAction());

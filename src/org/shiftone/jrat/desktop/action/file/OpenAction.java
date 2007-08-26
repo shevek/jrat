@@ -105,7 +105,7 @@ public class OpenAction extends AbstractAction {
                 ViewBuilder viewBuilder = (ViewBuilder) objectInputStream.readObject();
 
                 LOG.info("building view");
-                JComponent component = viewBuilder.buildView(file);
+                JComponent component = viewBuilder.buildView(objectInputStream);
 
                 desktopFrame.createView(file.getName(), component);
 
