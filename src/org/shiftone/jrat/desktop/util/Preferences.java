@@ -74,9 +74,6 @@ public class Preferences implements Serializable {
             objectOutputStream.writeObject(this);
             LOG.info("done");
 
-            if (true)
-                throw new Exception("woops");
-
         } finally {
 
             IOUtil.close(objectOutputStream);
