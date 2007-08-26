@@ -3,6 +3,7 @@ package org.shiftone.jrat.desktop.action;
 import org.jdesktop.swingx.JXErrorPane;
 import org.jdesktop.swingx.error.ErrorInfo;
 import org.shiftone.jrat.desktop.util.Preferences;
+import org.shiftone.jrat.desktop.util.Errors;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -26,9 +27,7 @@ public class WindowClosingAction extends WindowAdapter {
         try {
             preferences.save();
         } catch (final Exception e) {
-            String title = "Unable to Save Preferences";
-            final ErrorInfo errorInfo = new ErrorInfo(title, title, null, null, e, Level.WARNING, null);
-            JXErrorPane.showDialog(component, errorInfo);
+            Errors.showWarning(component, e, "Unable to Save Preferences");       
         }
         System.exit(1);
     }

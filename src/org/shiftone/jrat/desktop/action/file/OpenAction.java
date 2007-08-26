@@ -3,6 +3,7 @@ package org.shiftone.jrat.desktop.action.file;
 import org.shiftone.jrat.core.spi.ViewBuilder;
 import org.shiftone.jrat.desktop.DesktopFrame;
 import org.shiftone.jrat.desktop.util.Preferences;
+import org.shiftone.jrat.desktop.util.Errors;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -110,7 +111,7 @@ public class OpenAction extends AbstractAction {
 
             } catch (Exception e) {
 
-                LOG.error("failed to read " + file.getAbsolutePath(), e);
+                Errors.showError(desktopFrame, e, "Failed to open file : " + file.getName());
 
             } finally {
 
