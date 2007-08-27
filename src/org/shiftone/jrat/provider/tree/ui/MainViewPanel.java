@@ -23,8 +23,6 @@ public class MainViewPanel extends JPanel {
     private final StackNode rootNode;
     private final Set allMethodKeys;
 
-
-
     public MainViewPanel(
             StackNode rootNode,
             Set allMethodKeys,
