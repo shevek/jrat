@@ -5,6 +5,8 @@ import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.*;
 import java.io.*;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * This class will be serialized to the user's home directory in order to persist UI state.
@@ -15,16 +17,24 @@ public class Preferences implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(Preferences.class);
     private static final long serialVersionUID = 1;
+    public static Preferences instance;
+
     private transient File file;
     private int runCount;
     private long lastRunTime;
     private Rectangle windowBounds;
     private File lastOpenedFile;
+    private Map summaryTableVisibility;
 
-    /**
-     * todo - better error handling
-     */
-    public static Preferences load() {
+    public static synchronized Preferences getPreferences() {
+        if (instance == null) {
+            instance = load();
+        }
+        return instance;
+    }
+
+
+    private static Preferences load() {
 
         Preferences preferences;
         String home = System.getProperty("user.home");
@@ -113,4 +123,13 @@ public class Preferences implements Serializable {
     public void setLastOpenedFile(File lastOpenedFile) {
         this.lastOpenedFile = lastOpenedFile;
     }
+
+    public Map getSummaryTableVisibility() {
+        if (summaryTableVisibility == null) {
+            summaryTableVisibility = new HashMap();
+        }
+        return summaryTableVisibility;
+    }
+
+
 }

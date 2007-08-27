@@ -6,7 +6,6 @@ import org.shiftone.jrat.desktop.action.file.*;
 import org.shiftone.jrat.desktop.action.help.AboutAction;
 import org.shiftone.jrat.desktop.action.help.DocsAction;
 import org.shiftone.jrat.desktop.action.help.LicenseAction;
-import org.shiftone.jrat.desktop.action.help.TipsAction;
 import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -34,7 +33,7 @@ public class DesktopFrame extends JFrame {
 
         super("JRat Desktop");
 
-        preferences = Preferences.load();
+        preferences = Preferences.getPreferences();
         preferences.setLastRunTime(System.currentTimeMillis());
         preferences.incrementRunCount();
 

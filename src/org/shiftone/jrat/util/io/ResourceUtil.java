@@ -40,7 +40,7 @@ public class ResourceUtil {
             klass = CLASS_LOADER.loadClass(className);
         }
         catch (Exception e) {
-            throw new JRatException("unable to load class '" + className + "'", e);
+            throw new JRatException("unable to getPreferences class '" + className + "'", e);
         }
 
         try {
@@ -58,7 +58,7 @@ public class ResourceUtil {
 
         InputStream inputStream = null;
 
-        LOG.info("load resource : " + resourceName);
+        LOG.info("getPreferences resource : " + resourceName);
         Assert.assertNotNull("resourceName", resourceName);
 
         inputStream = CLASS_LOADER.getResourceAsStream(resourceName);
@@ -161,7 +161,7 @@ public class ResourceUtil {
             props.load(inputStream);
         }
         catch (Exception e) {
-            throw new JRatException("unable to load properties from resource : " + name, e);
+            throw new JRatException("unable to getPreferences properties from resource : " + name, e);
         }
 
         return props;

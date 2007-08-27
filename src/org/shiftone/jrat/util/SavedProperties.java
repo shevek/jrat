@@ -81,7 +81,7 @@ public class SavedProperties extends Properties {
         }
         catch (Exception e) {
             super.clear();
-            LOG.warn("unable to load properties from file : " + storeFile);
+            LOG.warn("unable to getPreferences properties from file : " + storeFile);
         }
         finally {
             IOUtil.close(inputStream);

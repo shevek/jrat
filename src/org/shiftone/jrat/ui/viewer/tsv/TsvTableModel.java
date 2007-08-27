@@ -30,7 +30,7 @@ public class TsvTableModel implements TableModel {
     private Set listener = new HashSet();
 
     /**
-     * Method load
+     * Method getPreferences
      *
      * @param inputStream .
      * @throws IOException

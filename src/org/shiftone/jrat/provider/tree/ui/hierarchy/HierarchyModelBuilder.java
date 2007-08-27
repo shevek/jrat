@@ -26,7 +26,7 @@ public class HierarchyModelBuilder {
             getMethodNode((MethodKey) iterator.next());
         }
 
-        // load stack "performance" data into hierarchy
+        // getPreferences stack "performance" data into hierarchy
         initializeStats(rootNode);
 
         // update coverage counts

@@ -88,7 +88,7 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
         // end time
         // (Clock.currentTimeNanos)
-        loadLocal(startTime);                                          // param 2 : load the start time onto the stack
+        loadLocal(startTime);                                          // param 2 : getPreferences the start time onto the stack
         math(GeneratorAdapter.SUB, Type.LONG_TYPE);                    // param 2 : subtract,
 
         // leaving the result on the
@@ -124,14 +124,14 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
         // end time
         // (Clock.currentTimeNanos)
-        loadLocal(startTime);                                // param 2 : load the start time back onto the
+        loadLocal(startTime);                                // param 2 : getPreferences the start time back onto the
 
         // stack
         math(GeneratorAdapter.SUB, Type.LONG_TYPE);          // param 2 : subtract,
 
         // leaving the result on the
         // stack
-        loadLocal(exception);                                // param 3 : load the exception
+        loadLocal(exception);                                // param 3 : getPreferences the exception
         invokeInterface(MethodHandler.TYPE, MethodHandler.onMethodFinish);
         loadLocal(exception);
         throwException();

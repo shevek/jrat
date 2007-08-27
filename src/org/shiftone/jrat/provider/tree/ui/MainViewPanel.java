@@ -7,6 +7,7 @@ import org.shiftone.jrat.provider.tree.ui.trace.TracePanel;
 import org.shiftone.jrat.provider.tree.ui.summary.SummaryPanel;
 import org.shiftone.jrat.provider.tree.ui.summary.SummaryTableModel;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.desktop.util.Preferences;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +25,13 @@ public class MainViewPanel extends JPanel {
 
 
 
-    public MainViewPanel(StackNode rootNode, Set allMethodKeys, long sessionStartMs, long sessionEndMs, String hostName, String hostAddress) {
+    public MainViewPanel(
+            StackNode rootNode,
+            Set allMethodKeys,
+            long sessionStartMs,
+            long sessionEndMs,
+            String hostName,
+            String hostAddress) {
 
         this.rootNode = rootNode;
         this.allMethodKeys = allMethodKeys;
@@ -36,7 +43,8 @@ public class MainViewPanel extends JPanel {
         add(tabbedPane, BorderLayout.CENTER);
 
         SummaryTableModel summaryTableModel = new SummaryTableModel(rootNode);
-        tabbedPane.addTab("Summary", new SummaryPanel( summaryTableModel, sessionStartMs,  sessionEndMs,  hostName,  hostAddress));
+        tabbedPane.addTab("Summary", new SummaryPanel( summaryTableModel,
+                sessionStartMs,  sessionEndMs,  hostName,  hostAddress));
 
         tabbedPane.addTab("Trace", new TracePanel(rootNode));
 

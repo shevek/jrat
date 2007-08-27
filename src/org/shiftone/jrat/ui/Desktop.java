@@ -40,7 +40,7 @@ public class Desktop {
             // javax.swing.plaf.basic.BasicLookAndFeel
         }
         catch (Exception e) {
-            LOG.warn("unable to load look and feel");
+            LOG.warn("unable to getPreferences look and feel");
         }
 
         //new SplashWindow();

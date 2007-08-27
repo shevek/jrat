@@ -1,9 +1,10 @@
 package org.shiftone.jrat.provider.tree.ui.summary;
 
+import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
-import org.jdesktop.swingx.MultiSplitLayout;
-import org.jdesktop.swingx.JXTable;
+import org.shiftone.jrat.desktop.util.Preferences;
+import org.shiftone.jrat.desktop.util.JXTableWatcher;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,18 +15,26 @@ import java.util.Date;
  */
 public class SummaryPanel extends JPanel {
 
-    private final JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-    private final JXTaskPaneContainer taskPaneContainer = new JXTaskPaneContainer();
 
-    public SummaryPanel(SummaryTableModel summaryTableModel, long sessionStartMs, long sessionEndMs, String hostName, String hostAddress) {
+    public SummaryPanel(
+            SummaryTableModel summaryTableModel,
+            long sessionStartMs,
+            long sessionEndMs,
+            String hostName,
+            String hostAddress) {
 
-        taskPaneContainer.add(createSummaryPane( sessionStartMs,  sessionEndMs,  hostName,  hostAddress));
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        JXTaskPaneContainer taskPaneContainer = new JXTaskPaneContainer();
+
+        taskPaneContainer.add(createSummaryPane(sessionStartMs, sessionEndMs, hostName, hostAddress));
 
         JXTable table = new JXTable();
         table.setModel(summaryTableModel);
         table.setColumnControlVisible(true);
-        table.getColumnExt(3).setVisible(false);
-        table.getColumnExt(4).setVisible(false);
+     //   table.getColumnExt(3).setVisible(false);
+      //  table.getColumnExt(4).setVisible(false);
+
+        JXTableWatcher.initialize(table, Preferences.getPreferences().getSummaryTableVisibility());
 
 
         splitPane.setLeftComponent(taskPaneContainer);
@@ -37,7 +46,13 @@ public class SummaryPanel extends JPanel {
 
     }
 
-    private JXTaskPane createSummaryPane(long sessionStartMs, long sessionEndMs, String hostName, String hostAddress) {
+
+
+    private JXTaskPane createSummaryPane(
+            long sessionStartMs,
+            long sessionEndMs,
+            String hostName,
+            String hostAddress) {
         // honestly I don't feel great about this, but
         // laying this out is such a pain any other way (that I know).
         JXTaskPane summaryPane = new JXTaskPane();
