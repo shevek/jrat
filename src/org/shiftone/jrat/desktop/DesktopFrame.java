@@ -6,6 +6,7 @@ import org.shiftone.jrat.desktop.action.file.*;
 import org.shiftone.jrat.desktop.action.help.AboutAction;
 import org.shiftone.jrat.desktop.action.help.DocsAction;
 import org.shiftone.jrat.desktop.action.help.LicenseAction;
+import org.shiftone.jrat.desktop.action.help.TipsAction;
 import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -111,7 +112,9 @@ public class DesktopFrame extends JFrame {
             help.setMnemonic('H');
             help.add(new AboutAction());
             help.add(new DocsAction());
+          //  help.add(new TipsAction(this));
             help.add(new LicenseAction());
+
             toolBar.add(help);
         }
 
