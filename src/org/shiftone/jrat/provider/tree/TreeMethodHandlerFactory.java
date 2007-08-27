@@ -85,7 +85,11 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
                         rootNode,
                         new HashSet(allMethodKeys), // copy to avoid sync issues
                         getContext().getStartTimeMs(),
-                        System.currentTimeMillis()));
+                        System.currentTimeMillis(),
+                        getContext().getHostName(),
+                        getContext().getHostAddress()
+                )
+        );
 
     }
 

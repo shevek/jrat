@@ -18,9 +18,9 @@ import java.awt.*;
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UIConstants {
+public class TracePanel extends JPanel implements TreeSelectionListener, UIConstants {
 
-    private static final Logger LOG = Logger.getLogger(TreeViewerPanel.class);
+    private static final Logger LOG = Logger.getLogger(TracePanel.class);
     private static final long serialVersionUID = 1;
     private JSplitPane splitPane = null;
     private JTree tree = null;
@@ -30,7 +30,7 @@ public class TreeViewerPanel extends JPanel implements TreeSelectionListener, UI
     private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
     private NodeDetailPanel detailPanel;
 
-    public TreeViewerPanel(StackNode stackNode) {
+    public TracePanel(StackNode stackNode) {
 
 
         this.rootNode = new StackTreeNode(stackNode);

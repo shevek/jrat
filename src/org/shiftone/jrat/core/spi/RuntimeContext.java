@@ -42,4 +42,7 @@ public interface RuntimeContext {
 
 
     long getStartTimeMs();
+
+    String getHostAddress();
+    String getHostName();
 }

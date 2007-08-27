@@ -61,6 +61,12 @@ public class ClassKey implements Serializable, Comparable {
         return packageName;
     }
 
+    public final String getFullyQualifiedClassName() {
+        return (packageName.length() == 0)
+                ? className
+                : packageName + "." + className;
+    }
+
     public String getClassName() {
         return className;
     }

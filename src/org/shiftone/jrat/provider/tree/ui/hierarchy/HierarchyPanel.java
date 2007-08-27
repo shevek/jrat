@@ -10,13 +10,13 @@ import java.awt.*;
 /**
  * @author (jeff@shiftone.org) Jeff Drost
  */
-public class HierarchyViewPanel extends JPanel {
+public class HierarchyPanel extends JPanel {
 
     private JXTreeTable treeTable;
 
     private JXHeader header;
 
-    public HierarchyViewPanel(HierarchyTreeTableModel model) {
+    public HierarchyPanel(HierarchyTreeTableModel model) {
 
         treeTable = new JXTreeTable();
         treeTable.setTreeTableModel(model);

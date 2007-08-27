@@ -60,6 +60,12 @@ public class MethodKey implements Serializable, Comparable {
         hashCode = (29 * hashCode) + signature.hashCode();
     }
 
+    /**
+     * setCat(Cat)
+     */
+    public final String getShortMethodDescription() {
+        return methodName + "(" + getSig().getShortText() + ")";
+    }
 
     public final String getMethodName() {
         return methodName;
@@ -82,15 +88,16 @@ public class MethodKey implements Serializable, Comparable {
         return classKey.getPackageNameParts();
     }
 
-    public final String getClassName() {
-        return classKey.getClassName();       // todo
+    public final String getFullyQualifiedClassName() {
+        return classKey.getFullyQualifiedClassName();
     }
 
-
-    public final String getShortClassName() {
+    /**
+     * Returns just the class name w/o a package.
+     */
+    public final String getClassName() {
         return classKey.getClassName();
     }
-
 
     public final boolean equals(Object o) {
 

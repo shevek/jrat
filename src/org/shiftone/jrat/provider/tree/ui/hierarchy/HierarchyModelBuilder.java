@@ -76,7 +76,7 @@ public class HierarchyModelBuilder {
 
     private ClassHierarchyNode getClassNode(MethodKey methodKey) {
         // todo - think about caching at this level also
-        return getPackageNode(methodKey).getChildClass(methodKey.getShortClassName());
+        return getPackageNode(methodKey).getChildClass(methodKey.getClassName());
     }
 
 

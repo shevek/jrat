@@ -16,6 +16,7 @@ import org.shiftone.jrat.util.log.LoggerFactory;
 
 import java.io.*;
 import java.util.Properties;
+import java.net.InetAddress;
 
 
 /**
@@ -52,6 +53,21 @@ class RuntimeContextImpl implements RuntimeContext {
 
     }
 
+    public String getHostAddress() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (Exception e) {
+            return "unknown";
+        }
+    }
+
+    public String getHostName() {
+        try {
+            return InetAddress.getLocalHost().getHostName();
+        } catch (Exception e) {
+            return "unknown";
+        }
+    }
 
     public long getStartTimeMs() {
         return startTimeMs;
