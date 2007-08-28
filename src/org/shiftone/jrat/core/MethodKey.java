@@ -17,8 +17,8 @@ import java.util.*;
 public class MethodKey implements Serializable, Comparable {
 
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
-
     private static final long serialVersionUID = 1;
+   
 
     private ClassKey classKey = null;
     private String methodName = null;

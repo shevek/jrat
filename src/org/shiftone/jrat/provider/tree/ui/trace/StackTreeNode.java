@@ -2,6 +2,7 @@ package org.shiftone.jrat.provider.tree.ui.trace;
 
 
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.provider.tree.StackNode;
 import org.shiftone.jrat.util.collection.ArrayEnumeration;
 import org.shiftone.jrat.util.log.Logger;
@@ -18,8 +19,9 @@ public class StackTreeNode implements TreeNode {
 
     private static final Logger LOG = Logger.getLogger(StackTreeNode.class);
 
-    private final StackNode node;
-    private final StackTreeNode root;
+    private final MethodKey methodKey;
+    private final Accumulator accumulator;
+
     private final int depth;
     private final StackTreeNode[] childArray;
     private final StackTreeNode parent;
@@ -37,16 +39,12 @@ public class StackTreeNode implements TreeNode {
 
     private StackTreeNode(StackNode node, int depth, StackTreeNode parent, StackTreeNode root) {
 
-        this.node = node;
+        this.methodKey = node.getMethodKey();
+        this.accumulator = node.getAccumulator();
         this.depth = depth;
         this.parent = parent;
 
-        if (root == null) {
-            // if no parents have claimed to be the root yet, I'll do it.
-            root = this;
-        }
 
-        this.root = root;
 
         if ((parent != null) && (getTotalExits() > 0)) {
 
@@ -128,65 +126,65 @@ public class StackTreeNode implements TreeNode {
 
 
     public int getMaxConcurrentThreads() {
-        return node.getAccumulator().getMaxConcurrentThreads();
+        return accumulator.getMaxConcurrentThreads();
     }
 
     public long getSumOfSquares() {
-        return node.getAccumulator().getSumOfSquares();
+        return accumulator.getSumOfSquares();
     }
 
     public MethodKey getMethodKey() {
-        return node.getMethodKey();
+        return methodKey;
     }
 
     public Float getAverageDuration() {
-        return node.getAccumulator().getAverageDuration();
+        return accumulator.getAverageDuration();
     }
 
     public Double getStdDeviation() {
-        return node.getAccumulator().getStdDeviation();
+        return accumulator.getStdDeviation();
     }
 
     public long getTotalDuration() {
-        return node.getAccumulator().getTotalDuration();
+        return accumulator.getTotalDuration();
     }
 
     public int getConcurrentThreads() {
-        return node.getAccumulator().getConcurrentThreads();
+        return accumulator.getConcurrentThreads();
     }
 
     public long getTotalErrors() {
-        return node.getAccumulator().getTotalErrors();
+        return accumulator.getTotalErrors();
     }
 
     public long getTotalEnters() {
-        return node.getAccumulator().getTotalEnters();
+        return accumulator.getTotalEnters();
     }
 
     public long getTotalExits() {
-        return node.getAccumulator().getTotalExits();
+        return accumulator.getTotalExits();
     }
 
     public long getMinDuration() {
-        return node.getAccumulator().getMinDuration();
+        return accumulator.getMinDuration();
     }
 
 
     public long getMaxDuration() {
-        return node.getAccumulator().getMaxDuration();
+        return accumulator.getMaxDuration();
     }
 
     public boolean isRootNode() {
-        return node.isRootNode();
+        return methodKey == null;
     }
 
 
     // -------------------------------------------------------------
     public String toString() {
 
-        return (node.isRootNode())
+        return (isRootNode())
                 ? "Root"
-                : node.getMethodKey().getMethodName();
+                 : methodKey.getMethodName();
     }
 
 

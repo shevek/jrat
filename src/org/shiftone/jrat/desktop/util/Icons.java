@@ -9,6 +9,6 @@ public class Icons {
     private static ClassLoader LOADER = Icons.class.getClassLoader();
 
     public static Icon getIcon(String path) {
-        return new ImageIcon(LOADER.getResource("icons/" + path));
+        return new ImageIcon(LOADER.getResource("org/shiftone/jrat/desktop/icons/" + path));
     }
 }
