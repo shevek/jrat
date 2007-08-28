@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.Writer;
+import java.util.Properties;
 
 
 /**
@@ -16,33 +17,27 @@ public interface RuntimeContext {
 
     void writeSerializable(String fileName, Serializable serializable);
 
-
     OutputStream createOutputStream(String fileName);
-
 
     PrintWriter createPrintWriter(String fileName);
 
-
     Writer createWriter(String fileName);
-
 
     void registerMBean(Object mbean);
 
-
     void registerMBean(Object mbean, String objectNameText);
-
 
     void register(Commandlet commandlet);
 
-
     long uniqNumber();
-
 
     void registerShutdownListener(ShutdownListener listener);
 
-
     long getStartTimeMs();
 
+    Properties getSystemPropertiesAtStartup();
+
     String getHostAddress();
+
     String getHostName();
 }

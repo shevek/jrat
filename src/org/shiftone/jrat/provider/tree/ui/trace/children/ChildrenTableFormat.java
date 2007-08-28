@@ -2,7 +2,7 @@ package org.shiftone.jrat.provider.tree.ui.trace.children;
 
 import ca.odell.glazedlists.gui.TableFormat;
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.ui.trace.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.util.Percent;
 
 /**

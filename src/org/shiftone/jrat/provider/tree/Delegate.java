@@ -16,9 +16,9 @@ import org.shiftone.jrat.core.MethodKey;
  */
 public class Delegate {
 
-    private StackNode currentNode = null;
+    private TreeNode currentNode = null;
 
-    public Delegate(StackNode rootNode) {
+    public Delegate(TreeNode rootNode) {
 
         if (rootNode == null) {
             throw new NullPointerException("delegate created to null initial node");

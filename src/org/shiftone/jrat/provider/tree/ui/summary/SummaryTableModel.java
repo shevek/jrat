@@ -2,7 +2,7 @@ package org.shiftone.jrat.provider.tree.ui.summary;
 
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.StackNode;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.*;
@@ -15,9 +15,9 @@ public class SummaryTableModel extends AbstractTableModel {
     private static final String[] COLUMNS = {"Package", "Class", "Method", "Enters", "Exits", "Duration"};
     private List methodList = new ArrayList();
 
-    public SummaryTableModel(StackNode stackNode) {
+    public SummaryTableModel(StackTreeNode node) {
         Map cache = new HashMap();
-        process(stackNode, cache);
+        process(node, cache);
     }
 
     public int getRowCount() {
@@ -59,22 +59,22 @@ public class SummaryTableModel extends AbstractTableModel {
         return methodList;
     }
 
-    private void process(StackNode stackNode, Map cache) {
+    private void process(StackTreeNode node, Map cache) {
 
-        if (!stackNode.isRootNode()) {
-            MethodKey methodKey = stackNode.getMethodKey();
+        if (!node.isRootNode()) {
+            MethodKey methodKey = node.getMethodKey();
             Method method = getMethod(methodKey, cache);
-            addStatistics(stackNode, method);
+            addStatistics(node, method);
         }
 
-        for (Iterator i = stackNode.getChildren().iterator(); i.hasNext();) {
-            StackNode child = (StackNode) i.next();
+        for (int i = 0 ; i < node.getChildCount() ; i ++) {
+            StackTreeNode child = node.getChildNodeAt(i);
             process(child, cache);
         }
     }
 
-    private void addStatistics(StackNode stackNode, Method method) {
-        Accumulator accumulator = stackNode.getAccumulator();
+    private void addStatistics(StackTreeNode node, Method method) {
+        Accumulator accumulator = node.getAccumulator();
         method.totalEnters += accumulator.getTotalEnters();
         method.totalExists += accumulator.getTotalExits();
         method.totalDuration += accumulator.getTotalDuration();

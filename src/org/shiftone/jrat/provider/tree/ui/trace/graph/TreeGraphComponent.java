@@ -3,7 +3,7 @@ package org.shiftone.jrat.provider.tree.ui.trace.graph;
 
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.trace.PercentColorLookup;
-import org.shiftone.jrat.provider.tree.ui.trace.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.*;

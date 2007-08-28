@@ -33,6 +33,7 @@ class RuntimeContextImpl implements RuntimeContext {
     private final JmxRegistry jmxRegistry;
     private final CommandletRegistry commandletRegistry;
     private final OutputDirectory outputDirectory;
+    private final Properties systemPropertiesAtStartup;
     private final MemoryMonitor memoryMonitor;
 
     RuntimeContextImpl() {
@@ -47,10 +48,16 @@ class RuntimeContextImpl implements RuntimeContext {
         commandletRegistry = serviceFactory.getCommandletRegistry();
         memoryMonitor = new MemoryMonitor(this);
 
+        systemPropertiesAtStartup = new Properties();
+        systemPropertiesAtStartup.putAll(System.getProperties());
+
         redirectLogStream();
-        writeSystemProperties();
+
+    }
 
 
+    public Properties getSystemPropertiesAtStartup() {
+        return systemPropertiesAtStartup;
     }
 
     public String getHostAddress() {
@@ -102,25 +109,6 @@ class RuntimeContextImpl implements RuntimeContext {
             LOG.warn("unable to redirect LOG to file", e);
         }
     }
-
-
-    private void writeSystemProperties() {
-
-        OutputStream outputStream = null;
-
-        try {
-            outputStream = outputDirectory.createOutputStream("System.properties");
-
-            Properties properties = System.getProperties();
-
-            properties.store(outputStream, "system properties as of JRat initialization");
-        }
-        catch (Exception e) {
-            IOUtil.close(outputStream);
-            LOG.warn("unable to write system properties to file", e);
-        }
-    }
-
 
     public PrintWriter createPrintWriter(String fileName) {
         return outputDirectory.createPrintWriter(fileName);

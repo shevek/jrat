@@ -24,7 +24,7 @@ import java.util.Set;
 public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory implements TreeMethodHandlerFactoryMBean {
 
     private static final Logger LOG = Logger.getLogger(TreeMethodHandlerFactory.class);
-    private final StackNode rootNode = new StackNode();
+    private final TreeNode rootNode = new TreeNode();
     private final Set allMethodKeys = new HashSet();
     private final DelegateThreadLocal delegateThreadLocal = new DelegateThreadLocal(this);
     private final AtomicLong methodHandlerCount = new AtomicLong();
@@ -63,7 +63,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     }
 
 
-    public final StackNode getRootNode() {
+    public final TreeNode getRootNode() {
         return rootNode;
     }
 
@@ -86,6 +86,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
                         new HashSet(allMethodKeys), // copy to avoid sync issues
                         getContext().getStartTimeMs(),
                         System.currentTimeMillis(),
+                        getContext().getSystemPropertiesAtStartup(),
                         getContext().getHostName(),
                         getContext().getHostAddress()
                 )

@@ -4,6 +4,7 @@ package org.shiftone.jrat.provider.tree.ui.trace;
 import org.shiftone.jrat.provider.tree.ui.trace.children.ChildrenPanel;
 import org.shiftone.jrat.provider.tree.ui.trace.graph.TreeGraphComponent;
 import org.shiftone.jrat.provider.tree.ui.trace.stack.StackTableModel;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 import org.shiftone.jrat.util.Assert;
 

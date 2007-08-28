@@ -15,18 +15,18 @@ import java.util.List;
 
 
 /**
- * Class StackNode
+ * Class TreeNode
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class StackNode implements Externalizable {
+public class TreeNode implements Externalizable {
 
-    private static final Logger LOG = Logger.getLogger(StackNode.class);
+    private static final Logger LOG = Logger.getLogger(TreeNode.class);
     private static final long serialVersionUID = 1;
     protected MethodKey methodKey;
-    protected StackNode parent;
+    protected TreeNode parent;
     private Accumulator accumulator;
-    protected HashMap children = new HashMap(3);
+    protected HashMap children = new HashMap(5);
 
 
     public void writeExternal(ObjectOutput out) throws IOException {
@@ -43,7 +43,7 @@ public class StackNode implements Externalizable {
 
         // write the children
         for (int i = 0; i < childCount; i++) {
-            StackNode child = (StackNode) list.get(i);
+            TreeNode child = (TreeNode) list.get(i);
             child.writeExternal(out);
         }
     }
@@ -56,7 +56,7 @@ public class StackNode implements Externalizable {
         int childCount = in.readInt();
         for (int i = 0; i < childCount; i++) {
 
-            StackNode child = new StackNode();
+            TreeNode child = new TreeNode();
 
             child.readExternal(in);
 
@@ -66,7 +66,7 @@ public class StackNode implements Externalizable {
 
     }
 
-    public StackNode() {
+    public TreeNode() {
 
         // root node
         this.methodKey = null;
@@ -75,7 +75,7 @@ public class StackNode implements Externalizable {
     }
 
 
-    public StackNode(MethodKey methodKey, StackNode treeNode) {
+    public TreeNode(MethodKey methodKey, TreeNode treeNode) {
         this.methodKey = methodKey;
         this.parent = treeNode;
         this.accumulator = new Accumulator();
@@ -96,15 +96,15 @@ public class StackNode implements Externalizable {
     /**
      * Method gets <b>AND CREATES IF NEEDED</b> the requested tree node
      */
-    public StackNode getChild(MethodKey methodKey) {
+    public TreeNode getChild(MethodKey methodKey) {
 
-        StackNode treeNode = null;
+        TreeNode treeNode = null;
 
         synchronized (children) {
-            treeNode = (StackNode) children.get(methodKey);
+            treeNode = (TreeNode) children.get(methodKey);
 
             if (treeNode == null) {
-                treeNode = new StackNode(methodKey, this);
+                treeNode = new TreeNode(methodKey, this);
 
                 children.put(methodKey, treeNode);
             }
@@ -114,7 +114,7 @@ public class StackNode implements Externalizable {
     }
 
 
-    public final StackNode getParentNode() {
+    public final TreeNode getParentNode() {
         return parent;
     }
 
@@ -144,7 +144,7 @@ public class StackNode implements Externalizable {
         }
 
         for (int i = 0; i < list.size(); i++) {
-            StackNode treeNode = (StackNode) list.get(i);
+            TreeNode treeNode = (TreeNode) list.get(i);
 
             treeNode.reset();
         }

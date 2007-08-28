@@ -1,10 +1,10 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.StackNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.ClassHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ public class HierarchyModelBuilder {
 
     private final PackageHierarchyNode root = new PackageHierarchyNode("");
 
-    public HierarchyModelBuilder(StackNode rootNode, Set allMethodKeys) {
+    public HierarchyModelBuilder(StackTreeNode node, Set allMethodKeys) {
 
         // loop over the "all methods" set to initially populate the hierarchy
         Iterator iterator = allMethodKeys.iterator();
@@ -27,7 +27,7 @@ public class HierarchyModelBuilder {
         }
 
         // getPreferences stack "performance" data into hierarchy
-        initializeStats(rootNode);
+        initializeStats(node);
 
         // update coverage counts
         root.finalizeStatistics();
@@ -45,7 +45,7 @@ public class HierarchyModelBuilder {
     /**
      * recurse over all the stats data and populate it into the hirerchy nodes.
      */
-    private void initializeStats(StackNode input) {
+    private void initializeStats(StackTreeNode input) {
 
         if (!input.isRootNode()) {
             MethodKey methodKey = input.getMethodKey();
@@ -53,8 +53,8 @@ public class HierarchyModelBuilder {
             methodNode.addStatistics(input);
         }
 
-        for (Iterator iterator = input.getChildren().iterator(); iterator.hasNext();) {
-            initializeStats((StackNode) iterator.next());
+        for (int i = 0 ; i < input.getChildCount() ; i ++) {
+            initializeStats(input.getChildNodeAt(i));
         }
     }
 

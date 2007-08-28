@@ -1,7 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.trace;
 
 
-import org.shiftone.jrat.provider.tree.StackNode;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
@@ -30,10 +30,10 @@ public class TracePanel extends JPanel implements TreeSelectionListener, UIConst
     private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
     private NodeDetailPanel detailPanel;
 
-    public TracePanel(StackNode stackNode) {
+    public TracePanel(StackTreeNode rootNode) {
 
 
-        this.rootNode = new StackTreeNode(stackNode);
+        this.rootNode = rootNode;
         tree = new JTree(rootNode);
         detailPanel = new NodeDetailPanel();
         splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);

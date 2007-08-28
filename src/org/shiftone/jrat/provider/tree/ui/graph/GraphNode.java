@@ -1,7 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.graph;
 
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.StackNode;
+import org.shiftone.jrat.provider.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,8 @@ public class GraphNode {
         return methodKey;
     }
 
-    public void addStackNode(StackNode stackNode) {
-        stackNodes.add(stackNode);
+    public void addStackNode(TreeNode treeNode) {
+        stackNodes.add(treeNode);
     }
 
     public void addCalled(GraphNode graphNode) {

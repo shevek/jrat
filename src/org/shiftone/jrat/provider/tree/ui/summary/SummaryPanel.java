@@ -9,6 +9,7 @@ import org.shiftone.jrat.desktop.util.JXTableWatcher;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
+import java.util.Properties;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -20,6 +21,7 @@ public class SummaryPanel extends JPanel {
             SummaryTableModel summaryTableModel,
             long sessionStartMs,
             long sessionEndMs,
+            Properties systemProperties,
             String hostName,
             String hostAddress) {
 

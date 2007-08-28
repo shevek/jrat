@@ -2,7 +2,7 @@ package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.StackNode;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,8 +22,8 @@ public class MethodHierarchyNode extends HierarchyNode {
     }
 
 
-    public void addStatistics(StackNode input) {
-        Accumulator accumulator = input.getAccumulator();
+    public void addStatistics(StackTreeNode node) {
+        Accumulator accumulator = node.getAccumulator();
         totalExecutions += accumulator.getTotalEnters() ;
         totalDurationMs += accumulator.getTotalDuration();
     }

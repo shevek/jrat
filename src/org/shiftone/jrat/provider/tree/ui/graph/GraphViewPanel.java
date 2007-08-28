@@ -1,7 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.graph;
 
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.StackNode;
+import org.shiftone.jrat.provider.tree.TreeNode;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.*;
@@ -19,10 +19,10 @@ import java.util.Map;
  */
 public class GraphViewPanel extends JPanel implements ActionListener {
     private static final Logger LOG = Logger.getLogger(GraphViewPanel.class);
-    private StackNode rootNode;
+    private TreeNode rootNode;
     private JButton button = new JButton("push me");
 
-    public GraphViewPanel(StackNode rootNode) {
+    public GraphViewPanel(TreeNode rootNode) {
         this.rootNode = rootNode;
         addComponentListener(new ComponentListener());
         setLayout(new BorderLayout());
@@ -37,29 +37,29 @@ public class GraphViewPanel extends JPanel implements ActionListener {
         processTree(rootNode, map);
     }
 
-    private void processTree(StackNode node, Map nodes) {
+    private void processTree(TreeNode node, Map nodes) {
         List children = node.getChildren();
         for (int i = 0; i < children.size(); i++) {
-            StackNode child = (StackNode) children.get(i);
+            TreeNode child = (TreeNode) children.get(i);
             processNode(child, nodes);
             processTree(child, nodes);
         }
     }
 
-    private void processNode(StackNode stackNode, Map nodes) {
-        MethodKey methodKey = stackNode.getMethodKey();
+    private void processNode(TreeNode treeNode, Map nodes) {
+        MethodKey methodKey = treeNode.getMethodKey();
         GraphNode graphNode = getGraphNode(methodKey, nodes);
 
-        List children = stackNode.getChildren();
+        List children = treeNode.getChildren();
         for (int i = 0; i < children.size(); i++) {
-            StackNode child = (StackNode) children.get(i);
+            TreeNode child = (TreeNode) children.get(i);
             GraphNode childGraphNode = getGraphNode(child.getMethodKey(), nodes);
 
             graphNode.addCalled(childGraphNode);
             childGraphNode.addCalledBy(graphNode);
         }
 
-        graphNode.addStackNode(stackNode);
+        graphNode.addStackNode(treeNode);
     }
 
     private GraphNode getGraphNode(MethodKey methodKey, Map nodes) {
