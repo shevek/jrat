@@ -68,8 +68,6 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
 
         this.childArray = new StackTreeNode[c.size()];
 
-        Iterator childIterator = node.getChildren().iterator();
-
         for (int i = 0; i < childArray.length; i++) {
 
             TreeNode childNode = (TreeNode) c.get(i);
@@ -254,5 +252,5 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
         }
     }
 
-    ;
+
 }

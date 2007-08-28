@@ -78,6 +78,7 @@ public class SummaryTableModel extends AbstractTableModel {
         method.totalEnters += accumulator.getTotalEnters();
         method.totalExists += accumulator.getTotalExits();
         method.totalDuration += accumulator.getTotalDuration();
+        method.totalCallers ++;
     }
 
     private Method getMethod(MethodKey methodKey, Map cache) {
@@ -97,6 +98,7 @@ public class SummaryTableModel extends AbstractTableModel {
         private long totalEnters;
         private long totalExists;
         private long totalDuration;
+        private int totalCallers;
 
         public Method(MethodKey methodKey) {
             this.methodKey = methodKey;
