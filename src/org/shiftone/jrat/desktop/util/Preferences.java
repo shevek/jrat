@@ -27,14 +27,14 @@ public class Preferences implements Serializable {
     private Rectangle windowBounds;
     private File lastOpenedFile;
     private Map summaryTableVisibility;
+    private Map values;
 
-    public static synchronized Preferences getPreferences() {
+    public static synchronized Value value(String key) {
         if (instance == null) {
             instance = load();
         }
-        return instance;
+        return instance.getValue(key);
     }
-
 
     private static Preferences load() {
 
@@ -72,6 +72,12 @@ public class Preferences implements Serializable {
         return preferences;
     }
 
+    public Value getValue(String key) {
+        if (values == null) {
+            values = new HashMap();
+        }
+        return new Value(key);
+    }
 
     public void save() throws Exception {
 
@@ -142,4 +148,21 @@ public class Preferences implements Serializable {
     }
 
 
+
+
+    public class Value implements Serializable {
+        private static final long serialVersionUID = 1;
+        private final String key;
+
+        private Value(String key) {
+            this.key = key;
+        }
+
+        public Serializable get() {
+            return (Serializable)values.get(key);
+        }
+        public void set(Serializable value) {
+            values.put(key, value);
+        }
+    }
 }

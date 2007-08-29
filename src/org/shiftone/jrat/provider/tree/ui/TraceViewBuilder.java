@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
+public class TraceViewBuilder implements ViewBuilder { //, Externalizable {
 
     private static final long serialVersionUID = 1;
     private TreeNode root;
@@ -23,10 +23,10 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
     private String hostName;
     private String hostAddress;
 
-    public TreeViewBuilder() {
+    public TraceViewBuilder() {
     }
 
-    public TreeViewBuilder(TreeNode root, Set allMethodKeys,
+    public TraceViewBuilder(TreeNode root, Set allMethodKeys,
                            long sessionStartMs, long sessionEndMs,
                            Properties systemProperties,
                            String hostName, String hostAddress) {
@@ -48,8 +48,8 @@ public class TreeViewBuilder implements ViewBuilder { //, Externalizable {
 
     public JComponent buildView(ObjectInputStream input) throws Exception {
 
-        return new MainViewPanel(
-                new StackTreeNode(root),
+        return new TraceViewPanel(
+                new TraceTreeNode(root),
                 allMethodKeys,
                 sessionStartMs, sessionEndMs,
                 systemProperties,

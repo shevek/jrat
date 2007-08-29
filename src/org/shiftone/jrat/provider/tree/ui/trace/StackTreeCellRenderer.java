@@ -2,7 +2,7 @@ package org.shiftone.jrat.provider.tree.ui.trace;
 
 
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -24,14 +24,14 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
     private PercentColorLookup colorLookup = new PercentColorLookup();
     private static Icon ICON_ROOT = new DotIcon(8, Color.darkGray);
     private static Icon ICON_ROOT2 = new DotIcon(8, Color.lightGray);
-    private StackTreeNode treeNode = null;
+    private TraceTreeNode treeNode = null;
     private DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.#'%'");
     private DecimalFormat msDecimalFormat = new DecimalFormat("#,###,###.##'ms'");
 
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,
                                                   boolean leaf, int row, boolean hasFocus) {
 
-        this.treeNode = (StackTreeNode) value;
+        this.treeNode = (TraceTreeNode) value;
         this.hasFocus = hasFocus;
         this.selected = sel;
 

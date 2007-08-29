@@ -8,7 +8,7 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
 import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
 import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
-import org.shiftone.jrat.provider.tree.ui.TreeViewBuilder;
+import org.shiftone.jrat.provider.tree.ui.TraceViewBuilder;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -81,7 +81,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         LOG.info("writeOutputFile...");
 
         getContext().writeSerializable(fileName,
-                new TreeViewBuilder(
+                new TraceViewBuilder(
                         rootNode,
                         new HashSet(allMethodKeys), // copy to avoid sync issues
                         getContext().getStartTimeMs(),

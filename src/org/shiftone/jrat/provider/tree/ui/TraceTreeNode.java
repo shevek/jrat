@@ -16,9 +16,9 @@ import java.util.List;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class StackTreeNode implements javax.swing.tree.TreeNode {
+public class TraceTreeNode implements javax.swing.tree.TreeNode {
 
-    private static final Logger LOG = Logger.getLogger(StackTreeNode.class);
+    private static final Logger LOG = Logger.getLogger(TraceTreeNode.class);
 
     private final MethodKey methodKey;
     private final Accumulator accumulator;
@@ -27,8 +27,8 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
     private final long totalMethodDuration;
 
     private final int depth;
-    private final StackTreeNode[] childArray;
-    private final StackTreeNode parent;
+    private final TraceTreeNode[] childArray;
+    private final TraceTreeNode parent;
     private double pctOfAvgRootDuration;
     private double pctOfAvgParentDuration;
 
@@ -36,12 +36,12 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
     private int maxDepth;        // depth deepest child
 
 
-    public StackTreeNode(TreeNode node) {
+    public TraceTreeNode(TreeNode node) {
         this(node, 0, null, null);
     }
 
 
-    private StackTreeNode(TreeNode node, int depth, StackTreeNode parent, StackTreeNode root) {
+    private TraceTreeNode(TreeNode node, int depth, TraceTreeNode parent, TraceTreeNode root) {
 
         this.methodKey = node.getMethodKey();
         this.accumulator = node.getAccumulator();
@@ -71,13 +71,13 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
 
         List c = node.getChildren();  // <TreeNode>
 
-        this.childArray = new StackTreeNode[c.size()];
+        this.childArray = new TraceTreeNode[c.size()];
 
 
         for (int i = 0; i < childArray.length; i++) {
 
             TreeNode childNode = (TreeNode) c.get(i);
-            StackTreeNode childStackTreeNode = new StackTreeNode(childNode, depth + 1, this, root);
+            TraceTreeNode childStackTreeNode = new TraceTreeNode(childNode, depth + 1, this, root);
 
             totalChildren += (1 + childStackTreeNode.totalChildren);
             maxDepth = Math.max(maxDepth, 1 + childStackTreeNode.maxDepth);
@@ -239,7 +239,7 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
         return childArray[childIndex];
     }
 
-    public StackTreeNode getChildNodeAt(int childIndex) {
+    public TraceTreeNode getChildNodeAt(int childIndex) {
         return childArray[childIndex];
     }
 
@@ -252,7 +252,7 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
         return parent;
     }
 
-    public StackTreeNode getParentNode() {
+    public TraceTreeNode getParentNode() {
         return parent;
     }
 
@@ -277,8 +277,8 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
 
         public int compare(Object o1, Object o2) {
 
-            StackTreeNode stn1 = (StackTreeNode) o1;
-            StackTreeNode stn2 = (StackTreeNode) o2;
+            TraceTreeNode stn1 = (TraceTreeNode) o1;
+            TraceTreeNode stn2 = (TraceTreeNode) o2;
             int diff = stn1.totalChildren - stn2.totalChildren;
 
             return (diff == 0)

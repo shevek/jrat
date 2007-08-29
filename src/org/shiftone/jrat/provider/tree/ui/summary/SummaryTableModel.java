@@ -1,9 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui.summary;
 
-import org.shiftone.jrat.core.Accumulator;
-import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.desktop.util.ColumnInfo;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.*;

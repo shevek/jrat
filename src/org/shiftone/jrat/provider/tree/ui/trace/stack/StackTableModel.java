@@ -2,7 +2,7 @@ package org.shiftone.jrat.provider.tree.ui.trace.stack;
 
 
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.util.Percent;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -40,10 +40,10 @@ public class StackTableModel extends AbstractTableModel {
                     Percent.class, Percent.class
             };
 
-    public synchronized void setStackTreeNode(StackTreeNode root, StackTreeNode node) {
+    public synchronized void setStackTreeNode(TraceTreeNode root, TraceTreeNode node) {
 
         List newStack = new ArrayList();
-        StackTreeNode currNode = node;
+        TraceTreeNode currNode = node;
 
         while (currNode.getParent() != null) {
             newStack.add(currNode);
@@ -65,7 +65,7 @@ public class StackTableModel extends AbstractTableModel {
         if (newStack.isEmpty()) {
             rootTotalDuration = 0;
         } else {
-            StackTreeNode viewRoot = (StackTreeNode) newStack.get(newStack.size() - 1);
+            TraceTreeNode viewRoot = (TraceTreeNode) newStack.get(newStack.size() - 1);
 
             rootTotalDuration = viewRoot.getTotalDuration();
         }
@@ -103,7 +103,7 @@ public class StackTableModel extends AbstractTableModel {
 
     public Object getValueAt(int rowIndex, int columnIndex) {
 
-        StackTreeNode node = (StackTreeNode) stack.get(rowIndex);
+        TraceTreeNode node = (TraceTreeNode) stack.get(rowIndex);
         MethodKey methodKey = node.getMethodKey();
 
         if (methodKey == null) {
@@ -159,7 +159,7 @@ public class StackTableModel extends AbstractTableModel {
     }
 
 
-    public double getPctOfAvgRootDuration(StackTreeNode node) {
+    public double getPctOfAvgRootDuration(TraceTreeNode node) {
 
         return (rootTotalDuration > 0)
                 ? ((100.0 * node.getTotalDuration()) / rootTotalDuration)

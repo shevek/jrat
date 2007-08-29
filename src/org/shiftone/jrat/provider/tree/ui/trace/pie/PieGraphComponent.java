@@ -1,7 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.trace.pie;
 
 
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.provider.tree.ui.trace.PercentColorLookup;
 import org.shiftone.jrat.provider.tree.ui.trace.graph.BufferedJComponent;
 import org.shiftone.jrat.util.log.Logger;
@@ -15,10 +15,10 @@ import java.awt.*;
 public class PieGraphComponent extends BufferedJComponent {
 
     private static final Logger LOG = Logger.getLogger(PieGraphComponent.class);
-    private StackTreeNode root;
+    private TraceTreeNode root;
     private PercentColorLookup colorLookup = new PercentColorLookup();
 
-    public synchronized void setStackTreeNode(StackTreeNode root) {
+    public synchronized void setStackTreeNode(TraceTreeNode root) {
 
         this.root = root;
 
@@ -44,12 +44,12 @@ public class PieGraphComponent extends BufferedJComponent {
     }
 
 
-    public int getMaxEffectiveDepth(StackTreeNode node) {
+    public int getMaxEffectiveDepth(TraceTreeNode node) {
 
         int maxChildDepth = 0;
 
         for (int i = 0; i < node.getChildCount(); i++) {
-            StackTreeNode child = (StackTreeNode) node.getChildAt(i);
+            TraceTreeNode child = (TraceTreeNode) node.getChildAt(i);
 
             if (child.getTotalDuration() > 0) {
                 maxChildDepth = Math.max(maxChildDepth, getMaxEffectiveDepth(child));
@@ -60,7 +60,7 @@ public class PieGraphComponent extends BufferedJComponent {
     }
 
 
-    public void paintNode(Graphics2D g, StackTreeNode node, int x, int y, double radiusDelta, int min, int max,
+    public void paintNode(Graphics2D g, TraceTreeNode node, int x, int y, double radiusDelta, int min, int max,
                           int depth, int maxDepth) {
 
         if ((node == null) || (depth > maxDepth)) {
@@ -74,7 +74,7 @@ public class PieGraphComponent extends BufferedJComponent {
             int startDegrees = min;
 
             for (int i = 0; i < node.getChildCount(); i++) {
-                StackTreeNode child = (StackTreeNode) node.getChildAt(i);
+                TraceTreeNode child = (TraceTreeNode) node.getChildAt(i);
                 long partNanos = child.getTotalDuration();
                 int partDegrees = (int) ((partNanos * totalDegrees) / totalNanos);
 

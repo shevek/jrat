@@ -3,7 +3,7 @@ package org.shiftone.jrat.provider.tree.ui.summary;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.util.Percent;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -25,7 +25,7 @@ public class MethodSummary {
         this.methodKey = methodKey;
     }
 
-    public void addStatistics(StackTreeNode node) {
+    public void addStatistics(TraceTreeNode node) {
         Accumulator accumulator = node.getAccumulator();
         totalEnters += accumulator.getTotalEnters();
         totalExists += accumulator.getTotalExits();

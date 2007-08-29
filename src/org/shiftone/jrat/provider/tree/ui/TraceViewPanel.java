@@ -16,13 +16,13 @@ import java.util.Set;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class MainViewPanel extends JPanel {
+public class TraceViewPanel extends JPanel {
 
-    private static final Logger LOG = Logger.getLogger(MainViewPanel.class);
+    private static final Logger LOG = Logger.getLogger(TraceViewPanel.class);
     private final JTabbedPane tabbedPane = new JTabbedPane();
 
-    public MainViewPanel(
-            StackTreeNode node,
+    public TraceViewPanel(
+            TraceTreeNode node,
             Set allMethodKeys,
             long sessionStartMs,
             long sessionEndMs,

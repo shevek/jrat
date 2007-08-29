@@ -1,7 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.trace;
 
 
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.ui.UIConstants;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
@@ -24,13 +24,13 @@ public class TracePanel extends JPanel implements TreeSelectionListener, UIConst
     private static final long serialVersionUID = 1;
     private JSplitPane splitPane = null;
     private JTree tree = null;
-    private StackTreeNode rootNode = null;
+    private TraceTreeNode rootNode = null;
     private JMenuItem spawnRoot = new JMenuItem(MENU_TREE_SPAWN_ROOT);
     private JMenuItem statView = new JMenuItem(MENU_TREE_STAT_VIEW);
     private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
     private NodeDetailPanel detailPanel;
 
-    public TracePanel(StackTreeNode rootNode) {
+    public TracePanel(TraceTreeNode rootNode) {
 
 
         this.rootNode = rootNode;
@@ -77,13 +77,13 @@ public class TracePanel extends JPanel implements TreeSelectionListener, UIConst
     public void valueChanged(TreeSelectionEvent e) {
 
         TreePath treePath = e.getNewLeadSelectionPath();
-        StackTreeNode thisNode = null;
+        TraceTreeNode thisNode = null;
 
         if (treePath != null) {
-            thisNode = (StackTreeNode) treePath.getLastPathComponent();
+            thisNode = (TraceTreeNode) treePath.getLastPathComponent();
         }
 
-        final StackTreeNode finalThisNode = thisNode;
+        final TraceTreeNode finalThisNode = thisNode;
 
         SwingUtilities.invokeLater(new Runnable() {
 

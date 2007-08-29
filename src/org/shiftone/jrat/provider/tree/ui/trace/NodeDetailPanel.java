@@ -1,7 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.trace;
 
 
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.provider.tree.ui.trace.children.ChildrenPanel;
 import org.shiftone.jrat.provider.tree.ui.trace.graph.TreeGraphComponent;
 import org.shiftone.jrat.provider.tree.ui.trace.stack.StackTableModel;
@@ -15,8 +15,8 @@ import java.awt.*;
 
 public class NodeDetailPanel extends JPanel {
 
-    private StackTreeNode root;
-    private StackTreeNode node;
+    private TraceTreeNode root;
+    private TraceTreeNode node;
     private JTabbedPane tabbedPane = null;
     private StackTableModel stackTableModel = null;
     private JXTable stackTable = null;
@@ -55,7 +55,7 @@ public class NodeDetailPanel extends JPanel {
     }
 
 
-    public synchronized void setStackTreeNode(StackTreeNode root, StackTreeNode node) {
+    public synchronized void setStackTreeNode(TraceTreeNode root, TraceTreeNode node) {
 
         Assert.assertNotNull("root", root);
         Assert.assertNotNull("node", node);

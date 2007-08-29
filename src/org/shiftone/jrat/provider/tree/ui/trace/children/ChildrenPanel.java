@@ -7,7 +7,7 @@ import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.swing.EventTableModel;
 import ca.odell.glazedlists.swing.TableComparatorChooser;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.ui.util.NoOpComparator;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
@@ -38,11 +38,11 @@ public class ChildrenPanel extends JPanel {
 
     }
 
-    public synchronized void setStackTreeNode(StackTreeNode node) {
+    public synchronized void setStackTreeNode(TraceTreeNode node) {
 
         List newChildren = new ArrayList();
         for (int i = 0; i < node.getChildCount(); i++) {
-            StackTreeNode child = (StackTreeNode) node.getChildAt(i);
+            TraceTreeNode child = (TraceTreeNode) node.getChildAt(i);
             newChildren.add(child);
         }
 

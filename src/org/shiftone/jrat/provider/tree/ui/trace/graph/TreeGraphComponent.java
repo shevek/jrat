@@ -2,7 +2,7 @@ package org.shiftone.jrat.provider.tree.ui.trace.graph;
 
 
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.provider.tree.ui.trace.PercentColorLookup;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 public class TreeGraphComponent extends BufferedJComponent implements Scrollable {
 
     private static final Logger LOG = Logger.getLogger(TreeGraphComponent.class);
-    private StackTreeNode node;
+    private TraceTreeNode node;
     private Color LINE_COLOR = Color.LIGHT_GRAY;
     private PercentColorLookup colorLookup = new PercentColorLookup();
     private DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.#'%'");
@@ -47,7 +47,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
     /**
      * @todo clean up this ugly code
      */
-    private void paint(Graphics2D g, StackTreeNode node, int x, int row, int width) {
+    private void paint(Graphics2D g, TraceTreeNode node, int x, int row, int width) {
 
         g.setFont(font);
 
@@ -91,7 +91,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
             int childX = 0;
 
             for (int i = 0; i < node.getChildCount(); i++) {
-                StackTreeNode child = (StackTreeNode) node.getChildAt(i);
+                TraceTreeNode child = (TraceTreeNode) node.getChildAt(i);
                 long part = child.getTotalDuration();
                 int partWidth = (int) ((part * (long) width) / total);
 
@@ -108,7 +108,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
     }
 
 
-    public synchronized void setStackTreeNode(StackTreeNode node) {
+    public synchronized void setStackTreeNode(TraceTreeNode node) {
 
         //LOG.info("setStackTreeNode " + node + " " + node.getMaxDepth());
         this.node = node;

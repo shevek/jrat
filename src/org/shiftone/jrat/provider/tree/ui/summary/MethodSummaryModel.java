@@ -1,6 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui.summary;
 
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.core.MethodKey;
 
 import java.util.*;
@@ -13,12 +13,12 @@ public class MethodSummaryModel {
     private List methodList = new ArrayList();
     private Map methodMap = new HashMap();
 
-    public MethodSummaryModel(StackTreeNode node) {
+    public MethodSummaryModel(TraceTreeNode node) {
         process(node);
     }
 
 
-    private void process(StackTreeNode node) {
+    private void process(TraceTreeNode node) {
 
         if (!node.isRootNode()) {
             MethodKey methodKey = node.getMethodKey();
@@ -27,7 +27,7 @@ public class MethodSummaryModel {
         }
 
         for (int i = 0; i < node.getChildCount(); i++) {
-            StackTreeNode child = node.getChildNodeAt(i);
+            TraceTreeNode child = node.getChildNodeAt(i);
             process(child);
         }
     }
