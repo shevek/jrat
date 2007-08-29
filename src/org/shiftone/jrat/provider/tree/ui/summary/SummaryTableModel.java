@@ -15,15 +15,16 @@ import java.util.*;
 public class SummaryTableModel extends AbstractTableModel {
 
     public static final int TOTAL_METHOD_MS_INDEX = 12;
+    public static final int ERROR_RATE_INDEX = 6;
 
     public static final ColumnInfo[] COLUMNS = {
             new ColumnInfo("Package", false),// 0
             new ColumnInfo("Class"),// 1
-            new ColumnInfo("Method"),// 2
+            new ColumnInfo("Method Name"),// 2
             new ColumnInfo("Enters", false),// 3
             new ColumnInfo("Exits"),// 4
-            new ColumnInfo("Errors Thrown", false),// 5
-            new ColumnInfo("Errors Rate", false),// 6
+            new ColumnInfo("Exceptions Thrown", false),// 5
+            new ColumnInfo("Exception Rate", false),// 6
             new ColumnInfo("Uncompleted Calls", false),// 7
             new ColumnInfo("Total ms", false),// 8
             new ColumnInfo("Min Duration ms", false),// 9
@@ -69,7 +70,7 @@ public class SummaryTableModel extends AbstractTableModel {
             case 11:
                 return method.getAverageDuration();
             case 12:
-                return new Long(method.totalMethodDuration);
+                return method.getTotalMethodDuration();
             case 13:
                 return method.getAverageMethodDuration();
             case 14:
@@ -161,8 +162,19 @@ public class SummaryTableModel extends AbstractTableModel {
             this.methodKey = methodKey;
         }
 
+        /**
+         * It the method has been entered but not exited, then it is
+         * possible that the method time would end up negative.  I'm not
+         * showing it at all in this case to avoid confusion.
+         */
+        public Long getTotalMethodDuration() {
+            return totalEnters != totalExists
+                    ? null
+                    : new Long(totalMethodDuration);
+        }
+
         public Double getAverageMethodDuration() {
-            return totalExists == 0
+            return (totalExists == 0) || (totalEnters != totalExists)
                     ? null
                     : new Double((double) totalMethodDuration / (double) totalExists);
         }
@@ -172,7 +184,6 @@ public class SummaryTableModel extends AbstractTableModel {
                     ? null
                     : new Double((double) totalDuration / (double) totalExists);
         }
-
 
         public Percent getErrorRate() {
             return (totalExists == 0)

@@ -18,7 +18,7 @@ public class PercentTableCellRenderer extends DefaultTableCellRenderer {
     private static final Logger LOG = Logger.getLogger(PercentTableCellRenderer.class);
     private Object value = null;
     private DecimalFormat floatDecimalFormat = new DecimalFormat("#,##0.00");
-    private DecimalFormat doubleDecimalFormat = new DecimalFormat("#,##0.0000");
+    private DecimalFormat doubleDecimalFormat = new DecimalFormat("#,##0.00");
     private DecimalFormat longDecimalFormat = new DecimalFormat("###,###,###");
     private static final Color COLOR_XOR = Color.LIGHT_GRAY;
 

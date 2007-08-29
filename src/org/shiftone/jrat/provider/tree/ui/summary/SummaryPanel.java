@@ -7,6 +7,7 @@ import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.shiftone.jrat.desktop.util.JXTableWatcher;
 import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.provider.tree.ui.summary.action.SortAction;
+import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
@@ -18,7 +19,6 @@ import java.util.Properties;
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SummaryPanel extends JPanel {
-
 
     public SummaryPanel(
             SummaryTableModel summaryTableModel,
@@ -35,7 +35,6 @@ public class SummaryPanel extends JPanel {
         table.setColumnControlVisible(true);
 
         splitPane.setRightComponent(new JScrollPane(table));
-
 
         JXTableWatcher.initialize(
                 table,
@@ -60,7 +59,6 @@ public class SummaryPanel extends JPanel {
 
     }
 
-
     private JXTaskPane createTasksPane(JXTable table) {
 
         JXTaskPane pane = new JXTaskPane();
@@ -71,9 +69,18 @@ public class SummaryPanel extends JPanel {
                 table,
                 SummaryTableModel.TOTAL_METHOD_MS_INDEX)));
 
+        pane.add(new JXHyperlink(new SortAction(
+                "Sort by Exception Rate",
+                table,
+                SummaryTableModel.ERROR_RATE_INDEX)));
+
+        pane.add(new JXHyperlink(
+                new ResetColumnVisibilityAction(table,SummaryTableModel.COLUMNS)
+        ));
+
+
         return pane;
     }
-
 
     private JXTaskPane createSummaryPane(
             long sessionStartMs,
