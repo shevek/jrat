@@ -10,13 +10,13 @@ import java.awt.event.ActionEvent;
 /**
  * @author (jeff@shiftone.org) Jeff Drost
  */
-public class SortAction extends AbstractAction {
+public class SortAndShowColumnAction extends AbstractAction {
 
     private final JXTable table;
     private final int index;
 
 
-    public SortAction(String string, JXTable table, int index) {
+    public SortAndShowColumnAction(String string, JXTable table, int index) {
         super(string);
         this.table = table;
         this.index = index;

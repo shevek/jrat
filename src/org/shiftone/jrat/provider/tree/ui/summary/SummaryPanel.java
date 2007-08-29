@@ -6,7 +6,7 @@ import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.shiftone.jrat.desktop.util.JXTableWatcher;
 import org.shiftone.jrat.desktop.util.Preferences;
-import org.shiftone.jrat.provider.tree.ui.summary.action.SortAction;
+import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
@@ -64,12 +64,12 @@ public class SummaryPanel extends JPanel {
         JXTaskPane pane = new JXTaskPane();
         pane.setTitle("Tasks");
 
-        pane.add(new JXHyperlink(new SortAction(
+        pane.add(new JXHyperlink(new SortAndShowColumnAction(
                 "Sort by Total Method Duration",
                 table,
                 SummaryTableModel.TOTAL_METHOD_MS_INDEX)));
 
-        pane.add(new JXHyperlink(new SortAction(
+        pane.add(new JXHyperlink(new SortAndShowColumnAction(
                 "Sort by Exception Rate",
                 table,
                 SummaryTableModel.ERROR_RATE_INDEX)));
