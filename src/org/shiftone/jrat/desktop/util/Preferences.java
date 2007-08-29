@@ -5,8 +5,8 @@ import org.shiftone.jrat.util.log.Logger;
 
 import java.awt.*;
 import java.io.*;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class will be serialized to the user's home directory in order to persist UI state.

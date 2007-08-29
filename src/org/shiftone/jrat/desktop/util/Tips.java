@@ -1,15 +1,12 @@
 package org.shiftone.jrat.desktop.util;
 
+import org.jdesktop.swingx.JXTipOfTheDay;
 import org.jdesktop.swingx.tips.TipLoader;
 import org.jdesktop.swingx.tips.TipOfTheDayModel;
-import org.jdesktop.swingx.JXTipOfTheDay;
 import org.shiftone.jrat.util.io.ResourceUtil;
-import org.shiftone.jrat.desktop.Main;
 
-import java.util.Properties;
-import java.util.Random;
-import java.awt.event.ActionEvent;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost

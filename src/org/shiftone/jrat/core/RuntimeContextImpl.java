@@ -15,8 +15,8 @@ import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggerFactory;
 
 import java.io.*;
-import java.util.Properties;
 import java.net.InetAddress;
+import java.util.Properties;
 
 
 /**

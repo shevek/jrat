@@ -1,14 +1,11 @@
 package org.shiftone.jrat.desktop.action;
 
-import org.jdesktop.swingx.JXErrorPane;
-import org.jdesktop.swingx.error.ErrorInfo;
-import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.desktop.util.Errors;
+import org.shiftone.jrat.desktop.util.Preferences;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -27,7 +24,7 @@ public class WindowClosingAction extends WindowAdapter {
         try {
             preferences.save();
         } catch (final Exception e) {
-            Errors.showWarning(component, e, "Unable to Save Preferences");       
+            Errors.showWarning(component, e, "Unable to Save Preferences");
         }
         System.exit(1);
     }

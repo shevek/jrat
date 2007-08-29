@@ -1,10 +1,10 @@
 package org.shiftone.jrat.desktop.util;
 
-import org.jdesktop.swingx.error.ErrorInfo;
 import org.jdesktop.swingx.JXErrorPane;
+import org.jdesktop.swingx.error.ErrorInfo;
 
-import java.util.logging.Level;
 import java.awt.*;
+import java.util.logging.Level;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

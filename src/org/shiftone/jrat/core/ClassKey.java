@@ -2,8 +2,8 @@
 
 package org.shiftone.jrat.core;
 
-import java.util.*;
 import java.io.Serializable;
+import java.util.*;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

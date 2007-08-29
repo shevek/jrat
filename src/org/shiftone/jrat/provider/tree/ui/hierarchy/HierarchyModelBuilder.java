@@ -1,10 +1,10 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.ClassHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 
 import java.util.HashMap;
 import java.util.Iterator;

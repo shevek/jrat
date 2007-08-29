@@ -2,15 +2,15 @@ package org.shiftone.jrat.provider.tree.ui;
 
 import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyModelBuilder;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyPanel;
-import org.shiftone.jrat.provider.tree.ui.trace.TracePanel;
 import org.shiftone.jrat.provider.tree.ui.summary.SummaryPanel;
 import org.shiftone.jrat.provider.tree.ui.summary.SummaryTableModel;
+import org.shiftone.jrat.provider.tree.ui.trace.TracePanel;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Set;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

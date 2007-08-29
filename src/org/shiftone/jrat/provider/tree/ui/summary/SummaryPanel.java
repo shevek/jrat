@@ -1,10 +1,9 @@
 package org.shiftone.jrat.provider.tree.ui.summary;
 
+import org.jdesktop.swingx.JXHyperlink;
 import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
-import org.jdesktop.swingx.JXHyperlink;
-import org.jdesktop.swingx.table.TableColumnExt;
 import org.shiftone.jrat.desktop.util.JXTableWatcher;
 import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.provider.tree.ui.summary.action.SortAction;
@@ -12,7 +11,6 @@ import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.Date;
 import java.util.Properties;
 

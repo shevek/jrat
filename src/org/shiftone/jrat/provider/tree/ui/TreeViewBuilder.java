@@ -6,8 +6,8 @@ import org.shiftone.jrat.util.Assert;
 
 import javax.swing.*;
 import java.io.ObjectInputStream;
-import java.util.Set;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

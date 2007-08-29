@@ -4,10 +4,10 @@ import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.table.TableColumnExt;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
-import java.util.Map;
+import java.beans.PropertyChangeListener;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

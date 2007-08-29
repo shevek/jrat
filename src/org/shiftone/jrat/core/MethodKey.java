@@ -5,7 +5,8 @@ import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**

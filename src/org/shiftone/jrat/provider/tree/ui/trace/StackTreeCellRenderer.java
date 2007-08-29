@@ -2,9 +2,9 @@ package org.shiftone.jrat.provider.tree.ui.trace;
 
 
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
