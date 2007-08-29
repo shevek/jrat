@@ -131,12 +131,12 @@ public class Accumulator implements Serializable {
     }
 
 
-    public final Float getAverageDuration() {
+    public final Double getAverageDuration() {
 
-        Float average = null;
+        Double average = null;
 
         if (totalExits > 0) {
-            average = new Float((double) totalDuration / (double) totalExits);
+            average = new Double((double) totalDuration / (double) totalExits);
         }
 
         return average;

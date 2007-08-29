@@ -16,10 +16,9 @@ import java.util.Properties;
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class MainViewPanel extends JPanel {
+
     private static final Logger LOG = Logger.getLogger(MainViewPanel.class);
     private final JTabbedPane tabbedPane = new JTabbedPane();
-
-    private final Set allMethodKeys;
 
     public MainViewPanel(
             StackTreeNode node,
@@ -30,32 +29,26 @@ public class MainViewPanel extends JPanel {
             String hostName,
             String hostAddress) {
 
-
-        this.allMethodKeys = allMethodKeys;
-
         setLayout(new BorderLayout());
 
         //tabbedPane.setTabPlacement(JTabbedPane.BOTTOM);
 
         add(tabbedPane, BorderLayout.CENTER);
-
-        SummaryTableModel summaryTableModel = new SummaryTableModel(node);
-        tabbedPane.addTab("Summary", new SummaryPanel( summaryTableModel,
-                sessionStartMs,  sessionEndMs,
-                systemProperties,
-                hostName,  hostAddress));
-
-        tabbedPane.addTab("Trace", new TracePanel(node));
-
-        LOG.info("creating Hierarchy");
-
-
-        HierarchyModelBuilder builder = new HierarchyModelBuilder(node, allMethodKeys);
-        tabbedPane.addTab("Hierarchy", new HierarchyPanel(builder.getModel()));
-
-        //tabbedPane.addTab("Hierarchy", new GraphViewPanel(rootNode));
+        {
+            SummaryTableModel summaryTableModel = new SummaryTableModel(node);
+            tabbedPane.addTab("Summary", new SummaryPanel(summaryTableModel,
+                    sessionStartMs, sessionEndMs,
+                    systemProperties,
+                    hostName, hostAddress));
+        }
+        {
+            tabbedPane.addTab("Trace", new TracePanel(node));
+        }
+        {
+            HierarchyModelBuilder builder = new HierarchyModelBuilder(node, allMethodKeys);
+            tabbedPane.addTab("Hierarchy", new HierarchyPanel(builder.getModel()));
+        }
     }
-
 
 
 }

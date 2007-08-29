@@ -20,6 +20,9 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
     private final MethodKey methodKey;
     private final Accumulator accumulator;
 
+    private final Double averageMethodDuration;
+    private final long totalMethodDuration;
+
     private final int depth;
     private final StackTreeNode[] childArray;
     private final StackTreeNode parent;
@@ -43,7 +46,6 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
         this.parent = parent;
 
 
-
         if ((parent != null) && (getTotalExits() > 0)) {
 
             long parentTotalDuration = parent.getTotalDuration();
@@ -64,9 +66,10 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
 
         }
 
-        List c = node.getChildren();
+        List c = node.getChildren();  // <TreeNode>
 
         this.childArray = new StackTreeNode[c.size()];
+
 
         for (int i = 0; i < childArray.length; i++) {
 
@@ -80,6 +83,28 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
         }
 
         Arrays.sort(childArray, TotalChildrenComparator.INSTANCE);
+
+
+        { // total method duration
+
+            long duration = getTotalDuration();
+
+            for (int i = 0; i < childArray.length; i++) {
+                duration -= childArray[i].getTotalDuration();
+            }
+
+            totalMethodDuration = duration;
+        }
+
+        { // average method duration
+
+            if (getTotalExits() == 0) {
+                averageMethodDuration = null;
+            } else {
+                averageMethodDuration = new Double(totalMethodDuration / getTotalExits());
+            }
+        }
+
 
 //        this.rootAverageDurationNanos = (childOfRoot)
 //                ? this.averageDurationNanos
@@ -100,6 +125,7 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
     }
 
 
+
     public int getMaxDepth() {
         return maxDepth;
     }
@@ -116,6 +142,14 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
 
     public double getPctOfAvgRootDuration() {
         return pctOfAvgRootDuration;
+    }
+
+    public Double getAverageMethodDuration() {
+        return averageMethodDuration;
+    }
+
+    public long getTotalMethodDuration() {
+        return totalMethodDuration;
     }
 
     // ----------------------------------------------------------
@@ -137,7 +171,7 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
         return methodKey;
     }
 
-    public Float getAverageDuration() {
+    public Double getAverageDuration() {
         return accumulator.getAverageDuration();
     }
 
@@ -184,7 +218,7 @@ public class StackTreeNode implements javax.swing.tree.TreeNode {
 
         return (isRootNode())
                 ? "Root"
-                 : methodKey.getMethodName();
+                : methodKey.getMethodName();
     }
 
 

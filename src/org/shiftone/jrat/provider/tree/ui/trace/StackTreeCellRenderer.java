@@ -79,7 +79,7 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
             String methodName = methodKey.getMethodName();
 
             if (treeNode.getDepth() == 1) {
-                Float avg = treeNode.getAverageDuration();
+                Double avg = treeNode.getAverageDuration();
 
                 result = methodName + ((avg == null)
                         ? " - never exited"

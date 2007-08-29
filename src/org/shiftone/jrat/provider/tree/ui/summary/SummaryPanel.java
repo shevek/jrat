@@ -3,11 +3,16 @@ package org.shiftone.jrat.provider.tree.ui.summary;
 import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
+import org.jdesktop.swingx.JXHyperlink;
+import org.jdesktop.swingx.table.TableColumnExt;
 import org.shiftone.jrat.desktop.util.JXTableWatcher;
 import org.shiftone.jrat.desktop.util.Preferences;
+import org.shiftone.jrat.provider.tree.ui.summary.action.SortAction;
+import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.Date;
 import java.util.Properties;
 
@@ -26,26 +31,49 @@ public class SummaryPanel extends JPanel {
             String hostAddress) {
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        JXTaskPaneContainer taskPaneContainer = new JXTaskPaneContainer();
-
-        taskPaneContainer.add(createSummaryPane(sessionStartMs, sessionEndMs, systemProperties, hostName, hostAddress));
 
         JXTable table = new JXTable();
         table.setModel(summaryTableModel);
         table.setColumnControlVisible(true);
-        //   table.getColumnExt(3).setVisible(false);
-        //  table.getColumnExt(4).setVisible(false);
 
-        JXTableWatcher.initialize(table, Preferences.getPreferences().getSummaryTableVisibility());
-
-
-        splitPane.setLeftComponent(taskPaneContainer);
         splitPane.setRightComponent(new JScrollPane(table));
+
+
+        JXTableWatcher.initialize(
+                table,
+                Preferences.getPreferences().getSummaryTableVisibility(),
+                SummaryTableModel.getColumnInfos());
+
+        PercentTableCellRenderer.setDefaultRenderer(table);
+
+        {
+            JXTaskPaneContainer taskPaneContainer = new JXTaskPaneContainer();
+
+            taskPaneContainer.add(createTasksPane(table));
+            taskPaneContainer.add(createSummaryPane(sessionStartMs, sessionEndMs, systemProperties, hostName, hostAddress));
+
+            splitPane.setLeftComponent(taskPaneContainer);
+        }
+
 
         setLayout(new BorderLayout());
 
         add(splitPane, BorderLayout.CENTER);
 
+    }
+
+
+    private JXTaskPane createTasksPane(JXTable table) {
+
+        JXTaskPane pane = new JXTaskPane();
+        pane.setTitle("Tasks");
+
+        pane.add(new JXHyperlink(new SortAction(
+                "Sort by Total Method Duration",
+                table,
+                SummaryTableModel.TOTAL_METHOD_MS_INDEX)));
+
+        return pane;
     }
 
 
@@ -58,7 +86,7 @@ public class SummaryPanel extends JPanel {
         // honestly I don't feel great about this, but
         // laying this out is such a pain any other way (that I know).
         JXTaskPane summaryPane = new JXTaskPane();
-        summaryPane.setTitle("Session");
+        summaryPane.setTitle("Session Details");
 
         String userName = systemProperties.getProperty("user.name");
         String javaVersion = systemProperties.getProperty("java.version");
