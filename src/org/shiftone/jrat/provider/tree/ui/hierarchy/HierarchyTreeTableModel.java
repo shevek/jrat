@@ -2,7 +2,6 @@ package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
 import org.jdesktop.swingx.treetable.AbstractTreeTableModel;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.HierarchyNode;
-import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodSummaryHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
 import org.shiftone.jrat.util.Percent;
@@ -13,10 +12,10 @@ import org.shiftone.jrat.util.Percent;
 public class HierarchyTreeTableModel extends AbstractTreeTableModel {
 
     private static final String[] COLUMNS = {
-            "Class", "Methods", "Uncalled", "Coverage %", "Duration"
+            "Class", "Methods", "Uncalled", "Coverage %", "Duration", "Method Duration"
     };
     private static final Class[] COLUMN_TYPES = {
-            String.class, Integer.class, Integer.class,  Percent.class, Long.class
+            String.class, Integer.class, Integer.class,  Percent.class, Long.class, Long.class
     };
 
     private final PackageHierarchyNode root;
@@ -49,7 +48,10 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
             case 3:
                 return node.getCoverage();
             case 4:
-                return new Long(node.getTotalDurationMs());
+                return new Long(node.getTotalDuration());
+            case 5:
+                return node.getTotalMethodDuration();
+
         }
         return null;
     }

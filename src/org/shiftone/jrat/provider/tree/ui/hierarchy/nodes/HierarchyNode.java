@@ -25,14 +25,15 @@ public abstract class HierarchyNode {
 
     public abstract void finalizeStatistics();
 
-    public abstract long getTotalDurationMs();
+    public abstract long getTotalDuration();
 
     public abstract int getTotalMethods();
 
     public abstract int getExecutedMethods();
 
-    public Percent getCoverage() {
+    public abstract Long getTotalMethodDuration();
 
+    public Percent getCoverage() {
         return new Percent((double) getExecutedMethods() / (double) getTotalMethods() * 100.0);
     }
 

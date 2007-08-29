@@ -13,6 +13,7 @@ public class ClassHierarchyNode extends HierarchyNode {
 
     private int executedMethods;
     private long totalDurationMs;
+    private long totalMethodDuration;
 
     public ClassHierarchyNode(String name) {
         super(name);
@@ -21,10 +22,15 @@ public class ClassHierarchyNode extends HierarchyNode {
     public void finalizeStatistics() {
         for (Iterator i = childMethods.iterator(); i.hasNext();) {
             MethodHierarchyNode method = (MethodHierarchyNode) i.next();
-            totalDurationMs += method.getTotalDurationMs();
+            totalDurationMs += method.getTotalDuration();
 
             if (method.isExecuted()) {
                 executedMethods++;
+            }
+
+            Long tmd = method.getTotalMethodDuration();
+            if (tmd != null) {
+              totalMethodDuration += tmd.longValue();
             }
         }
     }
@@ -45,7 +51,11 @@ public class ClassHierarchyNode extends HierarchyNode {
         return executedMethods;
     }
 
-    public long getTotalDurationMs() {
+    public long getTotalDuration() {
         return totalDurationMs;
+    }
+
+    public Long getTotalMethodDuration() {
+        return new Long(totalMethodDuration);
     }
 }

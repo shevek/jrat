@@ -7,6 +7,7 @@ import org.shiftone.jrat.provider.tree.ui.trace.graph.TreeGraphComponent;
 import org.shiftone.jrat.provider.tree.ui.trace.stack.StackTableModel;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 import org.shiftone.jrat.util.Assert;
+import org.jdesktop.swingx.JXTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,15 +19,12 @@ public class NodeDetailPanel extends JPanel {
     private StackTreeNode node;
     private JTabbedPane tabbedPane = null;
     private StackTableModel stackTableModel = null;
-    private JTable stackTable = null;
-    // private ChildrenTableModel childrenTableModel = null;
-    // private JTable             childrenTable      = null;
+    private JXTable stackTable = null;
     private JLabel methodLabel;
     private TreeGraphComponent graphComponent;
 
     private ChildrenPanel childrenPanel;
 
-    // /private PieGraphComponent pieGraphComponent;
     public NodeDetailPanel() {
 
         tabbedPane = new JTabbedPane();
@@ -34,7 +32,9 @@ public class NodeDetailPanel extends JPanel {
 
         // ----- [ Stack ] -----
         stackTableModel = new StackTableModel();
-        stackTable = new JTable(stackTableModel);
+        stackTable = new JXTable(stackTableModel);
+        stackTable.setColumnControlVisible(true);
+        stackTable.setSortable(false);
 
         tabbedPane.add("Call Stack", new JScrollPane(stackTable));
 
@@ -69,7 +69,5 @@ public class NodeDetailPanel extends JPanel {
         stackTableModel.setStackTreeNode(root, node);
         graphComponent.setStackTreeNode(node);
         childrenPanel.setStackTreeNode(node);
-
-        // /pieGraphComponent.setStackTreeNode(node);
     }
 }

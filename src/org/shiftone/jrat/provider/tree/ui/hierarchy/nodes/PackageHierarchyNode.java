@@ -13,7 +13,8 @@ public class PackageHierarchyNode extends HierarchyNode {
     private List childClasses = new ArrayList();
     private int totalMethods;
     private int executedMethods;
-    private long totalDurationMs;
+    private long totalDuration;
+    private long totalMethodDuration;
 
     public PackageHierarchyNode(String name) {
         super(name);
@@ -36,7 +37,17 @@ public class PackageHierarchyNode extends HierarchyNode {
         node.finalizeStatistics();
         totalMethods += node.getTotalMethods();
         executedMethods += node.getExecutedMethods();
-        totalDurationMs += node.getTotalDurationMs();
+        totalDuration += node.getTotalDuration();
+
+        Long tmd = node.getTotalMethodDuration();
+        if (tmd != null) {
+        totalMethodDuration += tmd.longValue();
+        }
+    }
+
+
+    public Long getTotalMethodDuration() {
+        return new Long(totalMethodDuration);
     }
 
     public int getTotalMethods() {
@@ -47,8 +58,8 @@ public class PackageHierarchyNode extends HierarchyNode {
         return executedMethods;
     }
 
-    public long getTotalDurationMs() {
-        return totalDurationMs;
+    public long getTotalDuration() {
+        return totalDuration;
     }
 
     public List getChildren() {

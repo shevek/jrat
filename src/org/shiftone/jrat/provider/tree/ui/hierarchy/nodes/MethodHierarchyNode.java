@@ -22,11 +22,16 @@ public class MethodHierarchyNode extends HierarchyNode {
         // do nothing 
     }
 
+
+    public Long getTotalMethodDuration() {
+        return null;
+    }
+
     public boolean isExecuted() {
         return false;
     }
 
-    public long getTotalDurationMs() {
+    public long getTotalDuration() {
         return 0;
     }
 

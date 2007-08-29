@@ -26,6 +26,7 @@ public class HierarchyPanel extends JPanel {
         PercentTableCellRenderer.setDefaultRenderer(treeTable);
 
         treeTable.setTreeCellRenderer(new HierarchyTreeCellRenderer());
+        treeTable.setColumnControlVisible(true);
 
         header = new JXHeader("Hirarchy View",
                 "Execution is tracked at a method level, not at the line level.  " +
