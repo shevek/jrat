@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 /**
  * This class will be serialized to the user's home directory in order to persist UI state.
+ * Why not just use java.util.prefs.Preferences?  Cuz I'm lazy... and that thing ain't type safe.
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -20,6 +21,7 @@ public class Preferences implements Serializable {
     public static Preferences instance;
 
     private transient File file;
+    private boolean showTipsOnStartup = true;
     private int runCount;
     private long lastRunTime;
     private Rectangle windowBounds;
@@ -122,6 +124,14 @@ public class Preferences implements Serializable {
 
     public void setLastOpenedFile(File lastOpenedFile) {
         this.lastOpenedFile = lastOpenedFile;
+    }
+
+    public boolean isShowTipsOnStartup() {
+        return showTipsOnStartup;
+    }
+
+    public void setShowTipsOnStartup(boolean showTipsOnStartup) {
+        this.showTipsOnStartup = showTipsOnStartup;
     }
 
     public Map getSummaryTableVisibility() {

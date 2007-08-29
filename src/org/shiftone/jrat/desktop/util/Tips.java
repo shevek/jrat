@@ -7,8 +7,7 @@ import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.desktop.Main;
 
 import java.util.Properties;
-import java.util.prefs.*;
-import java.util.prefs.Preferences;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.*;
 
@@ -24,10 +23,22 @@ public class Tips {
     );
 
     private static final JXTipOfTheDay TOTD = new JXTipOfTheDay(MODEL);
-    private static final Preferences PREFERENCES = Preferences.userNodeForPackage(Tips.class);
 
     public static void show(Component parent, boolean force) {
-        TOTD.showDialog(parent, PREFERENCES, force);            
+        TOTD.setCurrentTip(new Random().nextInt(MODEL.getTipCount() - 1));
+        TOTD.showDialog(parent, new Choice(), force);
     }
 
+    private static class Choice implements JXTipOfTheDay.ShowOnStartupChoice {
+
+        private Preferences preferences = Preferences.getPreferences();
+
+        public void setShowingOnStartup(boolean showOnStartup) {
+             preferences.setShowTipsOnStartup(showOnStartup);
+        }
+
+        public boolean isShowingOnStartup() {
+            return preferences.isShowTipsOnStartup();
+        }
+    }
 }
