@@ -26,14 +26,6 @@ public class MethodSummaryHierarchyNode extends MethodHierarchyNode {
         return true;
     }
 
-    public void finalizeStatistics() {
-        // nothing to do
-    }
-
-    public int getTotalMethods() {
-        return 1;
-    }
-
     public int getExecutedMethods() {
         return 1;
     }

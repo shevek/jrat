@@ -32,6 +32,7 @@ public abstract class HierarchyNode {
     public abstract int getExecutedMethods();
 
     public Percent getCoverage() {
+
         return new Percent((double) getExecutedMethods() / (double) getTotalMethods() * 100.0);
     }
 

@@ -36,6 +36,8 @@ public class MainViewPanel extends JPanel {
 
         add(tabbedPane, BorderLayout.CENTER);
 
+        long start = System.currentTimeMillis();
+
         MethodSummaryModel methodSummaryModel = new MethodSummaryModel(node);
 
         {
@@ -52,6 +54,9 @@ public class MainViewPanel extends JPanel {
             HierarchyModelBuilder builder = new HierarchyModelBuilder(methodSummaryModel, allMethodKeys);
             tabbedPane.addTab("Hierarchy", new HierarchyPanel(builder.getModel()));
         }
+
+        LOG.info("loaded in " + (System.currentTimeMillis() - start) + " ms");
+
     }
 
 

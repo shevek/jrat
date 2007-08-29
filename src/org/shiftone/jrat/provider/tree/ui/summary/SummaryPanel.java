@@ -8,6 +8,7 @@ import org.shiftone.jrat.desktop.util.JXTableWatcher;
 import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
+import org.shiftone.jrat.provider.tree.ui.summary.action.AllColumnVisibilityAction;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
@@ -75,9 +76,12 @@ public class SummaryPanel extends JPanel {
                 SummaryTableModel.ERROR_RATE_INDEX)));
 
         pane.add(new JXHyperlink(
-                new ResetColumnVisibilityAction(table,SummaryTableModel.COLUMNS)
+                new ResetColumnVisibilityAction(table, SummaryTableModel.COLUMNS)
         ));
 
+        pane.add(new JXHyperlink(
+                new AllColumnVisibilityAction(table)
+        ));
 
         return pane;
     }
