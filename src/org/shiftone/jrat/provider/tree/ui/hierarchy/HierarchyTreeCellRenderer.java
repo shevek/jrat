@@ -2,8 +2,9 @@ package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
 import org.shiftone.jrat.desktop.util.Icons;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.ClassHierarchyNode;
-import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodSummaryHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -29,7 +30,7 @@ public class HierarchyTreeCellRenderer extends DefaultTreeCellRenderer {
 
             setIcon(CLASS);
 
-        } else if (value instanceof MethodHierarchyNode) {
+        } else if (value instanceof MethodHierarchyNode) {            
 
             setIcon(METHOD);
 

@@ -4,6 +4,7 @@ import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyModelBuilder;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyPanel;
 import org.shiftone.jrat.provider.tree.ui.summary.SummaryPanel;
 import org.shiftone.jrat.provider.tree.ui.summary.SummaryTableModel;
+import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
 import org.shiftone.jrat.provider.tree.ui.trace.TracePanel;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -34,8 +35,11 @@ public class MainViewPanel extends JPanel {
         //tabbedPane.setTabPlacement(JTabbedPane.BOTTOM);
 
         add(tabbedPane, BorderLayout.CENTER);
+
+        MethodSummaryModel methodSummaryModel = new MethodSummaryModel(node);
+
         {
-            SummaryTableModel summaryTableModel = new SummaryTableModel(node);
+            SummaryTableModel summaryTableModel = new SummaryTableModel(methodSummaryModel);
             tabbedPane.addTab("Summary", new SummaryPanel(summaryTableModel,
                     sessionStartMs, sessionEndMs,
                     systemProperties,
@@ -45,7 +49,7 @@ public class MainViewPanel extends JPanel {
             tabbedPane.addTab("Trace", new TracePanel(node));
         }
         {
-            HierarchyModelBuilder builder = new HierarchyModelBuilder(node, allMethodKeys);
+            HierarchyModelBuilder builder = new HierarchyModelBuilder(methodSummaryModel, allMethodKeys);
             tabbedPane.addTab("Hierarchy", new HierarchyPanel(builder.getModel()));
         }
     }
