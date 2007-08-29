@@ -22,7 +22,7 @@ public class Accumulator implements Serializable {
     private long totalErrors = 0;
     private long totalDuration = 0;    // used for mean
     private long sumOfSquares = 0;    // used for std dev
-    private long maxDuration = 0;
+    private long maxDuration = Long.MIN_VALUE;
     private long minDuration = Long.MAX_VALUE;
     private int concurThreads = 0;
     private int maxConcurrentThreads = 0;
@@ -222,68 +222,6 @@ public class Accumulator implements Serializable {
 //        return maxConcurrentThreads;
 //    }
 
-//
-//    public static String toCSV(Accumulator acc) {
-//
-//        StringBuffer sb = new StringBuffer(100);
-//
-//        sb.append(acc.totalEnters);         // 0
-//        sb.append(',');
-//        sb.append(acc.totalExits);          // 1
-//        sb.append(',');
-//        sb.append(acc.totalErrors);         // 2
-//        sb.append(',');
-//        sb.append(acc.totalDuration);       // 3
-//        sb.append(',');
-//        sb.append(acc.sumOfSquares);    // 4
-//        sb.append(',');
-//        sb.append(acc.maxConcurrentThreads);    // 5
-//
-//        if (acc.totalExits != 0) {
-//            sb.append(',');
-//            sb.append(acc.maxDuration);    // 6
-//            sb.append(',');
-//            sb.append(acc.minDuration);    // 7
-//        }
-//
-//        return sb.toString();
-//    }
-
-//
-//    public String toString() {
-//        return "Accumulator[" + toCSV(this) + "]";
-//    }
-
-
-    public static Accumulator fromCSV(String csv, Accumulator acc) {
-
-        String[] tokens = StringUtil.tokenize(csv, ",", false);
-
-        if ((tokens.length != 6) && (tokens.length != 8)) {
-            throw new JRatException("accumulator CSV must contain 6 or 8 tokens : " + tokens.length + " in " + csv);
-        }
-
-        if (tokens.length >= 6) {
-            acc.totalEnters = Long.parseLong(tokens[0]);
-            acc.totalExits = Long.parseLong(tokens[1]);
-            acc.totalErrors = Long.parseLong(tokens[2]);
-            acc.totalDuration = Long.parseLong(tokens[3]);
-            acc.sumOfSquares = Long.parseLong(tokens[4]);
-            acc.maxConcurrentThreads = Integer.parseInt(tokens[5]);
-        }
-
-        if (tokens.length == 8) {
-            acc.maxDuration = Long.parseLong(tokens[6]);
-            acc.minDuration = Long.parseLong(tokens[7]);
-        }
-
-        return acc;
-    }
-
-
-    public static Accumulator fromCSV(String csv) {
-        return fromCSV(csv, new Accumulator());
-    }
 
 
 }

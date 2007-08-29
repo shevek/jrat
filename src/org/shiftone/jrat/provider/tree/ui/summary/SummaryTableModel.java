@@ -4,6 +4,7 @@ import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.desktop.util.ColumnInfo;
 import org.shiftone.jrat.provider.tree.ui.StackTreeNode;
+import org.shiftone.jrat.util.Percent;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.*;
@@ -13,7 +14,7 @@ import java.util.*;
  */
 public class SummaryTableModel extends AbstractTableModel {
 
-    public static final int TOTAL_METHOD_MS_INDEX = 8;
+    public static final int TOTAL_METHOD_MS_INDEX = 12;
 
     public static final ColumnInfo[] COLUMNS = {
             new ColumnInfo("Package", false),// 0
@@ -21,12 +22,16 @@ public class SummaryTableModel extends AbstractTableModel {
             new ColumnInfo("Method"),// 2
             new ColumnInfo("Enters", false),// 3
             new ColumnInfo("Exits"),// 4
-            new ColumnInfo("Uncompleted Calls", false),// 5
-            new ColumnInfo("Total ms", false),// 6
-            new ColumnInfo("Average ms", false),// 7
-            new ColumnInfo("Total Method ms"),// 8
-            new ColumnInfo("Average Method ms"),// 9
-            new ColumnInfo("Total Callers", false),// 10
+            new ColumnInfo("Errors Thrown", false),// 5
+            new ColumnInfo("Errors Rate", false),// 6
+            new ColumnInfo("Uncompleted Calls", false),// 7
+            new ColumnInfo("Total ms", false),// 8
+            new ColumnInfo("Min Duration ms", false),// 9
+            new ColumnInfo("Max Duration ms", false),// 10
+            new ColumnInfo("Average ms", false),// 11
+            new ColumnInfo("Total Method ms"),// 12
+            new ColumnInfo("Average Method ms"),// 13
+            new ColumnInfo("Total Callers", false),// 14
     };
 
     private List methodList = new ArrayList();
@@ -50,16 +55,24 @@ public class SummaryTableModel extends AbstractTableModel {
             case 4:
                 return new Long(method.totalExists);
             case 5:
-                return new Long(method.totalEnters - method.totalExists);
+                return new Long(method.totalErrors);
             case 6:
-                return new Long(method.totalDuration);
+                return method.getErrorRate();
             case 7:
-                return method.getAverageDuration();
+                return new Long(method.totalEnters - method.totalExists);
             case 8:
-                return new Long(method.totalMethodDuration);
+                return new Long(method.totalDuration);
             case 9:
-                return method.getAverageMethodDuration();
+                return method.minDuration == Long.MAX_VALUE ? null : new Long(method.minDuration);
             case 10:
+                return method.maxDuration == Long.MIN_VALUE ? null : new Long(method.maxDuration);
+            case 11:
+                return method.getAverageDuration();
+            case 12:
+                return new Long(method.totalMethodDuration);
+            case 13:
+                return method.getAverageMethodDuration();
+            case 14:
                 return new Integer(method.totalCallers);
         }
         throw new IllegalArgumentException("columnIndex = " + columnIndex);
@@ -108,11 +121,15 @@ public class SummaryTableModel extends AbstractTableModel {
         Accumulator accumulator = node.getAccumulator();
         method.totalEnters += accumulator.getTotalEnters();
         method.totalExists += accumulator.getTotalExits();
+        method.totalErrors += accumulator.getTotalErrors();
+        if (method.totalExists > 0) {
+            // if the node has not been existed, then the min and max times
+            // will only have the MAX_VALUE and MIN_VALUE.
+            method.minDuration = Math.min(method.minDuration, accumulator.getMinDuration());
+            method.maxDuration = Math.max(method.maxDuration, accumulator.getMaxDuration());
+        }
         method.totalDuration += accumulator.getTotalDuration();
-
         method.totalMethodDuration += node.getTotalMethodDuration();
-
-
         method.totalCallers++;
     }
 
@@ -132,6 +149,9 @@ public class SummaryTableModel extends AbstractTableModel {
         private final MethodKey methodKey;
         private long totalEnters;
         private long totalExists;
+        private long totalErrors;
+        private long minDuration = Long.MAX_VALUE;
+        private long maxDuration = Long.MIN_VALUE;
         private long totalDuration;
         private long totalMethodDuration;
         private int totalCallers;
@@ -154,6 +174,11 @@ public class SummaryTableModel extends AbstractTableModel {
         }
 
 
+        public Percent getErrorRate() {
+            return (totalExists == 0)
+                    ? null
+                    : new Percent(((double) totalErrors * 100.0) / (double) totalExists);
+        }
     }
 
 }
