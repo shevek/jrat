@@ -30,8 +30,4 @@ public class Tips {
         TOTD.showDialog(parent, PREFERENCES, force);            
     }
 
-
-
-
-    //TipLoader.load()
 }
