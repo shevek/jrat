@@ -1,13 +1,11 @@
 package org.shiftone.jrat.desktop;
 
 import org.jdesktop.swingx.JXStatusBar;
-import org.shiftone.jrat.desktop.action.WindowClosingAction;
 import org.shiftone.jrat.desktop.action.file.*;
 import org.shiftone.jrat.desktop.action.help.AboutAction;
 import org.shiftone.jrat.desktop.action.help.DocsAction;
 import org.shiftone.jrat.desktop.action.help.LicenseAction;
 import org.shiftone.jrat.desktop.action.help.TipsAction;
-import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.*;
@@ -23,7 +21,7 @@ import java.awt.event.ContainerListener;
 public class DesktopFrame extends JFrame {
 
     private static final Logger LOG = Logger.getLogger(DesktopFrame.class);
-    private final Preferences preferences;
+
     private JXStatusBar statusBar = new JXStatusBar();
     private JTabbedPane tabbedPane = new JTabbedPane();
     private CloseAction closeAction = new CloseAction(tabbedPane);
@@ -34,13 +32,13 @@ public class DesktopFrame extends JFrame {
 
         super("JRat Desktop");
 
-        preferences = Preferences.getPreferences();
-        preferences.setLastRunTime(System.currentTimeMillis());
-        preferences.incrementRunCount();
 
-        addWindowListener(new WindowClosingAction(this, preferences));
+        DesktopPreferences.setLastRunTime(System.currentTimeMillis());
+        DesktopPreferences.incrementRunCount();
 
-        Rectangle windowBounds = preferences.getWindowBounds();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        Rectangle windowBounds = DesktopPreferences.getWindowBounds();
 
         if (windowBounds == null) {
             Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -122,9 +120,6 @@ public class DesktopFrame extends JFrame {
     }
 
 
-    public Preferences getPreferences() {
-        return preferences;
-    }
 
     public View createView(final String title, JComponent component) {
         final View view = new View();
@@ -146,11 +141,11 @@ public class DesktopFrame extends JFrame {
     private class ComponentListener extends ComponentAdapter {
 
         public void componentResized(ComponentEvent e) {
-            preferences.setWindowBounds(getBounds());
+            DesktopPreferences.setWindowBounds(getBounds());
         }
 
         public void componentMoved(ComponentEvent e) {
-            preferences.setWindowBounds(getBounds());
+            DesktopPreferences.setWindowBounds(getBounds());
         }
     }
 

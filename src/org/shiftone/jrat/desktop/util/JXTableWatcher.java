@@ -8,26 +8,28 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.Map;
+import java.util.prefs.Preferences;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class JXTableWatcher {
 
-     private static final Logger LOG = Logger.getLogger(JXTableWatcher.class);
+    private static final Logger LOG = Logger.getLogger(JXTableWatcher.class);
 
-    public static void initialize(JXTable table, Map visiblity, List columnInfos) {
+    public static void initialize(JXTable table, Preferences preferences, List columnInfos) {
 
         List columns = table.getColumns(true);
 
         for (int i = 0; i < columns.size(); i ++) {
             TableColumnExt columnExt = (TableColumnExt)columns.get(i);
-            Boolean visible = (Boolean) visiblity.get(new Integer(i)); // get saved visible
-            columnExt.addPropertyChangeListener(new VisibleListener(visiblity, i)); // watch for changes
+            String key  = "visible." + i;
+            String visible = preferences.get(key, null);
+            columnExt.addPropertyChangeListener(new VisibleListener(preferences, key)); // watch for changes
 
             if (visible != null) {
 
-                columnExt.setVisible(visible.booleanValue()); // set saved visible
+                columnExt.setVisible(Boolean.parseBoolean(visible)); // set saved visible
 
             } else  if (columnInfos.size() > i) {
 
@@ -44,18 +46,18 @@ public class JXTableWatcher {
      * when visibility changes.. record that to the map
      */
     private static class VisibleListener implements PropertyChangeListener {
-        private final Map visiblity;
-        private final int index;
+        private final Preferences preferences;
+        private final String key;
 
-        public VisibleListener(Map visiblity, int index) {
-            this.visiblity = visiblity;
-            this.index = index;
+        public VisibleListener(Preferences preferences, String key) {
+            this.preferences = preferences;
+            this.key = key;
         }
 
         public void propertyChange(PropertyChangeEvent evt) {
             if ("visible".equals(evt.getPropertyName())) {
-                LOG.info("propertyChange " + index + " " + evt.getNewValue());
-                visiblity.put(new Integer(index), evt.getNewValue());
+                LOG.info("propertyChange " + key + " " + evt.getNewValue());
+                preferences.put(key, evt.getNewValue().toString());
             }
         }
     }

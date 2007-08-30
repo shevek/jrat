@@ -2,8 +2,8 @@ package org.shiftone.jrat.desktop.action.file;
 
 import org.shiftone.jrat.core.spi.ViewBuilder;
 import org.shiftone.jrat.desktop.DesktopFrame;
+import org.shiftone.jrat.desktop.DesktopPreferences;
 import org.shiftone.jrat.desktop.util.Errors;
-import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -23,25 +23,23 @@ public class OpenAction extends AbstractAction {
 
     private static final Logger LOG = Logger.getLogger(OpenAction.class);
     private final DesktopFrame desktopFrame;
-    private final Preferences preferences;
 
 
     public OpenAction(DesktopFrame desktopFrame) {
         super("Open");
 
         this.desktopFrame = desktopFrame;
-        this.preferences = desktopFrame.getPreferences();
-
         putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
     }
 
     private File getCurrentDirectory() {
-        File file = preferences.getLastOpenedFile();
-        return (file != null) ? getParent(file) : new File("");
+        File file = DesktopPreferences.getLastOpenedFile();
+
+        return (file != null) ? IOUtil.getNearestExistingParent(file) : new File("");
     }
 
     private File getSelectedFile() {
-        File file = preferences.getLastOpenedFile();
+        File file = DesktopPreferences.getLastOpenedFile();
         return (file != null && file.exists()) ? file : null;
     }
 
@@ -79,7 +77,7 @@ public class OpenAction extends AbstractAction {
     }
 
     private void openFile(File file) {
-        preferences.setLastOpenedFile(file);
+        DesktopPreferences.setLastOpenedFile(file);
         new Thread(new OpenRunnable(file)).start();
     }
 

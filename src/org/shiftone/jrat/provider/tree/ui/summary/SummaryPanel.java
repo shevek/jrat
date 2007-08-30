@@ -5,7 +5,6 @@ import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.shiftone.jrat.desktop.util.JXTableWatcher;
-import org.shiftone.jrat.desktop.util.Preferences;
 import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.AllColumnVisibilityAction;
@@ -15,6 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
 import java.util.Properties;
+import java.util.prefs.Preferences;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -39,7 +39,7 @@ public class SummaryPanel extends JPanel {
 
         JXTableWatcher.initialize(
                 table,
-                Preferences.getPreferences().getSummaryTableVisibility(),
+                Preferences.userNodeForPackage(SummaryPanel.class).node("columns"),
                 SummaryTableModel.getColumnInfos());
 
         PercentTableCellRenderer.setDefaultRenderer(table);

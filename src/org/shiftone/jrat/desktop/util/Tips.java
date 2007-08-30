@@ -4,6 +4,7 @@ import org.jdesktop.swingx.JXTipOfTheDay;
 import org.jdesktop.swingx.tips.TipLoader;
 import org.jdesktop.swingx.tips.TipOfTheDayModel;
 import org.shiftone.jrat.util.io.ResourceUtil;
+import org.shiftone.jrat.desktop.DesktopPreferences;
 
 import java.awt.*;
 import java.util.Random;
@@ -28,14 +29,12 @@ public class Tips {
 
     private static class Choice implements JXTipOfTheDay.ShowOnStartupChoice {
 
-        private Preferences preferences = Preferences.getPreferences();
-
         public void setShowingOnStartup(boolean showOnStartup) {
-             preferences.setShowTipsOnStartup(showOnStartup);
+             DesktopPreferences.setShowTipsOnStartup(showOnStartup);
         }
 
         public boolean isShowingOnStartup() {
-            return preferences.isShowTipsOnStartup();
+            return DesktopPreferences.isShowTipsOnStartup();
         }
     }
 }
