@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.util.zip.GZIPInputStream;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -32,7 +33,7 @@ public class OpenOutputFileRunnable2 implements Runnable {
 
             InputStream inputStream = IOUtil.openInputStream(file);
 
-            // inputStream = new GZIPInputStream(inputStream);
+            inputStream = new GZIPInputStream(inputStream);
 
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
