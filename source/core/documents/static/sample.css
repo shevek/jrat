@@ -2,8 +2,8 @@
 body {
 	text-align:center;
 	background:#fff;	
-	background-color:#555;	
-	background: url( 'bg2.jpg' );
+	background-color:#444;	
+	#background: url( 'bg2.jpg' );
     font-family:  verdana, Trebuchet MS, sans-serif;
 }
 
