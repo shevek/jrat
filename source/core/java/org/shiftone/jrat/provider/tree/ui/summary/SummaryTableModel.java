@@ -1,10 +1,9 @@
 package org.shiftone.jrat.provider.tree.ui.summary;
 
-import org.shiftone.jrat.desktop.util.ColumnInfo;
 import org.shiftone.jrat.desktop.util.Table;
 
 import javax.swing.table.AbstractTableModel;
-import java.util.*;
+import java.util.List;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -20,10 +19,10 @@ public class SummaryTableModel extends AbstractTableModel {
     public static final Table.Column EXITS = TABLE.column("Exits");
     public static final Table.Column EXCEPTIONS = TABLE.column("Exceptions Thrown", false);
     public static final Table.Column EXCEPTION_RATE = TABLE.column("Exception Rate", false);
-    public static final Table.Column UNCOMPLETED = TABLE.column("Uncompleted Calls");
+    public static final Table.Column UNCOMPLETED = TABLE.column("Uncompleted Calls", false);
     public static final Table.Column TOTAL = TABLE.column("Total ms");
-    public static final Table.Column MIN = TABLE.column("Min ms");
-    public static final Table.Column MAX = TABLE.column("Max ms");
+    public static final Table.Column MIN = TABLE.column("Min ms", false);
+    public static final Table.Column MAX = TABLE.column("Max ms", false);
     public static final Table.Column AVERAGE = TABLE.column("Average ms");
     public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
     public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");
@@ -47,6 +46,9 @@ public class SummaryTableModel extends AbstractTableModel {
         }
         if (columnIndex == METHOD.getIndex()) {
             return method.getMethodKey().getShortMethodDescription();
+        }
+        if (columnIndex == SIGNATURE.getIndex()) {
+            return method.getMethodKey().getSig().getShortText();
         }
         if (columnIndex == ENTERS.getIndex()) {
             return new Long(method.getTotalEnters());
