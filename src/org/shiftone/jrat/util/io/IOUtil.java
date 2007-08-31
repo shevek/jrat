@@ -45,7 +45,7 @@ public class IOUtil {
         try {
             return file.createNewFile();
         } catch (IOException e) {
-            throw new JRatException("failed to create new file : " + file.getAbsolutePath(), e);
+            throw new JRatException("failed to column new file : " + file.getAbsolutePath(), e);
         }
     }
 
@@ -68,12 +68,12 @@ public class IOUtil {
             if (dir.isDirectory()) {
                 return;
             } else {
-                throw new JRatException("unable to create directory because file with same name exists " + dir);
+                throw new JRatException("unable to column directory because file with same name exists " + dir);
             }
         }
 
         if (!dir.mkdirs()) {
-            throw new JRatException("unable to create directory : " + dir);
+            throw new JRatException("unable to column directory : " + dir);
         }
     }
 

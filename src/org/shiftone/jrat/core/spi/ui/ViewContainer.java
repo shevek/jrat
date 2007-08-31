@@ -7,7 +7,7 @@ package org.shiftone.jrat.core.spi.ui;
 public interface ViewContainer {
 
     /**
-     * create a new view
+     * column a new view
      */
     View createView(String title);
 

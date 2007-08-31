@@ -4,6 +4,7 @@ import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.table.TableColumnExt;
 import org.shiftone.jrat.util.log.Logger;
 
+import javax.swing.table.TableColumn;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
@@ -17,7 +18,7 @@ public class JXTableWatcher {
 
     private static final Logger LOG = Logger.getLogger(JXTableWatcher.class);
 
-    public static void initialize(JXTable table, Preferences preferences, List columnInfos) {
+    public static void initialize(JXTable table, Preferences preferences, List tableColumns) {
 
         List columns = table.getColumns(true);
 
@@ -31,10 +32,10 @@ public class JXTableWatcher {
 
                 columnExt.setVisible(Boolean.parseBoolean(visible)); // set saved visible
 
-            } else  if (columnInfos.size() > i) {
+            } else  if (tableColumns.size() > i) {
 
-                ColumnInfo columnInfo = (ColumnInfo)columnInfos.get(i);
-                columnExt.setVisible(columnInfo.isDefaultVisible());
+                Table.Column tableColumn = (Table.Column)tableColumns.get(i);
+                columnExt.setVisible(tableColumn.isDefaultVisible());
 
             }
 
@@ -56,7 +57,7 @@ public class JXTableWatcher {
 
         public void propertyChange(PropertyChangeEvent evt) {
             if ("visible".equals(evt.getPropertyName())) {
-                LOG.info("propertyChange " + key + " " + evt.getNewValue());
+                //LOG.info("propertyChange " + key + " " + evt.getNewValue());
                 preferences.put(key, evt.getNewValue().toString());
             }
         }

@@ -40,7 +40,7 @@ public class SummaryPanel extends JPanel {
         JXTableWatcher.initialize(
                 table,
                 Preferences.userNodeForPackage(SummaryPanel.class).node("columns"),
-                SummaryTableModel.getColumnInfos());
+                SummaryTableModel.getColumns());
 
         PercentTableCellRenderer.setDefaultRenderer(table);
 
@@ -68,15 +68,15 @@ public class SummaryPanel extends JPanel {
         pane.add(new JXHyperlink(new SortAndShowColumnAction(
                 "Sort by Total Method Duration",
                 table,
-                SummaryTableModel.TOTAL_METHOD_MS_INDEX)));
+                SummaryTableModel.TOTAL_METHOD)));
 
         pane.add(new JXHyperlink(new SortAndShowColumnAction(
                 "Sort by Exception Rate",
                 table,
-                SummaryTableModel.ERROR_RATE_INDEX)));
+                SummaryTableModel.EXCEPTION_RATE)));
 
         pane.add(new JXHyperlink(
-                new ResetColumnVisibilityAction(table, SummaryTableModel.COLUMNS)
+                new ResetColumnVisibilityAction(table, SummaryTableModel.getColumns())
         ));
 
         pane.add(new JXHyperlink(

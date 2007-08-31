@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.IOException;
 import java.util.zip.GZIPInputStream;
 
 
@@ -98,7 +99,9 @@ public class OpenAction extends AbstractAction {
             try {
                 desktopFrame.waitCursor();
                 inputStream = IOUtil.openInputStream(file);
+
                 inputStream = new GZIPInputStream(inputStream);
+
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
                 LOG.info("reading : " + file);

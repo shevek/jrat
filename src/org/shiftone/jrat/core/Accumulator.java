@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core;
 
 
-import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.TimeUnit;
 
@@ -65,7 +64,7 @@ public class Accumulator implements Serializable {
 
 
     /**
-     * this method takes two Accumulators and smashes them together to create a
+     * this method takes two Accumulators and smashes them together to column a
      * third.
      */
     public void combine(Accumulator accumulator) {

@@ -54,7 +54,7 @@ public class ServerJmxRegistry implements JmxRegistry {
 
         if (urlText != null) {
 
-            // create a URL
+            // column a URL
             JMXServiceURL url = new JMXServiceURL(urlText);
 
             LOG.info("Binding JMXConnectorServer to RMI jmx.");

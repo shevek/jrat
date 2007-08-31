@@ -11,8 +11,6 @@ import java.awt.event.KeyEvent;
  */
 public class ExitAction extends AbstractAction {
 
-    private static final Logger LOG = Logger.getLogger(ExitAction.class);
-
     public ExitAction() {
         super("Exit");
         putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_X));

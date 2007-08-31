@@ -165,7 +165,7 @@ public class InjectCopyTask extends Copy {
 
             if (!d.exists()) {
                 if (!d.mkdirs()) {
-                    log("Unable to create directory " + d.getAbsolutePath(), Project.MSG_ERR);
+                    log("Unable to column directory " + d.getAbsolutePath(), Project.MSG_ERR);
                 } else {
                     count++;
                 }

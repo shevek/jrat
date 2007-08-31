@@ -1,6 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.summary;
 
 import org.shiftone.jrat.desktop.util.ColumnInfo;
+import org.shiftone.jrat.desktop.util.Table;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.*;
@@ -10,26 +11,24 @@ import java.util.*;
  */
 public class SummaryTableModel extends AbstractTableModel {
 
-    public static final int TOTAL_METHOD_MS_INDEX = 12;
-    public static final int ERROR_RATE_INDEX = 6;
+    private static final Table TABLE = new Table();
+    public static final Table.Column PACKAGE = TABLE.column("Package", false);
+    public static final Table.Column CLASS = TABLE.column("Class");
+    public static final Table.Column METHOD = TABLE.column("Method");
+    public static final Table.Column SIGNATURE = TABLE.column("Signature", false);
+    public static final Table.Column ENTERS = TABLE.column("Enters", false);
+    public static final Table.Column EXITS = TABLE.column("Exits");
+    public static final Table.Column EXCEPTIONS = TABLE.column("Exceptions Thrown", false);
+    public static final Table.Column EXCEPTION_RATE = TABLE.column("Exception Rate", false);
+    public static final Table.Column UNCOMPLETED = TABLE.column("Uncompleted Calls");
+    public static final Table.Column TOTAL = TABLE.column("Total ms");
+    public static final Table.Column MIN = TABLE.column("Min ms");
+    public static final Table.Column MAX = TABLE.column("Max ms");
+    public static final Table.Column AVERAGE = TABLE.column("Average ms");
+    public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
+    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");
+    public static final Table.Column TOTAL_CALLERS = TABLE.column("Total Callers", false);
 
-    public static final ColumnInfo[] COLUMNS = {
-            new ColumnInfo("Package", false),// 0
-            new ColumnInfo("Class"),// 1
-            new ColumnInfo("Method Name"),// 2
-            new ColumnInfo("Enters", false),// 3
-            new ColumnInfo("Exits"),// 4
-            new ColumnInfo("Exceptions Thrown", false),// 5
-            new ColumnInfo("Exception Rate", false),// 6
-            new ColumnInfo("Uncompleted Calls", false),// 7
-            new ColumnInfo("Total ms", false),// 8
-            new ColumnInfo("Min Duration ms", false),// 9
-            new ColumnInfo("Max Duration ms", false),// 10
-            new ColumnInfo("Average ms", false),// 11
-            new ColumnInfo("Total Method ms"),// 12
-            new ColumnInfo("Average Method ms"),// 13
-            new ColumnInfo("Total Callers", false),// 14
-    };
 
     private final List methodSummaryList;
 
@@ -38,44 +37,59 @@ public class SummaryTableModel extends AbstractTableModel {
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-        MethodSummary method = (MethodSummary)methodSummaryList.get(rowIndex);
-        switch (columnIndex) {
-            case 0:
-                return method.getMethodKey().getPackageName();
-            case 1:
-                return method.getMethodKey().getClassName();
-            case 2:
-                return method.getMethodKey().getShortMethodDescription();
-            case 3:
-                return new Long(method.getTotalEnters());
-            case 4:
-                return new Long(method.getTotalExists());
-            case 5:
-                return new Long(method.getTotalErrors());
-            case 6:
-                return method.getErrorRate();
-            case 7:
-                return new Long(method.getUncompletedCalls());
-            case 8:
-                return new Long(method.getTotalDuration());
-            case 9:
-                return method.getMinDuration();
-            case 10:
-                return method.getMaxDuration();
-            case 11:
-                return method.getAverageDuration();
-            case 12:
-                return method.getTotalMethodDuration();
-            case 13:
-                return method.getAverageMethodDuration();
-            case 14:
-                return new Integer(method.getTotalCallers());
+        MethodSummary method = (MethodSummary) methodSummaryList.get(rowIndex);
+
+        if (columnIndex == PACKAGE.getIndex()) {
+            return method.getMethodKey().getPackageName();
+        }
+        if (columnIndex == CLASS.getIndex()) {
+            return method.getMethodKey().getClassName();
+        }
+        if (columnIndex == METHOD.getIndex()) {
+            return method.getMethodKey().getShortMethodDescription();
+        }
+        if (columnIndex == ENTERS.getIndex()) {
+            return new Long(method.getTotalEnters());
+        }
+        if (columnIndex == EXITS.getIndex()) {
+            return new Long(method.getTotalExists());
+        }
+        if (columnIndex == EXCEPTIONS.getIndex()) {
+            return new Long(method.getTotalErrors());
+        }
+        if (columnIndex == EXCEPTION_RATE.getIndex()) {
+            return method.getErrorRate();
+        }
+        if (columnIndex == UNCOMPLETED.getIndex()) {
+            return new Long(method.getUncompletedCalls());
+        }
+        if (columnIndex == TOTAL.getIndex()) {
+            return new Long(method.getTotalDuration());
+        }
+        if (columnIndex == MIN.getIndex()) {
+            return method.getMinDuration();
+        }
+        if (columnIndex == MAX.getIndex()) {
+            return method.getMaxDuration();
+        }
+        if (columnIndex == AVERAGE.getIndex()) {
+            return method.getAverageDuration();
+        }
+        if (columnIndex == TOTAL_METHOD.getIndex()) {
+            return method.getTotalMethodDuration();
+        }
+        if (columnIndex == AVERAGE_METHOD.getIndex()) {
+            return method.getAverageMethodDuration();
+        }
+        if (columnIndex == TOTAL_CALLERS.getIndex()) {
+            return new Integer(method.getTotalCallers());
+
         }
         throw new IllegalArgumentException("columnIndex = " + columnIndex);
     }
 
-    public static List getColumnInfos() {
-        return Collections.unmodifiableList(Arrays.asList(COLUMNS));
+    public static List getColumns() {
+        return TABLE.getColumns();
     }
 
     public int getRowCount() {
@@ -83,13 +97,12 @@ public class SummaryTableModel extends AbstractTableModel {
     }
 
     public int getColumnCount() {
-        return COLUMNS.length;
+        return TABLE.getColumnCount();
     }
 
     public String getColumnName(int column) {
-        return COLUMNS[column].getTitle();
+        return TABLE.getColumn(column).getName();
     }
 
-  
 
 }

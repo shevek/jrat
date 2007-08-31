@@ -34,7 +34,7 @@ public class TreeNode implements Externalizable {
         out.writeObject(accumulator);
         out.writeObject(methodKey);
 
-        // create a copy of the children
+        // column a copy of the children
         List list = getChildren();
 
         // write a child count

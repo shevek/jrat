@@ -5,6 +5,7 @@ import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.util.Percent;
 import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.desktop.util.Table;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -21,24 +22,95 @@ public class StackTableModel extends AbstractTableModel {
     private static final Logger LOG = Logger.getLogger(StackTableModel.class);
     private List stack = new ArrayList();
     private long rootTotalDuration;
-    private String[] COLUMN_NAMES =
-            {
-                    "Class", "Method", "Signature",              //
-                    "Enters", "Exits", "Errors",                 //
-                    "Threads", "Total ms",                       //
-                    "Avg ms", "Std Dev",                         //
-                    "Min ms", "Max ms",                          //
-                    "%Parent", "%Root"
-            };
-    private Class[] COLUMN_TYPES =
-            {
-                    String.class, String.class, String.class,    //
-                    Long.class, Long.class, Long.class,          //
-                    Integer.class, Long.class,                   //
-                    Float.class, Double.class,                   //
-                    Long.class, Long.class,                      //
-                    Percent.class, Percent.class
-            };
+
+    private static final Table TABLE = new Table(); // enum please?
+    public static final Table.Column PACKAGE = TABLE.column("Package", false);
+    public static final Table.Column CLASS = TABLE.column("Class");
+    public static final Table.Column METHOD = TABLE.column("Method");
+    public static final Table.Column SIGNATURE = TABLE.column("Signature");
+    public static final Table.Column ENTERS = TABLE.column("Enters", false);
+    public static final Table.Column EXITS = TABLE.column("Exits");
+    public static final Table.Column ERRORS = TABLE.column("Errors", false);
+    public static final Table.Column THREADS = TABLE.column("Concurrent Threads", false);
+    public static final Table.Column TOTAL = TABLE.column("Total ms");
+    public static final Table.Column AVERAGE = TABLE.column("Average ms", false);
+    public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
+    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");
+    public static final Table.Column STANDARD_DEVIATION = TABLE.column("Standard Deviation", false);
+    public static final Table.Column MIN = TABLE.column("Min ms", false);
+    public static final Table.Column MAX = TABLE.column("Max ms", false);
+    public static final Table.Column PERCENT_OF_PARENT = TABLE.column("% of Parent");
+    public static final Table.Column PERCENT_OF_ROOT = TABLE.column("% of Root");
+
+
+    public Object getValueAt(int rowIndex, int columnIndex) {
+
+        TraceTreeNode node = (TraceTreeNode) stack.get(rowIndex);
+        MethodKey methodKey = node.getMethodKey();
+
+        if (methodKey == null) {
+            return "?";
+        }
+
+        // yea, an enum would be nice
+
+        if (columnIndex == PACKAGE.getIndex()) {
+            return methodKey.getPackageName();
+        }
+        if (columnIndex == CLASS.getIndex()) {
+            return methodKey.getClassName();
+        }
+        if (columnIndex == METHOD.getIndex()) {
+            return methodKey.getMethodName();
+        }
+        if (columnIndex == SIGNATURE.getIndex()) {
+            return methodKey.getSig().getShortText();
+        }
+
+        if (columnIndex == ENTERS.getIndex()) {
+            return new Long(node.getTotalEnters());
+        }
+        if (columnIndex == EXITS.getIndex()) {
+            return new Long(node.getTotalExits());
+        }
+        if (columnIndex == ERRORS.getIndex()) {
+            return new Long(node.getTotalErrors());
+        }
+
+        if (columnIndex == THREADS.getIndex()) {
+            return new Integer(node.getMaxConcurrentThreads());
+        }
+        if (columnIndex == TOTAL.getIndex()) {
+            return new Long(node.getTotalDuration());
+        }
+        if (columnIndex == AVERAGE.getIndex()) {
+            return node.getAverageDuration();
+        }
+        if (columnIndex == TOTAL_METHOD.getIndex()) {
+            return new Long(node.getTotalMethodDuration());
+        }
+        if (columnIndex == AVERAGE_METHOD.getIndex()) {
+            return node.getAverageMethodDuration();
+        }
+
+        if (columnIndex == STANDARD_DEVIATION.getIndex()) {
+            return node.getStdDeviation();
+        }
+        if (columnIndex == MIN.getIndex()) {
+            return new Long(node.getMinDuration());
+        }
+        if (columnIndex == MAX.getIndex()) {
+            return new Long(node.getMaxDuration());
+        }
+        if (columnIndex == PERCENT_OF_PARENT.getIndex()) {
+            return new Percent(node.getPctOfAvgParentDuration());
+        }
+        if (columnIndex == PERCENT_OF_ROOT.getIndex()) {
+            return new Percent(getPctOfAvgRootDuration(node));
+        }
+
+        return null;
+    }
 
     public synchronized void setStackTreeNode(TraceTreeNode root, TraceTreeNode node) {
 
@@ -81,81 +153,27 @@ public class StackTableModel extends AbstractTableModel {
     }
 
 
+    public static List getColumns() {
+        return TABLE.getColumns();
+    }
+
     public int getColumnCount() {
-        return COLUMN_NAMES.length;
+        return TABLE.getColumnCount();
     }
 
 
     public String getColumnName(int columnIndex) {
-        return COLUMN_NAMES[columnIndex];
+        return TABLE.getColumn(columnIndex).getName();
     }
 
 
     public Class getColumnClass(int columnIndex) {
-        return COLUMN_TYPES[columnIndex];
+        return TABLE.getColumn(columnIndex).getType();
     }
 
 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return false;
-    }
-
-
-    public Object getValueAt(int rowIndex, int columnIndex) {
-
-        TraceTreeNode node = (TraceTreeNode) stack.get(rowIndex);
-        MethodKey methodKey = node.getMethodKey();
-
-        if (methodKey == null) {
-            return "?";
-        }
-
-        switch (columnIndex) {
-
-            case 0:
-                return methodKey.getClassName();
-
-            case 1:
-                return methodKey.getMethodName();
-
-            case 2:
-                return methodKey.getPrettySignature();
-
-            case 3:
-                return new Long(node.getTotalEnters());
-
-            case 4:
-                return new Long(node.getTotalExits());
-
-            case 5:
-                return new Long(node.getTotalErrors());
-
-            case 6:
-                return new Integer(node.getMaxConcurrentThreads());
-
-            case 7:
-                return new Long(node.getTotalDuration());
-
-            case 8:
-                return node.getAverageDuration();
-
-            case 9:
-                return node.getStdDeviation();
-
-            case 10:
-                return new Long(node.getMinDuration());
-
-            case 11:
-                return new Long(node.getMaxDuration());
-
-            case 12:
-                return new Percent(node.getPctOfAvgParentDuration());
-
-            case 13:
-                return new Percent(getPctOfAvgRootDuration(node));
-        }
-
-        return null;
     }
 
 

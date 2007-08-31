@@ -133,7 +133,7 @@ public class TsvTableModel implements TableModel {
 
 
     /**
-     * Method getColumnClass
+     * Method getType
      *
      * @param columnIndex .
      * @return .

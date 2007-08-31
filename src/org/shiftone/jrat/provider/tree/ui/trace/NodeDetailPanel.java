@@ -18,47 +18,29 @@ import java.util.prefs.Preferences;
 
 public class NodeDetailPanel extends JPanel {
 
-    private TraceTreeNode root;
-    private TraceTreeNode node;
-    private JTabbedPane tabbedPane = null;
     private StackTableModel stackTableModel = null;
-    private JXTable stackTable = null;
     private JLabel methodLabel;
-    private TreeGraphComponent graphComponent;
-
-    private ChildrenPanel childrenPanel;
 
     public NodeDetailPanel() {
 
-        tabbedPane = new JTabbedPane();
+
         methodLabel = new JLabel();
 
         // ----- [ Stack ] -----
         stackTableModel = new StackTableModel();
-        stackTable = new JXTable(stackTableModel);
+        JXTable stackTable = new JXTable(stackTableModel);
         stackTable.setColumnControlVisible(true);
         stackTable.setSortable(false);
-// TODO        
-//          JXTableWatcher.initialize(
-//                stackTable,
-//                Preferences.userNodeForPackage(NodeDetailPanel.class).node("columns"),
-//                SummaryTableModel.getColumnInfos());
 
-        tabbedPane.add("Call Stack", new JScrollPane(stackTable));
+          JXTableWatcher.initialize(
+                stackTable,
+                Preferences.userNodeForPackage(NodeDetailPanel.class).node("columns"),
+                StackTableModel.getColumns());
 
-        // ----- [ Children ] -----
-        childrenPanel = new ChildrenPanel();
-        tabbedPane.add("Children", childrenPanel);
-
-        // ----- [ Graph ] -----
-        graphComponent = new TreeGraphComponent();
-        tabbedPane.add("Graph", new JScrollPane(graphComponent));
-
-        // /pieGraphComponent = new PieGraphComponent();
-        // /tabbedPane.add("Pie", pieGraphComponent);
         PercentTableCellRenderer.setDefaultRenderer(stackTable);
+
         setLayout(new BorderLayout());
-        add(tabbedPane, BorderLayout.CENTER);
+        add(new JScrollPane(stackTable), BorderLayout.CENTER);
         add(methodLabel, BorderLayout.NORTH);
     }
 
@@ -71,11 +53,9 @@ public class NodeDetailPanel extends JPanel {
         if (node.isRootNode()) {
             methodLabel.setText("");
         } else {
-            methodLabel.setText(" " + node.getMethodKey().toString());
+            methodLabel.setText(" " + node.getMethodKey().getShortMethodDescription());
         }
 
-        stackTableModel.setStackTreeNode(root, node);
-        graphComponent.setStackTreeNode(node);
-        childrenPanel.setStackTreeNode(node);
+        stackTableModel.setStackTreeNode(root, node);        
     }
 }

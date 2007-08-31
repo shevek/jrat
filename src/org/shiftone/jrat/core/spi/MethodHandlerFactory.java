@@ -13,7 +13,7 @@ public interface MethodHandlerFactory {
      * Method createMethodHandler
      * <li>this method on a handler will never be called more than once with
      * the same methodKey (caching need only be done at one layer)</li>
-     * <li>if there is an error, or some reason not to create a handler - this
+     * <li>if there is an error, or some reason not to column a handler - this
      * method should log a message and return null (this allows chain handler to
      * not log to several silent handlers)</li>
      */

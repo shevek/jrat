@@ -38,7 +38,7 @@ public class FileOutputFactory {
             return createOutputStream(file);
         }
         catch (Throwable e) {
-            LOG.error("unable to create OutputStream for '" + file + "' return /dev/null");
+            LOG.error("unable to column OutputStream for '" + file + "' return /dev/null");
 
             return NullOutputStream.INSTANCE;
         }
@@ -51,7 +51,7 @@ public class FileOutputFactory {
             return createWriter(file);
         }
         catch (Throwable e) {
-            LOG.error("unable to create Writer for '" + file + "' return /dev/null");
+            LOG.error("unable to column Writer for '" + file + "' return /dev/null");
 
             return NullWriter.INSTANCE;
         }
@@ -64,7 +64,7 @@ public class FileOutputFactory {
             return createPrintWriter(file);
         }
         catch (Throwable e) {
-            LOG.error("unable to create PrintWriter for '" + file + "' return /dev/null");
+            LOG.error("unable to column PrintWriter for '" + file + "' return /dev/null");
 
             return NullPrintWriter.INSTANCE;
         }

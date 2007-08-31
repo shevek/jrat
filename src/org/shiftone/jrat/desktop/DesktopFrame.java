@@ -22,7 +22,7 @@ public class DesktopFrame extends JFrame {
 
     private static final Logger LOG = Logger.getLogger(DesktopFrame.class);
 
-    private JXStatusBar statusBar = new JXStatusBar();
+    private JXStatusBar statusBar = createStatusBar();
     private JTabbedPane tabbedPane = new JTabbedPane();
     private CloseAction closeAction = new CloseAction(tabbedPane);
     private CloseAllAction closeAllAction = new CloseAllAction(tabbedPane);
@@ -31,7 +31,6 @@ public class DesktopFrame extends JFrame {
     public DesktopFrame() {
 
         super("JRat Desktop");
-
 
         DesktopPreferences.setLastRunTime(System.currentTimeMillis());
         DesktopPreferences.incrementRunCount();
@@ -46,8 +45,6 @@ public class DesktopFrame extends JFrame {
         }
 
         setBounds(windowBounds);
-
-        statusBar.add(new JLabel("ShiftOne JRat"), JXStatusBar.Constraint.ResizeBehavior.FILL);
 
 
         setJMenuBar(createMenuBar());
@@ -95,6 +92,7 @@ public class DesktopFrame extends JFrame {
                 file.add(resize);
             }
             file.add(new ExitAction());
+            file.add(new ClearPreferencesAction(this));
 
             toolBar.add(file);
         }
@@ -119,17 +117,18 @@ public class DesktopFrame extends JFrame {
         return toolBar;
     }
 
+    public static JXStatusBar createStatusBar() {
 
+        JXStatusBar statusBar = new JXStatusBar();
 
-    public View createView(final String title, JComponent component) {
-        final View view = new View();
-        view.setComponent(component);
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                tabbedPane.addTab(title, view);
-            }
-        });
-        return view;
+        statusBar.setLayout(new BorderLayout());
+        statusBar.add(Memory.createMemoryButton(), BorderLayout.EAST);
+
+        return statusBar;
+    }
+
+    public void createView(final String title, JComponent component) {
+        tabbedPane.addTab(title, component);
     }
 
     private void checkTabs() {

@@ -16,7 +16,7 @@ public class AllColumnVisibilityAction extends AbstractAction {
 
 
     public AllColumnVisibilityAction(JXTable table) {
-        super("Make All Columns Visible");
+        super("Make All Table Visible");
         this.table = table;
     }
 

@@ -31,7 +31,7 @@ public class Handler {
     }
 
     /**
-     * create a new instance of a configured factory
+     * column a new instance of a configured factory
      */
     public MethodHandlerFactory buildMethodHandlerFactory() {
 

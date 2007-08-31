@@ -5,7 +5,7 @@ import org.shiftone.jrat.util.log.Logger;
 /**
  * This has a bit of a smell to it.
  * The problem is the system needs to know how it's being executed.  In the case of
- * runtime, it needs to read (and possibly create) files.  In the case of desktop, that
+ * runtime, it needs to read (and possibly column) files.  In the case of desktop, that
  * would be silly.
  * The mode can be set multiple times, but once it's read it can not be set.
  *

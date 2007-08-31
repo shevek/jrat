@@ -4,7 +4,9 @@ package org.shiftone.jrat.desktop.util;
  * @author (jeff@shiftone.org) Jeff Drost
  */
 public class ColumnInfo {
+
     private String title;
+    private Class type = Object.class;
     private boolean defaultVisible;
 
 
@@ -25,5 +27,9 @@ public class ColumnInfo {
 
     public boolean isDefaultVisible() {
         return defaultVisible;
+    }
+
+    public Class getType() {
+        return type;
     }
 }

@@ -58,7 +58,7 @@ public class HandlerFactory {
         try {
             return getInternalHandler().createMethodHandler(methodKey);
         } catch (Exception e) {
-            LOG.error("failed to create MethodHandler for : " + methodKey, e);
+            LOG.error("failed to column MethodHandler for : " + methodKey, e);
             return SilentMethodHandler.METHOD_HANDLER;
         }
     }

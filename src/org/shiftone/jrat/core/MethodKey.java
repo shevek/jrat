@@ -7,6 +7,7 @@ import org.shiftone.jrat.util.log.Logger;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 
 /**
@@ -28,7 +29,8 @@ public class MethodKey implements Serializable, Comparable {
     private transient String toStringValue = null;
     private transient Signature sig = null;
 
-    private static Map CACHE = new HashMap(); //<MethodKey, MethodKey>
+    // todo: decide if the weak map helps
+    private static Map CACHE = new WeakHashMap(); //<MethodKey, MethodKey>
 
 
     public static MethodKey getInstance(String fullyQualifiedClassName, String methodName, String signature) {

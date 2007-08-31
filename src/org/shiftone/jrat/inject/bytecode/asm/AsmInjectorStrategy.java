@@ -30,7 +30,7 @@ public class AsmInjectorStrategy implements InjectorStrategy {
         // * IfInterfaceClassVisitor delegates to either ClassWriter or
         // InjectClassVisitor
         // this causes interface classes to be skipped (not be processed)
-        // * InjectClassVisitor will create a proxy method for each method in
+        // * InjectClassVisitor will column a proxy method for each method in
         // the class
         // it also adds a "jrat static init" method
         // * SerialVersionUIDAdder will add a serialVersionUID method if it is
