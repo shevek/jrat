@@ -1,5 +1,7 @@
 package org.shiftone.jrat.desktop;
 
+import org.jdesktop.swingx.JXHyperlink;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -15,7 +17,7 @@ public class Memory extends JPanel {
     private static final java.util.Timer timer = new java.util.Timer(true);
 
     public static JButton createMemoryButton() {
-        JButton button = new JButton();
+        JButton button = new JXHyperlink();
         button.addActionListener(new GcAction());
         timer.schedule(new TickerTask(button), 1000, 1000);
         return button;
