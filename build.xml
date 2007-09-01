@@ -5,7 +5,7 @@
 
     <property name="src.dir" value="source"/>
     <property name="src.core.dir" value="${src.dir}/core"/>
-    <property name="src.doc.dir" value="${src.dir}/documents"/>
+    <property name="src.doc.dir" value="${src.dir}/docs"/>
 
     <property name="src.doc.pages.dir" value="${src.doc.dir}/pages"/>
     <property name="src.doc.static.dir" value="${src.doc.dir}/static"/>
@@ -118,22 +118,6 @@
             <fileset dir="${src.doc.static.dir}" excludes="*.xml,*.xsl"/>
         </copy>
 
-
-
-        <!--
-       <style	basedir="${xdoc.dir}"
-           style="${xdoc.dir}/style/project.xsl"
-           destdir="${doc.dir}"
-           includes="*.xml" extension=".html">
-
-           <param name="p_title"		expression="${title}"/>
-           <param name="p_home"		expression="${build.home}"/>
-           <param name="p_version"		expression="${build.version}"/>
-           <param name="p_group_id"	expression="${build.group_id}"/>
-           <param name="p_date"		expression="${doced.time}"/>
-
-       </style>
-        -->
         <tstamp>
             <format property="generated.date" pattern="M/d/yyyy h:mma"/>
         </tstamp>
@@ -200,24 +184,8 @@
 
 
     </target>
-    <!--
-    http://jce.iaik.tugraz.at/sic/products/all_products/iaik_jar_stripper
-	   -->
-    <!--
-    <target name="inject" depends="jar">
 
-        <taskdef name="injectCopy" classpath="${dist.dir}/${jar.file}"
-                 classname="org.shiftone.jrat.inject.ant.InjectCopyTask"/>
-
-        <injectCopy todir="${target.dir}/injected" verbose="true">
-            <fileset dir="${classes.dir}"/>
-        </injectCopy>
-
-    </target>
-        -->
     <!-- ======================================================================= -->
-
-    <target name="doc" depends="javadoc,xdoc"/>
 
 
     <!-- ======================================================================= -->
@@ -272,19 +240,9 @@
 
     <!-- ======================================================================= -->
 
-    <target name="dist" depends="clean,jar,doc">
+    <target name="doc" depends="javadoc,xdoc"/>
+    <target name="dist" depends="clean,jar,doc"/>
 
-        <copy todir="${release.dir}">
-            <fileset dir=".">
-                <!-- <include name="lib/**"/> -->
-                <include name="src/**"/>
-                <!-- <include name="xdoc/**"/> -->
-                <!-- <include name="build.xml"/> -->
-                <!-- <include name="build.properties"/> -->
-            </fileset>
-        </copy>
-
-    </target>
 
     <target name="zip" depends="dist">
 
