@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"> 
 
-	<xsl:template match="document">
+    <xsl:param name="resource"/>
+
+    <xsl:template match="document">
 	 
 		<html>			
 		
@@ -31,6 +33,9 @@
 
                 <div class="footer">
                     Copyright Jeff Drost © 2007
+                    <br/>
+
+                    <xsl:value-of select="$resource"/>
                 </div>
             </body>
 			

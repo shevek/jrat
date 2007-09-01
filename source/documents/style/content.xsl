@@ -58,8 +58,8 @@
         </pre>
     </xsl:template>
 
-     <xsl:template match="shell">
-        <pre class="box shell">
+     <xsl:template match="terminal">
+        <pre class="box terminal">
             <xsl:apply-templates/>
         </pre>
     </xsl:template>

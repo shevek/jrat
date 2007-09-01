@@ -10,7 +10,7 @@
             your program.
         </p>
 
-        <code>java <b>-javaagent:shiftone-jrat.jar</b> [your java ops] [main class]</code>
+        <terminal>java <b>-javaagent:shiftone-jrat.jar</b> [your java ops] [main class]</terminal>
 
         <p>
             You want to excersize your programs functionality.
@@ -38,7 +38,7 @@
             that was used in the first step.
         </p>
 
-        <code>java -Xmx256M -jar shiftone-jrat.jar</code>
+        <terminal>java -Xmx256M -jar shiftone-jrat.jar</terminal>
 
         <p>
             The JRat Desktop application will open, and you can use it to view the
