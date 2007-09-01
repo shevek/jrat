@@ -12,7 +12,7 @@
 		
 			<head>
 				<title><xsl:value-of select="@title"/></title>
-				<link rel="stylesheet" href="{$p_resourcePath}/sample.css" type="text/css" />
+				<link rel="stylesheet" href="{$p_resourcePath}/shiftone.css" type="text/css" />
 			</head>
 		
 			<body>
