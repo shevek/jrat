@@ -1,0 +1,171 @@
+
+body {
+	text-align:center;
+	background:#fff;	
+	background-color:#444;	
+	#background: url( 'bg2.jpg' );
+    font-family:  verdana, Trebuchet MS, sans-serif;
+}
+
+div.footer {
+  font-size: 80%;
+	margin: 5px;
+	padding:2%;
+	text-align:center;
+	color:#fff;
+}
+
+div.header {	
+  background-image: url( "blue_gradient_100.png" );
+  font-size: 80%;
+	margin: 15px;
+	padding:10px;
+	text-align:left;
+	color:#fff;
+	background-color:#00a;
+	border : 1px solid #55f;
+	border-right: 3px solid #000;
+	border-bottom: 3px solid #000;	
+}
+
+h1.header {
+	font-size: 180%;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+h2.header {
+	font-size: 140%;
+	margin-top:0px;
+	margin-bottom:8px;
+} 
+ 
+ 
+a.header {	
+	position:relative;
+	text-decoration:none; 
+	margin: 0px; 
+	padding: 3px;	
+	padding-left: 8px;	
+	padding-right: 8px;	
+	color:#ccf;	 
+	border : 1px dotted #00b;
+}
+
+a.header:link {
+    color:#ccf;
+    text-decoration:none; 
+}
+
+a.header:hover {
+   color:#fff;
+   border : 1px dotted #77f;
+} 
+ 
+div.content {
+	font-family:  verdana, Trebuchet MS, sans-serif;
+	font-size: 80%;
+	padding-left:2%;
+	padding-right:2%;
+    margin: 15px; 
+	border : 1px solid #000;
+	border-right: 3px solid #000;
+	border-bottom: 5px solid #000; 
+	text-align: left;
+	background:#f00;
+	background-color:#fff;
+	overflow:hidden;
+}
+ 
+
+pre {
+	overflow: auto;		 
+	font-size: 110%;
+	background-color:#eeeeee; 
+}
+
+.terminal {	 
+	background-color:#000;
+	color:#0f0;	
+}
+
+.box {	 
+	border : 1px solid #999;
+	margin: 20px;
+	padding: 10px;		
+	background-repeat: no-repeat;
+	background-position : 20px 50%;
+}
+
+
+.tip {
+	background-image: url( "tip.png" );
+	padding-left: 60px;	
+} 
+
+.caution, .warning{	
+	background-color:#ff8;
+	border : 4px dashed #000;	
+} 
+ 
+.important {
+	background-image: url( "important.png" );
+	padding-left: 60px;	
+} 
+
+.note {
+	background-image: url( "note.png" );
+	padding-left: 60px;	
+} 
+
+
+
+table {
+	margin: 1px;
+	padding: 1px;
+	border-collapse: collapse;
+	empty-cells: show;
+	border : 1px solid #333;	
+}
+
+td {
+   border : 1px solid #333;
+   padding: 3px;
+}
+
+tr.header {
+   background-color:#aaa;
+   color:#fff;
+   font-weight: bold;
+}
+
+a {	
+	color:#000;
+}
+
+a:hover {
+	color: #F00;
+}
+
+a:link {
+	text-decoration: underline;
+	color: #009
+}
+
+
+  
+a.button {	
+	position:relative;
+	text-decoration:none;
+	margin: 0px; 
+	padding: 3px;	
+	padding-left: 8px;	
+	padding-right: 8px;	
+	color:#eef;
+	font-weight: bold;
+	
+	border : 1px solid #00b;
+}
+ 
+a.button:hover {		 
+	 border : 1px solid #55f;
+} 
