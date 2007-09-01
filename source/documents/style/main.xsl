@@ -7,10 +7,7 @@
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
     doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"/> 
         
-
-	<xsl:param name="resources"/>
-
 	<xsl:include href="border.xsl"/>
-	<xsl:include href="content.xsl"/>
+    <xsl:include href="content.xsl"/>
 	
 </xsl:stylesheet>

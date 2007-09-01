@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"> 
 
-    <xsl:param name="resource"/>
+    <xsl:param name="p_resourcePath"/>
+    <xsl:param name="p_generatedDate"/>
+    <xsl:param name="p_googleAnalyticsAccount"/>
+
 
     <xsl:template match="document">
 	 
@@ -9,11 +12,11 @@
 		
 			<head>
 				<title><xsl:value-of select="@title"/></title>
-				<link rel="stylesheet" href="static/sample.css" type="text/css" />
+				<link rel="stylesheet" href="{$p_resourcePath}/sample.css" type="text/css" />
 			</head>
 		
 			<body>
-			
+
 				<div class="header">
 				
 					<h1 class="header">ShiftOne </h1>
@@ -34,12 +37,18 @@
                 <div class="footer">
                     Copyright Jeff Drost © 2007
                     <br/>
-
-                    <xsl:value-of select="$resource"/>
+                    Generated <xsl:value-of select="$p_generatedDate"/>
                 </div>
             </body>
-			
-		</html>
+
+            <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+            </script>
+            <script type="text/javascript">
+            _uacct = "<xsl:value-of select="$p_googleAnalyticsAccount"/>";
+            urchinTracker();
+            </script>
+
+        </html>
 		 
 	</xsl:template>
 

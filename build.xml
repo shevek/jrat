@@ -28,11 +28,11 @@
     <property name="src.zip.file" value="${release.name}-src.zip"/>
     <property name="title" value="${build.name} ${build.version}"/>
 
+    <property name="google-analytics-account" value="UA-2480984-3"/>
+
     <!-- ======================================================================= -->
 
     <target name="compile">
-
-        <tstamp prefix="jared"/>
 
         <mkdir dir="${classes.dir}"/>
 
@@ -60,11 +60,12 @@
             <fileset dir="${src.cfg.dir}"/>
         </copy>
 
+        <tstamp prefix="compile.date"/>
         <propertyfile file="${classes.dir}/org/shiftone/jrat/version.properties">
             <entry key="product_name" value="${title}"/>
             <entry key="version" value="${build.version}"/>
             <entry key="built_by" value="${user.name}"/>
-            <entry key="built_on" value="${jared.TODAY}"/>
+            <entry key="built_on" value="${compile.date}"/>
         </propertyfile>
 
     </target>
@@ -88,10 +89,19 @@
                 </fileset>
             </classpath>
 
+            <bottom>
+                <![CDATA[<a href="http://sourceforge.net"><img border="0" height="37" width="125" src="http://sourceforge.net/sflogo.php?group_id=41841&type=3"></a>]]>
+                <![CDATA[
+                <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+                </script>
+                <script type="text/javascript">
+                _uacct = "]]>${google-analytics-account}<![CDATA[";
+                urchinTracker();
+                </script>
+                ]]>
 
-            <!--
-            <bottom><![CDATA[<a href="http://sourceforge.net"><img alt="SourceForge.net Logo" border="0" height="37" width="125" src="http://sourceforge.net/sflogo.php?group_id=41841&type=3"></a>]]></bottom>
-            -->
+            </bottom>
+
         </javadoc>
 
     </target>
@@ -109,9 +119,7 @@
         </copy>
 
 
-        <tstamp>
-            <format property="doced.time" pattern="M/d/yyyy h:mma"/>
-        </tstamp>
+
         <!--
        <style	basedir="${xdoc.dir}"
            style="${xdoc.dir}/style/project.xsl"
@@ -126,13 +134,18 @@
 
        </style>
         -->
+        <tstamp>
+            <format property="generated.date" pattern="M/d/yyyy h:mma"/>
+        </tstamp>
+
         <xslt basedir="${src.doc.pages.dir}"
               destdir="${pages.dir}"
               extension=".html"
               style="${src.doc.dir}/style/main.xsl">
 
-            <param name="date" expression="07-01-2000"/>
-            <param name="resources" expression="static"/>
+            <param name="p_generatedDate" expression="${generated.date}"/>
+            <param name="p_resourcePath" expression="static"/>
+            <param name="p_googleAnalyticsAccount" expression="${google-analytics-account}"/>
 
         </xslt>
     </target>
