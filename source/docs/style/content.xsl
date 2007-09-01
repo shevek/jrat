@@ -76,6 +76,17 @@
         </div>
     </xsl:template>
 
+    <xsl:template match="indent">
+        <div class="indent">
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+
+    <xsl:template match="box">
+        <div class="box">
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
     <!-- ============================================== -->
 
     <xsl:template match="//h">

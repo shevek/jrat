@@ -117,6 +117,13 @@ pre {
     color:#0f0;
 }
 
+.indent {
+   padding-left: 50px;
+}
+
+.frame {
+   padding-left: 50px;
+}
 
 table {
 	margin: 1px;
