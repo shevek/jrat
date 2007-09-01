@@ -2,8 +2,7 @@ package org.shiftone.jrat.provider.stats;
 
 
 import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.core.MethodKeyAccumulator;
-import org.shiftone.jrat.provider.stats.ui.StatsOutputViewBuilder;
+import org.shiftone.jrat.core.MethodKeyAccumulator; 
 import org.shiftone.jrat.util.io.csv.DelimitedFormat;
 import org.shiftone.jrat.util.io.csv.DelimitedWriter;
 
@@ -35,7 +34,7 @@ public class StatOutput {
 
         try {
             writer.write("viewer=\"");
-            writer.write(StatsOutputViewBuilder.class.getName());
+           // writer.write(StatsOutputViewBuilder.class.getName());
             writer.write("\"\n");
         }
         catch (IOException e) {

@@ -112,6 +112,10 @@ public class OpenAction extends AbstractAction {
 
                 desktopFrame.createView(file.getName(), component);
 
+            } catch (OutOfMemoryError e) {
+
+                Errors.showError(desktopFrame, e, "Out of Memory!  Use the -Xmx Java option.");
+
             } catch (Exception e) {
 
                 Errors.showError(desktopFrame, e, "Failed to open file : " + file.getName());

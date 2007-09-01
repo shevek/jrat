@@ -10,7 +10,6 @@ import org.shiftone.jrat.ui.action.ResizeAction;
 import org.shiftone.jrat.ui.help.AboutAction;
 import org.shiftone.jrat.ui.help.ShowDocsAction;
 import org.shiftone.jrat.ui.inject.InjectDirAction;
-import org.shiftone.jrat.ui.status.StatusPanel;
 import org.shiftone.jrat.ui.tab.TabbedPaneViewContainer;
 import org.shiftone.jrat.ui.util.JRatFrame;
 import org.shiftone.jrat.ui.viewer.OpenOutputFileAction;
@@ -35,7 +34,6 @@ public class DesktopFrame extends JRatFrame implements UIConstants, ContainerLis
     private static final Logger LOG = Logger.getLogger(DesktopFrame.class);
     private JMenuBar menuBar = new JMenuBar();
     private TabbedPaneViewContainer tabbedPane = new TabbedPaneViewContainer();
-    private StatusPanel statusPanel = new StatusPanel();
     private ViewContainer viewContainer = tabbedPane;
     private JMenu fileMenu = new JMenu(MENU_FILE);
     private JMenu windowMenu = new JMenu(MENU_WINDOW);
@@ -60,7 +58,7 @@ public class DesktopFrame extends JRatFrame implements UIConstants, ContainerLis
         Container pane = getContentPane();
 
         pane.setLayout(new BorderLayout());
-        pane.add(statusPanel, BorderLayout.SOUTH);
+        //pane.add(statusPanel, BorderLayout.SOUTH);
         pane.add(tabbedPane, BorderLayout.CENTER);
         addMenuBar();
         setTitle(UI_TITLE);
