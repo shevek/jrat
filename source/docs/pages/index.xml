@@ -1,7 +1,32 @@
 <document title="JRat the Java Runtime Analysis Toolkit">
 
+    <figure src="static/mad-rat.gif"/>
 
+    <section>
+        <h>What is it?</h>
+        <p>
+        The Java Runtime Analysis Toolkit is a low overhead, easy to use, open source
+        performance profiler for the Java platform. JRat monitors an application's
+        execution and persists performance measurements.  This data can then be viewed
+        and analized using the JRat Desktop, a Swing application.
+        </p>
 
+    </section>
 
+    <section>
+        <h>How do I start using it?</h>
+        <p>
+        Read the
+        <a href="quickstart.html">The Quick Start Guide</a>.
+        </p>
+    </section>
+
+    <section>
+        <h>What's new?</h>
+        <p>
+        Lots.  This project is again being actively developed.
+        Read some hightlights <a href="whatsnew.html">here</a>.
+        </p>
+    </section>
 
 </document>

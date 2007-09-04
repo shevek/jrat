@@ -66,6 +66,7 @@ div.content {
 	font-size: 80%;
 	padding-left:2%;
 	padding-right:2%;
+    padding-bottom: 20px;
     margin: 15px; 
 	border : 1px solid #000;
 	border-right: 3px solid #000;

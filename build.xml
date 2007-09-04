@@ -111,7 +111,7 @@
     <!-- ======================================================================= -->
 
     <target name="xdoc">
-        <delete dir="${docs.dir}"/>
+        <!--delete dir="${docs.dir}"/-->
 
         <mkdir dir="${docs.dir}"/>
 
