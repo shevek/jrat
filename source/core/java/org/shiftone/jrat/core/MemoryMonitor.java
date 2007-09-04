@@ -9,7 +9,7 @@ import java.io.Writer;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
- * @todo - add support for java.lang.management.MemoryMXBean
+ * TODO - add support for java.lang.management.MemoryMXBean
  */
 public class MemoryMonitor implements ShutdownListener {
 

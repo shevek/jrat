@@ -8,7 +8,7 @@
         The Java Runtime Analysis Toolkit is a low overhead, easy to use, open source
         performance profiler for the Java platform. JRat monitors an application's
         execution and persists performance measurements.  This data can then be viewed
-        and analized using the JRat Desktop, a Swing application.
+        and analyzed using the JRat Desktop, a Swing application.
         </p>
 
     </section>
@@ -25,7 +25,7 @@
         <h>What's new?</h>
         <p>
         Lots.  This project is again being actively developed.
-        Read some hightlights <a href="whatsnew.html">here</a>.
+        Read some highlights <a href="whatsnew.html">here</a>.
         </p>
     </section>
 

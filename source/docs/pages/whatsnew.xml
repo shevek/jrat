@@ -1,30 +1,51 @@
 <document title="What's New">
 
+
+    If you have previously used JRat, you will definitely notice some differences in
+    recent versions.
+
     <section>
-        <h>What's New</h>
-        If you have previously used JRat, you will definately notice some differences in
-        recent versions.
+        <h>No Injection Step</h>
 
-        <section>
-            <h>No Injection Step</h>
-            Java 5 has given us JVMPI, which allows ...
-        </section>
-
-        <section>
-            <h>Configuration</h>
-            Previous versions of JRat support
-
-        </section>
-
-        <section>
-            <h>One Handler</h>
-
-        </section>
-
-        <section>
-            <h>Output Format</h>
-
-        </section>
+        Java 5 has given us JVMPI, which provides a super easy way to hook into
+        a JVM's class loading infrastructure. The result is that you can "install"
+        JRat now with a single command line argument. Sweet.
     </section>
+
+    <section>
+        <h>Configuration</h>
+
+        Previous versions of JRat made extensive use of system properties to control featured.
+        This model has been replaced with an XML configuration file that is always used.
+        If no configuration file is found at statup, a default file will be created and used.
+    </section>
+
+    <section>
+        <h>One Handler</h>
+
+        In the past, the most useful handler was the
+        <i>TreeHandler</i>
+        but several other
+        handlers were supported as well. More attention is now being paid to the TreeHandler,
+        which is where 90% of JRat's value always was. You can still write your own handlers,
+        or configure multiple handlers, but the TreeHandler has been promoted to
+        first class status.
+    </section>
+
+    <section>
+        <h>HTTP Server</h>
+
+        While still under active development, the built in HTTP server has been vastly
+        improved upon. It is expected that JRat will begin taking greater advantage of
+        this interface.
+    </section>
+
+    <section>
+        <h>Output Format</h>
+        JRat previously produced output (for the TreeHandler) in XML. The XML format has been
+        replaced with a binary (serialization based) format. At some point in the future it
+        may be possible to export data to XML, HTML, or another format.
+    </section>
+
 
 </document>
