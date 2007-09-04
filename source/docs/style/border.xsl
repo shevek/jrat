@@ -20,7 +20,9 @@
 				<div class="header">
 				
 					<h1 class="header">ShiftOne </h1>
-					<h2 class="header">Java Runtime Analysis Toolkit</h2>	
+					<h2 class="header">
+                        <a class="home" href="index.html">Java Runtime Analysis Toolkit</a>                        
+                    </h2>
 															 
 					<a class="header" href="http://sourceforge.net/project/showfiles.php?group_id=41841&amp;package_id=33930">download</a>
 					<a class="header" href="http://sourceforge.net/forum/forum.php?forum_id=136869">forum</a>
@@ -36,7 +38,7 @@
                 </div>
 
                 <div class="footer">
-                    Copyright Jeff Drost © 2007
+                    Copyright © 2007
                     <br/>
                     Generated <xsl:value-of select="$p_generatedDate"/>
                 </div>

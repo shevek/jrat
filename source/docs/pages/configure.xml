@@ -1,5 +1,87 @@
-<document title="Page Moved">
+<document title="JRat Configuration">
 
-    <a href="index.html">Page Moved</a>
+    <section>
+        <h>The Configuration File</h>
+
+        JRat loads its configuration from a file named
+        <b>jrat.xml</b>
+        in the current directory
+        of your application.
+
+        This file contains system-wide configuration parameters, and also JRat handlers to be
+        configured and assigned to sets of classes and methods.
+
+    </section>
+
+    <section>
+        <h>The Default File</h>
+
+        If JRat starts up and can't find it's configuration file, it will create one.
+
+        The default file provides sensible defaults and provides a good sample for new users.
+
+    </section>
+
+    <section>
+        <h>The XML Format</h>
+
+        <section>
+            <h>A Simple Example</h>
+            The following is is a very simple configuration file.
+
+            <code><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<jrat>
+    <settings>
+        <property name="httpServerEnabled" value="true"/>
+    </settings>
+
+    <profile name="my code">
+
+        <criteria>
+            <include/>
+        </criteria>
+
+        <handlers>
+
+            <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
+                <property name="outputFile" value="my_code_tree.jrat"/>
+            </handler>
+
+        </handlers>
+
+    </profile>
+</jrat> ]]></code>
+        </section>
+        <section>
+            <h>Settings (Global)</h>
+        </section>
+        <section>
+            <h>Profiles</h>
+            <ul>
+            <li>A profile is a grouping of your application code.</li>
+            <li>A class or method may belong to more than one profile.</li>
+            <li>A class or method's membership in a profile is based on the profile's criteria.</li>
+            <li>A profile may have one or more handlers.</li>
+            </ul>
+
+            Profiles can be given names, however these names are optional and are
+            only used for logging and error messages.
+
+            <section>
+                <h>Criteria</h>
+
+                Multiple <b>include</b> and <b>exclude</b> tags may be used to build complex
+                matching criteria.
+
+                A profile matches if the <b>include</b> clauses match and none of the <b>exclude</b>
+                clauses match.
+
+            </section>
+            <section>
+                <h>Handlers</h>
+            </section>
+        </section>
+
+    </section>
 
 </document>

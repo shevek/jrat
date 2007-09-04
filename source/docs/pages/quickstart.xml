@@ -1,5 +1,6 @@
 <document title="JRat Quick Start Guide">
 
+    If you are aren't using Java 5 yet, refer to <a href="prefive.html">these instructions</a>.
 
     <section>
         <h>1. Let JRat Watch Your Program Run</h>

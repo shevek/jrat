@@ -17,7 +17,8 @@
         <h>How do I start using it?</h>
         <p>
         Read the
-        <a href="quickstart.html">The Quick Start Guide</a>.
+        <a href="quickstart.html">The Quick Start Guide</a>.  It contains step-by-step
+        instructions on how to use JRat for the first time.  It's easy.
         </p>
     </section>
 
@@ -25,7 +26,7 @@
         <h>What's new?</h>
         <p>
         Lots.  This project is again being actively developed.
-        Read some highlights <a href="whatsnew.html">here</a>.
+        Read some of the highlights <a href="whatsnew.html">here</a>.
         </p>
     </section>
 
@@ -33,8 +34,21 @@
         <h>Where do I get it?</h>
         <p>
         The latest official file release on SourceForge.net is older than the hills.
-        The current development release can be downloaded from <a href="shiftone-jrat.jar">here</a>.
+        The current development release can be downloaded from
+        <a href="shiftone-jrat.jar">here</a>.
         </p>
     </section>
 
+    <section>
+        <h>Where do I get more information?</h>
+        <ul>
+            <li><a href="quickstart.html">The Quick Start Guide for Java 5 +</a></li>
+            <li><a href="prefive.html">The Quick Start Guide for Java 1.4 -</a></li>
+            <li><a href="configure.html">Configuration Guide</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+
+        </ul>
+
+
+    </section>
 </document>

@@ -158,19 +158,7 @@ a:link {
 	color: #009
 }
 
-a.button {	
-	position:relative;
+a.home {		
 	text-decoration:none;
-	margin: 0px; 
-	padding: 3px;	
-	padding-left: 8px;	
-	padding-right: 8px;	
-	color:#eef;
-	font-weight: bold;
-	
-	border : 1px solid #00b;
+    color: #fff
 }
- 
-a.button:hover {		 
-	 border : 1px solid #55f;
-} 

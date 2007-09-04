@@ -1,0 +1,24 @@
+<document title="JRat Quick Start Guide (pre-Java 5)">
+
+    If you're still using Java 1.4 or earlier versions of java, the <b>javaagent</b> option
+    is not avalible to you, and you will need to inject your bytecode at "build time" (as
+    oposed to "run time").
+
+    <section>
+        <h>1. Build your Application</h>
+
+
+
+
+    </section>
+
+
+    <section>
+        <h>2. Inject your Classes</h>
+
+
+
+    </section>
+
+
+</document>
