@@ -243,10 +243,12 @@
     <target name="dist" depends="clean,jar,doc"/>
     <!-- ======================================================================= -->
 
-    <target name="website" depends="doc">
+    <target name="website" depends="doc, jar">
         <copy todir="${website.dir}">
             <fileset dir="${docs.dir}"/>
+            <fileset file="${release.dir}/${jar.file}"/>
         </copy>
+
     </target>
 
     <!-- ======================================================================= -->

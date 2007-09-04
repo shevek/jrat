@@ -13,7 +13,7 @@
     </section>
 
     <section>
-        <h>Configuration</h>
+        <h>File Configuration</h>
 
         Previous versions of JRat made extensive use of system properties to control featured.
         This model has been replaced with an XML configuration file that is always used.
@@ -21,7 +21,7 @@
     </section>
 
     <section>
-        <h>One Handler</h>
+        <h>Focus on #1 Handler</h>
 
         In the past, the most useful handler was the
         <i>TreeHandler</i>
@@ -31,7 +31,16 @@
         or configure multiple handlers, but the TreeHandler has been promoted to
         first class status.
     </section>
+    <section>
+        <h>Focus on Bytecode Instrumentation</h>
+        Bytecode injection is <b>the</b> prefered way to use JRat.
+        Support for programatic intrumentation and possibly AOP will be phased out.
+    </section>
 
+    <section>
+        <h>ASM is in, BCEL is out</h>
+        JRat now uses ObjectWeb's ASM library to perform bytecode injection.
+    </section>
     <section>
         <h>HTTP Server</h>
 
@@ -46,6 +55,7 @@
         replaced with a binary (serialization based) format. At some point in the future it
         may be possible to export data to XML, HTML, or another format.
     </section>
+
 
 
 </document>
