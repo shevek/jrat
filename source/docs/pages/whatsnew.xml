@@ -1,0 +1,30 @@
+<document title="What's New">
+
+    <section>
+        <h>What's New</h>
+        If you have previously used JRat, you will definately notice some differences in
+        recent versions.
+
+        <section>
+            <h>No Injection Step</h>
+            Java 5 has given us JVMPI, which allows ...
+        </section>
+
+        <section>
+            <h>Configuration</h>
+            Previous versions of JRat support
+
+        </section>
+
+        <section>
+            <h>One Handler</h>
+
+        </section>
+
+        <section>
+            <h>Output Format</h>
+
+        </section>
+    </section>
+
+</document>

@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-    
+    <!--
     <xsl:template match="section">
         <xsl:apply-templates/>
     </xsl:template>
-
+        -->
     <xsl:template match="section">
-        <xsl:apply-templates/>
+        <p>
+            <xsl:apply-templates/>
+        </p>
     </xsl:template>
 
     <xsl:template match="ul">
@@ -58,7 +60,7 @@
         </pre>
     </xsl:template>
 
-     <xsl:template match="terminal">
+    <xsl:template match="terminal">
         <pre class="box terminal">
             <xsl:apply-templates/>
         </pre>

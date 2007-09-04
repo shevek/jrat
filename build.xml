@@ -16,10 +16,11 @@
 
     <property name="target.dir" value="target"/>
     <property name="classes.dir" value="${target.dir}/classes"/>
+    <property name="website.dir" value="${target.dir}/website"/>
     <property name="temp.dir" value="${target.dir}/temp"/>
     <property name="release.dir" value="${target.dir}/release"/>
-    <property name="pages.dir" value="${release.dir}/docs"/>
-    <property name="api.dir" value="${release.dir}/api"/>
+    <property name="docs.dir" value="${release.dir}/docs"/>
+    <property name="api.dir" value="${docs.dir}/api"/>
 
     <property name="zip.dir" value="."/>
     <property name="release.name" value="${build.jar}-${build.version}"/>
@@ -110,11 +111,11 @@
     <!-- ======================================================================= -->
 
     <target name="xdoc">
-        <delete dir="${pages.dir}"/>
+        <delete dir="${docs.dir}"/>
 
-        <mkdir dir="${pages.dir}"/>
+        <mkdir dir="${docs.dir}"/>
 
-        <copy todir="${pages.dir}/static">
+        <copy todir="${docs.dir}/static">
             <fileset dir="${src.doc.static.dir}" excludes="*.xml,*.xsl"/>
         </copy>
 
@@ -123,7 +124,7 @@
         </tstamp>
 
         <xslt basedir="${src.doc.pages.dir}"
-              destdir="${pages.dir}"
+              destdir="${docs.dir}"
               extension=".html"
               style="${src.doc.dir}/style/main.xsl">
 
@@ -224,8 +225,6 @@
 
     <!-- ======================================================================= -->
 
-    <!-- ======================================================================= -->
-
     <target name="clean">
 
         <delete dir="${target.dir}"/>
@@ -242,8 +241,15 @@
 
     <target name="doc" depends="javadoc,xdoc"/>
     <target name="dist" depends="clean,jar,doc"/>
+    <!-- ======================================================================= -->
 
+    <target name="website" depends="doc">
+        <copy todir="${website.dir}">
+            <fileset dir="${docs.dir}"/>
+        </copy>
+    </target>
 
+    <!-- ======================================================================= -->
     <target name="zip" depends="dist">
 
         <mkdir dir="${zip.dir}"/>

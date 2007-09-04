@@ -23,10 +23,10 @@
 					<h2 class="header">Java Runtime Analysis Toolkit</h2>	
 															 
 					<a class="header" href="http://sourceforge.net/project/showfiles.php?group_id=41841&amp;package_id=33930">download</a>
-					<a class="header" href="lesser.html">license</a>
 					<a class="header" href="http://sourceforge.net/forum/forum.php?forum_id=136869">forum</a>
-					<a class="header" href="http://sourceforge.net/projects/jrat">sourceforge</a>								
-					
+                    <a class="header" href="http://jrat.wiki.sourceforge.net">wiki</a>
+                    <a class="header" href="http://sourceforge.net/projects/jrat">sf.net</a>
+                    <a class="header" href="lesser.html">license</a>
 				</div>
 				 
  				<div class="content">
