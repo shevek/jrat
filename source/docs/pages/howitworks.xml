@@ -1,0 +1,70 @@
+<document title="How It Works">
+
+
+    This document aims to provide a bit more details about what's going on than the
+    <a href="quickstart.html">Quick Start Guide</a>
+    .
+
+    <section>
+        <h>Instrumentation</h>
+
+        <p>
+            JRat works by weaving it's own instructions into your program. It doesn't modify
+            your source code, it modifies the compiled bytecode that gets compiled into your
+            class files and jars. JRat basicly adds logic that when executed, tells JRat what's
+            going on.
+        </p>
+
+        <p>
+            This is a concept used by many AOP frameworks.  JRat doesn't use any standard AOP
+            libraries, but it does add a custom before and end advice to every monitored method.
+        </p>
+
+        <section>
+        <h>Before</h>
+        <code><![CDATA[
+public class MyClass {
+    public Object doSomething() {
+        // do something
+    }
+}]]></code>
+        </section>
+
+        <section>
+        <h>Before</h>
+        <code><![CDATA[
+public class MyClass {
+    private static final MethodHandler handler = // get a method handler
+    public Object doSomething() {
+        handler.onMethodStart(this);
+        long startTime = Clock.currentTimeMillis();
+        try {
+           Object result = jrat_renamed_doSomething();
+           handler.onMethodFinish(this,Clock.currentTimeMillis() - startTime, null);
+        } catch(Throwable e) {
+           handler.onMethodFinish(this,Clock.currentTimeMillis() - startTime, e);
+           throw e;
+        }
+    }
+    public Object jrat_renamed_doSomething() {
+        // do something
+    }
+}]]></code>
+        </section>
+
+
+        <section>
+            <h>The Java Agent (Loadtime Weaving)</h>
+
+        </section>
+
+
+    </section>
+    <section>
+        <h>Configuration</h>
+
+
+    </section>
+
+
+</document>

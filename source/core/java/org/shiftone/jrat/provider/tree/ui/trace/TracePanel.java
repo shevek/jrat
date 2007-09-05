@@ -1,8 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.trace;
 
 
-import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
-import org.shiftone.jrat.ui.UIConstants;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode; 
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.swing.popup.TreePopupMouseAdaptor;
 
@@ -18,16 +17,16 @@ import java.awt.*;
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class TracePanel extends JPanel implements TreeSelectionListener, UIConstants {
+public class TracePanel extends JPanel implements TreeSelectionListener {
 
     private static final Logger LOG = Logger.getLogger(TracePanel.class);
     private static final long serialVersionUID = 1;
     private JSplitPane splitPane = null;
     private JTree tree = null;
     private TraceTreeNode rootNode = null;
-    private JMenuItem spawnRoot = new JMenuItem(MENU_TREE_SPAWN_ROOT);
-    private JMenuItem statView = new JMenuItem(MENU_TREE_STAT_VIEW);
-    private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
+   // private JMenuItem spawnRoot = new JMenuItem(MENU_TREE_SPAWN_ROOT);
+    //private JMenuItem statView = new JMenuItem(MENU_TREE_STAT_VIEW);
+   // private JMenuItem touchGraph = new JMenuItem(MENU_TREE_TOUCHGRAPH);
     private NodeDetailPanel detailPanel;
 
     public TracePanel(TraceTreeNode rootNode) {
@@ -53,15 +52,15 @@ public class TracePanel extends JPanel implements TreeSelectionListener, UIConst
         tree.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 
         //
-        JPopupMenu popupMenu = new JPopupMenu();
-
-        popupMenu.add(statView);
-        popupMenu.add(spawnRoot);
-        popupMenu.add(touchGraph);
-
-        TreePopupMouseAdaptor treePopupMouseAdaptor = new TreePopupMouseAdaptor(popupMenu, tree);
-
-        tree.addMouseListener(treePopupMouseAdaptor);
+//        JPopupMenu popupMenu = new JPopupMenu();
+//
+//        popupMenu.add(statView);
+//        popupMenu.add(spawnRoot);
+//        popupMenu.add(touchGraph);
+//
+//        TreePopupMouseAdaptor treePopupMouseAdaptor = new TreePopupMouseAdaptor(popupMenu, tree);
+//
+//        tree.addMouseListener(treePopupMouseAdaptor);
         //  statView.addActionListener(new StatsViewAction(treePopupMouseAdaptor));
         // spawnRoot.addActionListener(new SpawnRootAction(treePopupMouseAdaptor));
         // touchGraph.addActionListener(new TouchGraphAction(treePopupMouseAdaptor));

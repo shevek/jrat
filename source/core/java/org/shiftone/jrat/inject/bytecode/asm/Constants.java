@@ -29,12 +29,12 @@ public interface Constants {
         public static Method currentTimeNanos = Method.getMethod("long currentTimeMillis()");
     }
 
-    public interface System {
-
-        public static Class CLASS = java.lang.System.class;
-        public static Type TYPE = Type.getType(CLASS);
-        public static Method currentTimeMillis = Method.getMethod("long currentTimeMillis()");
-    }
+//    public interface System {
+//
+//        public static Class CLASS = java.lang.System.class;
+//        public static Type TYPE = Type.getType(CLASS);
+//        public static Method currentTimeMillis = Method.getMethod("long currentTimeMillis()");
+//    }
 
     public interface HandlerFactory {
 

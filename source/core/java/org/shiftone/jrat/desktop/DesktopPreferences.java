@@ -16,6 +16,9 @@ public class DesktopPreferences {
     private static final String LAST_RUN_TIME = "last_run_time";
     private static final String LAST_OPENED_FILE = "last_opened_file";
     private static final String WINDOW_BOUNDS = "window_bounds";
+    private static final String LAST_INJECTED_FILE = "last_injected_file";
+    private static final String LAST_INJECTED_DIR = "last_injected_dir";
+
 
     public static int getRunCount() {
         return PREFS.getInt(RUN_COUNT, 0);
@@ -65,11 +68,34 @@ public class DesktopPreferences {
     }
 
     public static File getLastOpenedFile() {
-        String name = PREFS.get(LAST_OPENED_FILE, null);
+        return getFile(LAST_OPENED_FILE);
+    }
+
+    public static void setLastOpenedFile(File file) {
+        setFile(LAST_OPENED_FILE, file);
+    }
+
+    public static File getLastInjectedFile() {
+         return getFile(LAST_INJECTED_FILE);
+    }
+    public static void setLastInjectedFile(File file) {
+        setFile(LAST_INJECTED_FILE, file);
+    }
+
+    public static File getLastInjectedDir() {
+         return getFile(LAST_INJECTED_DIR);
+    }
+    public static void setLastInjectedDir(File file) {
+        setFile(LAST_INJECTED_DIR, file);
+    }
+
+
+    private static File getFile(String key) {
+        String name = PREFS.get(key, null);
         return name == null ? null : new File(name);
     }
 
-    public static void setLastOpenedFile(File lastOpenedFile) {
-        PREFS.put(LAST_OPENED_FILE, lastOpenedFile == null ? null : lastOpenedFile.getAbsolutePath());
+    private static void setFile(String key, File value) {
+        PREFS.put(key, value == null ? null : value.getAbsolutePath());
     }
 }

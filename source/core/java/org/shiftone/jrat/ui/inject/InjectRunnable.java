@@ -2,8 +2,7 @@ package org.shiftone.jrat.ui.inject;
 
 
 import org.shiftone.jrat.core.spi.ui.View;
-import org.shiftone.jrat.inject.Injector;
-import org.shiftone.jrat.ui.UIConstants;
+import org.shiftone.jrat.inject.Injector; 
 import org.shiftone.jrat.util.Command;
 import org.shiftone.jrat.util.Exceptions;
 import org.shiftone.jrat.util.NestedRuntimeException;
@@ -23,7 +22,7 @@ import java.util.TreeSet;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class InjectRunnable implements Runnable, UIConstants {
+public class InjectRunnable implements Runnable {
 
     private static final Logger LOG = Logger.getLogger(InjectRunnable.class);
     private View view;
@@ -128,18 +127,18 @@ public class InjectRunnable implements Runnable, UIConstants {
 
 
     private void scan(File file, Set fileSet) {
-
-        if (file.isDirectory()) {
-            LOG.info("scanning " + file.getAbsolutePath());
-
-            File[] files = file.listFiles(INJECT_FILE_FILTER);
-
-            for (int i = 0; i < files.length; i++) {
-                scan(files[i], fileSet);
-            }
-        } else if (INJECT_FILE_FILTER.accept(file)) {
-            fileSet.add(file);
-        }
+//
+//        if (file.isDirectory()) {
+//            LOG.info("scanning " + file.getAbsolutePath());
+//
+//            File[] files = file.listFiles(INJECT_FILE_FILTER);
+//
+//            for (int i = 0; i < files.length; i++) {
+//                scan(files[i], fileSet);
+//            }
+//        } else if (INJECT_FILE_FILTER.accept(file)) {
+//            fileSet.add(file);
+//        }
     }
 
 

@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
  */
 public class TipsAction extends AbstractAction {
 
-    private static final Logger LOG = Logger.getLogger(LicenseAction.class);
+    private static final Logger LOG = Logger.getLogger(TipsAction.class);
     private final Component component;
     
     public TipsAction(Component component) {
