@@ -12,7 +12,7 @@ import org.shiftone.jrat.util.Percent;
 public class HierarchyTreeTableModel extends AbstractTreeTableModel {
 
     private static final String[] COLUMNS = {
-            "Class", "Methods", "Uncalled", "Coverage %", "Duration", "Method Duration"
+            "Class", "Methods", "Uncalled", "Coverage %", "Total ms", "Total Method ms"
     };
     private static final Class[] COLUMN_TYPES = {
             String.class, Integer.class, Integer.class,  Percent.class, Long.class, Long.class

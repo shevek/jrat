@@ -145,4 +145,19 @@
         <img align="{@align}" src="{@src}"/>
     </xsl:template>
 
+    <!-- ============================================== -->
+
+    <xsl:template match="definitions">
+        <table class="definition">
+        <xsl:apply-templates select="definition"/>
+        </table>
+    </xsl:template>
+
+     <xsl:template match="definition">
+        <tr class="definition">
+            <td class="definition-key"><xsl:value-of select="@title"/></td>
+            <td class="definition-value"><xsl:apply-templates/></td>          
+        </tr>
+    </xsl:template>
+
 </xsl:stylesheet>

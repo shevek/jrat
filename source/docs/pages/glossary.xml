@@ -1,5 +1,128 @@
-<document title="Page Moved">
+<document title="Glossary">
 
-    <a href="index.html">Page Moved</a>
+    <section>
+        <h>Statistics</h>
+
+        <definitions>
+
+            <definition title="Enters">
+                The total number of times that a method was entered.
+            </definition>
+
+            <definition title="Exits">
+                The total number of times that a method was exited. This includes
+                both normal returns as well as exceptions thrown. Note that this may
+                be less than Enters, if a thread enters a method but never gets a chance
+                to complete it.
+            </definition>
+
+            <definition title="Exceptions Thrown">
+                The total number of times that a method threw an exception to
+                it's caller.
+
+                This number will always be less than or equal to Exists.
+            </definition>
+
+            <definition title="Exception Rate">
+                This is the percentage of exits that were the result of an exception.
+            </definition>
+
+            <definition title="Uncompleted Calls">
+                The total number of times a thread entered a method but never existed.
+
+                This can happen if a method is never existed by the time the application exists,
+                or JRat captures the statistics.
+
+                This is simply
+                <i>Enters</i>
+                minus
+                <i>Exits</i>
+                .
+            </definition>
+
+            <definition title="Total ms">
+                The total number of milliseconds spent in a method. This includes time spent
+                in dependent methods.
+
+                This only includes method calls that were existed (for obvious reasons).
+            </definition>
+
+            <definition title="Min ms">
+                This is the fastest recorded time for the execution of a method.
+
+                This does include the time spent in dependent methods.
+            </definition>
+
+            <definition title="Max ms">
+                This is the slowest recorded time for the execution of a method.
+
+                This does include the time spent in dependent methods.
+            </definition>
+
+            <definition title="Average ms">
+                The average number of milliseconds spent in a method.
+                That is,
+                <i>Total ms</i>
+                divided by
+                <i>Exits</i>
+            </definition>
+
+            <definition title="Total Method ms">
+                This is one of the
+                <b>most interesting</b>
+                numbers for getting a high level
+                understanding of the performance soar spots in an application. It is the Total ms
+                of a method, minus the Total ms of all the instrumented methods that it calls.
+
+                (Note that if there are any
+                <i>Uncompleted Calls</i>
+                , then this value will not be shown,
+                since it's meaning is questionable and it may actually be negative.)
+            </definition>
+
+            <definition title="Average Method ms">
+                This is the average amount of time spent in a method, excluding time spent in
+                instrumented dependent (called) methods.
+
+                This is the
+                <i>Total Method ms</i>
+                divided by
+                <i>Exists</i>
+                .
+            </definition>
+
+            <definition title="Total Callers">
+                This is a somewhat complex value.
+
+                It represents the total observed contexts in which a method is called.
+
+                The higher this number, the more code depends on this method.
+
+                (Trace Tab)
+            </definition>
+
+            <definition title="Uncalled">
+                This is the total number of methods in a class or package that were instrumented
+                but never entered.
+
+                While JRat does not attempt to be a full coverage analysis tool, it does track
+                coverage at the method level (most coverage analysis tools track coverage at the
+                line level, which is better).
+
+                If a method is never called, and the application was fully tested,
+                it may be a candidate for removal.  (Hierarchy Tab)
+
+            </definition>
+            
+            <definition title="Coverage %">
+                The percentage of instrumented methods that were entered at least once.
+
+                This is not line level coverage. (Hierarchy Tab)
+            </definition>
+
+        </definitions>
+
+
+    </section>
 
 </document>
