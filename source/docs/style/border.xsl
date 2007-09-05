@@ -51,6 +51,7 @@
             urchinTracker();
             </script>
 
+            <a href="http://sourceforge.net"><img border="0" height="37" width="125" src="http://sourceforge.net/sflogo.php?group_id=41841&amp;type=3"/></a>
         </html>
 		 
 	</xsl:template>
