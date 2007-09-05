@@ -25,28 +25,39 @@
         <code><![CDATA[
 public class MyClass {
     public Object doSomething() {
+
         // do something
+
     }
 }]]></code>
         </section>
 
         <section>
-        <h>Before</h>
+        <h>After</h>
         <code><![CDATA[
 public class MyClass {
-    private static final MethodHandler handler = // get a method handler
+    private static final MethodHandler handler = HandlerFactory.getHandler(...);
+
     public Object doSomething() {
+
         handler.onMethodStart(this);
-        long startTime = Clock.currentTimeMillis();
+        long startTime = Clock.getTime();
+
         try {
-           Object result = jrat_renamed_doSomething();
-           handler.onMethodFinish(this,Clock.currentTimeMillis() - startTime, null);
+
+           Object result = real_renamed_doSomething(); // call your method
+
+           handler.onMethodFinish(this, Clock.getTime() - startTime, null);
+
         } catch(Throwable e) {
-           handler.onMethodFinish(this,Clock.currentTimeMillis() - startTime, e);
+
+           handler.onMethodFinish(this, Clock.getTime() - startTime, e);
            throw e;
+
         }
     }
-    public Object jrat_renamed_doSomething() {
+
+    public Object real_renamed_doSomething() {
         // do something
     }
 }]]></code>
