@@ -76,15 +76,17 @@ public class DesktopPreferences {
     }
 
     public static File getLastInjectedFile() {
-         return getFile(LAST_INJECTED_FILE);
+        return getFile(LAST_INJECTED_FILE);
     }
+
     public static void setLastInjectedFile(File file) {
         setFile(LAST_INJECTED_FILE, file);
     }
 
     public static File getLastInjectedDir() {
-         return getFile(LAST_INJECTED_DIR);
+        return getFile(LAST_INJECTED_DIR);
     }
+
     public static void setLastInjectedDir(File file) {
         setFile(LAST_INJECTED_DIR, file);
     }

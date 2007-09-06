@@ -15,11 +15,11 @@ public class Errors {
         showDialog(component, Level.SEVERE, throwable, errorMessage);
     }
 
-     public static void showWarning(Component component, Throwable throwable, String errorMessage) {
+    public static void showWarning(Component component, Throwable throwable, String errorMessage) {
         showDialog(component, Level.WARNING, throwable, errorMessage);
     }
 
-    public static void showDialog(Component component, Level level, Throwable throwable, String errorMessage ) {
+    public static void showDialog(Component component, Level level, Throwable throwable, String errorMessage) {
         JXErrorPane.showDialog(component,
                 new ErrorInfo(errorMessage, errorMessage, null, null, throwable, level, null)
         );

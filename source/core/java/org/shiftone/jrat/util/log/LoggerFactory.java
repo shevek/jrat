@@ -4,7 +4,6 @@ package org.shiftone.jrat.util.log;
 import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.util.Command;
 import org.shiftone.jrat.util.log.target.*;
 
 import java.io.PrintWriter;
@@ -111,7 +110,7 @@ public class LoggerFactory implements Constants {
      * the ThreadLocalLogTarget - meaning a call to enableDesktopLoggingMode was
      * made.
      */
-    public static Object executeInThreadScope(LogTarget newTarget, Command command) {
-        return THREAD_TARGET.executeInScope(newTarget, command);
+    public static void executeInThreadScope(LogTarget newTarget, Runnable runnable) {
+        THREAD_TARGET.executeInScope(newTarget, runnable);
     }
 }

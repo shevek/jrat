@@ -1,7 +1,7 @@
 package org.shiftone.jrat.desktop.action.inject;
 
-import org.shiftone.jrat.desktop.DesktopPreferences;
 import org.shiftone.jrat.desktop.DesktopFrame;
+import org.shiftone.jrat.desktop.DesktopPreferences;
 
 import javax.swing.*;
 import java.io.File;

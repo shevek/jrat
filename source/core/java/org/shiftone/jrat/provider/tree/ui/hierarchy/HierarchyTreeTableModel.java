@@ -2,8 +2,8 @@ package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
 import org.jdesktop.swingx.treetable.AbstractTreeTableModel;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.HierarchyNode;
-import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 import org.shiftone.jrat.util.Percent;
 
 /**
@@ -15,7 +15,7 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
             "Class", "Methods", "Uncalled", "Coverage %", "Total ms", "Total Method ms"
     };
     private static final Class[] COLUMN_TYPES = {
-            String.class, Integer.class, Integer.class,  Percent.class, Long.class, Long.class
+            String.class, Integer.class, Integer.class, Percent.class, Long.class, Long.class
     };
 
     private final PackageHierarchyNode root;
@@ -37,7 +37,7 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
     }
 
     public Object getValueAt(Object o, int i) {
-        HierarchyNode node = (HierarchyNode)o;
+        HierarchyNode node = (HierarchyNode) o;
         switch (i) {
             case 0:
                 return o.toString();
@@ -57,11 +57,11 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
     }
 
     private static Integer getTotalMethods(HierarchyNode node) {
-       return (node instanceof MethodHierarchyNode) ? null : new Integer(node.getTotalMethods());
+        return (node instanceof MethodHierarchyNode) ? null : new Integer(node.getTotalMethods());
     }
 
     private static Integer getUncalledMethods(HierarchyNode node) {
-       return (node instanceof MethodHierarchyNode) ? null : new Integer(node.getUncalledMethods());
+        return (node instanceof MethodHierarchyNode) ? null : new Integer(node.getUncalledMethods());
     }
 
     public boolean isCellEditable(Object o, int i) {

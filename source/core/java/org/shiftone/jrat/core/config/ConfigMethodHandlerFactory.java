@@ -114,8 +114,7 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
         public void addHandlerIfApplicable(Collection methodHandlers, MethodKey methodKey) throws Exception {
 
-            if (methodCriteria.isMatch(methodKey.getClassName(), methodKey.getMethodName(), methodKey.getSignature(), 0))
-            {
+            if (methodCriteria.isMatch(methodKey.getClassName(), methodKey.getMethodName(), methodKey.getSignature(), 0)) {
                 methodHandlers.add(methodHandlerFactory.createMethodHandler(methodKey));
             }
         }

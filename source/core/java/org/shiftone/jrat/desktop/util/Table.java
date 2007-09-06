@@ -1,8 +1,8 @@
 package org.shiftone.jrat.desktop.util;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -12,12 +12,12 @@ public class Table {
 
     private List columns = new ArrayList();
 
-     public synchronized Column column(String name) {
-         return column(name, true);
+    public synchronized Column column(String name) {
+        return column(name, true);
     }
 
     public synchronized Column column(String name, boolean defaultVisible) {
-         return column(name, Object.class, defaultVisible);
+        return column(name, Object.class, defaultVisible);
     }
 
     public synchronized Column column(String name, Class type, boolean defaultVisible) {
@@ -27,11 +27,11 @@ public class Table {
     }
 
     public List getColumns() {
-        return Collections.unmodifiableList(columns);    
+        return Collections.unmodifiableList(columns);
     }
 
     public Column getColumn(int index) {
-        return (Column)columns.get(index);
+        return (Column) columns.get(index);
     }
 
     public int getColumnCount() {

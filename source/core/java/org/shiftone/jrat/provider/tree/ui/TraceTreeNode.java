@@ -108,7 +108,6 @@ public class TraceTreeNode implements javax.swing.tree.TreeNode {
             }
         }
 
-
 //        this.rootAverageDurationNanos = (childOfRoot)
 //                ? this.averageDurationNanos
 //                : parent.rootAverageDurationNanos;
@@ -126,7 +125,6 @@ public class TraceTreeNode implements javax.swing.tree.TreeNode {
 //            pctOfRootTotalDuration = ((100.0 * node.getTotalDuration()) / rootTotalDurationNanos);
 //        }
     }
-
 
 
     public int getMaxDepth() {

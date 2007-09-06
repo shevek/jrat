@@ -1,12 +1,12 @@
 package org.shiftone.jrat.provider.tree.ui.trace;
 
 
-import org.shiftone.jrat.provider.tree.ui.TraceTreeNode; 
+import org.jdesktop.swingx.JXTable;
+import org.shiftone.jrat.desktop.util.JXTableWatcher;
+import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.provider.tree.ui.trace.stack.StackTableModel;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.desktop.util.JXTableWatcher;
-import org.jdesktop.swingx.JXTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +29,7 @@ public class NodeDetailPanel extends JPanel {
         stackTable.setColumnControlVisible(true);
         stackTable.setSortable(false);
 
-          JXTableWatcher.initialize(
+        JXTableWatcher.initialize(
                 stackTable,
                 Preferences.userNodeForPackage(NodeDetailPanel.class).node("columns"),
                 StackTableModel.getColumns());
@@ -53,6 +53,6 @@ public class NodeDetailPanel extends JPanel {
             methodLabel.setText(" " + node.getMethodKey().getShortMethodDescription());
         }
 
-        stackTableModel.setStackTreeNode(root, node);        
+        stackTableModel.setStackTreeNode(root, node);
     }
 }

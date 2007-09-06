@@ -1,10 +1,9 @@
 package org.shiftone.jrat.desktop.action.inject;
 
+import org.shiftone.jrat.desktop.DesktopFrame;
+import org.shiftone.jrat.inject.Injector;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.core.spi.ui.View;
-import org.shiftone.jrat.ui.inject.InjectRunnable;
-import org.shiftone.jrat.desktop.DesktopFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -56,10 +55,33 @@ public abstract class AbstractInjectAction extends AbstractAction {
 
                 setLastInjected(targets[0]);
 
-                desktopFrame.createView("Injecting", new JPanel());
+                RunnableLogPanel logPanel = new RunnableLogPanel();
 
-                //new Thread(new InjectRunnable(injector, targets, tab)).start();
+                desktopFrame.createView("Injecting", logPanel);
+
+                logPanel.run(new InjectRunnable(targets));
+
             }
+        }
+    }
+
+    private class InjectRunnable implements Runnable {
+
+        private final File[] targets;
+        private final Injector injector = new Injector();
+
+        public InjectRunnable(File[] targets) {
+            this.targets = targets;
+        }
+
+        private void inject() {
+            for (int i = 0; i < targets.length; i++) {
+                injector.inject(targets[i]);
+            }
+        }
+
+        public void run() {
+            inject();
         }
     }
 }

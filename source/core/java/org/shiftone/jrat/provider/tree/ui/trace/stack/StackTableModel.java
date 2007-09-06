@@ -2,10 +2,10 @@ package org.shiftone.jrat.provider.tree.ui.trace.stack;
 
 
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.desktop.util.Table;
 import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
 import org.shiftone.jrat.util.Percent;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.desktop.util.Table;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

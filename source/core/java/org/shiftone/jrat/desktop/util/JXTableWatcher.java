@@ -4,11 +4,9 @@ import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.table.TableColumnExt;
 import org.shiftone.jrat.util.log.Logger;
 
-import javax.swing.table.TableColumn;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
-import java.util.Map;
 import java.util.prefs.Preferences;
 
 /**
@@ -22,9 +20,9 @@ public class JXTableWatcher {
 
         List columns = table.getColumns(true);
 
-        for (int i = 0; i < columns.size(); i ++) {
-            TableColumnExt columnExt = (TableColumnExt)columns.get(i);
-            String key  = "visible." + i;
+        for (int i = 0; i < columns.size(); i++) {
+            TableColumnExt columnExt = (TableColumnExt) columns.get(i);
+            String key = "visible." + i;
             String visible = preferences.get(key, null);
             columnExt.addPropertyChangeListener(new VisibleListener(preferences, key)); // watch for changes
 
@@ -32,9 +30,9 @@ public class JXTableWatcher {
 
                 columnExt.setVisible(Boolean.parseBoolean(visible)); // set saved visible
 
-            } else  if (tableColumns.size() > i) {
+            } else if (tableColumns.size() > i) {
 
-                Table.Column tableColumn = (Table.Column)tableColumns.get(i);
+                Table.Column tableColumn = (Table.Column) tableColumns.get(i);
                 columnExt.setVisible(tableColumn.isDefaultVisible());
 
             }

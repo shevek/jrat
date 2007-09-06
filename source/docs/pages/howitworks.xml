@@ -16,13 +16,13 @@
         </p>
 
         <p>
-            This is a concept used by many AOP frameworks.  JRat doesn't use any standard AOP
+            This is a concept used by many AOP frameworks. JRat doesn't use any standard AOP
             libraries, but it does add a custom before and end advice to every monitored method.
         </p>
 
         <section>
-        <h>Before</h>
-        <code><![CDATA[
+            <h>Before</h>
+            <code><![CDATA[
 public class MyClass {
     public Object doSomething() {
 
@@ -33,8 +33,8 @@ public class MyClass {
         </section>
 
         <section>
-        <h>After</h>
-        <code><![CDATA[
+            <h>After</h>
+            <code><![CDATA[
 public class MyClass {
     private static final MethodHandler handler = HandlerFactory.getHandler(...);
 
@@ -66,7 +66,33 @@ public class MyClass {
 
         <section>
             <h>The Java Agent (Loadtime Weaving)</h>
+            <p>
+                Java 5 supports the Java Virtual Machine Tool Interface (JVMTI).
 
+                This JVM feature allows a command line argument to be used to specify a
+                <i>Java Agent</i>
+                .
+
+                The
+                <i>Java Agent</i>
+                is a special Java class that gets called before
+                anything else happens (even before the application's main method gets
+                called).
+
+                The agent is given the opportunity to install a filter that will receieve
+                callbacks to transform classes as they are loaded.
+
+                This approach is nice because...
+                <ul>
+                    <li>It's easy. You can install JRat it just by adding a comand line argmument.</li>
+                    <li>It's lazy. Only the loaded classes need to be trasformed.</li>
+                    <li>It's dynamic. Every time you run your application, the agent examines your
+                        <b>jrat.xml</b>
+                        configuration to decide what to inject. If you remove the command
+                        line argument, then JRat is uninstalled.
+                    </li>
+                </ul>
+            </p>
         </section>
 
 

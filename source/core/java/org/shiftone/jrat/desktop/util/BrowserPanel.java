@@ -24,7 +24,7 @@ import java.net.URL;
 public class BrowserPanel extends JPanel implements HyperlinkListener, ActionListener {
 
     private static final Logger LOG = Logger.getLogger(BrowserPanel.class);
-    private final URL homePage ;
+    private final URL homePage;
     private final JToolBar toolBar = new JToolBar();
     private final JEditorPane editorPane = new JEditorPane();
     private final JScrollPane scrollPane = new JScrollPane(editorPane);
@@ -37,11 +37,10 @@ public class BrowserPanel extends JPanel implements HyperlinkListener, ActionLis
     private int maxCurrent;
 
 
-
     public BrowserPanel(URL homePage) {
 
         this.homePage = homePage;
-     
+
         HTMLEditorKit kit = new HTMLEditorKit();
 
         kit.setLinkCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

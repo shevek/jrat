@@ -3,8 +3,8 @@ package org.shiftone.jrat.desktop;
 import org.shiftone.jrat.util.Assert;
 
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

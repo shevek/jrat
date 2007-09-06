@@ -48,7 +48,7 @@ public abstract class HierarchyNode {
     }
 
     public int getIndexOfChild(HierarchyNode node) {
-        for (int i = 0; i < getChildCount(); i ++) {
+        for (int i = 0; i < getChildCount(); i++) {
             if (node == getChild(i)) {
                 return i;
             }

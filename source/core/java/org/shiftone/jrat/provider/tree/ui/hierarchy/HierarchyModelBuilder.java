@@ -1,12 +1,12 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
 import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
-import org.shiftone.jrat.provider.tree.ui.summary.MethodSummary;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.ClassHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodSummaryHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
-import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
+import org.shiftone.jrat.provider.tree.ui.summary.MethodSummary;
+import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
 
 import java.util.HashMap;
 import java.util.Iterator;

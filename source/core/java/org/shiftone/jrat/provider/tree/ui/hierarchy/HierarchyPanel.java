@@ -20,7 +20,7 @@ public class HierarchyPanel extends JPanel {
 
         treeTable = new JXTreeTable();
         treeTable.setTreeTableModel(model);
-        for (int i = 1; i < treeTable.getColumnCount(); i ++) {
+        for (int i = 1; i < treeTable.getColumnCount(); i++) {
             treeTable.getColumn(i).setMaxWidth(150);
         }
         PercentTableCellRenderer.setDefaultRenderer(treeTable);
@@ -30,8 +30,8 @@ public class HierarchyPanel extends JPanel {
 
         header = new JXHeader("Hirarchy View",
                 "Execution is tracked at a method level, not at the line level.  " +
-                "A method is identified as covered if it was entered at least once.  " +
-        "");
+                        "A method is identified as covered if it was entered at least once.  " +
+                        "");
 
         setLayout(new BorderLayout());
         add(header, BorderLayout.NORTH);

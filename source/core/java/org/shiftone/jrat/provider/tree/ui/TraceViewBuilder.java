@@ -27,9 +27,9 @@ public class TraceViewBuilder implements ViewBuilder { //, Externalizable {
     }
 
     public TraceViewBuilder(TreeNode root, Set allMethodKeys,
-                           long sessionStartMs, long sessionEndMs,
-                           Properties systemProperties,
-                           String hostName, String hostAddress) {
+                            long sessionStartMs, long sessionEndMs,
+                            Properties systemProperties,
+                            String hostName, String hostAddress) {
 
         Assert.assertNotNull(root);
         Assert.assertNotNull(allMethodKeys);

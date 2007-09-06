@@ -113,7 +113,7 @@ public class DesktopFrame extends JFrame {
             help.add(new AboutAction(this));
             help.add(new DocsAction(this));
             help.add(new TipsAction(this));
-            
+
             toolBar.add(help);
         }
 
@@ -132,6 +132,7 @@ public class DesktopFrame extends JFrame {
 
     public void createView(final String title, JComponent component) {
         tabbedPane.addTab(title, component);
+        tabbedPane.setSelectedComponent(component);
     }
 
     private void checkTabs() {

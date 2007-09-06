@@ -30,7 +30,7 @@ public class ClassHierarchyNode extends HierarchyNode {
 
             Long tmd = method.getTotalMethodDuration();
             if (tmd != null) {
-              totalMethodDuration += tmd.longValue();
+                totalMethodDuration += tmd.longValue();
             }
         }
     }

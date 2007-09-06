@@ -41,7 +41,7 @@ public class PackageHierarchyNode extends HierarchyNode {
 
         Long tmd = node.getTotalMethodDuration();
         if (tmd != null) {
-        totalMethodDuration += tmd.longValue();
+            totalMethodDuration += tmd.longValue();
         }
     }
 

@@ -5,7 +5,6 @@ import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -20,7 +19,7 @@ public class MethodKey implements Serializable, Comparable {
 
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
     private static final long serialVersionUID = 1;
-   
+
 
     private ClassKey classKey = null;
     private String methodName = null;
@@ -36,7 +35,7 @@ public class MethodKey implements Serializable, Comparable {
     public static MethodKey getInstance(String fullyQualifiedClassName, String methodName, String signature) {
         ClassKey classKey = ClassKey.getInstance(fullyQualifiedClassName);
         MethodKey key = new MethodKey(classKey, methodName, signature);
-        MethodKey value = (MethodKey)CACHE.get(key);
+        MethodKey value = (MethodKey) CACHE.get(key);
         if (value == null) {
             CACHE.put(key, key);
             value = key;

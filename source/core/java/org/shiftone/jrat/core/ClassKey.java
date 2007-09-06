@@ -17,7 +17,7 @@ public class ClassKey implements Serializable, Comparable {
     private static final Map CACHE = new HashMap();  //<String, ClassKey>
 
     public static ClassKey getInstance(String fullyQualifiedClassName) {
-       ClassKey classKey = (ClassKey) CACHE.get(fullyQualifiedClassName);
+        ClassKey classKey = (ClassKey) CACHE.get(fullyQualifiedClassName);
         if (classKey == null) {
             classKey = new ClassKey(fullyQualifiedClassName);
         }
@@ -40,8 +40,7 @@ public class ClassKey implements Serializable, Comparable {
     }
 
 
-
-     /**
+    /**
      * Gets the package's name in pieces.
      */
     public String[] getPackageNameParts() {

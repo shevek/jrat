@@ -14,7 +14,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
-import java.io.IOException;
 import java.util.zip.GZIPInputStream;
 
 

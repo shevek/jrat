@@ -5,9 +5,9 @@ import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.shiftone.jrat.desktop.util.JXTableWatcher;
-import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
-import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.AllColumnVisibilityAction;
+import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
+import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;

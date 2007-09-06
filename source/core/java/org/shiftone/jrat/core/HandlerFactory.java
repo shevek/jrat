@@ -12,7 +12,7 @@ import org.shiftone.jrat.util.log.Logger;
 public class HandlerFactory {
 
     private static final Logger LOG = Logger.getLogger(HandlerFactory.class);
-    
+
     /**
      * Force initialization.  This should really only be called from test cases to
      * initialize a particular configuration.
@@ -27,7 +27,7 @@ public class HandlerFactory {
         private static MethodHandlerFactory rootHandlerFactory;
 
         static {
-            
+
             Mode.set(Mode.RUNTIME);
 
             try {

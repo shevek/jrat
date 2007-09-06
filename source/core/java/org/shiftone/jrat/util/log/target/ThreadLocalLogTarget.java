@@ -1,7 +1,7 @@
 package org.shiftone.jrat.util.log.target;
 
 
-import org.shiftone.jrat.util.Command;
+import org.shiftone.jrat.util.log.Logger;
 
 
 /**
@@ -14,6 +14,7 @@ import org.shiftone.jrat.util.Command;
  */
 public class ThreadLocalLogTarget implements LogTarget {
 
+    private static final Logger LOG = Logger.getLogger(ThreadLocalLogTarget.class);
     public ThreadLocal threadLocal;
 
     public ThreadLocalLogTarget() {
@@ -52,14 +53,15 @@ public class ThreadLocalLogTarget implements LogTarget {
     }
 
 
-    public Object executeInScope(LogTarget newTarget, Command command) {
+    public void executeInScope(LogTarget newTarget, Runnable runnable) {
 
         LogTarget oldTarget = getLogTarget();
 
         try {
             setLogTarget(newTarget);
-
-            return command.execute();
+            runnable.run();
+        } catch (Throwable e) {
+            LOG.error("Process failed.", e);
         }
         finally {
             setLogTarget(oldTarget);

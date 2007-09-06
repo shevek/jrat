@@ -1,12 +1,12 @@
 package org.shiftone.jrat.desktop.action.help;
 
-import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.VersionUtil;
+import org.shiftone.jrat.util.log.Logger;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.*;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

@@ -25,4 +25,6 @@ public class InjectDirectoryAction extends AbstractInjectAction {
     protected File getLastInjected() {
         return DesktopPreferences.getLastInjectedDir();
     }
+
+
 }

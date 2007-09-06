@@ -3,8 +3,8 @@ package org.shiftone.jrat.desktop.util;
 import org.jdesktop.swingx.JXTipOfTheDay;
 import org.jdesktop.swingx.tips.TipLoader;
 import org.jdesktop.swingx.tips.TipOfTheDayModel;
-import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.desktop.DesktopPreferences;
+import org.shiftone.jrat.util.io.ResourceUtil;
 
 import java.awt.*;
 import java.util.Random;
@@ -30,7 +30,7 @@ public class Tips {
     private static class Choice implements JXTipOfTheDay.ShowOnStartupChoice {
 
         public void setShowingOnStartup(boolean showOnStartup) {
-             DesktopPreferences.setShowTipsOnStartup(showOnStartup);
+            DesktopPreferences.setShowTipsOnStartup(showOnStartup);
         }
 
         public boolean isShowingOnStartup() {

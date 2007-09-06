@@ -3,10 +3,9 @@ package org.shiftone.jrat.desktop;
 import org.jdesktop.swingx.JXHyperlink;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.*;
-import java.util.*;
+import java.awt.event.ActionListener;
+import java.util.TimerTask;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -32,25 +31,25 @@ public class Memory extends JPanel {
 
     private static class TickerTask extends TimerTask {
 
-         private final JButton button;
+        private final JButton button;
 
-         public TickerTask(JButton button) {
-             this.button = button;
-         }
+        public TickerTask(JButton button) {
+            this.button = button;
+        }
 
-         public void run() {
+        public void run() {
 
             Runtime runtime = Runtime.getRuntime();
 
             final StringBuffer sb = new StringBuffer();
 
-             long total = runtime.totalMemory();
-             long max = runtime.maxMemory();
-             long free = runtime.freeMemory();
+            long total = runtime.totalMemory();
+            long max = runtime.maxMemory();
+            long free = runtime.freeMemory();
 
-             sb.append(toMeg(total - free));
-             sb.append(" of ");
-             sb.append(toMeg(max));
+            sb.append(toMeg(total - free));
+            sb.append(" of ");
+            sb.append(toMeg(max));
 
 
             SwingUtilities.invokeLater(new Runnable() {

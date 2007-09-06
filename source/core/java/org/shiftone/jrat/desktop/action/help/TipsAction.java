@@ -15,7 +15,7 @@ public class TipsAction extends AbstractAction {
 
     private static final Logger LOG = Logger.getLogger(TipsAction.class);
     private final Component component;
-    
+
     public TipsAction(Component component) {
         super("Tips");
         putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_T));

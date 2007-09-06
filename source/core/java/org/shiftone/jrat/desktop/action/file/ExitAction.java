@@ -1,7 +1,5 @@
 package org.shiftone.jrat.desktop.action.file;
 
-import org.shiftone.jrat.util.log.Logger;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
