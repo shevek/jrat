@@ -2,8 +2,8 @@ package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
 import org.shiftone.jrat.core.MethodKey;
 
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -19,9 +19,7 @@ public class MethodHierarchyNode extends HierarchyNode {
     }
 
     public void finalizeStatistics() {
-        // do nothing 
     }
-
 
     public Long getTotalMethodDuration() {
         return null;

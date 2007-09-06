@@ -15,12 +15,12 @@
 
 
     <property name="target.dir" value="target"/>
+    <property name="temp.dir" value="${target.dir}/temp"/>
     <property name="classes.dir" value="${target.dir}/classes"/>
     <property name="website.dir" value="${target.dir}/website"/>
-    <property name="temp.dir" value="${target.dir}/temp"/>
     <property name="release.dir" value="${target.dir}/release"/>
-    <property name="docs.dir" value="${release.dir}/docs"/>
-    <property name="api.dir" value="${docs.dir}/api"/>
+    <property name="docs.dir" value="${target.dir}/docs"/>
+    <property name="javadoc.dir" value="${target.dir}/javadoc"/>
 
     <property name="zip.dir" value="."/>
     <property name="release.name" value="${build.jar}-${build.version}"/>
@@ -75,11 +75,11 @@
 
     <target name="javadoc">
 
-        <mkdir dir="${api.dir}"/>
+        <mkdir dir="${javadoc.dir}"/>
         <javadoc
                 packagenames="org.shiftone.*"
                 sourcepath="${src.java.dir}"
-                destdir="${api.dir}"
+                destdir="${javadoc.dir}"
                 access="package"
                 linksource="yes"
                 windowtitle="${title} API">
@@ -111,8 +111,8 @@
     <!-- ======================================================================= -->
 
     <target name="xdoc">
-        <delete dir="${docs.dir}"/>
 
+        <delete dir="${docs.dir}"/>
         <mkdir dir="${docs.dir}"/>
 
         <copy todir="${docs.dir}/static">
@@ -239,8 +239,9 @@
 
     <!-- ======================================================================= -->
 
-    <target name="doc" depends="javadoc,xdoc"/>
+    <target name="doc" depends="javadoc, xdoc"/>
     <target name="dist" depends="clean,jar,doc"/>
+
     <!-- ======================================================================= -->
 
     <target name="website" depends="doc, jar">
@@ -248,7 +249,9 @@
             <fileset dir="${docs.dir}"/>
             <fileset file="${release.dir}/${jar.file}"/>
         </copy>
-
+        <copy todir="${website.dir}/api">
+            <fileset dir="${javadoc.dir}"/>         
+        </copy>
     </target>
 
     <!-- ======================================================================= -->
