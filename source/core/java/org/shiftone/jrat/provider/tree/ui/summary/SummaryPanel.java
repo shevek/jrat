@@ -11,7 +11,11 @@ import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.prefs.Preferences;
@@ -20,6 +24,11 @@ import java.util.prefs.Preferences;
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class SummaryPanel extends JPanel {
+
+    private final JXTable table;
+    private final JXTaskPane tasks;
+    private final JXTaskPane details;
+    private final JXTaskPane summary;
 
     public SummaryPanel(
             SummaryTableModel summaryTableModel,
@@ -31,9 +40,12 @@ public class SummaryPanel extends JPanel {
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 
-        JXTable table = new JXTable();
+        table = new JXTable();
         table.setModel(summaryTableModel);
         table.setColumnControlVisible(true);
+        //table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        table.getSelectionModel().addListSelectionListener(new SelectionListener());
 
         splitPane.setRightComponent(new JScrollPane(table));
 
@@ -47,8 +59,9 @@ public class SummaryPanel extends JPanel {
         {
             JXTaskPaneContainer taskPaneContainer = new JXTaskPaneContainer();
 
-            taskPaneContainer.add(createTasksPane(table));
-            taskPaneContainer.add(createSummaryPane(sessionStartMs, sessionEndMs, systemProperties, hostName, hostAddress));
+            taskPaneContainer.add(tasks = createTasksPane(table));
+            taskPaneContainer.add(details = createDetailPane());
+            taskPaneContainer.add(summary = createSummaryPane(sessionStartMs, sessionEndMs, systemProperties, hostName, hostAddress));
 
             splitPane.setLeftComponent(taskPaneContainer);
         }
@@ -58,6 +71,13 @@ public class SummaryPanel extends JPanel {
 
         add(splitPane, BorderLayout.CENTER);
 
+    }
+
+    private JXTaskPane createDetailPane() {
+        JXTaskPane details = new JXTaskPane();
+        details.setTitle("Details");
+        details.setVisible(false);
+        return details;
     }
 
     private JXTaskPane createTasksPane(JXTable table) {
@@ -92,6 +112,9 @@ public class SummaryPanel extends JPanel {
             Properties systemProperties,
             String hostName,
             String hostAddress) {
+
+        DateFormat dateFormat = SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.LONG);
+
         // honestly I don't feel great about this, but
         // laying this out is such a pain any other way (that I know).
         JXTaskPane summaryPane = new JXTaskPane();
@@ -112,11 +135,11 @@ public class SummaryPanel extends JPanel {
         sb.append("</td></tr>");
 
         sb.append("<tr><td>Start:</td><td>");
-        sb.append(new Date(sessionStartMs));
+        sb.append(dateFormat.format(new Date(sessionStartMs)));
         sb.append("</td></tr>");
 
         sb.append("<tr><td>End:</td><td>");
-        sb.append(new Date(sessionEndMs));
+        sb.append(dateFormat.format(new Date(sessionEndMs)));
         sb.append("</td></tr>");
 
         sb.append("<tr><td>Duration:</td><td>");
@@ -157,4 +180,12 @@ public class SummaryPanel extends JPanel {
         return summaryPane;
     }
 
+
+    private class SelectionListener implements ListSelectionListener {
+
+        public void valueChanged(ListSelectionEvent e) {
+
+        
+        }
+    }
 }
