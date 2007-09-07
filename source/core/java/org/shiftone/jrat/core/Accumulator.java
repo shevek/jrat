@@ -2,14 +2,11 @@ package org.shiftone.jrat.core;
 
 
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.time.TimeUnit;
 
 import java.io.Serializable;
 
 
 /**
- * Class Accumulator
- *
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Accumulator implements Serializable {
@@ -29,7 +26,6 @@ public class Accumulator implements Serializable {
     public Accumulator() {
     }
 
-
     public Accumulator(long totalEnters,
                        long totalExits,
                        long totalErrors,
@@ -41,7 +37,6 @@ public class Accumulator implements Serializable {
         setStatistics(totalEnters, totalExits, totalErrors, totalDuration,    //
                 totalOfSquares, maxDuration, minDuration, maxConcurThreads);
     }
-
 
     public void setStatistics(long totalEnters,
                               long totalExits,
@@ -61,7 +56,6 @@ public class Accumulator implements Serializable {
         this.minDuration = minDuration;
         this.maxConcurrentThreads = maxConcurThreads;
     }
-
 
     /**
      * this method takes two Accumulators and smashes them together to column a
@@ -91,7 +85,6 @@ public class Accumulator implements Serializable {
         this.minDuration = 0;
         //this.concurThreads    = this.concurThreads ;
         this.maxConcurrentThreads = this.concurThreads;
-
     }
 
     public final synchronized void onMethodStart() {
@@ -104,31 +97,27 @@ public class Accumulator implements Serializable {
         }
     }
 
-
-    public final synchronized void onMethodFinish(long durationNanos, boolean success) {
+    public final synchronized void onMethodFinish(long durationMs, boolean success) {
 
         totalExits++;
 
-        long durationMs = TimeUnit.MS.fromNanos(durationNanos);
-
-        totalDuration += durationNanos;
+        totalDuration += durationMs;
         sumOfSquares += (durationMs * durationMs);
 
         if (!success) {
             totalErrors++;
         }
 
-        if (durationNanos < minDuration) {
-            minDuration = durationNanos;
+        if (durationMs < minDuration) {
+            minDuration = durationMs;
         }
 
-        if (durationNanos > maxDuration) {
-            maxDuration = durationNanos;
+        if (durationMs > maxDuration) {
+            maxDuration = durationMs;
         }
 
         concurThreads--;
     }
-
 
     public final Double getAverageDuration() {
 
@@ -140,7 +129,6 @@ public class Accumulator implements Serializable {
 
         return average;
     }
-
 
     public final Double getStdDeviation() {
 
@@ -156,11 +144,9 @@ public class Accumulator implements Serializable {
         return stdDeviation;
     }
 
-
     public long getTotalDuration() {
         return totalDuration;
     }
-
 
     public int getMaxConcurrentThreads() {
         return maxConcurrentThreads;
@@ -182,44 +168,15 @@ public class Accumulator implements Serializable {
         return totalEnters;
     }
 
-
     public final long getTotalExits() {
         return totalExits;
     }
-
 
     public final long getMinDuration() {
         return minDuration;
     }
 
-
     public final long getMaxDuration() {
         return maxDuration;
     }
-
-//
-//    public final long getTotalDuration(TimeUnit units) {
-//        return units.fromNanos(getTotalDurationNanos());
-//    }
-
-//    public final long getTotalDurationNanos() {
-//        return totalDuration;
-//    }
-//
-//
-//    public final long getSumOfSquares() {
-//        return sumOfSquares;
-//    }
-//
-//
-//    public final long getTotalErrors() {
-//        return totalErrors;
-//    }
-//
-//
-//    public int getMaxConcurrentThreads() {
-//        return maxConcurrentThreads;
-//    }
-
-
 }
