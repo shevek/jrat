@@ -185,7 +185,8 @@ public class SummaryPanel extends JPanel {
 
         public void valueChanged(ListSelectionEvent e) {
 
-        
+            int[] rows = table.getSelectedRows();
+            
         }
     }
 }
