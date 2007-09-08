@@ -110,13 +110,13 @@
 
     <!-- ======================================================================= -->
 
-    <target name="www">
+    <target name="docs-website">
 
         <delete dir="${docs.dir}"/>
         <mkdir dir="${docs.dir}"/>
 
         <copy todir="${docs.dir}/static">
-            <fileset dir="${src.doc.static.dir}" excludes="*.xml,*.xsl"/>
+            <fileset dir="${src.doc.static.dir}"/>
         </copy>
 
         <tstamp>
@@ -126,7 +126,7 @@
         <xslt basedir="${src.doc.pages.dir}"
               destdir="${docs.dir}"
               extension=".html"
-              style="${src.doc.dir}/style/main.xsl">
+              style="${src.doc.dir}/style/website.xsl">
 
             <param name="p_generatedDate" expression="${generated.date}"/>
             <param name="p_resourcePath" expression="static"/>
@@ -135,10 +135,10 @@
         </xslt>
     </target>
 
-    <target name="internal-docs">
+    <target name="docs-internal">
 
         <copy todir="${classes.dir}/org/shiftone/jrat/desktop/docs/images">
-            <fileset dir="${src.doc.static.dir}" excludes="*.xml,*.xsl"/>
+            <fileset dir="${src.doc.static.dir}"/>
         </copy>
 
         <tstamp>
@@ -152,12 +152,12 @@
 
              <param name="p_resourcePath" expression="images"/>
 
-        </xslt>       
+        </xslt>
 
     </target>
     <!-- ======================================================================= -->
 
-    <target name="jar" depends="compile, internal-docs">
+    <target name="jar" depends="compile, docs-internal">
 
         <mkdir dir="${release.dir}"/>
 
@@ -259,8 +259,8 @@
 
     <!-- ======================================================================= -->
 
-    <target name="doc" depends="javadoc, www"/>
-    <target name="dist" depends="clean,jar,doc"/>
+    <target name="doc" depends="javadoc, docs-website"/>
+    <target name="dist" depends="clean, jar, doc"/>
 
     <!-- ======================================================================= -->
 

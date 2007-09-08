@@ -2,11 +2,33 @@
 
     <figure src="mad-rat.gif"/>
     <ul>
+        
         <li>
-            <a href="index.html">Index</a>
+            <a href="quickstart.html">The Quick Start Guide for Java 5 +</a>
         </li>
         <li>
-            <a href="quickstart.html">Quick Start Guide</a>
+            <a href="prefive.html">The Quick Start Guide for Java 1.4 -</a>
+        </li>
+        <li>
+            <a href="howitworks.html">How It Works</a>
+        </li>
+        <li>
+            <a href="configure.html">Configuration Guide</a>
+        </li>
+        <li>
+            <a href="glossary.html">Glossary</a>
+        </li>
+        <li>
+            <a href="desktop.html">The Desktop</a>
+        </li>
+        <li>
+            <a href="screens.html">Desktop Screens</a>
+        </li>
+         <li>
+            <a href="whatsnew.html">What's New?</a>
+        </li>
+        <li>
+            <a href="lesser.html">License</a>
         </li>
     </ul>
 </document>
