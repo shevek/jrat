@@ -3,8 +3,8 @@
 
     <xsl:param name="p_resourcePath"/>
 
-    <xsl:output method="html" indent="yes"/>
-
+    <xsl:output method="html" indent="no"/>
+    
     <xsl:include href="tags/tags.xsl"/>
 
     <xsl:template match="document">

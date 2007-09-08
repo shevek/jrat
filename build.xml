@@ -148,6 +148,7 @@
         <xslt basedir="${src.doc.pages.dir}"
               destdir="${classes.dir}/org/shiftone/jrat/desktop/docs"
               extension=".html"
+                
               style="${src.doc.dir}/style/internal.xsl">
 
              <param name="p_resourcePath" expression="images"/>

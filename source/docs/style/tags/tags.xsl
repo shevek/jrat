@@ -22,9 +22,7 @@
             <tr>
                 <td bgcolor="black">
                     <font color="white">
-                        <pre>
-                            <xsl:apply-templates/>
-                        </pre>
+                        <pre><font color="white"><xsl:apply-templates/></font></pre>
                     </font>
                 </td>
             </tr>
@@ -35,9 +33,7 @@
         <table border="1" cellpadding="5" cellspaciong="0" width="100%">
             <tr>
                 <td>
-                    <pre>
                         <xsl:apply-templates/>
-                    </pre>
                 </td>
             </tr>
         </table>
@@ -47,34 +43,23 @@
         <table border="1" cellpadding="5" cellspaciong="0" width="100%">
             <tr>
                 <td>
-                    <pre>
                         <xsl:apply-templates/>
-                    </pre>
                 </td>
             </tr>
         </table>
     </xsl:template>
 
-    <!-- FIX THIS -->
     <xsl:template match="indent">
-        <table border="1" cellpadding="5" cellspaciong="0" width="100%">
-            <tr>
-                <td>
-                    <pre>
-                        <xsl:apply-templates/>
-                    </pre>
-                </td>
-            </tr>
-        </table>
+        <blockquote>
+            <xsl:apply-templates/>
+        </blockquote>
     </xsl:template>
 
     <xsl:template match="box">
         <table border="1" cellpadding="5" cellspaciong="0" width="100%">
             <tr>
                 <td>
-                    <pre>
-                        <xsl:apply-templates/>
-                    </pre>
+                   <xsl:apply-templates/>
                 </td>
             </tr>
         </table>
@@ -87,14 +72,16 @@
     </xsl:template>
 
     <xsl:template match="definition">
-        <tr >
+        <tr>
             <td width="200" valign="top">
-                <b><xsl:value-of select="@title"/></b>
+                <b>
+                    <xsl:value-of select="@title"/>
+                </b>
             </td>
             <td>
                 <xsl:apply-templates/>
             </td>
         </tr>
     </xsl:template>
-    
+
 </xsl:stylesheet>
