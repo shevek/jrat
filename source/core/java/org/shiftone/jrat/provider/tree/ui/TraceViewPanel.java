@@ -42,7 +42,9 @@ public class TraceViewPanel extends JPanel {
 
         {
             SummaryTableModel summaryTableModel = new SummaryTableModel(methodSummaryModel);
-            tabbedPane.addTab("Summary", new SummaryPanel(summaryTableModel,
+            tabbedPane.addTab("Summary",
+                    new SummaryPanel(summaryTableModel,
+                    methodSummaryModel.getTotalMethodDuration(),
                     sessionStartMs, sessionEndMs,
                     systemProperties,
                     hostName, hostAddress));

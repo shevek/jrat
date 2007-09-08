@@ -5,9 +5,11 @@ import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.shiftone.jrat.desktop.util.JXTableWatcher;
+import org.shiftone.jrat.desktop.util.Table;
 import org.shiftone.jrat.provider.tree.ui.summary.action.AllColumnVisibilityAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
+import org.shiftone.jrat.provider.tree.ui.summary.action.ShowSystemPropertiesAction;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
@@ -15,6 +17,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -29,9 +33,14 @@ public class SummaryPanel extends JPanel {
     private final JXTaskPane tasks;
     private final JXTaskPane details;
     private final JXTaskPane summary;
+    private final JLabel detailLabel;
+    private final SummaryTableModel summaryTableModel;
+    private final long totalMethodDuration;
+
 
     public SummaryPanel(
             SummaryTableModel summaryTableModel,
+            long totalMethodDuration,
             long sessionStartMs,
             long sessionEndMs,
             Properties systemProperties,
@@ -39,6 +48,9 @@ public class SummaryPanel extends JPanel {
             String hostAddress) {
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+
+        this.summaryTableModel = summaryTableModel;
+        this.totalMethodDuration = totalMethodDuration;
 
         table = new JXTable();
         table.setModel(summaryTableModel);
@@ -57,10 +69,13 @@ public class SummaryPanel extends JPanel {
         PercentTableCellRenderer.setDefaultRenderer(table);
 
         {
+
+            detailLabel = new JLabel();
+
             JXTaskPaneContainer taskPaneContainer = new JXTaskPaneContainer();
 
             taskPaneContainer.add(tasks = createTasksPane(table));
-            taskPaneContainer.add(details = createDetailPane());
+            taskPaneContainer.add(details = createDetailPane(detailLabel));
             taskPaneContainer.add(summary = createSummaryPane(sessionStartMs, sessionEndMs, systemProperties, hostName, hostAddress));
 
             splitPane.setLeftComponent(taskPaneContainer);
@@ -73,10 +88,11 @@ public class SummaryPanel extends JPanel {
 
     }
 
-    private JXTaskPane createDetailPane() {
+    private JXTaskPane createDetailPane(Component component) {
         JXTaskPane details = new JXTaskPane();
-        details.setTitle("Details");
         details.setVisible(false);
+        details.add(component);
+        //details.add(new JXHyperlink(new ExportToCsvAction()));
         return details;
     }
 
@@ -117,76 +133,135 @@ public class SummaryPanel extends JPanel {
 
         // honestly I don't feel great about this, but
         // laying this out is such a pain any other way (that I know).
-        JXTaskPane summaryPane = new JXTaskPane();
-        summaryPane.setTitle("Session Details");
+        JXTaskPane pane = new JXTaskPane();
+        pane.setTitle("Session Details");
 
-        String userName = systemProperties.getProperty("user.name");
-        String javaVersion = systemProperties.getProperty("java.version");
-        String javaVendor = systemProperties.getProperty("java.vendor");
-        String osName = systemProperties.getProperty("os.name");
-        String osArch = systemProperties.getProperty("os.arch");
-        String osVersion = systemProperties.getProperty("os.version");
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("<html><table>");
+        StringBuffer sb = new StringBuffer("<html><table>");
 
-        sb.append("<tr><td>User:</td><td>");
-        sb.append(userName);
-        sb.append("</td></tr>");
-
-        sb.append("<tr><td>Start:</td><td>");
+        sb.append("<tr><td>Start</td><td>");
         sb.append(dateFormat.format(new Date(sessionStartMs)));
         sb.append("</td></tr>");
 
-        sb.append("<tr><td>End:</td><td>");
+        sb.append("<tr><td>End</td><td>");
         sb.append(dateFormat.format(new Date(sessionEndMs)));
         sb.append("</td></tr>");
 
-        sb.append("<tr><td>Duration:</td><td>");
+        sb.append("<tr><td>Duration</td><td>");
         sb.append(sessionEndMs - sessionStartMs + " ms");
         sb.append("</td></tr>");
 
-        sb.append("<tr><td>Host:</td><td>");
+        sb.append("<tr><td>Host</td><td>");
         sb.append(hostName);
         sb.append("</td></tr>");
 
-        sb.append("<tr><td>Address:</td><td>");
+        sb.append("<tr><td>Address</td><td>");
         sb.append(hostAddress);
         sb.append("</td></tr>");
 
-        sb.append("<tr><td>OS Name:</td><td>");
-        sb.append(osName);
-        sb.append("</td></tr>");
-
-        sb.append("<tr><td>OS Arch:</td><td>");
-        sb.append(osArch);
-        sb.append("</td></tr>");
-
-        sb.append("<tr><td>OS Version:</td><td>");
-        sb.append(osVersion);
-        sb.append("</td></tr>");
-
-        sb.append("<tr><td>Java Vendor:</td><td>");
-        sb.append(javaVendor);
-        sb.append("</td></tr>");
-
-        sb.append("<tr><td>Java Version:</td><td>");
-        sb.append(javaVersion);
-        sb.append("</td></tr>");
 
         sb.append("</table></html>");
-        summaryPane.add(new JLabel(sb.toString()));
+        pane.add(new JLabel(sb.toString()));
 
-        return summaryPane;
+
+         pane.add(new JXHyperlink(
+                new ShowSystemPropertiesAction(this, systemProperties)
+        ));
+
+        return pane;
     }
 
 
     private class SelectionListener implements ListSelectionListener {
 
+        private final NumberFormat percentFormat;
+
+        public SelectionListener() {
+            percentFormat = DecimalFormat.getPercentInstance();
+            percentFormat.setMinimumFractionDigits(1);
+        }
+
         public void valueChanged(ListSelectionEvent e) {
 
-            int[] rows = table.getSelectedRows();
-            
+            if (!e.getValueIsAdjusting()) {
+                int[] rows = table.getSelectedRows();
+
+                if (rows.length == 0) {
+                    hide();
+                } else {
+                    show(rows);
+                }
+            }
+        }
+
+        private void hide() {
+            details.setVisible(false);
+        }
+
+        private void show(int[] rows) {
+
+            long methodTime = getTotal(rows, SummaryTableModel.TOTAL_METHOD);
+            long totalErrors = getTotal(rows, SummaryTableModel.EXCEPTIONS);
+            long totalExists = getTotal(rows, SummaryTableModel.EXITS);
+            long uncompleted = getTotal(rows, SummaryTableModel.UNCOMPLETED);
+
+            StringBuffer sb = new StringBuffer("<html><table>");
+
+            sb.append("<tr><td>Total Exits</td><td>");
+            sb.append(totalExists);
+            sb.append("</td></tr>");
+
+            sb.append("<tr><td>Method Time</td><td>");
+            sb.append(methodTime);
+            sb.append("ms (");
+            sb.append(percentFormat.format((double) methodTime / (double) totalMethodDuration));
+            sb.append(")</td></tr>");
+
+            sb.append("<tr><td>Exceptions</td><td>");
+            sb.append(totalErrors);
+            sb.append("</td></tr>");
+
+            if (totalExists > 0) {
+                sb.append("<tr><td>Exception Rate</td><td>");
+                sb.append(percentFormat.format((double) totalErrors / (double) totalExists));
+                sb.append("</td></tr>");
+            }
+
+            if (uncompleted > 0) {
+                sb.append("<tr><td>Uncompleted</td><td>");
+                sb.append(uncompleted);
+                sb.append("</td></tr>");
+            }
+
+
+            if (rows.length == 1) {
+                details.setTitle(getMethod(rows[0]));
+            } else {
+                details.setTitle(rows.length + " methods selected");
+            }
+
+            sb.append("</table></html>");
+            details.setVisible(true);
+            detailLabel.setText(sb.toString());
+        }
+
+
+        private String getMethod(int row) {
+            int r = table.convertRowIndexToModel(row);
+            return (String) summaryTableModel.getValueAt(r, SummaryTableModel.METHOD.getIndex());
+        }
+
+        private long getTotal(int[] rows, Table.Column column) {
+
+            long value = 0;
+            for (int i = 0; i < rows.length; i++) {
+                int r = table.convertRowIndexToModel(rows[i]);
+                Long v = (Long) summaryTableModel.getValueAt(r, column.getIndex());
+                if (v != null) {
+                    value += v.longValue();
+                }
+            }
+            return value;
         }
     }
 }

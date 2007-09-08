@@ -1,6 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.summary;
 
 import org.shiftone.jrat.desktop.util.Table;
+import org.shiftone.jrat.util.Percent;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -25,69 +26,83 @@ public class SummaryTableModel extends AbstractTableModel {
     public static final Table.Column MAX = TABLE.column("Max ms", false);
     public static final Table.Column AVERAGE = TABLE.column("Average ms");
     public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
-    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");
+    public static final Table.Column PERCENT_METHOD = TABLE.column("Method Time %");
+    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");    
     public static final Table.Column TOTAL_CALLERS = TABLE.column("Total Callers", false);
 
 
+    private final MethodSummaryModel summaryModel;
     private final List methodSummaryList;
 
-    public SummaryTableModel(MethodSummaryModel methodSummaryModel) {
-        this.methodSummaryList = methodSummaryModel.getMethodSummaryList();
+    public SummaryTableModel(MethodSummaryModel summaryModel) {
+        this.summaryModel = summaryModel;
+        this.methodSummaryList = summaryModel.getMethodSummaryList();
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-        MethodSummary method = (MethodSummary) methodSummaryList.get(rowIndex);
+        MethodSummary summary = (MethodSummary) methodSummaryList.get(rowIndex);
 
         if (columnIndex == PACKAGE.getIndex()) {
-            return method.getMethodKey().getPackageName();
+            return summary.getMethodKey().getPackageName();
         }
         if (columnIndex == CLASS.getIndex()) {
-            return method.getMethodKey().getClassName();
+            return summary.getMethodKey().getClassName();
         }
         if (columnIndex == METHOD.getIndex()) {
-            return method.getMethodKey().getShortMethodDescription();
+            return summary.getMethodKey().getShortMethodDescription();
         }
         if (columnIndex == SIGNATURE.getIndex()) {
-            return method.getMethodKey().getSig().getShortText();
+            return summary.getMethodKey().getSig().getShortText();
         }
         if (columnIndex == ENTERS.getIndex()) {
-            return new Long(method.getTotalEnters());
+            return new Long(summary.getTotalEnters());
         }
         if (columnIndex == EXITS.getIndex()) {
-            return new Long(method.getTotalExists());
+            return new Long(summary.getTotalExists());
         }
         if (columnIndex == EXCEPTIONS.getIndex()) {
-            return new Long(method.getTotalErrors());
+            return new Long(summary.getTotalErrors());
         }
         if (columnIndex == EXCEPTION_RATE.getIndex()) {
-            return method.getErrorRate();
+            return summary.getErrorRate();
         }
         if (columnIndex == UNCOMPLETED.getIndex()) {
-            return new Long(method.getUncompletedCalls());
+            return new Long(summary.getUncompletedCalls());
         }
         if (columnIndex == TOTAL.getIndex()) {
-            return new Long(method.getTotalDuration());
+            return new Long(summary.getTotalDuration());
         }
         if (columnIndex == MIN.getIndex()) {
-            return method.getMinDuration();
+            return summary.getMinDuration();
         }
         if (columnIndex == MAX.getIndex()) {
-            return method.getMaxDuration();
+            return summary.getMaxDuration();
         }
         if (columnIndex == AVERAGE.getIndex()) {
-            return method.getAverageDuration();
+            return summary.getAverageDuration();
         }
         if (columnIndex == TOTAL_METHOD.getIndex()) {
-            return method.getTotalMethodDuration();
+            return summary.getTotalMethodDuration();
         }
         if (columnIndex == AVERAGE_METHOD.getIndex()) {
-            return method.getAverageMethodDuration();
+            return summary.getAverageMethodDuration();
         }
         if (columnIndex == TOTAL_CALLERS.getIndex()) {
-            return new Integer(method.getTotalCallers());
-
+            return new Integer(summary.getTotalCallers());
         }
+
+        if (columnIndex == PERCENT_METHOD.getIndex()) {
+            return getPercent(summary);
+        }
+
         throw new IllegalArgumentException("columnIndex = " + columnIndex);
+    }
+
+    private Percent getPercent(MethodSummary summary) {
+        Long tmd = summary.getTotalMethodDuration();
+        return (tmd == null)
+                ? null
+                : new Percent((double)tmd.longValue() * 100.0 / (double)summaryModel.getTotalMethodDuration());
     }
 
     public static List getColumns() {

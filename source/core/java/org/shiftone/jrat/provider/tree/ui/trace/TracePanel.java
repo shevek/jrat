@@ -33,6 +33,8 @@ public class TracePanel extends JPanel implements TreeSelectionListener {
 
         this.rootNode = rootNode;
         tree = new JTree(rootNode);
+        tree.setRootVisible(false);
+
         detailPanel = new NodeDetailPanel();
         splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 

@@ -10,11 +10,30 @@ import java.util.*;
  */
 public class MethodSummaryModel {
 
-    private List methodList = new ArrayList();
-    private Map methodMap = new HashMap();
+    private final List methodList = new ArrayList(); // <MethodSummary>
+    private final Map methodMap = new HashMap(); // <MethodKey, MethodSummary>
+    private final long totalMethodDuration;
 
     public MethodSummaryModel(TraceTreeNode node) {
         process(node);
+        totalMethodDuration = calculateTotalMethodDuration();
+    }
+
+
+    public long getTotalMethodDuration() {
+        return totalMethodDuration;
+    }
+
+    private long calculateTotalMethodDuration() {
+        long duration = 0;
+        for (Iterator i = methodList.iterator(); i.hasNext();) {
+            MethodSummary summary = (MethodSummary) i.next();
+            Long d = (Long) summary.getTotalMethodDuration();
+            if (d != null) {
+                duration += d.longValue();
+            }
+        }
+        return duration;
     }
 
 
@@ -34,13 +53,13 @@ public class MethodSummaryModel {
 
 
     private MethodSummary getMethod(MethodKey methodKey) {
-        MethodSummary method = (MethodSummary) methodMap.get(methodKey);
-        if (method == null) {
-            method = new MethodSummary(methodKey);
-            methodMap.put(methodKey, method);
-            methodList.add(method);
+        MethodSummary summary = (MethodSummary) methodMap.get(methodKey);
+        if (summary == null) {
+            summary = new MethodSummary(methodKey);
+            methodMap.put(methodKey, summary);
+            methodList.add(summary);
         }
-        return method;
+        return summary;
     }
 
 

@@ -3,7 +3,6 @@ package org.shiftone.jrat.provider.tree.ui.trace;
 
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
-import org.shiftone.jrat.ui.util.DotIcon;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.desktop.util.Icons;
 
@@ -23,9 +22,9 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
 
     private static final Logger LOG = Logger.getLogger(StackTreeCellRenderer.class);
     private PercentColorLookup colorLookup = new PercentColorLookup();
-    private static Icon RED = Icons.getIcon("red.png");
-    private static Icon GREEN = Icons.getIcon("green.png");
-    private static Icon BLUE = Icons.getIcon("blue.png");
+    private static Icon EVIL = Icons.getIcon("red.png");
+    private static Icon GOOD = Icons.getIcon("green.png");
+    private static Icon ROOT2 = Icons.getIcon("output_folder_attrib.png");
     private static Icon ROOT = Icons.getIcon("black.png");
     private TraceTreeNode treeNode = null;
     private DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.#'%'");
@@ -44,9 +43,9 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
         if (treeNode.isRootNode()) {
             icon = ROOT;
         } else if (treeNode.getDepth() == 1) {
-            icon = BLUE;
+            icon = ROOT2;
         } else {
-            icon = (w >= 25.0) ? RED : GREEN;
+            icon = (w >= 25.0) ? EVIL : GOOD;
         }
 
         setText(nodeText(sel));
