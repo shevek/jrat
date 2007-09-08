@@ -1,0 +1,12 @@
+<document title="Documentation">
+
+    <figure src="mad-rat.gif"/>
+    <ul>
+        <li>
+            <a href="index.html">Index</a>
+        </li>
+        <li>
+            <a href="quickstart.html">Quick Start Guide</a>
+        </li>
+    </ul>
+</document>

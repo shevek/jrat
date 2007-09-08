@@ -17,7 +17,7 @@ public class DocsAction extends AbstractAction {
     private static final Logger LOG = Logger.getLogger(DocsAction.class);
     private final DesktopFrame desktopFrame;
 
-    public static final String HOME_URL = "org/shiftone/jrat/ui/help/html/index.html";
+    public static final String HOME_URL = "org/shiftone/jrat/desktop/docs/documentation.html";
     public static final String HOME_TITLE = "Documentation";
 
     public DocsAction(DesktopFrame desktopFrame) {

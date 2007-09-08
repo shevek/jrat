@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+
+
     <!--
     <xsl:template match="section">
         <xsl:apply-templates/>
@@ -137,7 +139,7 @@
 
     <xsl:template match="figure">
         <center>
-            <img src="{@src}"/>
+            <img src="{$p_resourcePath}/{@src}"/>
         </center>
     </xsl:template>
 

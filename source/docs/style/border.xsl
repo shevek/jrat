@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"> 
 
-    <xsl:param name="p_resourcePath"/>
-    <xsl:param name="p_generatedDate"/>
-    <xsl:param name="p_googleAnalyticsAccount"/>
 
 
     <xsl:template match="document">
