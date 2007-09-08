@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-
+    <!--
+    This stylesheet contains tags that don't need a CSS style to be rendered correctly.
+    -->
     <xsl:template match="figure">
         <center>
             <img src="{$p_resourcePath}/{@src}"/>
