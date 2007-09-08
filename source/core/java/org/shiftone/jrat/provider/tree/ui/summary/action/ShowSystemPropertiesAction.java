@@ -32,11 +32,10 @@ public class ShowSystemPropertiesAction extends AbstractAction {
 
     public void actionPerformed(ActionEvent e) {
 
-                
         JDialog dialog = new TextDialog(properties);
 
-
-        dialog.setSize(new Dimension(200,300));
+        dialog.setSize(new Dimension(400,500));
+        dialog.setLocationRelativeTo(component);
         dialog.setModal(true);
         dialog.setVisible(true);
 
@@ -44,9 +43,7 @@ public class ShowSystemPropertiesAction extends AbstractAction {
 
     private class TextDialog extends JDialog {
 
-
         public TextDialog(Properties properties) {
-
 
             DefaultTableModel tableModel = new DefaultTableModel();
 
@@ -58,10 +55,8 @@ public class ShowSystemPropertiesAction extends AbstractAction {
                 String value = properties.getProperty(key);
 
                 tableModel.addRow(new Object[] { key, value });
-
             }
 
-            
             setLayout(new BorderLayout());
             add(new JScrollPane(new JXTable(tableModel)), BorderLayout.CENTER);
 
