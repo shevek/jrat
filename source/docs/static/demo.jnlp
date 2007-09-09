@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp
-  spec="1.0+"
-  codebase="http://jrat.sourceforge.net/static"
-  href="demo.jnlp">
-  <information>
-    <title>JRat Desktop Demo</title>
-    <vendor>ShiftOne.Org</vendor>
-    <homepage href="jrat.sourceforge.net"/>
-    <description>JRat Desktop Demo</description>
-    <description kind="short">short description</description>
-    <icon href="mad-rat.gif"/>
-    <icon kind="splash" href="mad-rat.gif"/>
-    <offline-allowed/>
-  </information>
-  <security>
-      <all-permissions/>
-  </security>
-  <resources>
-    <j2se version="1.5+"/>
-    <jar href="../shiftone-jrat.jar"/>
-  </resources>
-  <application-desc main-class="org.shiftone.jrat.desktop.Desktop"/>
+<jnlp spec="1.0+"
+      codebase="http://jrat.sourceforge.net/static"
+      href="demo.jnlp">
+    <information>
+        <title>JRat Desktop Demo</title>
+        <vendor>ShiftOne.Org</vendor>
+        <homepage href="jrat.sourceforge.net"/>
+        <description>JRat Desktop Demo</description>
+        <icon href="icon.gif"/>
+        <icon kind="splash" href="mad-rat.gif"/>
+        <offline-allowed/>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <resources>
+        <j2se version="1.5+"/>
+        <jar href="../shiftone-jrat.jar"/>
+    </resources>
+    <application-desc main-class="org.shiftone.jrat.desktop.Desktop">
+        <argument>demo</argument>
+    </application-desc>
 </jnlp>

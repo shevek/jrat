@@ -40,15 +40,17 @@
     </section>
 
     <section>
+        <h>Want to see a demo?</h>
+        Run the <a href="http://jrat.sorceforge.net/static/demo.jnlp">Web Start Demo</a> now!
+    </section>
+
+    <section>
         <h>Where do I get more information?</h>
         <ul>
             <li><a href="quickstart.html">The Quick Start Guide for Java 5 +</a></li>
             <li><a href="prefive.html">The Quick Start Guide for Java 1.4 -</a></li>
             <li><a href="configure.html">Configuration Guide</a></li>
             <li><a href="glossary.html">Glossary</a></li>
-
         </ul>
-
-
     </section>
 </document>

@@ -10,13 +10,17 @@ public class Desktop {
 
     public static void main(String[] args) {
 
+        boolean demo = (args.length == 1) && ("demo".equals(args[0]));
+
         LoggerFactory.enableThreadBasedLogging();
 
         DesktopFrame frame = new DesktopFrame();
 
         frame.setVisible(true);
 
-        Tips.show(frame, false);
+        if (!demo) {
+            Tips.show(frame, false);
+        }
 
     }
 }
