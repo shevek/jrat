@@ -148,10 +148,10 @@
         <xslt basedir="${src.doc.pages.dir}"
               destdir="${classes.dir}/org/shiftone/jrat/desktop/docs"
               extension=".html"
-                
+
               style="${src.doc.dir}/style/internal.xsl">
 
-             <param name="p_resourcePath" expression="images"/>
+            <param name="p_resourcePath" expression="images"/>
 
         </xslt>
 
@@ -205,10 +205,20 @@
         </jarjar>
 
 
+        <signjar jar="${release.dir}/${jar.file}"
+                 lazy="true"
+                 alias="shiftone"
+                 storepass="secret"/>
+
     </target>
 
     <!-- ======================================================================= -->
 
+    <target name="genkey">
+        <genkey alias="shiftone"
+                storepass="secret"
+                dname="CN=JRat, O=ShiftOne.org, C=US"/>
+    </target>
 
     <!-- ======================================================================= -->
 
@@ -271,7 +281,7 @@
             <fileset file="${release.dir}/${jar.file}"/>
         </copy>
         <copy todir="${website.dir}/api">
-            <fileset dir="${javadoc.dir}"/>         
+            <fileset dir="${javadoc.dir}"/>
         </copy>
     </target>
 
