@@ -42,6 +42,7 @@
     <section>
         <h>Want to see a demo?</h>
         Run the <a href="http://jrat.sorceforge.net/demo/demo.jnlp">Web Start Demo</a> now!
+        This link will launch the JRat Desktop and then load a sample data set (from Tomcat 6).
     </section>
 
     <section>
