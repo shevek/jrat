@@ -15,7 +15,7 @@
         <all-permissions/>
     </security>
     <resources>
-        <j2se version="1.5+"/>
+        <j2se version="1.5+" initial-heap-size="32M" max-heap-size="512M"/>
         <jar href="../shiftone-jrat.jar"/>
     </resources>
     <application-desc main-class="org.shiftone.jrat.desktop.Desktop">
