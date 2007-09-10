@@ -8,8 +8,8 @@ import org.shiftone.jrat.desktop.util.JXTableWatcher;
 import org.shiftone.jrat.desktop.util.Table;
 import org.shiftone.jrat.provider.tree.ui.summary.action.AllColumnVisibilityAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.ResetColumnVisibilityAction;
-import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
 import org.shiftone.jrat.provider.tree.ui.summary.action.ShowSystemPropertiesAction;
+import org.shiftone.jrat.provider.tree.ui.summary.action.SortAndShowColumnAction;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
@@ -164,7 +164,7 @@ public class SummaryPanel extends JPanel {
         pane.add(new JLabel(sb.toString()));
 
 
-         pane.add(new JXHyperlink(
+        pane.add(new JXHyperlink(
                 new ShowSystemPropertiesAction(this, systemProperties)
         ));
 

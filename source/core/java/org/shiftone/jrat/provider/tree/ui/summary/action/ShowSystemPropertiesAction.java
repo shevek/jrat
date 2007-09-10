@@ -1,18 +1,15 @@
 package org.shiftone.jrat.provider.tree.ui.summary.action;
 
 
-
 import org.jdesktop.swingx.JXTable;
+import org.jdesktop.swingx.decorator.SortOrder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
-import java.awt.event.ActionEvent;
 import java.awt.*;
-import java.util.Properties;
+import java.awt.event.ActionEvent;
 import java.util.Iterator;
-import java.io.StringWriter;
-import java.io.PrintWriter;
+import java.util.Properties;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -21,7 +18,6 @@ public class ShowSystemPropertiesAction extends AbstractAction {
 
     private final Component component;
     private final Properties properties;
-
 
 
     public ShowSystemPropertiesAction(Component component, Properties properties) {
@@ -34,7 +30,7 @@ public class ShowSystemPropertiesAction extends AbstractAction {
 
         JDialog dialog = new TextDialog(properties);
 
-        dialog.setSize(new Dimension(400,500));
+        dialog.setSize(new Dimension(400, 500));
         dialog.setLocationRelativeTo(component);
         dialog.setModal(true);
         dialog.setVisible(true);
@@ -49,16 +45,20 @@ public class ShowSystemPropertiesAction extends AbstractAction {
 
             tableModel.addColumn("Name");
             tableModel.addColumn("Value");
-            for (Iterator keys  = properties.keySet().iterator() ; keys.hasNext() ; ) {
+            for (Iterator keys = properties.keySet().iterator(); keys.hasNext();) {
 
                 String key = (String) keys.next();
                 String value = properties.getProperty(key);
 
-                tableModel.addRow(new Object[] { key, value });
+                tableModel.addRow(new Object[]{key, value});
             }
 
+            JXTable table = new JXTable(tableModel);
+            table.setSortOrder(0, SortOrder.ASCENDING);
+
+
             setLayout(new BorderLayout());
-            add(new JScrollPane(new JXTable(tableModel)), BorderLayout.CENTER);
+            add(new JScrollPane(table), BorderLayout.CENTER);
 
             setTitle("System Properties During Run");
             setModal(true);

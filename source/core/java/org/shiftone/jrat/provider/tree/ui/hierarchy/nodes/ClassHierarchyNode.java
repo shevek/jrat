@@ -1,5 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
+import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,15 +16,20 @@ public class ClassHierarchyNode extends HierarchyNode {
     private int executedMethods;
     private long totalDurationMs;
     private long totalMethodDuration;
+    private long totalErrors;
+    private long totalExists;
 
-    public ClassHierarchyNode(String name) {
-        super(name);
+    public ClassHierarchyNode(String name, MethodSummaryModel methodSummaryModel) {
+        super(name, methodSummaryModel);
     }
 
     public void finalizeStatistics() {
+
         for (Iterator i = childMethods.iterator(); i.hasNext();) {
             MethodHierarchyNode method = (MethodHierarchyNode) i.next();
             totalDurationMs += method.getTotalDuration();
+            totalErrors += method.getTotalErrors();
+            totalExists += method.getTotalExits();
 
             if (method.isExecuted()) {
                 executedMethods++;
@@ -53,6 +60,15 @@ public class ClassHierarchyNode extends HierarchyNode {
 
     public long getTotalDuration() {
         return totalDurationMs;
+    }
+
+
+    public long getTotalExits() {
+        return totalExists;
+    }
+
+    public long getTotalErrors() {
+        return totalErrors;
     }
 
     public Long getTotalMethodDuration() {

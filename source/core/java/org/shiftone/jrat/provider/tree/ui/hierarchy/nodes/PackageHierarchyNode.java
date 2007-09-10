@@ -1,5 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
+import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,15 +11,19 @@ import java.util.List;
  */
 public class PackageHierarchyNode extends HierarchyNode {
 
+
     private List childPackages = new ArrayList();
     private List childClasses = new ArrayList();
     private int totalMethods;
     private int executedMethods;
     private long totalDuration;
     private long totalMethodDuration;
+    private long totalErrors;
+    private long totalExits;
 
-    public PackageHierarchyNode(String name) {
-        super(name);
+    public PackageHierarchyNode(String name, MethodSummaryModel methodSummaryModel) {
+        super(name, methodSummaryModel);
+
     }
 
     public void finalizeStatistics() {
@@ -34,10 +40,14 @@ public class PackageHierarchyNode extends HierarchyNode {
     }
 
     private void addStatistics(HierarchyNode node) {
+
         node.finalizeStatistics();
+
         totalMethods += node.getTotalMethods();
         executedMethods += node.getExecutedMethods();
         totalDuration += node.getTotalDuration();
+        totalErrors += node.getTotalErrors();
+        totalExits += node.getTotalExits();
 
         Long tmd = node.getTotalMethodDuration();
         if (tmd != null) {
@@ -60,6 +70,15 @@ public class PackageHierarchyNode extends HierarchyNode {
 
     public long getTotalDuration() {
         return totalDuration;
+    }
+
+
+    public long getTotalExits() {
+        return totalExits;
+    }
+
+    public long getTotalErrors() {
+        return totalErrors;
     }
 
     public List getChildren() {
@@ -89,7 +108,7 @@ public class PackageHierarchyNode extends HierarchyNode {
                 return child;
             }
         }
-        PackageHierarchyNode node = new PackageHierarchyNode(name);
+        PackageHierarchyNode node = new PackageHierarchyNode(name, getMethodSummaryModel());
         addPackage(node);
         return node;
     }
@@ -118,7 +137,7 @@ public class PackageHierarchyNode extends HierarchyNode {
                 return child;
             }
         }
-        ClassHierarchyNode node = new ClassHierarchyNode(name);
+        ClassHierarchyNode node = new ClassHierarchyNode(name, getMethodSummaryModel());
         addClass(node);
         return node;
     }

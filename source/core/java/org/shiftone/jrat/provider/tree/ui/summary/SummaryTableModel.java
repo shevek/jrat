@@ -27,7 +27,7 @@ public class SummaryTableModel extends AbstractTableModel {
     public static final Table.Column AVERAGE = TABLE.column("Average ms");
     public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
     public static final Table.Column PERCENT_METHOD = TABLE.column("Method Time %");
-    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");    
+    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");
     public static final Table.Column TOTAL_CALLERS = TABLE.column("Total Callers", false);
 
 
@@ -102,7 +102,7 @@ public class SummaryTableModel extends AbstractTableModel {
         Long tmd = summary.getTotalMethodDuration();
         return (tmd == null)
                 ? null
-                : new Percent((double)tmd.longValue() * 100.0 / (double)summaryModel.getTotalMethodDuration());
+                : new Percent((double) tmd.longValue() * 100.0 / (double) summaryModel.getTotalMethodDuration());
     }
 
     public static List getColumns() {

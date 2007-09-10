@@ -1,8 +1,6 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy;
 
-import org.jdesktop.swingx.JXHeader;
 import org.jdesktop.swingx.JXTreeTable;
-import org.jdesktop.swingx.JXTable;
 import org.shiftone.jrat.ui.util.PercentTableCellRenderer;
 
 import javax.swing.*;
@@ -17,7 +15,7 @@ public class HierarchyPanel extends JPanel {
 
 //   private JXHeader header;
 
-    public HierarchyPanel(HierarchyTreeTableModel model) {  
+    public HierarchyPanel(HierarchyTreeTableModel model) {
         treeTable = new JXTreeTable();
         treeTable.setTreeTableModel(model);
         treeTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

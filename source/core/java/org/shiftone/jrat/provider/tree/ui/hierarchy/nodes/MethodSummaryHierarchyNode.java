@@ -1,6 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
 import org.shiftone.jrat.provider.tree.ui.summary.MethodSummary;
+import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -9,9 +10,10 @@ public class MethodSummaryHierarchyNode extends MethodHierarchyNode {
 
     private final MethodSummary methodSummary;
 
-    public MethodSummaryHierarchyNode(MethodSummary methodSummary) {
+    public MethodSummaryHierarchyNode(MethodSummary methodSummary, MethodSummaryModel methodSummaryModel
+    ) {
 
-        super(methodSummary.getMethodKey());
+        super(methodSummary.getMethodKey(), methodSummaryModel);
 
         this.methodSummary = methodSummary;
     }
@@ -34,5 +36,13 @@ public class MethodSummaryHierarchyNode extends MethodHierarchyNode {
 
     public MethodSummary getMethodSummary() {
         return methodSummary;
+    }
+
+    public long getTotalExits() {
+        return methodSummary.getTotalExists();
+    }
+
+    public long getTotalErrors() {
+        return methodSummary.getTotalErrors();
     }
 }

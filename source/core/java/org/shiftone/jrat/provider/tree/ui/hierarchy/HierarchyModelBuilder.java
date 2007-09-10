@@ -18,9 +18,14 @@ public class HierarchyModelBuilder {
     private final Map methodKeyNodes = new HashMap(); // method node cache <MethodKey, MethodSummaryHierarchyNode>
     private final Map packageNodes = new HashMap();  // package node cache <String, PackageHierarchyNode>
 
-    private final PackageHierarchyNode root = new PackageHierarchyNode("");
+    private final PackageHierarchyNode root;
+    private final MethodSummaryModel methodSummaryModel;
 
     public HierarchyModelBuilder(MethodSummaryModel methodSummaryModel, Set allMethodKeys) {
+
+
+        this.root = new PackageHierarchyNode("", methodSummaryModel);
+        this.methodSummaryModel = methodSummaryModel;
 
         // getPreferences stack "performance" data into hierarchy
         for (Iterator i = methodSummaryModel.getMethodSummaryList().iterator(); i.hasNext();) {
@@ -49,7 +54,7 @@ public class HierarchyModelBuilder {
         if (!methodKeyNodes.containsKey(methodKey)) {
             // if the method does not exist in the map yet, then we are looking at an
             // non-covered method, and we need to add the MethodHierarchyNode.
-            getClassNode(methodKey).addMethod(new MethodHierarchyNode(methodKey));
+            getClassNode(methodKey).addMethod(new MethodHierarchyNode(methodKey, methodSummaryModel));
         }
     }
 
@@ -60,7 +65,7 @@ public class HierarchyModelBuilder {
     private void addMethodSummary(MethodSummary methodSummary) {
         MethodKey methodKey = methodSummary.getMethodKey();
         ClassHierarchyNode classNode = getClassNode(methodKey);
-        MethodHierarchyNode node = new MethodSummaryHierarchyNode(methodSummary);
+        MethodHierarchyNode node = new MethodSummaryHierarchyNode(methodSummary, methodSummaryModel);
         classNode.addMethod(node);
         methodKeyNodes.put(methodKey, node);
 

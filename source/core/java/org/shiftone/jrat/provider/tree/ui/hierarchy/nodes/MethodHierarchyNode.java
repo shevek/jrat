@@ -1,6 +1,7 @@
 package org.shiftone.jrat.provider.tree.ui.hierarchy.nodes;
 
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
 
 import java.util.Collections;
 import java.util.List;
@@ -10,12 +11,13 @@ import java.util.List;
  */
 public class MethodHierarchyNode extends HierarchyNode {
 
-    public MethodHierarchyNode(MethodKey methodKey) {
+    public MethodHierarchyNode(MethodKey methodKey, MethodSummaryModel methodSummaryModel) {
 
         super(methodKey.getMethodName()
                 + "("
                 + methodKey.getSig().getShortText()
-                + ")");
+                + ")",
+                methodSummaryModel);
     }
 
     public void finalizeStatistics() {
@@ -38,6 +40,14 @@ public class MethodHierarchyNode extends HierarchyNode {
     }
 
     public int getExecutedMethods() {
+        return 0;
+    }
+
+    public long getTotalErrors() {
+        return 0;
+    }
+
+    public long getTotalExits() {
         return 0;
     }
 
