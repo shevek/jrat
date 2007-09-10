@@ -289,7 +289,7 @@
 
     <!-- ======================================================================= -->
 
-    <target name="website" >
+    <target name="website" depends="doc, jar, demo">
         <copy todir="${website.dir}">
             <fileset dir="${docs.dir}"/>
         </copy>
