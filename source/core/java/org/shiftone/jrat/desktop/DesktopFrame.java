@@ -15,6 +15,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
+import java.io.InputStream;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -27,6 +28,7 @@ public class DesktopFrame extends JFrame {
     private JTabbedPane tabbedPane = new JTabbedPane();
     private CloseAction closeAction = new CloseAction(tabbedPane);
     private CloseAllAction closeAllAction = new CloseAllAction(tabbedPane);
+    private OpenAction openAction = new OpenAction(this);
     private int waiters = 0;
 
     public DesktopFrame() {
@@ -81,7 +83,7 @@ public class DesktopFrame extends JFrame {
         {
             JMenu file = new JMenu("File");
             file.setMnemonic('F');
-            file.add(new OpenAction(this));
+            file.add(openAction);
             file.add(closeAction);
             file.add(closeAllAction);
             {
@@ -118,6 +120,10 @@ public class DesktopFrame extends JFrame {
         }
 
         return toolBar;
+    }
+
+    void open(String name, InputStream inputStream) {
+        openAction.open(name, inputStream);
     }
 
     public static JXStatusBar createStatusBar() {

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp spec="1.0+"
-      codebase="http://jrat.sourceforge.net/static"
-      href="demo.jnlp">
+<jnlp spec="1.0+" codebase="http://jrat.sourceforge.net/demo" href="demo.jnlp">
     <information>
         <title>JRat Desktop Demo</title>
         <vendor>ShiftOne.Org</vendor>
@@ -16,7 +14,8 @@
     </security>
     <resources>
         <j2se version="1.5+"/>
-        <jar href="../shiftone-jrat.jar"/>
+        <jar href="shiftone-jrat.jar"/>
+        <jar href="data.jar"/>
     </resources>
     <application-desc main-class="org.shiftone.jrat.desktop.Desktop">
         <argument>demo</argument>

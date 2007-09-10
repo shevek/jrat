@@ -5,7 +5,9 @@
 
     <property name="src.dir" value="source"/>
     <property name="src.core.dir" value="${src.dir}/core"/>
+    <property name="src.demo.dir" value="${src.dir}/demo"/>
     <property name="src.doc.dir" value="${src.dir}/docs"/>
+    <property name="src.test.dir" value="${src.dir}/test"/>
 
     <property name="src.doc.pages.dir" value="${src.doc.dir}/pages"/>
     <property name="src.doc.static.dir" value="${src.doc.dir}/static"/>
@@ -166,7 +168,7 @@
                  classname="com.tonicsystems.jarjar.JarJarTask"
                  classpath="${src.lib.dir}/jarjar-1.0rc3.jar"/>
 
-        <jarjar jarfile="${release.dir}/${jar.file}">
+        <jarjar jarfile="${target.dir}/${jar.file}">
 
             <fileset dir="${classes.dir}">
                 <exclude name="org/shiftone/jrat/integration/**/*"/>
@@ -205,14 +207,26 @@
         </jarjar>
 
 
-        <signjar jar="${release.dir}/${jar.file}"
-                 lazy="true"
-                 alias="shiftone"
-                 storepass="secret"/>
-
     </target>
 
     <!-- ======================================================================= -->
+    <target name="demo" depends="jar">
+
+        <mkdir dir="${target.dir}/demo"/>
+
+        <jar destfile="${target.dir}/demo/data.jar" basedir="${src.demo.dir}/data"/>
+
+        <copy todir="${target.dir}/demo" file="${target.dir}/${jar.file}"/>
+
+        <signjar jar="${target.dir}/demo/data.jar"
+                 lazy="true" alias="shiftone" storepass="secret"/>
+
+        <signjar jar="${target.dir}/demo/${jar.file}"
+                 lazy="true" alias="shiftone" storepass="secret"/>
+
+        <copy todir="${target.dir}/demo" file="${src.demo.dir}/demo.jnlp"/>
+
+    </target>
 
     <target name="genkey">
         <genkey alias="shiftone"
@@ -275,13 +289,15 @@
 
     <!-- ======================================================================= -->
 
-    <target name="website" depends="doc, jar">
+    <target name="website" >
         <copy todir="${website.dir}">
             <fileset dir="${docs.dir}"/>
-            <fileset file="${release.dir}/${jar.file}"/>
         </copy>
-        <copy todir="${website.dir}/api">
-            <fileset dir="${javadoc.dir}"/>
+         <copy todir="${website.dir}/api">
+            <fileset dir="${javadoc.dir}" />
+        </copy>
+         <copy todir="${website.dir}/demo">
+            <fileset dir="${target.dir}/demo"/>
         </copy>
     </target>
 

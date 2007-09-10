@@ -86,45 +86,44 @@ public class OpenAction extends AbstractAction {
     private class OpenRunnable implements Runnable {
         private final File file;
 
-
         public OpenRunnable(File file) {
             this.file = file;
         }
 
         public void run() {
+            open(file.getName(), IOUtil.openInputStream(file));
+        }
+    }
 
-            InputStream inputStream = null;
+    public void open(String name, InputStream inputStream) {
 
-            try {
-                desktopFrame.waitCursor();
-                inputStream = IOUtil.openInputStream(file);
+        try {
+            desktopFrame.waitCursor();
 
-                inputStream = new GZIPInputStream(inputStream);
+            inputStream = new GZIPInputStream(inputStream);
 
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
-                LOG.info("reading : " + file);
-                ViewBuilder viewBuilder = (ViewBuilder) objectInputStream.readObject();
 
-                LOG.info("building view");
-                JComponent component = viewBuilder.buildView(objectInputStream);
+            ViewBuilder viewBuilder = (ViewBuilder) objectInputStream.readObject();
 
-                desktopFrame.createView(file.getName(), component);
+            JComponent component = viewBuilder.buildView(objectInputStream);
 
-            } catch (OutOfMemoryError e) {
+            desktopFrame.createView(name, component);
 
-                Errors.showError(desktopFrame, e, "Out of Memory!  Use the -Xmx Java option.");
+        } catch (OutOfMemoryError e) {
 
-            } catch (Exception e) {
+            Errors.showError(desktopFrame, e, "Out of Memory!  Use the -Xmx Java option.");
 
-                Errors.showError(desktopFrame, e, "Failed to open file : " + file.getName());
+        } catch (Exception e) {
 
-            } finally {
+            Errors.showError(desktopFrame, e, "Failed to open : " + name);
 
-                desktopFrame.unwaitCursor();
-                IOUtil.close(inputStream);
+        } finally {
 
-            }
+            desktopFrame.unwaitCursor();
+            IOUtil.close(inputStream);
+
         }
     }
 

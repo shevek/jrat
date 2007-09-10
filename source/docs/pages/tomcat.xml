@@ -1,5 +1,21 @@
-<document title="Page Moved">
+<document title="Tomcat">
 
-    <a href="index.html">Page Moved</a>
+    <section>
+        <h>Tomcat 6.X</h>
+        <ol>
 
+            <li>Copy
+                <b>shiftone-jrat.jar</b>
+                to Tomcat's
+                <b>bin</b>
+                directory.
+            </li>
+            <li>Create a file <b>jrat-run.bat</b>in that directory with the following content.
+            <code>set JAVA_HOME=C:\Program Files\Java\jdk1.5.0_09
+                set JAVA_OPTS=-javaagent:shiftone-jrat.jar
+                call catalina.bat run
+                pause</code>    </li>
+            <li>Run </li>
+        </ol>
+    </section>
 </document>
