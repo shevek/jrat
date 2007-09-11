@@ -1,24 +1,49 @@
 <document title="JRat Quick Start Guide (pre-Java 5)">
-
-    If you're still using Java 1.4 or earlier versions of java, the <b>javaagent</b> option
-    is not avalible to you, and you will need to inject your bytecode at "build time" (as
-    oposed to "run time").
-
-    <section>
-        <h>1. Build your Application</h>
-
-
-
-
-    </section>
+    <p>
+        If you're still using Java 1.4 or earlier versions of java, the
+        <b>javaagent</b>
+        option
+        is not avalible to you, and you will need to inject your bytecode at "build time" (as
+        oposed to "run time").
+    </p>
+    <p>
+        This document intends to be a first time walk through for developers new to JRat.
+    </p>
 
 
     <section>
-        <h>2. Inject your Classes</h>
+        <h>2. Inject your Application's Classes</h>
+
+        <p>
+            Once you have built your application, you will no doubt have a directory
+            full of classes, jar files, or both.
+
+            JRat needs to modify your class files in order to monitor what your code is doing.
+        </p>
+
+        <p>
+            Open the JRat Desktop with the following command.
+
+            <terminal>java -Xmx256M -jar shiftone-jrat.jar</terminal>
 
 
+            There are two menu bar options under <b>Inject</b>.
+            <ul>
+                <li>Inject Directory - use this option to inject all archive files (jar,ear,war,sar,har,zip)
+                    and classes beneath a selected directory.</li>
 
+                <li>Inject File - use this option to inject a single selected archive or class file.</li>
+            </ul>
+        </p>
+
+        <p>
+            It is important to understand that your application now has a dependency on JRat.
+            Your program will no longer run without JRat.
+            To <i>uninstall</i> JRat you need to recompile your java code.
+        </p>
     </section>
 
-
+  <section>
+      <h></h>
+  </section>
 </document>

@@ -5,10 +5,10 @@
     <section>
         <h>What is it?</h>
         <p>
-        The Java Runtime Analysis Toolkit is a low overhead, easy to use, open source
-        performance profiler for the Java platform. JRat monitors an application's
-        execution and persists performance measurements.  This data can then be viewed
-        and analyzed using the JRat Desktop, a Swing application.
+            The Java Runtime Analysis Toolkit is a low overhead, easy to use, open source
+            performance profiler for the Java platform. JRat monitors an application's
+            execution and persists performance measurements. This data can then be viewed
+            and analyzed using the JRat Desktop, a Swing application.
         </p>
 
     </section>
@@ -16,42 +16,68 @@
     <section>
         <h>How do I start using it?</h>
         <p>
-        Read the
-        <a href="quickstart.html">The Quick Start Guide</a>.  It contains step-by-step
-        instructions on how to use JRat for the first time.  It's easy.
+            Read the
+            <a href="quickstart.html">The Quick Start Guide</a>
+            . It contains step-by-step
+            instructions on how to use JRat for the first time. It's easy.
         </p>
     </section>
 
     <section>
         <h>What's new?</h>
         <p>
-        Lots.  This project is again being actively developed.
-        Read some of the highlights <a href="whatsnew.html">here</a>.
+            Lots. This project is again being actively developed.
+            Read some of the highlights
+            <a href="whatsnew.html">here</a>
+            .
         </p>
     </section>
 
     <section>
         <h>Where do I get it?</h>
         <p>
-        The latest official file release on SourceForge.net is older than the hills.
-        The current development release can be downloaded from
-        <a href="http://jrat.sourceforge.net/demo/shiftone-jrat.jar">here</a>.
+            The latest official release on SourceForge.net is quite old but stable.
+
+            The current development release has all the latest features and is more
+            representative of the documentation on this site.
+            <ul>
+                <li>
+                    <a href="http://sourceforge.net/project/showfiles.php?group_id=41841&amp;package_id=33930">Stable
+                        Release
+                    </a>
+                </li>
+                <li>
+                    <a href="http://jrat.sourceforge.net/demo/shiftone-jrat.jar">Development Release</a>
+                </li>
+            </ul>
+
         </p>
     </section>
 
     <section>
         <h>Want to see a demo?</h>
-        Run the <a href="http://jrat.sourceforge.net/demo/demo.jnlp">Web Start Demo</a> now!
-        This link will launch the JRat Desktop and then load a sample data set (from Tomcat 6).
+        Run the
+        <a href="http://jrat.sourceforge.net/demo/demo.jnlp">Web Start Demo</a>
+        now!
+        This link will launch the JRat Desktop and then load a sample data set from a run of Tomcat 6.
     </section>
 
     <section>
         <h>Where do I get more information?</h>
         <ul>
-            <li><a href="quickstart.html">The Quick Start Guide for Java 5 +</a></li>
-            <li><a href="prefive.html">The Quick Start Guide for Java 1.4 -</a></li>
-            <li><a href="configure.html">Configuration Guide</a></li>
-            <li><a href="glossary.html">Glossary</a></li>
+            <li>
+                <a href="quickstart.html">The Quick Start Guide for Java 5 +</a>
+            </li>
+            <li>
+                <a href="prefive.html">The Quick Start Guide for Java 1.4 -</a>
+            </li>
+            <li>
+                <a href="configure.html">Configuration Guide</a>
+            </li>
+            <li>
+                <a href="glossary.html">Glossary</a>
+            </li>
         </ul>
     </section>
+     
 </document>

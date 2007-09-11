@@ -1,7 +1,10 @@
 <document title="JRat Quick Start Guide">
-
+    <p>
     If you are aren't using Java 5 yet, refer to <a href="prefive.html">these instructions</a>.
-
+       </p>
+    <p>
+    This document intends to be a first time walk through for developers new to JRat.
+       </p>
     <section>
         <h>1. Let JRat Watch Your Program Run</h>
 
@@ -14,40 +17,56 @@
         <terminal>java <b>-javaagent:shiftone-jrat.jar</b> [your java ops] [main class]</terminal>
 
         <p>
-            You want to excersize your programs functionality.
+            You now want to excersize your program's functionality as much as possible so
+            JRat can watch what happens and collect statistics.
+
+            The more times you run your code, the better the results will be.
+
+            It's ideal to have a autommated repeatable test script, but there is no
+            need to get fancy the first time you run JRat.
         </p>
 
         <p>
-            Shut down your program (this is JRat's queue to write out what it saw).
+            Shut down your program.
+
+            JRat will produce several files containing the data it collected.
         </p>
 
     </section>
 
     <section>
-        <h>2. Look at the Results</h>
+        <h>2. View The JRat Results</h>
 
         <p>
             After you shut down your application, JRat will create data files that
-            contain information about your program's execution. JRat puts these files
-            in a subdirectory under the directory from which your program ran. This
-            directory will be named something like "jrat.output/2007-08-30_AM-08-02-44".
+            contain information about your program's execution.
+
+            JRat puts these files in a subdirectory under the directory from which your program ran.
+
+            This directory will be named something like <path>jrat.output/2007-08-30_AM-08-02-44</path>.
         </p>
 
         <p>
-            These data files are not human readable. They require the JRat Desktop to
-            open and analyze them. The JRat Desktop is contained in the same jar file
-            that was used in the first step.
+            These data files are not human readable.
+
+            They require the JRat Desktop to open and analyze them.
+
+            The JRat Desktop is contained in the same jar file that was used in the first step.
         </p>
 
         <terminal>java -Xmx256M -jar shiftone-jrat.jar</terminal>
 
         <p>
-            The JRat Desktop application will open, and you can use it to view the
-            collected data. To do this, select File then Open from the menu. Navigate
-            to the subdirectory of "jrat.output" and open a ".jrat" file.
+            The JRat Desktop application will open, and you can use it to view the collected data.
+
+            To do this, select <b>File</b> then <b>Open</b> from the menu.
+
+            Navigate to the subdirectory of <path>jrat.output</path> and open a <path>.jrat</path> file.
         </p>
 
     </section>
+
+
 
     If you want to know more about what just happened,
     read <a href="howitworks.html">How It Works</a>.
