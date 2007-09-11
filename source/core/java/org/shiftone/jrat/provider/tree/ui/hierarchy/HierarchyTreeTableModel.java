@@ -6,6 +6,8 @@ import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.HierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.MethodHierarchyNode;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.nodes.PackageHierarchyNode;
 
+import java.util.List;
+
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -14,19 +16,23 @@ public class HierarchyTreeTableModel extends AbstractTreeTableModel {
     public static final Table TABLE = new Table();
     public static final Table.Column CLASS = TABLE.column("Class");
     public static final Table.Column METHODS = TABLE.column("Methods");
-    public static final Table.Column UNCALLED = TABLE.column("Uncalled");
-    public static final Table.Column COVERAGE = TABLE.column("Coverage %");
-    public static final Table.Column TOTAL = TABLE.column("Total ms");
+    public static final Table.Column TOTAL_EXITS = TABLE.column("Exists", false);
+    public static final Table.Column UNCALLED = TABLE.column("Uncalled", false);
+    public static final Table.Column COVERAGE = TABLE.column("Coverage %", false);
+    public static final Table.Column EXCEPTIONS = TABLE.column("Exceptions", false);
+    public static final Table.Column ERROR_RATE = TABLE.column("Error Rate", false);
+    public static final Table.Column TOTAL = TABLE.column("Total ms", false);
     public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
     public static final Table.Column PERCENT_METHOD = TABLE.column("Method Time %");
-    public static final Table.Column TOTAL_EXITS = TABLE.column("Exists");
-    public static final Table.Column EXCEPTIONS = TABLE.column("Exceptions");
-    public static final Table.Column ERROR_RATE = TABLE.column("Error Rate");
 
     private final PackageHierarchyNode root;
 
     public HierarchyTreeTableModel(PackageHierarchyNode root) {
         this.root = root;
+    }
+
+    public static List getColumns() {
+        return TABLE.getColumns();
     }
 
     public Class getColumnClass(int i) {
