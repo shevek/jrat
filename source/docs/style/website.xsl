@@ -33,8 +33,10 @@
                     <a class="header" href="http://jrat.wiki.sourceforge.net">wiki</a>
                     <a class="header" href="http://sourceforge.net/projects/jrat">sf.net</a>
                     <a class="header" href="api/index.html">api</a>
+                    <a class="header" href="http://jrat.svn.sourceforge.net/viewvc/jrat/trunk/">svn</a>
                     <a class="header" href="lesser.html">license</a>
-				</div>
+                    
+                </div>
 				 
  				<div class="content">
                      <h1><xsl:value-of select="@title"/></h1>
