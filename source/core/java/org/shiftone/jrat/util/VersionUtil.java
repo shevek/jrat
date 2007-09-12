@@ -18,7 +18,7 @@ public class VersionUtil {
     private VersionUtil() {
 
         try {
-            Properties properties = ResourceUtil.getResourceAsProperties("jrat-version.properties");
+            Properties properties = ResourceUtil.getResourceAsProperties("org/shiftone/jrat/version.properties");
 
             version = properties.getProperty("version");
             buildOn = properties.getProperty("built_on");

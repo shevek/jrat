@@ -6,8 +6,7 @@
     doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"/>
 
     <xsl:param name="p_resourcePath"/>
-    <xsl:param name="p_generatedDate"/>
-    <xsl:param name="p_googleAnalyticsAccount"/>
+    <xsl:param name="p_generatedDate"/>    
 
     <xsl:include href="tags/tags-css.xsl"/>
 	    
@@ -52,7 +51,7 @@
             <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
             </script>
             <script type="text/javascript">
-            _uacct = "<xsl:value-of select="$p_googleAnalyticsAccount"/>";
+            _uacct = "<xsl:value-of select="UA-2480984-3"/>";
             urchinTracker();
             </script>
 

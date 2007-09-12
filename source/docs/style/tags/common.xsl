@@ -10,7 +10,7 @@
     </xsl:template>
 
     <xsl:template match="image">
-        <img align="{@align}" src="{@src}"/>
+        <img align="{@align}" src="{$p_resourcePath}/{@src}"/>
     </xsl:template>
 
     <xsl:template match="a">
