@@ -64,11 +64,12 @@
         </copy>
 
         <tstamp prefix="compile.date"/>
+
         <propertyfile file="${classes.dir}/org/shiftone/jrat/version.properties">
             <entry key="product_name" value="${title}"/>
             <entry key="version" value="${build.version}"/>
             <entry key="built_by" value="${user.name}"/>
-            <entry key="built_on" value="${compile.date}"/>
+            <entry key="built_on" value="${compile.date.DSTAMP}"/>
         </propertyfile>
 
     </target>
@@ -210,6 +211,17 @@
     </target>
 
     <!-- ======================================================================= -->
+
+    <target name="run" depends="jar">
+
+        <java jvmargs="-Xmx512M"
+              fork="true" 
+              jar="${target.dir}/${jar.file}" />
+
+    </target>
+
+    <!-- ======================================================================= -->
+
     <target name="demo" depends="jar">
 
         <mkdir dir="${target.dir}/demo"/>
