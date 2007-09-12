@@ -314,7 +314,7 @@
 
     <!-- ======================================================================= -->
 
-    <target name="release"> <!--depends="clean,jar,doc">      -->
+    <target name="release" depends="clean,jar,doc"> 
 
         <copy todir="${release.dir}/docs">
             <fileset dir="${docs.dir}"/>
