@@ -32,7 +32,7 @@
 					<a class="header" href="http://sourceforge.net/forum/forum.php?forum_id=136869">forum</a>
                     <a class="header" href="http://jrat.wiki.sourceforge.net">wiki</a>
                     <a class="header" href="http://sourceforge.net/projects/jrat">sf.net</a>
-                    <a class="header" href="api">api</a>
+                    <a class="header" href="api/index.html">api</a>
                     <a class="header" href="lesser.html">license</a>
 				</div>
 				 

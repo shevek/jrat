@@ -215,8 +215,8 @@
     <target name="run" depends="jar">
 
         <java jvmargs="-Xmx512M"
-              fork="true" 
-              jar="${target.dir}/${jar.file}" />
+              fork="true"
+              jar="${target.dir}/${jar.file}"/>
 
     </target>
 
@@ -248,8 +248,8 @@
 
     <!-- ======================================================================= -->
 
-    <target name="test" depends="dist">
-        
+    <target name="test">
+
         <junit printsummary="on" showoutput="yes" fork="no" haltonerror="on" maxmemory="200M">
 
             <sysproperty key="log4j.configuration" value="log4j.xml"/>
@@ -297,38 +297,46 @@
     <!-- ======================================================================= -->
 
     <target name="doc" depends="javadoc, docs-website"/>
-    <target name="dist" depends="clean, jar, doc"/>
-
     <!-- ======================================================================= -->
 
     <target name="website" depends="doc, jar, demo">
         <copy todir="${website.dir}">
             <fileset dir="${docs.dir}"/>
         </copy>
-         <copy todir="${website.dir}/api">
-            <fileset dir="${javadoc.dir}" />
+        <copy todir="${website.dir}/api">
+            <fileset dir="${javadoc.dir}"/>
         </copy>
-         <copy todir="${website.dir}/demo">
+        <copy todir="${website.dir}/demo">
             <fileset dir="${target.dir}/demo"/>
         </copy>
     </target>
 
+
     <!-- ======================================================================= -->
-    <target name="zip" depends="dist">
 
-        <mkdir dir="${zip.dir}"/>
+    <target name="release"> <!--depends="clean,jar,doc">      -->
 
-        <zip destfile="${zip.dir}/${bin.zip.file}">
-            <zipfileset dir="${release.dir}" prefix="${release.name}"/>
-        </zip>
+        <copy todir="${release.dir}/docs">
+            <fileset dir="${docs.dir}"/>
+        </copy>
+        <copy todir="${release.dir}/docs/api">
+            <fileset dir="${javadoc.dir}"/>
+        </copy>
+        <copy todir="${release.dir}" file="${target.dir}/${jar.file}"/>
 
     </target>
 
     <!-- ======================================================================= -->
-
-    <target name="release" depends="clean,zip"/>
-
     <!-- ======================================================================= -->
+      <target name="release-zip" depends="release">
+
+          <mkdir dir="${zip.dir}"/>
+
+          <zip destfile="${target.dir}/${bin.zip.file}">
+              <zipfileset dir="${release.dir}" prefix="${release.name}"/>
+          </zip>
+
+      </target>
 
 </project>
 
