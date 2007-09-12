@@ -249,7 +249,7 @@
     <!-- ======================================================================= -->
 
     <target name="test" depends="dist">
-
+        
         <junit printsummary="on" showoutput="yes" fork="no" haltonerror="on" maxmemory="200M">
 
             <sysproperty key="log4j.configuration" value="log4j.xml"/>

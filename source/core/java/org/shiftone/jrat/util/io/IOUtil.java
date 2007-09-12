@@ -302,7 +302,7 @@ public class IOUtil {
 
         int lastDot = fileName.lastIndexOf('.');
 
-        return (lastDot == -1)
+        return (lastDot == -1) || (lastDot == fileName.length() - 1)
                 ? null
                 : fileName.substring(lastDot + 1);
     }

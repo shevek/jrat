@@ -57,18 +57,6 @@ public class IOTestCase extends TestCase {
 
 
     /**
-     * Method testNearestExistingParent1
-     */
-    public void testNearestExistingParent1() {
-
-        File a1 = new File("/usr/local/s/ed/f");
-        File a2 = new File("/usr/local");
-
-        assertEquals(IOUtil.getNearestExistingParent(a1), a2);
-    }
-
-
-    /**
      * Method testNearestExistingParent2
      */
     public void testNearestExistingParent2() {

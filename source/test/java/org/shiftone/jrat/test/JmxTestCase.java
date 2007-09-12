@@ -28,15 +28,15 @@ public class JmxTestCase extends TestCase {
         ArrayList arrayList = MBeanServerFactory.findMBeanServer(null);
         LOG.info("arrayList = " + arrayList);
 
-        LocateRegistry.createRegistry(9999);
+        LocateRegistry.createRegistry(9876);
 
-        JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:9999/jrat");
+        JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:9876/jrat");
         JMXConnectorServer connectorServer = JMXConnectorServerFactory.newJMXConnectorServer(url, null, mBeanServer);
         connectorServer.start();
 
 
         mBeanServer.registerMBean(new Test(), new ObjectName("shiftone.jrat:service=Test"));
 
-        Thread.sleep(1000 * 60 * 10);
+        //Thread.sleep(1000 * 60 * 10);
     }
 }

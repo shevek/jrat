@@ -59,7 +59,7 @@ public class ConfigurableMBeanTestCase extends TestCase {
 
         }
 
-        Thread.sleep(1000 * 60 * 5);
+      //  Thread.sleep(1000 * 60 * 5);
     }
 
 }

@@ -28,7 +28,7 @@ public class HandlerFactory {
 
         static {
 
-            Mode.set(Mode.RUNTIME);
+           // Mode.set(Mode.RUNTIME);
 
             try {
 
@@ -62,15 +62,15 @@ public class HandlerFactory {
         }
     }
 
+    public static synchronized MethodHandler getMethodHandler(MethodKey methodKey)  {
+        return Singleton.getMethodHandler(methodKey);
+    }
 
     public static synchronized MethodHandler getMethodHandler(String className, String methodName, String signature) {
         return Singleton.getMethodHandler(MethodKey.getInstance(className, methodName, signature));
     }
 
-
     public static synchronized MethodHandler getMethodHandler(Class klass, String methodName, String signature) {
         return Singleton.getMethodHandler(MethodKey.getInstance(klass.getName(), methodName, signature));
     }
-
-
 }
