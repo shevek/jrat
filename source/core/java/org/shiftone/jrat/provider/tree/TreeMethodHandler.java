@@ -24,7 +24,7 @@ public class TreeMethodHandler implements MethodHandler {
     }
 
 
-    public void onMethodStart(Object obj) {
+    public void onMethodStart() {
 
         Delegate delegate = factory.getDelegate();
 
@@ -32,7 +32,7 @@ public class TreeMethodHandler implements MethodHandler {
     }
 
 
-    public void onMethodFinish(Object obj, long durationNanos, Throwable throwable) {
+    public void onMethodFinish(long durationNanos, Throwable throwable) {
 
         Delegate delegate = factory.getDelegate();
 

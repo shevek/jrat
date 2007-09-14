@@ -50,10 +50,12 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
 
         setText(nodeText(sel));
 
-        if (selected) {
-            setForeground(Color.white);
+        if (w >= 2.5) {
+            setForeground(Color.RED);
+        } else if (selected) {
+            setForeground(Color.WHITE);
         } else {
-            setForeground(Color.black);
+            setForeground(Color.BLACK);
         }
 
         if (!tree.isEnabled()) {

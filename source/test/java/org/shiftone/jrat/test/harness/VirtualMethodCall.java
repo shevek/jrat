@@ -52,10 +52,10 @@ public class VirtualMethodCall {
 
         long start = System.currentTimeMillis();
 
-        handler.onMethodStart(this);
+        handler.onMethodStart();
         simulateWork();
         simulateCallChildren();
-        handler.onMethodFinish(this, System.currentTimeMillis() - start, null);
+        handler.onMethodFinish(System.currentTimeMillis() - start, null);
     }
 
     private void simulateWork() {

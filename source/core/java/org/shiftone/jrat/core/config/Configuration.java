@@ -27,21 +27,8 @@ public class Configuration implements MethodCriteria {
 
 
     public Configuration() {
-
         methodCriteria.addCriteria(profilesCriteria);
         methodCriteria.addCriteria(new NotMethodCriteria(excludeCriteria));
-//        addClassExclude("bsh.*");
-//        addClassExclude("com.sun.*");
-//        addClassExclude("EDU.oswego.*");
-//        addClassExclude("gnu.*");
-//        addClassExclude("org.apache.*");
-//        addClassExclude("org.dom4j.*");
-//        addClassExclude("org.hsqldb.*");
-//        addClassExclude("org.jboss.*");
-//        addClassExclude("org.jnp.*");
-//        addClassExclude("$Proxy*");
-        addClassExclude("java.*");
-        addClassExclude("javax.*");
     }
 
     protected void addClassExclude(String className) {

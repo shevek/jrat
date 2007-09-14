@@ -23,12 +23,12 @@ public class Benchmark implements BenchmarkMBean {
 
     public void monitorDoWork() {
 
-        methodHandler.onMethodStart(this);
+        methodHandler.onMethodStart();
 
         long start = Clock.currentTimeMillis();
 
         doWork();
-        methodHandler.onMethodFinish(this, Clock.currentTimeMillis() - start, null);
+        methodHandler.onMethodFinish(Clock.currentTimeMillis() - start, null);
     }
 
 

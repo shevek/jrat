@@ -203,7 +203,7 @@
 
                 <!-- JVMTI -->
                 <attribute name="Premain-Class" value="org.shiftone.jrat.jvmti.Agent"/>
-                <attribute name="Can-Redefine-Classes" value="false"/>
+                <attribute name="Can-Redefine-Classes" value="true"/>
             </manifest>
         </jarjar>
 

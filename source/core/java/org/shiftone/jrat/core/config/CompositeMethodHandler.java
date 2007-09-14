@@ -19,18 +19,18 @@ public class CompositeMethodHandler implements MethodHandler {
         this.handlers = handlers;
     }
 
-    public void onMethodStart(Object obj) {
+    public void onMethodStart() {
 
         for (int i = 0; i < handlers.length; i++) {
-            handlers[i].onMethodStart(obj);
+            handlers[i].onMethodStart();
         }
 
     }
 
-    public void onMethodFinish(Object target, long durationNanos, Throwable throwable) {
+    public void onMethodFinish(long durationMicros, Throwable throwable) {
 
         for (int i = 0; i < handlers.length; i++) {
-            handlers[i].onMethodFinish(target, durationNanos, throwable);
+            handlers[i].onMethodFinish(durationMicros, throwable);
         }
 
     }

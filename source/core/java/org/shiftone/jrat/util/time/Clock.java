@@ -10,19 +10,22 @@ import org.shiftone.jrat.util.log.Logger;
 public class Clock {
 
     private static final Logger LOG = Logger.getLogger(Clock.class);
+    long offset = 0;
 
-    private static final Class[] NOARG_TYPES = {};
 
     public static long currentTimeMillis() {
         return System.currentTimeMillis();
     }
 
-    // todo - use this method
-    public static void pauseTime() {
+    public long now() {
+        return currentTimeMillis() - offset;
+    }
+
+    public void pauseTime() {
+
         // MOVEMENT.pauseTime();
     }
 
-    // todo - use this method
     public static void resumeTime() {
         //MOVEMENT.resumeTime();
     }

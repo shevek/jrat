@@ -34,11 +34,9 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
             byte[] inClassfileBuffer)
             throws IllegalClassFormatException {
 
-        if ((loader == null)
-                || (loader.getParent() == null)
-                || className.startsWith("org/shiftone/jrat")
+        if (className.startsWith("org/shiftone/jrat")
                 || className.startsWith("sun")
-                || className.startsWith("javax")) {
+                ) {
 
             // LOG.debug("skipping class : " + className);
             return inClassfileBuffer;

@@ -12,7 +12,7 @@ public class ClockCurrentTimeNanosRunnable implements Runnable {
     }
 
     public String toString() {
-        return "Clock.currentTimeNanos()";
+        return "Clock.currentTimeMillis()";
     }
 
 }

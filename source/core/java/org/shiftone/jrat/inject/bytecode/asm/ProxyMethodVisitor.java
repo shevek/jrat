@@ -37,30 +37,7 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
         this.handlerFieldName = handlerFieldName;
     }
 
-
-    public void visitCode() {
-
-        Label tryLabel = newLabel();
-
-        // -------------------------------------------------------------------------------
-        // HANDLER.onMethodStart(this);
-        getStatic(classType, handlerFieldName, Constants.MethodHandler.TYPE);
-        pushThis();
-        invokeInterface(MethodHandler.TYPE, MethodHandler.onMethodStart);
-        mark(tryLabel);
-
-        // -------------------------------------------------------------------------------
-        // long startTime = System.currentTimeNanos();
-        int startTime = newLocal(Type.LONG_TYPE);
-
-        invokeStatic(Clock.TYPE, Clock.currentTimeNanos);
-        storeLocal(startTime, Type.LONG_TYPE);
-
-        // -------------------------------------------------------------------------------
-        // local var result is defined only if there is a non-void return type
-        // Object result = method(args)
-        Label tryStart = mark();    // try {
-
+    private void invoke() {
         if (isStatic) {
             loadArgs();    // push the args on the stack
             invokeStatic(classType, new Method(targetMethodName, method.getDescriptor()));
@@ -69,32 +46,61 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
             loadArgs();    // push the args on the stack
             invokeVirtual(classType, new Method(targetMethodName, method.getDescriptor()));
         }
+    }
+
+
+    public void visitCode() {
+        Label monitor = newLabel();
+        int state = newLocal(ThreadState.TYPE);
+
+        // ThreadState state = ThreadState.getInstance();
+        invokeStatic(ThreadState.TYPE, ThreadState.getInstance);
+        storeLocal(state);
+
+        // if (!state.isInHandler) goto monitor
+        if (false) {
+            loadLocal(state);
+            invokeVirtual(ThreadState.TYPE, ThreadState.isInHandler);
+
+            ifZCmp(EQ, monitor);  //  not(isInHandler) == isInHandler is false == zero
+
+            invoke();
+            returnValue();
+        }
+        
+        // -------------------------------------------------------------------------------
+        mark(monitor);
+
+        // long startTime = state.begin(METHOD_HANDLER);
+        loadLocal(state);
+        getStatic(classType, handlerFieldName, MethodHandler.TYPE);
+        invokeVirtual(ThreadState.TYPE, ThreadState.begin);
+
+        int startTime = newLocal(Type.LONG_TYPE);
+        storeLocal(startTime, Type.LONG_TYPE);
+
+
+        Label beginTry = mark();    // try {
+
+        invoke();
 
         int result = -1;
 
         if (!isVoidReturn) {
             result = newLocal(method.getReturnType());
-
             storeLocal(result);
         }
 
         // -------------------------------------------------------------------------------
-        // HANDLER.onMethodFinish(this, System.currentTimeNanos - start, null);
-        getStatic(classType, handlerFieldName, MethodHandler.TYPE);    // get the
-
-        // MethodHandler
-        pushThis();                                                    // param 1
-        invokeStatic(Clock.TYPE, Clock.currentTimeNanos);              // param 2 : obtain
-
-        // end time
-        // (Clock.currentTimeNanos)
-        loadLocal(startTime);                                          // param 2 : getPreferences the start time onto the stack
-        math(GeneratorAdapter.SUB, Type.LONG_TYPE);                    // param 2 : subtract,
-
-        // leaving the result on the
-        // stack
-        visitInsn(ACONST_NULL);                                        // param 2 : null (no exception)
-        invokeInterface(MethodHandler.TYPE, MethodHandler.onMethodFinish);
+        //  state.end(METHOD_HANDLER, startTime, null);
+        loadLocal(state);
+        // end : param 1
+        getStatic(classType, handlerFieldName, MethodHandler.TYPE);
+        // end : param 2
+        loadLocal(startTime);
+        // end : param 3
+        visitInsn(ACONST_NULL);
+        invokeVirtual(ThreadState.TYPE, ThreadState.end);
 
         // -------------------------------------------------------------------------------
         // return result;
@@ -104,10 +110,10 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
         returnValue();
 
-        Label tryEnd = mark();    // } catch (Throwable e) {
+        Label endTry = mark();    // } catch (Throwable e) {
 
         // this is the beginning of the catch block
-        catchException(tryStart, tryEnd, Throwable.TYPE);
+        catchException(beginTry, endTry, Throwable.TYPE);
 
         // -------------------------------------------------------------------------------
         // Throwable exception = e;
@@ -116,37 +122,26 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
         storeLocal(exception);
 
         // -------------------------------------------------------------------------------
-        // HANDLER.onMethodFinish(this, System.currentTimeNanos - start,
-        // exception);
+        //  state.end(METHOD_HANDLER, startTime, null);
+        loadLocal(state);
+        // end : param 1
         getStatic(classType, handlerFieldName, MethodHandler.TYPE);
-        pushThis();                                          // param 1
-        invokeStatic(Clock.TYPE, Clock.currentTimeNanos);    // param 2 : obtain
+        // end : param 2
+        loadLocal(startTime);
+        // end : param 3
+        loadLocal(exception);
+        invokeVirtual(ThreadState.TYPE, ThreadState.end);
 
-        // end time
-        // (Clock.currentTimeNanos)
-        loadLocal(startTime);                                // param 2 : getPreferences the start time back onto the
 
-        // stack
-        math(GeneratorAdapter.SUB, Type.LONG_TYPE);          // param 2 : subtract,
-
-        // leaving the result on the
-        // stack
-        loadLocal(exception);                                // param 3 : getPreferences the exception
-        invokeInterface(MethodHandler.TYPE, MethodHandler.onMethodFinish);
+        // -------------------------------------------------------------------------------
+        // throw e;
         loadLocal(exception);
         throwException();
 
         // -------------------------------------------------------------------------------
+
         endMethod();
     }
 
 
-    private void pushThis() {
-
-        if (isStatic) {
-            push("test");
-        } else {
-            loadThis();
-        }
-    }
 }

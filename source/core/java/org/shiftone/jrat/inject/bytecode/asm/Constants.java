@@ -26,15 +26,26 @@ public interface Constants {
 
         public static Class CLASS = org.shiftone.jrat.util.time.Clock.class;
         public static Type TYPE = Type.getType(CLASS);
-        public static Method currentTimeNanos = Method.getMethod("long currentTimeMillis()");
+        public static Method currentTimeMillis = Method.getMethod("long currentTimeMillis()");
     }
 
-//    public interface System {
-//
-//        public static Class CLASS = java.lang.System.class;
-//        public static Type TYPE = Type.getType(CLASS);
-//        public static Method currentTimeMillis = Method.getMethod("long currentTimeMillis()");
-//    }
+    public interface ThreadState {
+
+        public static Class CLASS = org.shiftone.jrat.core.ThreadState.class;
+        public static Type TYPE = Type.getType(CLASS);
+        public static Method getInstance =
+                Method.getMethod(org.shiftone.jrat.core.ThreadState.class.getName() + " getInstance()");
+        public static Method isInHandler = Method.getMethod("boolean isInHandler()");
+
+        public static Method now = Method.getMethod("long now()");
+
+        public static Method begin = Method.getMethod("long begin("
+                +MethodHandler.CLASS.getName() + ")");
+        public static Method end = Method.getMethod("void end("
+                + MethodHandler.CLASS.getName() + ", long, Throwable)");
+
+    }
+
 
     public interface HandlerFactory {
 

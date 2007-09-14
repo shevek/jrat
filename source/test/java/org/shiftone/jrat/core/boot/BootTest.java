@@ -17,12 +17,12 @@ public class BootTest {
         MethodHandler c = HandlerFactory.getMethodHandler("org.test.package.CKlass", "doIt", "()V");
 
         for (int i = 0 ; i < 10000 ; i ++) {
-            a.onMethodStart(null);
-            b.onMethodStart(null);
-            c.onMethodStart(null);
-            c.onMethodFinish(null, 1000, null);
-            b.onMethodFinish(null, 1000, null);
-            a.onMethodFinish(null, 1000, null);
+            a.onMethodStart();
+            b.onMethodStart();
+            c.onMethodStart();
+            c.onMethodFinish(1000, null);
+            b.onMethodFinish(1000, null);
+            a.onMethodFinish(1000, null);
         
         }
 

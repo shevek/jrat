@@ -22,11 +22,11 @@ public class SilentMethodHandler implements MethodHandler, MethodHandlerFactory 
     }
 
 
-    public void onMethodFinish(Object obj, long durationNanos, Throwable throwable) {
+    public void onMethodFinish(long durationNanos, Throwable throwable) {
     }
 
 
-    public void onMethodStart(Object obj) {
+    public void onMethodStart() {
     }
 
 

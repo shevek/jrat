@@ -18,17 +18,17 @@ public class SimpleExamle {
 
         long start;
 
-        HANDLER.onMethodStart(this);
+        HANDLER.onMethodStart();
         start = System.currentTimeMillis();
 
         try {
             __Shiftone_JRat_doText(text);
 
-            HANDLER.onMethodFinish(this, (System.currentTimeMillis() - start), null);
+            HANDLER.onMethodFinish((System.currentTimeMillis() - start), null);
             return;
         }
         catch (Throwable e) {
-            HANDLER.onMethodFinish(this, (System.currentTimeMillis() - start), e);
+            HANDLER.onMethodFinish((System.currentTimeMillis() - start), e);
         }
 
     }
@@ -130,7 +130,7 @@ public class SimpleExamle {
      Label l6 = new Label();
      mv.visitLabel(l6);
      mv.visitLineNumber(23, l6);
-     mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeNanos", "()J");
+     mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J");
      mv.visitVarInsn(LSTORE, 4);
      mv.visitLabel(l0);
      mv.visitLineNumber(27, l0);
@@ -178,7 +178,7 @@ public class SimpleExamle {
      Label l13 = new Label();
      mv.visitLabel(l13);
      mv.visitLineNumber(39, l13);
-     mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeNanos", "()J");
+     mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J");
      mv.visitVarInsn(LSTORE, 2);
      Label l14 = new Label();
      mv.visitLabel(l14);

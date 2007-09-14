@@ -74,19 +74,19 @@ public class Monitor {
 
     public static Object execute(MethodHandler handler, Object instance, Command command) throws Throwable {
 
-        handler.onMethodStart(instance);
+        handler.onMethodStart();
 
         long startTime = Clock.currentTimeMillis();
 
         try {
             Object result = command.execute();
 
-            handler.onMethodFinish(instance, Clock.currentTimeMillis() - startTime, null);
+            handler.onMethodFinish(Clock.currentTimeMillis() - startTime, null);
 
             return result;
         }
         catch (Throwable throwable) {
-            handler.onMethodFinish(instance, Clock.currentTimeMillis() - startTime, throwable);
+            handler.onMethodFinish(Clock.currentTimeMillis() - startTime, throwable);
 
             throw throwable;
         }

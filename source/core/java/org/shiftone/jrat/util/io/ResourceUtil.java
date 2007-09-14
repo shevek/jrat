@@ -24,7 +24,7 @@ public class ResourceUtil {
 
     static {
         if (CLASS_LOADER == null) {
-            CLASS_LOADER = Class.class.getClassLoader();
+            CLASS_LOADER = ClassLoader.getSystemClassLoader();
         }
     }
 
