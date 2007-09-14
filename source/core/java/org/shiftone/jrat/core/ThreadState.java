@@ -27,11 +27,7 @@ public class ThreadState {
     public boolean isInHandler() {        
         return inHandler;
     }
-
-    public long now() {
-        return System.currentTimeMillis();
-    }
-
+ 
     public long begin(MethodHandler methodHandler) {
 
         long begin = System.currentTimeMillis();

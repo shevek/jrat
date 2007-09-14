@@ -32,13 +32,13 @@ public class Example {
 
             int result = foo(x);
 
-            state.end(METHOD_HANDLER, state.now() - startTime, null);
+            state.end(METHOD_HANDLER, startTime, null);
 
             return result;
             
         } catch (Throwable e) {
 
-            state.end(METHOD_HANDLER, state.now() - startTime, e);
+            state.end(METHOD_HANDLER, startTime, e);
 
             throw e;
 
