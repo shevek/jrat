@@ -16,28 +16,31 @@ public class Timer {
     private static final long ITERATIONS = 1000000;
     private static final Runnable NOOP = new NoOpRunnable();
     private static final Runnable[] RUNNABLES = {
-            new AddToDoubleRunnable(),
-            new AddToFloatRunnable(),
-            new ClockCurrentTimeNanosRunnable(),
-            new ExceptionNewRunnable(),
-            new DecimalFormatFormatRunnable(),
-            new DecimalFormatParseRunnable(),
-            new IncrementBigDecimalRunnable(),
-            new IncrementIntegerRunnable(),
-            new IncrementLongRunnable(),
-            new MathRandomRunnable(),
-            new PatternMatchesRunnable(),
-            new SimpleDateFormatFormatRunnable(),
-            new SimpleDateFormatParseRunnable(),
-            new StringConcatRunnable(),
-            new StringContainsRunnable(),
-            new StringIndexOfRunnable(),
-            new StringRegionMatchesRunnable(),
-            new SunMiscPerfCalculateTimeRunnable(),
-            new SystemCurrentTimeMillisRunnable(),
-            new SystemNanoTimeRunnable(),
-            new ThreadCurrentThreadRunnable(),
-            new ThreadSleep0Runnable(),
+//            new AddToDoubleRunnable(),
+//            new AddToFloatRunnable(),
+//            new ClockCurrentTimeNanosRunnable(),
+//            new ExceptionNewRunnable(),
+//            new DecimalFormatFormatRunnable(),
+//            new DecimalFormatParseRunnable(),
+//            new IncrementBigDecimalRunnable(),
+//            new IncrementIntegerRunnable(),
+//            new IncrementLongRunnable(),
+//            new MathRandomRunnable(),
+            new MethodCallRunnable(),
+            new MethodReflectCallRunnable(),
+//            new PatternMatchesRunnable(),
+//            new SimpleDateFormatFormatRunnable(),
+//            new SimpleDateFormatParseRunnable(),
+//            new StringConcatRunnable(),
+//            new StringContainsRunnable(),
+//            new StringIndexOfRunnable(),
+//            new StringRegionMatchesRunnable(),
+//            new SunMiscPerfCalculateTimeRunnable(),
+//            new SystemCurrentTimeMillisRunnable(),
+//            new SystemNanoTimeRunnable(),
+//            new ThreadCurrentThreadRunnable(),
+//            new ThreadSleep0Runnable(),
+            new ThreadLocalGetRunnable(),
             new ThreadYieldRunnable(),
             new ThrowableNewRunnable(),
             new ThrowablePrintStackTraceRunnable(),
@@ -56,7 +59,7 @@ public class Timer {
 
         LoggerFactory.disableLogging();
 
-        time(SHORT_RUNNABLES, ITERATIONS * 10);
+        time(RUNNABLES, ITERATIONS * 10);
     }
 
 
