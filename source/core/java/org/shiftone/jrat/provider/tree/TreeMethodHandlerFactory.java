@@ -9,11 +9,14 @@ import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
 import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
 import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
 import org.shiftone.jrat.provider.tree.ui.TraceViewBuilder;
+import org.shiftone.jrat.provider.tree.TreeWebActionFactory;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.log.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +31,8 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     private final Set allMethodKeys = new HashSet();
     private final DelegateThreadLocal delegateThreadLocal = new DelegateThreadLocal(this);
     private final AtomicLong methodHandlerCount = new AtomicLong();
+    private final List treeNodes = new ArrayList(); /* <TreeNode> */
+    private final TreeWebActionFactory webActionFactory = new TreeWebActionFactory(treeNodes);
 
     public void startup(RuntimeContext context) throws Exception {
         super.startup(context);
@@ -35,11 +40,12 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         context.register(new ResetCommandlet(this));
         context.register(new WriteOutputCommandlet(this));
         context.register(new DumpOutputCommandlet(this));
+
+        context.registerWebActionFactory(webActionFactory);
     }
 
 
     public synchronized final MethodHandler createMethodHandler(MethodKey methodKey) {
-
 
         methodHandlerCount.incrementAndGet();
         allMethodKeys.add(methodKey);
@@ -52,6 +58,12 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         return methodHandlerCount.get();
     }
 
+    public TreeNode createTreeNode(MethodKey methodKey, TreeNode treeNode) {
+        TreeNode newNode = new TreeNode(methodKey, treeNode);
+        // this add makes the web factory able to look up a node by id.
+        treeNodes.add(treeNode);
+        return newNode;
+    }
 
     /**
      * Returns the current thread's delegate instance. This delegate will
@@ -76,7 +88,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         rootNode.reset();
     }
 
-    public synchronized void writeOutputFile(String fileName) {
+    public void writeOutputFile(String fileName) {
 
         LOG.info("writeOutputFile...");
 
@@ -95,7 +107,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     }
 
 
-    public synchronized void shutdown() {
+    public void shutdown() {
 
         LOG.info("shutdown...");
         writeOutputFile();

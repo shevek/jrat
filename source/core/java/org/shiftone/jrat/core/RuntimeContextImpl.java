@@ -8,6 +8,8 @@ import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.core.shutdown.ShutdownRegistry;
 import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.core.spi.RuntimeContext;
+import org.shiftone.jrat.core.spi.WebActionFactory;
+import org.shiftone.jrat.core.web.WebActionRegistry;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.io.IOUtil;
@@ -32,7 +34,9 @@ class RuntimeContextImpl implements RuntimeContext {
     private final long startTimeMs = System.currentTimeMillis();
     private final ShutdownRegistry shutdownRegistry;
     private final JmxRegistry jmxRegistry;
-    private final CommandletRegistry commandletRegistry;
+    //private final CommandletRegistry commandletRegistry;
+    private final WebActionRegistry webActionRegistry;
+
     private final OutputDirectory outputDirectory;
     private final Properties systemPropertiesAtStartup;
     private final MemoryMonitor memoryMonitor;
@@ -46,7 +50,8 @@ class RuntimeContextImpl implements RuntimeContext {
         outputDirectory = OutputDirectory.create(serviceFactory.getFileOutputFactory());
         shutdownRegistry = serviceFactory.getShutdownRegistry();
         jmxRegistry = serviceFactory.getJmxRegistry();
-        commandletRegistry = serviceFactory.getCommandletRegistry();
+        //commandletRegistry = serviceFactory.getCommandletRegistry();
+        webActionRegistry = serviceFactory.getWebActionRegistry();
         memoryMonitor = new MemoryMonitor(this);
 
         systemPropertiesAtStartup = new Properties();
@@ -92,7 +97,7 @@ class RuntimeContextImpl implements RuntimeContext {
     }
 
     public void register(Commandlet commandlet) {
-        commandletRegistry.register(commandlet);
+//        commandletRegistry.register(commandlet);
     }
 
 
@@ -136,16 +141,22 @@ class RuntimeContextImpl implements RuntimeContext {
     }
 
 
+    public void registerWebActionFactory(WebActionFactory webActionFactory) {
+        webActionRegistry.add(webActionFactory);
+    }
+
     public void writeSerializable(String fileName, Serializable serializable) {
 
         OutputStream outputStream = createOutputStream(fileName);
         ObjectOutputStream objectOutputStream = null;
 
+        LOG.info("created output stream");
         try {
             outputStream = new GZIPOutputStream(outputStream);
             objectOutputStream = new ObjectOutputStream(outputStream);
+            //THIS OBJECT HAS THREADS IN IT?
             objectOutputStream.writeObject(serializable);
-
+        LOG.info("wrote object");
             objectOutputStream.flush();
             objectOutputStream.close();
 

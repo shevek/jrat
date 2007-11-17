@@ -66,6 +66,8 @@ public class Agent {
 
             transformer = new TryCatchClassFileTransformer(transformer);
 
+            //transformer = new DumpClassFileTransformer(transformer);
+            
             instrumentation.addTransformer(transformer);
             installed = true;
 

@@ -7,6 +7,7 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.commons.SerialVersionUIDAdder;
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.TransformerOptions;
+import org.shiftone.jrat.core.criteria.MethodCriteria;
 
 
 public class AsmInjectorStrategy implements InjectorStrategy {
@@ -26,6 +27,7 @@ public class AsmInjectorStrategy implements InjectorStrategy {
         ClassVisitor visitor = new IfInterfaceClassVisitor(target, criteriaClassVisitor);
 
         criteriaClassVisitor.setCriteria(options.getCriteria());
+        //criteriaClassVisitor.setCriteria(MethodCriteria.ALL);
 
         // * IfInterfaceClassVisitor delegates to either ClassWriter or
         // InjectClassVisitor

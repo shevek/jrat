@@ -19,8 +19,8 @@ public class Settings {
     private boolean outputCompressionEnabled;
 
     //
-    private boolean httpServerEnabled;
-    private int httpPort = 8888;
+    private boolean httpServerEnabled = true;
+    private int httpPort = 9009;
     //
     private boolean jmxEnabled;
     private boolean mBeanServerCreationEnabled;

@@ -96,7 +96,7 @@ public class TreeNode implements Externalizable {
     /**
      * Method gets <b>AND CREATES IF NEEDED</b> the requested tree node
      */
-    public TreeNode getChild(MethodKey methodKey) {
+    public TreeNode getChild(TreeMethodHandlerFactory factory, MethodKey methodKey) {
 
         TreeNode treeNode = null;
 
@@ -104,9 +104,10 @@ public class TreeNode implements Externalizable {
             treeNode = (TreeNode) children.get(methodKey);
 
             if (treeNode == null) {
-                treeNode = new TreeNode(methodKey, this);
 
+                treeNode = factory.createTreeNode(methodKey, this);
                 children.put(methodKey, treeNode);
+
             }
         }
 

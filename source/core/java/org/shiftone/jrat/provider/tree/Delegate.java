@@ -2,6 +2,7 @@ package org.shiftone.jrat.provider.tree;
 
 
 import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.util.Assert;
 
 
 /**
@@ -16,21 +17,19 @@ import org.shiftone.jrat.core.MethodKey;
  */
 public class Delegate {
 
-    private TreeNode currentNode = null;
+    private final TreeMethodHandlerFactory factory ;
+    private TreeNode currentNode ;
 
-    public Delegate(TreeNode rootNode) {
-
-        if (rootNode == null) {
-            throw new NullPointerException("delegate created to null initial node");
-        }
-
-        currentNode = rootNode;
+    public Delegate(TreeMethodHandlerFactory factory) {
+        Assert.assertNotNull(factory);
+        this.factory = factory;
+        this.currentNode = factory.getRootNode();
     }
 
 
     public final void onMethodStart(MethodKey methodKey) {
 
-        currentNode = currentNode.getChild(methodKey);
+        currentNode = currentNode.getChild(factory, methodKey);
 
         currentNode.getAccumulator().onMethodStart();
     }

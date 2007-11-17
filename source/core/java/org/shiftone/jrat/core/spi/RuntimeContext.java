@@ -33,6 +33,8 @@ public interface RuntimeContext {
 
     void registerShutdownListener(ShutdownListener listener);
 
+    void registerWebActionFactory(WebActionFactory webActionFactory);
+
     long getStartTimeMs();
 
     Properties getSystemPropertiesAtStartup();

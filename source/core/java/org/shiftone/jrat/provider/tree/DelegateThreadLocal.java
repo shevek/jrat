@@ -22,6 +22,6 @@ public class DelegateThreadLocal extends ThreadLocal {
 
 
     protected final Object initialValue() {
-        return new Delegate(factory.getRootNode());
+        return new Delegate(factory);
     }
 }

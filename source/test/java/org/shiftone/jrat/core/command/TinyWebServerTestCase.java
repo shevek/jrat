@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.core.HandlerFactory; 
-import org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory;
+import org.shiftone.jrat.core.HandlerFactory;
 
 /**
  * @author Jeff Drost

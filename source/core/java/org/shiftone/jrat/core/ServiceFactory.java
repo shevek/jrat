@@ -10,6 +10,7 @@ import org.shiftone.jrat.core.jmx.info.JRatInfo;
 import org.shiftone.jrat.core.output.FileOutputFactory;
 import org.shiftone.jrat.core.output.FileOutputRegistry;
 import org.shiftone.jrat.core.shutdown.ShutdownRegistry;
+import org.shiftone.jrat.core.web.WebActionRegistry;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggingManager;
@@ -110,6 +111,19 @@ public class ServiceFactory {
         return shutdownRegistry;
     }
 
+    // --------------------------------------------------------------------
+    private WebActionRegistry webActionRegistry;
+
+    public synchronized WebActionRegistry getWebActionRegistry() {
+
+        if (webActionRegistry == null) {
+            webActionRegistry = new WebActionRegistry();
+
+            //getJmxRegistry().registerMBean(webActionRegistry, null);
+        }
+
+        return webActionRegistry;
+    }
 
     // --------------------------------------------------------------------
     private Transformer transformer;
