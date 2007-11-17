@@ -2,12 +2,11 @@ package org.shiftone.jrat.provider.tree;
 
 import org.shiftone.jrat.core.spi.WebAction;
 import org.shiftone.jrat.core.spi.WebActionFactory;
-import org.shiftone.jrat.http.Response;
+import org.shiftone.jrat.core.web.http.Response;
 
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
+import java.util.Iterator; 
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost

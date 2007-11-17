@@ -1,6 +1,6 @@
 package org.shiftone.jrat.core.spi;
-
-import org.shiftone.jrat.http.Response;
+ 
+import org.shiftone.jrat.core.web.http.Response;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost

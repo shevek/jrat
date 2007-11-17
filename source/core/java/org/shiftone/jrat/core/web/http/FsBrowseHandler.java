@@ -1,5 +1,4 @@
-package org.shiftone.jrat.http;
-
+package org.shiftone.jrat.core.web.http;
 import org.shiftone.jrat.util.io.IOUtil;
 
 import java.io.File;

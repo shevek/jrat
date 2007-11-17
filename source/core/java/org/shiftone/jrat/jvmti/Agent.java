@@ -67,7 +67,7 @@ public class Agent {
             transformer = new TryCatchClassFileTransformer(transformer);
 
             //transformer = new DumpClassFileTransformer(transformer);
-            
+
             instrumentation.addTransformer(transformer);
             installed = true;
 
@@ -83,59 +83,59 @@ public class Agent {
     }
 
 
-    private static void redefineAllLoadedClasses(Instrumentation instrumentation, ClassFileTransformer transformer) throws Exception {
-
-        Class[] classes = instrumentation.getAllLoadedClasses();
-
-        if (!instrumentation.isRedefineClassesSupported()) {
-            LOG.info("RedefineClassesSupported = false");
-            return;
-        }
-
-
-        List classDefinitions = new ArrayList();
-
-        for (int i = 0; i < classes.length; i++) {
-            Class klass = classes[i];
-
-            if (klass.isArray()) {
-                continue;
-            }
-
-            String resourceName = "/" + klass.getName().replaceAll("\\.", "/") + ".class";
-            InputStream inputStream = klass.getResourceAsStream(resourceName);
-
-
-            if (inputStream != null) {
-                byte[] bytes = IOUtil.readAndClose(inputStream);
-
-                byte[] newBytes = transformer.transform(
-                        klass.getClassLoader(),
-                        klass.getName(),
-                        klass,
-                        klass.getProtectionDomain(),
-                        bytes);
-
-                try {
-
-                    //instrumentation.redefineClasses(new ClassDefinition[]{new ClassDefinition(klass, newBytes)});
-
-                    classDefinitions.add(new ClassDefinition(klass, newBytes));
-
-                    LOG.info("queue classes " + resourceName);
-
-                } catch (Exception e) {
-
-                    LOG.info("failed to reload " + klass.getName(), e);
-
-                }
-            }
-
-            // redefine
-
-        }
-
-    }
+//    private static void redefineAllLoadedClasses(Instrumentation instrumentation, ClassFileTransformer transformer) throws Exception {
+//
+//        Class[] classes = instrumentation.getAllLoadedClasses();
+//
+//        if (!instrumentation.isRedefineClassesSupported()) {
+//            LOG.info("RedefineClassesSupported = false");
+//            return;
+//        }
+//
+//
+//        List classDefinitions = new ArrayList();
+//
+//        for (int i = 0; i < classes.length; i++) {
+//            Class klass = classes[i];
+//
+//            if (klass.isArray()) {
+//                continue;
+//            }
+//
+//            String resourceName = "/" + klass.getName().replaceAll("\\.", "/") + ".class";
+//            InputStream inputStream = klass.getResourceAsStream(resourceName);
+//
+//
+//            if (inputStream != null) {
+//                byte[] bytes = IOUtil.readAndClose(inputStream);
+//
+//                byte[] newBytes = transformer.transform(
+//                        klass.getClassLoader(),
+//                        klass.getName(),
+//                        klass,
+//                        klass.getProtectionDomain(),
+//                        bytes);
+//
+//                try {
+//
+//                    //instrumentation.redefineClasses(new ClassDefinition[]{new ClassDefinition(klass, newBytes)});
+//
+//                    classDefinitions.add(new ClassDefinition(klass, newBytes));
+//
+//                    LOG.info("queue classes " + resourceName);
+//
+//                } catch (Exception e) {
+//
+//                    LOG.info("failed to reload " + klass.getName(), e);
+//
+//                }
+//            }
+//
+//            // redefine
+//
+//        }
+//
+//    }
 
 
 

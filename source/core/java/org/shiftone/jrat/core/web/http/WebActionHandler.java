@@ -1,4 +1,4 @@
-package org.shiftone.jrat.http;
+package org.shiftone.jrat.core.web.http;
 
 import org.shiftone.jrat.core.spi.WebAction;
 import org.shiftone.jrat.core.spi.WebActionFactory;

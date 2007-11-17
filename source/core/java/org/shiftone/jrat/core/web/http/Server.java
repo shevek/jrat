@@ -1,8 +1,7 @@
-package org.shiftone.jrat.http;
+package org.shiftone.jrat.core.web.http;
 
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.provider.tree.TreeWebActionFactory;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -111,17 +110,17 @@ public class Server extends Thread {
 
     }
 
-    public static void main(String[] args) throws Exception {
-
-        WebActionHandler handler = new WebActionHandler();
-        Server server = new Server(8080, handler);
-        handler.add(new TestWebActionFactory("one"));
-        handler.add(new TestWebActionFactory("two"));
-        handler.add(new TestWebActionFactory("three"));
-
-        handler.add(new TreeWebActionFactory(new ArrayList()));
-        server.start();
-        Thread.sleep(1000 * 160);
-    }
+//    public static void main(String[] args) throws Exception {
+//
+//        WebActionHandler handler = new WebActionHandler();
+//        Server server = new Server(8080, handler);
+//        handler.add(new TestWebActionFactory("one"));
+//        handler.add(new TestWebActionFactory("two"));
+//        handler.add(new TestWebActionFactory("three"));
+//
+//        handler.add(new TreeWebActionFactory(new ArrayList()));
+//        server.start();
+//        Thread.sleep(1000 * 160);
+//    }
 
 }

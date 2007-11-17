@@ -36,6 +36,7 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
 
         if (className.startsWith("org/shiftone/jrat")
                 || className.startsWith("sun")
+                || loader == null
                 ) {
 
             // LOG.debug("skipping class : " + className);

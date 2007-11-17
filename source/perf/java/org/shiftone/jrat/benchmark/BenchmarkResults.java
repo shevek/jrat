@@ -28,7 +28,7 @@ public class BenchmarkResults {
         
         for (int i = 0; i < benchmark.iterations(); i++) {
 
-            method.invoke(instance);
+      //      method.invoke(instance);
 
         }
         long end = System.nanoTime();

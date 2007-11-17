@@ -2,8 +2,7 @@ package org.shiftone.jrat.core.web;
 
 import org.shiftone.jrat.core.spi.WebActionFactory;
 import org.shiftone.jrat.core.Environment;
-import org.shiftone.jrat.http.Server;
-import org.shiftone.jrat.http.WebActionHandler;
+import org.shiftone.jrat.core.web.http.WebActionHandler;
 import org.shiftone.jrat.util.log.Logger;
 
 /**

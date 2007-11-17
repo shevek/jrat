@@ -19,11 +19,11 @@ public class CommandletRegistryFactory {
             if (Environment.getSettings().isHttpServerEnabled()) {
 
                 LOG.info("Starting tiny web server...");
-                TinyWebServer server = new TinyWebServer(
-                        registry,
-                        Environment.getSettings().getHttpPort());
-
-                server.start();
+//                TinyWebServer server = new TinyWebServer(
+//                        registry,
+//                        Environment.getSettings().getHttpPort());
+//
+//                server.start();
 
             }
 

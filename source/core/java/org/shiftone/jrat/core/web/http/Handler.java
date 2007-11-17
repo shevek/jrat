@@ -1,4 +1,4 @@
-package org.shiftone.jrat.http;
+package org.shiftone.jrat.core.web.http;
 
 /**
  * This is basicly a lightweight Servlet.

@@ -1,5 +1,4 @@
-package org.shiftone.jrat.http;
-
+package org.shiftone.jrat.core.web.http;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
