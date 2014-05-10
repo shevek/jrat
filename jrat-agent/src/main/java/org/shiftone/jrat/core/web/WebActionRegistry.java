@@ -1,7 +1,6 @@
 package org.shiftone.jrat.core.web;
 
 import org.shiftone.jrat.core.spi.WebActionFactory;
-import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.web.http.WebActionHandler;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -29,9 +28,8 @@ public class WebActionRegistry {
     }
 
     public void add(WebActionFactory webActionFactory) {
-          LOG.info("adding " + webActionFactory.getTitle());
+        LOG.info("adding " + webActionFactory.getTitle());
         handler.add(webActionFactory);
     }
-
 
 }

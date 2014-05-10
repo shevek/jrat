@@ -1,13 +1,15 @@
 package org.shiftone.jrat.util.log;
 
-
+import java.io.PrintWriter;
 import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.util.log.target.*;
-
-import java.io.PrintWriter;
-
+import org.shiftone.jrat.util.log.target.LogTarget;
+import org.shiftone.jrat.util.log.target.NullLogTarget;
+import org.shiftone.jrat.util.log.target.ProxyLogTarget;
+import org.shiftone.jrat.util.log.target.TandemTarget;
+import org.shiftone.jrat.util.log.target.ThreadLocalLogTarget;
+import org.shiftone.jrat.util.log.target.WriterLogTarget;
 
 /**
  * There are currently 3 ways that logging can be configured...
@@ -33,7 +35,6 @@ public class LoggerFactory implements Constants {
         // } catch (Exception e) {}
     }
 
-
     public static Logger getLogger(Class klass) {
 
         String className = klass.getName();
@@ -42,11 +43,9 @@ public class LoggerFactory implements Constants {
         return getLogger(shortName);
     }
 
-
     public static Logger getLogger(String topic) {
         return new Logger(topic, PROXY_LOG_TARGET);
     }
-
 
     public static int getLevelFromName(String levelName) {
 
@@ -64,26 +63,21 @@ public class LoggerFactory implements Constants {
         throw new JRatException("log level '" + levelName + "' is not known");
     }
 
-
     public static void setLevel(int level) {
         PROXY_LOG_TARGET.setCurrentLevel(level);
     }
-
 
     public static int getLevel() {
         return PROXY_LOG_TARGET.getCurrentLevel();
     }
 
-
     public static void disableLogging() {
         setLogTarget(NULL_LOG_TARGET);
     }
 
-
     public static void enableThreadBasedLogging() {
         setLogTarget(THREAD_TARGET);
     }
-
 
     public static void enableSystemOutLogging() {
         setLogTarget(SYSTEM_OUT_TARGET);
@@ -103,7 +97,6 @@ public class LoggerFactory implements Constants {
 
         setLogTarget(tandemTarget);
     }
-
 
     /**
      * this will only have any effect on logging if the current mode is using

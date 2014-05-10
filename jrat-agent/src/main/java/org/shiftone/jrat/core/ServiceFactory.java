@@ -1,6 +1,5 @@
 package org.shiftone.jrat.core;
 
-
 import org.shiftone.jrat.core.command.CommandletRegistry;
 import org.shiftone.jrat.core.command.CommandletRegistryFactory;
 import org.shiftone.jrat.core.jmx.JmxRegistry;
@@ -15,7 +14,6 @@ import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.log.LoggingManager;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -27,7 +25,6 @@ public class ServiceFactory {
     public ServiceFactory() {
         LOG.info("new");
     }
-
 
     public static synchronized ServiceFactory getInstance() {
 
@@ -67,7 +64,6 @@ public class ServiceFactory {
         return jmxRegistry;
     }
 
-
     // --------------------------------------------------------------------
     private FileOutputRegistry fileOutputRegistry;
 
@@ -83,7 +79,6 @@ public class ServiceFactory {
         return fileOutputRegistry;
     }
 
-
     // --------------------------------------------------------------------
     private FileOutputFactory fileOutputFactory;
 
@@ -95,7 +90,6 @@ public class ServiceFactory {
 
         return fileOutputFactory;
     }
-
 
     // --------------------------------------------------------------------
     private ShutdownRegistry shutdownRegistry;

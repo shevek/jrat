@@ -1,10 +1,9 @@
 package org.shiftone.jrat.jvmti;
 
-import org.shiftone.jrat.util.log.Logger;
-
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -18,6 +17,7 @@ public class TryCatchClassFileTransformer implements ClassFileTransformer {
         this.transformer = transform;
     }
 
+    @Override
     public byte[] transform(
             ClassLoader loader,
             String className,
@@ -42,7 +42,7 @@ public class TryCatchClassFileTransformer implements ClassFileTransformer {
         }
     }
 
-
+    @Override
     public String toString() {
         return "TryCatchClassFileTransformer[" + transformer + "]";
     }

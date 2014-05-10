@@ -30,6 +30,7 @@ public class HarnessRunnable implements Runnable {
     /**
      * Method run
      */
+    @Override
     public void run() {
 
         for (int i = 0; i < calls; i++) {

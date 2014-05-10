@@ -1,10 +1,8 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
-
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * All this visitor does is add a single instruction to the start of the static
@@ -15,7 +13,7 @@ import org.shiftone.jrat.util.log.Logger;
 public class ClassInitMethodVisitor extends MethodVisitor implements Constants {
 
     private static final Logger LOG = Logger.getLogger(ClassInitMethodVisitor.class);
-    private String className;
+    private final String className;
 
     public ClassInitMethodVisitor(String className, MethodVisitor mv) {
 
@@ -24,7 +22,7 @@ public class ClassInitMethodVisitor extends MethodVisitor implements Constants {
         this.className = className;
     }
 
-
+    @Override
     public void visitCode() {
         super.visitMethodInsn(Opcodes.INVOKESTATIC, className, initializeName, "()V");
         super.visitCode();

@@ -1,11 +1,9 @@
 package org.shiftone.jrat.api;
 
-
 public class Callable implements Command {
 
     public void run() throws Throwable {
     }
-
 
     public Object call() throws Throwable {
 
@@ -14,7 +12,7 @@ public class Callable implements Command {
         return null;
     }
 
-
+    @Override
     public Object execute() throws Throwable {
         return call();
     }

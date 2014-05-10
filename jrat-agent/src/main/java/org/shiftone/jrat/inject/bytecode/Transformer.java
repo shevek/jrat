@@ -1,15 +1,12 @@
 package org.shiftone.jrat.inject.bytecode;
 
-
+import java.io.InputStream;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.inject.bytecode.asm.AsmInjectorStrategy;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.InputStream;
-
 
 /**
  * This class is the application's interface to the bytecode injection package.
@@ -34,21 +31,17 @@ public class Transformer implements ShutdownListener, TransformerMBean {
         this.injectorStrategy = injectorStrategy;
     }
 
-
     public Transformer() {
         this.injectorStrategy = new AsmInjectorStrategy();
     }
-
 
     public byte[] inject(byte[] inputClassData, TransformerOptions options) {
         return inject(inputClassData, UNKNOWN_SOURCE, options);
     }
 
-
     public byte[] inject(InputStream inputClassData, TransformerOptions options) {
         return inject(inputClassData, UNKNOWN_SOURCE, options);
     }
-
 
     public byte[] inject(byte[] input, String sourceName, TransformerOptions options) {
 
@@ -62,18 +55,17 @@ public class Transformer implements ShutdownListener, TransformerMBean {
             transformedClassCount.incrementAndGet();
 
             return output;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new JRatException("error injecting : " + sourceName, e);
         }
     }
 
-
+    @Override
     public long getTransformedClassCount() {
         return transformedClassCount.get();
     }
 
-
+    @Override
     public double getAverageTransformTimeMs() {
 
         return (transformedClassCount.get() == 0)
@@ -81,16 +73,15 @@ public class Transformer implements ShutdownListener, TransformerMBean {
                 : (double) totalTransformTime.get() / (double) transformedClassCount.get();
     }
 
-
+    @Override
     public double getAverageBloatPercent() {
         return (double) ((totalOutputBytes.get() * 100.0) / totalInputBytes.get()) - 100.0;
     }
 
-
+    @Override
     public String getInjectorStrategyText() {
         return injectorStrategy.toString();
     }
-
 
     public byte[] inject(InputStream inputClassData, String sourceName, TransformerOptions options) {
 
@@ -98,18 +89,17 @@ public class Transformer implements ShutdownListener, TransformerMBean {
             byte[] inputClassDataBytes = IOUtil.readAndClose(inputClassData);
 
             return inject(inputClassDataBytes, sourceName, options);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new JRatException("error injecting stream : " + sourceName, e);
         }
     }
 
-
+    @Override
     public void shutdown() {
         LOG.info("transformed " + transformedClassCount + " classe(s)");
     }
 
-
+    @Override
     public String toString() {
         return "Transformer[" + injectorStrategy + "]";
     }

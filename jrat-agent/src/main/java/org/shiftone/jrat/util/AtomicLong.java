@@ -1,8 +1,6 @@
 package org.shiftone.jrat.util;
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Before there was java.util.concurrent.atomic.AtomicLong, there was
@@ -21,21 +19,17 @@ public class AtomicLong {
         value = 0;
     }
 
-
     public AtomicLong(long initialValue) {
         value = initialValue;
     }
-
 
     public synchronized long get() {
         return value;
     }
 
-
     public long incrementAndGet() {
         return addAndGet(1);
     }
-
 
     public synchronized long addAndGet(long delta) {
 
@@ -44,7 +38,7 @@ public class AtomicLong {
         return value;
     }
 
-
+    @Override
     public String toString() {
         return String.valueOf(value);
     }

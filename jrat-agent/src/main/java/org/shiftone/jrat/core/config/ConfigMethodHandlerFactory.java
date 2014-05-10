@@ -1,5 +1,9 @@
 package org.shiftone.jrat.core.config;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
 import org.shiftone.jrat.core.spi.MethodHandler;
@@ -8,11 +12,6 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -59,7 +58,7 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
         }
     }
 
-
+    @Override
     public MethodHandler createMethodHandler(MethodKey methodKey) throws Exception {
 
         List methodHandlers = new ArrayList();
@@ -84,6 +83,7 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
     }
 
+    @Override
     public void startup(RuntimeContext context) throws Exception {
 
         LOG.info("startup");
@@ -103,7 +103,6 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
         private final MethodHandlerFactory methodHandlerFactory;
         private final MethodCriteria methodCriteria;
-
 
         public FactoryInstance(MethodHandlerFactory methodHandlerFactory, MethodCriteria methodCriteria) {
             Assert.assertNotNull(methodHandlerFactory);

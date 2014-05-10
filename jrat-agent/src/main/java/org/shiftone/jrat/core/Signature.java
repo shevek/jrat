@@ -1,14 +1,11 @@
 package org.shiftone.jrat.core;
 
-
-import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import org.shiftone.jrat.util.Assert;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -36,21 +33,17 @@ public class Signature {
         parseSig(new CharacterIterator(descriptors));
     }
 
-
     public String getReturnType() {
         return returnType;
     }
-
 
     public int getParameterCount() {
         return parameterTypes.size();
     }
 
-
     public String getParameterType(int index) {
         return (String) parameterTypes.get(index);
     }
-
 
     public String getShortParameterType(int index) {
 
@@ -64,10 +57,9 @@ public class Signature {
         return type;
     }
 
-
     public String getShortText() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < getParameterCount(); i++) {
             if (i != 0) {
@@ -80,10 +72,9 @@ public class Signature {
         return sb.toString();
     }
 
-
     public String getLongText() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < getParameterCount(); i++) {
             if (i != 0) {
@@ -95,7 +86,6 @@ public class Signature {
 
         return sb.toString();
     }
-
 
     private void parseSig(CharacterIterator in) {
 
@@ -118,7 +108,6 @@ public class Signature {
         }
     }
 
-
     private String parseType(CharacterIterator in) {
 
         char c = in.get();
@@ -132,10 +121,9 @@ public class Signature {
         }
     }
 
-
     private String parseArrayType(CharacterIterator in) {
 
-        StringBuffer sb = new StringBuffer("[]");
+        StringBuilder sb = new StringBuilder("[]");
 
         while (in.next() && (in.get() == '[')) {
             sb.append("[]");
@@ -147,10 +135,9 @@ public class Signature {
         return sb.toString();
     }
 
-
     private String parseClassType(CharacterIterator in) {
 
-        StringBuffer className = new StringBuffer();
+        StringBuilder className = new StringBuilder();
 
         while (in.next()) {
             char c = in.get();
@@ -167,7 +154,6 @@ public class Signature {
         return className.toString();
     }
 
-
     // todo - this is handy - make it common
     private static class CharacterIterator {
 
@@ -179,11 +165,9 @@ public class Signature {
             this.chars = text.toCharArray();
         }
 
-
         public CharacterIterator(char[] chars) {
             this.chars = chars;
         }
-
 
         public boolean next() {
 
@@ -197,7 +181,6 @@ public class Signature {
                 return true;
             }
         }
-
 
         public char get() {
             return current;

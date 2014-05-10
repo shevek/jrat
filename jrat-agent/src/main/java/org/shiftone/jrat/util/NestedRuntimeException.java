@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util;
 
-
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
-
 
 /**
  * Ok.. before Java 1.4 - exceptions did not have a cause.
@@ -19,14 +17,12 @@ public class NestedRuntimeException extends RuntimeException {
         super(message);
     }
 
-
     public NestedRuntimeException(String message, Throwable rootCause) {
 
         super(message);
 
         initializeCause(rootCause);
     }
-
 
     private void initializeCause(Throwable rootCause) {
 
@@ -39,28 +35,26 @@ public class NestedRuntimeException extends RuntimeException {
             Method initCause = Throwable.class.getMethod("initCause", new Class[]{Throwable.class});
 
             initCause.invoke(this, new Object[]{rootCause});
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             this.rootCause = rootCause;
         }
     }
-
 
     public Throwable getRootCause() {
         return rootCause;
     }
 
-
+    @Override
     public void printStackTrace() {
         printStackTrace(System.out);
     }
 
-
+    @Override
     public void printStackTrace(PrintStream s) {
         printStackTrace(new PrintWriter(s));
     }
 
-
+    @Override
     public void printStackTrace(PrintWriter s) {
 
         super.printStackTrace(s);

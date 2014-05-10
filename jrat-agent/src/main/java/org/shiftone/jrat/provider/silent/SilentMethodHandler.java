@@ -1,11 +1,9 @@
 package org.shiftone.jrat.provider.silent;
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.core.spi.RuntimeContext;
-
 
 /**
  * Class SilentMethodHandler
@@ -21,23 +19,22 @@ public class SilentMethodHandler implements MethodHandler, MethodHandlerFactory 
     public void onMethodError(Object obj, Object[] args, Throwable throwable) {
     }
 
-
+    @Override
     public void onMethodFinish(long durationNanos, Throwable throwable) {
     }
 
-
+    @Override
     public void onMethodStart() {
     }
 
-
+    @Override
     public MethodHandler createMethodHandler(MethodKey methodKey) {
         return this;
     }
 
-
+    @Override
     public void startup(RuntimeContext context) {
     }
-
 
     public void shutdown() {
     }

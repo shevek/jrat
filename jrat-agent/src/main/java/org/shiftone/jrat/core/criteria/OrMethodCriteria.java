@@ -1,10 +1,7 @@
 package org.shiftone.jrat.core.criteria;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.util.Iterator;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -13,6 +10,7 @@ public class OrMethodCriteria extends CompositeMethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(OrMethodCriteria.class);
 
+    @Override
     public boolean isMatch(String className, long modifier) {
 
         Iterator iterator = getCriterion().iterator();
@@ -28,7 +26,7 @@ public class OrMethodCriteria extends CompositeMethodCriteria {
         return false;
     }
 
-
+    @Override
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
 
         Iterator iterator = getCriterion().iterator();
@@ -44,7 +42,7 @@ public class OrMethodCriteria extends CompositeMethodCriteria {
         return false;
     }
 
-
+    @Override
     protected String getTag() {
         return "or";
     }

@@ -1,11 +1,8 @@
 package org.shiftone.jrat.core.jmx;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -28,19 +25,18 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
         this.waitThread.start();
     }
 
-
+    @Override
     public boolean isReady() {
         return true;
     }
 
-
+    @Override
     public void registerMBean(Object object, String name) {
 
         synchronized (this) {
             waitList.add(new WaitingRegisterRequest(object, name));
         }
     }
-
 
     private void registerNow() {
 
@@ -66,7 +62,7 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
         }
     }
 
-
+    @Override
     public void run() {
 
         int sleep = 10000;
@@ -82,13 +78,11 @@ public class WaitingJmxRegistry implements JmxRegistry, Runnable {
                 }
 
                 Thread.sleep(sleep);
-            }
-            catch (Throwable e) {
+            } catch (Throwable e) {
                 LOG.warn("JMX poller thread encountered an error", e);
             }
         }
     }
-
 
     private class WaitingRegisterRequest {
 

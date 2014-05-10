@@ -1,6 +1,5 @@
 package org.shiftone.jrat.inject.bytecode;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -16,16 +15,13 @@ public class Modifier extends java.lang.reflect.Modifier {
         return (modifier & NO_PUBLIC_PRIVATE_PROTECTED) | PRIVATE;
     }
 
-
     public static int makePublic(int modifier) {
         return (modifier & NO_PUBLIC_PRIVATE_PROTECTED) | PUBLIC;
     }
 
-
     public static int makeProtected(int modifier) {
         return (modifier & NO_PUBLIC_PRIVATE_PROTECTED) | PROTECTED;
     }
-
 
     public static int makeNonNative(int modifier) {
         return (modifier & ~(NATIVE));

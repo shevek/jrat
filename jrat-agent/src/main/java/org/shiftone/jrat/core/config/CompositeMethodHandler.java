@@ -1,8 +1,7 @@
 package org.shiftone.jrat.core.config;
 
-import org.shiftone.jrat.core.spi.MethodHandler;
-
 import java.util.Collection;
+import org.shiftone.jrat.core.spi.MethodHandler;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -19,6 +18,7 @@ public class CompositeMethodHandler implements MethodHandler {
         this.handlers = handlers;
     }
 
+    @Override
     public void onMethodStart() {
 
         for (int i = 0; i < handlers.length; i++) {
@@ -27,6 +27,7 @@ public class CompositeMethodHandler implements MethodHandler {
 
     }
 
+    @Override
     public void onMethodFinish(long durationMicros, Throwable throwable) {
 
         for (int i = 0; i < handlers.length; i++) {

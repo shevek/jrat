@@ -1,10 +1,8 @@
 package org.shiftone.jrat.core.criteria;
 
-
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.regex.GlobMatcher;
 import org.shiftone.jrat.util.regex.Matcher;
-
 
 /**
  * Used by ant task.
@@ -23,30 +21,29 @@ public class MatcherMethodCriteria implements MethodCriteria {
         this.classNameMatcher = GlobMatcher.create(classNameMatcher);
     }
 
-
     public void setMethodName(String methodNameMatcher) {
         this.methodNameMatcher = GlobMatcher.create(methodNameMatcher);
     }
-
 
     public void setSignature(String signatureMatcher) {
         this.signatureMatcher = GlobMatcher.create(signatureMatcher);
     }
 
-
+    @Override
     public boolean isMatch(String className, long modifier) {
         return classNameMatcher.isMatch(className);
     }
 
-
+    @Override
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
         return classNameMatcher.isMatch(className)
                 && methodNameMatcher.isMatch(methodName)
                 && signatureMatcher.isMatch(signature);
     }
 
+    @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("<MatcherMethodCriteria>");
         sb.append("<Class>");
         sb.append(classNameMatcher);

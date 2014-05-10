@@ -1,12 +1,9 @@
 package org.shiftone.jrat.core.output;
 
-
-import org.shiftone.jrat.util.io.proxy.ProxyWriter;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.IOException;
 import java.io.Writer;
-
+import org.shiftone.jrat.util.io.proxy.ProxyWriter;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -26,12 +23,12 @@ public class FileOutputWriter extends ProxyWriter implements FileOutput {
         this.name = name;
     }
 
-
+    @Override
     protected Writer getTarget() throws IOException {
         return target;
     }
 
-
+    @Override
     public synchronized void close() throws IOException {
 
         if (!closed) {
@@ -45,7 +42,7 @@ public class FileOutputWriter extends ProxyWriter implements FileOutput {
         }
     }
 
-
+    @Override
     public String toString() {
         return "Writer[" + name + "]";
     }

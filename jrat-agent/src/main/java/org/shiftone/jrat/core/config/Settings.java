@@ -7,6 +7,7 @@ import org.shiftone.jrat.util.log.Logger;
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class Settings {
+
     private static final Logger LOG = Logger.getLogger(Settings.class);
 
     private String applicationName;
@@ -31,7 +32,6 @@ public class Settings {
     //
 
     private boolean injectorDefaultExcludesEnabled;
-
 
     /**
      * It is occasionally necessary for JRat to set a system property that

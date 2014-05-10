@@ -1,21 +1,13 @@
 package org.shiftone.jrat.jvmti;
 
-
+import java.lang.instrument.ClassFileTransformer;
+import java.lang.instrument.Instrumentation;
 import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.Mode;
 import org.shiftone.jrat.core.config.Configuration;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.util.VersionUtil;
-import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.InputStream;
-import java.lang.instrument.ClassDefinition;
-import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.Instrumentation;
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * -javaagent:
@@ -26,7 +18,6 @@ public class Agent {
     private static boolean installed = false;
     private static Configuration configuration;
     private static ClassFileTransformer transformer;
-
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
 
@@ -51,11 +42,9 @@ public class Agent {
         InjectorOptions injectorOptions = new InjectorOptions();
         injectorOptions.setCriteria(configuration);
 
-
         try {
 
             ClassFileTransformer transformer;
-
 
             transformer = new InjectClassFileTransformer(injectorOptions);
             transformer = new FilterClassFileTransformer(configuration, transformer);
@@ -67,21 +56,17 @@ public class Agent {
             transformer = new TryCatchClassFileTransformer(transformer);
 
             //transformer = new DumpClassFileTransformer(transformer);
-
             instrumentation.addTransformer(transformer);
             installed = true;
 
             //LOG.info("Installed " + transformer + ".");
             //redefineAllLoadedClasses(instrumentation, transformer);
-
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
 
             LOG.info("Installed = " + installed, e);
 
         }
     }
-
 
 //    private static void redefineAllLoadedClasses(Instrumentation instrumentation, ClassFileTransformer transformer) throws Exception {
 //
@@ -136,7 +121,4 @@ public class Agent {
 //        }
 //
 //    }
-
-
-
 }

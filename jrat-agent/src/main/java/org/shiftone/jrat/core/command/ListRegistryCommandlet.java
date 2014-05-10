@@ -1,12 +1,11 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.core.spi.Commandlet;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.Map;
+import org.shiftone.jrat.core.spi.Commandlet;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * This is a "special" commandlet that lists other commandlets.
@@ -14,14 +13,16 @@ import java.util.Map;
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ListRegistryCommandlet implements Commandlet {
+
     private static final Logger LOG = Logger.getLogger(ListRegistryCommandlet.class);
 
-    private CommandletRegistry registry;
+    private final CommandletRegistry registry;
 
     public ListRegistryCommandlet(CommandletRegistry registry) {
         this.registry = registry;
     }
 
+    @Override
     public void execute(OutputStream output) {
 
         LOG.info("execute");
@@ -54,10 +55,12 @@ public class ListRegistryCommandlet implements Commandlet {
         out.flush();
     }
 
+    @Override
     public String getContentType() {
         return ContentType.HTML;
     }
 
+    @Override
     public String getTitle() {
         return "List Commandlets Commandlet";
     }

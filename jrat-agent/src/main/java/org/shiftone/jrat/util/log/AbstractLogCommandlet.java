@@ -1,13 +1,12 @@
 package org.shiftone.jrat.util.log;
 
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import org.shiftone.jrat.core.spi.Commandlet;
 import org.shiftone.jrat.util.log.target.LogTarget;
 import org.shiftone.jrat.util.log.target.TandemTarget;
 import org.shiftone.jrat.util.log.target.WriterLogTarget;
-
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 
 /**
  * this is a base class for Commandlets that redirects the log output produced by
@@ -21,6 +20,7 @@ public abstract class AbstractLogCommandlet implements Commandlet {
 
     protected abstract void execute() throws Exception;
 
+    @Override
     public final void execute(OutputStream output) throws Exception {
 
         LogTarget previous = LoggerFactory.getLogTarget();
@@ -45,6 +45,7 @@ public abstract class AbstractLogCommandlet implements Commandlet {
         }
     }
 
+    @Override
     public final String getContentType() {
         return Commandlet.ContentType.PLAIN;
     }

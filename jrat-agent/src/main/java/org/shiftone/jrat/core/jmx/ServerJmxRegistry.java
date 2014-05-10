@@ -1,20 +1,17 @@
 package org.shiftone.jrat.core.jmx;
 
-
-import org.shiftone.jrat.core.Environment;
-import org.shiftone.jrat.util.log.Logger;
-
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ArrayList;
+import java.util.Hashtable;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
 import javax.management.remote.JMXConnectorServer;
 import javax.management.remote.JMXConnectorServerFactory;
 import javax.management.remote.JMXServiceURL;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.util.ArrayList;
-import java.util.Hashtable;
-
+import org.shiftone.jrat.core.Environment;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -23,7 +20,7 @@ public class ServerJmxRegistry implements JmxRegistry {
 
     private static final Logger LOG = Logger.getLogger(ServerJmxRegistry.class);
     private MBeanServer mBeanServer;
-    private String agentId = Environment.getSettings().getMBeanServerAgentId();
+    private final String agentId = Environment.getSettings().getMBeanServerAgentId();
 
     // see com.sun.jmx.defaults.JmxProperties
     public static final String JMX_INITIAL_BUILDER = "javax.management.builder.initial";
@@ -34,7 +31,6 @@ public class ServerJmxRegistry implements JmxRegistry {
             this.mBeanServer = createMBeanServer();
         }
     }
-
 
     private static MBeanServer createMBeanServer() throws Exception {
 
@@ -69,13 +65,12 @@ public class ServerJmxRegistry implements JmxRegistry {
         return mBeanServer;
     }
 
-
     protected synchronized MBeanServer getMBeanServer() {
 
         if (mBeanServer == null) {
             ArrayList servers = MBeanServerFactory.findMBeanServer(agentId);
 
-            if (servers.size() == 0) {
+            if (servers.isEmpty()) {
                 LOG.debug("No MBeanServers were found.");
 
                 return null;
@@ -90,12 +85,12 @@ public class ServerJmxRegistry implements JmxRegistry {
         return mBeanServer;
     }
 
-
+    @Override
     public boolean isReady() {
         return (getMBeanServer() != null);
     }
 
-
+    @Override
     public void registerMBean(Object object, String objectNameText) {
 
         LOG.debug("registerMBean...");
@@ -128,8 +123,7 @@ public class ServerJmxRegistry implements JmxRegistry {
             }
 
             server.registerMBean(object, objectName);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.warn("MBean registration failed", e);
         }
     }

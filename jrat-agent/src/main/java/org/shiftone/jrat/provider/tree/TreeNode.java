@@ -1,10 +1,5 @@
 package org.shiftone.jrat.provider.tree;
 
-
-import org.shiftone.jrat.core.Accumulator;
-import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -12,7 +7,9 @@ import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import org.shiftone.jrat.core.Accumulator;
+import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * Class TreeNode
@@ -28,7 +25,7 @@ public class TreeNode implements Externalizable {
     private Accumulator accumulator;
     protected HashMap children = new HashMap(5);
 
-
+    @Override
     public void writeExternal(ObjectOutput out) throws IOException {
 
         out.writeObject(accumulator);
@@ -48,6 +45,7 @@ public class TreeNode implements Externalizable {
         }
     }
 
+    @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 
         this.accumulator = (Accumulator) in.readObject();
@@ -74,7 +72,6 @@ public class TreeNode implements Externalizable {
         this.accumulator = new Accumulator();
     }
 
-
     public TreeNode(MethodKey methodKey, TreeNode treeNode) {
         this.methodKey = methodKey;
         this.parent = treeNode;
@@ -91,7 +88,6 @@ public class TreeNode implements Externalizable {
 
         return list;
     }
-
 
     /**
      * Method gets <b>AND CREATES IF NEEDED</b> the requested tree node
@@ -114,16 +110,13 @@ public class TreeNode implements Externalizable {
         return treeNode;
     }
 
-
     public final TreeNode getParentNode() {
         return parent;
     }
 
-
     public final boolean isRootNode() {
         return (methodKey == null);
     }
-
 
     public Accumulator getAccumulator() {
         return accumulator;
@@ -134,7 +127,6 @@ public class TreeNode implements Externalizable {
     }
 
     // ---------------------------------------------------------------
-
     public synchronized void reset() {
 
         // need to clone map - concurrency issues
@@ -152,6 +144,5 @@ public class TreeNode implements Externalizable {
 
         accumulator.reset();  // this is the actual call to reset
     }
-
 
 }

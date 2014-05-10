@@ -1,8 +1,8 @@
 package org.shiftone.jrat.core.spi;
 
-import javax.swing.*;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import javax.swing.JComponent;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

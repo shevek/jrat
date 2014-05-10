@@ -1,6 +1,10 @@
 package org.shiftone.jrat.core.config;
 
-
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.util.Assert;
@@ -9,12 +13,6 @@ import org.shiftone.jrat.util.log.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -49,7 +47,6 @@ public class ConfigurationParser {
         }
     }
 
-
     private void processJrat(Configuration configuration, Element jratElement) {
 
         Assert.assertNotNull(jratElement);
@@ -63,7 +60,6 @@ public class ConfigurationParser {
         for (int i = 0; i < handlers.getLength(); i++) {
             processProfile(configuration.createProfile(), (Element) handlers.item(i));
         }
-
 
     }
 
@@ -109,7 +105,6 @@ public class ConfigurationParser {
     private void processHandler(Handler handler, Element factoryElement) {
 
         // <handler factory="org.shiftone.jrat.provider.tree.TreeMethodHandlerFactory">
-
         handler.setClassName(factoryElement.getAttribute("factory"));
         NodeList properties = factoryElement.getElementsByTagName("property");
 
@@ -140,6 +135,5 @@ public class ConfigurationParser {
             return s;
         }
     }
-
 
 }

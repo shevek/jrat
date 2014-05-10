@@ -1,12 +1,9 @@
 package org.shiftone.jrat.api;
 
-
+import java.lang.reflect.Method;
 import org.shiftone.jrat.core.HandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.time.Clock;
-
-import java.lang.reflect.Method;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -22,46 +19,36 @@ public class Monitor {
 //    public Monitor(Method method) {
 //        this.handler = HandlerFactory.getMethodHandler(method);
 //    }
-
-
     public Monitor(String className, String methodName, String signature) {
         this.handler = HandlerFactory.getMethodHandler(className, methodName, signature);
     }
-
 
     public Monitor(Class klass, String methodName, String signature) {
         this.handler = HandlerFactory.getMethodHandler(klass.getName(), methodName, signature);
     }
 
-
     public Monitor(Class klass, String methodName) {
         this.handler = HandlerFactory.getMethodHandler(klass.getName(), methodName, "()V");
     }
-
 
     public Object execute(Object instance, Command command) throws Throwable {
 
         try {
             return execute(handler, instance, command);
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             throw e;
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
-
 
     public Object execute(Command command) {
 
         try {
             return execute(handler, null, command);
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             throw e;
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
@@ -70,7 +57,6 @@ public class Monitor {
         // return execute(HandlerFactory.getMethodHandler(method), instance, command);
         return null;
     }
-
 
     public static Object execute(MethodHandler handler, Object instance, Command command) throws Throwable {
 
@@ -84,14 +70,12 @@ public class Monitor {
             handler.onMethodFinish(Clock.currentTimeMillis() - startTime, null);
 
             return result;
-        }
-        catch (Throwable throwable) {
+        } catch (Throwable throwable) {
             handler.onMethodFinish(Clock.currentTimeMillis() - startTime, throwable);
 
             throw throwable;
         }
     }
-
 
     private static void main(String[] args) {
 
@@ -99,6 +83,7 @@ public class Monitor {
 
         monitor.execute(new Callable() {
 
+            @Override
             public void run() {
 
                 // do some work here...

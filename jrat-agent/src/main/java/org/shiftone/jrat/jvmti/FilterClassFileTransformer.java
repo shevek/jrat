@@ -1,14 +1,11 @@
 package org.shiftone.jrat.jvmti;
 
-
-import org.shiftone.jrat.core.criteria.MethodCriteria;
-import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
-
+import org.shiftone.jrat.core.criteria.MethodCriteria;
+import org.shiftone.jrat.util.Assert;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -26,7 +23,7 @@ public class FilterClassFileTransformer implements ClassFileTransformer {
         this.transformer = transformer;
     }
 
-
+    @Override
     public byte[] transform(
             ClassLoader loader,
             String className,
@@ -34,7 +31,6 @@ public class FilterClassFileTransformer implements ClassFileTransformer {
             ProtectionDomain protectionDomain,
             byte[] classfileBuffer)
             throws IllegalClassFormatException {
-
 
         String fixedClassName = className.replace('/', '.');
 
@@ -61,6 +57,7 @@ public class FilterClassFileTransformer implements ClassFileTransformer {
 
     }
 
+    @Override
     public String toString() {
         return "FilterClassFileTransformer[" + methodCriteria + " : " + transformer + "]";
     }

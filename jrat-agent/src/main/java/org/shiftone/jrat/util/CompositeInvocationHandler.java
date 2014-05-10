@@ -1,15 +1,12 @@
 package org.shiftone.jrat.util;
 
-
-import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -26,11 +23,9 @@ public class CompositeInvocationHandler implements InvocationHandler {
         this.proxy = Proxy.newProxyInstance(iface.getClassLoader(), new Class[]{iface}, this);
     }
 
-
     public synchronized int getTargetCount() {
         return targets.size();
     }
-
 
     public synchronized void addTarget(Object target) {
 
@@ -41,7 +36,7 @@ public class CompositeInvocationHandler implements InvocationHandler {
         }
     }
 
-
+    @Override
     public synchronized Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
         for (int i = 0; i < targets.size(); i++) {
@@ -51,15 +46,13 @@ public class CompositeInvocationHandler implements InvocationHandler {
 
             try {
                 method.invoke(target, args);
-            }
-            catch (Throwable e) {
+            } catch (Throwable e) {
                 LOG.error("error running method " + method.getName() + " on " + target, e);
             }
         }
 
         return null;
     }
-
 
     public Object getProxy() {
         return proxy;

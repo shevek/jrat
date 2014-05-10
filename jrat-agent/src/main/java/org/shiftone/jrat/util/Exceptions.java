@@ -1,9 +1,7 @@
 package org.shiftone.jrat.util;
 
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -20,7 +18,6 @@ public class Exceptions {
 
         return stringWriter.toString();
     }
-
 
     public static RuntimeException wrapAsRTE(Throwable throwable) {
 

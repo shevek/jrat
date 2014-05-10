@@ -1,11 +1,8 @@
 package org.shiftone.jrat.util;
 
-
+import java.util.Properties;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.util.Properties;
-
 
 public class VersionUtil {
 
@@ -23,12 +20,10 @@ public class VersionUtil {
             version = properties.getProperty("version");
             buildOn = properties.getProperty("built_on");
             builtBy = properties.getProperty("built_by");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             version = buildOn = builtBy = "?";
         }
     }
-
 
     private static synchronized VersionUtil getVersionUtil() {
 
@@ -39,16 +34,13 @@ public class VersionUtil {
         return versionUtil;
     }
 
-
     public static String getVersion() {
         return getVersionUtil().version;
     }
 
-
     public static String getBuiltBy() {
         return getVersionUtil().builtBy;
     }
-
 
     public static String getBuiltOn() {
         return getVersionUtil().buildOn;

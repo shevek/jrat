@@ -1,6 +1,5 @@
 package org.shiftone.jrat.util;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -13,14 +12,12 @@ public class Assert {
         }
     }
 
-
     public static void assertNotNull(String message, Object obj) {
 
         if (obj == null) {
             throw new AssertionFailedException("value of " + message + " is unexpectedly null");
         }
     }
-
 
     public static void assertSame(String message, Object objA, Object objB) {
 
@@ -33,7 +30,6 @@ public class Assert {
                     + " <> " + objB);
         }
     }
-
 
     public static void assertTrue(String message, boolean expression) {
 

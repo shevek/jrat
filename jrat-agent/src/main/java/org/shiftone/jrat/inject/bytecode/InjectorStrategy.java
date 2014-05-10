@@ -1,6 +1,5 @@
 package org.shiftone.jrat.inject.bytecode;
 
-
 /**
  * JRat can swap out bytecode manipulation libraries - each supported library
  * must have a InjectorStrategy implementation.

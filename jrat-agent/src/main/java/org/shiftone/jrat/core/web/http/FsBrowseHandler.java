@@ -1,5 +1,4 @@
 package org.shiftone.jrat.core.web.http;
-import org.shiftone.jrat.util.io.IOUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -7,6 +6,7 @@ import java.io.OutputStream;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import org.shiftone.jrat.util.io.IOUtil;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -14,7 +14,7 @@ import java.util.Map;
 public class FsBrowseHandler implements Handler {
 
     private static final String ROOT = new File("").getAbsolutePath();
-    private static Map mimeTypes = new HashMap();
+    private static final Map mimeTypes = new HashMap();
 
     static {
         mimeTypes.put("txt", ContentType.TEXT_PLAIN);
@@ -24,13 +24,13 @@ public class FsBrowseHandler implements Handler {
         mimeTypes.put("xml", ContentType.TEXT_XML);
     }
 
+    @Override
     public void handle(Request request, Response response) throws Exception {
 
         response.setContentType(ContentType.TEXT_HTML);
 
         String uri = request.getRequestUri();
         File file = new File(ROOT + uri);
-
 
         if (file.isDirectory()) {
 
@@ -68,7 +68,6 @@ public class FsBrowseHandler implements Handler {
             }
 
         }
-
 
     }
 }

@@ -1,18 +1,17 @@
 package org.shiftone.jrat.test;
 
 
-import junit.framework.TestCase;
-import org.shiftone.jrat.test.jmx.Test;
-import org.shiftone.jrat.util.log.Logger;
-
+import java.rmi.registry.LocateRegistry;
+import java.util.ArrayList;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
 import javax.management.remote.JMXConnectorServer;
 import javax.management.remote.JMXConnectorServerFactory;
 import javax.management.remote.JMXServiceURL;
-import java.rmi.registry.LocateRegistry;
-import java.util.ArrayList;
+import junit.framework.TestCase;
+import org.shiftone.jrat.test.jmx.Test;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost

@@ -1,13 +1,10 @@
 package org.shiftone.jrat.inject.process;
 
-
+import java.io.File;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.File;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -20,6 +17,7 @@ public class CompositeFileProcessor implements FileProcessor {
     private final CopyFileProcessor fileProcessor = new CopyFileProcessor();
     private final DirectoryFileProcessor directoryProcessor = new DirectoryFileProcessor(this);
 
+    @Override
     public void process(Transformer transformer, InjectorOptions options, File source, File target) {
 
         LOG.info("process " + source.getAbsolutePath() + " => " + target.getAbsolutePath());
@@ -46,6 +44,5 @@ public class CompositeFileProcessor implements FileProcessor {
             fileProcessor.processFile(transformer, source, target);
         }
     }
-
 
 }

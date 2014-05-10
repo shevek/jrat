@@ -39,6 +39,8 @@ project(':jrat-agent') {
 }
 
 project(':jrat-desktop') {
+	// apply plugin: 'application'
+
     dependencies {
 		compile project(':jrat-agent')
 		compile 'org.swinglabs.swingx:swingx-all:1.6.5-1'

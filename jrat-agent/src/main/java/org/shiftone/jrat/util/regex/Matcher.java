@@ -1,6 +1,5 @@
 package org.shiftone.jrat.util.regex;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */

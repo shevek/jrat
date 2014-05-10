@@ -1,11 +1,8 @@
 package org.shiftone.jrat.util.io;
 
-
+import java.io.File;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.regex.GlobMatcher;
-
-import java.io.File;
-
 
 /**
  * Class GlobFileFilter
@@ -20,7 +17,7 @@ public class GlobFileFilter extends javax.swing.filechooser.FileFilter implement
 
     public GlobFileFilter(String[] globPatterns, String description) {
 
-        StringBuffer sb = new StringBuffer(" (");
+        StringBuilder sb = new StringBuilder(" (");
 
         this.globMatchers = new GlobMatcher[globPatterns.length];
 
@@ -39,10 +36,10 @@ public class GlobFileFilter extends javax.swing.filechooser.FileFilter implement
         this.description = description + sb.toString();
     }
 
-
     /**
      * Method accept
      */
+    @Override
     public boolean accept(File f) {
 
         if (f.isDirectory()) {
@@ -58,10 +55,10 @@ public class GlobFileFilter extends javax.swing.filechooser.FileFilter implement
         return false;
     }
 
-
     /**
      * Method getDescription
      */
+    @Override
     public String getDescription() {
         return description;
     }

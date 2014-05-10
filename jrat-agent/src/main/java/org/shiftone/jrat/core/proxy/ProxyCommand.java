@@ -1,10 +1,7 @@
 package org.shiftone.jrat.core.proxy;
 
-
-import org.shiftone.jrat.api.Command;
-
 import java.lang.reflect.Method;
-
+import org.shiftone.jrat.api.Command;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -22,7 +19,7 @@ public class ProxyCommand implements Command {
         this.args = args;
     }
 
-
+    @Override
     public Object execute() throws Throwable {
         return method.invoke(target, args);
     }

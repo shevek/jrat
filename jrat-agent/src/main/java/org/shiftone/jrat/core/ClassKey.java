@@ -1,17 +1,21 @@
 // Copyright 2007 Google Inc. All Rights Reserved.
-
 package org.shiftone.jrat.core;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ClassKey implements Serializable, Comparable {
+
     private static final long serialVersionUID = 1;
-    private String packageName;
-    private String className;
+    private final String packageName;
+    private final String className;
     private int hashCode;
 
     private static final Map CACHE = new HashMap();  //<String, ClassKey>
@@ -38,7 +42,6 @@ public class ClassKey implements Serializable, Comparable {
         hashCode = packageName.hashCode();
         hashCode = (29 * hashCode) + className.hashCode();
     }
-
 
     /**
      * Gets the package's name in pieces.
@@ -70,6 +73,7 @@ public class ClassKey implements Serializable, Comparable {
         return className;
     }
 
+    @Override
     public final boolean equals(Object o) {
 
         if (this == o) {
@@ -97,10 +101,12 @@ public class ClassKey implements Serializable, Comparable {
         return true;
     }
 
+    @Override
     public int hashCode() {
         return hashCode;
     }
 
+    @Override
     public int compareTo(Object o) {
         ClassKey other = (ClassKey) o;
         int c = packageName.compareTo(other.packageName);

@@ -1,10 +1,15 @@
 package org.shiftone.jrat.core.web.http;
 
-import org.shiftone.jrat.util.log.Logger;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 import org.shiftone.jrat.util.io.IOUtil;
-
-import java.io.*;
-import java.util.*;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * This object us mutable.
@@ -25,7 +30,7 @@ public class Request {
     private String queryString;
     private String posted;
 
-    private Map headers = new HashMap();
+    private final Map headers = new HashMap();
 
     public Request(InputStream inputStream) throws Exception {
 
@@ -40,7 +45,6 @@ public class Request {
             LOG.info("wrote " + file.getAbsolutePath());
             inputStream = new ByteArrayInputStream(data);
         }
-
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line = reader.readLine();
@@ -57,7 +61,6 @@ public class Request {
         }
 
     }
-
 
     private void parseRequestLine(String line) {
 

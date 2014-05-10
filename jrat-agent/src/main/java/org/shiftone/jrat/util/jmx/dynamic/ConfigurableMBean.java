@@ -1,13 +1,22 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
-import javax.management.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.AttributeNotFoundException;
+import javax.management.DynamicMBean;
+import javax.management.InvalidAttributeValueException;
+import javax.management.MBeanAttributeInfo;
+import javax.management.MBeanConstructorInfo;
+import javax.management.MBeanException;
+import javax.management.MBeanInfo;
+import javax.management.MBeanNotificationInfo;
+import javax.management.MBeanOperationInfo;
+import javax.management.MBeanParameterInfo;
+import javax.management.ReflectionException;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -15,31 +24,28 @@ import java.util.Map;
 public class ConfigurableMBean implements DynamicMBean {
 
     private static final Logger LOG = Logger.getLogger(ConfigurableMBean.class);
-    private String className = ConfigurableMBean.class.getName();
+    private final String className = ConfigurableMBean.class.getName();
     private String description;
-    private Map attributeValues = new HashMap();
-    private Map operations = new HashMap();
+    private final Map attributeValues = new HashMap();
+    private final Map operations = new HashMap();
 
     // --- info cache ---
     private MBeanAttributeInfo[] attributeInfos;
     private MBeanOperationInfo[] operationInfos;
-    private MBeanConstructorInfo[] constructors = null;
-    private MBeanNotificationInfo[] notifications = null;
+    private final MBeanConstructorInfo[] constructors = null;
+    private final MBeanNotificationInfo[] notifications = null;
 
     public ConfigurableMBean(String description) {
         this.description = description;
     }
 
-
     public String getDescription() {
         return description;
     }
 
-
     public void setDescription(String description) {
         this.description = description;
     }
-
 
     public void add(String name, AttributeValue attributeValue) {
 
@@ -50,11 +56,9 @@ public class ConfigurableMBean implements DynamicMBean {
         attributeInfos = null;
     }
 
-
     public void add(String name, Operation operation) {
         add(name, null, operation);
     }
-
 
     public void add(String name, String signature[], Operation operation) {
 
@@ -69,7 +73,6 @@ public class ConfigurableMBean implements DynamicMBean {
         operationInfos = null;
     }
 
-
     private AttributeValue getAttributeValue(String attributeName) throws AttributeNotFoundException {
 
         AttributeValue attribute = (AttributeValue) attributeValues.get(attributeName);
@@ -81,12 +84,12 @@ public class ConfigurableMBean implements DynamicMBean {
         return attribute;
     }
 
-
+    @Override
     public Object getAttribute(String name) throws AttributeNotFoundException, MBeanException, ReflectionException {
         return getAttributeValue(name).getValue();
     }
 
-
+    @Override
     public void setAttribute(Attribute newValue)
             throws AttributeNotFoundException, InvalidAttributeValueException, MBeanException, ReflectionException {
 
@@ -95,7 +98,7 @@ public class ConfigurableMBean implements DynamicMBean {
         attributeValue.setValue(newValue.getValue());
     }
 
-
+    @Override
     public AttributeList getAttributes(String[] attributeNames) {
 
         AttributeList attributeList = new AttributeList();
@@ -103,15 +106,14 @@ public class ConfigurableMBean implements DynamicMBean {
         for (int i = 0; i < attributeNames.length; i++) {
             try {
                 attributeList.add(getAttribute(attributeNames[i]));
-            }
-            catch (Exception ignore) {
+            } catch (Exception ignore) {
             }
         }
 
         return null;
     }
 
-
+    @Override
     public AttributeList setAttributes(AttributeList attributes) {
 
         AttributeList setList = new AttributeList();
@@ -122,15 +124,14 @@ public class ConfigurableMBean implements DynamicMBean {
 
                 setAttribute(attribute);
                 setList.add(attribute);
-            }
-            catch (Exception ignore) {
+            } catch (Exception ignore) {
             }
         }
 
         return setList;
     }
 
-
+    @Override
     public Object invoke(String actionName, Object params[], String signature[])
             throws MBeanException, ReflectionException {
 
@@ -143,7 +144,6 @@ public class ConfigurableMBean implements DynamicMBean {
 
         return operation.invoke(params);
     }
-
 
     private MBeanOperationInfo[] buildMBeanOperationInfo() {
 
@@ -167,17 +167,16 @@ public class ConfigurableMBean implements DynamicMBean {
                 returnType = Void.TYPE.getName();
             }
 
-            operationInfos[i++] = new MBeanOperationInfo(key.getName(),    // name
-                    operation.getDescription(),                            // description
-                    parameterInfos,                                        // parameterInfos
-                    returnType,                                            // type
-                    MBeanOperationInfo.UNKNOWN                             // impact
+            operationInfos[i++] = new MBeanOperationInfo(key.getName(), // name
+                    operation.getDescription(), // description
+                    parameterInfos, // parameterInfos
+                    returnType, // type
+                    MBeanOperationInfo.UNKNOWN // impact
             );
         }
 
         return operationInfos;
     }
-
 
     private MBeanAttributeInfo[] buildMBeanAttributeInfo() {
 
@@ -189,18 +188,17 @@ public class ConfigurableMBean implements DynamicMBean {
             String key = (String) keys.next();
             AttributeValue value = (AttributeValue) attributeValues.get(key);
 
-            attributeInfos[i++] = new MBeanAttributeInfo(key,    // name
-                    value.getType(),                             // type
-                    value.getDescription(),                      // description
-                    value.isReadable(),                          // isReadable,
-                    value.isWritable(),                          // isWritable,
-                    false                                        // isIs)
+            attributeInfos[i++] = new MBeanAttributeInfo(key, // name
+                    value.getType(), // type
+                    value.getDescription(), // description
+                    value.isReadable(), // isReadable,
+                    value.isWritable(), // isWritable,
+                    false // isIs)
             );
         }
 
         return attributeInfos;
     }
-
 
     public MBeanAttributeInfo[] getMBeanAttributeInfo() {
 
@@ -211,7 +209,6 @@ public class ConfigurableMBean implements DynamicMBean {
         return attributeInfos;
     }
 
-
     public MBeanOperationInfo[] getMBeanOperationInfo() {
 
         if (operationInfos == null) {
@@ -221,13 +218,13 @@ public class ConfigurableMBean implements DynamicMBean {
         return operationInfos;
     }
 
-
+    @Override
     public MBeanInfo getMBeanInfo() {
         return new MBeanInfo(className, description, getMBeanAttributeInfo(), constructors, getMBeanOperationInfo(),
                 notifications);
     }
 
-
+    @Override
     public String toString() {
         return "DynamicAttributeMBean";
     }

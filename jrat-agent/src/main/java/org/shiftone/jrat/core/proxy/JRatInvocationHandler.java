@@ -1,13 +1,11 @@
 package org.shiftone.jrat.core.proxy;
 
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Hashtable;
 import java.util.Map;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -43,17 +41,15 @@ public class JRatInvocationHandler implements InvocationHandler {
         }
     }
 
-
     private static final boolean returnsInterface(Method method) {
         return (method.getReturnType().isInterface());
     }
-
 
     private static final boolean returnsVoid(Method method) {
         return (method.getReturnType().equals(Void.TYPE));
     }
 
-
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 //
 //        MethodHandler methodHandler = null;
@@ -84,7 +80,6 @@ public class JRatInvocationHandler implements InvocationHandler {
         return null; ///
     }
 
-
     public Object doInvoke(Method method, Object[] args) throws Throwable {
 
         Object result = null;
@@ -92,16 +87,14 @@ public class JRatInvocationHandler implements InvocationHandler {
 
         try {
             result = method.invoke(target, args);
-        }
-        catch (InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
             toRethrow = e.getTargetException();
 
-            if (toRethrow == null)    // unlikely
+            if (toRethrow == null) // unlikely
             {
                 toRethrow = e;
             }
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             toRethrow = e;
         }
 
@@ -121,22 +114,19 @@ public class JRatInvocationHandler implements InvocationHandler {
         return result;
     }
 
-
     public static Object safeGetTracedProxy(Object target, Class iface) {
 
         Object proxy = target;
 
         try {
             proxy = getTracedProxy(target, iface);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             // LOG.error("error creating jdbc", e);
         }
 
         return proxy;
     }
-
 
     public static Object getTracedProxy(Object target, Class iface) {
 
@@ -166,7 +156,6 @@ public class JRatInvocationHandler implements InvocationHandler {
 
         return proxy;
     }
-
 
     public static void main(String[] args) {
 

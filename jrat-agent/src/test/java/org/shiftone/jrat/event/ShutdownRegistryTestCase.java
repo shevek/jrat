@@ -26,12 +26,13 @@ public class ShutdownRegistryTestCase extends TestCase {
     }
 
     private class TestShutdownListener implements ShutdownListener {
-        private int i;
+        private final int i;
 
         public TestShutdownListener(int i) {
             this.i = i;
         }
 
+        @Override
         public void shutdown() {
             LOG.info("shutdown " + i);
             try {
@@ -41,6 +42,7 @@ public class ShutdownRegistryTestCase extends TestCase {
             }
         }
 
+        @Override
         public String toString() {
             return "TestShutdownListener#" + i;
         }

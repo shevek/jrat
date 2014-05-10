@@ -22,10 +22,9 @@ public class Mode {
     private static Mode current = UNKNOWN;
     private static boolean locked = false;
 
-    private String name;
-    private boolean environmentLoadingEnabled;
-    private int priority;
-
+    private final String name;
+    private final boolean environmentLoadingEnabled;
+    private final int priority;
 
     public Mode(String name, boolean environmentLoadingEnabled, int priority) {
         this.name = name;
@@ -73,7 +72,7 @@ public class Mode {
         return current;
     }
 
-
+    @Override
     public String toString() {
         return "Mode[" + name + "]";
     }

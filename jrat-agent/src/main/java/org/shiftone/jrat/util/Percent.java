@@ -1,10 +1,7 @@
 package org.shiftone.jrat.util;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.text.DecimalFormat;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -26,18 +23,15 @@ public class Percent extends Number implements Comparable {
         this.value = value;
     }
 
-
     public Percent(String s) throws NumberFormatException {
 
         // REMIND: this is inefficient
         this(valueOf(s).doubleValue());
     }
 
-
     public static String toString(double d) {
         return Double.toString(d);
     }
-
 
     public static Percent valueOf(String s) throws NumberFormatException {
 
@@ -46,7 +40,6 @@ public class Percent extends Number implements Comparable {
         return new Percent(Double.parseDouble(s));
     }
 
-
     public static double parseDouble(String s) throws NumberFormatException {
 
         Assert.assertNotNull("string value", s);
@@ -54,27 +47,23 @@ public class Percent extends Number implements Comparable {
         return Double.parseDouble(s);
     }
 
-
     public static boolean isNaN(double v) {
         return (v != v);
     }
-
 
     public static boolean isInfinite(double v) {
         return (v == POSITIVE_INFINITY) || (v == NEGATIVE_INFINITY);
     }
 
-
     public boolean isNaN() {
         return isNaN(value);
     }
-
 
     public boolean isInfinite() {
         return isInfinite(value);
     }
 
-
+    @Override
     public String toString() {
 
         synchronized (pctDecimalFormat) {
@@ -84,37 +73,37 @@ public class Percent extends Number implements Comparable {
         // return String.valueOf(value);
     }
 
-
+    @Override
     public byte byteValue() {
         return (byte) value;
     }
 
-
+    @Override
     public short shortValue() {
         return (short) value;
     }
 
-
+    @Override
     public int intValue() {
         return (int) value;
     }
 
-
+    @Override
     public long longValue() {
         return (long) value;
     }
 
-
+    @Override
     public float floatValue() {
         return (float) value;
     }
 
-
+    @Override
     public double doubleValue() {
         return (double) value;
     }
 
-
+    @Override
     public int hashCode() {
 
         long bits = Double.doubleToLongBits(value);
@@ -122,11 +111,10 @@ public class Percent extends Number implements Comparable {
         return (int) (bits ^ (bits >>> 32));
     }
 
-
+    @Override
     public boolean equals(Object obj) {
         return ((obj instanceof Number) && ((((Number) obj).doubleValue()) == value));
     }
-
 
     public int compareTo(Percent anotherPercent) {
 
@@ -138,7 +126,7 @@ public class Percent extends Number implements Comparable {
         return me.compareTo(other);
     }
 
-
+    @Override
     public int compareTo(Object o) {
         return compareTo((Percent) o);
     }

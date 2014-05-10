@@ -1,12 +1,15 @@
 package org.shiftone.jrat.core.web.http;
 
-import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.log.Logger;
-
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -49,7 +52,7 @@ public class Server extends Thread {
 
         InputStream inputStream = null;
         OutputStream outputStream = null;
-         LOG.info("processRequest...");
+        LOG.info("processRequest...");
 
         try {
 
@@ -93,6 +96,7 @@ public class Server extends Thread {
         out.write("</pre>");
     }
 
+    @Override
     public void run() {
 
         LOG.info("run");
@@ -122,5 +126,4 @@ public class Server extends Thread {
 //        server.start();
 //        Thread.sleep(1000 * 160);
 //    }
-
 }

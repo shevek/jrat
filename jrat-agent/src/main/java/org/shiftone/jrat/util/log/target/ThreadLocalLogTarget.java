@@ -1,8 +1,6 @@
 package org.shiftone.jrat.util.log.target;
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * This is a LogTarget that uses a delegate LogTarget that lives on the thread.
@@ -21,37 +19,34 @@ public class ThreadLocalLogTarget implements LogTarget {
         this(NullLogTarget.INSTANCE);
     }
 
-
     public ThreadLocalLogTarget(final LogTarget target) {
 
         threadLocal = new ThreadLocal() {
 
+            @Override
             protected Object initialValue() {
                 return target;
             }
         };
     }
 
-
+    @Override
     public boolean isLevelEnabled(String topic, int level) {
         return getLogTarget().isLevelEnabled(topic, level);
     }
 
-
+    @Override
     public void log(String topic, int level, Object message, Throwable throwable) {
         getLogTarget().log(topic, level, message, throwable);
     }
-
 
     private LogTarget getLogTarget() {
         return (LogTarget) threadLocal.get();
     }
 
-
     private void setLogTarget(LogTarget logTarget) {
         threadLocal.set(logTarget);
     }
-
 
     public void executeInScope(LogTarget newTarget, Runnable runnable) {
 
@@ -62,8 +57,7 @@ public class ThreadLocalLogTarget implements LogTarget {
             runnable.run();
         } catch (Throwable e) {
             LOG.error("Process failed.", e);
-        }
-        finally {
+        } finally {
             setLogTarget(oldTarget);
         }
     }

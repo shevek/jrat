@@ -1,12 +1,9 @@
 package org.shiftone.jrat.core.shutdown;
 
-
+import java.util.Stack;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.HtmlUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.util.Stack;
-
 
 /**
  * Shut down order is important!
@@ -18,7 +15,7 @@ import java.util.Stack;
 public class ShutdownRegistry implements ShutdownRegistryMBean {
 
     private static final Logger LOG = Logger.getLogger(ShutdownRegistry.class);
-    private Stack shutdownStack = new Stack();
+    private final Stack shutdownStack = new Stack();
     private ShutdownListener firstShutdownListener;
 
     public ShutdownRegistry() {
@@ -31,11 +28,9 @@ public class ShutdownRegistry implements ShutdownRegistryMBean {
         Runtime.getRuntime().addShutdownHook(shutdownHook);
     }
 
-
     public void setFirstShutdownListener(ShutdownListener firstShutdownListener) {
         this.firstShutdownListener = firstShutdownListener;
     }
-
 
     public synchronized void registerShutdownListener(ShutdownListener shutdownListener) {
 
@@ -44,20 +39,17 @@ public class ShutdownRegistry implements ShutdownRegistryMBean {
         shutdownStack.push(shutdownListener);
     }
 
-
     private static void shutdown(ShutdownListener shutdownListener) {
 
         try {
             LOG.info("shutting down " + shutdownListener + "...");
             shutdownListener.shutdown();
             LOG.info("shutdown " + shutdownListener + " complete.");
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             LOG.error("shutdown failed for " + shutdownListener, e);
             e.printStackTrace(System.err);
         }
     }
-
 
     private synchronized void shutdown() {
 
@@ -75,24 +67,25 @@ public class ShutdownRegistry implements ShutdownRegistryMBean {
         shutdownStack.clear();
     }
 
-
     private class ShutdownRunnable implements Runnable {
 
+        @Override
         public void run() {
             shutdown();
         }
     }
 
+    @Override
     public int getShutdownListenerCount() {
         return shutdownStack.size();
     }
 
-
+    @Override
     public String getShutdownListenersHtml() {
         return HtmlUtil.toHtml(shutdownStack);
     }
 
-
+    @Override
     public void forceShutdownNow() {
         LOG.info("forceShutdownNow");
         shutdown();

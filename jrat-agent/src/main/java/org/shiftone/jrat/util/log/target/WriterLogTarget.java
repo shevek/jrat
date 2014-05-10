@@ -1,9 +1,5 @@
 package org.shiftone.jrat.util.log.target;
 
-
-import org.shiftone.jrat.util.io.PrintStreamWriter;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -11,7 +7,8 @@ import java.io.Writer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import org.shiftone.jrat.util.io.PrintStreamWriter;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -29,20 +26,19 @@ public class WriterLogTarget implements LogTarget {
         this(new PrintStreamWriter(printStream));
     }
 
-
     public WriterLogTarget(Writer writer) {
         this.writer = writer;
     }
 
-
+    @Override
     public boolean isLevelEnabled(String topic, int level) {
         return true;
     }
 
-
+    @Override
     public void log(String topic, int level, Object message, Throwable throwable) {
 
-        StringBuffer buffer = new StringBuffer(80);
+        StringBuilder buffer = new StringBuilder(80);
 
         buffer.append("JRat:");
         buffer.append(Logger.LEVEL_NAMES[level]);
@@ -66,14 +62,12 @@ public class WriterLogTarget implements LogTarget {
             try {
                 writer.write(buffer.toString());
                 writer.flush();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.err.print("logging failed!");
                 e.printStackTrace(System.err);
             }
         }
     }
-
 
     private static String throwableToString(Throwable throwable) {
 
@@ -87,7 +81,6 @@ public class WriterLogTarget implements LogTarget {
 
         return stringWriter.toString();
     }
-
 
     private synchronized String formatDate(Date date) {
         return dateFormat.format(new Date());

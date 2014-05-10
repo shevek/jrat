@@ -1,14 +1,11 @@
 package org.shiftone.jrat.util;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.StringTokenizer;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * Class StringUtil
@@ -20,7 +17,7 @@ public class StringUtil {
     public static final String PROPERTY_DELIMITER = "|";
     public static final char DEFAULT_PAD_CHAR = ' ';
     private static final Logger LOG = Logger.getLogger(StringUtil.class);
-    private static DateFormat dateFormat = new SimpleDateFormat("MMM d, yy  h:mm:ss:S aaa");
+    private static final DateFormat dateFormat = new SimpleDateFormat("MMM d, yy  h:mm:ss:S aaa");
     private static final DurationUnit DU_MILLI_SECONDS = new DurationUnit(1, "ms", "ms");
     private static final DurationUnit DU_SECONDS = new DurationUnit(1000, "sec", "sec");
     private static final DurationUnit DU_MINUTES = new DurationUnit(DU_SECONDS.ms * 60, "minute", "minutes");
@@ -30,9 +27,9 @@ public class StringUtil {
     private static final DurationUnit DU_DECADES = new DurationUnit(DU_YEARS.ms * 10, "decade", "decades");
     private static final DurationUnit DU_CENTURIES = new DurationUnit(DU_DECADES.ms * 10, "century",
             "centuries");
-    private static final DurationUnit[] UNITS =
-            {
-                    DU_CENTURIES, DU_DECADES, DU_YEARS, DU_DAYS, DU_HOURS, DU_MINUTES, DU_SECONDS, DU_MILLI_SECONDS
+    private static final DurationUnit[] UNITS
+            = {
+                DU_CENTURIES, DU_DECADES, DU_YEARS, DU_DAYS, DU_HOURS, DU_MINUTES, DU_SECONDS, DU_MILLI_SECONDS
             };
     private static final String[] SPACES = new String[16];
     private static final String[] ZEROS = new String[16];
@@ -54,7 +51,6 @@ public class StringUtil {
 
         return properties;
     }
-
 
     public static boolean isEmpty(String text) {
         return (text == null) || (text.trim().length() == 0);
@@ -90,10 +86,9 @@ public class StringUtil {
         LOG.debug(properties);
     }
 
-
     public static String bufferString(int desiredLength, char padChar) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < desiredLength; i++) {
             sb.append(padChar);
@@ -101,7 +96,6 @@ public class StringUtil {
 
         return sb.toString();
     }
-
 
     public static String rightPad(String input, int desiredLength, char padChar) {
 
@@ -117,7 +111,6 @@ public class StringUtil {
         return result;
     }
 
-
     public static String leftPad(String input, int desiredLength, char padChar) {
 
         Assert.assertNotNull("input string", input);
@@ -132,36 +125,29 @@ public class StringUtil {
         return result;
     }
 
-
     public static String rightPad(Object input, int desiredLength) {
         return rightPad(String.valueOf(input), desiredLength, DEFAULT_PAD_CHAR);
     }
-
 
     public static String rightPad(int input, int desiredLength) {
         return rightPad(String.valueOf(input), desiredLength, DEFAULT_PAD_CHAR);
     }
 
-
     public static String rightPad(long input, int desiredLength) {
         return rightPad(String.valueOf(input), desiredLength, DEFAULT_PAD_CHAR);
     }
-
 
     public static String leftPad(Object input, int desiredLength) {
         return leftPad(String.valueOf(input), desiredLength, DEFAULT_PAD_CHAR);
     }
 
-
     public static String leftPad(int input, int desiredLength) {
         return leftPad(String.valueOf(input), desiredLength, DEFAULT_PAD_CHAR);
     }
 
-
     public static String leftPad(long input, int desiredLength) {
         return leftPad(String.valueOf(input), desiredLength, DEFAULT_PAD_CHAR);
     }
-
 
     public static String[] tokenize(String str, String delim, boolean returnDelims) {
 
@@ -181,7 +167,6 @@ public class StringUtil {
         return matches;
     }
 
-
     /**
      * $Revision: 1.26 $ -> 1.1
      */
@@ -196,7 +181,6 @@ public class StringUtil {
         return ver;
     }
 
-
     public static String booleanToString(boolean b) {
 
         return (b
@@ -204,11 +188,9 @@ public class StringUtil {
                 : "no");
     }
 
-
     public static String dateToString(long d) {
         return dateToString(new Date(d));
     }
-
 
     public static String dateToString(Date date) {
 
@@ -219,7 +201,6 @@ public class StringUtil {
         }
     }
 
-
     public static String hex(long l) {
 
         String s = Long.toHexString(l);
@@ -227,14 +208,12 @@ public class StringUtil {
         return "0x" + ZEROS[16 - s.length()] + s.toUpperCase();
     }
 
-
     public static String hex(int i) {
 
         String s = Integer.toHexString(i);
 
         return "0x" + ZEROS[8 - s.length()] + s.toUpperCase();
     }
-
 
     public static byte[] toBytes(String value) {
 
@@ -247,12 +226,11 @@ public class StringUtil {
         return bytes;
     }
 
-
     public static String removeNonLetterOrDigit(String string) {
 
         Assert.assertNotNull("string", string);
 
-        StringBuffer sb = new StringBuffer(string.length());
+        StringBuilder sb = new StringBuilder(string.length());
         char[] in = string.toCharArray();
 
         for (int i = 0; i < in.length; i++) {
@@ -264,10 +242,9 @@ public class StringUtil {
         return sb.toString();
     }
 
-
     public static String durationToString(long duration) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         boolean match = false;
 
         for (int i = 0; i < UNITS.length; i++) {

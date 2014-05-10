@@ -1,16 +1,14 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
-
 import java.util.Arrays;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
 class OperationKey {
 
-    private String name;
-    private String[] signature;
+    private final String name;
+    private final String[] signature;
     private int hashCode;
 
     public OperationKey(String action, String[] signature) {
@@ -24,17 +22,15 @@ class OperationKey {
         }
     }
 
-
     public String getName() {
         return name;
     }
-
 
     public String[] getSignature() {
         return signature;
     }
 
-
+    @Override
     public boolean equals(Object o) {
 
         if (this == o) {
@@ -58,7 +54,7 @@ class OperationKey {
         return true;
     }
 
-
+    @Override
     public int hashCode() {
         return hashCode;
     }

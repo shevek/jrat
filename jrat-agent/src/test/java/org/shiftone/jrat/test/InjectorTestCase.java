@@ -1,6 +1,11 @@
 package org.shiftone.jrat.test;
 
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import junit.framework.TestCase;
 import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.core.criteria.IncludeExcludeMethodCriteria;
@@ -11,12 +16,6 @@ import org.shiftone.jrat.test.dummy.CrashTestDummy;
 import org.shiftone.jrat.test.dummy.JuniorDummy;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -31,6 +30,7 @@ public class InjectorTestCase extends TestCase {
     public static final String CLASS_NAME = CrashTestDummy.class.getName();
     protected Class clazz = null;
 
+    @Override
     protected void setUp() throws Exception {
 
         //System.setProperty(Settings.BASE_DIRECTORY, "c:/temp") ;

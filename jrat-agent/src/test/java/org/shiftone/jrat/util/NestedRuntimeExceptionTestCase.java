@@ -1,10 +1,9 @@
 package org.shiftone.jrat.util;
 
+import java.util.zip.ZipException;
 import junit.framework.TestCase;
 import org.shiftone.jrat.inject.InjectionException;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.util.zip.ZipException;
 
 
 /**

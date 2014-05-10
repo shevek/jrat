@@ -1,13 +1,10 @@
 package org.shiftone.jrat.core;
 
-
-import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.Serializable;
 import java.util.Map;
 import java.util.WeakHashMap;
-
+import org.shiftone.jrat.util.Assert;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * Immutable object that can be used to uniquely identify a method - suitable
@@ -20,7 +17,6 @@ public class MethodKey implements Serializable, Comparable {
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
     private static final long serialVersionUID = 1;
 
-
     private ClassKey classKey = null;
     private String methodName = null;
     private String signature = null;
@@ -30,7 +26,6 @@ public class MethodKey implements Serializable, Comparable {
 
     // todo: decide if the weak map helps
     private static Map CACHE = new WeakHashMap(); //<MethodKey, MethodKey>
-
 
     public static MethodKey getInstance(String fullyQualifiedClassName, String methodName, String signature) {
         ClassKey classKey = ClassKey.getInstance(fullyQualifiedClassName);
@@ -45,7 +40,6 @@ public class MethodKey implements Serializable, Comparable {
 
     private MethodKey() {
     }
-
 
     private MethodKey(ClassKey classKey, String methodName, String signature) {
 
@@ -73,11 +67,9 @@ public class MethodKey implements Serializable, Comparable {
         return methodName;
     }
 
-
     public final String getSignature() {
         return signature;
     }
-
 
     public String getPackageName() {
         return classKey.getPackageName();
@@ -101,6 +93,7 @@ public class MethodKey implements Serializable, Comparable {
         return classKey.getClassName();
     }
 
+    @Override
     public final boolean equals(Object o) {
 
         if (this == o) {
@@ -128,7 +121,7 @@ public class MethodKey implements Serializable, Comparable {
         return true;
     }
 
-
+    @Override
     public final String toString() {
 
         if (toStringValue == null) {
@@ -137,7 +130,6 @@ public class MethodKey implements Serializable, Comparable {
 
         return toStringValue;
     }
-
 
     public Signature getSig() {
 
@@ -148,7 +140,7 @@ public class MethodKey implements Serializable, Comparable {
         return sig;
     }
 
-
+    @Override
     public int compareTo(Object o) {
         MethodKey other = (MethodKey) o;
         int c = classKey.compareTo(other.classKey);
@@ -165,7 +157,7 @@ public class MethodKey implements Serializable, Comparable {
         return "(" + getSig().getShortText() + ")";
     }
 
-
+    @Override
     public final int hashCode() {
         return hashCode;
     }

@@ -1,13 +1,5 @@
 package org.shiftone.jrat.core.output;
 
-
-import org.shiftone.jrat.core.Environment;
-import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.util.AtomicLong;
-import org.shiftone.jrat.util.io.Dir;
-import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.File;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -19,7 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import org.shiftone.jrat.core.Environment;
+import org.shiftone.jrat.util.Assert;
+import org.shiftone.jrat.util.AtomicLong;
+import org.shiftone.jrat.util.io.Dir;
+import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -43,11 +40,9 @@ public class OutputDirectory {
         this.outputDir = outputDir;
     }
 
-
     public static OutputDirectory create(FileOutputFactory outputFactory) {
         return new OutputDirectory(outputFactory, createOutputDir());
     }
-
 
     private static Dir createOutputDir() {
 
@@ -71,8 +66,7 @@ public class OutputDirectory {
                 dir.make();
 
                 outputDir = dir;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 pause();
             }
 
@@ -84,13 +78,11 @@ public class OutputDirectory {
         return outputDir;
     }
 
-
     private static void pause() {
 
         try {
             Thread.sleep(50);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -113,16 +105,13 @@ public class OutputDirectory {
         return file;
     }
 
-
     public PrintWriter createPrintWriter(String fileName) {
         return outputFactory.createPrintWriterSafely(createFile(fileName));
     }
 
-
     public OutputStream createOutputStream(String fileName) {
         return outputFactory.createOutputStreamSafely(createFile(fileName));
     }
-
 
     public Writer createWriter(String fileName) {
         return outputFactory.createWriterSafely(createFile(fileName));

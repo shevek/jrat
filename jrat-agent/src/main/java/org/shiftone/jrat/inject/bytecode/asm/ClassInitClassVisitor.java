@@ -1,12 +1,10 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
-
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -21,9 +19,9 @@ public class ClassInitClassVisitor extends ClassVisitor implements Constants, Op
         super(Opcodes.ASM5, cv);
     }
 
-
+    @Override
     public void visit(final int version, final int access, final String name, final String signature,
-                      final String superName, final String[] interfaces) {
+            final String superName, final String[] interfaces) {
 
         clinitVisited = false;
         className = name;
@@ -31,9 +29,9 @@ public class ClassInitClassVisitor extends ClassVisitor implements Constants, Op
         super.visit(version, access, name, signature, superName, interfaces);
     }
 
-
+    @Override
     public MethodVisitor visitMethod(final int access, final String name, final String desc, final String signature,
-                                     final String[] exceptions) {
+            final String[] exceptions) {
 
         MethodVisitor visitor = super.visitMethod(access, name, desc, signature, exceptions);
 
@@ -45,7 +43,7 @@ public class ClassInitClassVisitor extends ClassVisitor implements Constants, Op
         return visitor;
     }
 
-
+    @Override
     public void visitEnd() {
 
         if (!clinitVisited) {

@@ -7,17 +7,19 @@ import java.util.Enumeration;
  */
 public class ArrayEnumeration implements Enumeration {
 
-    private Object[] array;
+    private final Object[] array;
     private int index = 0;
 
     public ArrayEnumeration(Object[] array) {
         this.array = array;
     }
 
+    @Override
     public boolean hasMoreElements() {
         return index < array.length;
     }
 
+    @Override
     public Object nextElement() {
         return array[index++];
     }

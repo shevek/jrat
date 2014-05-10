@@ -1,11 +1,10 @@
 package org.shiftone.jrat.core.web.http;
 
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -21,7 +20,6 @@ public class Response {
     private Status status = Status.OK;
     private String contentType;
 
-
     public Response(OutputStream outputStream) {
         this.outputStream = outputStream;
         this.writer = new OutputStreamWriter(outputStream);
@@ -31,7 +29,6 @@ public class Response {
     public Writer getWriter() {
         return responseWriter;
     }
-
 
     public OutputStream getOutputStream() {
         return responseOutputStream;
@@ -77,26 +74,31 @@ public class Response {
 
     private class ResponseOutputStream extends OutputStream {
 
+        @Override
         public void write(int b) throws IOException {
             commit();
             outputStream.write(b);
         }
 
+        @Override
         public void write(byte b[]) throws IOException {
             commit();
             outputStream.write(b);
         }
 
+        @Override
         public void write(byte b[], int off, int len) throws IOException {
             commit();
             outputStream.write(b, off, len);
         }
 
+        @Override
         public void flush() throws IOException {
             commit();
             outputStream.flush();
         }
 
+        @Override
         public void close() throws IOException {
             commit();
             outputStream.close();
@@ -105,37 +107,43 @@ public class Response {
 
     private class ResponseWriter extends Writer {
 
-
+        @Override
         public void write(char cbuf[], int off, int len) throws IOException {
             commit();
             writer.write(cbuf, off, len);
         }
 
+        @Override
         public void flush() throws IOException {
             commit();
             writer.flush();
         }
 
+        @Override
         public void close() throws IOException {
             commit();
             writer.close();
         }
 
+        @Override
         public void write(int c) throws IOException {
             commit();
             super.write(c);
         }
 
+        @Override
         public void write(char cbuf[]) throws IOException {
             commit();
             super.write(cbuf);
         }
 
+        @Override
         public void write(String str) throws IOException {
             commit();
             super.write(str);
         }
 
+        @Override
         public void write(String str, int off, int len) throws IOException {
             commit();
             super.write(str, off, len);

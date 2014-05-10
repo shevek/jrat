@@ -1,13 +1,10 @@
 package org.shiftone.jrat.util.regex;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.StringTokenizer;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * OR
@@ -22,7 +19,6 @@ public class CompositeMatcher implements Matcher {
     public static Matcher buildCompositeGlobMatcher(String pattenString) {
         return (pattenString == null) ? Matcher.ALL : buildCompositeGlobMatcher(pattenString, true);
     }
-
 
     public static Matcher buildCompositeGlobMatcher(String pattenString, boolean ignoreCase) {
 
@@ -54,7 +50,6 @@ public class CompositeMatcher implements Matcher {
         return matcher;
     }
 
-
     public static Matcher buildCompositeGlobMatcher(String[] pattenStrings) {
 
         Matcher[] matchers = new Matcher[pattenStrings.length];
@@ -66,17 +61,15 @@ public class CompositeMatcher implements Matcher {
         return new CompositeMatcher(matchers);
     }
 
-
     public CompositeMatcher(Matcher[] matchers) {
         this.matchers = matchers;
     }
-
 
     public CompositeMatcher(Collection matchers) {
         this.matchers = (Matcher[]) matchers.toArray(new Matcher[matchers.size()]);
     }
 
-
+    @Override
     public boolean isMatch(String inputString) {
 
         for (int i = 0; i < matchers.length; i++) {
@@ -88,10 +81,10 @@ public class CompositeMatcher implements Matcher {
         return false;
     }
 
-
+    @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("<or-matcher>");
 

@@ -1,12 +1,14 @@
 package org.shiftone.jrat.core.config;
 
-import org.shiftone.jrat.core.criteria.*;
-import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.regex.GlobMatcher;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import org.shiftone.jrat.core.criteria.AndMethodCriteria;
+import org.shiftone.jrat.core.criteria.ClassMatcherMethodCriteria;
+import org.shiftone.jrat.core.criteria.MethodCriteria;
+import org.shiftone.jrat.core.criteria.NotMethodCriteria;
+import org.shiftone.jrat.core.criteria.OrMethodCriteria;
+import org.shiftone.jrat.util.log.Logger;
+import org.shiftone.jrat.util.regex.GlobMatcher;
 
 /**
  * This class represents the overall configuration of which handlers should be
@@ -19,12 +21,11 @@ import java.util.List;
 public class Configuration implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(Configuration.class);
-    private Settings settings = new Settings();
-    private AndMethodCriteria methodCriteria = new AndMethodCriteria();
-    private OrMethodCriteria profilesCriteria = new OrMethodCriteria();
-    private OrMethodCriteria excludeCriteria = new OrMethodCriteria();
-    private List profiles = new ArrayList();
-
+    private final Settings settings = new Settings();
+    private final AndMethodCriteria methodCriteria = new AndMethodCriteria();
+    private final OrMethodCriteria profilesCriteria = new OrMethodCriteria();
+    private final OrMethodCriteria excludeCriteria = new OrMethodCriteria();
+    private final List profiles = new ArrayList();
 
     public Configuration() {
         methodCriteria.addCriteria(profilesCriteria);
@@ -49,15 +50,15 @@ public class Configuration implements MethodCriteria {
         return profile;
     }
 
-
+    @Override
     public boolean isMatch(String className, long modifier) {
         return methodCriteria.isMatch(className, modifier);
     }
 
+    @Override
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
         return methodCriteria.isMatch(className, methodName, signature, modifier);
     }
-
 
     protected List getProfiles() {
         return profiles;

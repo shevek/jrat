@@ -1,15 +1,14 @@
 package org.shiftone.jrat.test.harness;
 
 
-import org.shiftone.jrat.core.HandlerFactory;
-import org.shiftone.jrat.core.MethodKey;
-import org.shiftone.jrat.core.spi.MethodHandler;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import org.shiftone.jrat.core.HandlerFactory;
+import org.shiftone.jrat.core.MethodKey;
+import org.shiftone.jrat.core.spi.MethodHandler;
+import org.shiftone.jrat.util.log.Logger;
 
 
 /**
@@ -20,14 +19,14 @@ import java.util.Random;
 public class VirtualMethodCall {
 
     private static final Logger LOG = Logger.getLogger(VirtualMethodCall.class);
-    private static Random random = new Random();
-    private List memoryLeak = new LinkedList();
-    private List children = new ArrayList();
+    private static final Random random = new Random();
+    private final List memoryLeak = new LinkedList();
+    private final List children = new ArrayList();
     private MethodKey methodKey = null;
     private MethodHandler handler = null;
-    private long childCalls;
-    private long minDuration;
-    private long randDuration;
+    private final long childCalls;
+    private final long minDuration;
+    private final long randDuration;
 
     public VirtualMethodCall(String className, String methodName, String signature) {
 

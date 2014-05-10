@@ -1,14 +1,11 @@
 package org.shiftone.jrat.cli;
 
-
-import org.shiftone.jrat.util.io.ResourceUtil;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.Properties;
-
+import org.shiftone.jrat.util.io.ResourceUtil;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -18,18 +15,16 @@ public class Cli {
     private static final Logger LOG = Logger.getLogger(Cli.class);
     private static final String PROPS = "org/shiftone/jrat/cli/cli.properties";
     private static final Class[] MAIN_PARAMS = {String[].class};
-    private static PrintStream OUT = System.out;
+    private static final PrintStream OUT = System.out;
 
     public static void main(String[] args) {
 
         try {
             runMain(args);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.error("error executing command", e);
         }
     }
-
 
     private static void runMain(String[] args) throws Exception {
 
@@ -64,7 +59,6 @@ public class Cli {
 
         method.invoke(null, new Object[]{newArgs});
     }
-
 
     private static void printOptionsAndExit(String classKey, Properties properties) {
 

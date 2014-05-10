@@ -1,7 +1,11 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
-
-import org.objectweb.asm.*;
+import java.util.Date;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.FieldVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.GeneratorAdapter;
 import org.objectweb.asm.commons.Method;
 import org.shiftone.jrat.core.JRatException;
@@ -9,9 +13,6 @@ import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.util.Date;
-
 
 public class InjectClassVisitor extends ClassVisitor implements Constants, Opcodes {
 
@@ -24,7 +25,7 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
         super(Opcodes.ASM5, visitor);
     }
 
-
+    @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
 
         handlerCount = 0;
@@ -34,7 +35,6 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
 
         initializer = addInitializer();
     }
-
 
     private GeneratorAdapter addInitializer() {
 
@@ -49,7 +49,7 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
         return initializer;
     }
 
-
+    @Override
     public void visitEnd() {
 
         initializer.returnValue();
@@ -58,20 +58,19 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
         super.visitEnd();
     }
 
-
     private void addCommentField() {
 
         FieldVisitor commentField = super.visitField(Modifier.PRIVATE_STATIC_FINAL,
                 InjectorStrategy.COMMENT_FIELD_NAME, "Ljava/lang/String;", null,
                 "Class enhanced on " + new Date() + " w/ version JRat v"
-                        + VersionUtil.getBuiltOn() + " built on " + VersionUtil.getBuiltOn());
+                + VersionUtil.getBuiltOn() + " built on " + VersionUtil.getBuiltOn());
 
         commentField.visitEnd();
     }
 
-
+    @Override
     public FieldVisitor visitField(final int access, final String name, final String desc, final String signature,
-                                   final Object value) {
+            final Object value) {
 
         if (name.equals(InjectorStrategy.COMMENT_FIELD_NAME)) {
             throw new JRatException("this class was previously injected by JRat");
@@ -79,7 +78,6 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
 
         return super.visitField(access, name, desc, signature, value);
     }
-
 
     private void addMethodHandlerField(String fieldName, String methodName, String descriptor) {
 
@@ -94,7 +92,6 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
         initializer.putStatic(classType, fieldName, MethodHandler.TYPE);
     }
 
-
     public void pushThis(GeneratorAdapter adapter, boolean isStatic) {
 
         if (isStatic) {
@@ -104,9 +101,9 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
         }
     }
 
-
+    @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature,
-                                     String[] exceptions) {
+            String[] exceptions) {
 
         if (name.equals("<clinit>") || name.equals("<init>") || Modifier.isAbstract(access)
                 || Modifier.isNative(access)) {

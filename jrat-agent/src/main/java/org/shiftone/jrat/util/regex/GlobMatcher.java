@@ -1,12 +1,9 @@
 package org.shiftone.jrat.util.regex;
 
-
+import java.io.File;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.File;
-
 
 /**
  * Class matches simple regular expressions of the form:
@@ -24,7 +21,7 @@ public class GlobMatcher implements Matcher {
     private static final Logger LOG = Logger.getLogger(GlobMatcher.class);
     public static final Matcher INCLUDE_ALL = new GlobMatcher("*");
     private char[][] patternParts = null;
-    private String pattenString;
+    private final String pattenString;
 
     public static Matcher create(String pattenString) {
         return (pattenString == null) ? Matcher.ALL : new GlobMatcher(pattenString);
@@ -41,14 +38,13 @@ public class GlobMatcher implements Matcher {
         this.patternParts = getPatternParts(pattenString);
     }
 
-
+    @Override
     public boolean isMatch(String inputString) {
 
         Assert.assertNotNull("inputString", inputString);
 
         return isMatch(inputString, patternParts);
     }
-
 
     /**
      * simple method to allow glob matcher to implement FilenameFilter. Matches
@@ -57,7 +53,6 @@ public class GlobMatcher implements Matcher {
     public boolean accept(File dir, String name) {
         return isMatch(name);
     }
-
 
     private static char[][] getPatternParts(String pattenString) {
 
@@ -71,14 +66,12 @@ public class GlobMatcher implements Matcher {
         return patternParts;
     }
 
-
     /**
      * <b>used by unit tests only</b>
      */
     public static boolean isMatch(String inputString, String pattenString) {
         return isMatch(inputString, getPatternParts(pattenString));
     }
-
 
     /**
      * Method isMatch
@@ -114,14 +107,12 @@ public class GlobMatcher implements Matcher {
         return true;
     }
 
-
     /**
      * <b>used by unit tests only</b>
      */
     public static int nextFixedMatch(String cs, int offSet, String ps) {
         return nextFixedMatch(cs.toCharArray(), offSet, ps.toCharArray());
     }
-
 
     /**
      * Method nextFixedMatch
@@ -139,14 +130,12 @@ public class GlobMatcher implements Matcher {
         return -1;
     }
 
-
     /**
      * <b>used by unit tests only</b>
      */
     public static boolean matchesFixed(String cs, int offSet, String ps) {
         return matchesFixed(cs.toCharArray(), offSet, ps.toCharArray());
     }
-
 
     /**
      * Method matchesFixed
@@ -168,7 +157,7 @@ public class GlobMatcher implements Matcher {
         return true;
     }
 
-
+    @Override
     public String toString() {
         return "<glob pattern=\"" + pattenString + "\"/>";
     }

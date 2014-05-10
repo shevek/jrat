@@ -1,14 +1,17 @@
 package org.shiftone.jrat.core;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
 import org.shiftone.jrat.core.config.Configuration;
 import org.shiftone.jrat.core.config.ConfigurationParser;
 import org.shiftone.jrat.core.config.Settings;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.*;
-import java.util.Date;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -42,7 +45,6 @@ public class Environment {
 
     private byte[] getConfigurationData(File file) {
 
-
         if (!file.exists()) {
 
             LOG.info("Initializing configuration file with default...");
@@ -62,7 +64,6 @@ public class Environment {
 
     }
 
-
     private void copyDefaultFile(File file) {
 
         try {
@@ -78,7 +79,6 @@ public class Environment {
         }
     }
 
-
     public static Configuration getConfiguration() {
         return INSTANCE.configuration;
     }
@@ -86,6 +86,5 @@ public class Environment {
     public static Settings getSettings() {
         return getConfiguration().getSettings();
     }
-
 
 }

@@ -8,6 +8,7 @@ import java.io.OutputStream;
 public interface Commandlet {
 
     public interface ContentType {
+
         public static final String HTML = "text/html";
         public static final String XML = "text/xml";
         public static final String PLAIN = "text/plain";

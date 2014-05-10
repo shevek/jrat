@@ -1,17 +1,15 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
-
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.commons.SerialVersionUIDAdder;
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.TransformerOptions;
-import org.shiftone.jrat.core.criteria.MethodCriteria;
-
 
 public class AsmInjectorStrategy implements InjectorStrategy {
 
+    @Override
     public byte[] inject(byte[] rawClassData, TransformerOptions options) throws Exception {
 
         ClassReader reader = new ClassReader(rawClassData);
@@ -46,7 +44,7 @@ public class AsmInjectorStrategy implements InjectorStrategy {
         return classWriter.toByteArray();
     }
 
-
+    @Override
     public String toString() {
         return "ASM";
     }

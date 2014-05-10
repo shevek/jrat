@@ -8,6 +8,7 @@ package org.shiftone.jrat.core.web.http;
 public interface Handler {
 
     public interface ContentType {
+
         public static final String TEXT_HTML = "text/html";
         public static final String TEXT_XML = "text/xml";
         public static final String TEXT_PLAIN = "text/plain";

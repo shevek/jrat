@@ -1,10 +1,8 @@
 package org.shiftone.jrat.core.spi;
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -16,20 +14,19 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
     private RuntimeContext context = null;
     private String outputFile = getDefaultOutputFile();
 
+    @Override
     public abstract MethodHandler createMethodHandler(MethodKey methodKey);
-
 
     // ------------------------------------------------------------
     public RuntimeContext getContext() {
         return context;
     }
 
-
     private String getDefaultOutputFile() {
 
         Class klass = this.getClass();
         String klassName = klass.getName();
-        int lastDot = klassName.lastIndexOf(".");
+        int lastDot = klassName.lastIndexOf('.');
         String name = (lastDot == -1)
                 ? klassName
                 : klassName.substring(lastDot + 1);
@@ -41,7 +38,6 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
         return name + ".jrat";
     }
 
-
     public void setOutputFile(String outputFile) {
         this.outputFile = outputFile;
     }
@@ -50,18 +46,17 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
         return outputFile;
     }
 
-
     // ------------------------------------------------------------
+    @Override
     public void shutdown() {
         LOG.info("shutdown");
     }
-
 
     public void flush() {
         LOG.info("flush");
     }
 
-
+    @Override
     public void startup(RuntimeContext context) throws Exception {
 
         this.context = context;

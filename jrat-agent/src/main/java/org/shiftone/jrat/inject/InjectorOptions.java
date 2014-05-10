@@ -1,9 +1,7 @@
 package org.shiftone.jrat.inject;
 
-
 import org.shiftone.jrat.inject.bytecode.TransformerOptions;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * This is a placeholder for any options that are not of the concern of the

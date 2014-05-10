@@ -1,11 +1,9 @@
 package org.shiftone.jrat.core.jmx.benchmark;
 
-
 import org.shiftone.jrat.core.HandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.time.Clock;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -20,7 +18,6 @@ public class Benchmark implements BenchmarkMBean {
         ;
     }
 
-
     public void monitorDoWork() {
 
         methodHandler.onMethodStart();
@@ -31,23 +28,23 @@ public class Benchmark implements BenchmarkMBean {
         methodHandler.onMethodFinish(Clock.currentTimeMillis() - start, null);
     }
 
-
+    @Override
     public long getIterations() {
         return iterations;
     }
 
-
+    @Override
     public void setIterations(long iterations) {
         this.iterations = iterations;
     }
 
-
+    @Override
     public String calculateCostPerMethodCallNanosText() {
         return "JRat is adding an overhead of about " + calculateCostPerMethodCallNanos()
                 + " nanoseconds to each instrumented method call.";
     }
 
-
+    @Override
     public double calculateCostPerMethodCallNanos() {
 
         methodHandler = HandlerFactory.getMethodHandler(Benchmark.class, "doWork", "()V");

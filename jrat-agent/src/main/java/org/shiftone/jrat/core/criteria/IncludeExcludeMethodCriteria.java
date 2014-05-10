@@ -2,7 +2,6 @@ package org.shiftone.jrat.core.criteria;
 
 import org.shiftone.jrat.util.log.Logger;
 
-
 /**
  * Used by ant task.
  * (p1 or p2 or p3 or p4) and not(n1 or n2 or n3).
@@ -26,22 +25,20 @@ public class IncludeExcludeMethodCriteria implements MethodCriteria {
         root.addCriteria(new NotMethodCriteria(negative));
     }
 
-
     public void addPositive(MethodCriteria criteria) {
         positive.addCriteria(criteria);
     }
-
 
     public void addNegative(MethodCriteria criteria) {
         negative.addCriteria(criteria);
     }
 
-
+    @Override
     public boolean isMatch(String className, long modifier) {
         return root.isMatch(className, modifier);
     }
 
-
+    @Override
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
         return root.isMatch(className, methodName, signature, modifier);
     }

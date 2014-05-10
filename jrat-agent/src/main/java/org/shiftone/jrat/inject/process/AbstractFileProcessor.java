@@ -1,6 +1,8 @@
 package org.shiftone.jrat.inject.process;
 
-
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.inject.Injector;
 import org.shiftone.jrat.inject.InjectorOptions;
@@ -8,11 +10,6 @@ import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.File;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -23,10 +20,11 @@ public abstract class AbstractFileProcessor implements FileProcessor {
 
     private static final Logger LOG = Logger.getLogger(AbstractFileProcessor.class);
     private static final long DEFAULT_BUFFER_SIZE = 1024 * 6;
-    private boolean forceOverwrite = true;    // false;
-    private boolean overwriteNewer = false;
-    private boolean preserveLastModified = false;
+    private final boolean forceOverwrite = true;    // false;
+    private final boolean overwriteNewer = false;
+    private final boolean preserveLastModified = false;
 
+    @Override
     public void process(Transformer transformer, InjectorOptions options, File source, File target) {
 
         LOG.debug("process " + source.getAbsolutePath() + " " + target.getAbsolutePath());
@@ -90,7 +88,6 @@ public abstract class AbstractFileProcessor implements FileProcessor {
         }
     }
 
-
     protected void processUsingSwapFile(Transformer transformer, InjectorOptions options, File source, File target) {
 
         LOG.debug("processUsingSwapFile " + source.getAbsolutePath() + " " + target.getAbsolutePath());
@@ -111,8 +108,7 @@ public abstract class AbstractFileProcessor implements FileProcessor {
             }
 
             IOUtil.rename(workFile, target, true);
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             String msg = "Failed to instrument " + source + " : " + e;
 
             if ((workFile.exists()) && (!workFile.delete())) {
@@ -120,12 +116,10 @@ public abstract class AbstractFileProcessor implements FileProcessor {
             }
 
             throw new JRatException(msg, e);
-        }
-        finally {
+        } finally {
             IOUtil.deleteIfExists(workFile);
         }
     }
-
 
     protected void processFile(Transformer transformer, InjectorOptions options, File source, File target) {
 
@@ -139,13 +133,11 @@ public abstract class AbstractFileProcessor implements FileProcessor {
 
             LOG.debug("calling processStream");
             processStream(transformer, options, inputStream, outputStream, source.getName());
-        }
-        finally {
+        } finally {
             IOUtil.close(inputStream);
             IOUtil.close(outputStream);
         }
     }
-
 
     protected void processStream(
             Transformer transformer, InjectorOptions options, InputStream inputStream, OutputStream outputStream, String fileName) {

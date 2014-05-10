@@ -1,6 +1,6 @@
 package org.shiftone.jrat.inject;
 
-
+import java.io.File;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.core.ServiceFactory;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
@@ -11,9 +11,6 @@ import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-import java.io.File;
-
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -21,10 +18,10 @@ public class Injector {
 
     private static final Logger LOG = Logger.getLogger(Injector.class);
     public static final String WORK_FILE_END = "-JRatWorkFile";
-    private FileProcessor fileProcessor = new CompositeFileProcessor();
-    private InjectorOptions options = new InjectorOptions();
-    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
-    private Transformer transformer = serviceFactory.getTransformer();
+    private final FileProcessor fileProcessor = new CompositeFileProcessor();
+    private final InjectorOptions options = new InjectorOptions();
+    private final ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    private final Transformer transformer = serviceFactory.getTransformer();
 
     public void inject(File sourceFile, File targetFile) throws InjectionException {
 
@@ -47,19 +44,16 @@ public class Injector {
         fileProcessor.process(transformer, options, sourceFile, targetFile);
     }
 
-
     public void inject(String source, String target) throws InjectionException {
         inject(new File(source), new File(target));
     }
-
 
     public void inject(File file) throws InjectionException {
 
         if (file.getName().endsWith(Injector.WORK_FILE_END)) {
             try {
                 IOUtil.delete(file);
-            }
-            catch (JRatException e) {
+            } catch (JRatException e) {
                 LOG.warn("unable to delete : " + file);
             }
         } else {
@@ -67,17 +61,14 @@ public class Injector {
         }
     }
 
-
     public void inject(String fileName) throws InjectionException {
         inject(new File(fileName));
     }
-
 
     // ------------------------------------------------------------------------------
     public MethodCriteria getMethodCriteria() {
         return options.getCriteria();
     }
-
 
     public void setMethodCriteria(MethodCriteria criteria) {
         options.setCriteria(criteria);

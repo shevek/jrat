@@ -1,8 +1,6 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -18,12 +16,10 @@ public class SimpleAttributeValue implements AttributeValue {
         this.value = value;
     }
 
-
     public SimpleAttributeValue(Object value, String description) {
         this.value = value;
         this.description = description;
     }
-
 
     public SimpleAttributeValue(Object value, String description, Class type) {
 
@@ -32,17 +28,17 @@ public class SimpleAttributeValue implements AttributeValue {
         this.type = type;
     }
 
-
+    @Override
     public void setValue(Object value) {
         this.value = value;
     }
 
-
+    @Override
     public Object getValue() {
         return value;
     }
 
-
+    @Override
     public String getType() {
 
         if (type != null) {
@@ -54,22 +50,21 @@ public class SimpleAttributeValue implements AttributeValue {
         }
     }
 
-
+    @Override
     public String getDescription() {
         return description;
     }
-
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-
+    @Override
     public boolean isReadable() {
         return true;
     }
 
-
+    @Override
     public boolean isWritable() {
         return true;
     }

@@ -1,10 +1,8 @@
 package org.shiftone.jrat.util;
 
-import junit.framework.TestCase;
-
 import java.util.HashMap;
 import java.util.Map;
-
+import junit.framework.TestCase;
 import org.shiftone.jrat.util.log.Logger;
 
 /**

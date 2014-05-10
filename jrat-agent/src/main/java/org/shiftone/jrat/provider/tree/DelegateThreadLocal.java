@@ -1,8 +1,6 @@
 package org.shiftone.jrat.provider.tree;
 
-
 import org.shiftone.jrat.util.Assert;
-
 
 /**
  * Class DelegateThreadLocal
@@ -20,7 +18,7 @@ public class DelegateThreadLocal extends ThreadLocal {
         this.factory = factory;
     }
 
-
+    @Override
     protected final Object initialValue() {
         return new Delegate(factory);
     }

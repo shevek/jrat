@@ -1,13 +1,10 @@
 package org.shiftone.jrat.inject.process;
 
-
+import java.io.File;
 import org.shiftone.jrat.inject.InjectorOptions;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.File;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -15,13 +12,13 @@ import java.io.File;
 public class DirectoryFileProcessor implements FileProcessor {
 
     private static final Logger LOG = Logger.getLogger(DirectoryFileProcessor.class);
-    private FileProcessor fileProcessor;
+    private final FileProcessor fileProcessor;
 
     public DirectoryFileProcessor(FileProcessor fileProcessor) {
         this.fileProcessor = fileProcessor;
     }
 
-
+    @Override
     public void process(Transformer transformer, InjectorOptions options, File source, File target) {
 
         LOG.info("process " + source);

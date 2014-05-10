@@ -1,6 +1,9 @@
 package org.shiftone.jrat.provider.tree;
 
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.AbstractMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
@@ -8,16 +11,8 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
 import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
 import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
-// import org.shiftone.jrat.provider.tree.ui.TraceViewBuilder;
-import org.shiftone.jrat.provider.tree.TreeWebActionFactory;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
-
 
 /**
  * Class TreeMethodHandlerFactory
@@ -32,8 +27,10 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     private final DelegateThreadLocal delegateThreadLocal = new DelegateThreadLocal(this);
     private final AtomicLong methodHandlerCount = new AtomicLong();
     private final List treeNodes = new ArrayList(); /* <TreeNode> */
+
     private final TreeWebActionFactory webActionFactory = new TreeWebActionFactory(treeNodes);
 
+    @Override
     public void startup(RuntimeContext context) throws Exception {
         super.startup(context);
         context.registerMBean(this);
@@ -44,7 +41,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         context.registerWebActionFactory(webActionFactory);
     }
 
-
+    @Override
     public synchronized final MethodHandler createMethodHandler(MethodKey methodKey) {
 
         methodHandlerCount.incrementAndGet();
@@ -53,7 +50,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         return new TreeMethodHandler(this, methodKey);
     }
 
-
+    @Override
     public long getMethodHandlerCount() {
         return methodHandlerCount.get();
     }
@@ -74,12 +71,11 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         return (Delegate) delegateThreadLocal.get();
     }
 
-
     public final TreeNode getRootNode() {
         return rootNode;
     }
 
-
+    @Override
     public synchronized void writeOutputFile() {
         writeOutputFile(getOutputFile());
     }
@@ -88,27 +84,27 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         rootNode.reset();
     }
 
+    @Override
     public void writeOutputFile(String fileName) {
 
         LOG.info("writeOutputFile...");
 
-		/* TODO
-        getContext().writeSerializable(fileName,
-                new TraceViewBuilder(
-                        rootNode,
-                        new HashSet(allMethodKeys), // copy to avoid sync issues
-                        getContext().getStartTimeMs(),
-                        System.currentTimeMillis(),
-                        getContext().getSystemPropertiesAtStartup(),
-                        getContext().getHostName(),
-                        getContext().getHostAddress()
-                )
-        );
-*/
-
+        /* TODO
+         getContext().writeSerializable(fileName,
+         new TraceViewBuilder(
+         rootNode,
+         new HashSet(allMethodKeys), // copy to avoid sync issues
+         getContext().getStartTimeMs(),
+         System.currentTimeMillis(),
+         getContext().getSystemPropertiesAtStartup(),
+         getContext().getHostName(),
+         getContext().getHostAddress()
+         )
+         );
+         */
     }
 
-
+    @Override
     public void shutdown() {
 
         LOG.info("shutdown...");
@@ -116,7 +112,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
         LOG.info("shutdown complete");
     }
 
-
+    @Override
     public String toString() {
         return "Tree Handler Factory";
     }

@@ -1,9 +1,7 @@
 package org.shiftone.jrat.core.jmx;
 
-
 import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -31,8 +29,7 @@ public class JmxRegistryFactory {
                 } else {
                     registry = new WaitingJmxRegistry(new ServerJmxRegistry(false));
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 LOG.error("failed to initialize JMX", e);
             }
         }
@@ -40,15 +37,13 @@ public class JmxRegistryFactory {
         return registry;
     }
 
-
     private static boolean isJMXAvalible() {
 
         try {
             Class.forName("javax.management.MBeanServer");
 
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }

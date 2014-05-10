@@ -1,11 +1,8 @@
 package org.shiftone.jrat.core.proxy;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -19,7 +16,7 @@ public class ProxyInvocationHandler implements InvocationHandler {
         this.target = target;
     }
 
-
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //   return Monitor.execute(method, target, new ProxyCommand(target, method, args));
         return null;///

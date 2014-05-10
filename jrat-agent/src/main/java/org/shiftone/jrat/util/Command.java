@@ -2,7 +2,6 @@ package org.shiftone.jrat.util;
 
 import org.shiftone.jrat.core.JRatException;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -14,7 +13,6 @@ public class Command {
     protected void run() throws Exception {
     }
 
-
     /**
      * implement this method if you want to return something
      */
@@ -25,16 +23,13 @@ public class Command {
         return null;
     }
 
-
     public Object execute() {
 
         try {
             return call();
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             throw e;
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             throw new JRatException("command failed", e);
         }
     }

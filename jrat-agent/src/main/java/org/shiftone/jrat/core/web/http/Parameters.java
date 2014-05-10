@@ -1,13 +1,18 @@
 package org.shiftone.jrat.core.web.http;
-import org.shiftone.jrat.util.log.Logger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
  */
 class Parameters {
-
 
     private static final Logger LOG = Logger.getLogger(Parameters.class);
     private static final Parameters EMPTY = new Parameters(Collections.emptyMap());
@@ -17,15 +22,13 @@ class Parameters {
         this.values = Collections.unmodifiableMap(new HashMap(values));
     }
 
-
     public static Parameters fromQueryString(String queryString) {
-
 
         if (queryString == null) {
             return EMPTY;
         }
 
-        LOG.info("fromQueryString " + queryString );
+        LOG.info("fromQueryString " + queryString);
 
         Map map = new HashMap();
         StringTokenizer st = new StringTokenizer(queryString, "&", false);
@@ -59,9 +62,9 @@ class Parameters {
     private static String decode(String value) {
 
         char[] chars = value.toCharArray();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0 ; i < chars.length ; i ++) {
+        for (int i = 0; i < chars.length; i++) {
 
             char c = chars[i];
             if (c == '+') {
@@ -90,6 +93,7 @@ class Parameters {
                 : (String[]) list.toArray(new String[list.size()]);
     }
 
+    @Override
     public String toString() {
         return values.toString();
     }

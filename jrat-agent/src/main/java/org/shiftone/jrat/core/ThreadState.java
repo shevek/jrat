@@ -15,8 +15,6 @@ public class ThreadState {
 //            return new ThreadState();
 //        }
 //    };
-
-
     private boolean inHandler = false;
     private long clockSkew = 0;
 
@@ -59,6 +57,5 @@ public class ThreadState {
 //
 //        clockSkew += (end - begin);
     }
-
 
 }

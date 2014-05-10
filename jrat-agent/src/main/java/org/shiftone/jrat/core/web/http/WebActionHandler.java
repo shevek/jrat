@@ -1,15 +1,18 @@
 package org.shiftone.jrat.core.web.http;
 
-import org.shiftone.jrat.core.spi.WebAction;
-import org.shiftone.jrat.core.spi.WebActionFactory;
-import org.shiftone.jrat.util.log.Logger;
-import org.shiftone.jrat.util.VersionUtil;
-
 import java.beans.PropertyDescriptor;
 import java.beans.PropertyEditor;
 import java.beans.PropertyEditorManager;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import org.shiftone.jrat.core.spi.WebAction;
+import org.shiftone.jrat.core.spi.WebActionFactory;
+import org.shiftone.jrat.util.VersionUtil;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -19,7 +22,7 @@ public class WebActionHandler implements Handler {
     private static final Logger LOG = Logger.getLogger(WebActionHandler.class);
     private static final String DYNAMIC_PREFIX = "/jrat/"; // reserved
     private long dynamicUriCount = 0;
-    private Map actionFactories = new HashMap();
+    private final Map actionFactories = new HashMap();
 
     public void add(String uri, WebActionFactory actionFactory) {
         if (uri.startsWith(DYNAMIC_PREFIX)) {
@@ -33,10 +36,10 @@ public class WebActionHandler implements Handler {
         actionFactories.put(uri, new FactoryHolder(actionFactory, uri));
     }
 
+    @Override
     public void handle(Request request, Response response) throws Exception {
 
         String requestUri = request.getRequestUri();
-
 
         LOG.info(requestUri);
         LOG.info(actionFactories.keySet());
@@ -69,7 +72,6 @@ public class WebActionHandler implements Handler {
         action.execute(response);
     }
 
-
     public void showListing(Request request, Response response) throws Exception {
 
         PrintWriter out = new PrintWriter(response.getWriter());
@@ -94,6 +96,7 @@ public class WebActionHandler implements Handler {
     }
 
     private class FactoryHolder implements Comparable {
+
         private final WebActionFactory factory;
         private final String title;
         private final String uri;
@@ -104,11 +107,11 @@ public class WebActionHandler implements Handler {
             this.uri = uri;
         }
 
+        @Override
         public int compareTo(Object o) {
             FactoryHolder other = (FactoryHolder) o;
             return title.compareTo(other.title);
         }
     }
-
 
 }

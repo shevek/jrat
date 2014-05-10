@@ -1,10 +1,8 @@
 package org.shiftone.jrat.provider.tree;
 
-
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.Assert;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -23,7 +21,7 @@ public class TreeMethodHandler implements MethodHandler {
         this.methodKey = methodKey;
     }
 
-
+    @Override
     public void onMethodStart() {
 
         Delegate delegate = factory.getDelegate();
@@ -31,7 +29,7 @@ public class TreeMethodHandler implements MethodHandler {
         delegate.onMethodStart(methodKey);
     }
 
-
+    @Override
     public void onMethodFinish(long durationNanos, Throwable throwable) {
 
         Delegate delegate = factory.getDelegate();

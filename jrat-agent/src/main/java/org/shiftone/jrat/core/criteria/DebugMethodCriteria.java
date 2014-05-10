@@ -1,8 +1,6 @@
 package org.shiftone.jrat.core.criteria;
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -10,13 +8,13 @@ import org.shiftone.jrat.util.log.Logger;
 public class DebugMethodCriteria implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(DebugMethodCriteria.class);
-    private MethodCriteria criteria;
+    private final MethodCriteria criteria;
 
     public DebugMethodCriteria(MethodCriteria criteria) {
         this.criteria = criteria;
     }
 
-
+    @Override
     public boolean isMatch(String className, long modifier) {
 
         boolean result = criteria.isMatch(className, modifier);
@@ -26,7 +24,7 @@ public class DebugMethodCriteria implements MethodCriteria {
         return result;
     }
 
-
+    @Override
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
 
         boolean result = criteria.isMatch(className, methodName, signature, modifier);

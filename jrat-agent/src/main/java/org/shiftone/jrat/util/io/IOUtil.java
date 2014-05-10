@@ -1,13 +1,20 @@
 package org.shiftone.jrat.util.io;
 
-
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
+import java.net.Socket;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.*;
-import java.net.Socket;
-
 
 /**
  * Class IOUtil
@@ -58,7 +65,6 @@ public class IOUtil {
         }
     }
 
-
     public static void mkdir(File dir) {
 
         Assert.assertNotNull("dir", dir);
@@ -76,7 +82,6 @@ public class IOUtil {
             throw new JRatException("unable to column directory : " + dir);
         }
     }
-
 
     public static void rename(File source, File target, boolean replace) {
 
@@ -103,7 +108,6 @@ public class IOUtil {
         }
     }
 
-
     public static void copy(InputStream sourceStream, OutputStream targetStream, int bufferSize) {
 
         byte[] buffer = new byte[bufferSize];
@@ -118,12 +122,10 @@ public class IOUtil {
                     targetStream.write(buffer, 0, b);
                 }
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new JRatException("error copying streams", e);
         }
     }
-
 
     public static byte[] readAndClose(InputStream inputStream) {
 
@@ -131,19 +133,16 @@ public class IOUtil {
 
         try {
             copy(inputStream, outputStream);
-        }
-        finally {
+        } finally {
             close(inputStream);
         }
 
         return outputStream.toByteArray();
     }
 
-
     public static void copy(InputStream sourceStream, OutputStream targetStream) {
         copy(sourceStream, targetStream, DEFAULT_BUFFER_SIZE);
     }
-
 
     public static boolean copy(File source, File target) {
 
@@ -165,8 +164,7 @@ public class IOUtil {
                 outputStream = openOutputStream(target, bufferSize);
 
                 copy(inputStream, outputStream, bufferSize);
-            }
-            finally {
+            } finally {
                 close(outputStream);
                 close(inputStream);
             }
@@ -191,12 +189,10 @@ public class IOUtil {
             }
 
             return inputStream;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new JRatException("unable to open file for read " + file.getAbsolutePath());
         }
     }
-
 
     public static OutputStream openOutputStream(File file, int bufferSize) {
 
@@ -210,12 +206,10 @@ public class IOUtil {
             }
 
             return outputStream;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new JRatException("unable to open file for read " + file.getAbsolutePath());
         }
     }
-
 
     public static void close(Reader reader) {
 
@@ -223,12 +217,10 @@ public class IOUtil {
             if (reader != null) {
                 reader.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.warn("close Reader failes", e);
         }
     }
-
 
     public static void close(Writer writer) {
 
@@ -237,12 +229,10 @@ public class IOUtil {
                 LOG.debug("close " + writer);
                 writer.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.warn("close Writer failes", e);
         }
     }
-
 
     public static void close(Socket socket) {
 
@@ -250,12 +240,10 @@ public class IOUtil {
             if (socket != null) {
                 socket.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.warn("close Socket failes", e);
         }
     }
-
 
     public static void close(InputStream inputStream) {
 
@@ -263,12 +251,10 @@ public class IOUtil {
             if (inputStream != null) {
                 inputStream.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.warn("close InputStream failes", e);
         }
     }
-
 
     public static void close(OutputStream outputStream) {
 
@@ -276,12 +262,10 @@ public class IOUtil {
             if (outputStream != null) {
                 outputStream.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.warn("close OutputStream failes", e);
         }
     }
-
 
     public static void flush(OutputStream outputStream) {
 
@@ -289,12 +273,10 @@ public class IOUtil {
             if (outputStream != null) {
                 outputStream.flush();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.warn("flush OutputStream failes", e);
         }
     }
-
 
     public static String getExtention(String fileName) {
 
@@ -307,14 +289,12 @@ public class IOUtil {
                 : fileName.substring(lastDot + 1);
     }
 
-
     public static String getExtention(File file) {
 
         Assert.assertNotNull("file", file);
 
         return getExtention(file.getName());
     }
-
 
     public static File getNearestExistingParent(File file) {
 

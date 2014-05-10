@@ -1,17 +1,14 @@
 package org.shiftone.jrat.inject;
 
-
-import org.shiftone.jrat.util.VersionUtil;
-
 import java.io.PrintStream;
-
+import org.shiftone.jrat.util.VersionUtil;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class InjectorCli {
 
-    private static PrintStream OUT = System.out;
+    private static final PrintStream OUT = System.out;
 
     public static void main(String[] args) throws Exception {
 

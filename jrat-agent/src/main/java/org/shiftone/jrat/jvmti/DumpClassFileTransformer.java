@@ -1,12 +1,15 @@
 package org.shiftone.jrat.jvmti;
 
-import org.shiftone.jrat.util.io.IOUtil;
-import org.shiftone.jrat.util.log.Logger;
-
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
+import org.shiftone.jrat.util.io.IOUtil;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author (jeff@shiftone.org) Jeff Drost
@@ -20,6 +23,7 @@ public class DumpClassFileTransformer implements ClassFileTransformer {
         this.transformer = transformer;
     }
 
+    @Override
     public byte[] transform(
             ClassLoader loader,
             String className,

@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class TestClassLoader extends ClassLoader implements Serializable {
 
-    private Map hackedMap = new HashMap();
+    private final Map hackedMap = new HashMap();
 
     /**
      * Method loadClass
@@ -22,6 +22,7 @@ public class TestClassLoader extends ClassLoader implements Serializable {
      * @return .
      * @throws ClassNotFoundException
      */
+    @Override
     public Class loadClass(String name) throws ClassNotFoundException {
 
         if (hackedMap.containsKey(name)) {

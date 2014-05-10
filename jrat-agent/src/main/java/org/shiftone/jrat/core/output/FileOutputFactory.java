@@ -1,14 +1,18 @@
 package org.shiftone.jrat.core.output;
 
-
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import org.shiftone.jrat.core.Environment;
 import org.shiftone.jrat.util.io.nop.NullOutputStream;
 import org.shiftone.jrat.util.io.nop.NullPrintWriter;
 import org.shiftone.jrat.util.io.nop.NullWriter;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.*;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -26,50 +30,42 @@ public class FileOutputFactory {
 
     }
 
-
     public FileOutputFactory(FileOutputRegistry fileOutputRegistry) {
         this(fileOutputRegistry, Environment.getSettings().getOutputBufferSize());
     }
-
 
     public OutputStream createOutputStreamSafely(File file) {
 
         try {
             return createOutputStream(file);
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             LOG.error("unable to column OutputStream for '" + file + "' return /dev/null");
 
             return NullOutputStream.INSTANCE;
         }
     }
 
-
     public Writer createWriterSafely(File file) {
 
         try {
             return createWriter(file);
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             LOG.error("unable to column Writer for '" + file + "' return /dev/null");
 
             return NullWriter.INSTANCE;
         }
     }
 
-
     public PrintWriter createPrintWriterSafely(File file) {
 
         try {
             return createPrintWriter(file);
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             LOG.error("unable to column PrintWriter for '" + file + "' return /dev/null");
 
             return NullPrintWriter.INSTANCE;
         }
     }
-
 
     public OutputStream createOutputStream(File file) throws IOException {
 
@@ -80,7 +76,6 @@ public class FileOutputFactory {
         return fileOutputRegistry.add(out, file.getName());
     }
 
-
     public Writer createWriter(File file) throws IOException {
 
         LOG.info("createWriter " + file.getAbsolutePath());
@@ -90,7 +85,6 @@ public class FileOutputFactory {
         return fileOutputRegistry.add(out, file.getName());
     }
 
-
     public PrintWriter createPrintWriter(File file) throws IOException {
 
         LOG.info("createPrintWriter " + file.getAbsolutePath());
@@ -99,7 +93,6 @@ public class FileOutputFactory {
 
         return fileOutputRegistry.add(out, file.getName());
     }
-
 
     private OutputStream internalCreateOutputStream(File file) throws IOException {
 
@@ -121,7 +114,7 @@ public class FileOutputFactory {
         return out;
     }
 
-
+    @Override
     public String toString() {
         return "FileOutputFactory[" + fileOutputRegistry + "]";
     }

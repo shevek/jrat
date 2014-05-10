@@ -1,10 +1,7 @@
 package org.shiftone.jrat.core;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.Serializable;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -27,25 +24,25 @@ public class Accumulator implements Serializable {
     }
 
     public Accumulator(long totalEnters,
-                       long totalExits,
-                       long totalErrors,
-                       long totalDuration,
-                       long totalOfSquares,
-                       long maxDuration,
-                       long minDuration,
-                       int maxConcurThreads) {
-        setStatistics(totalEnters, totalExits, totalErrors, totalDuration,    //
+            long totalExits,
+            long totalErrors,
+            long totalDuration,
+            long totalOfSquares,
+            long maxDuration,
+            long minDuration,
+            int maxConcurThreads) {
+        setStatistics(totalEnters, totalExits, totalErrors, totalDuration, //
                 totalOfSquares, maxDuration, minDuration, maxConcurThreads);
     }
 
     public void setStatistics(long totalEnters,
-                              long totalExits,
-                              long totalErrors,
-                              long totalDuration,
-                              long totalOfSquares,
-                              long maxDuration,
-                              long minDuration,
-                              int maxConcurThreads) {
+            long totalExits,
+            long totalErrors,
+            long totalDuration,
+            long totalOfSquares,
+            long maxDuration,
+            long minDuration,
+            int maxConcurThreads) {
 
         this.totalEnters = totalEnters;
         this.totalExits = totalExits;

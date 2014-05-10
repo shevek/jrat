@@ -1,10 +1,8 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
-
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.Method;
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -18,6 +16,7 @@ public interface Constants {
     public static Method classInit = Method.getMethod("void " + classInitName + "()");
 
     public interface Throwable {
+
         public static Class CLASS = java.lang.Throwable.class;
         public static Type TYPE = Type.getType(CLASS);
     }
@@ -33,26 +32,25 @@ public interface Constants {
 
         public static Class CLASS = org.shiftone.jrat.core.ThreadState.class;
         public static Type TYPE = Type.getType(CLASS);
-        public static Method getInstance =
-                Method.getMethod(org.shiftone.jrat.core.ThreadState.class.getName() + " getInstance()");
+        public static Method getInstance
+                = Method.getMethod(org.shiftone.jrat.core.ThreadState.class.getName() + " getInstance()");
         public static Method isInHandler = Method.getMethod("boolean isInHandler()");
 
         public static Method now = Method.getMethod("long now()");
 
         public static Method begin = Method.getMethod("long begin("
-                +MethodHandler.CLASS.getName() + ")");
+                + MethodHandler.CLASS.getName() + ")");
         public static Method end = Method.getMethod("void end("
                 + MethodHandler.CLASS.getName() + ", long, Throwable)");
 
     }
 
-
     public interface HandlerFactory {
 
         public static Class CLASS = org.shiftone.jrat.core.HandlerFactory.class;
         public static Type TYPE = Type.getType(CLASS);
-        public static Method getMethodHandler =
-                Method.getMethod(org.shiftone.jrat.core.spi.MethodHandler.class.getName()
+        public static Method getMethodHandler
+                = Method.getMethod(org.shiftone.jrat.core.spi.MethodHandler.class.getName()
                         + " getMethodHandler(String, String, String)");
     }
 

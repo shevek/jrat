@@ -1,13 +1,11 @@
 package org.shiftone.jrat.core.config;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.shiftone.jrat.core.criteria.IncludeExcludeMethodCriteria;
 import org.shiftone.jrat.core.criteria.MatcherMethodCriteria;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -15,16 +13,15 @@ import java.util.List;
 public class Profile implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(Profile.class);
-    private IncludeExcludeMethodCriteria methodCriteria = new IncludeExcludeMethodCriteria();
+    private final IncludeExcludeMethodCriteria methodCriteria = new IncludeExcludeMethodCriteria();
     private String name;
-    private List factories = new ArrayList();
+    private final List factories = new ArrayList();
 
     public MatcherMethodCriteria createInclude() {
         MatcherMethodCriteria newCriteria = new MatcherMethodCriteria();
         methodCriteria.addPositive(newCriteria);
         return newCriteria;
     }
-
 
     public MatcherMethodCriteria createExclude() {
         MatcherMethodCriteria newCriteria = new MatcherMethodCriteria();
@@ -38,14 +35,15 @@ public class Profile implements MethodCriteria {
         return handler;
     }
 
+    @Override
     public boolean isMatch(String className, long modifier) {
         return methodCriteria.isMatch(className, modifier);
     }
 
+    @Override
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
         return methodCriteria.isMatch(className, methodName, signature, modifier);
     }
-
 
     public String getName() {
         return name;

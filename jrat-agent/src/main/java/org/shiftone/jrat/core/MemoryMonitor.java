@@ -1,11 +1,10 @@
 package org.shiftone.jrat.core;
 
+import java.io.Writer;
 import org.shiftone.jrat.core.shutdown.ShutdownListener;
 import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.Writer;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -20,12 +19,10 @@ public class MemoryMonitor implements ShutdownListener {
     private static final Runtime RT = Runtime.getRuntime();
     private volatile boolean running = true;
 
-
     public MemoryMonitor(RuntimeContext context) {
 
         this.context = context;
         this.writer = context.createWriter("memory.csv");
-
 
         this.thread = new Thread(new Ticker());
         thread.setDaemon(true);
@@ -37,6 +34,7 @@ public class MemoryMonitor implements ShutdownListener {
 
     }
 
+    @Override
     public void shutdown() throws InterruptedException {
         running = false;
         thread.join(1000 * 10);
@@ -44,7 +42,7 @@ public class MemoryMonitor implements ShutdownListener {
 
     private void header() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("time ms");
         sb.append(",");
         sb.append("free");
@@ -59,7 +57,7 @@ public class MemoryMonitor implements ShutdownListener {
 
     private void execute() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append(System.currentTimeMillis() - context.getStartTimeMs());
         sb.append(",");
@@ -75,13 +73,14 @@ public class MemoryMonitor implements ShutdownListener {
 
     }
 
-
+    @Override
     public String toString() {
         return "Memory Monitor";
     }
 
     private class Ticker implements Runnable {
 
+        @Override
         public void run() {
 
             try {
@@ -97,7 +96,5 @@ public class MemoryMonitor implements ShutdownListener {
             IOUtil.close(writer);
         }
 
-
     }
 }
-

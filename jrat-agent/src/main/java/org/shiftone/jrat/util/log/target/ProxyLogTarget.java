@@ -1,8 +1,6 @@
 package org.shiftone.jrat.util.log.target;
 
-
 import org.shiftone.jrat.util.log.Constants;
-
 
 /**
  * This class is an indirection layer to the "real" LogTarget. This makes it
@@ -20,32 +18,28 @@ public class ProxyLogTarget implements LogTarget, Constants {
         this.logTarget = logTarget;
     }
 
-
+    @Override
     public boolean isLevelEnabled(String topic, int level) {
         return (level >= currentLevel);
     }
-
 
     public LogTarget getLogTarget() {
         return logTarget;
     }
 
-
     public void setLogTarget(LogTarget logTarget) {
         this.logTarget = logTarget;
     }
-
 
     public int getCurrentLevel() {
         return currentLevel;
     }
 
-
     public void setCurrentLevel(int currentLevel) {
         this.currentLevel = currentLevel;
     }
 
-
+    @Override
     public void log(String topic, int level, Object message, Throwable throwable) {
 
         if (isLevelEnabled(topic, level)) {

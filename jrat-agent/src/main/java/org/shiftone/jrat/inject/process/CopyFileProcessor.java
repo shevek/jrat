@@ -1,13 +1,10 @@
 package org.shiftone.jrat.inject.process;
 
-
+import java.io.File;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.inject.bytecode.Transformer;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.File;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -25,8 +22,7 @@ public class CopyFileProcessor extends AbstractFileProcessor {
             if (!s.equals(t)) {
                 IOUtil.copy(source, target);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new JRatException("unable to copy to : " + target, e);
         }
     }

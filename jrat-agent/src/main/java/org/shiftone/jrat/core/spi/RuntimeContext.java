@@ -1,14 +1,11 @@
 package org.shiftone.jrat.core.spi;
 
-
-import org.shiftone.jrat.core.shutdown.ShutdownListener;
-
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.Writer;
 import java.util.Properties;
-
+import org.shiftone.jrat.core.shutdown.ShutdownListener;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

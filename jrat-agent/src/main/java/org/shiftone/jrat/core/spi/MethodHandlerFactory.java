@@ -1,8 +1,6 @@
 package org.shiftone.jrat.core.spi;
 
-
 import org.shiftone.jrat.core.MethodKey;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -18,7 +16,6 @@ public interface MethodHandlerFactory {
      * not log to several silent handlers)</li>
      */
     MethodHandler createMethodHandler(MethodKey methodKey) throws Exception;
-
 
     /**
      * It is recommended that handler factories that require shutdown

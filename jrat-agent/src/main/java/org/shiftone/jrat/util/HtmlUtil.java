@@ -1,9 +1,7 @@
 package org.shiftone.jrat.util;
 
-
 import java.util.Collection;
 import java.util.Iterator;
-
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -12,7 +10,7 @@ public class HtmlUtil {
 
     public static String toHtml(Collection collection) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("<ul>");
 

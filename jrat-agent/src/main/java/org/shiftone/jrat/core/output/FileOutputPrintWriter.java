@@ -1,11 +1,8 @@
 package org.shiftone.jrat.core.output;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.PrintWriter;
 import java.io.Writer;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -13,8 +10,8 @@ import java.io.Writer;
 public class FileOutputPrintWriter extends PrintWriter implements FileOutput {
 
     private static final Logger LOG = Logger.getLogger(FileOutputPrintWriter.class);
-    private FileOutputRegistry registry;
-    private String name;
+    private final FileOutputRegistry registry;
+    private final String name;
     private boolean closed = false;
 
     public FileOutputPrintWriter(FileOutputRegistry registry, Writer out, String name) {
@@ -25,7 +22,7 @@ public class FileOutputPrintWriter extends PrintWriter implements FileOutput {
         this.name = name;
     }
 
-
+    @Override
     public synchronized void close() {
 
         if (!closed) {
@@ -39,7 +36,7 @@ public class FileOutputPrintWriter extends PrintWriter implements FileOutput {
         }
     }
 
-
+    @Override
     public String toString() {
         return "PrintWriter[" + name + "]";
     }

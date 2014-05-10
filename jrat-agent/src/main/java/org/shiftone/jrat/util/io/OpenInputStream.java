@@ -1,12 +1,9 @@
 package org.shiftone.jrat.util.io;
 
-
-import org.shiftone.jrat.util.io.proxy.ProxyInputStream;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.IOException;
 import java.io.InputStream;
-
+import org.shiftone.jrat.util.io.proxy.ProxyInputStream;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * Class OpenInputStream wrapps/proxies to a real InputStream and prevents the
@@ -26,14 +23,13 @@ public class OpenInputStream extends ProxyInputStream {
         this.inputStream = inputStream;
     }
 
-
+    @Override
     protected InputStream getTarget() throws IOException {
 
         assertOpen();
 
         return inputStream;
     }
-
 
     public void assertOpen() throws IOException {
 
@@ -42,11 +38,11 @@ public class OpenInputStream extends ProxyInputStream {
         }
     }
 
-
     /**
      * Method close does not call close() on the underlying input stream. It
      * set's a flag that is used assertions in the read methods of this class.
      */
+    @Override
     public void close() throws IOException {
 
         assertOpen();

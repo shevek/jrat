@@ -1,6 +1,5 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
-
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -10,22 +9,21 @@ import org.objectweb.asm.commons.Method;
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.log.Logger;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
 public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, Opcodes {
 
     private static final Logger LOG = Logger.getLogger(ProxyMethodVisitor.class);
-    private boolean isStatic;
-    private boolean isVoidReturn;
-    private Type classType;
-    private String handlerFieldName;
-    private String targetMethodName;
-    private Method method;
+    private final boolean isStatic;
+    private final boolean isVoidReturn;
+    private final Type classType;
+    private final String handlerFieldName;
+    private final String targetMethodName;
+    private final Method method;
 
     public ProxyMethodVisitor(int access, Method method, MethodVisitor mv, Type classType, String targetMethodName,
-                              String handlerFieldName) {
+            String handlerFieldName) {
 
         super(access, method, mv);
 
@@ -48,7 +46,7 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
         }
     }
 
-
+    @Override
     public void visitCode() {
         Label monitor = newLabel();
         int state = newLocal(ThreadState.TYPE);
@@ -67,7 +65,7 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
             invoke();
             returnValue();
         }
-        
+
         // -------------------------------------------------------------------------------
         mark(monitor);
 
@@ -78,7 +76,6 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
         int startTime = newLocal(Type.LONG_TYPE);
         storeLocal(startTime, Type.LONG_TYPE);
-
 
         Label beginTry = mark();    // try {
 
@@ -132,16 +129,13 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
         loadLocal(exception);
         invokeVirtual(ThreadState.TYPE, ThreadState.end);
 
-
         // -------------------------------------------------------------------------------
         // throw e;
         loadLocal(exception);
         throwException();
 
         // -------------------------------------------------------------------------------
-
         endMethod();
     }
-
 
 }

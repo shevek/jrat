@@ -1,5 +1,5 @@
 package org.shiftone.jrat.core.spi;
- 
+
 import org.shiftone.jrat.core.web.http.Response;
 
 /**

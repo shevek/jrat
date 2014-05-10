@@ -1,11 +1,10 @@
 package org.shiftone.jrat.test;
 
 
+import java.io.Serializable;
 import junit.framework.TestCase;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
-
-import java.io.Serializable;
 
 
 /**

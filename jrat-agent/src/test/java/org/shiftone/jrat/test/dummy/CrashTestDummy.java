@@ -1,12 +1,11 @@
 package org.shiftone.jrat.test.dummy;
 
 
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import org.shiftone.jrat.util.log.Logger;
 
 
 /**
@@ -26,7 +25,7 @@ public class CrashTestDummy implements Serializable {
 
     ;
 
-    private JuniorDummy juniorDummy = new JuniorDummy();
+    private final JuniorDummy juniorDummy = new JuniorDummy();
 
     /* ========== JAVA 1.5 TESTS ==================== */
     // tested

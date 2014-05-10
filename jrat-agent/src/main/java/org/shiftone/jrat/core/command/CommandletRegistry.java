@@ -1,13 +1,12 @@
 package org.shiftone.jrat.core.command;
 
-import org.shiftone.jrat.core.spi.Commandlet;
-import org.shiftone.jrat.util.AtomicLong;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.util.Collections;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import org.shiftone.jrat.core.spi.Commandlet;
+import org.shiftone.jrat.util.AtomicLong;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -15,10 +14,9 @@ import java.util.TreeMap;
 public class CommandletRegistry {
 
     private static final Logger LOG = Logger.getLogger(CommandletRegistry.class);
-    private SortedMap commandlets = new TreeMap();
-    private AtomicLong sequence = new AtomicLong();
-    private Commandlet defaultCommandlet = new ListRegistryCommandlet(this);
-
+    private final SortedMap commandlets = new TreeMap();
+    private final AtomicLong sequence = new AtomicLong();
+    private final Commandlet defaultCommandlet = new ListRegistryCommandlet(this);
 
     public CommandletRegistry() {
         register(defaultCommandlet);

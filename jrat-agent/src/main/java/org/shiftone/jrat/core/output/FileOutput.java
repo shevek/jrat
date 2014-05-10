@@ -1,6 +1,5 @@
 package org.shiftone.jrat.core.output;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */

@@ -1,10 +1,9 @@
 package org.shiftone.jrat.test;
 
 
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.IOException;
 import java.io.OutputStream;
+import org.shiftone.jrat.util.log.Logger;
 
 
 /**
@@ -37,6 +36,7 @@ public class DebugOutputStream extends OutputStream {
      * @param b .
      * @throws IOException
      */
+    @Override
     public void write(byte[] b) throws IOException {
 
         StringBuffer sb = new StringBuffer();
@@ -64,6 +64,7 @@ public class DebugOutputStream extends OutputStream {
      * @param len .
      * @throws IOException
      */
+    @Override
     public void write(byte[] b, int off, int len) throws IOException {
 
         StringBuffer sb = new StringBuffer();
@@ -88,6 +89,7 @@ public class DebugOutputStream extends OutputStream {
      *
      * @throws IOException
      */
+    @Override
     public void flush() throws IOException {
         LOG.info("flush()");
         outputStream.flush();
@@ -99,6 +101,7 @@ public class DebugOutputStream extends OutputStream {
      *
      * @throws IOException
      */
+    @Override
     public void close() throws IOException {
         LOG.info("close()");
         outputStream.close();
@@ -111,6 +114,7 @@ public class DebugOutputStream extends OutputStream {
      * @param b .
      * @throws IOException
      */
+    @Override
     public void write(int b) throws IOException {
 
         total += b;

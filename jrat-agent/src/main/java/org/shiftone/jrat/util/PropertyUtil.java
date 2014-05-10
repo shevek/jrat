@@ -1,13 +1,12 @@
 package org.shiftone.jrat.util;
 
-import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.util.log.Logger;
-
 import java.beans.PropertyDescriptor;
 import java.beans.PropertyEditor;
 import java.beans.PropertyEditorManager;
 import java.util.Iterator;
 import java.util.Map;
+import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)

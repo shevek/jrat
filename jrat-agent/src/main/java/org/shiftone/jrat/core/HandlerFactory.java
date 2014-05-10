@@ -1,13 +1,11 @@
 package org.shiftone.jrat.core;
 
-
 import org.shiftone.jrat.core.config.CacheMethodHandlerFactory;
 import org.shiftone.jrat.core.config.ConfigMethodHandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.core.spi.MethodHandlerFactory;
 import org.shiftone.jrat.provider.silent.SilentMethodHandler;
 import org.shiftone.jrat.util.log.Logger;
-
 
 public class HandlerFactory {
 
@@ -21,7 +19,6 @@ public class HandlerFactory {
         Singleton.initialize();
     }
 
-
     private static class Singleton {
 
         private static MethodHandlerFactory rootHandlerFactory;
@@ -29,7 +26,6 @@ public class HandlerFactory {
         static {
 
            // Mode.set(Mode.RUNTIME);
-
             try {
 
                 rootHandlerFactory = new CacheMethodHandlerFactory(
@@ -62,7 +58,7 @@ public class HandlerFactory {
         }
     }
 
-    public static synchronized MethodHandler getMethodHandler(MethodKey methodKey)  {
+    public static synchronized MethodHandler getMethodHandler(MethodKey methodKey) {
         return Singleton.getMethodHandler(methodKey);
     }
 

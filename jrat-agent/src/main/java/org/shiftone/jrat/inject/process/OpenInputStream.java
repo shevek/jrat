@@ -1,11 +1,8 @@
 package org.shiftone.jrat.inject.process;
 
-
-import org.shiftone.jrat.util.log.Logger;
-
 import java.io.IOException;
 import java.io.InputStream;
-
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * Class OpenInputStream wrapps/proxies to a real InputStream and prevents the
@@ -26,7 +23,6 @@ public class OpenInputStream extends InputStream {
         this.inputStream = inputStream;
     }
 
-
     public void assertOpen() throws IOException {
 
         if (isOpen == false) {
@@ -34,16 +30,16 @@ public class OpenInputStream extends InputStream {
         }
     }
 
-
+    @Override
     public int available() throws IOException {
         return inputStream.available();
     }
-
 
     /**
      * Method close does not call close() on the underlying input stream. It
      * set's a flag that is used assertions in the read methods of this class.
      */
+    @Override
     public void close() throws IOException {
 
         assertOpen();
@@ -53,17 +49,17 @@ public class OpenInputStream extends InputStream {
         // DO NOT inputStream.close();
     }
 
-
+    @Override
     public synchronized void mark(int readlimit) {
         inputStream.mark(readlimit);
     }
 
-
+    @Override
     public boolean markSupported() {
         return inputStream.markSupported();
     }
 
-
+    @Override
     public int read() throws IOException {
 
         assertOpen();
@@ -71,7 +67,7 @@ public class OpenInputStream extends InputStream {
         return inputStream.read();
     }
 
-
+    @Override
     public int read(byte b[]) throws IOException {
 
         assertOpen();
@@ -79,7 +75,7 @@ public class OpenInputStream extends InputStream {
         return inputStream.read(b);
     }
 
-
+    @Override
     public int read(byte b[], int off, int len) throws IOException {
 
         assertOpen();
@@ -87,13 +83,13 @@ public class OpenInputStream extends InputStream {
         return inputStream.read(b, off, len);
     }
 
-
+    @Override
     public synchronized void reset() throws IOException {
         assertOpen();
         inputStream.reset();
     }
 
-
+    @Override
     public long skip(long n) throws IOException {
 
         assertOpen();

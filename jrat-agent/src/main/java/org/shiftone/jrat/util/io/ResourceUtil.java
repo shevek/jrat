@@ -1,15 +1,17 @@
 package org.shiftone.jrat.util.io;
 
-
-import org.shiftone.jrat.core.JRatException;
-import org.shiftone.jrat.util.Assert;
-import org.shiftone.jrat.util.log.Logger;
-
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Properties;
-
+import org.shiftone.jrat.core.JRatException;
+import org.shiftone.jrat.util.Assert;
+import org.shiftone.jrat.util.log.Logger;
 
 /**
  * Class ResourceUtil
@@ -20,7 +22,7 @@ public class ResourceUtil {
 
     private static final Logger LOG = Logger.getLogger(ResourceUtil.class);
     private static ClassLoader CLASS_LOADER = ResourceUtil.class.getClassLoader();
-    private static Map resourceCache = new Hashtable();
+    private static final Map resourceCache = new Hashtable();
 
     static {
         if (CLASS_LOADER == null) {
@@ -38,21 +40,18 @@ public class ResourceUtil {
 
         try {
             klass = CLASS_LOADER.loadClass(className);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new JRatException("unable to getPreferences class '" + className + "'", e);
         }
 
         try {
             instance = klass.newInstance();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new JRatException("unable to instantiate '" + className + "'", e);
         }
 
         return instance;
     }
-
 
     public static InputStream loadResourceAsStream(String resourceName) {
 
@@ -70,8 +69,7 @@ public class ResourceUtil {
                 inputStream = new FileInputStream(resourceName);
 
                 LOG.debug("resource opened as file");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 throw new JRatException("unable to locate resource : " + resourceName);
             }
         } else {
@@ -81,7 +79,6 @@ public class ResourceUtil {
         return inputStream;
     }
 
-
     public static byte[] loadResourceAsBytes(String resourceName) {
 
         InputStream inputStream = loadResourceAsStream(resourceName);
@@ -89,14 +86,12 @@ public class ResourceUtil {
 
         try {
             IOUtil.copy(inputStream, outputStream);
-        }
-        finally {
+        } finally {
             IOUtil.close(inputStream);
         }
 
         return outputStream.toByteArray();
     }
-
 
     private static String fetchResource(String name) {
 
@@ -117,14 +112,12 @@ public class ResourceUtil {
             for (c = 0; c >= 0; c = reader.read(buffer)) {
                 sb.append(buffer, 0, c);
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new JRatException("unable to read resource data : " + name, e);
         }
 
         return sb.toString();
     }
-
 
     public static String loadResource(String name) {
 
@@ -145,7 +138,6 @@ public class ResourceUtil {
         return resource;
     }
 
-
     public static Properties getResourceAsProperties(String name) {
 
         InputStream inputStream = null;
@@ -159,8 +151,7 @@ public class ResourceUtil {
 
         try {
             props.load(inputStream);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new JRatException("unable to getPreferences properties from resource : " + name, e);
         }
 

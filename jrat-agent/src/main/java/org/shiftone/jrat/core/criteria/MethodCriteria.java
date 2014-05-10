@@ -1,6 +1,5 @@
 package org.shiftone.jrat.core.criteria;
 
-
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -11,12 +10,10 @@ public interface MethodCriteria {
     public static final MethodCriteria DEFAULT = ALL;    // new
 
     // DebugMethodCriteria(ALL);
-
     /**
      * should a class with these attributes be matched?
      */
     boolean isMatch(String className, long modifiers);
-
 
     /**
      * should a method with these attributes be matched?

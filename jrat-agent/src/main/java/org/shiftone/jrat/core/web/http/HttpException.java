@@ -1,4 +1,5 @@
 package org.shiftone.jrat.core.web.http;
+
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
@@ -13,6 +14,5 @@ public class HttpException extends RuntimeException {
     public Status getStatus() {
         return status;
     }
-
 
 }
