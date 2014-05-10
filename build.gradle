@@ -1,0 +1,72 @@
+// Establish version and status
+ext.githubProjectName = rootProject.name // Change if github project name is not the same as the root project's name
+
+buildscript {
+    repositories {
+        // mavenLocal()
+        mavenCentral() // maven { url 'http://jcenter.bintray.com' }
+    }
+    apply from: file('gradle/buildscript.gradle'), to: buildscript 
+}
+
+allprojects {
+    repositories { 
+        // mavenLocal()
+        mavenCentral() // maven { url: 'http://jcenter.bintray.com' }
+    }
+}
+
+apply from: file('gradle/convention.gradle')
+apply from: file('gradle/maven.gradle')
+apply from: file('gradle/check.gradle')
+apply from: file('gradle/license.gradle')
+// apply from: file('gradle/release.gradle')
+
+subprojects {
+    group = "org.anarres.${githubProjectName}"
+
+    dependencies {
+        compile 'com.google.code.findbugs:jsr305:2.0.2'
+
+        testCompile 'junit:junit:4.8.1'
+    }
+}
+
+project(':jrat-agent') {
+    dependencies {
+		compile 'asm:asm-all:2.2.3'
+		// compile 'asm:asm-all:3.3.1'
+		// compile 'org.ow2.asm:asm:5.0.2'
+    }
+}
+
+project(':jrat-desktop') {
+    dependencies {
+		compile project(':jrat-agent')
+		compile 'org.swinglabs.swingx:swingx-all:1.6.5-1'
+    }
+}
+
+project(':jrat-integration-ant') {
+    dependencies {
+		compile project(':jrat-agent')
+		compile 'org.apache.ant:ant:1.7.0'
+    }
+}
+
+project(':jrat-integration-aop') {
+    dependencies {
+		compile project(':jrat-agent')
+		compile 'aopalliance:aopalliance:1.0'
+		compile 'aspectwerkz:aspectwerkz:2.0'	// -> 2.1
+		compile 'cglib:cglib:2.2.2'				// -> 3.1
+		compile 'nanning:nanning:0.9'
+		compile 'dynaop:dynaop:1.0-beta'
+    }
+}
+
+project(':jrat-demo') {
+    dependencies {
+		compile project(':jrat-desktop')
+    }
+}

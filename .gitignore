@@ -1,0 +1,10 @@
+build
+dist
+app
+*/nbproject/private
+reports
+.*.swp
+.gradle
+.nb-gradle
+*.dot
+jrat.output

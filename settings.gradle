@@ -1,0 +1,7 @@
+rootProject.name='jrat'
+include 'jrat-agent',
+	'jrat-desktop',
+	'jrat-integration-ant',
+	'jrat-integration-aop',
+	'jrat-docs',
+	'jrat-demo'
