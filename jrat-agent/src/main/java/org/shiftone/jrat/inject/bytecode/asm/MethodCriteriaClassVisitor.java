@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.log.Logger;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class MethodCriteriaClassVisitor implements ClassVisitor {
+public class MethodCriteriaClassVisitor extends ClassVisitor {
 
     private static final Logger LOG = Logger.getLogger(MethodCriteriaClassVisitor.class);
     private final ClassVisitor injector;
@@ -19,6 +19,7 @@ public class MethodCriteriaClassVisitor implements ClassVisitor {
     private ClassVisitor defaultClassVisitor;
 
     public MethodCriteriaClassVisitor(ClassVisitor injector, ClassVisitor bypass) {
+        super(Opcodes.ASM5);
         this.injector = injector;
         this.bypass = bypass;
     }

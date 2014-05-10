@@ -1,7 +1,6 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
 
-import org.objectweb.asm.ClassAdapter;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -12,14 +11,14 @@ import org.shiftone.jrat.util.log.Logger;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class ClassInitClassVisitor extends ClassAdapter implements Constants, Opcodes {
+public class ClassInitClassVisitor extends ClassVisitor implements Constants, Opcodes {
 
     private static final Logger LOG = Logger.getLogger(ClassInitClassVisitor.class);
     private boolean clinitVisited = false;
     private String className;
 
     public ClassInitClassVisitor(final ClassVisitor cv) {
-        super(cv);
+        super(Opcodes.ASM5, cv);
     }
 
 

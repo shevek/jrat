@@ -13,7 +13,7 @@ import org.shiftone.jrat.util.log.Logger;
 import java.util.Date;
 
 
-public class InjectClassVisitor extends ClassAdapter implements Constants, Opcodes {
+public class InjectClassVisitor extends ClassVisitor implements Constants, Opcodes {
 
     private static final Logger LOG = Logger.getLogger(InjectClassVisitor.class);
     private int handlerCount;
@@ -21,7 +21,7 @@ public class InjectClassVisitor extends ClassAdapter implements Constants, Opcod
     private GeneratorAdapter initializer;
 
     public InjectClassVisitor(ClassVisitor visitor) {
-        super(visitor);
+        super(Opcodes.ASM5, visitor);
     }
 
 

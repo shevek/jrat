@@ -34,9 +34,7 @@ subprojects {
 
 project(':jrat-agent') {
     dependencies {
-		compile 'asm:asm-all:2.2.3'
-		// compile 'asm:asm-all:3.3.1'
-		// compile 'org.ow2.asm:asm:5.0.2'
+		compile 'org.ow2.asm:asm-debug-all:5.0.2'
     }
 }
 

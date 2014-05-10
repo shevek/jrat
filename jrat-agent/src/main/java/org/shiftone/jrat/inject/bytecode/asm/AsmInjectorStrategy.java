@@ -15,7 +15,7 @@ public class AsmInjectorStrategy implements InjectorStrategy {
     public byte[] inject(byte[] rawClassData, TransformerOptions options) throws Exception {
 
         ClassReader reader = new ClassReader(rawClassData);
-        ClassWriter classWriter = new ClassWriter(true);
+        ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
         ClassVisitor target = classWriter;
 
         // target = new DebugClassVisitor(target);
@@ -41,7 +41,7 @@ public class AsmInjectorStrategy implements InjectorStrategy {
         // * ClassInitClassVisitor will add to the static initializer or add on
         // the result is the class will have one that calls the jrat static init
         // method
-        reader.accept(visitor, false);
+        reader.accept(visitor, 0);
 
         return classWriter.toByteArray();
     }

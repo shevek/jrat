@@ -9,7 +9,7 @@ import org.shiftone.jrat.util.log.Logger;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class IfInterfaceClassVisitor implements ClassVisitor {
+public class IfInterfaceClassVisitor extends ClassVisitor {
 
     private static final Logger LOG = Logger.getLogger(IfInterfaceClassVisitor.class);
     private ClassVisitor interfaceClassVisitor;
@@ -17,6 +17,7 @@ public class IfInterfaceClassVisitor implements ClassVisitor {
     private ClassVisitor currentVisitor;
 
     public IfInterfaceClassVisitor(ClassVisitor interfaceClassVisitor, ClassVisitor concreteClassVisitor) {
+        super(Opcodes.ASM5);
         this.interfaceClassVisitor = interfaceClassVisitor;
         this.concreteClassVisitor = concreteClassVisitor;
     }

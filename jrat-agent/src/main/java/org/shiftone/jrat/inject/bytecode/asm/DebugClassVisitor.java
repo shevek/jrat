@@ -5,12 +5,12 @@ import org.objectweb.asm.*;
 import org.shiftone.jrat.util.log.Logger;
 
 
-public class DebugClassVisitor extends ClassAdapter {
+public class DebugClassVisitor extends ClassVisitor {
 
     private static final Logger LOG = Logger.getLogger(DebugClassVisitor.class);
 
     public DebugClassVisitor(final ClassVisitor cv) {
-        super(cv);
+        super(Opcodes.ASM5, cv);
     }
 
 
