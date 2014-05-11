@@ -13,7 +13,6 @@ public class TreeMethodHandler implements MethodHandler {
     private final MethodKey methodKey;
 
     public TreeMethodHandler(TreeMethodHandlerFactory factory, MethodKey methodKey) {
-
         Assert.assertNotNull("factory", factory);
         Assert.assertNotNull("methodKey", methodKey);
 
@@ -23,17 +22,13 @@ public class TreeMethodHandler implements MethodHandler {
 
     @Override
     public void onMethodStart() {
-
         Delegate delegate = factory.getDelegate();
-
         delegate.onMethodStart(methodKey);
     }
 
     @Override
     public void onMethodFinish(long durationNanos, Throwable throwable) {
-
         Delegate delegate = factory.getDelegate();
-
         delegate.onMethodFinish(methodKey, durationNanos, throwable == null);
     }
 }

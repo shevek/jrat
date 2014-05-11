@@ -11,19 +11,20 @@ import java.util.StringTokenizer;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class ClassKey implements Serializable, Comparable {
+public class ClassKey implements Serializable, Comparable<ClassKey> {
 
     private static final long serialVersionUID = 1;
     private final String packageName;
     private final String className;
     private int hashCode;
 
-    private static final Map CACHE = new HashMap();  //<String, ClassKey>
+    private static final Map<String, ClassKey> CACHE = new HashMap<String, ClassKey>();
 
     public static ClassKey getInstance(String fullyQualifiedClassName) {
-        ClassKey classKey = (ClassKey) CACHE.get(fullyQualifiedClassName);
+        ClassKey classKey = CACHE.get(fullyQualifiedClassName);
         if (classKey == null) {
             classKey = new ClassKey(fullyQualifiedClassName);
+            CACHE.put(fullyQualifiedClassName, classKey);
         }
         return classKey;
     }
@@ -50,11 +51,11 @@ public class ClassKey implements Serializable, Comparable {
         String[] result = new String[0];
         if (packageName.length() != 0) {
             StringTokenizer st = new StringTokenizer(packageName, ".");
-            List parts = new ArrayList();
+            List<String> parts = new ArrayList<String>();
             while (st.hasMoreTokens()) {
                 parts.add(st.nextToken());
             }
-            result = (String[]) parts.toArray(new String[parts.size()]);
+            result = parts.toArray(new String[parts.size()]);
         }
         return result;
     }
@@ -107,11 +108,10 @@ public class ClassKey implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        ClassKey other = (ClassKey) o;
-        int c = packageName.compareTo(other.packageName);
+    public int compareTo(ClassKey o) {
+        int c = packageName.compareTo(o.packageName);
         if (c == 0) {
-            c = className.compareTo(other.className);
+            c = className.compareTo(o.className);
         }
         return c;
     }

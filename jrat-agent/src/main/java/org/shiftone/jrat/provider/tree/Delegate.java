@@ -25,16 +25,12 @@ public class Delegate {
     }
 
     public final void onMethodStart(MethodKey methodKey) {
-
         currentNode = currentNode.getChild(factory, methodKey);
-
         currentNode.getAccumulator().onMethodStart();
     }
 
     public final void onMethodFinish(MethodKey methodKey, long duration, boolean success) {
-
         currentNode.getAccumulator().onMethodFinish(duration, success);
-
         currentNode = currentNode.getParentNode();
     }
 }

@@ -26,16 +26,69 @@ subprojects {
     group = "org.anarres.${githubProjectName}"
 
     dependencies {
-        compile 'com.google.code.findbugs:jsr305:2.0.2'
+        // compile 'com.google.code.findbugs:jsr305:2.0.2'
 
-        testCompile 'junit:junit:4.8.1'
+        testCompile 'junit:junit:4.11'
     }
 }
 
 project(':jrat-agent') {
+	configurations {
+		jarjar
+	}
+
     dependencies {
 		compile 'org.ow2.asm:asm-debug-all:5.0.2'
+		compile 'org.swinglabs.swingx:swingx-all:1.6.5-1'
+
+		jarjar 'com.googlecode.jarjar:jarjar:1.3'
     }
+
+	task('jarjar', dependsOn: compileJava) {
+		def outputFile = new File(project.buildDir, "jarjar/shiftone-jrat.jar")
+		inputs.dir sourceSets.main.output.classesDir
+		outputs.file outputFile
+		doLast {
+			ant.taskdef(name: 'jarjar',
+				classname: 'com.tonicsystems.jarjar.JarJarTask',
+				classpath: configurations.jarjar.asPath)
+			ant.jarjar(jarfile: outputFile) {
+				fileset(dir: sourceSets.main.output.classesDir) {
+					exclude(name: 'org/shiftone/jrat/integration/**/*')
+				}
+
+				configurations.compile.each { File file ->
+					zipfileset(src: file)
+				}
+
+				rule(pattern: "org.objectweb.asm.**",
+					result: "org.shiftone.jrat.depends.asm.@1")
+				zap(pattern: "org.objectweb.asm.xml.**")
+				zap(pattern: "org.objectweb.asm.tree.**")
+				zap(pattern: "org.objectweb.asm.util.**")
+
+				rule(pattern: "org.jdesktop.**",
+					result: "org.shiftone.jrat.depends.jdesktop.@1")
+				zap(pattern: "ca.odell.glazedlists.swt.**")
+				zap(pattern: "ca.odell.glazedlists.io.**")
+
+				// http://issues.gradle.org/browse/GRADLE-1481
+				delegate.manifest {
+					attribute(name: "Main-Class", value: "org.shiftone.jrat.cli.Cli")
+					attribute(name: "Product-Name", value: project.name)
+					attribute(name: "Product-Version", value: project.version)
+					// attribute(name: "Project-Home", value: "${build.home}")
+					// attribute(name: "Built-By", value: "${user.name}")
+					// attribute(name: "Built-On", value: "${jared.TODAY}")
+
+					// JVMTI
+					attribute(name: "Premain-Class", value: "org.shiftone.jrat.jvmti.Agent")
+					attribute(name: "Can-Redefine-Classes", value: "true")
+
+				}
+			}
+		}
+	}
 }
 
 project(':jrat-desktop') {
@@ -43,7 +96,7 @@ project(':jrat-desktop') {
 
     dependencies {
 		compile project(':jrat-agent')
-		compile 'org.swinglabs.swingx:swingx-all:1.6.5-1'
+		// compile 'org.swinglabs.swingx:swingx-all:1.6.5-1'
     }
 }
 

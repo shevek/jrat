@@ -7,6 +7,7 @@ import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.util.log.Logger;
@@ -23,16 +24,15 @@ public class TreeNode implements Externalizable {
     protected MethodKey methodKey;
     protected TreeNode parent;
     private Accumulator accumulator;
-    protected HashMap children = new HashMap(5);
+    protected final Map<MethodKey, TreeNode> children = new HashMap<MethodKey, TreeNode>(5);
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
-
         out.writeObject(accumulator);
         out.writeObject(methodKey);
 
         // column a copy of the children
-        List list = getChildren();
+        List<TreeNode> list = getChildren();
 
         // write a child count
         int childCount = list.size();
@@ -40,20 +40,18 @@ public class TreeNode implements Externalizable {
 
         // write the children
         for (int i = 0; i < childCount; i++) {
-            TreeNode child = (TreeNode) list.get(i);
+            TreeNode child = list.get(i);
             child.writeExternal(out);
         }
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-
         this.accumulator = (Accumulator) in.readObject();
         this.methodKey = (MethodKey) in.readObject();
 
         int childCount = in.readInt();
         for (int i = 0; i < childCount; i++) {
-
             TreeNode child = new TreeNode();
 
             child.readExternal(in);
@@ -65,7 +63,6 @@ public class TreeNode implements Externalizable {
     }
 
     public TreeNode() {
-
         // root node
         this.methodKey = null;
         this.parent = null;
@@ -78,36 +75,26 @@ public class TreeNode implements Externalizable {
         this.accumulator = new Accumulator();
     }
 
-    public List getChildren() {
-
-        List list = new ArrayList();
-
+    public List<TreeNode> getChildren() {
         synchronized (children) {
-            list.addAll(children.values());
+            return new ArrayList<TreeNode>(children.values());
         }
-
-        return list;
     }
 
     /**
      * Method gets <b>AND CREATES IF NEEDED</b> the requested tree node
      */
     public TreeNode getChild(TreeMethodHandlerFactory factory, MethodKey methodKey) {
-
-        TreeNode treeNode = null;
-
         synchronized (children) {
-            treeNode = (TreeNode) children.get(methodKey);
+            TreeNode treeNode = children.get(methodKey);
 
             if (treeNode == null) {
-
                 treeNode = factory.createTreeNode(methodKey, this);
                 children.put(methodKey, treeNode);
-
             }
-        }
 
-        return treeNode;
+            return treeNode;
+        }
     }
 
     public final TreeNode getParentNode() {
@@ -127,18 +114,16 @@ public class TreeNode implements Externalizable {
     }
 
     // ---------------------------------------------------------------
-    public synchronized void reset() {
+    public void reset() {
 
         // need to clone map - concurrency issues
-        List list = new ArrayList();
+        List<TreeNode> list = new ArrayList<TreeNode>();
 
         synchronized (children) {
             list.addAll(children.values());
         }
 
-        for (int i = 0; i < list.size(); i++) {
-            TreeNode treeNode = (TreeNode) list.get(i);
-
+        for (TreeNode treeNode : list) {
             treeNode.reset();
         }
 

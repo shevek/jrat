@@ -12,7 +12,7 @@ import org.shiftone.jrat.util.log.Logger;
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class MethodKey implements Serializable, Comparable {
+public class MethodKey implements Serializable, Comparable<MethodKey> {
 
     private static final Logger LOG = Logger.getLogger(MethodKey.class);
     private static final long serialVersionUID = 1;
@@ -25,12 +25,12 @@ public class MethodKey implements Serializable, Comparable {
     private transient Signature sig = null;
 
     // todo: decide if the weak map helps
-    private static Map CACHE = new WeakHashMap(); //<MethodKey, MethodKey>
+    private static Map<MethodKey, MethodKey> CACHE = new WeakHashMap<MethodKey, MethodKey>();
 
     public static MethodKey getInstance(String fullyQualifiedClassName, String methodName, String signature) {
         ClassKey classKey = ClassKey.getInstance(fullyQualifiedClassName);
         MethodKey key = new MethodKey(classKey, methodName, signature);
-        MethodKey value = (MethodKey) CACHE.get(key);
+        MethodKey value = CACHE.get(key);
         if (value == null) {
             CACHE.put(key, key);
             value = key;
@@ -141,13 +141,12 @@ public class MethodKey implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        MethodKey other = (MethodKey) o;
-        int c = classKey.compareTo(other.classKey);
+    public int compareTo(MethodKey o) {
+        int c = classKey.compareTo(o.classKey);
         if (c == 0) {
-            c = methodName.compareTo(other.methodName);
+            c = methodName.compareTo(o.methodName);
             if (c == 0) {
-                c = signature.compareTo(other.signature);
+                c = signature.compareTo(o.signature);
             }
         }
         return c;

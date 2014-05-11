@@ -20,8 +20,8 @@ public class VirtualMethodCall {
 
     private static final Logger LOG = Logger.getLogger(VirtualMethodCall.class);
     private static final Random random = new Random();
-    private final List memoryLeak = new LinkedList();
-    private final List children = new ArrayList();
+    private final List<String> memoryLeak = new LinkedList<String>();
+    private final List<VirtualMethodCall> children = new ArrayList<VirtualMethodCall>();
     private MethodKey methodKey = null;
     private MethodHandler handler = null;
     private final long childCalls;

@@ -7,7 +7,7 @@ import org.shiftone.jrat.util.Assert;
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class DelegateThreadLocal extends ThreadLocal {
+public class DelegateThreadLocal extends ThreadLocal<Delegate> {
 
     private TreeMethodHandlerFactory factory = null;
 
@@ -19,7 +19,7 @@ public class DelegateThreadLocal extends ThreadLocal {
     }
 
     @Override
-    protected final Object initialValue() {
+    protected final Delegate initialValue() {
         return new Delegate(factory);
     }
 }

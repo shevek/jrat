@@ -23,11 +23,11 @@ public class Monitor {
         this.handler = HandlerFactory.getMethodHandler(className, methodName, signature);
     }
 
-    public Monitor(Class klass, String methodName, String signature) {
+    public Monitor(Class<?> klass, String methodName, String signature) {
         this.handler = HandlerFactory.getMethodHandler(klass.getName(), methodName, signature);
     }
 
-    public Monitor(Class klass, String methodName) {
+    public Monitor(Class<?> klass, String methodName) {
         this.handler = HandlerFactory.getMethodHandler(klass.getName(), methodName, "()V");
     }
 

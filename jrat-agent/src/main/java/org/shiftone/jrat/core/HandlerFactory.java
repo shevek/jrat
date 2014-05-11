@@ -66,7 +66,7 @@ public class HandlerFactory {
         return Singleton.getMethodHandler(MethodKey.getInstance(className, methodName, signature));
     }
 
-    public static synchronized MethodHandler getMethodHandler(Class klass, String methodName, String signature) {
+    public static synchronized MethodHandler getMethodHandler(Class<?> klass, String methodName, String signature) {
         return Singleton.getMethodHandler(MethodKey.getInstance(klass.getName(), methodName, signature));
     }
 }

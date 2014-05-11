@@ -11,6 +11,7 @@ import org.shiftone.jrat.core.spi.RuntimeContext;
 import org.shiftone.jrat.provider.tree.command.DumpOutputCommandlet;
 import org.shiftone.jrat.provider.tree.command.ResetCommandlet;
 import org.shiftone.jrat.provider.tree.command.WriteOutputCommandlet;
+import org.shiftone.jrat.provider.tree.ui.TraceViewBuilder;
 import org.shiftone.jrat.util.AtomicLong;
 import org.shiftone.jrat.util.log.Logger;
 
@@ -23,10 +24,10 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     private static final Logger LOG = Logger.getLogger(TreeMethodHandlerFactory.class);
     private final TreeNode rootNode = new TreeNode();
-    private final Set allMethodKeys = new HashSet();
+    private final Set<MethodKey> allMethodKeys = new HashSet<MethodKey>();
     private final DelegateThreadLocal delegateThreadLocal = new DelegateThreadLocal(this);
     private final AtomicLong methodHandlerCount = new AtomicLong();
-    private final List treeNodes = new ArrayList(); /* <TreeNode> */
+    private final List<TreeNode> treeNodes = new ArrayList<TreeNode>();
 
     private final TreeWebActionFactory webActionFactory = new TreeWebActionFactory(treeNodes);
 
@@ -68,7 +69,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
      * processed.
      */
     public final Delegate getDelegate() {
-        return (Delegate) delegateThreadLocal.get();
+        return delegateThreadLocal.get();
     }
 
     public final TreeNode getRootNode() {
@@ -86,27 +87,23 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     @Override
     public void writeOutputFile(String fileName) {
-
         LOG.info("writeOutputFile...");
 
-        /* TODO
-         getContext().writeSerializable(fileName,
-         new TraceViewBuilder(
-         rootNode,
-         new HashSet(allMethodKeys), // copy to avoid sync issues
-         getContext().getStartTimeMs(),
-         System.currentTimeMillis(),
-         getContext().getSystemPropertiesAtStartup(),
-         getContext().getHostName(),
-         getContext().getHostAddress()
-         )
-         );
-         */
+        getContext().writeSerializable(fileName,
+                new TraceViewBuilder(
+                        rootNode,
+                        new HashSet<MethodKey>(allMethodKeys), // copy to avoid sync issues
+                        getContext().getStartTimeMs(),
+                        System.currentTimeMillis(),
+                        getContext().getSystemPropertiesAtStartup(),
+                        getContext().getHostName(),
+                        getContext().getHostAddress()
+                )
+        );
     }
 
     @Override
     public void shutdown() {
-
         LOG.info("shutdown...");
         writeOutputFile();
         LOG.info("shutdown complete");
