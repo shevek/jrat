@@ -3,7 +3,7 @@ package org.shiftone.jrat.test.jmx;
 /**
  * @author Jeff Drost
  */
-public class Test implements TestMBean {
+public class TestObject implements TestObjectMBean {
 
     private String string;
     private int number;

@@ -3,7 +3,7 @@ package org.shiftone.jrat.test.jmx;
 /**
  * @author Jeff Drost
  */
-public interface TestMBean {
+public interface TestObjectMBean {
 
     void doIt();
 
