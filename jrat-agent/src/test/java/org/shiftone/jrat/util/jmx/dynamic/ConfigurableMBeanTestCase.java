@@ -1,26 +1,21 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import java.lang.management.ManagementFactory;
 import javax.management.MBeanServer;
-import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
-import javax.management.remote.JMXConnectorServer;
-import javax.management.remote.JMXConnectorServerFactory;
-import javax.management.remote.JMXServiceURL;
-import junit.framework.TestCase;
-import org.shiftone.jrat.core.Environment;
+import org.junit.Test;
 import org.shiftone.jrat.core.jmx.info.JRatInfo;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
  * @author Jeff Drost
  */
-public class ConfigurableMBeanTestCase extends TestCase {
+public class ConfigurableMBeanTestCase {
 
     private static final Logger LOG = Logger.getLogger(ConfigurableMBeanTestCase.class);
 
-    public static void testOne() throws Exception {
+    @Test
+    public void testOne() throws Exception {
 
         ConfigurableMBean beanAttribute = new ConfigurableMBean("this is a config mbean");
         beanAttribute.add("testString", new SimpleAttributeValue("this is a test"));
@@ -38,28 +33,10 @@ public class ConfigurableMBeanTestCase extends TestCase {
             }
         });
 
-        MBeanServer mBeanServer = MBeanServerFactory.createMBeanServer();
+        MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
 
         mBeanServer.registerMBean(beanAttribute, new ObjectName("test:number=1"));
         mBeanServer.registerMBean(new JRatInfo(), new ObjectName("test:number=2"));
-
-        int port = Environment.getSettings().getRmiRegistryPort();
-
-        Registry registry = LocateRegistry.createRegistry(port);
-        String urlText = Environment.getSettings().getMBeanServerServerUrl();
-
-        if (urlText != null) {
-
-            // create a URL
-            JMXServiceURL url = new JMXServiceURL(urlText);
-
-            LOG.info("Binding JMXConnectorServer to RMI jmx.");
-            JMXConnectorServer connectorServer = JMXConnectorServerFactory.newJMXConnectorServer(url, null, mBeanServer);
-
-            LOG.info("Starting JMXConnectorServer.");
-            connectorServer.start();
-
-        }
 
         //  Thread.sleep(1000 * 60 * 5);
     }

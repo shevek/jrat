@@ -36,7 +36,6 @@ public class InjectorTestCase {
         //System.setProperty(Settings.BASE_DIRECTORY, "c:/temp") ;
         //System.setProperty(Settings.APPLICATION, "app") ;
         Environment.getSettings().setJmxEnabled(true);
-        Environment.getSettings().setMBeanServerCreationEnabled(true);
 
         //System.setProperty(Settings.HANDLER_CLASS, TraceMethodHandlerFactory.class.getName()) ;
         //System.setProperty(Settings.HANDLER_CLASS, StatMethodHandlerFactory.class.getName());

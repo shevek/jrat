@@ -3,7 +3,7 @@ package org.shiftone.jrat.core;
 import org.shiftone.jrat.core.command.CommandletRegistry;
 import org.shiftone.jrat.core.command.CommandletRegistryFactory;
 import org.shiftone.jrat.core.jmx.JmxRegistry;
-import org.shiftone.jrat.core.jmx.JmxRegistryFactory;
+import org.shiftone.jrat.core.jmx.ServerJmxRegistry;
 import org.shiftone.jrat.core.jmx.benchmark.Benchmark;
 import org.shiftone.jrat.core.jmx.info.JRatInfo;
 import org.shiftone.jrat.core.output.FileOutputFactory;
@@ -54,7 +54,7 @@ public class ServiceFactory {
     public synchronized JmxRegistry getJmxRegistry() {
 
         if (jmxRegistry == null) {
-            jmxRegistry = JmxRegistryFactory.createJmxRegistry();
+            jmxRegistry = new ServerJmxRegistry();
 
             jmxRegistry.registerMBean(new JRatInfo(), null);
             jmxRegistry.registerMBean(new LoggingManager(), null);

@@ -119,48 +119,6 @@ public class Settings {
         this.jmxEnabled = jmxEnabled;
     }
 
-    public boolean isMBeanServerCreationEnabled() {
-        return mBeanServerCreationEnabled;
-    }
-
-    public void setMBeanServerCreationEnabled(boolean mBeanServerCreationEnabled) {
-        this.mBeanServerCreationEnabled = mBeanServerCreationEnabled;
-    }
-
-    public String getMBeanServerServerUrl() {
-        return this.mBeanServerServerUrl == null
-                ? "service:jmx:rmi:///jndi/rmi://localhost:" + getRmiRegistryPort() + "/jrat"
-                : this.mBeanServerServerUrl;
-    }
-
-    public void setMBeanServerServerUrl(String mBeanServerServerUrl) {
-        this.mBeanServerServerUrl = mBeanServerServerUrl;
-    }
-
-    public String getMBeanServerAgentId() {
-        return mBeanServerAgentId;
-    }
-
-    public void setMBeanServerAgentId(String mBeanServerAgentId) {
-        this.mBeanServerAgentId = mBeanServerAgentId;
-    }
-
-    public boolean isRmiRegistryCreationEnabled() {
-        return rmiRegistryCreationEnabled;
-    }
-
-    public void setRmiRegistryCreationEnabled(boolean rmiRegistryCreationEnabled) {
-        this.rmiRegistryCreationEnabled = rmiRegistryCreationEnabled;
-    }
-
-    public int getRmiRegistryPort() {
-        return rmiRegistryPort;
-    }
-
-    public void setRmiRegistryPort(int rmiRegistryPort) {
-        this.rmiRegistryPort = rmiRegistryPort;
-    }
-
     public boolean isInjectorDefaultExcludesEnabled() {
         return injectorDefaultExcludesEnabled;
     }

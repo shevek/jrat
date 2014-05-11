@@ -1,15 +1,16 @@
 package org.shiftone.jrat.test;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.util.log.Logger;
+import static org.junit.Assert.*;
 
 /**
  * Class AccumulatorTestCase
  *
  * @author <a href="mailto:jeff@shiftone.org">Jeff Drost</a>
  */
-public class AccumulatorTestCase extends TestCase {
+public class AccumulatorTestCase {
 
     private static final Logger LOG = Logger.getLogger(AccumulatorTestCase.class);
     private static final double TOLERANCE = 0.00000001;
@@ -17,6 +18,7 @@ public class AccumulatorTestCase extends TestCase {
     /**
      * Method testStdDeviation0
      */
+    @Test
     public void testStdDeviation0() {
 
         Accumulator stats = new Accumulator();
@@ -27,6 +29,7 @@ public class AccumulatorTestCase extends TestCase {
     /**
      * Method testStdDeviation1
      */
+    @Test
     public void testStdDeviation1() {
 
         Accumulator stats = new Accumulator();
@@ -38,6 +41,7 @@ public class AccumulatorTestCase extends TestCase {
     /**
      * .
      */
+    @Test
     public void testStdDeviation11() {
 
         Accumulator stats = new Accumulator();
@@ -58,6 +62,7 @@ public class AccumulatorTestCase extends TestCase {
     /**
      * .
      */
+    @Test
     public void testStdDeviation20() {
 
         Accumulator stats = new Accumulator();
@@ -70,6 +75,7 @@ public class AccumulatorTestCase extends TestCase {
                 };
 
         for (int i = 0; i < values.length; i++) {
+            LOG.info("onMethodFinish: " + values[i]);
             stats.onMethodFinish(values[i], true);
         }
 
