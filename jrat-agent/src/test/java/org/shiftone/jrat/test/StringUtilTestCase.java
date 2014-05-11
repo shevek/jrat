@@ -1,11 +1,9 @@
 package org.shiftone.jrat.test;
 
-
 import java.io.Serializable;
 import junit.framework.TestCase;
 import org.shiftone.jrat.util.StringUtil;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class StringUtilTestCase
@@ -23,7 +21,6 @@ public class StringUtilTestCase extends TestCase implements Serializable {
         StringUtil.parsePropertiesString("a=b|c=d|e=f");
         StringUtil.parsePropertiesString("a=b|vvv|c=d|e=f");
     }
-
 
     /**
      * Method testDurationToString

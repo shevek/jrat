@@ -1,8 +1,6 @@
 package org.shiftone.jrat.test.dummy;
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class DummyBean
@@ -30,7 +28,6 @@ public class DummyBean {
         return eight;
     }
 
-
     /**
      * Method setEight
      *
@@ -39,7 +36,6 @@ public class DummyBean {
     public void setEight(boolean eight) {
         this.eight = eight;
     }
-
 
     /**
      * Method getFive
@@ -50,7 +46,6 @@ public class DummyBean {
         return five;
     }
 
-
     /**
      * Method setFive
      *
@@ -59,7 +54,6 @@ public class DummyBean {
     public void setFive(Long five) {
         this.five = five;
     }
-
 
     /**
      * Method getFour
@@ -70,7 +64,6 @@ public class DummyBean {
         return four;
     }
 
-
     /**
      * Method setFour
      *
@@ -79,7 +72,6 @@ public class DummyBean {
     public void setFour(int four) {
         this.four = four;
     }
-
 
     /**
      * Method getOne
@@ -90,7 +82,6 @@ public class DummyBean {
         return one;
     }
 
-
     /**
      * Method setOne
      *
@@ -99,7 +90,6 @@ public class DummyBean {
     public void setOne(String one) {
         this.one = one;
     }
-
 
     /**
      * Method getSeven
@@ -110,7 +100,6 @@ public class DummyBean {
         return seven;
     }
 
-
     /**
      * Method setSeven
      *
@@ -119,7 +108,6 @@ public class DummyBean {
     public void setSeven(Boolean seven) {
         this.seven = seven;
     }
-
 
     /**
      * Method getSix
@@ -130,7 +118,6 @@ public class DummyBean {
         return six;
     }
 
-
     /**
      * Method setSix
      *
@@ -139,7 +126,6 @@ public class DummyBean {
     public void setSix(long six) {
         this.six = six;
     }
-
 
     /**
      * Method getThree
@@ -150,7 +136,6 @@ public class DummyBean {
         return three;
     }
 
-
     /**
      * Method setThree
      *
@@ -160,7 +145,6 @@ public class DummyBean {
         this.three = three;
     }
 
-
     /**
      * Method getTwo
      *
@@ -169,7 +153,6 @@ public class DummyBean {
     public String getTwo() {
         return two;
     }
-
 
     /**
      * Method setTwo

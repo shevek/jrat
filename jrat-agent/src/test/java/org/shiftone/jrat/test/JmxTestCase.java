@@ -1,6 +1,5 @@
 package org.shiftone.jrat.test;
 
-
 import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import javax.management.MBeanServer;
@@ -17,12 +16,12 @@ import org.shiftone.jrat.util.log.Logger;
  * @author Jeff Drost
  */
 public class JmxTestCase extends TestCase {
+
     private static final Logger LOG = Logger.getLogger(JmxTestCase.class);
 
     public void testOne() throws Exception {
 
         //System.setProperty(JmxProperties.JMX_INITIAL_BUILDER, MX4JMBeanServerBuilder.class.getName());
-
         MBeanServer mBeanServer = MBeanServerFactory.createMBeanServer();
         ArrayList arrayList = MBeanServerFactory.findMBeanServer(null);
         LOG.info("arrayList = " + arrayList);
@@ -32,7 +31,6 @@ public class JmxTestCase extends TestCase {
         JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:9876/jrat");
         JMXConnectorServer connectorServer = JMXConnectorServerFactory.newJMXConnectorServer(url, null, mBeanServer);
         connectorServer.start();
-
 
         mBeanServer.registerMBean(new Test(), new ObjectName("shiftone.jrat:service=Test"));
 

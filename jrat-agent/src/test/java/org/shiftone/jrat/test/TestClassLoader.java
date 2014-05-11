@@ -1,10 +1,8 @@
 package org.shiftone.jrat.test;
 
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
 
 /**
  * This ClassLoader allows classes to be
@@ -34,7 +32,6 @@ public class TestClassLoader extends ClassLoader implements Serializable {
         return super.loadClass(name);
     }
 
-
     /**
      * Method add
      *
@@ -44,19 +41,19 @@ public class TestClassLoader extends ClassLoader implements Serializable {
     public void addOverrider(String className, byte[] classData) {
 
         /*
-OutputStream out = null;
+         OutputStream out = null;
 
-try {
+         try {
 
-    out = new FileOutputStream(className);
+         out = new FileOutputStream(className);
 
-    out.write(classData);
-    out.close();
+         out.write(classData);
+         out.close();
 
-} catch (Exception e) {
+         } catch (Exception e) {
 
-}
-*/
+         }
+         */
         hackedMap.put(className, classData);
     }
 }

@@ -1,8 +1,6 @@
 package org.shiftone.jrat.test.harness;
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class TestHarness
@@ -60,10 +58,9 @@ public class TestHarness {
     public static void main(String[] args) throws Exception {
 
         //   System.setProperty("jrat.factory", Log4jMethodHandlerFactory.class.getName());
-
-        Runnable[] runnables = {new HarnessRunnable(10, CALL_A),     //
-                new HarnessRunnable(200, CALL_B),    //
-                new HarnessRunnable(300, CALL_C)};
+        Runnable[] runnables = {new HarnessRunnable(10, CALL_A), //
+            new HarnessRunnable(200, CALL_B), //
+            new HarnessRunnable(300, CALL_C)};
         Thread[] threads = new Thread[runnables.length];
 
         System.out.println("testing " + System.getProperty("jrat.factory"));

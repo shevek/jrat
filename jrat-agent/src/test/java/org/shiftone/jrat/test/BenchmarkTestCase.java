@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test;
 
-
 import junit.framework.TestCase;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * This is a very simple test case designed to determine the cost of a method
@@ -25,22 +23,18 @@ public class BenchmarkTestCase extends TestCase {
         }
     }
 
-
     public void c() {
         i++;
         j++;
     }
 
-
     public void b() {
         i++;
     }
 
-
     public void a() {
         b();
     }
-
 
     public void doA() {
 
@@ -53,7 +47,6 @@ public class BenchmarkTestCase extends TestCase {
         LOG.info("doA took " + (System.currentTimeMillis() - start));
     }
 
-
     public void doB() {
 
         long start = System.currentTimeMillis();
@@ -64,7 +57,6 @@ public class BenchmarkTestCase extends TestCase {
 
         LOG.info("doB took " + (System.currentTimeMillis() - start));
     }
-
 
     public void doC() {
 
@@ -77,7 +69,6 @@ public class BenchmarkTestCase extends TestCase {
         LOG.info("doC took " + (System.currentTimeMillis() - start));
     }
 
-
     public void doD() {
 
         long start = System.currentTimeMillis();
@@ -88,7 +79,6 @@ public class BenchmarkTestCase extends TestCase {
 
         LOG.info("doD took " + (System.currentTimeMillis() - start));
     }
-
 
     public void doPlusPlus() {
 
@@ -101,7 +91,6 @@ public class BenchmarkTestCase extends TestCase {
         LOG.info("doPlusPlus took " + (System.currentTimeMillis() - start));
     }
 
-
     public void doNothing() {
 
         long start = System.currentTimeMillis();
@@ -112,7 +101,6 @@ public class BenchmarkTestCase extends TestCase {
 
         LOG.info("doNothing took " + (System.currentTimeMillis() - start));
     }
-
 
     public void testAll() {
 

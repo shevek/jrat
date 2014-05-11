@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test;
 
-
 import org.shiftone.jrat.core.HandlerFactory;
 import org.shiftone.jrat.core.spi.MethodHandler;
-
 
 public class SimpleExamle {
 
@@ -26,8 +24,7 @@ public class SimpleExamle {
 
             HANDLER.onMethodFinish((System.currentTimeMillis() - start), null);
             return;
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             HANDLER.onMethodFinish((System.currentTimeMillis() - start), e);
         }
 
@@ -216,5 +213,5 @@ public class SimpleExamle {
      }
      }
 
-         */
+     */
 }

@@ -1,12 +1,10 @@
 package org.shiftone.jrat.test.dummy;
 
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class CrashTestDummy
@@ -20,10 +18,9 @@ public class CrashTestDummy implements Serializable {
     private List<String> strings = new ArrayList<String>();
 
     public enum SEX {
-        BOY, GIRL
-    }
 
-    ;
+        BOY, GIRL
+    };
 
     private final JuniorDummy juniorDummy = new JuniorDummy();
 
@@ -67,11 +64,9 @@ public class CrashTestDummy implements Serializable {
 
         try {
             Thread.sleep(ms);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
         }
     }
-
 
     /**
      * Method nap
@@ -92,7 +87,6 @@ public class CrashTestDummy implements Serializable {
         nap();
     }
 
-
     /**
      * Method oneBooleanArg
      *
@@ -107,7 +101,6 @@ public class CrashTestDummy implements Serializable {
         nap();
         sleep();
     }
-
 
     /**
      * Method oneIntegerArg
@@ -124,7 +117,6 @@ public class CrashTestDummy implements Serializable {
         sleep();
     }
 
-
     /**
      * Method oneLongArg
      *
@@ -140,7 +132,6 @@ public class CrashTestDummy implements Serializable {
         }
     }
 
-
     /**
      * Method oneObjectArg
      *
@@ -152,7 +143,6 @@ public class CrashTestDummy implements Serializable {
         sleep();
     }
 
-
     /**
      * Method oneStringArrayArg
      *
@@ -163,7 +153,6 @@ public class CrashTestDummy implements Serializable {
         nap();
         sleep();
     }
-
 
     /**
      * Method returnBooleanArg
@@ -180,7 +169,6 @@ public class CrashTestDummy implements Serializable {
         return b;
     }
 
-
     /**
      * Method returnIntegerArg
      *
@@ -194,7 +182,6 @@ public class CrashTestDummy implements Serializable {
 
         return i;
     }
-
 
     /**
      * Method returnLongArg
@@ -210,7 +197,6 @@ public class CrashTestDummy implements Serializable {
         return i;
     }
 
-
     /**
      * Method returnObjectArg
      *
@@ -224,7 +210,6 @@ public class CrashTestDummy implements Serializable {
 
         return obj;
     }
-
 
     /**
      * Method returnStringArrayArg
@@ -240,7 +225,6 @@ public class CrashTestDummy implements Serializable {
         return args;
     }
 
-
     /**
      * Method noArgsSynchronized
      */
@@ -249,7 +233,6 @@ public class CrashTestDummy implements Serializable {
         nap();
     }
 
-
     /**
      * Method noArgsStatic
      */
@@ -257,7 +240,6 @@ public class CrashTestDummy implements Serializable {
         LOG.debug("public static void noArgsStatic()");
         nap();
     }
-
 
     /**
      * Method twoIntegerArg
@@ -274,7 +256,6 @@ public class CrashTestDummy implements Serializable {
         return a + b;
     }
 
-
     /**
      * Method twoLongArg
      *
@@ -289,7 +270,6 @@ public class CrashTestDummy implements Serializable {
 
         return a + b;
     }
-
 
     /**
      * Method twoObjectArg
@@ -306,7 +286,6 @@ public class CrashTestDummy implements Serializable {
         return (a != null) && (a.equals(b));
     }
 
-
     /**
      * Method twoStringArrayArg
      *
@@ -321,7 +300,6 @@ public class CrashTestDummy implements Serializable {
 
         return (a.length > b.length);
     }
-
 
     /**
      * Method argsLongObjectLongLongArg
@@ -340,7 +318,6 @@ public class CrashTestDummy implements Serializable {
         return (a + b + c) + obj.hashCode();
     }
 
-
     /**
      * Method argsByteBooleanArrayObject
      *
@@ -357,7 +334,6 @@ public class CrashTestDummy implements Serializable {
         return b + obj.hashCode() + bool.length;
     }
 
-
     /**
      * Method add
      *
@@ -368,7 +344,6 @@ public class CrashTestDummy implements Serializable {
     private int add(int a, int b) {
         return a + b;
     }
-
 
     /**
      * Method callMethodAdd
@@ -381,7 +356,6 @@ public class CrashTestDummy implements Serializable {
             t = add(t, (t / 5) + 1);
         }
     }
-
 
     /**
      * Method recurse
@@ -397,7 +371,6 @@ public class CrashTestDummy implements Serializable {
             return x + (recurse(x - 1));
         }
     }
-
 
     /**
      * Method localVariableLength
@@ -425,7 +398,6 @@ public class CrashTestDummy implements Serializable {
         return add(numbah, arg0.length());
     }
 
-
     /**
      * Method callRecurse
      */
@@ -435,14 +407,12 @@ public class CrashTestDummy implements Serializable {
         LOG.debug("recurse(250) = " + recurse(250));
     }
 
-
     /**
      * Method compute
      */
     public void compute() {
         Math.sqrt(9);
     }
-
 
     /**
      * Method callInLoop_1000
@@ -454,7 +424,6 @@ public class CrashTestDummy implements Serializable {
         }
     }
 
-
     /**
      * Method callInLoop_10000
      */
@@ -464,7 +433,6 @@ public class CrashTestDummy implements Serializable {
             compute();
         }
     }
-
 
     /**
      * Method callInLoop_50000
@@ -480,7 +448,6 @@ public class CrashTestDummy implements Serializable {
         LOG.info("callInLoop_50000 took " + (System.currentTimeMillis() - start));
     }
 
-
     /**
      * Method callInLoop_100000
      */
@@ -494,7 +461,6 @@ public class CrashTestDummy implements Serializable {
 
         LOG.info("callInLoop_100000 took " + (System.currentTimeMillis() - start));
     }
-
 
     /**
      * Method callInLoop_1000000
@@ -510,7 +476,6 @@ public class CrashTestDummy implements Serializable {
         LOG.info("callInLoop_1000000 took " + (System.currentTimeMillis() - start));
     }
 
-
     /**
      * Method throwIOException
      *
@@ -522,7 +487,6 @@ public class CrashTestDummy implements Serializable {
 
         throw new IOException("test");
     }
-
 
     /**
      * Method throwRuntimeException

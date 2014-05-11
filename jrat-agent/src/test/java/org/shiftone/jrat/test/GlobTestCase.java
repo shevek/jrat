@@ -1,10 +1,8 @@
 package org.shiftone.jrat.test;
 
-
 import junit.framework.TestCase;
 import org.shiftone.jrat.util.log.Logger;
 import org.shiftone.jrat.util.regex.GlobMatcher;
-
 
 /**
  * Class GlobTestCase
@@ -24,7 +22,6 @@ public class GlobTestCase extends TestCase {
         matchesFixed("");
     }
 
-
     /**
      * Method testMatchesFixedOffset
      *
@@ -34,7 +31,6 @@ public class GlobTestCase extends TestCase {
         matchesFixed("---");
     }
 
-
     /**
      * Method testMatchesFixedMoreOffset
      *
@@ -43,7 +39,6 @@ public class GlobTestCase extends TestCase {
     public void testMatchesFixedMoreOffset() throws Exception {
         matchesFixed("-------");
     }
-
 
     /**
      * Method matchesFixed
@@ -64,7 +59,6 @@ public class GlobTestCase extends TestCase {
         assertTrue(GlobMatcher.matchesFixed(offStr + "abcdef", offStr.length(), "ab??ef"));
         assertTrue(GlobMatcher.matchesFixed(offStr + "abcdef", offStr.length(), "ab?def"));
     }
-
 
     /**
      * Method testIsMatchSimple
@@ -92,7 +86,6 @@ public class GlobTestCase extends TestCase {
         assertTrue(GlobMatcher.isMatch("abcdefg", "*a*c*g"));
     }
 
-
     /**
      * Method testNextFixedMatchStart
      *
@@ -102,7 +95,6 @@ public class GlobTestCase extends TestCase {
         nextFixedMatchOffset("abcdef", 0);
     }
 
-
     /**
      * Method testNextFixedMatchOffset
      *
@@ -111,7 +103,6 @@ public class GlobTestCase extends TestCase {
     public void testNextFixedMatchOffset() throws Exception {
         nextFixedMatchOffset("---abcdef", 3);
     }
-
 
     /**
      * Method nextFixedMatchOffset

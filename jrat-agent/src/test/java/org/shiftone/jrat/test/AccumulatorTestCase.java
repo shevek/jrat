@@ -1,10 +1,8 @@
 package org.shiftone.jrat.test;
 
-
 import junit.framework.TestCase;
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class AccumulatorTestCase
@@ -26,7 +24,6 @@ public class AccumulatorTestCase extends TestCase {
         assertTrue("standard deviation of 0 numbers", stats.getStdDeviation() == null);
     }
 
-
     /**
      * Method testStdDeviation1
      */
@@ -38,7 +35,6 @@ public class AccumulatorTestCase extends TestCase {
         assertTrue("standard deviation of 1 numbers", stats.getStdDeviation() == null);
     }
 
-
     /**
      * .
      */
@@ -46,9 +42,9 @@ public class AccumulatorTestCase extends TestCase {
 
         Accumulator stats = new Accumulator();
         double expect = 26.84568697;
-        long[] values =
-                {
-                        3, 4, 67, 23, 44, 56, 77, 1, 23, 44, 55
+        long[] values
+                = {
+                    3, 4, 67, 23, 44, 56, 77, 1, 23, 44, 55
                 };
 
         for (int i = 0; i < values.length; i++) {
@@ -59,7 +55,6 @@ public class AccumulatorTestCase extends TestCase {
         assertEquals("standard deviation of 11 numbers", expect, stats.getStdDeviation().doubleValue(), TOLERANCE);
     }
 
-
     /**
      * .
      */
@@ -67,11 +62,11 @@ public class AccumulatorTestCase extends TestCase {
 
         Accumulator stats = new Accumulator();
         double expect = 128047.77056645500;
-        long[] values =
-                {
-                        1, 2, 4, 8, 16, 32, 64, 128, 256,      //
-                        512, 1024, 2048, 4096, 8192, 16384,    //
-                        32768, 65536, 131072, 262144, 524288
+        long[] values
+                = {
+                    1, 2, 4, 8, 16, 32, 64, 128, 256, //
+                    512, 1024, 2048, 4096, 8192, 16384, //
+                    32768, 65536, 131072, 262144, 524288
                 };
 
         for (int i = 0; i < values.length; i++) {

@@ -1,8 +1,6 @@
 package org.shiftone.jrat.test.harness;
 
-
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class HarnessRunnable
@@ -25,7 +23,6 @@ public class HarnessRunnable implements Runnable {
         this.calls = calls;
         this.virtualMethodCall = virtualMethodCall;
     }
-
 
     /**
      * Method run

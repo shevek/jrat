@@ -11,6 +11,7 @@ import org.shiftone.jrat.util.log.Logger;
  * @author Jeff Drost
  */
 public class ShutdownRegistryTestCase extends TestCase {
+
     private static final Logger LOG = Logger.getLogger(ShutdownRegistryTestCase.class);
 
     public void testOne() {
@@ -26,6 +27,7 @@ public class ShutdownRegistryTestCase extends TestCase {
     }
 
     private class TestShutdownListener implements ShutdownListener {
+
         private final int i;
 
         public TestShutdownListener(int i) {

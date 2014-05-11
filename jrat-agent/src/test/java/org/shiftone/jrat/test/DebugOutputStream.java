@@ -1,10 +1,8 @@
 package org.shiftone.jrat.test;
 
-
 import java.io.IOException;
 import java.io.OutputStream;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * This class proxies to a OutputStream but also logs all the data that is written to it. This was used when debugging the
@@ -28,7 +26,6 @@ public class DebugOutputStream extends OutputStream {
     public DebugOutputStream(OutputStream outputStream) {
         this.outputStream = outputStream;
     }
-
 
     /**
      * Method write
@@ -54,7 +51,6 @@ public class DebugOutputStream extends OutputStream {
         LOG.info((callNumber++) + " " + sb + " T=" + total);
         outputStream.write(b);
     }
-
 
     /**
      * Method write
@@ -83,7 +79,6 @@ public class DebugOutputStream extends OutputStream {
         outputStream.write(b, off, len);
     }
 
-
     /**
      * Method flush
      *
@@ -95,7 +90,6 @@ public class DebugOutputStream extends OutputStream {
         outputStream.flush();
     }
 
-
     /**
      * Method close
      *
@@ -106,7 +100,6 @@ public class DebugOutputStream extends OutputStream {
         LOG.info("close()");
         outputStream.close();
     }
-
 
     /**
      * Method write

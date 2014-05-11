@@ -1,11 +1,9 @@
 package org.shiftone.jrat.test;
 
-
 import java.io.File;
 import junit.framework.TestCase;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class IOTestCase
@@ -28,7 +26,6 @@ public class IOTestCase extends TestCase {
         assertEquals(ext, "txt");
     }
 
-
     /**
      * Method testNoExt
      *
@@ -41,7 +38,6 @@ public class IOTestCase extends TestCase {
         assertEquals(ext, null);
     }
 
-
     /**
      * Method testEndWithDot
      *
@@ -53,7 +49,6 @@ public class IOTestCase extends TestCase {
 
         assertEquals(ext, null);
     }
-
 
     /**
      * Method testNearestExistingParent2

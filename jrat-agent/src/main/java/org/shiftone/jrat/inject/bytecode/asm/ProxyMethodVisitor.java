@@ -25,7 +25,7 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
     public ProxyMethodVisitor(int access, Method method, MethodVisitor mv, Type classType, String targetMethodName,
             String handlerFieldName) {
 
-        super(access, method, mv);
+        super(Opcodes.ASM5, mv, access, null, method.getDescriptor());
 
         this.method = method;
         this.isStatic = Modifier.isStatic(access);
@@ -48,6 +48,8 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
     @Override
     public void visitCode() {
+        super.visitCode();
+
         Label monitor = newLabel();
         int state = newLocal(ThreadState.TYPE);
 
@@ -77,7 +79,12 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
         int startTime = newLocal(Type.LONG_TYPE);
         storeLocal(startTime, Type.LONG_TYPE);
 
-        Label beginTry = mark();    // try {
+        Label beginTry = new Label();
+        Label endTry = new Label();
+        Label beginCatch = new Label();
+        visitTryCatchBlock(beginTry, endTry, beginCatch, Throwable.TYPE.getInternalName());
+
+        mark(beginTry);    // try {
 
         invoke();
 
@@ -107,10 +114,9 @@ public class ProxyMethodVisitor extends GeneratorAdapter implements Constants, O
 
         returnValue();
 
-        Label endTry = mark();    // } catch (Throwable e) {
-
+        mark(endTry);    // } catch (Throwable e) {
         // this is the beginning of the catch block
-        catchException(beginTry, endTry, Throwable.TYPE);
+        mark(beginCatch);
 
         // -------------------------------------------------------------------------------
         // Throwable exception = e;

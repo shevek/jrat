@@ -1,6 +1,6 @@
 package org.shiftone.jrat.util.jmx.dynamic;
 
-import java.rmi.registry.LocateRegistry; 
+import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
@@ -17,6 +17,7 @@ import org.shiftone.jrat.util.log.Logger;
  * @author Jeff Drost
  */
 public class ConfigurableMBeanTestCase extends TestCase {
+
     private static final Logger LOG = Logger.getLogger(ConfigurableMBeanTestCase.class);
 
     public static void testOne() throws Exception {
@@ -60,7 +61,7 @@ public class ConfigurableMBeanTestCase extends TestCase {
 
         }
 
-      //  Thread.sleep(1000 * 60 * 5);
+        //  Thread.sleep(1000 * 60 * 5);
     }
 
 }

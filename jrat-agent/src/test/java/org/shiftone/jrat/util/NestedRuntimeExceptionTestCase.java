@@ -5,11 +5,11 @@ import junit.framework.TestCase;
 import org.shiftone.jrat.inject.InjectionException;
 import org.shiftone.jrat.util.log.Logger;
 
-
 /**
  * @author Jeff Drost
  */
 public class NestedRuntimeExceptionTestCase extends TestCase {
+
     private static final Logger LOG = Logger.getLogger(NestedRuntimeExceptionTestCase.class);
 
     public void testOne() throws Exception {

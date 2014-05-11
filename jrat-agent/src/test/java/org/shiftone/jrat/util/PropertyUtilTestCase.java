@@ -9,6 +9,7 @@ import org.shiftone.jrat.util.log.Logger;
  * @author Jeff Drost
  */
 public class PropertyUtilTestCase extends TestCase {
+
     private static final Logger LOG = Logger.getLogger(PropertyUtilTestCase.class);
 
     private String a;
@@ -25,7 +26,6 @@ public class PropertyUtilTestCase extends TestCase {
         map.put("d", "false");
         PropertyUtil.setProperties(this, map);
     }
-
 
     public String getA() {
         return a;

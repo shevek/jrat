@@ -1,9 +1,7 @@
 package org.shiftone.jrat.test.dummy;
 
-
 import java.io.Serializable;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class JuniorDummy
@@ -15,7 +13,6 @@ public class JuniorDummy implements Serializable, Cloneable {
     // private static int    privateInt = 0;
     // static final int      x          = 1;
     //  private static String stringA    = "test";
-
     private final long serialVersionUID = 0;
 
     private final Logger LOG = Logger.getLogger(CrashTestDummy.class);
@@ -32,7 +29,6 @@ public class JuniorDummy implements Serializable, Cloneable {
     public JuniorDummy() {
     }
 
-
     /**
      * Method x
      *
@@ -41,7 +37,6 @@ public class JuniorDummy implements Serializable, Cloneable {
     public int x() {
         return 1 + CrashTestDummy.class.getName().length();
     }
-
 
     /**
      * Method y

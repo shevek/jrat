@@ -1,6 +1,5 @@
 package org.shiftone.jrat.test.harness;
 
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +8,6 @@ import org.shiftone.jrat.core.HandlerFactory;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.spi.MethodHandler;
 import org.shiftone.jrat.util.log.Logger;
-
 
 /**
  * Class VirtualMethodCall
@@ -64,8 +62,7 @@ public class VirtualMethodCall {
         try {
             Thread.sleep(time);
             memoryLeak.add(new String("leak"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
         }
     }
 
