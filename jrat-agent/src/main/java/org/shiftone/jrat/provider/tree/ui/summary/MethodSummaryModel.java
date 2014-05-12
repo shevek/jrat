@@ -3,7 +3,6 @@ package org.shiftone.jrat.provider.tree.ui.summary;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.shiftone.jrat.core.MethodKey;
@@ -14,8 +13,8 @@ import org.shiftone.jrat.provider.tree.ui.TraceTreeNode;
  */
 public class MethodSummaryModel {
 
-    private final List methodList = new ArrayList(); // <MethodSummary>
-    private final Map methodMap = new HashMap(); // <MethodKey, MethodSummary>
+    private final List<MethodSummary> methodList = new ArrayList<MethodSummary>();
+    private final Map<MethodKey, MethodSummary> methodMap = new HashMap<MethodKey, MethodSummary>();
     private final long totalMethodDuration;
 
     public MethodSummaryModel(TraceTreeNode node) {
@@ -29,8 +28,7 @@ public class MethodSummaryModel {
 
     private long calculateTotalMethodDuration() {
         long duration = 0;
-        for (Iterator i = methodList.iterator(); i.hasNext();) {
-            MethodSummary summary = (MethodSummary) i.next();
+        for (MethodSummary summary : methodList) {
             Long d = summary.getTotalMethodDuration();
             if (d != null) {
                 duration += d.longValue();
@@ -54,7 +52,7 @@ public class MethodSummaryModel {
     }
 
     private MethodSummary getMethod(MethodKey methodKey) {
-        MethodSummary summary = (MethodSummary) methodMap.get(methodKey);
+        MethodSummary summary = methodMap.get(methodKey);
         if (summary == null) {
             summary = new MethodSummary(methodKey);
             methodMap.put(methodKey, summary);
@@ -63,11 +61,11 @@ public class MethodSummaryModel {
         return summary;
     }
 
-    public List getMethodSummaryList() {
+    public List<? extends MethodSummary> getMethodSummaryList() {
         return Collections.unmodifiableList(methodList);
     }
 
-    public Map getMethodSummaryMap() {
+    public Map<? extends MethodKey, ? extends MethodSummary> getMethodSummaryMap() {
         return Collections.unmodifiableMap(methodMap);
     }
 }

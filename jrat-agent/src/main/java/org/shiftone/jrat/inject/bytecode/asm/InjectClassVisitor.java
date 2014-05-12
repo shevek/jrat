@@ -1,6 +1,9 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
@@ -8,6 +11,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.GeneratorAdapter;
 import org.objectweb.asm.commons.Method;
+import org.objectweb.asm.tree.AnnotationNode;
 import org.objectweb.asm.util.CheckClassAdapter;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
@@ -92,30 +96,52 @@ public class InjectClassVisitor extends CheckClassAdapter implements Constants, 
     }
 
     @Override
-    public MethodVisitor visitMethod(int access, String name, String descriptor, String signature,
-            String[] exceptions) {
+    public MethodVisitor visitMethod(final int access, final String name,
+            final String descriptor, final String signature,
+            final String[] exceptions) {
         if (name.equals("<clinit>") || name.equals("<init>") || Modifier.isAbstract(access) || Modifier.isNative(access)) {
             // LOG.debug("skipping " + name);
             return super.visitMethod(access, name, descriptor, signature, exceptions);
         }
 
         int index = (handlerCount++);
-        String handlerFieldName = InjectorStrategy.HANDLER_PREFIX + index;
-        String targetMethodName = name + InjectorStrategy.METHOD_POSTFIX;
+        final String handlerFieldName = InjectorStrategy.HANDLER_PREFIX + index;
+        final String targetMethodName = name + InjectorStrategy.METHOD_POSTFIX;
 
-        addMethodHandlerField(handlerFieldName, name, descriptor);
+        MethodVisitor parent = super.visitMethod(Modifier.makePrivate(access), targetMethodName, descriptor, signature, exceptions);
+        MethodVisitor child = new MethodVisitor(Opcodes.ASM5, parent) {
+            private final List<AnnotationNode> annotations = new ArrayList<AnnotationNode>();
 
-        // -- [ Proxy Method ] --
-        {
-            Method method = new Method(name, descriptor);
-            MethodVisitor mv = super.visitMethod(access, name, descriptor, signature, exceptions);
-            ProxyMethodVisitor visitor = new ProxyMethodVisitor(access, method, mv, classType, targetMethodName,
-                    handlerFieldName);
+            @Override
+            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+                AnnotationNode annotation = new AnnotationNode(Opcodes.ASM5, desc);
+                annotations.add(annotation);
+                return annotation;
+            }
 
-            visitor.visitCode();    // Calls visitEnd() via endMethod()
-        }
+            @Override
+            public void visitEnd() {
+                super.visitEnd();
+
+                addMethodHandlerField(handlerFieldName, name, descriptor);
+
+                // -- [ Proxy Method ] --
+                {
+                    Method method = new Method(name, descriptor);
+                    MethodVisitor mv = InjectClassVisitor.super.visitMethod(access, name, descriptor, signature, exceptions);
+                    ProxyMethodVisitor visitor = new ProxyMethodVisitor(access, method, mv, classType, targetMethodName,
+                            handlerFieldName);
+
+                    for (AnnotationNode annotation : annotations) {
+                        AnnotationVisitor v = visitor.visitAnnotation(annotation.desc, true);
+                        annotation.accept(v);
+                    }
+                    visitor.visitCode();    // Calls visitEnd() via endMethod()
+                }
+            }
+        };
 
         // -- [ Target Method ] --
-        return super.visitMethod(Modifier.makePrivate(access), targetMethodName, descriptor, signature, exceptions);
+        return child;
     }
 }

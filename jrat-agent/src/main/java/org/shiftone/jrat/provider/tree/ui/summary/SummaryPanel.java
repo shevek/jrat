@@ -212,7 +212,10 @@ public class SummaryPanel extends JPanel {
             sb.append("<tr><td>Method Time</td><td>");
             sb.append(methodTime);
             sb.append("ms (");
-            sb.append(percentFormat.format(methodTime / totalMethodDuration));
+            if (totalMethodDuration > 0)
+                sb.append(percentFormat.format(methodTime / totalMethodDuration));
+            else
+                sb.append("NaN");
             sb.append(")</td></tr>");
 
             sb.append("<tr><td>Exceptions</td><td>");

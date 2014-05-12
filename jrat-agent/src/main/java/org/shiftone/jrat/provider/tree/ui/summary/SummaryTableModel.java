@@ -102,10 +102,10 @@ public class SummaryTableModel extends AbstractTableModel {
     }
 
     private Percent getPercent(MethodSummary summary) {
-        Long tmd = summary.getTotalMethodDuration();
-        return (tmd == null)
-                ? null
-                : new Percent((double) tmd.longValue() * 100.0 / (double) summaryModel.getTotalMethodDuration());
+        Number tmd = summary.getTotalMethodDuration();
+        if (tmd == null)
+            return null;
+        return new Percent(tmd.doubleValue() * 100.0 / (double) summaryModel.getTotalMethodDuration());
     }
 
     @Override

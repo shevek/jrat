@@ -34,6 +34,10 @@ subprojects {
 }
 
 project(':jrat-agent') {
+	apply plugin: 'application'
+
+	mainClassName = "org.shiftone.jrat.cli.Cli"
+
 	configurations {
 		jarjar
 	}
