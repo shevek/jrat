@@ -24,7 +24,7 @@ public class ClassInitMethodVisitor extends MethodVisitor implements Constants {
 
     @Override
     public void visitCode() {
-        super.visitMethodInsn(Opcodes.INVOKESTATIC, className, initializeName, "()V");
         super.visitCode();
+        super.visitMethodInsn(Opcodes.INVOKESTATIC, className, initializeName, "()V", false);
     }
 }

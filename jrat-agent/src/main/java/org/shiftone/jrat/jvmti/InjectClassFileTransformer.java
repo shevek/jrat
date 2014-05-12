@@ -37,9 +37,8 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
             return inClassfileBuffer;
         }
 
-        // LOG.info("injecting class : " + className);
+        // LOG.info("injecting class : " + className + " in loader " + loader + " on " + Thread.currentThread());
         return transformer.inject(inClassfileBuffer, injectorOptions);
-
     }
 
     @Override

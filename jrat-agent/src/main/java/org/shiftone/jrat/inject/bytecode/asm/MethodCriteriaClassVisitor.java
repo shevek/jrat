@@ -1,9 +1,6 @@
 package org.shiftone.jrat.inject.bytecode.asm;
 
-import org.objectweb.asm.AnnotationVisitor;
-import org.objectweb.asm.Attribute;
 import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
@@ -19,10 +16,9 @@ public class MethodCriteriaClassVisitor extends ClassVisitor {
     private final ClassVisitor bypass;
     private MethodCriteria criteria;
     private String className;
-    private ClassVisitor defaultClassVisitor;
 
     public MethodCriteriaClassVisitor(ClassVisitor injector, ClassVisitor bypass) {
-        super(Opcodes.ASM5);
+        super(Opcodes.ASM5, null);
         this.injector = injector;
         this.bypass = bypass;
     }
@@ -38,18 +34,15 @@ public class MethodCriteriaClassVisitor extends ClassVisitor {
      */
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
-
         className = name.replace('/', '.');
-
         if (criteria.isMatch(className, access)) {
-            defaultClassVisitor = injector;
-
+            cv = injector;
             LOG.debug("not filtering class " + className);
         } else {
-            defaultClassVisitor = bypass;
+            cv = bypass;
         }
 
-        defaultClassVisitor.visit(version, access, name, signature, superName, interfaces);
+        super.visit(version, access, name, signature, superName, interfaces);
     }
 
     /**
@@ -60,50 +53,17 @@ public class MethodCriteriaClassVisitor extends ClassVisitor {
      */
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-
         if (criteria.isMatch(className, name, desc, access)) {
-            return defaultClassVisitor.visitMethod(access, name, desc, signature, exceptions);
+            return super.visitMethod(access, name, desc, signature, exceptions);
         } else {
             return bypass.visitMethod(access, name, desc, signature, exceptions);
         }
     }
 
     @Override
-    public void visitSource(String source, String debug) {
-        defaultClassVisitor.visitSource(source, debug);
-    }
-
-    @Override
-    public void visitOuterClass(String owner, String name, String desc) {
-        defaultClassVisitor.visitOuterClass(owner, name, desc);
-    }
-
-    @Override
-    public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-        return defaultClassVisitor.visitAnnotation(desc, visible);
-    }
-
-    @Override
-    public void visitAttribute(Attribute attr) {
-        defaultClassVisitor.visitAttribute(attr);
-    }
-
-    @Override
-    public void visitInnerClass(String name, String outerName, String innerName, int access) {
-        defaultClassVisitor.visitInnerClass(name, outerName, innerName, access);
-    }
-
-    @Override
-    public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
-        return defaultClassVisitor.visitField(access, name, desc, signature, value);
-    }
-
-    @Override
     public void visitEnd() {
-
-        defaultClassVisitor.visitEnd();
-
-        defaultClassVisitor = null;
+        super.visitEnd();
+        cv = null;
         className = null;
     }
 }

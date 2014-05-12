@@ -4,6 +4,7 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.commons.SerialVersionUIDAdder;
+import org.objectweb.asm.util.CheckClassAdapter;
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.TransformerOptions;
 
@@ -13,8 +14,9 @@ public class AsmInjectorStrategy implements InjectorStrategy {
     public byte[] inject(byte[] rawClassData, TransformerOptions options) throws Exception {
 
         ClassReader reader = new ClassReader(rawClassData);
-        ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
-        ClassVisitor target = classWriter;
+        // ClassWriter.COMPUTE_FRAMES causes weird LinkageErrors.
+        ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        ClassVisitor target = new CheckClassAdapter(classWriter, false);
 
         // target = new DebugClassVisitor(target);
         ClassInitClassVisitor classInitClassVisitor = new ClassInitClassVisitor(target);

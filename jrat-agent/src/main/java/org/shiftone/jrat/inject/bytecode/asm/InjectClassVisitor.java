@@ -12,14 +12,13 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.GeneratorAdapter;
 import org.objectweb.asm.commons.Method;
 import org.objectweb.asm.tree.AnnotationNode;
-import org.objectweb.asm.util.CheckClassAdapter;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.inject.bytecode.InjectorStrategy;
 import org.shiftone.jrat.inject.bytecode.Modifier;
 import org.shiftone.jrat.util.VersionUtil;
 import org.shiftone.jrat.util.log.Logger;
 
-public class InjectClassVisitor extends CheckClassAdapter implements Constants, Opcodes {
+public class InjectClassVisitor extends ClassVisitor implements Constants, Opcodes {
 
     private static final Logger LOG = Logger.getLogger(InjectClassVisitor.class);
     private int handlerCount;
@@ -27,7 +26,7 @@ public class InjectClassVisitor extends CheckClassAdapter implements Constants, 
     private GeneratorAdapter initializer;
 
     public InjectClassVisitor(ClassVisitor visitor) {
-        super(Opcodes.ASM5, visitor, false);
+        super(Opcodes.ASM5, visitor);
     }
 
     @Override
@@ -110,11 +109,21 @@ public class InjectClassVisitor extends CheckClassAdapter implements Constants, 
 
         MethodVisitor parent = super.visitMethod(Modifier.makePrivate(access), targetMethodName, descriptor, signature, exceptions);
         MethodVisitor child = new MethodVisitor(Opcodes.ASM5, parent) {
-            private final List<AnnotationNode> annotations = new ArrayList<AnnotationNode>();
+            class Annotation extends AnnotationNode {
+
+                private final boolean visible;
+
+                public Annotation(String desc, boolean visible) {
+                    super(Opcodes.ASM5, desc);
+                    this.visible = visible;
+                }
+
+            }
+            private final List<Annotation> annotations = new ArrayList<Annotation>();
 
             @Override
             public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-                AnnotationNode annotation = new AnnotationNode(Opcodes.ASM5, desc);
+                Annotation annotation = new Annotation(desc, visible);
                 annotations.add(annotation);
                 return annotation;
             }
@@ -132,8 +141,8 @@ public class InjectClassVisitor extends CheckClassAdapter implements Constants, 
                     ProxyMethodVisitor visitor = new ProxyMethodVisitor(access, method, mv, classType, targetMethodName,
                             handlerFieldName);
 
-                    for (AnnotationNode annotation : annotations) {
-                        AnnotationVisitor v = visitor.visitAnnotation(annotation.desc, true);
+                    for (Annotation annotation : annotations) {
+                        AnnotationVisitor v = visitor.visitAnnotation(annotation.desc, annotation.visible);
                         annotation.accept(v);
                     }
                     visitor.visitCode();    // Calls visitEnd() via endMethod()
