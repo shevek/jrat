@@ -79,7 +79,7 @@ public class FileOutputFactory {
     }
 
     private OutputStream internalCreateOutputStream(File file) throws IOException {
-        LOG.info("createOutputStream " + file.getAbsolutePath());
+        // LOG.info("createOutputStream " + file.getAbsolutePath());
 
         File parent = file.getParentFile();
 

@@ -10,21 +10,18 @@ public class ThreadState {
 
     private static final Logger LOG = Logger.getLogger(ThreadState.class);
 
-//    private static final ThreadLocal STATE = new ThreadLocal() {
-//        public Object get() {
-//            return new ThreadState();
-//        }
-//    };
+    private static final ThreadLocal<ThreadState> STATE = new ThreadLocal<ThreadState>() {
+
+        @Override
+        protected ThreadState initialValue() {
+            return new ThreadState();
+        }
+    };
     private boolean inHandler = false;
     private long clockSkew = 0;
 
     public static ThreadState getInstance() {
-//        ThreadState state = (ThreadState) STATE.get();
-//        if (state == null) {
-//            throw new NullPointerException("state");
-//        }
-//        return state;
-        return new ThreadState();
+        return STATE.get();
     }
 
     public boolean isInHandler() {
@@ -32,30 +29,27 @@ public class ThreadState {
     }
 
     public long begin(MethodHandler methodHandler) {
-//
-//        long begin = System.currentTimeMillis();
-//
-//        methodHandler.onMethodStart();
-//
-//        long end = System.currentTimeMillis();
-//
-//        clockSkew += (end - begin);
-//        return end - clockSkew;
-        return 0;
+        long begin = System.currentTimeMillis();
+
+        methodHandler.onMethodStart();
+
+        long end = System.currentTimeMillis();
+
+        clockSkew += (end - begin);
+        return end - clockSkew;
 
     }
 
     public void end(MethodHandler methodHandler, long startTime, Throwable throwable) {
 
-//
-//        long begin = System.currentTimeMillis();
-//        long duration = begin - startTime;
-//
-//        methodHandler.onMethodFinish(duration, throwable);
-//
-//        long end = System.currentTimeMillis();
-//
-//        clockSkew += (end - begin);
+        long begin = System.currentTimeMillis();
+        long duration = begin - startTime;
+
+        methodHandler.onMethodFinish(duration, throwable);
+
+        long end = System.currentTimeMillis();
+
+        clockSkew += (end - begin);
     }
 
 }

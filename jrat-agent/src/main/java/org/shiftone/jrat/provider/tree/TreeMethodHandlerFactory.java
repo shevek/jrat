@@ -87,8 +87,8 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
     }
 
     @Override
-    public void writeOutputFile(String fileName) {
-        LOG.info("writeOutputFile...");
+    public synchronized void writeOutputFile(String fileName) {
+        LOG.info("writeOutputFile(" + methodHandlerCount.get() + " methods)");
 
         getContext().writeSerializable(fileName,
                 new TraceViewBuilder(

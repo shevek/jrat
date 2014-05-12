@@ -28,6 +28,7 @@ public class TreeNode implements Externalizable {
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
+        // LOG.info("Writing node for " + methodKey);
         out.writeObject(accumulator);
         out.writeObject(methodKey);
 
@@ -90,6 +91,7 @@ public class TreeNode implements Externalizable {
 
             if (treeNode == null) {
                 treeNode = factory.createTreeNode(methodKey, this);
+                // LOG.info("Created node for " + methodKey);
                 children.put(methodKey, treeNode);
             }
 
