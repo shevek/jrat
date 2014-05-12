@@ -17,20 +17,20 @@ public interface Constants {
 
     public interface Throwable {
 
-        public static Class CLASS = java.lang.Throwable.class;
+        public static Class<?> CLASS = java.lang.Throwable.class;
         public static Type TYPE = Type.getType(CLASS);
     }
 
     public interface Clock {
 
-        public static Class CLASS = org.shiftone.jrat.util.time.Clock.class;
+        public static Class<?> CLASS = org.shiftone.jrat.util.time.Clock.class;
         public static Type TYPE = Type.getType(CLASS);
         public static Method currentTimeMillis = Method.getMethod("long currentTimeMillis()");
     }
 
     public interface ThreadState {
 
-        public static Class CLASS = org.shiftone.jrat.core.ThreadState.class;
+        public static Class<?> CLASS = org.shiftone.jrat.core.ThreadState.class;
         public static Type TYPE = Type.getType(CLASS);
         public static Method getInstance
                 = Method.getMethod(org.shiftone.jrat.core.ThreadState.class.getName() + " getInstance()");
@@ -47,7 +47,7 @@ public interface Constants {
 
     public interface HandlerFactory {
 
-        public static Class CLASS = org.shiftone.jrat.core.HandlerFactory.class;
+        public static Class<?> CLASS = org.shiftone.jrat.core.HandlerFactory.class;
         public static Type TYPE = Type.getType(CLASS);
         public static Method getMethodHandler
                 = Method.getMethod(org.shiftone.jrat.core.spi.MethodHandler.class.getName()
@@ -56,7 +56,7 @@ public interface Constants {
 
     public interface MethodHandler {
 
-        public static Class CLASS = org.shiftone.jrat.core.spi.MethodHandler.class;
+        public static Class<?> CLASS = org.shiftone.jrat.core.spi.MethodHandler.class;
         public static Type TYPE = Type.getType(CLASS);
         public static Method onMethodStart = Method.getMethod("void onMethodStart(Object)");
         public static Method onMethodFinish = Method.getMethod("void onMethodFinish(Object, long, Throwable)");

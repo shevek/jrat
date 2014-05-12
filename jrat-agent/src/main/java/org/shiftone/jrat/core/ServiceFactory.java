@@ -27,7 +27,6 @@ public class ServiceFactory {
     }
 
     public static synchronized ServiceFactory getInstance() {
-
         if (singleton == null) {
             singleton = new ServiceFactory();
         }
@@ -38,11 +37,8 @@ public class ServiceFactory {
     private CommandletRegistry commandletRegistry;
 
     public synchronized CommandletRegistry getCommandletRegistry() {
-
         if (commandletRegistry == null) {
-
             commandletRegistry = CommandletRegistryFactory.createCommandletRegistry();
-
         }
 
         return commandletRegistry;
@@ -52,7 +48,6 @@ public class ServiceFactory {
     private JmxRegistry jmxRegistry;
 
     public synchronized JmxRegistry getJmxRegistry() {
-
         if (jmxRegistry == null) {
             jmxRegistry = new ServerJmxRegistry();
 
@@ -68,7 +63,6 @@ public class ServiceFactory {
     private FileOutputRegistry fileOutputRegistry;
 
     public synchronized FileOutputRegistry getFileOutputRegistry() {
-
         if (fileOutputRegistry == null) {
             fileOutputRegistry = new FileOutputRegistry();
 
@@ -83,7 +77,6 @@ public class ServiceFactory {
     private FileOutputFactory fileOutputFactory;
 
     public synchronized FileOutputFactory getFileOutputFactory() {
-
         if (fileOutputFactory == null) {
             fileOutputFactory = new FileOutputFactory(getFileOutputRegistry());
         }
@@ -95,7 +88,6 @@ public class ServiceFactory {
     private ShutdownRegistry shutdownRegistry;
 
     public synchronized ShutdownRegistry getShutdownRegistry() {
-
         if (shutdownRegistry == null) {
             shutdownRegistry = new ShutdownRegistry();
 
@@ -109,7 +101,6 @@ public class ServiceFactory {
     private WebActionRegistry webActionRegistry;
 
     public synchronized WebActionRegistry getWebActionRegistry() {
-
         if (webActionRegistry == null) {
             webActionRegistry = new WebActionRegistry();
 
@@ -123,7 +114,6 @@ public class ServiceFactory {
     private Transformer transformer;
 
     public synchronized Transformer getTransformer() {
-
         if (transformer == null) {
             transformer = new Transformer();
 

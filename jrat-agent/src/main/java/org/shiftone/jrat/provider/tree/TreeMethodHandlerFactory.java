@@ -33,6 +33,7 @@ public class TreeMethodHandlerFactory extends AbstractMethodHandlerFactory imple
 
     @Override
     public void startup(RuntimeContext context) throws Exception {
+        LOG.info("new");
         super.startup(context);
         context.registerMBean(this);
         context.register(new ResetCommandlet(this));

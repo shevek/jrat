@@ -21,11 +21,11 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
     private static final Logger LOG = Logger.getLogger(Transformer.class);
     private static final String UNKNOWN_SOURCE = "[unknown source]";
-    private InjectorStrategy injectorStrategy;
-    private AtomicLong transformedClassCount = new AtomicLong();
-    private AtomicLong totalInputBytes = new AtomicLong();
-    private AtomicLong totalOutputBytes = new AtomicLong();
-    private AtomicLong totalTransformTime = new AtomicLong();
+    private final InjectorStrategy injectorStrategy;
+    private final AtomicLong transformedClassCount = new AtomicLong();
+    private final AtomicLong totalInputBytes = new AtomicLong();
+    private final AtomicLong totalOutputBytes = new AtomicLong();
+    private final AtomicLong totalTransformTime = new AtomicLong();
 
     public Transformer(InjectorStrategy injectorStrategy) {
         this.injectorStrategy = injectorStrategy;
@@ -44,7 +44,6 @@ public class Transformer implements ShutdownListener, TransformerMBean {
     }
 
     public byte[] inject(byte[] input, String sourceName, TransformerOptions options) {
-
         try {
             long start = System.currentTimeMillis();
             byte[] output = injectorStrategy.inject(input, options);
@@ -67,7 +66,6 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
     @Override
     public double getAverageTransformTimeMs() {
-
         return (transformedClassCount.get() == 0)
                 ? 0.0
                 : (double) totalTransformTime.get() / (double) transformedClassCount.get();
@@ -84,10 +82,8 @@ public class Transformer implements ShutdownListener, TransformerMBean {
     }
 
     public byte[] inject(InputStream inputClassData, String sourceName, TransformerOptions options) {
-
         try {
             byte[] inputClassDataBytes = IOUtil.readAndClose(inputClassData);
-
             return inject(inputClassDataBytes, sourceName, options);
         } catch (Exception e) {
             throw new JRatException("error injecting stream : " + sourceName, e);
@@ -96,7 +92,7 @@ public class Transformer implements ShutdownListener, TransformerMBean {
 
     @Override
     public void shutdown() {
-        LOG.info("transformed " + transformedClassCount + " classe(s)");
+        LOG.info("transformed " + transformedClassCount + " class(es)");
     }
 
     @Override

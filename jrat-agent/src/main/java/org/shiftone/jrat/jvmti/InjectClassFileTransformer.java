@@ -16,9 +16,7 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
     private final InjectorOptions injectorOptions;
 
     public InjectClassFileTransformer(InjectorOptions injectorOptions) throws Exception {
-
         LOG.info("new");
-
         this.injectorOptions = injectorOptions;
     }
 
@@ -26,7 +24,7 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
     public byte[] transform(
             ClassLoader loader,
             String className,
-            Class /* <?> */ classBeingRedefined,
+            Class<?> classBeingRedefined,
             ProtectionDomain protectionDomain,
             byte[] inClassfileBuffer)
             throws IllegalClassFormatException {
@@ -39,6 +37,7 @@ public class InjectClassFileTransformer implements ClassFileTransformer {
             return inClassfileBuffer;
         }
 
+        // LOG.info("injecting class : " + className);
         return transformer.inject(inClassfileBuffer, injectorOptions);
 
     }

@@ -21,24 +21,19 @@ public class TryCatchClassFileTransformer implements ClassFileTransformer {
     public byte[] transform(
             ClassLoader loader,
             String className,
-            Class/*<?>*/ classBeingRedefined,
+            Class<?> classBeingRedefined,
             ProtectionDomain protectionDomain,
             byte[] classfileBuffer) throws IllegalClassFormatException {
-
         try {
-
             return transformer.transform(
                     loader,
                     className,
                     classBeingRedefined,
                     protectionDomain,
                     classfileBuffer);
-
-        } catch (Exception e) {
-
+        } catch (Throwable e) {
             LOG.error("failed to transform : " + className, e);
             return classfileBuffer;
-
         }
     }
 

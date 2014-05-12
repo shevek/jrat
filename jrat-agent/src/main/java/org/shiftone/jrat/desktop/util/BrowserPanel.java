@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.html.HTMLEditorKit;
+import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
@@ -89,8 +90,8 @@ public class BrowserPanel extends JPanel implements HyperlinkListener, ActionLis
      * Method setHyperLink
      */
     public void setHyperLink(URL url, boolean push) {
-
         try {
+            Assert.assertNotNull("url", url);
 
             if (url.equals(editorPane.getPage())) {
                 return;
@@ -122,12 +123,12 @@ public class BrowserPanel extends JPanel implements HyperlinkListener, ActionLis
      * Method error
      */
     private void error(Exception e) {
-
         StringWriter stringWriter = new StringWriter();
         PrintWriter out = new PrintWriter(stringWriter);
 
-        out.println("<b>Unable to open Documentation</b><p>");
+        out.println("<b>Unable to open Documentation</b><pre>");
         e.printStackTrace(out);
+        out.println("</pre>");
         out.flush();
         editorPane.setText(stringWriter.toString());
     }

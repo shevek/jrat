@@ -1,12 +1,12 @@
 package org.shiftone.jrat.util.io;
 
+import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import org.shiftone.jrat.util.io.proxy.ProxyInputStream;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
- * Class OpenInputStream wrapps/proxies to a real InputStream and prevents the
+ * Class OpenInputStream wraps/proxies to a real InputStream and prevents the
  * caller from closing the underlying input stream. This is useful when reading
  * chunks from a ZipInputStream passing the archive entry inputStreams to code
  * that calls close(). This would typically close the entire ZipInputStream,
@@ -14,28 +14,12 @@ import org.shiftone.jrat.util.log.Logger;
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class OpenInputStream extends ProxyInputStream {
+public class OpenInputStream extends FilterInputStream {
 
     private static final Logger LOG = Logger.getLogger(OpenInputStream.class);
-    private InputStream inputStream = null;
 
-    public OpenInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-    @Override
-    protected InputStream getTarget() throws IOException {
-
-        assertOpen();
-
-        return inputStream;
-    }
-
-    public void assertOpen() throws IOException {
-
-        if (inputStream == null) {
-            throw new IOException("InputStream is closed");
-        }
+    public OpenInputStream(InputStream in) {
+        super(in);
     }
 
     /**
@@ -44,11 +28,7 @@ public class OpenInputStream extends ProxyInputStream {
      */
     @Override
     public void close() throws IOException {
-
-        assertOpen();
-
-        inputStream = null;
-
+        in = null;
         // DO NOT inputStream.close();
     }
 }

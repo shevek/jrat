@@ -42,25 +42,17 @@ public class Mode {
 
     // todo - fix this
     public static void set(Mode newMode) {
-
         LOG.info("set " + newMode);
         if (current.priority >= newMode.priority) {
-
             return;
-
         } else if (locked) {
-
             throw new IllegalStateException("mode is locked");
-
         } else {
-
             if (newMode.priority > current.priority) {
                 // the mode can be changed to a higher priority mode
                 current = newMode;
             }
-
         }
-
     }
 
     public static Mode get() {

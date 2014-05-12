@@ -13,7 +13,6 @@ public class VersionUtil {
     private String builtBy;
 
     private VersionUtil() {
-
         try {
             Properties properties = ResourceUtil.getResourceAsProperties("org/shiftone/jrat/version.properties");
 
@@ -26,7 +25,6 @@ public class VersionUtil {
     }
 
     private static synchronized VersionUtil getVersionUtil() {
-
         if (versionUtil == null) {
             versionUtil = new VersionUtil();
         }

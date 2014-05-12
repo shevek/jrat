@@ -24,11 +24,6 @@ public class Settings {
     private int httpPort = 9009;
     //
     private boolean jmxEnabled;
-    private boolean mBeanServerCreationEnabled;
-    private String mBeanServerServerUrl;
-    private String mBeanServerAgentId;
-    private boolean rmiRegistryCreationEnabled = true;
-    private int rmiRegistryPort = 2121;
     //
 
     private boolean injectorDefaultExcludesEnabled;

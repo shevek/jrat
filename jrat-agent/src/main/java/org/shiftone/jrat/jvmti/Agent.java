@@ -17,14 +17,11 @@ public class Agent {
     private static final Logger LOG = Logger.getLogger(Agent.class);
     private static boolean installed = false;
     private static Configuration configuration;
-    private static ClassFileTransformer transformer;
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
-
         Mode.set(Mode.RUNTIME);
 
         if (installed) {
-
             LOG.warn("one JRat Agent was already installed.");
             LOG.warn("your probably have the -javaagent arg on the command line twice");
 
@@ -43,7 +40,6 @@ public class Agent {
         injectorOptions.setCriteria(configuration);
 
         try {
-
             ClassFileTransformer transformer;
 
             transformer = new InjectClassFileTransformer(injectorOptions);
@@ -55,16 +51,14 @@ public class Agent {
 
             transformer = new TryCatchClassFileTransformer(transformer);
 
-            //transformer = new DumpClassFileTransformer(transformer);
+            // transformer = new DumpClassFileTransformer(transformer);
             instrumentation.addTransformer(transformer);
             installed = true;
 
-            //LOG.info("Installed " + transformer + ".");
+            LOG.info("Installed " + transformer + ".");
             //redefineAllLoadedClasses(instrumentation, transformer);
         } catch (Throwable e) {
-
             LOG.info("Installed = " + installed, e);
-
         }
     }
 

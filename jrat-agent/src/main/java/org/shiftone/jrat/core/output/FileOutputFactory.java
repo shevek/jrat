@@ -24,7 +24,6 @@ public class FileOutputFactory {
     private final int bufferSize;
 
     public FileOutputFactory(FileOutputRegistry fileOutputRegistry, int bufferSize) {
-
         this.fileOutputRegistry = fileOutputRegistry;
         this.bufferSize = bufferSize;
 
@@ -35,67 +34,51 @@ public class FileOutputFactory {
     }
 
     public OutputStream createOutputStreamSafely(File file) {
-
         try {
             return createOutputStream(file);
         } catch (Throwable e) {
             LOG.error("unable to column OutputStream for '" + file + "' return /dev/null");
-
             return NullOutputStream.INSTANCE;
         }
     }
 
     public Writer createWriterSafely(File file) {
-
         try {
             return createWriter(file);
         } catch (Throwable e) {
             LOG.error("unable to column Writer for '" + file + "' return /dev/null");
-
             return NullWriter.INSTANCE;
         }
     }
 
     public PrintWriter createPrintWriterSafely(File file) {
-
         try {
             return createPrintWriter(file);
         } catch (Throwable e) {
             LOG.error("unable to column PrintWriter for '" + file + "' return /dev/null");
-
             return NullPrintWriter.INSTANCE;
         }
     }
 
     public OutputStream createOutputStream(File file) throws IOException {
-
         LOG.info("createOutputStream " + file.getAbsolutePath());
-
         OutputStream out = internalCreateOutputStream(file);
-
         return fileOutputRegistry.add(out, file.getName());
     }
 
     public Writer createWriter(File file) throws IOException {
-
         LOG.info("createWriter " + file.getAbsolutePath());
-
         Writer out = new OutputStreamWriter(internalCreateOutputStream(file));
-
         return fileOutputRegistry.add(out, file.getName());
     }
 
     public PrintWriter createPrintWriter(File file) throws IOException {
-
         LOG.info("createPrintWriter " + file.getAbsolutePath());
-
         PrintWriter out = new PrintWriter(new OutputStreamWriter(internalCreateOutputStream(file)));
-
         return fileOutputRegistry.add(out, file.getName());
     }
 
     private OutputStream internalCreateOutputStream(File file) throws IOException {
-
         LOG.info("createOutputStream " + file.getAbsolutePath());
 
         File parent = file.getParentFile();

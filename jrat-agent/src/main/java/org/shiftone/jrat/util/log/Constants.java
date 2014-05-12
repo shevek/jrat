@@ -12,8 +12,7 @@ public interface Constants {
     public static final int LEVEL_ERROR = 4;
     public static final int LEVEL_FATAL = 5;
     public static final int DEFAULT_LEVEL = LEVEL_INFO;
-    public static final String[] LEVEL_NAMES
-            = {
-                "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"
-            };
+    public static final String[] LEVEL_NAMES = {
+        "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"
+    };
 }

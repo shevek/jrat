@@ -36,7 +36,6 @@ public class LoggerFactory implements Constants {
     }
 
     public static Logger getLogger(Class<?> klass) {
-
         String className = klass.getName();
         String shortName = className.substring(className.lastIndexOf('.') + 1);
 

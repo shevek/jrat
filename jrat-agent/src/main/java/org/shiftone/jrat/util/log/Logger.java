@@ -17,7 +17,7 @@ public class Logger implements LogTarget, Constants {
         this.target = target;
     }
 
-    public static Logger getLogger(Class klass) {
+    public static Logger getLogger(Class<?> klass) {
         return LoggerFactory.getLogger(klass);
     }
 

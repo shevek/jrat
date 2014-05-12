@@ -8,4 +8,5 @@ reports
 .nb-gradle
 *.dot
 jrat.output
+jrat.xml
 *.class

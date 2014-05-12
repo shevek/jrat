@@ -58,7 +58,6 @@ public abstract class AbstractMethodHandlerFactory implements MethodHandlerFacto
 
     @Override
     public void startup(RuntimeContext context) throws Exception {
-
         this.context = context;
 
         context.registerShutdownListener(this);

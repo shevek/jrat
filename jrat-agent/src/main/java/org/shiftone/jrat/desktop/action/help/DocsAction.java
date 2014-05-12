@@ -7,6 +7,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import org.shiftone.jrat.desktop.DesktopFrame;
 import org.shiftone.jrat.desktop.util.BrowserPanel;
+import org.shiftone.jrat.util.Assert;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
@@ -31,6 +32,7 @@ public class DocsAction extends AbstractAction {
         LOG.info("actionPerformed " + e);
 
         URL url = getClass().getClassLoader().getResource(HOME_URL);
+        Assert.assertNotNull("URL for " + HOME_URL, url);
 
         desktopFrame.createView("Documentation", new BrowserPanel(url));
     }

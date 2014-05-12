@@ -27,7 +27,7 @@ public class DumpClassFileTransformer implements ClassFileTransformer {
     public byte[] transform(
             ClassLoader loader,
             String className,
-            Class /* <?> */ classBeingRedefined,
+            Class<?> classBeingRedefined,
             ProtectionDomain protectionDomain,
             byte[] classfileBuffer)
             throws IllegalClassFormatException {
@@ -35,7 +35,7 @@ public class DumpClassFileTransformer implements ClassFileTransformer {
         byte[] result = transformer.transform(loader, className, classBeingRedefined, protectionDomain, classfileBuffer);
 
         try {
-            System.out.println(">>> " + className);
+            LOG.debug(">>> " + className);
             File target = new File("dump/" + className + ".class");
             target.getParentFile().mkdirs();
             OutputStream out = new FileOutputStream(target);

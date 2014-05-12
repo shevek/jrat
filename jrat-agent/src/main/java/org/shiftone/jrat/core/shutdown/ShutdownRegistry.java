@@ -15,32 +15,23 @@ import org.shiftone.jrat.util.log.Logger;
 public class ShutdownRegistry implements ShutdownRegistryMBean {
 
     private static final Logger LOG = Logger.getLogger(ShutdownRegistry.class);
-    private final Stack shutdownStack = new Stack();
-    private ShutdownListener firstShutdownListener;
+    private final Stack<ShutdownListener> shutdownStack = new Stack<ShutdownListener>();
 
     public ShutdownRegistry() {
-
         LOG.info("new");
 
         Thread shutdownHook = new Thread(new ShutdownRunnable(), "JRat-Shutdown");
-
         shutdownHook.setDaemon(true);
         Runtime.getRuntime().addShutdownHook(shutdownHook);
     }
 
-    public void setFirstShutdownListener(ShutdownListener firstShutdownListener) {
-        this.firstShutdownListener = firstShutdownListener;
-    }
-
     public synchronized void registerShutdownListener(ShutdownListener shutdownListener) {
-
         LOG.info("registerShutdownListener " + shutdownListener);
         Assert.assertNotNull("ShutdownListener", shutdownListener);
         shutdownStack.push(shutdownListener);
     }
 
     private static void shutdown(ShutdownListener shutdownListener) {
-
         try {
             LOG.info("shutting down " + shutdownListener + "...");
             shutdownListener.shutdown();
@@ -52,15 +43,10 @@ public class ShutdownRegistry implements ShutdownRegistryMBean {
     }
 
     private synchronized void shutdown() {
-
         LOG.info("shutting down..." + shutdownStack);
 
-        if (firstShutdownListener != null) {
-            shutdown(firstShutdownListener);
-        }
-
         while (!shutdownStack.isEmpty()) {
-            shutdown((ShutdownListener) shutdownStack.pop());
+            shutdown(shutdownStack.pop());
         }
 
         LOG.info("shutdown complete.");

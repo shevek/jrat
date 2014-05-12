@@ -25,14 +25,13 @@ public class OutputDirectory {
 
     private static final Logger LOG = Logger.getLogger(OutputDirectory.class);
 
-    private final List fileList = new ArrayList(10);
+    private final List<File> fileList = new ArrayList<File>(10);
     private final NumberFormat fileSeqFormat = new DecimalFormat("000");
     private final AtomicLong fileSequence = new AtomicLong();
     private final FileOutputFactory outputFactory;
     private final Dir outputDir;
 
     public OutputDirectory(FileOutputFactory outputFactory, Dir outputDir) {
-
         Assert.assertTrue(outputDir + ".exists()", outputDir.exists());
         Assert.assertTrue(outputDir + ".isDirectory()", outputDir.isDirectory());
 
