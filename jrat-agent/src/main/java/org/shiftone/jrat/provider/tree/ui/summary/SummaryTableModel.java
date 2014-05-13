@@ -24,17 +24,17 @@ public class SummaryTableModel extends AbstractTableModel {
     public static final Table.Column MIN = TABLE.column("Min ms", false);
     public static final Table.Column MAX = TABLE.column("Max ms", false);
     public static final Table.Column AVERAGE = TABLE.column("Average ms");
-    public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
-    public static final Table.Column PERCENT_METHOD = TABLE.column("Method Time %");
-    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");
+    public static final Table.Column TOTAL_METHOD = TABLE.column("Total Self ms");
+    public static final Table.Column PERCENT_METHOD = TABLE.column("Self Time %");
+    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Self ms");
     public static final Table.Column TOTAL_CALLERS = TABLE.column("Total Callers", false);
 
-    public static List getColumns() {
+    public static List<? extends Table.Column> getColumns() {
         return TABLE.getColumns();
     }
 
     private final MethodSummaryModel summaryModel;
-    private final List methodSummaryList;
+    private final List<? extends MethodSummary> methodSummaryList;
 
     public SummaryTableModel(MethodSummaryModel summaryModel) {
         this.summaryModel = summaryModel;
@@ -61,7 +61,7 @@ public class SummaryTableModel extends AbstractTableModel {
             return summary.getTotalEnters();
         }
         if (columnIndex == EXITS.getIndex()) {
-            return summary.getTotalExists();
+            return summary.getTotalExits();
         }
         if (columnIndex == EXCEPTIONS.getIndex()) {
             return summary.getTotalErrors();
@@ -82,13 +82,13 @@ public class SummaryTableModel extends AbstractTableModel {
             return summary.getMaxDuration();
         }
         if (columnIndex == AVERAGE.getIndex()) {
-            return summary.getAverageDuration();
+            return summary.getMeanDuration();
         }
         if (columnIndex == TOTAL_METHOD.getIndex()) {
-            return summary.getTotalMethodDuration();
+            return summary.getTotalSelfDuration();
         }
         if (columnIndex == AVERAGE_METHOD.getIndex()) {
-            return summary.getAverageMethodDuration();
+            return summary.getMeanSelfDuration();
         }
         if (columnIndex == TOTAL_CALLERS.getIndex()) {
             return summary.getTotalCallers();
@@ -102,10 +102,10 @@ public class SummaryTableModel extends AbstractTableModel {
     }
 
     private Percent getPercent(MethodSummary summary) {
-        Number tmd = summary.getTotalMethodDuration();
+        Number tmd = summary.getTotalSelfDuration();
         if (tmd == null)
             return null;
-        return new Percent(tmd.doubleValue() * 100.0 / (double) summaryModel.getTotalMethodDuration());
+        return new Percent(tmd.doubleValue() * 100.0 / (double) summaryModel.getTotalSelfDuration());
     }
 
     @Override

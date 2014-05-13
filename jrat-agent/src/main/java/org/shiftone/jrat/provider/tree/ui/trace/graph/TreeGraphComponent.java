@@ -39,7 +39,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         g.setColor(getBackground());
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        if ((node != null) && !node.isRootNode() && (node.getTotalExits() != 0)) {
+        if ((node != null) && !node.isRootNode() && (node.getAccumulator().getTotalExits() != 0)) {
             paint(g, node, 0, 0, getWidth());
         }
     }
@@ -52,7 +52,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         g.setFont(font);
 
         FontMetrics metrics = g.getFontMetrics();
-        Color color = colorLookup.getColor(node.getPctOfAvgParentDuration());
+        Color color = colorLookup.getColor(node.getPctOfMeanParentDuration());
         int height = metrics.getHeight() + metrics.getDescent();
         int y = row * height;
 
@@ -69,14 +69,14 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         MethodKey methodKey = node.getMethodKey();
         String text = methodKey.getClassName()
                 + "." + methodKey.getMethodName()
-                + " " + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
+                + " " + pctDecimalFormat.format(node.getPctOfMeanRootDuration());
 
         Rectangle2D stringBounds = metrics.getStringBounds(text, g);
 
         if (stringBounds.getWidth() < width) {
             gg.drawString(text, (int) (width / 2 - stringBounds.getWidth() / 2), (int) (stringBounds.getHeight()));
         } else {
-            text = methodKey.getMethodName() + " " + pctDecimalFormat.format(node.getPctOfAvgRootDuration());
+            text = methodKey.getMethodName() + " " + pctDecimalFormat.format(node.getPctOfMeanRootDuration());
             stringBounds = metrics.getStringBounds(text, g);
 
             if (stringBounds.getWidth() < width) {
@@ -85,14 +85,14 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         }
 
         // print the children
-        long total = node.getTotalDuration();
+        long total = node.getAccumulator().getTotalDuration();
 
         if ((total > 0) && (node.getChildCount() > 0)) {
             int childX = 0;
 
             for (int i = 0; i < node.getChildCount(); i++) {
-                TraceTreeNode child = (TraceTreeNode) node.getChildAt(i);
-                long part = child.getTotalDuration();
+                TraceTreeNode child = node.getChildAt(i);
+                long part = child.getAccumulator().getTotalDuration();
                 int partWidth = (int) ((part * (long) width) / total);
 
                 if (partWidth > 1) {
@@ -113,7 +113,7 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
         this.node = node;
 
         dataChanged();
-        setPreferredSize(new Dimension(getWidth(), (int) (rowHeight * node.getMaxDepth())));
+        setPreferredSize(new Dimension(getWidth(), rowHeight * node.getMaxDepth()));
         setSize(getPreferredSize());
         // LOG.info("getPreferredSize " + getPreferredSize());
         if (isVisible()) {
@@ -128,12 +128,12 @@ public class TreeGraphComponent extends BufferedJComponent implements Scrollable
 
     @Override
     public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
-        return (int) rowHeight;
+        return rowHeight;
     }
 
     @Override
     public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
-        return (int) rowHeight;
+        return rowHeight;
     }
 
     @Override

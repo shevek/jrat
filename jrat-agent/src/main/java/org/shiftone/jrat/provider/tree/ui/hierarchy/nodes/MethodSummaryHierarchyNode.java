@@ -35,7 +35,7 @@ public class MethodSummaryHierarchyNode extends MethodHierarchyNode {
 
     @Override
     public Long getTotalMethodDuration() {
-        return methodSummary.getTotalMethodDuration();
+        return methodSummary.getTotalSelfDuration();
     }
 
     public MethodSummary getMethodSummary() {
@@ -44,7 +44,7 @@ public class MethodSummaryHierarchyNode extends MethodHierarchyNode {
 
     @Override
     public long getTotalExits() {
-        return methodSummary.getTotalExists();
+        return methodSummary.getTotalExits();
     }
 
     @Override

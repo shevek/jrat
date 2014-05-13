@@ -29,14 +29,15 @@ public class ThreadState {
     }
 
     public long begin(MethodHandler methodHandler) {
-        long begin = System.currentTimeMillis();
+        // LOG.info("Begin " + methodHandler);
+        // long begin = System.currentTimeMillis();
 
         methodHandler.onMethodStart();
 
         long end = System.currentTimeMillis();
 
-        clockSkew += (end - begin);
-        return end - clockSkew;
+        // clockSkew += (end - begin);
+        return end; // - clockSkew;
 
     }
 
@@ -47,9 +48,9 @@ public class ThreadState {
 
         methodHandler.onMethodFinish(duration, throwable);
 
-        long end = System.currentTimeMillis();
+        // long end = System.currentTimeMillis();
 
-        clockSkew += (end - begin);
+        // clockSkew += (end - begin);
     }
 
 }

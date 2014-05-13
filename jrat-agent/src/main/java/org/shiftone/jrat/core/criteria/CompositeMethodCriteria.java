@@ -12,7 +12,7 @@ import org.shiftone.jrat.util.log.Logger;
 public abstract class CompositeMethodCriteria implements MethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(CompositeMethodCriteria.class);
-    private final List criterion = new ArrayList();
+    private final List<MethodCriteria> criterion = new ArrayList<MethodCriteria>();
 
     public void addCriteria(MethodCriteria criteria) {
         criterion.add(criteria);
@@ -30,7 +30,7 @@ public abstract class CompositeMethodCriteria implements MethodCriteria {
         criterion.clear();
     }
 
-    public Collection getCriterion() {
+    public Collection<MethodCriteria> getCriterion() {
         return Collections.unmodifiableCollection(criterion);
     }
 
@@ -39,7 +39,7 @@ public abstract class CompositeMethodCriteria implements MethodCriteria {
         if (criterion.isEmpty()) {
             return ConstantMethodCriteria.ALL;
         } else if (criterion.size() == 1) {
-            return (MethodCriteria) criterion.get(0);
+            return criterion.get(0);
         }
 
         return this;
@@ -49,14 +49,11 @@ public abstract class CompositeMethodCriteria implements MethodCriteria {
 
     @Override
     public String toString() {
-
         StringBuilder sb = new StringBuilder();
 
         sb.append("<" + getTag() + " size='" + criterion.size() + "'>");
 
-        for (int i = 0; i < criterion.size(); i++) {
-            MethodCriteria criteria = (MethodCriteria) criterion.get(i);
-
+        for (MethodCriteria criteria : criterion) {
             sb.append(criteria.toString());
         }
 

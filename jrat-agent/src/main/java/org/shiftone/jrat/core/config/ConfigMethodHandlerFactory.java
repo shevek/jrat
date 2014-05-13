@@ -2,7 +2,6 @@ package org.shiftone.jrat.core.config;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.core.criteria.MethodCriteria;
@@ -19,15 +18,16 @@ import org.shiftone.jrat.util.log.Logger;
 public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
     private static final Logger LOG = Logger.getLogger(ConfigMethodHandlerFactory.class);
-    private final List profileFactories = new ArrayList();
+    private final List<FactoryInstance> profileFactories = new ArrayList<FactoryInstance>();
 
     public ConfigMethodHandlerFactory(Configuration configuration) {
 
-        List profiles = configuration.getProfiles();
+        List<Profile> profiles = configuration.getProfiles();
 
+        LOG.info("Loading profiles from configuration.");
         for (int p = 0; p < profiles.size(); p++) {
 
-            Profile profile = (Profile) profiles.get(p);
+            Profile profile = profiles.get(p);
 
             String profileName = profile.getName() != null
                     ? "'" + profile.getName() + "'"
@@ -35,17 +35,16 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
             LOG.info("Loading profile " + profileName + "...");
 
-            List factories = profile.getFactories();
+            List<Handler> factories = profile.getFactories();
 
             for (int f = 0; f < factories.size(); f++) {
-
-                Handler handler = (Handler) factories.get(f);
+                Handler handler = factories.get(f);
                 String factoryName = profileName + ", factory " + f + " (" + handler.getClassName() + ")";
                 LOG.info("Loading factory " + handler + "...");
 
                 try {
 
-                    profileFactories.add(new FactoryInstance(handler.buildMethodHandlerFactory(), profile));
+                    profileFactories.add(new FactoryInstance(handler.buildMethodHandlerFactory(), profile.getMethodCriteria()));
 
                 } catch (Exception e) {
 
@@ -56,27 +55,25 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
             }
         }
+        LOG.info("Loaded profiles from configuration.");
     }
 
     @Override
     public MethodHandler createMethodHandler(MethodKey methodKey) throws Exception {
 
-        List methodHandlers = new ArrayList();
-        Iterator iterator = profileFactories.iterator();
-
-        while (iterator.hasNext()) {
-
-            FactoryInstance factoryInstance = (FactoryInstance) iterator.next();
-
+        // LOG.info("MethodKey: " + methodKey.getFullyQualifiedClassName() + " . " + methodKey.getMethodName());
+        List<MethodHandler> methodHandlers = new ArrayList<MethodHandler>();
+        for (FactoryInstance factoryInstance : profileFactories) {
             // todo - get modifiers
+            // LOG.info("FactoryInstance: " + factoryInstance);
             factoryInstance.addHandlerIfApplicable(methodHandlers, methodKey);
-
         }
 
+        // LOG.info("Handlers: " + methodHandlers);
         if (methodHandlers.isEmpty()) {
             return SilentMethodHandler.METHOD_HANDLER;
         } else if (methodHandlers.size() == 1) {
-            return (MethodHandler) methodHandlers.get(0);
+            return methodHandlers.get(0);
         } else {
             return new CompositeMethodHandler(methodHandlers);
         }
@@ -85,18 +82,11 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
 
     @Override
     public void startup(RuntimeContext context) throws Exception {
-
         LOG.info("startup");
 
-        Iterator iterator = profileFactories.iterator();
-
-        while (iterator.hasNext()) {
-
-            FactoryInstance factoryInstance = (FactoryInstance) iterator.next();
+        for (FactoryInstance factoryInstance : profileFactories) {
             factoryInstance.methodHandlerFactory.startup(context);
-
         }
-
     }
 
     private class FactoryInstance {
@@ -111,11 +101,16 @@ public class ConfigMethodHandlerFactory implements MethodHandlerFactory {
             this.methodCriteria = methodCriteria;
         }
 
-        public void addHandlerIfApplicable(Collection methodHandlers, MethodKey methodKey) throws Exception {
-
-            if (methodCriteria.isMatch(methodKey.getClassName(), methodKey.getMethodName(), methodKey.getSignature(), 0)) {
+        public void addHandlerIfApplicable(Collection<MethodHandler> methodHandlers, MethodKey methodKey) throws Exception {
+            // TODO: Pass package name separately.
+            if (methodCriteria.isMatch(methodKey.getFullyQualifiedClassName(), methodKey.getMethodName(), methodKey.getSignature(), 0)) {
                 methodHandlers.add(methodHandlerFactory.createMethodHandler(methodKey));
             }
+        }
+
+        @Override
+        public String toString() {
+            return methodCriteria + " -> " + methodHandlerFactory;
         }
     }
 

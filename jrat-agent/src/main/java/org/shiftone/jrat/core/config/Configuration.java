@@ -25,7 +25,7 @@ public class Configuration implements MethodCriteria {
     private final AndMethodCriteria methodCriteria = new AndMethodCriteria();
     private final OrMethodCriteria profilesCriteria = new OrMethodCriteria();
     private final OrMethodCriteria excludeCriteria = new OrMethodCriteria();
-    private final List profiles = new ArrayList();
+    private final List<Profile> profiles = new ArrayList<Profile>();
 
     public Configuration() {
         methodCriteria.addCriteria(profilesCriteria);
@@ -46,7 +46,7 @@ public class Configuration implements MethodCriteria {
     protected Profile createProfile() {
         Profile profile = new Profile();
         profiles.add(profile);
-        profilesCriteria.addCriteria(profile);
+        profilesCriteria.addCriteria(profile.getMethodCriteria());
         return profile;
     }
 
@@ -60,7 +60,7 @@ public class Configuration implements MethodCriteria {
         return methodCriteria.isMatch(className, methodName, signature, modifier);
     }
 
-    protected List getProfiles() {
+    protected List<Profile> getProfiles() {
         return profiles;
     }
 

@@ -58,7 +58,7 @@ public abstract class HierarchyNode {
         Long tmd = getTotalMethodDuration();
         return (tmd == null)
                 ? null
-                : new Percent((double) tmd.longValue() * 100.0 / (double) methodSummaryModel.getTotalMethodDuration());
+                : new Percent((double) tmd.longValue() * 100.0 / (double) methodSummaryModel.getTotalSelfDuration());
     }
 
     public abstract List getChildren();

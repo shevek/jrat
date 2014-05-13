@@ -12,12 +12,12 @@ public class MethodSummary {
 
     private final MethodKey methodKey;
     private long totalEnters;
-    private long totalExists;
+    private long totalExits;
     private long totalErrors;
     private long minDuration = Long.MAX_VALUE;
     private long maxDuration = Long.MIN_VALUE;
     private long totalDuration;
-    private long totalMethodDuration;
+    private long totalSelfDuration;
     private int totalCallers;
 
     public MethodSummary(MethodKey methodKey) {
@@ -27,16 +27,16 @@ public class MethodSummary {
     public void addStatistics(TraceTreeNode node) {
         Accumulator accumulator = node.getAccumulator();
         totalEnters += accumulator.getTotalEnters();
-        totalExists += accumulator.getTotalExits();
+        totalExits += accumulator.getTotalExits();
         totalErrors += accumulator.getTotalErrors();
-        if (totalExists > 0) {
+        if (totalExits > 0) {
             // if the node has not been existed, then the min and max times
             // will only have the MAX_VALUE and MIN_VALUE.
             minDuration = Math.min(minDuration, accumulator.getMinDuration());
             maxDuration = Math.max(maxDuration, accumulator.getMaxDuration());
         }
         totalDuration += accumulator.getTotalDuration();
-        totalMethodDuration += node.getTotalMethodDuration();
+        totalSelfDuration += node.getTotalSelfDuration();
         totalCallers++;
     }
 
@@ -45,40 +45,40 @@ public class MethodSummary {
      * possible that the method time would end up negative.  I'm not
      * showing it at all in this case to avoid confusion.
      */
-    public Long getTotalMethodDuration() {
-        return totalEnters != totalExists
+    public Long getTotalSelfDuration() {
+        return totalEnters != totalExits
                 ? null
-                : totalMethodDuration;
+                : totalSelfDuration;
     }
 
-    public Double getAverageMethodDuration() {
-        return (totalExists == 0) || (totalEnters != totalExists)
+    public Double getMeanSelfDuration() {
+        return (totalExits == 0) || (totalEnters != totalExits)
                 ? null
-                : (double) totalMethodDuration / (double) totalExists;
+                : (double) totalSelfDuration / (double) totalExits;
     }
 
-    public Double getAverageDuration() {
-        return totalExists == 0
+    public Double getMeanDuration() {
+        return totalExits == 0
                 ? null
-                : (double) totalDuration / (double) totalExists;
+                : (double) totalDuration / (double) totalExits;
     }
 
     public Percent getErrorRate() {
-        return (totalExists == 0)
+        return (totalExits == 0)
                 ? null
-                : new Percent(((double) totalErrors * 100.0) / (double) totalExists);
+                : new Percent(((double) totalErrors * 100.0) / (double) totalExits);
     }
 
     public long getUncompletedCalls() {
-        return totalEnters - totalExists;
+        return totalEnters - totalExits;
     }
 
     public long getTotalEnters() {
         return totalEnters;
     }
 
-    public long getTotalExists() {
-        return totalExists;
+    public long getTotalExits() {
+        return totalExits;
     }
 
     public long getTotalErrors() {

@@ -1,13 +1,13 @@
 package org.shiftone.jrat.provider.tree.ui;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.List;
 import org.shiftone.jrat.core.Accumulator;
 import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.TreeNode;
-import org.shiftone.jrat.util.collection.ArrayEnumeration;
 import org.shiftone.jrat.util.log.Logger;
 
 /**
@@ -20,84 +20,63 @@ public class TraceTreeNode implements javax.swing.tree.TreeNode {
     private final MethodKey methodKey;
     private final Accumulator accumulator;
 
-    private final Double averageMethodDuration;
-    private final long totalMethodDuration;
-
     private final int depth;
-    private final TraceTreeNode[] childArray;
-    private final TraceTreeNode parent;
-    private double pctOfAvgRootDuration;
-    private double pctOfAvgParentDuration;
-
-    private int totalChildren;   // total # of children and all children's children
     private int maxDepth;        // depth deepest child
+    private final TraceTreeNode parent;
+    private final List<TraceTreeNode> children = new ArrayList<TraceTreeNode>();
+    private int totalChildren;   // total # of children and all children's children
+
+    private final long totalSelfDuration;
+    private final double meanSelfDuration;
+
+    private final double pctOfMeanRootDuration;
+    private double pctOfMeanParentDuration = Double.NaN;
 
     public TraceTreeNode(TreeNode node) {
-        this(node, 0, null, null);
+        this(node, 0, null, node);
     }
 
-    private TraceTreeNode(TreeNode node, int depth, TraceTreeNode parent, TraceTreeNode root) {
-
+    private TraceTreeNode(TreeNode node, int depth, TraceTreeNode parent, TreeNode root) {
         this.methodKey = node.getMethodKey();
         this.accumulator = node.getAccumulator();
         this.depth = depth;
         this.parent = parent;
 
-        if ((parent != null) && (getTotalExits() > 0)) {
-
-            long parentTotalDuration = parent.getTotalDuration();
-
-            if (parentTotalDuration > 0) {
-                pctOfAvgParentDuration = (100.0 * getTotalDuration()) / parentTotalDuration;
-            }
-
+        if (parent != null) {
+            long parentTotalDuration = parent.accumulator.getTotalDuration();
+            if (parentTotalDuration > 0)
+                pctOfMeanParentDuration = (100.0 * accumulator.getTotalDuration()) / parentTotalDuration;
+            else
+                pctOfMeanParentDuration = Double.NaN;
         }
 
-        if ((root != null) && (getTotalExits() > 0)) {
+        long rootTotalDuration = root.getAccumulator().getTotalDuration();
+        if (rootTotalDuration > 0)
+            pctOfMeanRootDuration = (100.0 * accumulator.getTotalDuration()) / rootTotalDuration;
+        else
+            pctOfMeanRootDuration = Double.NaN;
 
-            long rootTotalDuration = root.getTotalDuration();
-
-            if (rootTotalDuration > 0) {
-                pctOfAvgRootDuration = (100.0 * getTotalDuration()) / rootTotalDuration;
-            }
-
+        for (TreeNode childNode : node.getChildren()) {
+            TraceTreeNode childTraceNode = new TraceTreeNode(childNode, depth + 1, this, root);
+            totalChildren += (1 + childTraceNode.totalChildren);
+            maxDepth = Math.max(maxDepth, 1 + childTraceNode.maxDepth);
+            children.add(childTraceNode);
         }
-
-        List c = node.getChildren();  // <TreeNode>
-
-        this.childArray = new TraceTreeNode[c.size()];
-
-        for (int i = 0; i < childArray.length; i++) {
-
-            TreeNode childNode = (TreeNode) c.get(i);
-            TraceTreeNode childStackTreeNode = new TraceTreeNode(childNode, depth + 1, this, root);
-
-            totalChildren += (1 + childStackTreeNode.totalChildren);
-            maxDepth = Math.max(maxDepth, 1 + childStackTreeNode.maxDepth);
-
-            childArray[i] = childStackTreeNode;
-        }
-
-        Arrays.sort(childArray, TotalChildrenComparator.INSTANCE);
+        Collections.sort(children, TotalChildrenComparator.INSTANCE);
 
         { // total method duration
-
-            long duration = getTotalDuration();
-
-            for (TraceTreeNode childArray1 : childArray) {
-                duration -= childArray1.getTotalDuration();
+            long duration = accumulator.getTotalDuration();
+            for (TraceTreeNode child : children) {
+                duration -= child.accumulator.getTotalDuration();
             }
-
-            totalMethodDuration = duration;
+            totalSelfDuration = duration;
         }
 
         { // average method duration
-
-            if (getTotalExits() == 0) {
-                averageMethodDuration = null;
-            } else {
-                averageMethodDuration = new Double(totalMethodDuration / getTotalExits());
-            }
+            if (accumulator.getTotalExits() > 0)
+                meanSelfDuration = totalSelfDuration / accumulator.getTotalExits();
+            else
+                meanSelfDuration = Double.NaN;
         }
 
 //        this.rootAverageDurationNanos = (childOfRoot)
@@ -118,99 +97,53 @@ public class TraceTreeNode implements javax.swing.tree.TreeNode {
 //        }
     }
 
-    public int getMaxDepth() {
-        return maxDepth;
-    }
-
-    public int getDepth() {
-        return depth;
-    }
-
-    public double getPctOfAvgParentDuration() {
-        return pctOfAvgParentDuration;
-    }
-
-    public double getPctOfAvgRootDuration() {
-        return pctOfAvgRootDuration;
-    }
-
-    public Double getAverageMethodDuration() {
-        return averageMethodDuration;
-    }
-
-    public long getTotalMethodDuration() {
-        return totalMethodDuration;
-    }
-
-    // ----------------------------------------------------------
-    public int getMaxConcurrentThreads() {
-        return accumulator.getMaxConcurrentThreads();
-    }
-
-    public long getSumOfSquares() {
-        return accumulator.getSumOfSquares();
-    }
-
-    public Accumulator getAccumulator() {
-        return accumulator;
-    }
-
     public MethodKey getMethodKey() {
         return methodKey;
-    }
-
-    public Double getAverageDuration() {
-        return accumulator.getAverageDuration();
-    }
-
-    public Double getStdDeviation() {
-        return accumulator.getStdDeviation();
-    }
-
-    public long getTotalDuration() {
-        return accumulator.getTotalDuration();
-    }
-
-    public int getConcurrentThreads() {
-        return accumulator.getConcurrentThreads();
-    }
-
-    public long getTotalErrors() {
-        return accumulator.getTotalErrors();
-    }
-
-    public long getTotalEnters() {
-        return accumulator.getTotalEnters();
-    }
-
-    public long getTotalExits() {
-        return accumulator.getTotalExits();
-    }
-
-    public long getMinDuration() {
-        return accumulator.getMinDuration();
-    }
-
-    public long getMaxDuration() {
-        return accumulator.getMaxDuration();
     }
 
     public boolean isRootNode() {
         return methodKey == null;
     }
 
+    public Accumulator getAccumulator() {
+        return accumulator;
+    }
+
+    public long getTotalSelfDuration() {
+        return totalSelfDuration;
+    }
+
+    public double getMeanSelfDuration() {
+        return meanSelfDuration;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public int getMaxDepth() {
+        return maxDepth;
+    }
+
+    public double getPctOfMeanParentDuration() {
+        return pctOfMeanParentDuration;
+    }
+
+    public double getPctOfMeanRootDuration() {
+        return pctOfMeanRootDuration;
+    }
+
     // -------------------------------------------------------------
     @Override
     public String toString() {
-
         return (isRootNode())
                 ? "Root"
                 : methodKey.getMethodName();
     }
 
     @Override
-    public Enumeration children() {
-        return new ArrayEnumeration(childArray);
+    public Enumeration<TraceTreeNode> children() {
+        return Collections.enumeration(children);
     }
 
     @Override
@@ -219,17 +152,13 @@ public class TraceTreeNode implements javax.swing.tree.TreeNode {
     }
 
     @Override
-    public javax.swing.tree.TreeNode getChildAt(int childIndex) {
-        return childArray[childIndex];
-    }
-
-    public TraceTreeNode getChildNodeAt(int childIndex) {
-        return childArray[childIndex];
+    public TraceTreeNode getChildAt(int childIndex) {
+        return children.get(childIndex);
     }
 
     @Override
     public int getChildCount() {
-        return childArray.length;
+        return children.size();
     }
 
     @Override
@@ -243,12 +172,7 @@ public class TraceTreeNode implements javax.swing.tree.TreeNode {
 
     @Override
     public int getIndex(javax.swing.tree.TreeNode node) {
-        for (int i = 0; i < childArray.length; i++) {
-            if (node == childArray[i]) {
-                return i;
-            }
-        }
-        return -1;
+        return children.indexOf(node);
     }
 
     @Override
@@ -256,22 +180,14 @@ public class TraceTreeNode implements javax.swing.tree.TreeNode {
         return (getChildCount() == 0);
     }
 
-    private static class TotalChildrenComparator implements Comparator {
+    private static class TotalChildrenComparator implements Comparator<TraceTreeNode> {
 
-        private static final Comparator INSTANCE = new TotalChildrenComparator();
+        private static final Comparator<TraceTreeNode> INSTANCE = new TotalChildrenComparator();
 
         @Override
-        public int compare(Object o1, Object o2) {
-
-            TraceTreeNode stn1 = (TraceTreeNode) o1;
-            TraceTreeNode stn2 = (TraceTreeNode) o2;
-            int diff = stn1.totalChildren - stn2.totalChildren;
-
-            return (diff == 0)
-                    ? 0
-                    : (diff < 0)
-                    ? 1
-                    : -1;
+        public int compare(TraceTreeNode o1, TraceTreeNode o2) {
+            int diff = o2.totalChildren - o1.totalChildren;
+            return Integer.signum(diff);
         }
     }
 

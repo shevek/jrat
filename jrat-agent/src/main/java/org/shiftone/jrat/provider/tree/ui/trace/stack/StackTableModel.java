@@ -29,24 +29,24 @@ public class StackTableModel extends AbstractTableModel {
     public static final Table.Column THREADS = TABLE.column("Concurrent Threads", false);
     public static final Table.Column TOTAL = TABLE.column("Total ms");
     public static final Table.Column AVERAGE = TABLE.column("Average ms", false);
-    public static final Table.Column TOTAL_METHOD = TABLE.column("Total Method ms");
-    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Method ms");
+    public static final Table.Column TOTAL_METHOD = TABLE.column("Total Self ms");
+    public static final Table.Column AVERAGE_METHOD = TABLE.column("Average Self ms");
     public static final Table.Column STANDARD_DEVIATION = TABLE.column("Standard Deviation", false);
     public static final Table.Column MIN = TABLE.column("Min ms", false);
     public static final Table.Column MAX = TABLE.column("Max ms", false);
     public static final Table.Column PERCENT_OF_PARENT = TABLE.column("% of Parent");
     public static final Table.Column PERCENT_OF_ROOT = TABLE.column("% of Root");
 
-    public static List getColumns() {
+    public static List<? extends Table.Column> getColumns() {
         return TABLE.getColumns();
     }
-    private List stack = new ArrayList();
+    private List<TraceTreeNode> stack = new ArrayList<TraceTreeNode>();
     private long rootTotalDuration;
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
 
-        TraceTreeNode node = (TraceTreeNode) stack.get(rowIndex);
+        TraceTreeNode node = stack.get(rowIndex);
         MethodKey methodKey = node.getMethodKey();
         if (methodKey == null) {
             return "?";
@@ -66,40 +66,40 @@ public class StackTableModel extends AbstractTableModel {
             return methodKey.getSig().getShortText();
         }
         if (columnIndex == ENTERS.getIndex()) {
-            return node.getTotalEnters();
+            return node.getAccumulator().getTotalEnters();
         }
         if (columnIndex == EXITS.getIndex()) {
-            return node.getTotalExits();
+            return node.getAccumulator().getTotalExits();
         }
         if (columnIndex == ERRORS.getIndex()) {
-            return node.getTotalErrors();
+            return node.getAccumulator().getTotalErrors();
         }
         if (columnIndex == THREADS.getIndex()) {
-            return node.getMaxConcurrentThreads();
+            return node.getAccumulator().getMaxConcurrentThreads();
         }
         if (columnIndex == TOTAL.getIndex()) {
-            return node.getTotalDuration();
+            return node.getAccumulator().getTotalDuration();
         }
         if (columnIndex == AVERAGE.getIndex()) {
-            return node.getAverageDuration();
+            return node.getAccumulator().getMeanDuration();
         }
         if (columnIndex == TOTAL_METHOD.getIndex()) {
-            return node.getTotalMethodDuration();
+            return node.getTotalSelfDuration();
         }
         if (columnIndex == AVERAGE_METHOD.getIndex()) {
-            return node.getAverageMethodDuration();
+            return node.getMeanSelfDuration();
         }
         if (columnIndex == STANDARD_DEVIATION.getIndex()) {
-            return node.getStdDeviation();
+            return node.getAccumulator().getStdDeviation();
         }
         if (columnIndex == MIN.getIndex()) {
-            return node.getMinDuration();
+            return node.getAccumulator().getMinDuration();
         }
         if (columnIndex == MAX.getIndex()) {
-            return node.getMaxDuration();
+            return node.getAccumulator().getMaxDuration();
         }
         if (columnIndex == PERCENT_OF_PARENT.getIndex()) {
-            return new Percent(node.getPctOfAvgParentDuration());
+            return new Percent(node.getPctOfMeanParentDuration());
         }
         if (columnIndex == PERCENT_OF_ROOT.getIndex()) {
             return new Percent(getPctOfAvgRootDuration(node));
@@ -108,17 +108,13 @@ public class StackTableModel extends AbstractTableModel {
     }
 
     public synchronized void setStackTreeNode(TraceTreeNode root, TraceTreeNode node) {
-
-        List newStack = new ArrayList();
+        List<TraceTreeNode> newStack = new ArrayList<TraceTreeNode>();
         TraceTreeNode currNode = node;
 
         while (currNode.getParent() != null) {
             newStack.add(currNode);
-
-            if (currNode == root) {
+            if (currNode == root)
                 break;
-            }
-
             currNode = currNode.getParentNode();
         }
 
@@ -132,9 +128,8 @@ public class StackTableModel extends AbstractTableModel {
         if (newStack.isEmpty()) {
             rootTotalDuration = 0;
         } else {
-            TraceTreeNode viewRoot = (TraceTreeNode) newStack.get(newStack.size() - 1);
-
-            rootTotalDuration = viewRoot.getTotalDuration();
+            TraceTreeNode viewRoot = newStack.get(newStack.size() - 1);
+            rootTotalDuration = viewRoot.getAccumulator().getTotalDuration();
         }
 
         stack = newStack;
@@ -158,19 +153,13 @@ public class StackTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Class getColumnClass(int columnIndex) {
+    public Class<?> getColumnClass(int columnIndex) {
         return TABLE.getColumn(columnIndex).getType();
     }
 
-    @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
-    }
-
     public double getPctOfAvgRootDuration(TraceTreeNode node) {
-
         return (rootTotalDuration > 0)
-                ? ((100.0 * node.getTotalDuration()) / rootTotalDuration)
-                : 0;
+                ? ((100.0 * node.getAccumulator().getTotalDuration()) / rootTotalDuration)
+                : Double.NaN;
     }
 }

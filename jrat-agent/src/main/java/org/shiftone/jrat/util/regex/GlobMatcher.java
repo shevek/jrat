@@ -40,8 +40,8 @@ public class GlobMatcher implements Matcher {
 
     @Override
     public boolean isMatch(String inputString) {
-
         Assert.assertNotNull("inputString", inputString);
+        // LOG.info(inputString + " =~ " + pattenString);
 
         return isMatch(inputString, patternParts);
     }

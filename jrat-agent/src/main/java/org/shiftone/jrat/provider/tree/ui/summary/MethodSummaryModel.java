@@ -15,21 +15,21 @@ public class MethodSummaryModel {
 
     private final List<MethodSummary> methodList = new ArrayList<MethodSummary>();
     private final Map<MethodKey, MethodSummary> methodMap = new HashMap<MethodKey, MethodSummary>();
-    private final long totalMethodDuration;
+    private final long totalSelfDuration;
 
     public MethodSummaryModel(TraceTreeNode node) {
         process(node);
-        totalMethodDuration = calculateTotalMethodDuration();
+        totalSelfDuration = calculateTotalMethodDuration();
     }
 
-    public long getTotalMethodDuration() {
-        return totalMethodDuration;
+    public long getTotalSelfDuration() {
+        return totalSelfDuration;
     }
 
     private long calculateTotalMethodDuration() {
         long duration = 0;
         for (MethodSummary summary : methodList) {
-            Long d = summary.getTotalMethodDuration();
+            Long d = summary.getTotalSelfDuration();
             if (d != null) {
                 duration += d.longValue();
             }
@@ -46,7 +46,7 @@ public class MethodSummaryModel {
         }
 
         for (int i = 0; i < node.getChildCount(); i++) {
-            TraceTreeNode child = node.getChildNodeAt(i);
+            TraceTreeNode child = node.getChildAt(i);
             process(child);
         }
     }

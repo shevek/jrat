@@ -3,7 +3,6 @@ package org.shiftone.jrat.util;
 import java.beans.PropertyDescriptor;
 import java.beans.PropertyEditor;
 import java.beans.PropertyEditorManager;
-import java.util.Iterator;
 import java.util.Map;
 import org.shiftone.jrat.core.JRatException;
 import org.shiftone.jrat.util.log.Logger;
@@ -15,16 +14,12 @@ public class PropertyUtil {
 
     private static final Logger LOG = Logger.getLogger(PropertyUtil.class);
 
-    public static void setProperties(Object instance, Map properties) {
+    public static void setProperties(Object instance, Map<String, String> properties) {
+        Class<?> klass = instance.getClass();
 
-        Iterator iterator = properties.entrySet().iterator();
-        Class klass = instance.getClass();
-
-        while (iterator.hasNext()) {
-
-            Map.Entry entry = (Map.Entry) iterator.next();
-            String propertyName = (String) entry.getKey();
-            String value = (String) entry.getValue();
+        for (Map.Entry<String, String> entry : properties.entrySet()) {
+            String propertyName = entry.getKey();
+            String value = entry.getValue();
 
             try {
 

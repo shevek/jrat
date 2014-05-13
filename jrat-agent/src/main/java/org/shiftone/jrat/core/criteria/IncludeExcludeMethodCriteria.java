@@ -8,21 +8,18 @@ import org.shiftone.jrat.util.log.Logger;
  *
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class IncludeExcludeMethodCriteria implements MethodCriteria {
+public class IncludeExcludeMethodCriteria extends AndMethodCriteria {
 
     private static final Logger LOG = Logger.getLogger(IncludeExcludeMethodCriteria.class);
-    private final AndMethodCriteria root;
     private final OrMethodCriteria positive;
     private final OrMethodCriteria negative;
 
     public IncludeExcludeMethodCriteria() {
-
-        root = new AndMethodCriteria();
         positive = new OrMethodCriteria();
         negative = new OrMethodCriteria();
 
-        root.addCriteria(positive);
-        root.addCriteria(new NotMethodCriteria(negative));
+        addCriteria(positive);
+        addCriteria(new NotMethodCriteria(negative));
     }
 
     public void addPositive(MethodCriteria criteria) {
@@ -31,15 +28,5 @@ public class IncludeExcludeMethodCriteria implements MethodCriteria {
 
     public void addNegative(MethodCriteria criteria) {
         negative.addCriteria(criteria);
-    }
-
-    @Override
-    public boolean isMatch(String className, long modifier) {
-        return root.isMatch(className, modifier);
-    }
-
-    @Override
-    public boolean isMatch(String className, String methodName, String signature, long modifier) {
-        return root.isMatch(className, methodName, signature, modifier);
     }
 }

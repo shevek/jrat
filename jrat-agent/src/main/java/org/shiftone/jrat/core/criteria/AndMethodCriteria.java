@@ -12,33 +12,31 @@ public class AndMethodCriteria extends CompositeMethodCriteria {
 
     @Override
     public boolean isMatch(String className, long modifier) {
+        // LOG.info("Test: " + className + " . " + modifier);
 
-        Iterator iterator = getCriterion().iterator();
-
-        while (iterator.hasNext()) {
-            MethodCriteria criteria = (MethodCriteria) iterator.next();
-
+        for (MethodCriteria criteria : getCriterion()) {
             if (!criteria.isMatch(className, modifier)) {
+                // LOG.info("Fail: " + criteria);
                 return false;
             }
         }
 
+        // LOG.info("Pass: " + this);
         return true;
     }
 
     @Override
     public boolean isMatch(String className, String methodName, String signature, long modifier) {
+        // LOG.info("Test: " + className + " . " + methodName + " . " + signature + " . " + modifier);
 
-        Iterator iterator = getCriterion().iterator();
-
-        while (iterator.hasNext()) {
-            MethodCriteria criteria = (MethodCriteria) iterator.next();
-
+        for (MethodCriteria criteria : getCriterion()) {
             if (!criteria.isMatch(className, methodName, signature, modifier)) {
+                // LOG.info("Fail: " + criteria);
                 return false;
             }
         }
 
+        // LOG.info("Pass: " + this);
         return true;
     }
 

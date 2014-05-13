@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Table {
 
-    private final List columns = new ArrayList();
+    private final List<Column> columns = new ArrayList<Column>();
 
     public synchronized Column column(String name) {
         return column(name, true);
@@ -19,18 +19,18 @@ public class Table {
         return column(name, Object.class, defaultVisible);
     }
 
-    public synchronized Column column(String name, Class type, boolean defaultVisible) {
+    public synchronized Column column(String name, Class<?> type, boolean defaultVisible) {
         Column column = new Column(columns.size(), name, type, defaultVisible);
         columns.add(column);
         return column;
     }
 
-    public List getColumns() {
+    public List<? extends Column> getColumns() {
         return Collections.unmodifiableList(columns);
     }
 
     public Column getColumn(int index) {
-        return (Column) columns.get(index);
+        return columns.get(index);
     }
 
     public int getColumnCount() {
@@ -41,10 +41,10 @@ public class Table {
 
         private final int index;
         private final String name;
-        private final Class type;
+        private final Class<?> type;
         private final boolean defaultVisible;
 
-        public Column(int index, String name, Class type, boolean defaultVisible) {
+        public Column(int index, String name, Class<?> type, boolean defaultVisible) {
             this.index = index;
             this.name = name;
             this.type = type;
@@ -59,7 +59,7 @@ public class Table {
             return name;
         }
 
-        public Class getType() {
+        public Class<?> getType() {
             return type;
         }
 

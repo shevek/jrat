@@ -20,10 +20,9 @@ public class AccumulatorTestCase {
      */
     @Test
     public void testStdDeviation0() {
-
         Accumulator stats = new Accumulator();
 
-        assertTrue("standard deviation of 0 numbers", stats.getStdDeviation() == null);
+        assertTrue("standard deviation of 0 numbers", Double.isNaN(stats.getStdDeviation()));
     }
 
     /**
@@ -31,11 +30,10 @@ public class AccumulatorTestCase {
      */
     @Test
     public void testStdDeviation1() {
-
         Accumulator stats = new Accumulator();
 
         stats.onMethodFinish(100, true);
-        assertTrue("standard deviation of 1 numbers", stats.getStdDeviation() == null);
+        assertTrue("standard deviation of 1 numbers", Double.isNaN(stats.getStdDeviation()));
     }
 
     /**
@@ -43,7 +41,6 @@ public class AccumulatorTestCase {
      */
     @Test
     public void testStdDeviation11() {
-
         Accumulator stats = new Accumulator();
         double expect = 26.84568697;
         long[] values
@@ -56,7 +53,7 @@ public class AccumulatorTestCase {
         }
 
         assertEquals("totalCalls", values.length, stats.getTotalExits());
-        assertEquals("standard deviation of 11 numbers", expect, stats.getStdDeviation().doubleValue(), TOLERANCE);
+        assertEquals("standard deviation of 11 numbers", expect, stats.getStdDeviation(), TOLERANCE);
     }
 
     /**
@@ -64,7 +61,6 @@ public class AccumulatorTestCase {
      */
     @Test
     public void testStdDeviation20() {
-
         Accumulator stats = new Accumulator();
         double expect = 128047.77056645500;
         long[] values
@@ -80,6 +76,6 @@ public class AccumulatorTestCase {
         }
 
         assertEquals("totalCalls", values.length, stats.getTotalExits());
-        assertEquals("standard deviation of 20 numbers", expect, stats.getStdDeviation().doubleValue(), TOLERANCE);
+        assertEquals("standard deviation of 20 numbers", expect, stats.getStdDeviation(), TOLERANCE);
     }
 }

@@ -14,7 +14,7 @@ public class Handler {
 
     private static final Logger LOG = Logger.getLogger(Handler.class);
     private String className;
-    private final Map properties = new HashMap();
+    private final Map<String, String> properties = new HashMap<String, String>();
 
     public String getClassName() {
         return className;
@@ -24,7 +24,7 @@ public class Handler {
         this.className = className;
     }
 
-    public Map getProperties() {
+    public Map<String, String> getProperties() {
         return properties;
     }
 
@@ -32,13 +32,14 @@ public class Handler {
      * column a new instance of a configured factory
      */
     public MethodHandlerFactory buildMethodHandlerFactory() {
-
         Object instance = ResourceUtil.newInstance(className);
-
         PropertyUtil.setProperties(instance, properties);
-
         return (MethodHandlerFactory) instance;
+    }
 
+    @Override
+    public String toString() {
+        return getClassName() + getProperties();
     }
 
 }

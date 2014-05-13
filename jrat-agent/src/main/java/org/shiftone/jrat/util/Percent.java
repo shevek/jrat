@@ -6,71 +6,32 @@ import org.shiftone.jrat.util.log.Logger;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class Percent extends Number implements Comparable {
+public class Percent extends Number implements Comparable<Percent> {
 
     private static final Logger LOG = Logger.getLogger(Percent.class);
     public static final Percent ZERO = new Percent(0);
     public static final Percent HUNDRED = new Percent(100);
-    private static DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.0");
-    public static final double POSITIVE_INFINITY = 1.0 / 0.0;
-    public static final double NEGATIVE_INFINITY = -1.0 / 0.0;
-    public static final double NAN = 0.0d / 0.0d;
-    public static final double MAX_VALUE = 1.7976931348623157e+308;
-    public static final double MIN_VALUE = 4.9e-324;
-    private double value;
+    private static final DecimalFormat pctDecimalFormat = new DecimalFormat("#,###.0");
+    private final double value;
 
+    // Might be NaN.
     public Percent(double value) {
         this.value = value;
     }
 
-    public Percent(String s) throws NumberFormatException {
-
-        // REMIND: this is inefficient
-        this(valueOf(s).doubleValue());
-    }
-
-    public static String toString(double d) {
-        return Double.toString(d);
-    }
-
-    public static Percent valueOf(String s) throws NumberFormatException {
-
-        Assert.assertNotNull("string value", s);
-
-        return new Percent(Double.parseDouble(s));
-    }
-
-    public static double parseDouble(String s) throws NumberFormatException {
-
-        Assert.assertNotNull("string value", s);
-
-        return Double.parseDouble(s);
-    }
-
-    public static boolean isNaN(double v) {
-        return (v != v);
-    }
-
-    public static boolean isInfinite(double v) {
-        return (v == POSITIVE_INFINITY) || (v == NEGATIVE_INFINITY);
-    }
-
     public boolean isNaN() {
-        return isNaN(value);
+        return Double.isNaN(value);
     }
 
     public boolean isInfinite() {
-        return isInfinite(value);
+        return Double.isInfinite(value);
     }
 
     @Override
     public String toString() {
-
         synchronized (pctDecimalFormat) {
             return pctDecimalFormat.format(value);
         }
-
-        // return String.valueOf(value);
     }
 
     @Override
@@ -100,7 +61,7 @@ public class Percent extends Number implements Comparable {
 
     @Override
     public double doubleValue() {
-        return (double) value;
+        return value;
     }
 
     @Override
@@ -116,18 +77,9 @@ public class Percent extends Number implements Comparable {
         return ((obj instanceof Number) && ((((Number) obj).doubleValue()) == value));
     }
 
-    public int compareTo(Percent anotherPercent) {
-
-        Assert.assertNotNull("anotherPercent", anotherPercent);
-
-        Double me = new Double(value);
-        Double other = new Double(anotherPercent.value);
-
-        return me.compareTo(other);
-    }
-
     @Override
-    public int compareTo(Object o) {
-        return compareTo((Percent) o);
+    public int compareTo(Percent anotherPercent) {
+        Assert.assertNotNull("anotherPercent", anotherPercent);
+        return Double.compare(value, anotherPercent.value);
     }
 }

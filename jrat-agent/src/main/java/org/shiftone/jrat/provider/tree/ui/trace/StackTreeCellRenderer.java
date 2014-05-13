@@ -37,7 +37,7 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
         this.hasFocus = hasFocus;
         this.selected = sel;
 
-        double w = treeNode.getPctOfAvgParentDuration();
+        double w = treeNode.getPctOfMeanParentDuration();
         Icon icon = null;
 
         if (treeNode.isRootNode()) {
@@ -82,13 +82,13 @@ public class StackTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
             String methodName = methodKey.getMethodName();
 
             if (treeNode.getDepth() == 1) {
-                Double avg = treeNode.getAverageDuration();
+                Double avg = treeNode.getAccumulator().getMeanDuration();
 
                 result = methodName + ((avg == null)
                         ? " - never exited"
-                        : (" - " + msDecimalFormat.format(treeNode.getAverageDuration())));
+                        : (" - " + msDecimalFormat.format(treeNode.getAccumulator().getMeanDuration())));
             } else {
-                double pct = treeNode.getPctOfAvgRootDuration();
+                double pct = treeNode.getPctOfMeanRootDuration();
 
                 if (pct > 0.09) {
                     result = methodName + " - " + pctDecimalFormat.format(pct);

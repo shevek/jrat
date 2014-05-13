@@ -45,9 +45,9 @@ public class PieGraphComponent extends BufferedJComponent {
         int maxChildDepth = 0;
 
         for (int i = 0; i < node.getChildCount(); i++) {
-            TraceTreeNode child = (TraceTreeNode) node.getChildAt(i);
+            TraceTreeNode child = node.getChildAt(i);
 
-            if (child.getTotalDuration() > 0) {
+            if (child.getAccumulator().getTotalDuration() > 0) {
                 maxChildDepth = Math.max(maxChildDepth, getMaxEffectiveDepth(child));
             }
         }
@@ -63,14 +63,14 @@ public class PieGraphComponent extends BufferedJComponent {
         }
 
         long totalDegrees = max - min;
-        long totalNanos = node.getTotalDuration();
+        long totalNanos = node.getAccumulator().getTotalDuration();
 
         if ((totalNanos > 0) && (node.getChildCount() > 0)) {
             int startDegrees = min;
 
             for (int i = 0; i < node.getChildCount(); i++) {
-                TraceTreeNode child = (TraceTreeNode) node.getChildAt(i);
-                long partNanos = child.getTotalDuration();
+                TraceTreeNode child = node.getChildAt(i);
+                long partNanos = child.getAccumulator().getTotalDuration();
                 int partDegrees = (int) ((partNanos * totalDegrees) / totalNanos);
 
                 if (partDegrees > 1) {
@@ -85,7 +85,7 @@ public class PieGraphComponent extends BufferedJComponent {
         int radius = (int) (radiusDelta * depth);
         int diameter = radius * 2;
 
-        g.setColor(colorLookup.getColor(node.getPctOfAvgParentDuration()));
+        g.setColor(colorLookup.getColor(node.getPctOfMeanParentDuration()));
         g.fillArc(x - radius, y - radius, diameter, diameter, min, max - min);
     }
 }

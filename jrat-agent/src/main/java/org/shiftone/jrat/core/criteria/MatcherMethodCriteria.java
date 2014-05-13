@@ -18,15 +18,24 @@ public class MatcherMethodCriteria implements MethodCriteria {
     private Matcher signatureMatcher = Matcher.ALL;
 
     public void setClassName(String classNameMatcher) {
-        this.classNameMatcher = GlobMatcher.create(classNameMatcher);
+        if ("*".equals(classNameMatcher))
+            this.classNameMatcher = Matcher.ALL;
+        else
+            this.classNameMatcher = GlobMatcher.create(classNameMatcher);
     }
 
     public void setMethodName(String methodNameMatcher) {
-        this.methodNameMatcher = GlobMatcher.create(methodNameMatcher);
+        if ("*".equals(methodNameMatcher))
+            this.methodNameMatcher = Matcher.ALL;
+        else
+            this.methodNameMatcher = GlobMatcher.create(methodNameMatcher);
     }
 
     public void setSignature(String signatureMatcher) {
-        this.signatureMatcher = GlobMatcher.create(signatureMatcher);
+        if ("*".equals(signatureMatcher))
+            this.signatureMatcher = Matcher.ALL;
+        else
+            this.signatureMatcher = GlobMatcher.create(signatureMatcher);
     }
 
     @Override
@@ -45,15 +54,21 @@ public class MatcherMethodCriteria implements MethodCriteria {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<MatcherMethodCriteria>");
-        sb.append("<Class>");
-        sb.append(classNameMatcher);
-        sb.append("</Class>");
-        sb.append("<Method>");
-        sb.append(methodNameMatcher);
-        sb.append("</Method>");
-        sb.append("<Signature>");
-        sb.append(signatureMatcher);
-        sb.append("</Signature>");
+        if (classNameMatcher != Matcher.ALL) {
+            sb.append("<Class>");
+            sb.append(classNameMatcher);
+            sb.append("</Class>");
+        }
+        if (methodNameMatcher != Matcher.ALL) {
+            sb.append("<Method>");
+            sb.append(methodNameMatcher);
+            sb.append("</Method>");
+        }
+        if (signatureMatcher != Matcher.ALL) {
+            sb.append("<Signature>");
+            sb.append(signatureMatcher);
+            sb.append("</Signature>");
+        }
         sb.append("</MatcherMethodCriteria>");
         return sb.toString();
     }

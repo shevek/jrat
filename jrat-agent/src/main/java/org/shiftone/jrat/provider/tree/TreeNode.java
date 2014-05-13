@@ -33,15 +33,12 @@ public class TreeNode implements Externalizable {
         out.writeObject(methodKey);
 
         // column a copy of the children
-        List<TreeNode> list = getChildren();
+        List<? extends TreeNode> children = getChildren();
 
         // write a child count
-        int childCount = list.size();
-        out.writeInt(childCount);
-
+        out.writeInt(children.size());
         // write the children
-        for (int i = 0; i < childCount; i++) {
-            TreeNode child = list.get(i);
+        for (TreeNode child : children) {
             child.writeExternal(out);
         }
     }
@@ -54,13 +51,10 @@ public class TreeNode implements Externalizable {
         int childCount = in.readInt();
         for (int i = 0; i < childCount; i++) {
             TreeNode child = new TreeNode();
-
             child.readExternal(in);
-
             children.put(child.getMethodKey(), child);
             child.parent = this;
         }
-
     }
 
     public TreeNode() {
@@ -76,7 +70,7 @@ public class TreeNode implements Externalizable {
         this.accumulator = new Accumulator();
     }
 
-    public List<TreeNode> getChildren() {
+    public List<? extends TreeNode> getChildren() {
         synchronized (children) {
             return new ArrayList<TreeNode>(children.values());
         }
@@ -99,20 +93,20 @@ public class TreeNode implements Externalizable {
         }
     }
 
-    public final TreeNode getParentNode() {
-        return parent;
+    public MethodKey getMethodKey() {
+        return methodKey;
     }
 
     public final boolean isRootNode() {
         return (methodKey == null);
     }
 
-    public Accumulator getAccumulator() {
-        return accumulator;
+    public final TreeNode getParentNode() {
+        return parent;
     }
 
-    public MethodKey getMethodKey() {
-        return methodKey;
+    public Accumulator getAccumulator() {
+        return accumulator;
     }
 
     // ---------------------------------------------------------------
@@ -130,6 +124,11 @@ public class TreeNode implements Externalizable {
         }
 
         accumulator.reset();  // this is the actual call to reset
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + ": " + getMethodKey() + " -> " + getAccumulator();
     }
 
 }

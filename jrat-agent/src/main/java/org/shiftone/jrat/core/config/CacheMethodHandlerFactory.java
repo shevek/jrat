@@ -15,7 +15,7 @@ public class CacheMethodHandlerFactory implements MethodHandlerFactory {
 
     private static final Logger LOG = Logger.getLogger(CacheMethodHandlerFactory.class);
     private final MethodHandlerFactory methodHandlerFactory;
-    private final Map cache = new HashMap();
+    private final Map<MethodKey, MethodHandler> cache = new HashMap<MethodKey, MethodHandler>();
 
     public CacheMethodHandlerFactory(MethodHandlerFactory methodHandlerFactory) {
         this.methodHandlerFactory = methodHandlerFactory;
@@ -23,15 +23,11 @@ public class CacheMethodHandlerFactory implements MethodHandlerFactory {
 
     @Override
     public synchronized MethodHandler createMethodHandler(MethodKey methodKey) throws Exception {
-
-        MethodHandler methodHandler = (MethodHandler) cache.get(methodKey);
-
+        MethodHandler methodHandler = cache.get(methodKey);
         if (methodHandler == null) {
-
             methodHandler = methodHandlerFactory.createMethodHandler(methodKey);
-
+            cache.put(methodKey, methodHandler);
         }
-
         return methodHandler;
     }
 

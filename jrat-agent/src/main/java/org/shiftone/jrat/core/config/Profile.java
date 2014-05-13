@@ -10,12 +10,12 @@ import org.shiftone.jrat.util.log.Logger;
 /**
  * @author jeff@shiftone.org (Jeff Drost)
  */
-public class Profile implements MethodCriteria {
+public class Profile {
 
     private static final Logger LOG = Logger.getLogger(Profile.class);
     private final IncludeExcludeMethodCriteria methodCriteria = new IncludeExcludeMethodCriteria();
     private String name;
-    private final List factories = new ArrayList();
+    private final List<Handler> factories = new ArrayList<Handler>();
 
     public MatcherMethodCriteria createInclude() {
         MatcherMethodCriteria newCriteria = new MatcherMethodCriteria();
@@ -35,14 +35,8 @@ public class Profile implements MethodCriteria {
         return handler;
     }
 
-    @Override
-    public boolean isMatch(String className, long modifier) {
-        return methodCriteria.isMatch(className, modifier);
-    }
-
-    @Override
-    public boolean isMatch(String className, String methodName, String signature, long modifier) {
-        return methodCriteria.isMatch(className, methodName, signature, modifier);
+    public MethodCriteria getMethodCriteria() {
+        return methodCriteria;
     }
 
     public String getName() {
@@ -53,7 +47,7 @@ public class Profile implements MethodCriteria {
         this.name = name;
     }
 
-    public List getFactories() {
+    public List<Handler> getFactories() {
         return factories;
     }
 }

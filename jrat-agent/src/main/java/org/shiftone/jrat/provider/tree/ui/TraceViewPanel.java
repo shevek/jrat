@@ -5,6 +5,7 @@ import java.util.Properties;
 import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import org.shiftone.jrat.core.MethodKey;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyModelBuilder;
 import org.shiftone.jrat.provider.tree.ui.hierarchy.HierarchyPanel;
 import org.shiftone.jrat.provider.tree.ui.summary.MethodSummaryModel;
@@ -23,7 +24,7 @@ public class TraceViewPanel extends JPanel {
 
     public TraceViewPanel(
             TraceTreeNode node,
-            Set allMethodKeys,
+            Set<MethodKey> allMethodKeys,
             long sessionStartMs,
             long sessionEndMs,
             Properties systemProperties,
@@ -43,7 +44,7 @@ public class TraceViewPanel extends JPanel {
             SummaryTableModel summaryTableModel = new SummaryTableModel(methodSummaryModel);
             tabbedPane.addTab("Summary",
                     new SummaryPanel(summaryTableModel,
-                            methodSummaryModel.getTotalMethodDuration(),
+                            methodSummaryModel.getTotalSelfDuration(),
                             sessionStartMs, sessionEndMs,
                             systemProperties,
                             hostName, hostAddress));
