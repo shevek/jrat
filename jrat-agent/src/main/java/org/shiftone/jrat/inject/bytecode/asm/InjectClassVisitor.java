@@ -98,7 +98,8 @@ public class InjectClassVisitor extends ClassVisitor implements Constants, Opcod
     public MethodVisitor visitMethod(final int access, final String name,
             final String descriptor, final String signature,
             final String[] exceptions) {
-        if (name.equals("<clinit>") || name.equals("<init>") || Modifier.isAbstract(access) || Modifier.isNative(access)) {
+        if (name.equals("<clinit>") || name.equals("<init>")
+                || Modifier.isAbstract(access) || Modifier.isNative(access) || Modifier.isSynthetic(access)) {
             // LOG.debug("skipping " + name);
             return super.visitMethod(access, name, descriptor, signature, exceptions);
         }
