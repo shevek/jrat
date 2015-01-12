@@ -7,5 +7,5 @@ public interface MethodHandler {
 
     void onMethodStart();
 
-    void onMethodFinish(long durationMillis, Throwable throwable);
+    void onMethodFinish(long durationNanos, Throwable throwable);
 }
