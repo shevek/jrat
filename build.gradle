@@ -13,6 +13,7 @@ subprojects {
 	stdmodule {
 		description "JRat: The Java Runtime Analysis Toolkit"
 		author id: 'shevek', name: 'Shevek', email: 'github@anarres.org'
+		author id: 'jeffdrost', name: 'Jeff Drost', email: 'jeff@shiftone.org'
 		license 'Apache-2.0'
 	}
 
