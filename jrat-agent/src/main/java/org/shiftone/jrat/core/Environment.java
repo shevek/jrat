@@ -1,17 +1,14 @@
 package org.shiftone.jrat.core;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Date;
 import org.shiftone.jrat.core.config.Configuration;
 import org.shiftone.jrat.core.config.ConfigurationParser;
 import org.shiftone.jrat.core.config.Settings;
 import org.shiftone.jrat.util.io.IOUtil;
 import org.shiftone.jrat.util.io.ResourceUtil;
 import org.shiftone.jrat.util.log.Logger;
+
+import java.io.*;
+import java.util.Date;
 
 /**
  * @author jeff@shiftone.org (Jeff Drost)
@@ -22,7 +19,7 @@ public class Environment {
     private static final String CONFIG_FILE = "jrat.xml";
     private static final String DEFAULT_FILE = "org/shiftone/jrat/core/default-jrat.xml";
     public static final Environment INSTANCE = new Environment();
-    private final Configuration configuration;
+    private Configuration configuration;
 
     public Environment() {
 
@@ -77,6 +74,10 @@ public class Environment {
             throw new JRatException("unable to copy default configuration file to : " + file.getAbsolutePath(), e);
 
         }
+    }
+
+    public static void setConfiguration(Configuration configuration) {
+      INSTANCE.configuration = configuration;
     }
 
     public static Configuration getConfiguration() {

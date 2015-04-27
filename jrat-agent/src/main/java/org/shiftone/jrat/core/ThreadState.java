@@ -34,7 +34,7 @@ public class ThreadState {
 
         methodHandler.onMethodStart();
 
-        long end = System.currentTimeMillis();
+        long end = System.nanoTime();
 
         // clockSkew += (end - begin);
         return end; // - clockSkew;
@@ -43,7 +43,7 @@ public class ThreadState {
 
     public void end(MethodHandler methodHandler, long startTime, Throwable throwable) {
 
-        long begin = System.currentTimeMillis();
+        long begin = System.nanoTime();
         long duration = begin - startTime;
 
         methodHandler.onMethodFinish(duration, throwable);
